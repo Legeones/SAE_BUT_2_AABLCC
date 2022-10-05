@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="AideCss.css">
 </head>
 <body>
-<form action="site.php" method="GET">
+<form action="" method="GET">
     <h1>Aide</h1>
     <div class="Separation"></div>
     <div class="Formulaire">
