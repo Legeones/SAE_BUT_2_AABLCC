@@ -123,5 +123,4 @@ elseif($resVerifPassword_Number==0){
 elseif($resVerifPassword_Uppercase==0) {
     header('Location: Inscription_formulaire.php?erreur=5');
 }
-
 ?>
