@@ -43,6 +43,20 @@ function VerifPassword_Uppercase($pw1)
     { return 1; }
 }
 
+function VerifEmail($pw1)
+{
+    $pw1seg = str_split($pw1);
+    $lowercasecheck = false;
+
+    for( $i = 0 ; $i < strlen($pw1) ; $i++ )
+    { if(preg_match('/[@]/', $pw1seg[$i]) == 1)  { $lowercasecheck = true;   /*echo "LowerCase Found <br>";*/ } }
+
+    if ( $lowercasecheck == false )
+    { return 0; }
+    else
+    { return 1; }
+}
+
 function VerifPassword_Lowercase($pw1)
 {
     $pw1seg = str_split($pw1);
@@ -75,33 +89,62 @@ $resVerifPassword_Number=VerifPassword_Number($_POST["Password_A"]);
 $resVerifPassword_Equality=VerifPassword_Equality($_POST["Password_A"], $_POST["Password_B"]);
 $resVerifPassword_Lenght=VerifPassword_Lenght($_POST["Password_A"]);
 $resVerifPassword_Lowercase=VerifPassword_Lowercase($_POST["Password_A"]);
+$VerifEmptyContent1=VerifEmptyContent($_POST["email"]);
+$VerifEmptyContent2=VerifEmptyContent($_POST["ID"]);
+$VerifEmptyContent3=VerifEmptyContent($_POST["Role"]);
+$VerifEmail=VerifEmail($_POST["email"]);
 
-if($resVerifPassword_Lowercase==1 and $resVerifPassword_Equality==1 and $resVerifPassword_Lenght==1 and $resVerifPassword_Uppercase==1 and $resVerifPassword_Number==1) {
-    $db_username = '...';
-    $db_password = '...';
-    $db_name = '...';
-    $db_host = '...';
+$db_username = '...';
+$db_password = '...';
+$db_name = '...';
+$db_host = '....';
 
-    $options = [
-        'cost' => 12,
-    ];
-    $mdpHacher=password_hash($_POST["Password_A"],PASSWORD_BCRYPT, $options);
+try {
+    $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
+    $stmt = $dbh->prepare("select count(*) from utilisateur where email= ?");
+    $stmt->bindParam(1, $_POST['email']);
+    $stmt->execute();
+    $stmt3 = $dbh->prepare("SELECT count(*) FROM utilisateur where login = ? ");
+    $stmt3->bindParam(1, $_POST['ID']);
+    $stmt3->execute();
+    $result = $stmt->fetchColumn(0);
+    $result2 = $stmt3->fetchColumn(0);
 
-
-    try {
-        $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
-        $stmt = $dbh->prepare("INSERT INTO utilisateur values (?,?,?,?)");
-        $stmt->bindParam(1, $_POST["ID"]);
-        $stmt->bindParam(2, $mdpHacher);
-        $stmt->bindParam(3, $_POST['email']);
-        $stmt->bindParam(4, $_POST['Role']);
-
-        $stmt->execute();
-        header('Location: login.php');
-    } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
-        die();
+    if($result==1){
+        header('Location: Inscription_formulaire.php?erreur=7');
     }
+
+    elseif($result2==1){
+        header('Location: Inscription_formulaire.php?erreur=7');
+    }
+
+    elseif ($VerifEmptyContent3==1 and $VerifEmptyContent1==1 and $VerifEmptyContent2==1 and$resVerifPassword_Lowercase==1 and $resVerifPassword_Equality==1 and $resVerifPassword_Lenght==1 and $resVerifPassword_Uppercase==1 and $resVerifPassword_Number==1) {
+
+        $options = [
+            'cost' => 12,
+        ];
+        $mdpHacher=password_hash($_POST["Password_A"],PASSWORD_BCRYPT, $options);
+
+
+        try {
+            $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
+            $stmt2 = $dbh->prepare("INSERT INTO utilisateur values (?,?,?,?)");
+            $stmt2->bindParam(1, $_POST["ID"]);
+            $stmt2->bindParam(2, $mdpHacher);
+            $stmt2->bindParam(3, $_POST['email']);
+            $stmt2->bindParam(4, $_POST['Role']);
+
+            $stmt2->execute();
+            header('Location: login.php');
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+
+}catch (PDOException $e) {
+    print "Erreur !: " . $e->getMessage() . "<br/>";
+    die();
 }
 
 if ($resVerifPassword_Equality==0){
@@ -123,4 +166,21 @@ elseif($resVerifPassword_Number==0){
 elseif($resVerifPassword_Uppercase==0) {
     header('Location: Inscription_formulaire.php?erreur=5');
 }
+
+if ($VerifEmptyContent1==0){
+    header('Location: Inscription_formulaire.php?erreur=6');
+}
+
+if ($VerifEmptyContent2==0){
+    header('Location: Inscription_formulaire.php?erreur=6');
+}
+
+if ($VerifEmptyContent3==0){
+    header('Location: Inscription_formulaire.php?erreur=6');
+}
+
+if ($VerifEmail==0){
+    header('Location: Inscription_formulaire.php?erreur=7');
+}
+
 ?>
