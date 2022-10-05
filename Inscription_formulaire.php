@@ -52,10 +52,16 @@
         if($err==5){
             echo "<p style='color:red'> pas de majusucule </p>";
         }
+        if($err==6){
+            echo "<p style='color:red'> tous les champs doivent être remplis </p>";
+        }
+
+        if($err==7){
+            echo "<p style='color:red'> mail ou login invalide </p>";
+        }
     }
     ?>
 
-        
     </div>
     <div class="Separation2"></div>
     <div class="Connexion1">

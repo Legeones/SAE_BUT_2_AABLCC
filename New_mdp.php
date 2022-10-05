@@ -90,7 +90,7 @@ elseif($resVerifPassword_Uppercase==0){
 }
 elseif($resVerifPassword_Lowercase==1 and $resVerifPassword_Equality==1 and $resVerifPassword_Lenght==1 and $resVerifPassword_Uppercase==1 and $resVerifPassword_Number==1) {
     $db_username = '...';
-    $db_password = '...';
+    $db_password = '..';
     $db_name = '...';
     $db_host = '...';
 
