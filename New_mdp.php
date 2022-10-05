@@ -89,10 +89,10 @@ elseif($resVerifPassword_Uppercase==0){
     header('Location: change_mdp.php?erreur=5');
 }
 elseif($resVerifPassword_Lowercase==1 and $resVerifPassword_Equality==1 and $resVerifPassword_Lenght==1 and $resVerifPassword_Uppercase==1 and $resVerifPassword_Number==1) {
-    $db_username = 'iutinfo86';
-    $db_password = 'pmD5t+DV';
-    $db_name = 'iutinfo86';
-    $db_host = 'iutinfo-sgbd.uphf.fr';
+    $db_username = '...';
+    $db_password = '...';
+    $db_name = '...';
+    $db_host = '...';
 
     $options = [
         'cost' => 12,
