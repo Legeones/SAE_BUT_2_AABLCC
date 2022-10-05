@@ -1,22 +1,166 @@
+<?php
+session_start();
+?>
 <html>
 <head>
     <meta charset="utf-8">
     <!-- importer le fichier de style -->
-    <link rel="stylesheet" href="style2.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="PrincipaleStyle.css" media="screen" type="text/css" />
 </head>
-<body style='background:#fff;'>
-<div id="content">
-    <!-- tester si l'utilisateur est connecté -->
-    <?php
-    session_start();
-    $user = $_SESSION['username'];
-    echo "Bonjour $user, vous êtes connecté";
-    ?>
+<body>
+<header>
+    <img class="logo" src="https://moodle.uphf.fr/pluginfile.php/358899/mod_resource/content/1/logoIFSI.png">
+</header>
+<div class="global">
 
-    <form action="test_etu_prof.php" method="post">
-        <br>
-        <input type="submit" value="passer en mode etu">
+    <div class="gauche">
+        <div class="profile" id="space-invader">
+            <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
+        </div>
+        <div class="btn-group">
+            <button onclick="location.href='principale.php'">Patient</button>
+            <button>Scénarios</button>
+            <button>Jsaisaps</button>
+        </div>
+    </div>
+    <div class="droite">
+        <form action="principale.php" method="get">
+            <p><input name="recherche_barre"></input>
+                <select name="select">
+                <option name="aucun">Aucun</option>
+                <option name="dh">Date hospitalisation</option>
+                <option name="oa">Ordre alphabetique</option>
+            </select>
+                <button type="submit">Rechercher</button>
+        </form>
 
+        </p>
+        <?php
+        $db_username = '...';
+        $db_password = '...';
+        $db_name = '...';
+        $db_host = '...';
+
+        try {
+            function change($p,$rm){
+                if($_SESSION['patient1']!=null){
+                    $o = 1;
+                    $pat = 'patient'.$o;
+                    while (isset($_SESSION[$pat])!=null){
+                        $_SESSION[$pat]=null;
+                        $o+=1;
+                        $pat='patient'.$o;
+                    }
+                }
+
+                $dbh = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;','theo','theo');
+                if($rm!='aucun'){
+                    $stmt = $dbh->prepare("SELECT IPP, nom FROM patient WHERE nom like ?");
+                    $stmt->bindParam(1,$rm);
+                    $stmt->execute();
+                }
+                if ($p=='Date hospitalisation' && $rm=='aucun') {
+                    $stmt = $dbh->prepare("SELECT IPP,nom FROM patient ORDER BY admission");
+                    $stmt->execute();
+                } elseif ($p=='Ordre alphabetique' && $rm=='aucun'){
+                    $stmt = $dbh->prepare("SELECT IPP,nom FROM patient ORDER BY nom");
+                    $stmt->execute();
+                } elseif($rm=='aucun') {
+                    $stmt = $dbh->prepare("SELECT IPP,nom FROM patient");
+                    $stmt->execute();
+                }
+                return $stmt;
+            }
+            if(isset($_GET['select'])){
+                $_SESSION['paramRecherche']=$_GET['select'];
+            } else {
+                $_SESSION['paramRecherche']='aucun';
+            }
+
+            if(isset($_GET['recherche_barre']) && $_GET['recherche_barre']!=''){
+                $_SESSION['rechercheManu']=$_GET['recherche_barre'];
+            } else {
+                $_SESSION['rechercheManu']='aucun';
+            }
+
+            $stmt = change($_SESSION['paramRecherche'],$_SESSION['rechercheManu']);
+            $i = 1;
+            foreach ($stmt as $p){
+                $np = "patient".$i;
+                $_SESSION[$np] = $p[1];
+                $i = $i+1;
+            }
+        } catch (PDOException $e){
+            print "Erreur:".$e->getMessage();
+        }
+        ?>
+        <div class="grid-container">
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient1'])) print $_SESSION['patient1']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient2'])) print $_SESSION['patient2']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient3'])) print $_SESSION['patient3']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient4'])) print $_SESSION['patient4']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient5'])) print $_SESSION['patient5']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient6'])) print $_SESSION['patient6']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient7'])) print $_SESSION['patient7']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient8'])) print $_SESSION['patient8']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient9'])) print $_SESSION['patient9']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient10'])) print $_SESSION['patient10']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient11'])) print $_SESSION['patient11']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient12'])) print $_SESSION['patient12']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient13'])) print $_SESSION['patient13']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient14'])) print $_SESSION['patient14']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient15'])) print $_SESSION['patient15']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient16'])) print $_SESSION['patient16']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient17'])) print $_SESSION['patient17']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient18'])) print $_SESSION['patient18']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient19'])) print $_SESSION['patient19']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient20'])) print $_SESSION['patient20']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient21'])) print $_SESSION['patient21']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient22'])) print $_SESSION['patient22']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient23'])) print $_SESSION['patient23']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
+                <?php if(isset($_SESSION['patient24'])) print $_SESSION['patient24']; ?></div>
+        </div>
+    </div>
+    <button onclick="location.href=<?php  ?>">Back</button><button>Next</button>
 </div>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
