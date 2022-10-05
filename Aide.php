@@ -27,7 +27,6 @@
             </div>
         </div>
 
-
     </div>
     <div class="piedDePage">
         <div class="Validation" align="center" >
