@@ -47,10 +47,10 @@
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
-                    <a href="TEST.php"><strong>Charte d'utilisation</strong></a>
+                    <a href="charte_utilisation.php"><strong>Charte d'utilisation</strong></a>
                 </div>
                 <div class="droite">
-                    <input type="button" onclick="window.location.href ='TEST.php';" value="?"/>
+                    <input type="button" onclick="window.location.href ='aide.php';" value="?"/>
                 </div>
             </div>
         </div>
