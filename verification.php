@@ -3,8 +3,8 @@ session_start();
 
 $db_username = '...';
 $db_password = '...';
-$db_name     = '...';
-$db_host     = '...';
+$db_name = '...';
+$db_host = '....';
 
 
 try {
