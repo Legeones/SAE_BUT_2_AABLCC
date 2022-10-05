@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-$db_username = 'iutinfo86';
-$db_password = 'pmD5t+DV';
-$db_name     = 'iutinfo86';
-$db_host     = 'iutinfo-sgbd.uphf.fr';
+$db_username = '...';
+$db_password = '...';
+$db_name     = '...';
+$db_host     = '...';
 
 
 try {
