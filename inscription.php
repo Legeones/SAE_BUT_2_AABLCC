@@ -77,10 +77,10 @@ $resVerifPassword_Lenght=VerifPassword_Lenght($_POST["Password_A"]);
 $resVerifPassword_Lowercase=VerifPassword_Lowercase($_POST["Password_A"]);
 
 if($resVerifPassword_Lowercase==1 and $resVerifPassword_Equality==1 and $resVerifPassword_Lenght==1 and $resVerifPassword_Uppercase==1 and $resVerifPassword_Number==1) {
-    $db_username = 'iutinfo86';
-    $db_password = 'pmD5t+DV';
-    $db_name = 'iutinfo86';
-    $db_host = 'iutinfo-sgbd.uphf.fr';
+    $db_username = '...';
+    $db_password = '...';
+    $db_name = '...';
+    $db_host = '...';
 
     $options = [
         'cost' => 12,
