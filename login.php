@@ -34,7 +34,7 @@
                 <input type="submit" value="Connexion">
             </div>
             <div class="mdpOublie" align="right">
-                <a href="MDPoublier.php"><strong>Mot de passe oublié©</strong></a>
+                <a href="MDPoublier.php"><strong>Mot de passe oublié</strong></a>
             </div>
         </div>
         <div class="Separation2"></div>
