@@ -6,7 +6,7 @@ ini_set('display_errors', true);
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'C:\Users\erwan\vendor\autoload.php';      // changer avec l'emplacement du fichier vendor/autoload.php
+require 'C:\...\vendor\autoload.php';      // changer avec l'emplacement du fichier vendor/autoload.php
 
 function SendMail($email)
 {
