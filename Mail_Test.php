@@ -17,12 +17,12 @@ function SendMail($email)
     $mail->Host = "smtp.uphf.fr";       // dependant du smtp serveur utilisé
     $mail->SMTPAuth = true;
     $mail->AuthType = 'LOGIN';
-    $mail->Username = "Echast1_";       // dependant de l'utilisateur (envoie)
-    $mail->Password = "Assbean_1997";   // dependant de l'utilisateur (envoie)
+    $mail->Username = "Login";       // dependant de l'utilisateur (envoie)
+    $mail->Password = "Mot_de_Passe";   // dependant de l'utilisateur (envoie)
     $mail->SMTPSecure = "ssl";          // dependant du smtp serveur utilisé
     $mail->Port = 465;                  // dependant du smtp serveur utilisé
     
-    $mail->SetFrom ('Erwan.Chaste1@uphf.fr','EC');  // dependant de l'utilisateur (envoie)
+    $mail->SetFrom ('Mail@uphf.fr','EC');  // dependant de l'utilisateur (envoie)
     $mail->AddAddress ($email, 'EC2');
     
     $mail->CharSet = 'windows-1250';
