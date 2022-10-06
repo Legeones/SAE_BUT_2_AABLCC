@@ -4,7 +4,6 @@ session_start();
 <html>
 <head>
     <meta charset="utf-8">
-    <!-- importer le fichier de style -->
     <link rel="stylesheet" href="PrincipaleStyle.css" media="screen" type="text/css" />
 </head>
 <body>
@@ -12,15 +11,21 @@ session_start();
     <img class="logo" src="https://moodle.uphf.fr/pluginfile.php/358899/mod_resource/content/1/logoIFSI.png">
 </header>
 <div class="global">
-
+    <!--<script type="text/javascript">
+        $(document).ready(function(){
+            $("#showit").click(function(){
+                $("#myform").css("display","block");
+            });
+        });
+    </script>-->
     <div class="gauche">
         <div class="profile" id="space-invader">
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='principale.php'">Patient</button>
-            <button>Scénarios</button>
-            <button>Jsaisaps</button>
+            <button onclick="location.href='principale.php'">PATIENT</button>
+            <button>SCENARIOS</button>
+            <button>JSAISPAS</button>
         </div>
     </div>
     <div class="droite">
