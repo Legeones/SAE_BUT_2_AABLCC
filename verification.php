@@ -1,18 +1,18 @@
 <?php
 session_start();
 
-$db_username = 'iutinfo86';
-$db_password = 'pmD5t+DV';
-$db_name     = 'iutinfo86';
-$db_host     = 'iutinfo-sgbd.uphf.fr';
+$db_username = 'theo';
+$db_password = 'theo';
+$db_name     = 'postgres';
+$db_host     = 'localhost';
 
 
 try {
     $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
-    $stmt = $dbh->prepare("SELECT mot_de_passe FROM utilisateur where login = ? ");
+    $stmt = $dbh->prepare("SELECT mot_de_passe FROM utilisateur where nom_utilisateur = ? ");
     $stmt->bindParam(1, $_POST['username']);
     $stmt->execute();
-    $stmt2 = $dbh->prepare("SELECT roles FROM utilisateur where login = ? ");
+    $stmt2 = $dbh->prepare("SELECT roles FROM utilisateur where nom_utilisateur = ? ");
     $stmt2->bindParam(1, $_POST['username']);
     $stmt2->execute();
     $result = $stmt->fetchColumn(0);

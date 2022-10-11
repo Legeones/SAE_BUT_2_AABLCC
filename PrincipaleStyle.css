@@ -157,12 +157,15 @@ footer{
     display: grid;
     grid-template-columns: auto auto auto auto auto auto;
     height: 85%;
+    width: 96.6%;
     gap: 5px;
     background-color: lightgrey;
     padding: 5px;
     box-shadow: 3px 3px 3px 3px dimgrey;
     font-family: Arial;
     font-size: 11px;
+    z-index: 10;
+    position: absolute;
 }
 
 .grid-container > div {
@@ -175,44 +178,23 @@ footer{
 
 }
 
-.slide{
-    width: 300px;
-    flex-shrink: 0;
-    height: 100%;
-}
-
-.slider{
-    width: 300px;
-    height: 300px;
-    display: flex;
-    overflow-y: auto;
-}
-
-li{
-    margin-top: 0.5%;
-}
-
-.collapsible {
-    background-color: #777;
-    color: white;
-    cursor: pointer;
-    padding: 1px;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    margin-left: 2%;
-
+.patient{
 
 }
 
-.active, .collapsible:hover {
-    background-color: #555;
-}
-
-.content {
-    padding: 0 18px;
+.hide{
+    position: absolute;
+    margin: 0% 5% 0% 15%;
+    background-color: bisque;
+    width: 20%;
+    height: 20%;
     display: none;
-    overflow: hidden;
-    background-color: #f1f1f1;
 }
+
+
+
+
+
+
+
+

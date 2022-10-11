@@ -23,7 +23,7 @@ session_start();
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='principale.php'">PATIENT</button>
+            <button onclick="location.href='principale.php'">PATIENTS</button>
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
         </div>
@@ -103,8 +103,6 @@ session_start();
 
             }
 
-
-
             if(isset($_GET['select'])){
                 $_SESSION['paramRecherche']=$_GET['select'];
             } else {
@@ -135,10 +133,14 @@ session_start();
         }
         ?>
         <div class="grid-container">
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient1'])) print $_SESSION['patient1']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient2'])) print $_SESSION['patient2']; ?></div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;" onmouseover="" onmouseout="">
+                <?php if(isset($_SESSION['patient1'])) print $_SESSION['patient1']; ?>
+                <div class="hide">WOW</div>
+            </div>
+            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;" class="patient">
+                <?php if(isset($_SESSION['patient2'])) print $_SESSION['patient2']; ?>
+                <div class="hide">WOW</div>
+            </div>
             <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
                 <?php if(isset($_SESSION['patient3'])) print $_SESSION['patient3']; ?></div>
             <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
