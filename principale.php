@@ -131,63 +131,32 @@ session_start();
         } catch (PDOException $e){
             print "Erreur:".$e->getMessage();
         }
-        ?>
-        <div class="grid-container">
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;" onmouseover="" onmouseout="">
-                <?php if(isset($_SESSION['patient1'])) print $_SESSION['patient1']; ?>
-                <div class="hide">WOW</div>
-            </div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;" class="patient">
-                <?php if(isset($_SESSION['patient2'])) print $_SESSION['patient2']; ?>
-                <div class="hide">WOW</div>
-            </div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient3'])) print $_SESSION['patient3']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient4'])) print $_SESSION['patient4']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient5'])) print $_SESSION['patient5']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient6'])) print $_SESSION['patient6']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient7'])) print $_SESSION['patient7']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient8'])) print $_SESSION['patient8']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient9'])) print $_SESSION['patient9']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient10'])) print $_SESSION['patient10']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient11'])) print $_SESSION['patient11']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient12'])) print $_SESSION['patient12']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient13'])) print $_SESSION['patient13']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient14'])) print $_SESSION['patient14']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient15'])) print $_SESSION['patient15']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient16'])) print $_SESSION['patient16']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient17'])) print $_SESSION['patient17']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient18'])) print $_SESSION['patient18']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient19'])) print $_SESSION['patient19']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient20'])) print $_SESSION['patient20']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient21'])) print $_SESSION['patient21']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient22'])) print $_SESSION['patient22']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient23'])) print $_SESSION['patient23']; ?></div>
-            <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;">
-                <?php if(isset($_SESSION['patient24'])) print $_SESSION['patient24']; ?></div>
-        </div>
 
-    </div>
+        ?>
+        <script>
+            function apparait(id){
+                var elt = document.getElementById(id);
+                if(elt.style.visibility=="visible"){
+                    elt.style.visibility = "hidden";
+                } else {
+                    elt.style.visibility = "visible";
+                }
+            }
+        </script>
+        <div class="grid-container">
+            <?php
+            for($i=1;$i<25;$i++){
+                $_SESSION['patientActuel']='patient'.$i;
+                $id = ''.$i;
+                $_SESSION['idActuel'] = $id;
+                ?> <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;" onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)">
+                    <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']]; ?>
+                    <div class="<?php if($_SESSION['idActuel']%6==0) echo 'hideLeft'; else echo 'hide'; ?>" id=<?php echo $_SESSION['idActuel'] ?>>WOW</div>
+                </div>
+            <?php }
+            ?>
+
+        </div>
 
 </div>
 
