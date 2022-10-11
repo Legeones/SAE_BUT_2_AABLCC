@@ -19,7 +19,7 @@
             </div>
             <div class="Groupe">
                 <label for="mot de passe">Mot de passe :</label>
-                <input type="password"placeholder="Saisir votre mot de passe" name="password" />
+                <input type="password" name="password" id="password" placeholder="Saisir votre mot de passe" />
                 <i class="bi bi-eye-slash" id="togglePassword"></i>
                 <script>
                     const togglePassword = document.querySelector("#togglePassword");
