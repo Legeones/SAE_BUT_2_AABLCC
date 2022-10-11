@@ -155,7 +155,7 @@ footer{
 
 .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto;
+    grid-template-columns: 16.2% 16.2% 16.2% 16.2% 16.2% 16.2%;
     height: 85%;
     width: 96.6%;
     gap: 5px;
@@ -175,12 +175,10 @@ footer{
     padding: 5px;
     font-size: 20px;
     box-shadow: 3px 2px 2px dimgrey;
-
+    min-width: 16.1%;
+    min-height: 14.16%;
 }
 
-.patient{
-
-}
 
 .hide{
     position: absolute;
@@ -188,7 +186,19 @@ footer{
     background-color: bisque;
     width: 20%;
     height: 20%;
-    display: none;
+    visibility: hidden;
+    box-shadow: 1px 1px 1px 1px dimgrey;
+}
+
+.hideLeft{
+    position: absolute;
+    margin: 0% 0% 0% 0%;
+    right: 1px;
+    background-color: bisque;
+    width: 20%;
+    height: 20%;
+    visibility: hidden;
+    box-shadow: 1px 1px 1px 1px dimgrey;
 }
 
 
