@@ -67,7 +67,7 @@
         </div>
         <div class="piedDePage2">
             <div class="droite">
-                <input type="button" onclick="window.location.href ='TEST.php';" value="?"/>
+                <input type="button" onclick="window.location.href ='Aide.php';" value="?"/>
             </div>
         </div>
     </div>

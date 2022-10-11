@@ -34,7 +34,7 @@
                 <input type="submit" value="Connexion">
             </div>
             <div class="mdpOublie" align="right">
-                <a href="change_mdp.php"><strong>Mot de passe oublié©</strong></a>
+                <a href="MDPoubler.php"><strong>Mot de passe oublié</strong></a>
             </div>
         </div>
         <div class="Separation2"></div>
@@ -47,10 +47,10 @@
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
-                    <a href="TEST.php"><strong>Charte d'utilisation</strong></a>
+                    <a href="charte_utilisation.php"><strong>Charte d'utilisation</strong></a>
                 </div>
                 <div class="droite">
-                    <input type="button" onclick="window.location.href ='TEST.php';" value="?"/>
+                    <input type="button" onclick="window.location.href ='Aide.php';" value="?"/>
                 </div>
             </div>
         </div>
