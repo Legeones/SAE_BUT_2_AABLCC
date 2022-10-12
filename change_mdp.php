@@ -28,6 +28,10 @@
         if($err==5){
             echo "<p style='color:red'> pas de majusucule </p>";
         }
+        if($err==6){
+            echo "<p style='color:red'> le login est invalide </p>";
+        }
+
     }
     ?>
 
