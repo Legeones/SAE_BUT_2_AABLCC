@@ -96,6 +96,15 @@ header{
     box-shadow: 0px 1px 0px dimgrey;
 }
 
+footer{
+    height: 6%;
+    width: 80%;
+    background-color: cornflowerblue;
+    position: absolute;
+    bottom: 0px;
+    left: 20%;
+}
+
 .btn-group button {
     background-color: white; /* Green background */
     border: 1px solid black; /* Green border */
@@ -168,16 +177,14 @@ header{
     box-shadow: 3px 2px 2px dimgrey;
     min-width: 16.1%;
     min-height: 14.16%;
-    white-space: normal;
 }
 
 
 .hide{
     position: absolute;
-    margin: -2% 0% 0% 15%;
+    margin: 0% 5% 0% 15%;
     background-color: bisque;
-    width: auto;
-    padding: 1%;
+    width: 20%;
     height: 20%;
     visibility: hidden;
     box-shadow: 1px 1px 1px 1px dimgrey;
@@ -185,45 +192,13 @@ header{
 
 .hideLeft{
     position: absolute;
-    margin: 0% 16% 0% 0%;
-    padding: 1%;
-    right: 1%;
+    margin: 0% 0% 0% 0%;
+    right: 1px;
     background-color: bisque;
-    width: auto;
+    width: 20%;
     height: 20%;
     visibility: hidden;
     box-shadow: 1px 1px 1px 1px dimgrey;
 }
 
-.btn-line{
-    background-color: white; /* Green background */
-    border: 1px solid black; /* Green border */
-    color: black; /* White text */
-    cursor: pointer; /* Pointer/hand icon */
-    float: left; /* Float the buttons side by side */
-    width: 100%;
-    border-radius: 5px;
-    margin-top: 1%;
-    box-shadow: 2px 2px 2px dimgrey;
-    font-size: 15px;
-    font-family: "Gill Sans MT";
-    font-weight: bold;
 
-}
-
-.btn-line > button{
-    width: 13.95%;
-    height: 10%;
-}
-
-.btn-line:after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-/* Add a background color on hover */
-.btn-line button:hover {
-    background-color: cornflowerblue;
-    box-shadow: 1px 1px 1px dimgrey;
-}
