@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="InscriptionCSS.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
     <title>Inscription</title>
 </head>
 <body>
@@ -16,11 +18,13 @@
         </div>
         <div class="Groupe">
             <label> Mot de passe :</label>
-            <input type="password"placeholder="Saisir votre mot de passe" name="Password_A" />
+            <input type="password" name="password_A" id="password" placeholder="Saisir votre mot de passe" />
+            <i class="bi bi-eye-slash" id="togglePassword"></i>
         </div>
         <div class="Groupe">
             <label> Confirmation mot de passe : </label>
-            <input type="password" placeholder="Confirmer votre mot de passe" name="Password_B" />
+            <input type="password" name="password_B" id="password1" placeholder="Confirmer votre mot de passe" />
+            <i class="bi bi-eye-slash" id="togglePassword1"></i>
         </div>
         <div class="Groupe">
             <label> Adresse mail :</label>
@@ -31,6 +35,28 @@
         <div class="Validation" align="center" >
             <input type="submit" value="Inscription">
         </div>
+        <script>
+            const togglePassword = document.querySelector("#togglePassword");
+            const password = document.querySelector("#password");
+            togglePassword.addEventListener("click", function () {
+                // toggle the type attribute
+                const type = password.getAttribute("type") === "password" ? "text" : "password";
+                password.setAttribute("type", type);
+                // toggle the icon
+                this.classList.toggle("bi-eye");
+            });
+        </script>
+        <script>
+            const togglePassword1 = document.querySelector("#togglePassword1");
+            const password1 = document.querySelector("#password1");
+            togglePassword1.addEventListener("click", function () {
+                // toggle the type attribute
+                const type = password1.getAttribute("type") === "password" ? "text" : "password";
+                password1.setAttribute("type", type);
+                // toggle the icon
+                this.classList.toggle("bi-eye");
+            });
+        </script>
         <?php
 
     if(isset($_GET['erreur'])){

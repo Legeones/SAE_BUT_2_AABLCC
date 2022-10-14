@@ -3,6 +3,8 @@
     <meta charset="utf-8">
     <!-- importer le fichier de style -->
     <link rel="stylesheet" href="ConnexionCss.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
 </head>
 <body>
 <div id="container">
@@ -18,9 +20,22 @@
             </div>
             <div class="Groupe">
                 <label for="mot de passe">Mot de passe :</label>
-                <input type="password"placeholder="Saisir votre mot de passe" name="password" />
+                <input type="password" name="password" id="password" placeholder="Saisir votre mot de passe" />
+                <i class="bi bi-eye-slash" id="togglePassword"></i>
             </div>
         </div>
+        <script>
+            const togglePassword = document.querySelector("#togglePassword");
+            const password = document.querySelector("#password");
+            togglePassword.addEventListener("click", function () {
+                // toggle the type attribute
+                const type = password.getAttribute("type") === "password" ? "text" : "password";
+                password.setAttribute("type", type);
+                // toggle the icon
+                this.classList.toggle("bi-eye");
+            });
+        </script>
+
         <?php
         if(isset($_GET['erreur'])){
             $err = $_GET['erreur'];
