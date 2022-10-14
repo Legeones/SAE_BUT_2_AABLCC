@@ -2,8 +2,6 @@
 
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
-ini_set('SMTP','smtp.gmail.com');
-ini_set('smtp_port',587);
 
 function VerifEmptyContent($text)
 {
@@ -43,18 +41,14 @@ function VerifPassword_Uppercase($pw1)
     { return 1; }
 }
 
-function VerifEmail($pw1)
+function VerifEmail($email)
 {
-    $pw1seg = str_split($pw1);
-    $lowercasecheck = false;
-
-    for( $i = 0 ; $i < strlen($pw1) ; $i++ )
-    { if(preg_match('/[@]/', $pw1seg[$i]) == 1)  { $lowercasecheck = true;   /*echo "LowerCase Found <br>";*/ } }
-
-    if ( $lowercasecheck == false )
-    { return 0; }
-    else
+    $email = filter_var($email,FILTER_SANITIZE_EMAIL);
+    
+    if(filter_var($email, FILTER_VALIDATE_EMAIL))
     { return 1; }
+    else
+    { return 0; }
 }
 
 function VerifPassword_Lowercase($pw1)
@@ -91,12 +85,13 @@ $resVerifPassword_Lenght=VerifPassword_Lenght($_POST["Password_A"]);
 $resVerifPassword_Lowercase=VerifPassword_Lowercase($_POST["Password_A"]);
 $VerifEmptyContent1=VerifEmptyContent($_POST["email"]);
 $VerifEmptyContent2=VerifEmptyContent($_POST["ID"]);
+$VerifEmptyContent3=VerifEmptyContent($_POST["Role"]);
 $VerifEmail=VerifEmail($_POST["email"]);
 
-$db_username = '.';
-$db_password = '.';
-$db_name = '.';
-$db_host = '.';
+$db_username = 'postgres';
+$db_password = 'Post';
+$db_name = 'test';
+$db_host = 'localhost';
 
 try {
     $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
@@ -117,7 +112,7 @@ try {
         header('Location: Inscription_formulaire.php?erreur=7');
     }
 
-    elseif ($VerifEmptyContent1==1 and $VerifEmptyContent2==1 and$resVerifPassword_Lowercase==1 and $resVerifPassword_Equality==1 and $resVerifPassword_Lenght==1 and $resVerifPassword_Uppercase==1 and $resVerifPassword_Number==1) {
+    elseif ($VerifEmptyContent3==1 and $VerifEmptyContent1==1 and $VerifEmptyContent2==1 and$resVerifPassword_Lowercase==1 and $resVerifPassword_Equality==1 and $resVerifPassword_Lenght==1 and $resVerifPassword_Uppercase==1 and $resVerifPassword_Number==1) {
 
         $options = [
             'cost' => 12,
@@ -128,11 +123,10 @@ try {
         try {
             $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
             $stmt2 = $dbh->prepare("INSERT INTO utilisateur values (?,?,?,?)");
-            $role='etu';
             $stmt2->bindParam(1, $_POST["ID"]);
             $stmt2->bindParam(2, $mdpHacher);
             $stmt2->bindParam(3, $_POST['email']);
-            $stmt2->bindParam(4, $role);
+            $stmt2->bindParam(4, $_POST['Role']);
 
             $stmt2->execute();
             header('Location: login.php');
@@ -167,15 +161,19 @@ elseif($resVerifPassword_Uppercase==0) {
     header('Location: Inscription_formulaire.php?erreur=5');
 }
 
-elseif ($VerifEmptyContent1==0){
+if ($VerifEmptyContent1==0){
     header('Location: Inscription_formulaire.php?erreur=6');
 }
 
-elseif ($VerifEmptyContent2==0){
+if ($VerifEmptyContent2==0){
     header('Location: Inscription_formulaire.php?erreur=6');
 }
 
-elseif ($VerifEmail ==0){
+if ($VerifEmptyContent3==0){
+    header('Location: Inscription_formulaire.php?erreur=6');
+}
+
+if ($VerifEmail==0){
     header('Location: Inscription_formulaire.php?erreur=7');
 }
 
