@@ -55,7 +55,7 @@ session_start();
         try {
             function change($p,$rm){
                 $o = 1;
-                if($_SESSION['patient1']!=null){
+                if(isset($_SESSION['patient1']) && $_SESSION['patient1']!=null){
                     $pat = 'patient'.$o;
                     for($i=0;$i<$_SESSION['incrPat']+24;$i++){
                         if (isset($_SESSION[$pat])!=null){
@@ -123,7 +123,7 @@ session_start();
                     $i = $i+1;
                 } else {
                     $_SESSION['np'] = "patient".$i;
-                    $_SESSION[$_SESSION['np']] = $p[1];
+                    $_SESSION[$_SESSION['np']] = $p;
                     $i = $i+1;
                 }
 
@@ -149,9 +149,10 @@ session_start();
                 $_SESSION['patientActuel']='patient'.$i;
                 $id = ''.$i;
                 $_SESSION['idActuel'] = $id;
-                ?> <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;" onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)">
-                    <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']]; ?>
-                    <div class="<?php if($_SESSION['idActuel']%6==0) echo 'hideLeft'; else echo 'hide'; ?>" id=<?php echo $_SESSION['idActuel'] ?>>WOW</div>
+                ?> <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;" <?php if(isset($_SESSION[$_SESSION['patientActuel']])){?>onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)"<?php }?>>
+                    <?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];}?>
+                    <div class="<?php if($_SESSION['idActuel']%6==0) echo 'hideLeft'; else echo 'hide'; ?>" id=<?php echo $_SESSION['idActuel'] ?>>
+                        <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']][0];?></div>
                 </div>
             <?php }
             ?>

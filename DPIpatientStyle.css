@@ -1,12 +1,6 @@
 body{
     background-color: white;
 }
-#container{
-    width:400px;
-    margin:0 auto;
-    margin-top:10%;
-}
-/* Bordered form */
 form {
     padding: 1%;
     right: 1%;
@@ -49,11 +43,6 @@ input[type=submit]:hover {
 .global{
     width: 100%;
 }
-
-/*#gauche, #droite{
-    display: inline-block;
-    vertical-align: top;
-}*/
 .gauche{
     float: left;
     width: 20%;
@@ -71,10 +60,9 @@ input[type=submit]:hover {
 }
 .droite{
     float: right;
-    padding: 1%;
 
     /*padding: -1% -1% -1% -1%;*/
-    width: 78%;
+    width: auto;
     height: 85.6%;
     position: absolute;
     right: 0px;
@@ -197,23 +185,20 @@ header{
 
 .btn-line{
     background-color: white; /* Green background */
-    border: 1px solid black; /* Green border */
     color: black; /* White text */
-    cursor: pointer; /* Pointer/hand icon */
-    float: left; /* Float the buttons side by side */
     width: 100%;
-    border-radius: 5px;
-    margin-top: 1%;
     box-shadow: 2px 2px 2px dimgrey;
     font-size: 15px;
     font-family: "Gill Sans MT";
     font-weight: bold;
-
+    float: right;
 }
 
 .btn-line > button{
-    width: 13.95%;
-    height: 10%;
+    width: 13.995%;
+    height: 8%;
+    cursor: pointer;
+
 }
 
 .btn-line:after {
