@@ -8,7 +8,7 @@
 <div id="container">
     <!-- zone de connexion -->
 
-    <form action="verification.php" method="POST">
+    <form action="Verification_Login.php" method="POST">
         <h1>Connexion</h1>
         <div class="Separation"></div>
         <div class="Formulaire">
