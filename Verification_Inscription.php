@@ -3,6 +3,8 @@
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
 
+require('Mail_Test.php');
+
 function VerifEmptyContent($text)
 {
     if ($text == "")
@@ -78,6 +80,7 @@ function VerifPassword_Number($pw1)
     else
     { return 1; }
 }
+
 $resVerifPassword_Uppercase=VerifPassword_Uppercase($_POST["Password_A"]);
 $resVerifPassword_Number=VerifPassword_Number($_POST["Password_A"]);
 $resVerifPassword_Equality=VerifPassword_Equality($_POST["Password_A"], $_POST["Password_B"]);
@@ -161,20 +164,25 @@ elseif($resVerifPassword_Uppercase==0) {
     header('Location: Inscription_formulaire.php?erreur=5');
 }
 
-if ($VerifEmptyContent1==0){
+elseif ($VerifEmptyContent1==0){
     header('Location: Inscription_formulaire.php?erreur=6');
 }
 
-if ($VerifEmptyContent2==0){
+elseif ($VerifEmptyContent2==0){
     header('Location: Inscription_formulaire.php?erreur=6');
 }
 
-if ($VerifEmptyContent3==0){
+elseif ($VerifEmptyContent3==0){
     header('Location: Inscription_formulaire.php?erreur=6');
 }
 
-if ($VerifEmail==0){
+elseif ($VerifEmail==0){
     header('Location: Inscription_formulaire.php?erreur=7');
+}
+
+else
+{
+    SendMail($_POST["email"]);
 }
 
 ?>
