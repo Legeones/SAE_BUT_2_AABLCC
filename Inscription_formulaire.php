@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="InscriptionCSS.css" media="screen" type="text/css" />
-    <title>Inscription_Test</title>
+    <title>Inscription</title>
 </head>
 <body>
-<form action="inscription.php" method="post">
+<form action="Verification_Inscription.php" method="post">
     <h1>Inscription</h1>
     <div class="Separation"></div>
     <div class="Formulaire">
