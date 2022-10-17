@@ -132,7 +132,7 @@ try {
             $stmt2->bindParam(4, $_POST['Role']);
 
             $stmt2->execute();
-            header('Location: login.php');
+            
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
@@ -182,7 +182,12 @@ elseif ($VerifEmail==0){
 
 else
 {
-    SendMail($_POST["email"]);
+    session_start();
+    $_SESSION['Code'] = rand(100000,999999);
+    
+    SendMail($_SESSION['Code'],$_POST['email']);
+    
+    header('Location: MailCode_Formulaire.php?');
 }
 
 ?>
