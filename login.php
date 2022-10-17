@@ -19,19 +19,24 @@
                 <input type="text" placeholder="Saisir votre identifiant" name="username" />
             </div>
             <div class="Groupe">
-                <label for="mot de passe">Mot de passe :</label>
-                <input type="password" name="password" id="password" placeholder="Saisir votre mot de passe" />
-                <i class="bi bi-eye-slash" id="togglePassword"></i>
+                <div class="eyes">
+                    <div class="labelMDP">
+                        <label for="mot de passe">Mot de passe :</label>
+                    </div>
+                    <div class="GroupeLOGO">
+                        <input type="password" name="password" id="password" placeholder="Saisir votre mot de passe" />
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+                        <i class="bi bi-eye-slash" id="togglePassword"></i>
+                    </div>
+                </div>
             </div>
         </div>
         <script>
             const togglePassword = document.querySelector("#togglePassword");
             const password = document.querySelector("#password");
             togglePassword.addEventListener("click", function () {
-                // toggle the type attribute
                 const type = password.getAttribute("type") === "password" ? "text" : "password";
                 password.setAttribute("type", type);
-                // toggle the icon
                 this.classList.toggle("bi-eye");
             });
         </script>
