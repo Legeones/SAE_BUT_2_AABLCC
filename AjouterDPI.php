@@ -36,6 +36,9 @@ session_start();
 
         <div class="bas">
             <form name="form" action="">
+                <div class="Titreform">
+                    <h1><u>Ajouter un DPI</u></h1>
+                </div>
                 <div class="Groupe">
                     <label> Nom : </label>
                     <input type="text" placeholder="Saisir un nom" name="nom" />
@@ -47,13 +50,68 @@ session_start();
                 </div>
 
                 <div class="Groupe">
-                    <label> Confirmation mot de passe : </label>
-                    <input type="password" placeholder=""  name="password_B"/>
+                    <label> Date de Naissance : </label>
+                    <input type="date" placeholder="Saisir une date de naissance"  name="DDN"/>
                 </div>
 
                 <div class="Groupe">
-                    <label> Adresse mail :</label>
-                    <input type="text"placeholder="Saisir votre adresse mail" name="email" />
+                    <label> Taille en CM :</label>
+                    <input type="number"placeholder="Saisir une taille en cm" name="taille" />
+                </div>
+
+                <div class="Groupe">
+                    <label> Poids en KG : </label>
+                    <input type="number" placeholder="Saisir un poids en kg" name="poids" />
+                </div>
+
+                <div class="Groupe">
+                    <label> Adresse :</label>
+                    <input type="text" placeholder="Saisir une adresse" name="adresse" />
+                </div>
+
+                <div class="Groupe">
+                    <label> Code Postal : </label>
+                    <input type="number" placeholder="Saisir une code postal"  name="CP"/>
+                </div>
+
+                <div class="Groupe">
+                    <label> Ville :</label>
+                    <input type="text"placeholder="Saisir une Ville" name="ville" />
+                </div>
+
+                <div class="Groupe">
+                    <label> Téléphone Personnel :</label>
+                    <input type="text" placeholder="Saisir un numéro de téléphone personnel" name="telperso" />
+                </div>
+
+                <div class="Groupe">
+                    <label> Téléphone Profesionnel : </label>
+                    <input type="text" placeholder="Saisir un numéro de téléphone profesionnel"  name="telpro"/>
+                </div>
+
+                <div class="Groupe">
+                    <label> Alergies:</label>
+                    <input type="text"placeholder="Saisir les allergies" name="allergies" />
+                </div>
+
+                <div class="Groupe">
+                    <label> Antecedents : </label>
+                    <input type="text" placeholder="Saisir les antecedents" name="antecedents" />
+                </div>
+
+                <div class="Groupe">
+                    <label> Obstericaux :</label>
+                    <input type="text" placeholder="Saisir les Obsericaux" name="Obs" />
+                </div>
+
+                <div class="Groupe">
+                    <label> Document Médicaux : </label>
+                    <input type="text" placeholder="Saisir le document médicaux"  name="docMed"/>
+                </div>
+
+                <div class="Groupe">
+                    <label> Document Chirurgicaux :</label>
+                    <input type="text"placeholder="Saisir le document chirurgicaux" name="docChir" />
                 </div>
             </form>
         </div>

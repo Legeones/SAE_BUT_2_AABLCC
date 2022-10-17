@@ -21,15 +21,37 @@ form {
 }
 
 /* Full-width inputs */
-input[type=text], input[type=password] {
+input[type=text], input[type=password]{
     width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
+    padding: 12px 9px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+input[type=number], input[type=date]{
+    width: 29%;
+    padding: 12px 9px;
+    display: flex;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Handlee&family=Purple+Purse&display=swap');
 
+.global .bas .Titreform{
+    text-align: center;
+    font-family: 'Bungee Spice', cursive;
+    font-family: 'Handlee', cursive;
+    font-family: 'Purple Purse', cursive;
+
+}
+
+.global .bas .Groupe{
+    margin: 10px 0px;
+}
+
+.global .bas .Groupe label{
+    font-size: 19px;
+}
 /* Set a style for all buttons */
 input[type=submit] {
     background-color: #53af57;
@@ -213,6 +235,6 @@ footer{
     background-color: wheat;
     width: 98%;
     height: 95%;
-
+    overflow: auto;
 
 }
