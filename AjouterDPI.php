@@ -71,7 +71,7 @@ session_start();
 
                 <div class="Groupe">
                     <label> Code Postal : </label>
-                    <input type="number" placeholder="Saisir une code postal"  name="CP"/>
+                    <input type="number" placeholder="Saisir un code postal"  name="CP"/>
                 </div>
 
                 <div class="Groupe">
@@ -86,7 +86,7 @@ session_start();
 
                 <div class="Groupe">
                     <label> Téléphone Profesionnel : </label>
-                    <input type="text" placeholder="Saisir un numéro de téléphone profesionnel"  name="telpro"/>
+                    <input type="text" placeholder="Saisir un numéro de téléphone professionnel"  name="telpro"/>
                 </div>
 
                 <div class="Groupe">
@@ -96,22 +96,22 @@ session_start();
 
                 <div class="Groupe">
                     <label> Antecedents : </label>
-                    <input type="text" placeholder="Saisir les antecedents" name="antecedents" />
+                    <input type="text" placeholder="Saisir les antécédents" name="antecedents" />
                 </div>
 
                 <div class="Groupe">
                     <label> Obstericaux :</label>
-                    <input type="text" placeholder="Saisir les Obsericaux" name="Obs" />
+                    <input type="text" placeholder="Saisir les Obsetricaux" name="Obs" />
                 </div>
 
                 <div class="Groupe">
                     <label> Document Médicaux : </label>
-                    <input type="text" placeholder="Saisir le document médicaux"  name="docMed"/>
+                    <input type="text" placeholder="Saisir le document médical"  name="docMed"/>
                 </div>
 
                 <div class="Groupe">
                     <label> Document Chirurgicaux :</label>
-                    <input type="text"placeholder="Saisir le document chirurgicaux" name="docChir" />
+                    <input type="text"placeholder="Saisir le document chirurgical" name="docChir" />
                 </div>
                 <div class="Validation" align="center">
                     <input type="submit" value="Valider">
