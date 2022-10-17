@@ -91,58 +91,15 @@ $VerifEmptyContent2=VerifEmptyContent($_POST["ID"]);
 $VerifEmptyContent3=VerifEmptyContent($_POST["Role"]);
 $VerifEmail=VerifEmail($_POST["email"]);
 
-$db_username = 'postgres';
-$db_password = 'Post';
-$db_name = 'test';
-$db_host = 'localhost';
-
-try {
-    $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
-    $stmt = $dbh->prepare("select count(*) from utilisateur where email= ?");
-    $stmt->bindParam(1, $_POST['email']);
-    $stmt->execute();
-    $stmt3 = $dbh->prepare("SELECT count(*) FROM utilisateur where login = ? ");
-    $stmt3->bindParam(1, $_POST['ID']);
-    $stmt3->execute();
-    $result = $stmt->fetchColumn(0);
-    $result2 = $stmt3->fetchColumn(0);
-
-    if($result==1){
-        header('Location: Inscription_formulaire.php?erreur=7');
-    }
-
-    elseif($result2==1){
-        header('Location: Inscription_formulaire.php?erreur=7');
-    }
-
-    elseif ($VerifEmptyContent3==1 and $VerifEmptyContent1==1 and $VerifEmptyContent2==1 and$resVerifPassword_Lowercase==1 and $resVerifPassword_Equality==1 and $resVerifPassword_Lenght==1 and $resVerifPassword_Uppercase==1 and $resVerifPassword_Number==1) {
-
-        $options = [
-            'cost' => 12,
-        ];
-        $mdpHacher=password_hash($_POST["Password_A"],PASSWORD_BCRYPT, $options);
-
-
-        try {
-            $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
-            $stmt2 = $dbh->prepare("INSERT INTO utilisateur values (?,?,?,?)");
-            $stmt2->bindParam(1, $_POST["ID"]);
-            $stmt2->bindParam(2, $mdpHacher);
-            $stmt2->bindParam(3, $_POST['email']);
-            $stmt2->bindParam(4, $_POST['Role']);
-
-            $stmt2->execute();
-            
-        } catch (PDOException $e) {
-            print "Erreur !: " . $e->getMessage() . "<br/>";
-            die();
-        }
-    }
-
-}catch (PDOException $e) {
-    print "Erreur !: " . $e->getMessage() . "<br/>";
-    die();
-}
+$options = [
+    'cost' => 12,
+];
+$mdpHacher=password_hash($_POST["Password_A"],PASSWORD_BCRYPT, $options);
+session_start();
+$_SESSION['EMAIL'] = $_POST['email'];
+$_SESSION['IDENTIFIANT'] = $_POST['ID'];
+$_SESSION['ROLE'] = $_POST['Role'];
+$_SESSION['PASSWORD'] = $mdpHacher;
 
 if ($resVerifPassword_Equality==0){
     header('Location: Inscription_formulaire.php?erreur=2');
@@ -191,3 +148,4 @@ else
 }
 
 ?>
+
