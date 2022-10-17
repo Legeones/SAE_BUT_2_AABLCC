@@ -10,7 +10,7 @@ body{
 form {
     padding: 1%;
     right: 1%;
-    border: 1px solid #f1f1f1;
+    border: 3px solid white;
     background: lightgrey;
     box-shadow: 3px 3px 3px 3px dimgrey;
 }
@@ -46,26 +46,26 @@ input[type=number], input[type=date]{
 }
 
 .global .bas .Groupe{
-    margin: 10px 0px;
+    margin: 12px 0px;
 }
 
 .global .bas .Groupe label{
     font-size: 19px;
 }
 /* Set a style for all buttons */
-input[type=submit] {
-    background-color: #53af57;
-    color: white;
+.global .bas input[type=submit] {
+    background-color: white;
+    color: black;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 11%;
 }
-input[type=submit]:hover {
+.global .bas input[type=submit]:hover {
     background-color: white;
-    color: #53af57;
-    border: 1px solid #53af57;
+    color: gray;
+    border: 1px solid black;
 }
 
 .global{

@@ -113,6 +113,9 @@ session_start();
                     <label> Document Chirurgicaux :</label>
                     <input type="text"placeholder="Saisir le document chirurgicaux" name="docChir" />
                 </div>
+                <div class="Validation" align="center">
+                    <input type="submit" value="Valider">
+                </div>
             </form>
         </div>
     </div>
