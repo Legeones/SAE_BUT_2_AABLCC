@@ -14,16 +14,7 @@
     <input type="text" placeholder="Saisissez votre mot de passe" name="MDP" /><br>
     <label for="re_mot_de_passe"> Confirmer votre mot de passe : </label>
     <input type="text" placeholder="Confirmer mot de passe" name="re_MDP" />
-
-    <script>
-        const togglePassword = document.querySelector("#togglePassword");
-        const password = document.querySelector("#password");
-        togglePassword.addEventListener("click", function () {
-            const type = password.getAttribute("type") === "password" ? "text" : "password";
-            password.setAttribute("type", type);
-            this.classList.toggle("bi-eye");
-        });
-    </script>
+    
 
     <?php
     if(isset($_GET['erreur'])){
