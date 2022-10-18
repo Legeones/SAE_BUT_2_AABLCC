@@ -10,9 +10,15 @@
         return new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
     }
     
+    function Hasher($val,$hashed)
+    {
+        $options = [ 'cost' => $val, ];
+        return password_hash($hashed,PASSWORD_BCRYPT, $options);
+    }
 
     function Database_Add_User()
     {
+        $password_hashed = Hasher(12,$_SESSION['PASSWORD']);
         
         try {
             $dbh = DataBase_Creator_Unit();
@@ -37,7 +43,7 @@
                 $dbh = DataBase_Creator_Unit();
                 $stmt2 = $dbh->prepare("INSERT INTO utilisateur values (?,?,?,?)");
                 $stmt2->bindParam(1, $_SESSION["IDENTIFIANT"]);
-                $stmt2->bindParam(2, $_SESSION['PASSWORD']);
+                $stmt2->bindParam(2, $password_hashed);
                 $stmt2->bindParam(3, $_SESSION['EMAIL']);
                 $stmt2->bindParam(4, $_SESSION['ROLE']);
                 
@@ -92,5 +98,25 @@
             die();
         }
     }
-
+    
+    function Database_User_Password_Modify($ID,$password)
+    {
+        $options = [
+            'cost' => 12,
+        ];
+        $res2 = Hasher(12,$password);
+        
+        try {
+            $dbh = Database_Creator_Unit();
+            $stmt = $dbh->prepare("UPDATE utilisateur SET mot_de_passe=? WHERE login=?");
+            $stmt->bindParam(1, $res2);
+            $stmt->bindParam(2, $ID);
+            
+            $stmt->execute();
+            header('Location: login.php');
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
 ?>
