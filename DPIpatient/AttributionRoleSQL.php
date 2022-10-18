@@ -4,10 +4,10 @@ ini_set('display_errors', true);
 ini_set('SMTP','smtp.gmail.com');
 ini_set('smtp_port',587);
 
-$db_username = '.';
-$db_password = '.';
-$db_name = '.';
-$db_host = '.';
+$db_username = 'iutinfo86';
+$db_password = 'pmD5t+DV';
+$db_name = 'iutinfo86';
+$db_host = 'iutinfo-sgbd.uphf.fr';
 
 function VerifEmptyContent($text)
 {
@@ -49,7 +49,7 @@ try {
                 $stmt->bindParam(2, $_POST["ID"]);
 
                 $stmt->execute();
-                header('Location: principale.php');
+                header('Location: login.php');
             } catch (PDOException $e) {
                 print "Erreur !: " . $e->getMessage() . "<br/>";
                 die();
