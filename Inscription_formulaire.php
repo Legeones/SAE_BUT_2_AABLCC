@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="InscriptionCSS.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-    <title>Inscription_Test</title>
+
+    <title>Inscription</title>
 </head>
 <body>
-<form action="inscription.php" method="post">
+<form action="Verification_Inscription.php" method="post">
     <h1>Inscription</h1>
     <div class="Separation"></div>
     <div class="Formulaire">
@@ -17,21 +18,18 @@
         </div>
         <div class="Groupe">
             <label> Mot de passe :</label>
-            <input type="password" name="Password_A" id="password" placeholder="Saisir votre mot de passe" />
+            <input type="password" name="password_A" id="password" placeholder="Saisir votre mot de passe" />
             <i class="bi bi-eye-slash" id="togglePassword"></i>
         </div>
         <div class="Groupe">
             <label> Confirmation mot de passe : </label>
-            <input type="password1" name="Password_B" id="password1" placeholder="Saisir votre mot de passe" />
+            <input type="password" name="password_B" id="password1" placeholder="Confirmer votre mot de passe" />
             <i class="bi bi-eye-slash" id="togglePassword1"></i>
         </div>
         <div class="Groupe">
             <label> Adresse mail :</label>
             <input type="text"placeholder="Saisir votre adresse mail" name="email" />
         </div>
-        Role :
-        <input type="radio" name="Role" value="etu"> etu
-        <input type="radio" name="Role" value="prof"> prof
     </div>
     <div class="piedDePage">
         <div class="Validation" align="center" >
@@ -53,13 +51,14 @@
             const password1 = document.querySelector("#password1");
             togglePassword1.addEventListener("click", function () {
                 // toggle the type attribute
-                const type = password1.getAttribute("type") === "password1" ? "text" : "password1";
+                const type = password1.getAttribute("type") === "password" ? "text" : "password";
                 password1.setAttribute("type", type);
                 // toggle the icon
                 this.classList.toggle("bi-eye");
             });
         </script>
         <?php
+
     if(isset($_GET['erreur'])){
         $err = $_GET['erreur'];
         if($err==1){
@@ -77,10 +76,16 @@
         if($err==5){
             echo "<p style='color:red'> pas de majusucule </p>";
         }
+        if($err==6){
+            echo "<p style='color:red'> tous les champs doivent être remplis </p>";
+        }
+
+        if($err==7){
+            echo "<p style='color:red'> mail ou login invalide </p>";
+        }
     }
     ?>
 
-        
     </div>
     <div class="Separation2"></div>
     <div class="Connexion1">

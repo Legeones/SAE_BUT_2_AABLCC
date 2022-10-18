@@ -44,16 +44,6 @@ function SendMail($email)
 
 // You may delete or alter these last lines reporting error messages, but beware, that if you delete the $mail->Send() part, the e-mail will not be sent, because that is the part of this code, that actually sends the e-mail.
 
-function VerifEmail_Validity($email)
-{
-    $email = filter_var($email,FILTER_SANITIZE_EMAIL);
-
-    if(filter_var($email, FILTER_VALIDATE_EMAIL))
-    { return 1;     SendMail($email); }
-    else
-    { return 0; }
-}
-
-VerifEmail_Validity($email);
+SendMail($email);
 
 ?>

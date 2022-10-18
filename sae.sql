@@ -1,7 +1,7 @@
 drop table if exists PersonneConfiance, PersonneContacte, Patient, Intervenant, Intervention, Admission, Utilisateur, Soin, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient;
 
 create table PersonneConfiance (
-                                   idPcon int not null primary key,
+                                   idPcon int primary key,
                                    nom text not null ,
                                    prenom text not null,
                                    tel text not null ,
@@ -10,7 +10,7 @@ create table PersonneConfiance (
 );
 
 create table PersonneContacte (
-                                  idPtel int not null primary key,
+                                  idPtel int primary key,
                                   nom text not null ,
                                   prenom text not null,
                                   tel text not null ,
@@ -19,7 +19,7 @@ create table PersonneContacte (
 
 
 create table Patient(
-                        IPP int not null primary key,
+                        IPP int primary key,
                         IEP int not null,
                         nom text not null ,
                         prenom text not null ,
@@ -41,14 +41,14 @@ create table Patient(
 );
 
 create table Intervenant (
-                             idIntervenant int not null primary key ,
+                             idIntervenant int primary key ,
                              nom text not null,
                              prenom text not null,
                              fonction text not null
 );
 
 create table Intervention (
-                              idIntervention int not null primary key ,
+                              idIntervention int  primary key ,
                               date timestamp not null ,
                               compteRendu text not null,
                               IPP int not null references Patient,
@@ -56,27 +56,27 @@ create table Intervention (
 );
 
 create table Admission (
-                           idAdmission int not null primary key,
+                           idAdmission int primary key,
                            dateDebut date not null,
                            dateFin date not null,
                            Ipp int not null references Patient
 );
 
 create table Utilisateur (
-                             login text not null primary key,
+                             login text primary key,
                              mdp text not null,
-                             email text not null,
-                             role text not null
+                             email text check ( email ~ '@' ) not null unique ,
+                             roles text not null
 );
 
 create table Soin (
-                      idSoin int not null primary key,
+                      idSoin int primary key,
                       nom text not null,
                       categorie text not null
 );
 
 create table SoinPatient(
-                            idSP int not null ,
+                            idSP int primary key ,
                             jour date not null ,
                             heure text not null ,
                             valeur text not null ,
@@ -85,7 +85,7 @@ create table SoinPatient(
 );
 
 create table Medecin (
-                         idMedecin int not null primary key ,
+                         idMedecin int primary key ,
                          nom text not null ,
                          prenom text not null ,
                          adresse text not null ,
@@ -94,20 +94,20 @@ create table Medecin (
 );
 
 create table PatientMedecin (
-                                IPP int not null references Patient,
-                                idMedecin int not null references Medecin,
+                                IPP int references Patient,
+                                idMedecin int references Medecin,
                                 primary key (IPP, idMedecin),
                                 type text not null
 );
 
 create table Prescription (
-                              idPrescription int not null primary key ,
+                              idPrescription int primary key ,
                               nom text not null ,
                               type text not null
 );
 
 create table PrescriptionPatient (
-                                     idPP int not null primary key,
+                                     idPP int primary key,
                                      jour date not null ,
                                      heure text not null ,
                                      dateDebut date not null,

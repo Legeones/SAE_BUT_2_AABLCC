@@ -1,12 +1,6 @@
 body{
     background-color: white;
 }
-#container{
-    width:400px;
-    margin:0 auto;
-    margin-top:10%;
-}
-/* Bordered form */
 form {
     padding: 1%;
     right: 1%;
@@ -49,11 +43,6 @@ input[type=submit]:hover {
 .global{
     width: 100%;
 }
-
-/*#gauche, #droite{
-    display: inline-block;
-    vertical-align: top;
-}*/
 .gauche{
     float: left;
     width: 20%;
@@ -71,10 +60,9 @@ input[type=submit]:hover {
 }
 .droite{
     float: right;
-    padding: 1%;
 
     /*padding: -1% -1% -1% -1%;*/
-    width: 78%;
+    width: auto;
     height: 85.6%;
     position: absolute;
     right: 0px;
@@ -94,15 +82,6 @@ header{
     border-width: thin;
     z-index: 2;
     box-shadow: 0px 1px 0px dimgrey;
-}
-
-footer{
-    height: 6%;
-    width: 80%;
-    background-color: cornflowerblue;
-    position: absolute;
-    bottom: 0px;
-    left: 20%;
 }
 
 .btn-group button {
@@ -177,14 +156,16 @@ footer{
     box-shadow: 3px 2px 2px dimgrey;
     min-width: 16.1%;
     min-height: 14.16%;
+    white-space: normal;
 }
 
 
 .hide{
     position: absolute;
-    margin: 0% 5% 0% 15%;
+    margin: -2% 0% 0% 15%;
     background-color: bisque;
-    width: 20%;
+    width: auto;
+    padding: 1%;
     height: 20%;
     visibility: hidden;
     box-shadow: 1px 1px 1px 1px dimgrey;
@@ -192,13 +173,42 @@ footer{
 
 .hideLeft{
     position: absolute;
-    margin: 0% 0% 0% 0%;
-    right: 1px;
+    margin: 0% 16% 0% 0%;
+    padding: 1%;
+    right: 1%;
     background-color: bisque;
-    width: 20%;
+    width: auto;
     height: 20%;
     visibility: hidden;
     box-shadow: 1px 1px 1px 1px dimgrey;
 }
 
+.btn-line{
+    background-color: white; /* Green background */
+    color: black; /* White text */
+    width: 100%;
+    box-shadow: 2px 2px 2px dimgrey;
+    font-size: 15px;
+    font-family: "Gill Sans MT";
+    font-weight: bold;
+    float: right;
+}
 
+.btn-line > button{
+    width: 13.995%;
+    height: 8%;
+    cursor: pointer;
+
+}
+
+.btn-line:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.btn-line button:hover {
+    background-color: cornflowerblue;
+    box-shadow: 1px 1px 1px dimgrey;
+}

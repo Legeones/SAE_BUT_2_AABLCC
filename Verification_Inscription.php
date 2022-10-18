@@ -2,8 +2,8 @@
 
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
-ini_set('SMTP','smtp.gmail.com');
-ini_set('smtp_port',587);
+
+require('Mail_Test.php');
 
 function VerifEmptyContent($text)
 {
@@ -43,6 +43,16 @@ function VerifPassword_Uppercase($pw1)
     { return 1; }
 }
 
+function VerifEmail($email)
+{
+    $email = filter_var($email,FILTER_SANITIZE_EMAIL);
+    
+    if(filter_var($email, FILTER_VALIDATE_EMAIL))
+    { return 1; }
+    else
+    { return 0; }
+}
+
 function VerifPassword_Lowercase($pw1)
 {
     $pw1seg = str_split($pw1);
@@ -70,39 +80,26 @@ function VerifPassword_Number($pw1)
     else
     { return 1; }
 }
+
 $resVerifPassword_Uppercase=VerifPassword_Uppercase($_POST["Password_A"]);
 $resVerifPassword_Number=VerifPassword_Number($_POST["Password_A"]);
 $resVerifPassword_Equality=VerifPassword_Equality($_POST["Password_A"], $_POST["Password_B"]);
 $resVerifPassword_Lenght=VerifPassword_Lenght($_POST["Password_A"]);
 $resVerifPassword_Lowercase=VerifPassword_Lowercase($_POST["Password_A"]);
+$VerifEmptyContent1=VerifEmptyContent($_POST["email"]);
+$VerifEmptyContent2=VerifEmptyContent($_POST["ID"]);
+$VerifEmptyContent3=VerifEmptyContent($_POST["Role"]);
+$VerifEmail=VerifEmail($_POST["email"]);
 
-if($resVerifPassword_Lowercase==1 and $resVerifPassword_Equality==1 and $resVerifPassword_Lenght==1 and $resVerifPassword_Uppercase==1 and $resVerifPassword_Number==1) {
-    $db_username = 'iutinfo86';
-    $db_password = 'pmD5t+DV';
-    $db_name = 'iutinfo86';
-    $db_host = 'iutinfo-sgbd.uphf.fr';
-
-    $options = [
-        'cost' => 12,
-    ];
-    $mdpHacher=password_hash($_POST["Password_A"],PASSWORD_BCRYPT, $options);
-
-
-    try {
-        $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
-        $stmt = $dbh->prepare("INSERT INTO utilisateur values (?,?,?,?)");
-        $stmt->bindParam(1, $_POST["ID"]);
-        $stmt->bindParam(2, $mdpHacher);
-        $stmt->bindParam(3, $_POST['email']);
-        $stmt->bindParam(4, $_POST['Role']);
-
-        $stmt->execute();
-        header('Location: login.php');
-    } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
-        die();
-    }
-}
+$options = [
+    'cost' => 12,
+];
+$mdpHacher=password_hash($_POST["Password_A"],PASSWORD_BCRYPT, $options);
+session_start();
+$_SESSION['EMAIL'] = $_POST['email'];
+$_SESSION['IDENTIFIANT'] = $_POST['ID'];
+$_SESSION['ROLE'] = $_POST['Role'];
+$_SESSION['PASSWORD'] = $mdpHacher;
 
 if ($resVerifPassword_Equality==0){
     header('Location: Inscription_formulaire.php?erreur=2');
@@ -123,4 +120,32 @@ elseif($resVerifPassword_Number==0){
 elseif($resVerifPassword_Uppercase==0) {
     header('Location: Inscription_formulaire.php?erreur=5');
 }
+
+elseif ($VerifEmptyContent1==0){
+    header('Location: Inscription_formulaire.php?erreur=6');
+}
+
+elseif ($VerifEmptyContent2==0){
+    header('Location: Inscription_formulaire.php?erreur=6');
+}
+
+elseif ($VerifEmptyContent3==0){
+    header('Location: Inscription_formulaire.php?erreur=6');
+}
+
+elseif ($VerifEmail==0){
+    header('Location: Inscription_formulaire.php?erreur=7');
+}
+
+else
+{
+    session_start();
+    $_SESSION['Code'] = rand(100000,999999);
+    
+    SendMail($_SESSION['Code'],$_POST['email']);
+    
+    header('Location: MailCode_Formulaire.php?');
+}
+
 ?>
+
