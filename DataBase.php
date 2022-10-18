@@ -1,14 +1,21 @@
 <?php
 
-    function Database_Add_User()
+    function DataBase_Creator_Unit()
     {
         $db_username = 'postgres';
         $db_password = 'Post';
         $db_name = 'test';
         $db_host = 'localhost';
         
+        return new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
+    }
+    
+
+    function Database_Add_User()
+    {
+        
         try {
-            $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
+            $dbh = DataBase_Creator_Unit();
             $stmt = $dbh->prepare("select count(*) from utilisateur where email= ?");
             $stmt->bindParam(1, $_SESSION['EMAIL']);
             $stmt->execute();
@@ -27,14 +34,14 @@
             }
             
             try {
-                    $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
-                    $stmt2 = $dbh->prepare("INSERT INTO utilisateur values (?,?,?,?)");
-                    $stmt2->bindParam(1, $_SESSION["IDENTIFIANT"]);
-                    $stmt2->bindParam(2, $_SESSION['PASSWORD']);
-                    $stmt2->bindParam(3, $_SESSION['EMAIL']);
-                    $stmt2->bindParam(4, $_SESSION['ROLE']);
-                    
-                    $stmt2->execute();
+                $dbh = DataBase_Creator_Unit();
+                $stmt2 = $dbh->prepare("INSERT INTO utilisateur values (?,?,?,?)");
+                $stmt2->bindParam(1, $_SESSION["IDENTIFIANT"]);
+                $stmt2->bindParam(2, $_SESSION['PASSWORD']);
+                $stmt2->bindParam(3, $_SESSION['EMAIL']);
+                $stmt2->bindParam(4, $_SESSION['ROLE']);
+                
+                $stmt2->execute();
                     
                 } catch (PDOException $e) {
                     print "Erreur !: " . $e->getMessage() . "<br/>";
@@ -42,6 +49,45 @@
                 }
             
         }catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+    
+    function Database_Check_User_Exist($username,$password)
+    {
+        session_start();
+        
+        try {
+            $dbh = DataBase_Creator_Unit();
+            $stmt = $dbh->prepare("SELECT mot_de_passe FROM utilisateur where login = ? ");
+            $stmt->bindParam(1, $username);
+            $stmt->execute();
+            $stmt2 = $dbh->prepare("SELECT roles FROM utilisateur where login = ? ");
+            $stmt2->bindParam(1, $username);
+            $stmt2->execute();
+            $result = $stmt->fetchColumn(0);
+            $result2 = $stmt2->fetchColumn(0);
+            
+            echo $result;
+            if($res=password_verify($password, $result)){
+                $res2=5;
+            } else {
+                $res2=0;
+            }
+            if($res2==5 and $result2=='prof'){
+                $_SESSION['username'] = $username;
+                header('Location: principale.php');
+            }
+            elseif ($res2==5 and $result2=='etu'){
+                $_SESSION['username'] = $username;
+                header('Location: principal-etu.php');
+            }
+            else{
+                header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
+            }
+            
+        } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
         }
