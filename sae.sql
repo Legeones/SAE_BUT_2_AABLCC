@@ -66,7 +66,7 @@ create table Utilisateur (
                              login text primary key,
                              mdp text not null,
                              email text check ( email ~ '@' ) not null unique ,
-                             role text not null
+                             roles text not null
 );
 
 create table Soin (
