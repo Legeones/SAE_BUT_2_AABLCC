@@ -11,13 +11,20 @@
     <div class="Separation"></div>
     <div class="Formulaire">
         <div class="Groupe">
-            <label> Code recu par mail Via l'adresse ??? : </label>
+            <script>
+                var a = document.createElement('a');
+                a.href = window.location.replace='Aide.php';
+                var lien = document.createTextNode("Vous n'avez pas reçu le code ?");
+                a.appendChild(lien);
+                document.body.appendChild(a);
+            </script>
+            <label> Saisissez le code de validation reçu par mail : </label>
             <input type="text" placeholder="Saisir votre code" name="Key" />
         </div>
     </div>
     <div class="piedDePage">
         <div class="Validation" align="center" >
-            <input type="submit" value="Valider Code">
+            <input type="submit" value="Valider">
         </div>
         
         <?php
