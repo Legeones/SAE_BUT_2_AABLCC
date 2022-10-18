@@ -66,7 +66,7 @@
         
         try {
             $dbh = DataBase_Creator_Unit();
-            $stmt = $dbh->prepare("SELECT mot_de_passe FROM utilisateur where login = ? ");
+            $stmt = $dbh->prepare("SELECT mdp FROM utilisateur where login = ? ");
             $stmt->bindParam(1, $username);
             $stmt->execute();
             $stmt2 = $dbh->prepare("SELECT roles FROM utilisateur where login = ? ");
@@ -99,16 +99,35 @@
         }
     }
     
-    function Database_User_Password_Modify($ID,$password)
+    function Database_User_New_Pass_Check($ID,$email)
     {
-        $options = [
-            'cost' => 12,
-        ];
+        try {
+            $dbh = DataBase_Creator_Unit();
+            $stmt = $dbh->prepare("SELECT count(*) FROM utilisateur where login = ? ");
+            $stmt->bindParam(1, $ID);
+            $stmt->execute();
+            $result = $stmt->fetchColumn(0);
+            
+            if($result==1)
+            {
+                header('Location: change_mdp.php');    
+            }
+            else{
+                header('Location: MDPoublier.php?erreur=1');
+            }
+        }catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+    
+    function Database_User_New_Pass_Modify($ID,$password)
+    {
         $res2 = Hasher(12,$password);
         
         try {
-            $dbh = Database_Creator_Unit();
-            $stmt = $dbh->prepare("UPDATE utilisateur SET mot_de_passe=? WHERE login=?");
+            $dbh = DataBase_Creator_Unit();
+            $stmt = $dbh->prepare("UPDATE utilisateur SET mdp=? WHERE login=?");
             $stmt->bindParam(1, $res2);
             $stmt->bindParam(2, $ID);
             
