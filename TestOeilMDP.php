@@ -1,29 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
+<head>
 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 </head>
-
 <body>
-<div class="container">
-
-    <form method="post">
-        <input type="password" name="password" id="password" />
-        <i class="bi bi-eye-slash" id="togglePassword"></i>
-    </form>
-</div>
 <script>
-    const togglePassword = document.querySelector("#togglePassword");
-    const password = document.querySelector("#password");
-    togglePassword.addEventListener("click", function () {
-        // toggle the type attribute
-        const type = password.getAttribute("type") === "password" ? "text" : "password";
-        password.setAttribute("type", type);
-        // toggle the icon
-        this.classList.toggle("bi-eye");
-    });
+    var a = document.createElement('a');
+    var lien = document.createTextNode("Voici un lien");
+    a.appendChild(lien);
+    a.title = "Comment faire un lien en JavaScript";
+    a.href = "https://www.1formatik.com/4902/comment-creer-un-lien-en-javascript";
+    document.body.appendChild(a);
 </script>
 </body>
-
 </html>

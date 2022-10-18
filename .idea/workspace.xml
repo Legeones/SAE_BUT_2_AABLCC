@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="20d765c5-f117-4bf3-ac65-0264993d413b" name="Changes" comment="" />
+    <list default="true" id="20d765c5-f117-4bf3-ac65-0264993d413b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InscriptionCSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/InscriptionCSS.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MailCode_Formulaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/MailCode_Formulaire.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestOeilMDP.php" beforeDir="false" afterPath="$PROJECT_DIR$/TestOeilMDP.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,6 +51,10 @@
       <workItem from="1665472127576" duration="2415000" />
       <workItem from="1665475649736" duration="2591000" />
       <workItem from="1665478529233" duration="16000" />
+      <workItem from="1665821099763" duration="928000" />
+      <workItem from="1666009548471" duration="4259000" />
+      <workItem from="1666016530081" duration="317000" />
+      <workItem from="1666073741009" duration="990000" />
     </task>
     <servers />
   </component>
