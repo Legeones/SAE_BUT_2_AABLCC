@@ -13,7 +13,7 @@
     echo "Bonjour $user, ici vous pouvez testez le mode etu ";
     ?>
 
-    <form action="principale.php" method="post">
+    <form action="../DPIpatient/principale.php" method="post">
         <br>
         <input type="submit" value="retour en mode prof">
 

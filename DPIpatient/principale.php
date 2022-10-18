@@ -4,7 +4,7 @@ session_start();
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="PrincipaleStyle.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../PrincipaleStyle.css" media="screen" type="text/css" />
 </head>
 <body>
 <header>
@@ -29,20 +29,24 @@ session_start();
         </div>
     </div>
     <div class="droite">
-        <form action="DPI.php" method="get">
+        <form action="principale.php" method="get">
             <input name="recherche_barre"></input>
-            <select name="select">
+                <select name="select">
                 <option name="aucun">Aucun</option>
                 <option name="dh">Date hospitalisation</option>
                 <option name="oa">Ordre alphabetique</option>
             </select>
-            <button type="submit">Rechercher</button>
-            <button name="next">Next</button>
-            <button name="back">Back</button>
+                <button type="submit">Rechercher</button>
+                <button name="next">Next</button>
+                <button name="back">Back</button>
         </form>
 
         </p>
         <?php
+        $db_username = 'theo';
+        $db_password = 'theo';
+        $db_name = 'postgres';
+        $db_host = 'localhost';
 
         if(!isset($_SESSION['incrPat'])){
             $_SESSION['incrPat']=0;
@@ -51,7 +55,7 @@ session_start();
         try {
             function change($p,$rm){
                 $o = 1;
-                if($_SESSION['patient1']!=null){
+                if(isset($_SESSION['patient1']) && $_SESSION['patient1']!=null){
                     $pat = 'patient'.$o;
                     for($i=0;$i<$_SESSION['incrPat']+24;$i++){
                         if (isset($_SESSION[$pat])!=null){
@@ -61,12 +65,8 @@ session_start();
                         $pat='patient'.$o;
                     }
                 }
-                $db_username = '.';
-                $db_password = '.';
-                $db_name     = '.';
-                $db_host     = '.';
 
-                $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
+                $dbh = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;','theo','theo');
                 if($rm!='aucun'){
                     $stmt = $dbh->prepare("SELECT IPP, nom FROM patient WHERE nom like ? LIMIT ?");
                     $stmt->bindParam(1,$rm);
@@ -123,7 +123,7 @@ session_start();
                     $i = $i+1;
                 } else {
                     $_SESSION['np'] = "patient".$i;
-                    $_SESSION[$_SESSION['np']] = $p[1];
+                    $_SESSION[$_SESSION['np']] = $p;
                     $i = $i+1;
                 }
 
@@ -149,16 +149,31 @@ session_start();
                 $_SESSION['patientActuel']='patient'.$i;
                 $id = ''.$i;
                 $_SESSION['idActuel'] = $id;
-                ?> <div onclick="location.href='principale.php';" style="cursor:pointer;" onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)">
-                    <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']]; ?>
-                    <div class="<?php if($_SESSION['idActuel']%6==0) echo 'hideLeft'; else echo 'hide'; ?>" id=<?php echo $_SESSION['idActuel'] ?>>WOW</div>
+                ?> <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;" <?php if(isset($_SESSION[$_SESSION['patientActuel']])){?>onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)"<?php }?>>
+                    <?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];}?>
+                    <div class="<?php if($_SESSION['idActuel']%6==0) echo 'hideLeft'; else echo 'hide'; ?>" id=<?php echo $_SESSION['idActuel'] ?>>
+                        <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']][0];?></div>
                 </div>
             <?php }
             ?>
 
         </div>
 
-    </div>
+</div>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

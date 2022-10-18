@@ -24,7 +24,7 @@
 <h5>La présente charte est applicable à compter du < DATE ENTRÉE EN VIGUEUR ></h5>
 
 <div class="droite">
-    <a href="login.php"><strong>Retour</strong></a>
+    <a href="../Connexion/login.php"><strong>Retour</strong></a>
 </div>
 </head>
 </body>

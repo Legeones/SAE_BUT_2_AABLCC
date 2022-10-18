@@ -54,7 +54,7 @@
                 <input type="submit" value="Connexion">
             </div>
             <div class="mdpOublie" align="right">
-                <a href="MDPoubler.php"><strong>Mot de passe oublié</strong></a>
+                <a href="../MDP/MDPoubler.php"><strong>Mot de passe oublié</strong></a>
             </div>
         </div>
         <div class="Separation2"></div>
@@ -67,7 +67,7 @@
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
-                    <a href="charte_utilisation.html"><strong>Charte d'utilisation</strong></a>
+                    <a href="../Charte_Utilisation/charte_utilisation.html"><strong>Charte d'utilisation</strong></a>
                 </div>
                 <div class="droite">
                     <input type="button" onclick="window.location.href ='Aide.php';" value="?"/>

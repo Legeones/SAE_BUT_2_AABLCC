@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>change mdp</title>
-    <link rel="stylesheet" href="ConnexionCss.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../Connexion/ConnexionCss.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 </head>
 <body>
