@@ -49,7 +49,7 @@ try {
                 $stmt->bindParam(2, $_POST["ID"]);
 
                 $stmt->execute();
-                header('Location: login.php');
+                header('Location: principale.php');
             } catch (PDOException $e) {
                 print "Erreur !: " . $e->getMessage() . "<br/>";
                 die();
