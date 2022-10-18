@@ -21,36 +21,17 @@ session_start();
             <button>JSAISPAS</button>
         </div>
     </div>
-    <script>
-        function alterner(id){
-            var doc = document.getElementById(id);
-            if(doc.style.backgroundColor=="cornflowerblue"){
-                doc.style.backgroundColor = 'white';
-            } else{
-                doc.style.backgroundColor = "cornflowerblue";
-            }
-        }
-    </script>
-    <?php
-    if (!isset($_SESSION['cat']) || $_SESSION['cat']=='macrocible'){
-        $_SESSION['cat']='macrocible';
-    } else {
-        $_SESSION['cat']=$_GET['categ'];
-    }
-    ?>
     <div class="droite">
         <form name="cat" method="get" class="btn-line">
-            <input type="button" onclick="location.href='DPIpatient.php';" value="macrocible">
-            <input type="button" onclick="location.href='DPIpatientObservation.php';" value="Observation médicale">
-            <input type="button" onclick="location.href='DPIpatientPrescription.php';" value="Prescription">
-            <input type="button" onclick="location.href='DPIpatientDiagramme.php';" value="Diagramme de soins">
-            <input type="button" onclick="location.href='DPIpatientBiologie.php';" value="Biologie">
-            <input type="button" onclick="location.href='DPIpatientImagerie.php';" value="Imagerie">
-            <input type="button" onclick="location.href='DPIpatientCourriers.php';" value="Courriers">
+            <input type="button" id="macrocible" onmouseover="alterner('macrocible')" onmouseout="alterner('macrocible')" onclick="location.href='DPIpatient.php';" value="macrocible">
+            <input type="button" id="observation" onmouseover="alterner('observation')" onmouseout="alterner('observation')" onclick="location.href='DPIpatientObservation.php';" value="Observation médicale">
+            <input type="button" id="prescription" onmouseover="alterner('prescription')" onmouseout="alterner('prescription')" onclick="location.href='DPIpatientPrescription.php';" value="Prescription">
+            <input type="button" id="diagramme" onmouseover="alterner('diagramme')" onmouseout="alterner('diagramme')" onclick="location.href='DPIpatientDiagramme.php';" value="Diagramme de soins">
+            <input type="button" id="biologie" onmouseover="alterner('biologie')" onmouseout="alterner('biologie')" onclick="location.href='DPIpatientBiologie.php';" value="Biologie">
+            <input type="button" id="imagerie" onmouseover="alterner('imagerie')" onmouseout="alterner('imagerie')" onclick="location.href='DPIpatientImagerie.php';" value="Imagerie">
+            <input type="button" id="courrier" onmouseover="alterner('courrier')" onmouseout="alterner('courrier')" onclick="location.href='DPIpatientCourriers.php';" value="Courriers">
         </form>
-        <div class="container">
-            <?php print $_GET['cat']?>
-        </div>
+
     </div>
 </div>
 </body>
