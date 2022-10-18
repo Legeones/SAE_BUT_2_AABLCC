@@ -2,28 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20d765c5-f117-4bf3-ac65-0264993d413b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/AjouterDPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/AjouterDPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AjouterDPI_CSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/AjouterDPI_CSS.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BDDSAE.sql" beforeDir="false" afterPath="$PROJECT_DIR$/BDD/BDDSAE.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Charte d'utilisation.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Charte_Utilisation/Charte d'utilisation.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConnexionCss.css" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/ConnexionCss.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBase.php" beforeDir="false" afterPath="$PROJECT_DIR$/BDD/DataBase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InscriptionCSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inscription/InscriptionCSS.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inscription_Formulaire.html" beforeDir="false" afterPath="$PROJECT_DIR$/Inscription/Inscription_Formulaire.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inscription_formulaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/Inscription/Inscription_formulaire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDPoubler.php" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/MDPoubler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDPoublierCss.css" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/MDPoublierCss.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MailCode_Formulaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/MailCode_Formulaire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/New_mdp.php" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/New_mdp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Verification_Inscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/Inscription/Verification_Inscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Verification_Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Verification_Login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/change_mdp.php" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/change_mdp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charte_utilisation.html" beforeDir="false" afterPath="$PROJECT_DIR$/Charte_Utilisation/charte_utilisation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charte_utilisation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Charte_Utilisation/charte_utilisation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charte_utilisationCSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/Charte_Utilisation/charte_utilisationCSS.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sae.sql" beforeDir="false" afterPath="$PROJECT_DIR$/BDD/sae.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aide.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Aide.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AideCss.css" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/AideCss.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/principale.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/principale.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PrincipaleStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/PrincipaleStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RetourMode.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/RetourMode.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transition.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/transition.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,11 +41,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\UTILISATEUR\Documents\GitHub\SAE_BUT_2_AABLCC\Charte_Utilisation" />
-      <recent name="C:\Users\UTILISATEUR\Documents\GitHub\SAE_BUT_2_AABLCC\Connexion" />
-      <recent name="C:\Users\UTILISATEUR\Documents\GitHub\SAE_BUT_2_AABLCC\Inscription" />
-      <recent name="C:\Users\UTILISATEUR\Documents\GitHub\SAE_BUT_2_AABLCC\MDP" />
       <recent name="C:\Users\UTILISATEUR\Documents\GitHub\SAE_BUT_2_AABLCC\DPIpatient" />
+      <recent name="C:\Users\UTILISATEUR\Documents\GitHub\SAE_BUT_2_AABLCC\Connexion" />
+      <recent name="C:\Users\UTILISATEUR\Documents\GitHub\SAE_BUT_2_AABLCC\Verif_Test" />
+      <recent name="C:\Users\UTILISATEUR\Documents\GitHub\SAE_BUT_2_AABLCC\Maquettage" />
+      <recent name="C:\Users\UTILISATEUR\Documents\GitHub\SAE_BUT_2_AABLCC\SUJET" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -83,7 +69,7 @@
       <workItem from="1666016530081" duration="317000" />
       <workItem from="1666073741009" duration="1222000" />
       <workItem from="1666074986643" duration="966000" />
-      <workItem from="1666076340906" duration="460000" />
+      <workItem from="1666076340906" duration="894000" />
     </task>
     <servers />
   </component>
