@@ -26,6 +26,15 @@ session_start();
             <button onclick="location.href='principale.php'">PATIENTS</button>
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
+            <?php
+            session_start();
+            echo '<br>';
+            if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='transition.php'>Passer en mode etu</button>";}
+            echo '<br>';
+            if ($_SESSION["Role"] == "admin") {echo "<button onclick=location.href='AttributionRole.php'>attribuer role</button>";}
+            echo '<br>';
+            if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='RetourMode.php'>retour mode prof</button>";}
+            ?>
         </div>
     </div>
     <div class="droite">
