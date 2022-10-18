@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="MDPoublierCSS.css">
 </head>
 <body>
-<form action="site.php" method="GET">
-    <h1>Mot de passe oublié ?</h1>
+<form action="Verification_PasswordChange.php" method="post">
+    <h1>Mot de passe oubliÃ© ?</h1>
     <div class="Separation"></div>
     <div class="Formulaire">
         <div class="formGauche">
@@ -21,15 +21,26 @@
             </div>
         </div>
     </div>
+    
+    <?php
+    if(isset($_GET['erreur']))
+        {
+            $err = $_GET['erreur'];
+            if($err==1)
+            { echo "<p style='color:red'>Error Message</p>"; } // A modifier
+        }
+    ?>
+    
     <div class="piedDePage">
         <div class="Validation" align="center" >
             <input type="submit" value="Suivant">
         </div>
     </div>
+
     <div class="Separation2"></div>
     <div class="Inscription">
         <div class="Phraseinscrit">
-            <p>Retourner à la page précédente</p>
+            <p>Retourner Ã  la page prÃ©cÃ©dente</p>
         </div>
         <div class="piedDePage2">
             <div class="droite">
@@ -38,5 +49,6 @@
         </div>
     </div>
 </form>
+
 </body>
 </html>
