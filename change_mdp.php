@@ -3,12 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>change mdp</title>
+    <link rel="stylesheet" href="ConnexionCss.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 </head>
 <body>
 <form action="New_mdp.php" method="post">
-    Identifiant: <input type="text" name="ID"><br>
-    Nouveau Mot de Passe <input type="password" name="New_Password_A"><br>
-    Confirmer Nouveau Mot de Passe <input type="password" name="New_Password_B"><br>
+    <label for="identifiant">Identifiant : </label>
+    <input type="text" placeholder="Saisir votre identifiant" name="username" /><br>
+    <label for="mot de passe"> Saisissez votre mot de passe : </label>
+    <input type="text" placeholder="Saisissez votre mot de passe" name="MDP" /><br>
+    <label for="re_mot_de_passe"> Confirmer votre mot de passe : </label>
+    <input type="text" placeholder="Confirmer mot de passe" name="re_MDP" />
+
+    <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+        togglePassword.addEventListener("click", function () {
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            this.classList.toggle("bi-eye");
+        });
+    </script>
 
     <?php
     if(isset($_GET['erreur'])){
