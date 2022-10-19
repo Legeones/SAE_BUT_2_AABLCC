@@ -2,25 +2,8 @@
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
 
-require('../Verif_Test/Mail_Test.php');
-
-function VerifEmail($email)
-{
-    $email = filter_var($email,FILTER_SANITIZE_EMAIL);
-    
-    if(filter_var($email, FILTER_VALIDATE_EMAIL))
-    { return 1; }
-    else
-    { return 0; }
-}
-
-function VerifEmptyContent($text)
-{
-    if ($text == "")
-    { return 0; }
-    else
-    { return 1; }
-}
+require('../Verif_Test/Mail.php');
+require('../Verif_Test/Verifiant.php');
 
 $resVerifemptymail = VerifEmptyContent($_POST['mail']);
 $resVerifemptyusername = VerifEmptyContent($_POST['username']);

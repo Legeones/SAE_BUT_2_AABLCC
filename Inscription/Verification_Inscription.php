@@ -3,7 +3,7 @@
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
 
-require('../Verif_Test/Mail_Test.php');
+require('../Verif_Test/Mail.php');
 require('../Verif_Test/Verifiant.php');
 
 $resVerifPassword_Uppercase=VerifPassword_Uppercase($_POST["Password_A"]);
