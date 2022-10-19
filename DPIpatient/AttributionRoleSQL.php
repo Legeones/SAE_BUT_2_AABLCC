@@ -1,8 +1,6 @@
 <?php
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
-ini_set('SMTP','smtp.gmail.com');
-ini_set('smtp_port',587);
 
 $db_username = 'iutinfo86';
 $db_password = 'pmD5t+DV';
@@ -21,11 +19,11 @@ $VerifEmptyContent1=VerifEmptyContent($_POST["ID"]);
 $VerifEmptyContent2=VerifEmptyContent($_POST["Role"]);
 
 if ($VerifEmptyContent1==0){
-    header('Location: AttributionRole.php?erreur=2');
+    header('Location: ../DPIpatient/AttributionRole.php?erreur=2');
 }
 
 elseif ($VerifEmptyContent2==0){
-    header('Location: AttributionRole.php?erreur=2');
+    header('Location: ../DPIpatient/AttributionRole.php?erreur=2');
 }
 
 try {
@@ -57,7 +55,7 @@ try {
         }
     }
     else{
-        header('Location: AttributionRole.php?erreur=1');
+        header('Location: ../DPIpatient/AttributionRole.php?erreur=1');
     }
 }catch (PDOException $e) {
     print "Erreur !: " . $e->getMessage() . "<br/>";
