@@ -32,11 +32,11 @@
             $result2 = $stmt3->fetchColumn(0);
             
             if($result==1){
-                header('Location: Inscription_formulaire.php?erreur=7');
+                header('Location: ../Inscription/Inscription_formulaire.php?erreur=7');
             }
             
             elseif($result2==1){
-                header('Location: Inscription_formulaire.php?erreur=7');
+                header('Location: ../Inscription/Inscription_formulaire.php?erreur=7');
             }
             
             try {
@@ -83,14 +83,14 @@
             }
             if($res2==5 and $result2=='prof'){
                 $_SESSION['username'] = $username;
-                header('Location: principale.php');
+                header('Location: ../DPIpatient/principale.php');
             }
             elseif ($res2==5 and $result2=='etu'){
                 $_SESSION['username'] = $username;
-                header('Location: principal-etu.php');
+                header('Location: ../DPIpatient/principal-etu.php');
             }
             else{
-                header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
+                header('Location: ../Connexion/login.php?erreur=1'); // utilisateur ou mot de passe incorrect
             }
             
         } catch (PDOException $e) {
@@ -110,10 +110,10 @@
             
             if($result==1)
             {
-                header('Location: change_mdp.php');    
+                header('Location: ../MDP/change_mdp.php');    
             }
             else{
-                header('Location: MDPoublier.php?erreur=1');
+                header('Location: ../MDP/MDPoublier.php?erreur=1');
             }
         }catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
@@ -132,7 +132,7 @@
             $stmt->bindParam(2, $ID);
             
             $stmt->execute();
-            header('Location: login.php');
+            header('Location: ../Connexion/login.php');
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
