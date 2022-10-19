@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20d765c5-f117-4bf3-ac65-0264993d413b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Connexion/Aide.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Aide.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/AjouterDPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/AjouterDPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/AttributionRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/AttributionRole.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientBiologie.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientBiologie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientCourriers.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientCourriers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientDiagramme.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientDiagramme.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientImagerie.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientImagerie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientObservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientObservation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientPrescription.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientPrescription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/principale.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/principale.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Connexion/Deconnexion.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Connexion/Deconnexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +13,13 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,14 +33,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "list.type.of.created.stylesheet": "CSS",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\UTILISATEUR\Documents\GitHub\SAE_BUT_2_AABLCC\DPIpatient" />
@@ -75,6 +75,7 @@
       <workItem from="1666076340906" duration="894000" />
       <workItem from="1666161451419" duration="827000" />
       <workItem from="1666162552075" duration="615000" />
+      <workItem from="1666181120107" duration="5122000" />
     </task>
     <servers />
   </component>
