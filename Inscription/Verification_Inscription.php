@@ -3,7 +3,7 @@
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
 
-require('Mail_Test.php');
+require('../Verif_Test/Mail_Test.php');
 
 function VerifEmptyContent($text)
 {
@@ -88,7 +88,6 @@ $resVerifPassword_Lenght=VerifPassword_Lenght($_POST["Password_A"]);
 $resVerifPassword_Lowercase=VerifPassword_Lowercase($_POST["Password_A"]);
 $VerifEmptyContent1=VerifEmptyContent($_POST["email"]);
 $VerifEmptyContent2=VerifEmptyContent($_POST["ID"]);
-$VerifEmptyContent3=VerifEmptyContent($_POST["Role"]);
 $VerifEmail=VerifEmail($_POST["email"]);
 
 $options = [
@@ -102,39 +101,35 @@ $_SESSION['ROLE'] = $_POST['Role'];
 $_SESSION['PASSWORD'] = $mdpHacher;
 
 if ($resVerifPassword_Equality==0){
-    header('Location: Inscription_formulaire.php?erreur=2');
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=2');
 }
 
 elseif ($resVerifPassword_Lenght==0){
-    header('Location: Inscription_formulaire.php?erreur=1');
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=1');
 }
 
 elseif($resVerifPassword_Lowercase==0){
-    header('Location: Inscription_formulaire.php?erreur=3');
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=3');
 }
 
 elseif($resVerifPassword_Number==0){
-    header('Location: Inscription_formulaire.php?erreur=4');
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=4');
 }
 
 elseif($resVerifPassword_Uppercase==0) {
-    header('Location: Inscription_formulaire.php?erreur=5');
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=5');
 }
 
 elseif ($VerifEmptyContent1==0){
-    header('Location: Inscription_formulaire.php?erreur=6');
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=6');
 }
 
 elseif ($VerifEmptyContent2==0){
-    header('Location: Inscription_formulaire.php?erreur=6');
-}
-
-elseif ($VerifEmptyContent3==0){
-    header('Location: Inscription_formulaire.php?erreur=6');
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=6');
 }
 
 elseif ($VerifEmail==0){
-    header('Location: Inscription_formulaire.php?erreur=7');
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=7');
 }
 
 else
@@ -144,7 +139,7 @@ else
     
     SendMail($_SESSION['Code'],$_POST['email']);
     
-    header('Location: MailCode_Formulaire.php?');
+    header('Location: ../Verif_Test/MailCode_Formulaire.php?');
 }
 
 ?>
