@@ -5,6 +5,7 @@ ini_set('display_errors', true);
 
 require('../Verif_Test/Mail_Test.php');
 
+
 function VerifEmptyContent($text)
 {
     if ($text == "")
@@ -33,10 +34,10 @@ function VerifPassword_Uppercase($pw1)
 {
     $pw1seg = str_split($pw1);
     $uppercasecheck = false;
-
+    
     for( $i = 0 ; $i < strlen($pw1) ; $i++ )
     { if(preg_match('/[A-Z]/', $pw1seg[$i]) == 1)  { $uppercasecheck = true;   /*echo "UpperCase Found <br>";*/ } }
-
+    
     if ( $uppercasecheck == false )
     { return 0; }
     else
@@ -57,10 +58,10 @@ function VerifPassword_Lowercase($pw1)
 {
     $pw1seg = str_split($pw1);
     $lowercasecheck = false;
-
+    
     for( $i = 0 ; $i < strlen($pw1) ; $i++ )
     { if(preg_match('/[a-z]/', $pw1seg[$i]) == 1)  { $lowercasecheck = true;   /*echo "LowerCase Found <br>";*/ } }
-
+    
     if ( $lowercasecheck == false )
     { return 0; }
     else
@@ -71,10 +72,10 @@ function VerifPassword_Number($pw1)
 {
     $pw1seg = str_split($pw1);
     $numbercheck = false;
-
+    
     for( $i = 0 ; $i < strlen($pw1) ; $i++ )
     { if(preg_match('/[0-9]/', $pw1seg[$i]) == 1)  { $numbercheck = true;   /*echo "Number Found <br>";*/ } }
-
+    
     if ( $numbercheck == false )
     { return 0; }
     else
@@ -90,15 +91,11 @@ $VerifEmptyContent1=VerifEmptyContent($_POST["email"]);
 $VerifEmptyContent2=VerifEmptyContent($_POST["ID"]);
 $VerifEmail=VerifEmail($_POST["email"]);
 
-$options = [
-    'cost' => 12,
-];
-$mdpHacher=password_hash($_POST["Password_A"],PASSWORD_BCRYPT, $options);
 session_start();
 $_SESSION['EMAIL'] = $_POST['email'];
 $_SESSION['IDENTIFIANT'] = $_POST['ID'];
 $_SESSION['ROLE'] = 'etu';
-$_SESSION['PASSWORD'] = $mdpHacher;
+$_SESSION['PASSWORD'] = $_POST["Password_A"];
 
 if ($resVerifPassword_Equality==0){
     header('Location: ../Inscription/Inscription_formulaire.php?erreur=2');
@@ -136,6 +133,7 @@ else
 {
     session_start();
     $_SESSION['Code'] = rand(100000,999999);
+    $_SESSION['Key_Index'] = 1;
     
     SendMail($_SESSION['Code'],$_POST['email']);
     
@@ -143,4 +141,3 @@ else
 }
 
 ?>
-
