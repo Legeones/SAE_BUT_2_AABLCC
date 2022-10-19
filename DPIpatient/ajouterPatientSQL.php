@@ -71,7 +71,7 @@ else {
             $stmt->bindParam(2, $_POST['nom']);
             $stmt->bindParam(3, $_POST['date']);
             $stmt->execute();
-            header('Location: principale.php');
+            header('Location: DPI.php');
         }
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";

@@ -73,7 +73,7 @@ else {
             $stmt = $dbh->prepare("DELETE FROM patient WHERE IPP=?");
             $stmt->bindParam(1, $_SESSION["IPP_SUPP"]);
             $stmt->execute();
-            header('Location: principale.php');
+            header('Location: DPI.php');
         }
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
