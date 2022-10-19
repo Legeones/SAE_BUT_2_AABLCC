@@ -1,6 +1,6 @@
 <?php
 
-require('../BDD/DataBase_User.php');
+require('../BDD/DataBase.php');
 
 DataBase_Check_User_Exist($_POST['username'],$_POST['password']);
 
