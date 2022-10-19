@@ -6,14 +6,27 @@ function Key_Validation()
 {
     session_start();
     
-    if ( $_POST['Key'] == $_SESSION['Code'] )
+    if ( $_SESSION['Key_Index'] == 1 )
     {
-        header('Location: ../Verif_Test/MailCode_Formulaire.php?after=0');
-        DataBase_Add_User();
+        if ( $_POST['Key'] == $_SESSION['Code'] )
+        {
+            DataBase_Add_User();
+        }
+        else
+        {
+            header('Location: ../Verif_Test/MailCode_Formulaire.php?after=1');
+        }
     }
-    else
+    else if ( $_SESSION['Key_Index'] == 2 )
     {
-        header('Location: ../Verif_Test/MailCode_Formulaire.php?after=1');
+        if ( $_POST['Key'] == $_SESSION['Code'] )
+        {
+            DataBase_User_New_Pass_Check();
+        }
+        else
+        {
+            header('Location: ../Verif_Test/MailCode_Formulaire.php?after=1');
+        }
     }
 }
 
