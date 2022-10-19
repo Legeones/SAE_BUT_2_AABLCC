@@ -97,7 +97,7 @@ $mdpHacher=password_hash($_POST["Password_A"],PASSWORD_BCRYPT, $options);
 session_start();
 $_SESSION['EMAIL'] = $_POST['email'];
 $_SESSION['IDENTIFIANT'] = $_POST['ID'];
-$_SESSION['ROLE'] = $_POST['Role'];
+$_SESSION['ROLE'] = 'etu';
 $_SESSION['PASSWORD'] = $mdpHacher;
 
 if ($resVerifPassword_Equality==0){
