@@ -2,7 +2,7 @@
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
 
-require('../BDD/DataBase.php');
+require('../BDD/DataBase_User.php');
 
 function VerifPassword_Equality($pw1,$pw2)
 {
