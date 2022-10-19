@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Aide</title>
     <!-- importation des fichiers de style -->
-    <link rel="stylesheet" href="AideCss.css">
+    <link rel="stylesheet" href="../Connexion/AideCss.css">
 </head>
 <body>
 <!-- zone de connexion -->
