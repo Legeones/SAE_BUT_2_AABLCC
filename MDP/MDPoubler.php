@@ -3,40 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Mot de passe oublier</title>
-    <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="../MDP/MDPoublierCSS.css">
 </head>
 <body>
-<!-- zone de connexion -->
 <form action="Verification_PasswordChange.php" method="post">
-    <h1>Mot de passe oublier ?</h1>
+    <h1>Mot de passe oubliÃƒÂ© ?</h1>
     <div class="Separation"></div>
     <div class="Formulaire">
         <div class="formGauche">
             <div class="Groupe">
                 <label for="identifiant">Identifiant : </label>
-                <input type="text" placeholder="Saisir votre identifiant" name="id" />
+                <input type="text" placeholder="Saisir votre identifiant" name="username" />
             </div>
             <div class="Groupe">
                 <label for="adresse mail">Adresse mail :</label>
-                <input type="text"placeholder="Saisir votre adresse mail" name="ad" />
+                <input type="text"placeholder="Saisir votre adresse mail" name="mail" />
             </div>
         </div>
     </div>
-
-    <!-- zone de gestion des erreurs -->
-
+    
     <?php
     if(isset($_GET['erreur']))
         {
             $err = $_GET['erreur'];
-            if($err==1)
-            { echo "<p style='color:red'>Error Message</p>"; } // A modifier
+            if($err==1){
+                echo "<p style='color:red'> le mail est invalide </p>";
+            }
+            
+            if($err==2){
+                echo "<p style='color:red'> tous les champs doivent être remplis </p>";
+            }
         }
     ?>
-
-    <!-- zone de connexion -->
-
+    
     <div class="piedDePage">
         <div class="Validation" align="center" >
             <input type="submit" value="Suivant">
@@ -46,7 +45,7 @@
     <div class="Separation2"></div>
     <div class="Inscription">
         <div class="Phraseinscrit">
-            <p>Retourner à la page précédente</p>
+            <p>Retourner ÃƒÂ  la page prÃƒÂ©cÃƒÂ©dente</p>
         </div>
         <div class="piedDePage2">
             <div class="droite">
