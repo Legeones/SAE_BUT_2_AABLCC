@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="InscriptionCSS.css" media="screen" type="text/css" />
+    <!-- importation des fichiers de style -->
+    <link rel="stylesheet" href="../Inscription/InscriptionCSS.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
     <title>Inscription</title>
 </head>
 <body>
+<!-- zone de connexion -->
+
 <form action="Verification_Inscription.php" method="post">
     <h1>Inscription</h1>
     <div class="Separation"></div>
@@ -36,6 +39,8 @@
             <input type="submit" value="Inscription">
         </div>
         <script>
+            <!-- zone de gestion d'apparition ou non du mot de passe -->
+
             const togglePassword = document.querySelector("#togglePassword");
             const password = document.querySelector("#password");
             togglePassword.addEventListener("click", function () {
@@ -47,6 +52,8 @@
             });
         </script>
         <script>
+            <!-- zone de gestion d'apparition ou non du mot de passe -->
+
             const togglePassword1 = document.querySelector("#togglePassword1");
             const password1 = document.querySelector("#password1");
             togglePassword1.addEventListener("click", function () {
@@ -56,6 +63,8 @@
                 // toggle the icon
                 this.classList.toggle("bi-eye");
             });
+
+            <!-- zone de gestion des erreurs -->
         </script>
         <?php
 
@@ -85,6 +94,7 @@
         }
     }
     ?>
+        <!-- zone de connexion -->
 
     </div>
     <div class="Separation2"></div>
@@ -93,11 +103,11 @@
             <p>Pour vous Connectez</p>
         </div>
         <div class="connect" align="center">
-            <input type="button" onclick="window.location.href ='login.php';" value="Se connecter"/>
+            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Se connecter"/>
         </div>
         <div class="piedDePage2">
             <div class="droite">
-                <input type="button" onclick="window.location.href ='Aide.php';" value="?"/>
+                <input type="button" onclick="window.location.href ='../Connexion/Aide.php';" value="?"/>
             </div>
         </div>
     </div>

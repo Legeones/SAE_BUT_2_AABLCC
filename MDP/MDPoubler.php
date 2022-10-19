@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang=en">
+<html lang=en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Aide</title>
-    <link rel="stylesheet" href="AideCss.css">
+    <title>Mot de passe oublier</title>
+    <!-- importation des fichiers de style -->
+    <link rel="stylesheet" href="MDPoublierCSS.css">
 </head>
 <body>
-<form action="" method="GET">
-    <h1>Aide</h1>
+<!-- zone de connexion -->
+<form action="Verification_PasswordChange.php" method="post">
+    <h1>Mot de passe oublier ?</h1>
     <div class="Separation"></div>
     <div class="Formulaire">
         <div class="formGauche">
@@ -20,18 +22,27 @@
                 <input type="text"placeholder="Saisir votre adresse mail" name="ad" />
             </div>
         </div>
-        <div class="formDroite">
-            <div class="Groupe">
-                <label> Message :</label>
-                <textarea type="text" placeholder="Saisissez ici ..."></textarea>
-            </div>
-        </div>
     </div>
+
+    <!-- zone de gestion des erreurs -->
+
+    <?php
+    if(isset($_GET['erreur']))
+        {
+            $err = $_GET['erreur'];
+            if($err==1)
+            { echo "<p style='color:red'>Error Message</p>"; } // A modifier
+        }
+    ?>
+
+    <!-- zone de connexion -->
+
     <div class="piedDePage">
         <div class="Validation" align="center" >
-            <input type="submit" value="Envoyer le message">
+            <input type="submit" value="Suivant">
         </div>
     </div>
+
     <div class="Separation2"></div>
     <div class="Inscription">
         <div class="Phraseinscrit">
@@ -44,5 +55,6 @@
         </div>
     </div>
 </form>
+
 </body>
 </html>

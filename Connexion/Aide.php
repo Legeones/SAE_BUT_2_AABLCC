@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang=en" xmlns="http://www.w3.org/1999/html">
+<html lang=en">
 <head>
     <meta charset="UTF-8">
-    <title>Mot de passe oublier</title>
-    <link rel="stylesheet" href="MDPoublierCSS.css">
+    <title>Aide</title>
+    <!-- importation des fichiers de style -->
+    <link rel="stylesheet" href="AideCss.css">
 </head>
 <body>
-<form action="site.php" method="GET">
-    <h1>Mot de passe oublié ?</h1>
+<!-- zone de connexion -->
+
+<form action="" method="GET">
+    <h1>Aide</h1>
     <div class="Separation"></div>
     <div class="Formulaire">
         <div class="formGauche">
@@ -20,10 +23,16 @@
                 <input type="text"placeholder="Saisir votre adresse mail" name="ad" />
             </div>
         </div>
+        <div class="formDroite">
+            <div class="Groupe">
+                <label> Message :</label>
+                <textarea type="text" placeholder="Saisissez ici ..."></textarea>
+            </div>
+        </div>
     </div>
     <div class="piedDePage">
         <div class="Validation" align="center" >
-            <input type="submit" value="Suivant">
+            <input type="submit" value="Envoyer le message">
         </div>
     </div>
     <div class="Separation2"></div>

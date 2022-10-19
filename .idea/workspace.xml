@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20d765c5-f117-4bf3-ac65-0264993d413b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestOeilMDP.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/change_mdp.php" beforeDir="false" afterPath="$PROJECT_DIR$/change_mdp.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Aide.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Aide.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/AjouterDPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/AjouterDPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/AttributionRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/AttributionRole.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientBiologie.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientBiologie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientCourriers.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientCourriers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientDiagramme.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientDiagramme.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientImagerie.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientImagerie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientObservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientObservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientPrescription.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientPrescription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/principale.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/principale.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +42,15 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\UTILISATEUR\Documents\GitHub\SAE_BUT_2_AABLCC\DPIpatient" />
+      <recent name="C:\Users\UTILISATEUR\Documents\GitHub\SAE_BUT_2_AABLCC\Connexion" />
+      <recent name="C:\Users\UTILISATEUR\Documents\GitHub\SAE_BUT_2_AABLCC\Verif_Test" />
+      <recent name="C:\Users\UTILISATEUR\Documents\GitHub\SAE_BUT_2_AABLCC\Maquettage" />
+      <recent name="C:\Users\UTILISATEUR\Documents\GitHub\SAE_BUT_2_AABLCC\SUJET" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -55,6 +72,9 @@
       <workItem from="1666016530081" duration="317000" />
       <workItem from="1666073741009" duration="1222000" />
       <workItem from="1666074986643" duration="966000" />
+      <workItem from="1666076340906" duration="894000" />
+      <workItem from="1666161451419" duration="827000" />
+      <workItem from="1666162552075" duration="615000" />
     </task>
     <servers />
   </component>

@@ -4,6 +4,7 @@ session_start();
 <html>
 <head>
     <meta charset="utf-8">
+    <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="PrincipaleStyle.css" media="screen" type="text/css" />
 </head>
 <body>
@@ -29,24 +30,20 @@ session_start();
         </div>
     </div>
     <div class="droite">
-        <form action="principale.php" method="get">
+        <form action="DPI.php" method="get">
             <input name="recherche_barre"></input>
-                <select name="select">
+            <select name="select">
                 <option name="aucun">Aucun</option>
                 <option name="dh">Date hospitalisation</option>
                 <option name="oa">Ordre alphabetique</option>
             </select>
-                <button type="submit">Rechercher</button>
-                <button name="next">Next</button>
-                <button name="back">Back</button>
+            <button type="submit">Rechercher</button>
+            <button name="next">Next</button>
+            <button name="back">Back</button>
         </form>
 
         </p>
         <?php
-        $db_username = 'theo';
-        $db_password = 'theo';
-        $db_name = 'postgres';
-        $db_host = 'localhost';
 
         if(!isset($_SESSION['incrPat'])){
             $_SESSION['incrPat']=0;
@@ -55,7 +52,7 @@ session_start();
         try {
             function change($p,$rm){
                 $o = 1;
-                if(isset($_SESSION['patient1']) && $_SESSION['patient1']!=null){
+                if($_SESSION['patient1']!=null){
                     $pat = 'patient'.$o;
                     for($i=0;$i<$_SESSION['incrPat']+24;$i++){
                         if (isset($_SESSION[$pat])!=null){
@@ -65,8 +62,12 @@ session_start();
                         $pat='patient'.$o;
                     }
                 }
+                $db_username = '.';
+                $db_password = '.';
+                $db_name     = '.';
+                $db_host     = '.';
 
-                $dbh = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;','theo','theo');
+                $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
                 if($rm!='aucun'){
                     $stmt = $dbh->prepare("SELECT IPP, nom FROM patient WHERE nom like ? LIMIT ?");
                     $stmt->bindParam(1,$rm);
@@ -75,7 +76,7 @@ session_start();
                     $stmt->execute();
                 }
                 if ($p=='Date hospitalisation' && $rm=='aucun') {
-                    $stmt = $dbh->prepare("SELECT patient.ipp,nom FROM patient JOIN admission ON admission.idadmission = patient.iep ORDER BY admission LIMIT ?");
+                    $stmt = $dbh->prepare("SELECT IPP,nom FROM patient ORDER BY admission LIMIT ?");
                     $lim = $_SESSION['incrPat']+25;
                     $stmt->bindParam(1,$lim);
                     $stmt->execute();
@@ -123,7 +124,7 @@ session_start();
                     $i = $i+1;
                 } else {
                     $_SESSION['np'] = "patient".$i;
-                    $_SESSION[$_SESSION['np']] = $p;
+                    $_SESSION[$_SESSION['np']] = $p[1];
                     $i = $i+1;
                 }
 
@@ -143,39 +144,22 @@ session_start();
                 }
             }
         </script>
-        <form name="patient" action="DPIpatient/DPIpatient.php" method="post" class="grid-container">
+        <div class="grid-container">
             <?php
             for($i=1;$i<25;$i++){
                 $_SESSION['patientActuel']='patient'.$i;
                 $id = ''.$i;
                 $_SESSION['idActuel'] = $id;
-                ?> <input name="patient" id="<?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];} else {print $_SESSION['idActuel'];}?>"
-                        onclick="location.href='DPIpatient/DPIpatient.php';" style="cursor:pointer;" <?php if(isset($_SESSION[$_SESSION['patientActuel']])){?>
-                    onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)"<?php }?>
-                          value = <?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];}?>>
-                    <div class="<?php if($_SESSION['idActuel']%6==0) echo 'hideLeft'; else echo 'hide'; ?>" id=<?php echo $_SESSION['idActuel'] ?>>
-                        <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']][0];?></div>
-                </input>
+                ?> <div onclick="location.href='principale.php';" style="cursor:pointer;" onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)">
+                    <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']]; ?>
+                    <div class="<?php if($_SESSION['idActuel']%6==0) echo 'hideLeft'; else echo 'hide'; ?>" id=<?php echo $_SESSION['idActuel'] ?>>WOW</div>
+                </div>
             <?php }
             ?>
 
-        </form>
+        </div>
 
-</div>
+    </div>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

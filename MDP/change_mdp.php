@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>change mdp</title>
-    <link rel="stylesheet" href="ConnexionCss.css" media="screen" type="text/css" />
+    <!-- importation des fichiers de style -->
+    <link rel="stylesheet" href="../Connexion/ConnexionCss.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 </head>
 <body>
+    <!-- zone de connexion -->
 <form action="New_mdp.php" method="post">
     <label for="identifiant">Identifiant : </label>
     <input type="text" placeholder="Saisir votre identifiant" name="username" /><br>
@@ -15,7 +17,7 @@
     <label for="re_mot_de_passe"> Confirmer votre mot de passe : </label>
     <input type="text" placeholder="Confirmer mot de passe" name="re_MDP" />
     
-
+<!-- Zone de gestion des erreurs -->
     <?php
     if(isset($_GET['erreur'])){
         $err = $_GET['erreur'];

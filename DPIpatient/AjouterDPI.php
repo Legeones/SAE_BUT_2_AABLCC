@@ -3,6 +3,7 @@ session_start();
 ?>
 <html>
 <head>
+    <!-- importation des fichiers de style -->
     <meta charset="utf-8">
     <link rel="stylesheet" href="AjouterDPI_CSS.css" media="screen" type="text/css" />
 </head>
@@ -16,11 +17,12 @@ session_start();
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='principale.php'">PATIENTS</button>
+            <button onclick="location.href='../DPIpatient/principale.php'">PATIENTS</button>
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
         </div>
     </div>
+    <!-- zone de connexion -->
     <div class="droite">
         <form action="principale.php" method="get">
             <input name="recherche_barre"></input>
@@ -33,7 +35,7 @@ session_start();
             <button name="next">Next</button>
             <button name="back">Back</button>
         </form>
-
+        <!-- zone de connexion -->
         <div class="bas">
             <form name="form" action="">
                 <div class="Titreform">

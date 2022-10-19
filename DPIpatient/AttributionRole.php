@@ -8,6 +8,7 @@
 <form action="AttributionRoleSQL.php" method="post">
     Identifiant: <input type="text" name="ID"><br>
     Role <input type="text" name="Role"><br>
+    <!-- zone de gestion des erreurs -->
 
     <?php
     if(isset($_GET['erreur'])){

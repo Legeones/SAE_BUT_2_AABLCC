@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <!-- importer le fichier de style -->
+    <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="ConnexionCss.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
@@ -32,6 +32,8 @@
             </div>
         </div>
         <script>
+            <!-- zone de gestion d'apparition ou non du mot de passe -->
+
             const togglePassword = document.querySelector("#togglePassword");
             const password = document.querySelector("#password");
             togglePassword.addEventListener("click", function () {
@@ -41,6 +43,8 @@
             });
         </script>
 
+        <!-- gestion des erreurs -->
+
         <?php
         if(isset($_GET['erreur'])){
             $err = $_GET['erreur'];
@@ -49,12 +53,15 @@
             }
         }
         ?>
+
+        <!-- zone de connexion -->
+
         <div class="piedDePage">
             <div class="Validation" align="center" >
                 <input type="submit" value="Connexion">
             </div>
             <div class="mdpOublie" align="right">
-                <a href="MDPoubler.php"><strong>Mot de passe oublié</strong></a>
+                <a href="../MDP/MDPoubler.php"><strong>Mot de passe oublié</strong></a>
             </div>
         </div>
         <div class="Separation2"></div>
@@ -67,7 +74,7 @@
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
-                    <a href="charte_utilisation.html"><strong>Charte d'utilisation</strong></a>
+                    <a href="../Charte_Utilisation/charte_utilisation.html"><strong>Charte d'utilisation</strong></a>
                 </div>
                 <div class="droite">
                     <input type="button" onclick="window.location.href ='Aide.php';" value="?"/>
