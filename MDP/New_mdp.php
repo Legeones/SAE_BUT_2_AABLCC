@@ -2,7 +2,7 @@
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
 
-require('DataBase.php');
+require('../BDD/DataBase.php');
 
 function VerifPassword_Equality($pw1,$pw2)
 {
@@ -62,34 +62,34 @@ function VerifPassword_Number($pw1)
     { return 1; }
 }
 
-$resVerifPassword_Equality=VerifPassword_Equality($_POST["New_Password_A"], $_POST["New_Password_B"]);
-$resVerifPassword_Uppercase=VerifPassword_Uppercase($_POST["New_Password_A"]);
-$resVerifPassword_Number=VerifPassword_Number($_POST["New_Password_A"]);
-$resVerifPassword_Lenght=VerifPassword_Lenght($_POST["New_Password_A"]);
-$resVerifPassword_Lowercase=VerifPassword_Lowercase($_POST["New_Password_A"]);
+$resVerifPassword_Equality=VerifPassword_Equality($_POST["MDP"], $_POST["Re_MDP"]);
+$resVerifPassword_Uppercase=VerifPassword_Uppercase($_POST["MDP"]);
+$resVerifPassword_Number=VerifPassword_Number($_POST["MDP"]);
+$resVerifPassword_Lenght=VerifPassword_Lenght($_POST["MDP"]);
+$resVerifPassword_Lowercase=VerifPassword_Lowercase($_POST["MDP"]);
 
 if ($resVerifPassword_Equality==0){
-    header('Location: change_mdp.php?erreur=2');
+    header('Location: ../MDP/change_mdp.php?erreur=2');
 }
 
 elseif ($resVerifPassword_Lenght==0){
-    header('Location: change_mdp.php?erreur=1');
+    header('Location: ../MDP/change_mdp.php?erreur=1');
 }
 
 elseif($resVerifPassword_Lowercase==0){
-    header('Location: change_mdp.php?erreur=3');
+    header('Location: ../MDP/change_mdp.php?erreur=3');
 }
 
 elseif($resVerifPassword_Number==0){
-    header('Location: change_mdp.php?erreur=4');
+    header('Location: ../MDP/change_mdp.php?erreur=4');
 }
 
 elseif($resVerifPassword_Uppercase==0){
-    header('Location: change_mdp.php?erreur=5');
+    header('Location: ../MDP/change_mdp.php?erreur=5');
 }
 
 else
 {
-    DataBase_User_New_Pass_Modify($_POST['ID'],$_POST['New_Password_A']);
+    DataBase_User_New_Pass_Modify($_POST['username'],$_POST['MDP']);
 }
 ?>

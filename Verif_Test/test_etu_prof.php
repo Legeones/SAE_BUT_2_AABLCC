@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <!-- importer le fichier de style -->
-    <link rel="stylesheet" href="style2.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="style2.css" media="screen" type="text/css" /> // CSS obselte
 </head>
 <body style='background:#fff;'>
 <div id="content">

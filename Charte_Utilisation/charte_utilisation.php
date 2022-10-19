@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Connexion</title>
     <!-- importation des fichiers de style -->
-    <link rel="stylesheet" href="charte_utilisationCSS.css">
+    <link rel="stylesheet" href="../Charte_Utilisation/charte_utilisationCSS.css">
 
 
     <!-- zone d'écriture  -->

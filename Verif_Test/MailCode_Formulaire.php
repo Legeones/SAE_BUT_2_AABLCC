@@ -32,7 +32,7 @@
         {   
             $aft = $_GET['after'];
             if($aft==0)
-            { header('Location: Login.php'); }
+            { header('Location: ../Connexion/Login.php'); }
             if($aft==1)
             { echo "<p style='color:red'>Code Invalide</p>"; }
         }

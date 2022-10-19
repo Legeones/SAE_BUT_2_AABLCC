@@ -1,6 +1,6 @@
 <?php
 
-require('DataBase.php');
+require('../BDD/DataBase.php');
 
 function Key_Validation()
 {
@@ -8,12 +8,12 @@ function Key_Validation()
     
     if ( $_POST['Key'] == $_SESSION['Code'] )
     {
-        header('Location: MailCode_Formulaire.php?after=0');
+        header('Location: ../Verif_Test/MailCode_Formulaire.php?after=0');
         DataBase_Add_User();
     }
     else
     {
-        header('Location: MailCode_Formulaire.php?after=1');
+        header('Location: ../Verif_Test/MailCode_Formulaire.php?after=1');
     }
 }
 

@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <!-- importation des fichiers de style -->
-    <link rel="stylesheet" href="ConnexionCss.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../Connexion/ConnexionCss.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
 </head>

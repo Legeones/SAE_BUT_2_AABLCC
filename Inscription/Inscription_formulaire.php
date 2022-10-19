@@ -21,12 +21,12 @@
         </div>
         <div class="Groupe">
             <label> Mot de passe :</label>
-            <input type="password" name="password_A" id="password" placeholder="Saisir votre mot de passe" />
+            <input type="password" name="Password_A" id="password" placeholder="Saisir votre mot de passe" />
             <i class="bi bi-eye-slash" id="togglePassword"></i>
         </div>
         <div class="Groupe">
             <label> Confirmation mot de passe : </label>
-            <input type="password" name="password_B" id="password1" placeholder="Confirmer votre mot de passe" />
+            <input type="password" name="Password_B" id="password1" placeholder="Confirmer votre mot de passe" />
             <i class="bi bi-eye-slash" id="togglePassword1"></i>
         </div>
         <div class="Groupe">
