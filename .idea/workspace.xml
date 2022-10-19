@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20d765c5-f117-4bf3-ac65-0264993d413b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Aide.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Aide.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AideCss.css" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/AideCss.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Aide.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Aide.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/AjouterDPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/AjouterDPI.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DPIpatient/DPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/principale.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/principale.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PrincipaleStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/PrincipaleStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RetourMode.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/RetourMode.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transition.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/transition.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientDiagramme.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientDiagramme.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/SupprimerPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/SupprimerPatient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inscription/Inscription_formulaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/Inscription/Inscription_formulaire.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/MDPoubler.php" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/MDPoubler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/change_mdp.php" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/change_mdp.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +72,7 @@
       <workItem from="1666073741009" duration="1222000" />
       <workItem from="1666074986643" duration="966000" />
       <workItem from="1666076340906" duration="894000" />
+      <workItem from="1666161451419" duration="827000" />
     </task>
     <servers />
   </component>

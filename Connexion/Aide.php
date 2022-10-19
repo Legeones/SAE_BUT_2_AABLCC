@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Aide</title>
+    <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="AideCss.css">
 </head>
 <body>

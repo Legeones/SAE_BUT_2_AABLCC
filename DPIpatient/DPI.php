@@ -4,6 +4,7 @@ session_start();
 <html>
 <head>
     <meta charset="utf-8">
+    <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="PrincipaleStyle.css" media="screen" type="text/css" />
 </head>
 <body>

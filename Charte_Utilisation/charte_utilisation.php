@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
+    <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="charte_utilisationCSS.css">
+
+
+    <!-- zone d'écriture  -->
+
 <body>
 <h1>Charte d’utilisation</h1>
 <h3>Préambule</h3>

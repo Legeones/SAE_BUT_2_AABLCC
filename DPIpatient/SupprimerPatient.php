@@ -14,6 +14,7 @@
 
 </form>
 
+<!-- gestion des erreurs -->
 
 <?php
 if (isset($_GET['erreur'])) {

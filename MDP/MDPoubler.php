@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Mot de passe oublier</title>
+    <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="MDPoublierCSS.css">
 </head>
 <body>
+<!-- zone de connexion -->
 <form action="Verification_PasswordChange.php" method="post">
     <h1>Mot de passe oublier ?</h1>
     <div class="Separation"></div>
@@ -21,7 +23,9 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- zone de gestion des erreurs -->
+
     <?php
     if(isset($_GET['erreur']))
         {
@@ -30,7 +34,9 @@
             { echo "<p style='color:red'>Error Message</p>"; } // A modifier
         }
     ?>
-    
+
+    <!-- zone de connexion -->
+
     <div class="piedDePage">
         <div class="Validation" align="center" >
             <input type="submit" value="Suivant">

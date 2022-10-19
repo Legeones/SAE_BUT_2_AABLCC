@@ -3,6 +3,7 @@ session_start();
 ?>
 <html>
 <head>
+    <!-- importation des fichiers de style -->
     <meta charset="utf-8">
     <link rel="stylesheet" href="AjouterDPI_CSS.css" media="screen" type="text/css" />
 </head>
@@ -33,7 +34,7 @@ session_start();
             <button name="next">Next</button>
             <button name="back">Back</button>
         </form>
-
+        <!-- zone de connexion -->
         <div class="bas">
             <form name="form" action="">
                 <div class="Titreform">
