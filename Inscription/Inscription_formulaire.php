@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- importation des fichiers de style -->
-    <link rel="stylesheet" href="InscriptionCSS.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../Inscription/InscriptionCSS.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
     <title>Inscription</title>
@@ -103,11 +103,11 @@
             <p>Pour vous Connectez</p>
         </div>
         <div class="connect" align="center">
-            <input type="button" onclick="window.location.href ='login.php';" value="Se connecter"/>
+            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Se connecter"/>
         </div>
         <div class="piedDePage2">
             <div class="droite">
-                <input type="button" onclick="window.location.href ='Aide.php';" value="?"/>
+                <input type="button" onclick="window.location.href ='../Connexion/Aide.php';" value="?"/>
             </div>
         </div>
     </div>
