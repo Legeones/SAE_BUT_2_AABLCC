@@ -20,10 +20,10 @@
     if(isset($_GET['erreur'])){
         $err = $_GET['erreur'];
         if($err==1){
-            echo "<p style='color:red'>le mot de passse a moins de 8 caractÃ¨res</p>";
+            echo "<p style='color:red'>le mot de passse a moins de 8 caractères</p>";
         }
         if($err==2){
-            echo "<p style='color:red'>le mot de passe et sa confirmation sont diffÃ¨rents</p>";
+            echo "<p style='color:red'>le mot de passe et sa confirmation sont différents</p>";
         }
         if($err==3){
             echo "<p style='color:red'> pas de minuscule </p>";
