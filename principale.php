@@ -75,7 +75,7 @@ session_start();
                     $stmt->execute();
                 }
                 if ($p=='Date hospitalisation' && $rm=='aucun') {
-                    $stmt = $dbh->prepare("SELECT IPP,nom FROM patient ORDER BY admission LIMIT ?");
+                    $stmt = $dbh->prepare("SELECT patient.ipp,nom FROM patient JOIN admission ON admission.idadmission = patient.iep ORDER BY admission LIMIT ?");
                     $lim = $_SESSION['incrPat']+25;
                     $stmt->bindParam(1,$lim);
                     $stmt->execute();
@@ -143,21 +143,23 @@ session_start();
                 }
             }
         </script>
-        <div class="grid-container">
+        <form name="patient" action="DPIpatient/DPIpatient.php" method="post" class="grid-container">
             <?php
             for($i=1;$i<25;$i++){
                 $_SESSION['patientActuel']='patient'.$i;
                 $id = ''.$i;
                 $_SESSION['idActuel'] = $id;
-                ?> <div onclick="location.href='ajoutPatient.html';" style="cursor:pointer;" <?php if(isset($_SESSION[$_SESSION['patientActuel']])){?>onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)"<?php }?>>
-                    <?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];}?>
+                ?> <input name="patient" id="<?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];} else {print $_SESSION['idActuel'];}?>"
+                        onclick="location.href='DPIpatient/DPIpatient.php';" style="cursor:pointer;" <?php if(isset($_SESSION[$_SESSION['patientActuel']])){?>
+                    onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)"<?php }?>
+                          value = <?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];}?>>
                     <div class="<?php if($_SESSION['idActuel']%6==0) echo 'hideLeft'; else echo 'hide'; ?>" id=<?php echo $_SESSION['idActuel'] ?>>
                         <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']][0];?></div>
-                </div>
+                </input>
             <?php }
             ?>
 
-        </div>
+        </form>
 
 </div>
 

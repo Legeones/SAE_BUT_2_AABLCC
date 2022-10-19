@@ -31,7 +31,13 @@ session_start();
             <input type="button" id="imagerie" onmouseover="alterner('imagerie')" onmouseout="alterner('imagerie')" onclick="location.href='DPIpatientImagerie.php';" value="Imagerie">
             <input type="button" id="courrier" onmouseover="alterner('courrier')" onmouseout="alterner('courrier')" onclick="location.href='DPIpatientCourriers.php';" value="Courriers">
         </form>
+        <script type="text/javascript">
+
+        </script>
         <div class="container">
+            <?php foreach($_POST as $key => $items) {
+                echo $key . "<br />";
+            }?>
             <div>
                 <h2>Données administratives</h2>
             </div>
