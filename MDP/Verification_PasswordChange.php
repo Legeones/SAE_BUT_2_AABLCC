@@ -1,6 +1,8 @@
 <?php
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', true);
 
-require('../BDD/DataBase.php');
+require('../Verif_Test/Mail_Test.php');
 
 function VerifEmail($email)
 {
@@ -24,6 +26,9 @@ $resVerifemptymail = VerifEmptyContent($_POST['mail']);
 $resVerifemptyusername = VerifEmptyContent($_POST['username']);
 $resVerifMail = VerifEmail($_POST['mail']);
 
+session_start();
+$_SESSION['IDENTIFIANT'] = $_POST['username'];
+
 if ( $resVerifMail == 0 )
 { header('Location: ../MDP/MDPoublier.php?erreur=1'); }
 
@@ -35,7 +40,13 @@ if ( $resVerifemptyusername == 0 )
 
 else 
 {
-    DataBase_User_New_Pass_Check($_POST['username'],$_POST['mail']);
+    session_start();
+    $_SESSION['Code'] = rand(100000,999999);
+    $_SESSION['Key_Index'] = 2;
+    
+    SendMail($_SESSION['Code'],$_POST['mail']);
+    
+    header('Location: ../Verif_Test/MailCode_Formulaire.php?');
 }
 
 
