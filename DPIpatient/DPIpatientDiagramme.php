@@ -23,8 +23,7 @@ session_start();
         </div>
     </div>
     <div class="droite">
-        <!-- ajout des différents boutons dans le DPIpatient -->
-
+        <!-- zone d'ajout de boutons  -->
         <form name="cat" method="get" class="btn-line">
             <input type="button" id="macrocible" onmouseover="alterner('macrocible')" onmouseout="alterner('macrocible')" onclick="location.href='DPIpatient.php';" value="macrocible">
             <input type="button" id="observation" onmouseover="alterner('observation')" onmouseout="alterner('observation')" onclick="location.href='DPIpatientObservation.php';" value="Observation médicale">

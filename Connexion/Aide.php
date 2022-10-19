@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="AideCss.css">
 </head>
 <body>
+<!-- zone de connexion -->
+
 <form action="" method="GET">
     <h1>Aide</h1>
     <div class="Separation"></div>

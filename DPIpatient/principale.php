@@ -4,6 +4,7 @@ session_start();
 <html>
 <head>
     <meta charset="utf-8">
+    <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="PrincipaleStyle.css" media="screen" type="text/css" />
 </head>
 <body>
@@ -26,6 +27,7 @@ session_start();
             <button onclick="location.href='principale.php'">PATIENTS</button>
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
+            <!-- choix du rôle -->
             <?php
             session_start();
             echo '<br>';

@@ -22,6 +22,7 @@ session_start();
             <button>JSAISPAS</button>
         </div>
     </div>
+    <!-- zone de connexion -->
     <div class="droite">
         <form action="principale.php" method="get">
             <input name="recherche_barre"></input>

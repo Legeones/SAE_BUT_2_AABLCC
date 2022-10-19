@@ -4,6 +4,8 @@ session_start();
 <html>
 <head>
     <meta charset="utf-8">
+    <!-- importation des fichiers de style -->
+
     <link rel="stylesheet" href="DPIpatientStyle.css" media="screen" type="text/css" />
 </head>
 <header>
@@ -23,6 +25,7 @@ session_start();
     </div>
     <div class="droite">
         <form name="cat" method="get" class="btn-line">
+            <!-- zone d'ajout de boutons -->
             <input type="button" id="macrocible" onmouseover="alterner('macrocible')" onmouseout="alterner('macrocible')" onclick="location.href='DPIpatient.php';" value="macrocible">
             <input type="button" id="observation" onmouseover="alterner('observation')" onmouseout="alterner('observation')" onclick="location.href='DPIpatientObservation.php';" value="Observation médicale">
             <input type="button" id="prescription" onmouseover="alterner('prescription')" onmouseout="alterner('prescription')" onclick="location.href='DPIpatientPrescription.php';" value="Prescription">
