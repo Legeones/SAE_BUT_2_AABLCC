@@ -1,6 +1,6 @@
 <?php
 
-require('../BDD/DataBase.php');
+require('../BDD/DataBase_User.php');
 
 function Key_Validation()
 {
