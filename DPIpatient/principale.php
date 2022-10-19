@@ -29,7 +29,6 @@ session_start();
             <button>JSAISPAS</button>
             <!-- choix du rôle -->
             <?php
-            session_start();
             echo '<br>';
             if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='transition.php'>Passer en mode etu</button>";}
             echo '<br>';
@@ -79,26 +78,30 @@ session_start();
 
                 $dbh = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;','theo','theo');
                 if($rm!='aucun'){
-                    $stmt = $dbh->prepare("SELECT IPP, nom FROM patient WHERE nom like ? LIMIT ?");
+                    $stmt = $dbh->prepare("SELECT IPP, nom FROM patient WHERE nom like ? LIMIT ? OFFSET ?");
                     $stmt->bindParam(1,$rm);
                     $lim = $_SESSION['incrPat']+25;
                     $stmt->bindParam(2,$lim);
+                    $stmt->bindParam(3,$_SESSION['incrPat']);
                     $stmt->execute();
                 }
                 if ($p=='Date hospitalisation' && $rm=='aucun') {
-                    $stmt = $dbh->prepare("SELECT patient.ipp,nom FROM patient JOIN admission ON admission.idadmission = patient.iep ORDER BY admission LIMIT ?");
+                    $stmt = $dbh->prepare("SELECT patient.ipp,nom FROM patient JOIN admission ON admission.idadmission = patient.iep ORDER BY admission LIMIT ? OFFSET ?");
                     $lim = $_SESSION['incrPat']+25;
                     $stmt->bindParam(1,$lim);
+                    $stmt->bindParam(2,$_SESSION['incrPat']);
                     $stmt->execute();
                 } elseif ($p=='Ordre alphabetique' && $rm=='aucun'){
-                    $stmt = $dbh->prepare("SELECT IPP,nom FROM patient ORDER BY nom LIMIT ?");
+                    $stmt = $dbh->prepare("SELECT IPP,nom FROM patient ORDER BY nom LIMIT ? OFFSET ?");
                     $lim = $_SESSION['incrPat']+25;
                     $stmt->bindParam(1,$lim);
+                    $stmt->bindParam(2,$_SESSION['incrPat']);
                     $stmt->execute();
                 } elseif($rm=='aucun') {
-                    $stmt = $dbh->prepare("SELECT IPP,nom FROM patient LIMIT ?");
+                    $stmt = $dbh->prepare("SELECT IPP,nom FROM patient LIMIT ? OFFSET ?");
                     $lim = $_SESSION['incrPat']+25;
                     $stmt->bindParam(1,$lim);
+                    $stmt->bindParam(2,$_SESSION['incrPat']);
                     $stmt->execute();
                 }
                 return $stmt;
@@ -154,14 +157,14 @@ session_start();
                 }
             }
         </script>
-        <form name="patient" action="DPIpatient/DPIpatient.php" method="post" class="grid-container">
+        <form name="choixPatient" action="DPIpatientMacrocible.php" method="post" class="grid-container">
             <?php
             for($i=1;$i<25;$i++){
                 $_SESSION['patientActuel']='patient'.$i;
                 $id = ''.$i;
                 $_SESSION['idActuel'] = $id;
-                ?> <input name="patient" id="<?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];} else {print $_SESSION['idActuel'];}?>"
-                        onclick="location.href='DPIpatient/DPIpatient.php';" style="cursor:pointer;" <?php if(isset($_SESSION[$_SESSION['patientActuel']])){?>
+                ?> <input type="submit" name="<?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];} else {print $_SESSION['idActuel'];}?>"
+                style="cursor:pointer;" <?php if(isset($_SESSION[$_SESSION['patientActuel']])){?>
                     onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)"<?php }?>
                           value = <?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];}?>>
                     <div class="<?php if($_SESSION['idActuel']%6==0) echo 'hideLeft'; else echo 'hide'; ?>" id=<?php echo $_SESSION['idActuel'] ?>>

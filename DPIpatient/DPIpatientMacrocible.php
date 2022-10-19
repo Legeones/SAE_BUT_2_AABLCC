@@ -14,7 +14,7 @@ session_start();
 <body>
 <div class="global">
     <div class="gauche">
-        <div class="profile" id="space-invader">
+        <div class="profile">
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
@@ -39,8 +39,12 @@ session_start();
         </script>
         <div class="container">
             <?php foreach($_POST as $key => $items) {
-                echo $key . "<br />";
-            }?>
+                if ($key!=null){
+                    $_SESSION['patientSuivi'] = $key;
+                }
+            }
+            if (isset($_SESSION['patientSuivi'])) echo $_SESSION['patientSuivi']
+            ?>
             <div>
                 <h2>Données administratives</h2>
             </div>
