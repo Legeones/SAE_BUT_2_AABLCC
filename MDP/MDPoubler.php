@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Mot de passe oublier</title>
     <!-- importation des fichiers de style -->
-    <link rel="stylesheet" href="MDPoublierCSS.css">
+    <link rel="stylesheet" href="../MDP/MDPoublierCSS.css">
 </head>
 <body>
 <!-- zone de connexion -->
