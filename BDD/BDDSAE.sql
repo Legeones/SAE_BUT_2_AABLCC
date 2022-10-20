@@ -1,7 +1,7 @@
 drop table if exists PersonneConfiance, PersonneContacte, Patient, Intervenant, Intervention, Admission, Utilisateur, Soin, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient;
 
 create table PersonneConfiance (
-                                   idPcon serial primary key,
+                                   idPcon serial not null primary key,
                                    nom text not null ,
                                    prenom text not null,
                                    tel text not null ,
@@ -10,7 +10,7 @@ create table PersonneConfiance (
 );
 
 create table PersonneContacte (
-                                  idPtel serial primary key,
+                                  idPtel serial not null primary key,
                                   nom text not null ,
                                   prenom text not null,
                                   tel text not null ,
@@ -19,12 +19,12 @@ create table PersonneContacte (
 
 
 create table Patient(
-                        IPP numeric(13,0) primary key,
+                        IPP numeric(13,0) not null primary key,
                         IEP serial not null,
                         nom text not null ,
                         prenom text not null ,
                         DDN timestamp not null ,
-                        admission date not null check (admission<DDN),
+                        admission date not null check (admission>DDN),
                         taille_cm int not null ,
                         poids_kg float not null ,
                         adresse text not null ,
@@ -123,7 +123,7 @@ values (1, 'Berthe', 'Henry', '0671458653', 'Pere', false),
        (2, 'Dupont', 'Eric', '0745632514', 'Fere', true),
        (3, 'Armand', 'Chloé', '0786593102', 'Fille', true),
        (4, 'Clarry', 'Bertrand', '0625863517', 'Cousin', false),
-       (5, 'Lavoisier', 'Anthonny', '0783592079', 'Fils', true);
+       (5, 'Lavoisier', 'Anthonny', '0783592079', 'Fils', true),
        (6,'Edison','Tesla','0324859746','Ami',true);
 
 insert into PersonneContacte
