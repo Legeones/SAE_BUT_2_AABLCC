@@ -2,10 +2,10 @@
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
 
-$db_username = 'iutinfo86';
-$db_password = 'pmD5t+DV';
-$db_name = 'iutinfo86';
-$db_host = 'iutinfo-sgbd.uphf.fr';
+$db_username = '...';
+$db_password = '....';
+$db_name = '....';
+$db_host = '....';
 
 function VerifEmptyContent($text)
 {
