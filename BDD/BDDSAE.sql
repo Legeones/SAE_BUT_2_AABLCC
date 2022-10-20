@@ -168,8 +168,8 @@ values ('aurelien.leveque', 'leveque', 'Aurelien.Leveque@uphf.fr', 'etudiant'),
        ('steven.anselot', 'anselot', 'Steven.Anselot@uphf.fr', 'etudiant'),
        ('theo.bernaville', 'bernaville', 'Theo.Bernaville@uphf.fr', 'etudiant'),
        ('samuel.applencourt', 'applencourt', 'Samuel.Applencourt@uphf.fr', 'etudiant'),
-       ('dorian.petit', 'petit', 'Dorian.Petit@uphf.fr', 'enseignant');
-       ('jack.bol','963','Jack.Bol@uphf.fr','admin')
+       ('dorian.petit', 'petit', 'Dorian.Petit@uphf.fr', 'enseignant'),
+       ('jack.bol','963','Jack.Bol@uphf.fr','admin');
 
 insert into Soin
 values (1, 'changement pansemants', 'post operation'),
@@ -178,7 +178,7 @@ values (1, 'changement pansemants', 'post operation'),
        (4, 'dose medicamenteuse', 'post operation');
 
 insert into SoinPatient
-values (1, '2012-10-14', '18h00', 'une fois', 8000000000002, 3),
+values (1, '2012-10-14', '18h00', 'une fois', 8000000000002, 2),
        (2, '2012-10-14', '19h00', 'une fois', 8000000000002, 2),
        (3, '2012-10-15', '08h00', 'une fois', 8000000000002, 3),
        (4, '2012-10-15', '09h00', 'une fois', 8000000000002, 2),
@@ -212,7 +212,7 @@ values (1, 'antidouleurs', 'listes 1&2'),
        (4, 'cannabis', 'classe stupéfiant');
 
 insert into PrescriptionPatient
-values (1, '2010-04-08', '20h00','2000-1-12' ,'2010-04-12', 'deux doses medicamenteuses d_antidouleurs par intervalle de 6h00', true, 8000000000002, 1),
+values (1, '2010-04-08', '20h00','2000-1-12', 'deux doses medicamenteuses d_antidouleurs par intervalle de 6h00', true, 8000000000002, 1),
        (2, '2010-04-08', '20h00', '2010-04-12', 'une dose medicamenteuse d_antidepresseurs', true, 8000000000002, 3),
        (3, '2012-08-20', '16h00', '2010-08-24', 'une dose medicamenteuse d_antidouleurs', true, 8000000000004, 1),
        (4, '2010-04-10', '08h00', '2010-04-13', 'deux doses medicamenteuses de canabis avec intervalle de 10h00', true, 8000000000001, 4);

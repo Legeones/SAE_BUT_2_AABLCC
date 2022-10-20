@@ -3,10 +3,10 @@ session_start();
 
 if($_SESSION["Role"]=="pseudo-etu") {
     try {
-        $db_username = 'iutinfo86';
-        $db_password = 'pmD5t+DV';
-        $db_name = 'iutinfo86';
-        $db_host = 'iutinfo-sgbd.uphf.fr';
+        $db_username = '....';
+        $db_password = '';
+        $db_name = '....';
+        $db_host = '';
         $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
         $stmt = $dbh->prepare("SELECT count(*) FROM utilisateur where login = ? ");
         $stmt->bindParam(1, $_SESSION["username"]);
