@@ -11,6 +11,7 @@ function Key_Validation()
         if ( $_POST['Key'] == $_SESSION['Code'] )
         {
             DataBase_Add_User();
+            header('Location: ../Connexion/login.php?after=1');
         }
         else
         {
