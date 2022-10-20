@@ -73,10 +73,10 @@ session_start();
                         $pat='patient'.$o;
                     }
                 }
-                $db_username = 'iutinfo86';
-                $db_password = 'pmD5t+DV';
-                $db_name = 'iutinfo86';
-                $db_host = 'iutinfo-sgbd.uphf.fr';
+                $db_username = '...';
+                $db_password = '...';
+                $db_name = '...';
+                $db_host = '..';
 
                 $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
                 if($rm!='aucun'){
