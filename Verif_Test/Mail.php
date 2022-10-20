@@ -74,6 +74,15 @@ function SendRequestMail($email,$body)
     {
         echo "Successfully sent!";
     }
-
-// You may delete or alter these last lines reporting error messages, but beware, that if you delete the $mail->Send() part, the e-mail will not be sent, because that is the part of this code, that actually sends the e-mail.
+    
+    function MailPreparator($indexkey,$email)
+{
+    session_start();
+    $_SESSION['Code'] = rand(100000,999999);
+    $_SESSION['Key_Index'] = $indexkey;
+    
+    SendMail($_SESSION['Code'],$email);
+    
+    header('Location: ../Verif_Test/MailCode_Formulaire.php?');
+}
 ?>

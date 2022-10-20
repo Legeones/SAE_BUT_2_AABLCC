@@ -22,15 +22,5 @@ if ( $resVerifemptyusername == 0 )
 { header('Location: ../MDP/MDPoublier.php?erreur=2'); }
 
 else 
-{
-    session_start();
-    $_SESSION['Code'] = rand(100000,999999);
-    $_SESSION['Key_Index'] = 2;
-    
-    SendMail($_SESSION['Code'],$_POST['mail']);
-    
-    header('Location: ../Verif_Test/MailCode_Formulaire.php?');
-}
-
-
+{ MailPreparator(2,$_POST['mail']); }
 ?>

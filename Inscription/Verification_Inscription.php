@@ -54,14 +54,6 @@ elseif ($VerifEmail==0){
 }
 
 else
-{
-    session_start();
-    $_SESSION['Code'] = rand(100000,999999);
-    $_SESSION['Key_Index'] = 1;
-    
-    SendMail($_SESSION['Code'],$_POST['email']);
-    
-    header('Location: ../Verif_Test/MailCode_Formulaire.php?');
-}
+{ MailPreparator(1,$_POST['mail']); }
 
 ?>
