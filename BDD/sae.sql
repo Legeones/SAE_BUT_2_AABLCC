@@ -1,4 +1,5 @@
-drop table if exists PersonneConfiance, PersonneContacte, Patient, Intervenant, Intervention, Admission, Utilisateur, Soin, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient;
+drop table if exists PersonneConfiance, PersonneContacte, Patient, Intervenant,Utilisateur, Intervention, Admission, Soin, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient;
+
 
 create table PersonneConfiance (
                                    idPcon serial not null primary key,
@@ -24,21 +25,20 @@ create table Patient(
                         nom text not null ,
                         prenom text not null ,
                         DDN timestamp not null ,
-                        admission date not null check (admission>DDN),
                         taille_cm int not null ,
                         poids_kg float not null ,
                         adresse text not null ,
                         CP text not null check ( CP ~ '^[0-9][0-9][0-9][0-9][0-9]$'),
                         ville text not null ,
                         telPersonnel text not null ,
-                        telProfessionnel text not null,
-                        allergies text not null ,
-                        antecedents text not null ,
-                        obstericaux text not null ,
-                        doMedicaux text not null ,
-                        doChirurgicaux text not null,
-                        idPcon serial not null references PersonneConfiance unique,
-                        idPtel serial not null references PersonneContacte unique
+                        telProfessionnel text ,
+                        allergies text  ,
+                        antecedents text  ,
+                        obstericaux text  ,
+                        doMedicaux text  ,
+                        doChirurgicaux text ,
+                        idPcon serial not null unique references PersonneConfiance ON DELETE CASCADE,
+                        idPtel serial not null unique references PersonneContacte ON DELETE CASCADE
 );
 
 create table Intervenant (
@@ -52,22 +52,15 @@ create table Intervention (
                               idIntervention serial primary key ,
                               date date not null ,
                               compteRendu text not null,
-                              IPP numeric(13,0) not null references Patient,
-                              idIntervenant serial not null references Intervenant
+                              IPP numeric(13,0) not null references Patient ON DELETE CASCADE,
+                              idIntervenant serial not null references Intervenant ON DELETE CASCADE
 );
 
 create table Admission (
                            idAdmission serial primary key,
                            dateDebut date not null,
                            dateFin date not null,
-                           IPP numeric(13,0) not null references Patient
-);
-
-create table Utilisateur (
-    login text primary key,
-    mdp text not null,
-    email text check ( email ~ '@' ) not null unique ,
-    roles text not null
+                           IPP numeric(13,0) not null references Patient ON DELETE CASCADE
 );
 
 create table Soin (
@@ -81,8 +74,8 @@ create table SoinPatient(
                             jour date not null ,
                             heure text not null ,
                             valeur text not null ,
-                            IPP numeric(13,0) not null references Patient,
-                            idSoin serial not null references Soin
+                            IPP numeric(13,0) not null references Patient ON DELETE CASCADE,
+                            idSoin serial not null references Soin ON DELETE CASCADE
 );
 
 create table Medecin (
@@ -95,8 +88,8 @@ create table Medecin (
 );
 
 create table PatientMedecin (
-                                IPP numeric(13,0)  references Patient,
-                                idMedecin serial  references Medecin,
+                                IPP numeric(13,0)  references Patient ON DELETE CASCADE,
+                                idMedecin serial  references Medecin ON DELETE CASCADE,
                                 primary key (IPP, idMedecin),
                                 type text not null
 );
@@ -114,6 +107,13 @@ create table PrescriptionPatient (
                                      dateDebut date not null,
                                      traitement text not null ,
                                      fait boolean not null ,
-                                     IPP numeric(13,0) not null references Patient,
-                                     idPrescription serial not null references Prescription
+                                     IPP numeric(13,0) not null references Patient ON DELETE CASCADE,
+                                     idPrescription serial not null references Prescription ON DELETE CASCADE
+);
+
+create table Utilisateur (
+    login text primary key,
+    mdp text not null,
+    email text check ( email ~ '@' ) not null unique ,
+    roles text not null
 );
