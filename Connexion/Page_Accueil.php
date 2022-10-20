@@ -11,16 +11,9 @@
         <header>
             <img class="logo" src="https://moodle.uphf.fr/pluginfile.php/358899/mod_resource/content/1/logoIFSI.png">
         </header>
-
-        <div class="piedDePage">
-            <div class="Validation" align="center" >
-                <input type="submit" value="Suivant">
-            </div>
         </div>
-        <div class="piedDePage2">
-            <div class="droite">
-                <input type="button" onclick="window.history.back();return false;" value="Retour"/>
-            </div>
+        <div class="gauche">
+            <a href="../Charte_Utilisation/charte_utilisation.php"><strong>Ou nous trouver ? </strong></a>
         </div>
 
 
