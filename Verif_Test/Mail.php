@@ -22,7 +22,7 @@ function SendMail($keys,$email)
     $mail->SMTPSecure = "ssl";          // dependant du smtp serveur utilisé
     $mail->Port = 465;                  // dependant du smtp serveur utilisé
     
-    $mail->SetFrom ('???1@uphf.fr','EC');  // dependant de l'utilisateur (envoie)
+    $mail->SetFrom ('???@uphf.fr','EC');  // dependant de l'utilisateur (envoie)
     $mail->AddAddress ($email, 'EC2');
     
     $mail->CharSet = 'windows-1250';
@@ -41,6 +41,39 @@ function SendMail($keys,$email)
         echo "Successfully sent!";
     }
 }
+
+function SendRequestMail($email,$body)
+{
+    $mail = new PHPMailer(TRUE);
+    
+    $mail->SMTPDebug = 1;
+    $mail->IsSMTP();
+    $mail->Host = "smtp.uphf.fr";       // dependant du smtp serveur utilisé
+    $mail->SMTPAuth = true;
+    $mail->AuthType = 'LOGIN';
+    $mail->Username = "???";      // dependant de l'utilisateur (envoie)
+    $mail->Password = "???";   // dependant de l'utilisateur (envoie)
+    $mail->SMTPSecure = "ssl";          // dependant du smtp serveur utilisé
+    $mail->Port = 465;                  // dependant du smtp serveur utilisé
+    
+    $mail->SetFrom ('???@uphf.fr','Assistance');  // dependant de l'utilisateur (envoie)
+    $mail->AddAddress ('???@uphf.fr', 'Assistance');
+    
+    $mail->CharSet = 'windows-1250';
+    $mail->ContentType = 'text/plain';
+    
+    $mail->IsHTML(false);
+    $mail->Subject = "Requete d'assistance de : $email";
+    $mail->Body = $body;
+    
+    if(!$mail->Send())
+    {
+        echo "Mailer Error: " . $mail->ErrorInfo;
+    }
+    else
+    {
+        echo "Successfully sent!";
+    }
 
 // You may delete or alter these last lines reporting error messages, but beware, that if you delete the $mail->Send() part, the e-mail will not be sent, because that is the part of this code, that actually sends the e-mail.
 ?>
