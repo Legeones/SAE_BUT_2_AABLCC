@@ -54,6 +54,6 @@ elseif ($VerifEmail==0){
 }
 
 else
-{ MailPreparator(2,$_POST['mail']); }
+{ MailPreparator(1,$_POST['mail']); }
 
 ?>
