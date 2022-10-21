@@ -32,5 +32,3 @@ function Key_Validation()
 }
 
 Key_Validation();
-
-?>
