@@ -6,7 +6,7 @@ body {
     position : absolute;
     top : 50%;
     left : 50%;
-    transform: translate(-65%,-50%);
+    transform: translate(-50%,-50%);
     font-family: 'Bungee Spice', cursive;
     font-family: 'Handlee', cursive;
     font-family: 'Purple Purse', cursive;
