@@ -11,6 +11,7 @@ $resVerifMail = VerifEmail($_POST['mail']);
 
 session_start();
 $_SESSION['IDENTIFIANT'] = $_POST['username'];
+$_SESSION['EMAIL'] = $_POST['mail'];
 
 if ( $resVerifMail == 0 )
 { header('Location: ../MDP/MDPoublier.php?erreur=1'); }
