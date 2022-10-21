@@ -75,11 +75,12 @@ function SendRequestMail($email,$body)
         echo "Successfully sent!";
     }
     
-    function MailPreparator($indexkey,$email)
+function MailPreparator($indexkey,$email)
 {
     session_start();
     $_SESSION['Code'] = rand(100000,999999);
     $_SESSION['Key_Index'] = $indexkey;
+    $_SESSION['CodeTimer'] = time();
     
     SendMail($_SESSION['Code'],$email);
     
