@@ -31,9 +31,11 @@
         if(isset($_GET['after']))
         {   
             $aft = $_GET['after'];
-            if($aft==0)
-            { header('Location: ../Connexion/Login.php'); }
+            // if($aft==0)
+            // { header('Location: ../Connexion/Login.php'); }
             if($aft==1)
+            { echo "<p style='color:red'>Votre Code a expiré</p>"; }
+            if($aft==2)
             { echo "<p style='color:red'>Code Invalide</p>"; }
         }
         ?>
