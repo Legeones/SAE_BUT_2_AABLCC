@@ -86,4 +86,7 @@ function MailPreparator($indexkey,$email)
     
     header('Location: ../Verif_Test/MailCode_Formulaire.php?');
 }
+
+    function Resend()
+{ session_start();      MailPreparator($_SESSION['Key_Index'],$_SESSION['EMAIL']); }
 ?>
