@@ -59,7 +59,7 @@ create table Intervention (
 create table Admission (
                            idAdmission serial primary key,
                            dateDebut date not null,
-                           dateFin date not null,
+                           dateFin date,
                            IPP numeric(13,0) not null references Patient ON DELETE CASCADE
 );
 
