@@ -69,6 +69,8 @@ function DataBase_Add_Patient($IPP,$nom,$date)
 
 function DataBase_Delete_Patient()
 {
+    session_start();
+    
     try {
         $dbh = $dbh = DataBase_Creator_Unit();
         $stmt2 = $dbh->prepare("SELECT count(*) FROM patient WHERE IPP=?");
