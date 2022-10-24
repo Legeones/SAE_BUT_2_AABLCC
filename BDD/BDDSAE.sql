@@ -18,7 +18,6 @@ create table PersonneContacte (
                                   lien text not null
 );
 
-
 create table Patient(
                         IPP numeric(13,0) not null primary key,
                         IEP serial not null,
@@ -38,8 +37,21 @@ create table Patient(
                         doMedicaux text  ,
                         doChirurgicaux text ,
                         idPcon serial not null unique references PersonneConfiance ON DELETE CASCADE,
-                        idPtel serial not null unique references PersonneContacte ON DELETE CASCADE
+                        idPtel serial not null unique references PersonneContacte ON DELETE CASCADE,
+			                  MesuredeProtection boolean not null,
+			                  AsistantSocial boolean not null,
+			                  MDV text,
+			                  SynEntre text not null,
+			                  TraiDomi text,
+			                  doPhyPsy text,
+			                  mobilite int check(mobilite>=1 and mobilite<=3) not null,
+			                  alimentation int check(alimentation>=1 and alimentation<=3) not null,
+			                  Hygiene int check(Hygiene>=1 and Hygiene<=3) not null,
+			                  toilette int check(toilette>=1 and toilette<=3) not null,
+			                  Habit int check(Habit>=1 and Habit<=3) not null,
+			                  continence int check(continence>=1 and continence<=3) not null
 );
+
 
 create table Intervenant (
                              idIntervenant serial primary key ,
@@ -143,13 +155,16 @@ values (1, 'Cartier', 'Charles', 'chirurgien'),
        (4, 'La Couronne', 'Adam', 'dentiste'),
        (5, 'Kappet', 'Andy', 'reeducateur');
 
+
 insert into Patient
-values (8000000000000, 1, 'Armand', 'Pierre', '1967-10-25', 182, 93, '20 rue du tiermonde', 42900, 'Saint-Etienne', '0778845621', null, 'chat,pollen,acharien', null, null, 'traitement pour allergies', null, 1, 1),
-       (8000000000001, 2, 'Bernaville', 'Theo', '2003-03-18', 183, 70, '18 rue des tullipes', 59720, 'Ferriere', '0654479823', null, 'chat,latex', null, null, 'traitement pour allergies, insuffisance renale', null, 2, 2),
-       (8000000000002, 3, 'Leveque', 'Aurelien', '2003-08-28', 186, 85, '09 rue desbraslongs', 59330, 'Hautmont', '0784635988', null, 'pollen, acharien', null,null, null, null, 3,3),
-       (8000000000003, 4, 'Applencourt', 'Samuel', '2003-01-14', 176, 65, '56 rue desjuifs', 59330, 'Boussiere', '0632541596', null, 'acharien', null, null, null, null, 4, 4),
-       (8000000000004, 5, 'Anselot', 'Steven', '2003-04-10', 169, 65, '12 rue desnains', 59330, 'Hautont', '0631524969', null, null, null, null, null, 'operation appendicectomie', 5,5),
-       (8000000000005, 6, 'Joly', 'Marie', '1993-01-28', 158, 52, '15 rue Jean Jaures', 59620, 'Leval', '0784293017', null, 'chien, latex, coton', 'père diabétique, sous tension', null, null, null, 6, 6);
+values (8000000000000, 1, 'Armand', 'Pierre', '1967-10-25', 182, 93, '20 rue du tiermonde', 42900, 'Saint-Etienne', '0778845621', null, 'chat,pollen,acharien', null, null, 'traitement pour allergies', null, 1, 1,false,false,'agrigulteur','main ouverte',null,null,3,2,1,3,2,1),
+       (8000000000001, 2, 'Bernaville', 'Theo', '2003-03-18', 183, 70, '18 rue des tullipes', 59720, 'Ferriere', '0654479823', null, 'chat,latex', null, null, 'traitement pour allergies, insuffisance renale', null, 2, 2,false,true,null,'pied ouverte',null,null,3,2,2,3,2,2),
+       (8000000000002, 3, 'Leveque', 'Aurelien', '2003-08-28', 186, 85, '09 rue desbraslongs', 59330, 'Hautmont', '0784635988', null, 'pollen, acharien', null,null, null, null, 3,3,true,false,'ouvrier','jambe casser','2 PO de dolipranne','depressif',3,2,1,3,2,1),
+       (8000000000003, 4, 'Applencourt', 'Samuel', '2003-01-14', 176, 65, '56 rue desjuifs', 59330, 'Boussiere', '0632541596', null, 'acharien', null, null, null, null, 4, 4,false,false,null,'main ouverte',null,null,1,1,1,1,1,1),
+       (8000000000004, 5, 'Anselot', 'Steven', '2003-04-10', 169, 65, '12 rue desnains', 59330, 'Hautont', '0631524969', null, null, null, null, null, 'operation appendicectomie', 5,5,false,false,'jardinier','renverser par une voiture',null,'tension arterielle',3,2,1,3,2,1),
+       (8000000000005, 6, 'Joly', 'Marie', '1993-01-28', 158, 52, '15 rue Jean Jaures', 59620, 'Leval', '0784293017', null, 'chien, latex, coton', 'père diabétique, sous tension', null, null, null, 6, 6,false,false,null,'indigestion alimentaire','PANTOPRAZOLE 20mg 1cp/j,DAFLON 500mg 1cp/j,RILMENIDINE 1mg 2cp/j,DIAMICRON 60 mg 1cp/j','depresion, porte des lunette',3,3,3,3,2,3);
+
+
 
 insert into Intervention
 values (1, '2010-04-12', 'blabla1', 8000000000001, 3),
