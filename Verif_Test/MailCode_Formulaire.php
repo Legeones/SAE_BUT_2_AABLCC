@@ -14,11 +14,11 @@
             <script>
                 var a = document.createElement('a');
                 a.href = window.location.replace='../Verif_Test/MailCode_Formulaire.php?after=3';
-                var lien = document.createTextNode("Vous n'avez pas reÃ§u le code ?");
+                var lien = document.createTextNode("Vous n'avez pas reçu le code ?");
                 a.appendChild(lien);
                 document.body.appendChild(a);
             </script>
-            <label> Saisissez le code de validation reÃ§u par mail : </label>
+            <label> Saisissez le code de validation reçu par mail : </label>
             <input type="text" placeholder="Saisir votre code" name="Key" />
         </div>
     </div>

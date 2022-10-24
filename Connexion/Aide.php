@@ -49,7 +49,7 @@
     <div class="Separation2"></div>
     <div class="Inscription">
         <div class="Phraseinscrit">
-            <p>Retourner Ã  la page prÃ©cÃ©dente</p>
+            <p>Retourner à la page précédente</p>
         </div>
         <div class="piedDePage2">
             <div class="droite">

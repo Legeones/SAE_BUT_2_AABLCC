@@ -2,7 +2,7 @@
 <html lang=en">
 <head>
     <meta charset="UTF-8">
-    <title>Page de déconnexion</title>
+    <title>Page d'accueil</title>
     <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="Page_Accueil.css">
 
