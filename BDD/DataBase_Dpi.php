@@ -42,4 +42,29 @@ function DataBase_Change($p,$rm){
     return $stmt;
 }
 
+function DataBase_Add_Patient($IPP,$nom,$date)
+{   
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("SELECT count(*) FROM patient WHERE IPP=?");
+        $stmt2->bindParam(1, $IPP);
+        $stmt2->execute();
+        $res= $stmt2->fetchColumn(0);
+        if($res==1){
+            header('Location: ../DPIpatient/ajouterPatient.php?erreur=2');
+        }
+        else{
+            $stmt = $dbh->prepare("INSERT INTO patient values (?,?,?)");
+            $stmt->bindParam(1, $IPP);
+            $stmt->bindParam(2, $nom);
+            $stmt->bindParam(3, $date);
+            $stmt->execute();
+            header('Location: ../DPIpatient/DPI.php');
+        }
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
 ?>
