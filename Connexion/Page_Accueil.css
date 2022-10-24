@@ -53,3 +53,7 @@ form .piedDePage .piedDePage2 .droite {
     text-decoration: none;
 }
 
+form .droite {
+    position: absolute;
+}
+
