@@ -71,11 +71,11 @@ function Database_Check_User_Exist($username,$password)
         }
         if($res2==5 and $result2=='prof'){
             $_SESSION['username'] = $username;
-            header('Location: ../DPIpatient/principale.php');
+            header('Location: ../DPIpatient/DPI.php');
         }
         elseif ($res2==5 and $result2=='etu'){
             $_SESSION['username'] = $username;
-            header('Location: ../DPIpatient/principal-etu.php');
+            header('Location: ../DPIpatient/DPI.php');
         }
         else{
             header('Location: ../Connexion/login.php?erreur=1'); // utilisateur ou mot de passe incorrect
