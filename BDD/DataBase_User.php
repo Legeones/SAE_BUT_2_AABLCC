@@ -57,7 +57,7 @@ function Database_Check_User_Exist($username,$password)
         $stmt = $dbh->prepare("SELECT mdp FROM utilisateur where login = ? ");
         $stmt->bindParam(1, $username);
         $stmt->execute();
-        $stmt2 = $dbh->prepare("SELECT role FROM utilisateur where login = ? ");
+        $stmt2 = $dbh->prepare("SELECT roles FROM utilisateur where login = ? ");
         $stmt2->bindParam(1, $username);
         $stmt2->execute();
         $result = $stmt->fetchColumn(0);
