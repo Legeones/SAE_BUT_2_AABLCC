@@ -1,4 +1,5 @@
 <?php
+require('../BDD/DataBase_DPI.php');
 session_start();
 ?>
 <html>
@@ -24,9 +25,20 @@ session_start();
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='principale.php'">PATIENTS</button>
+            <button onclick="location.href='DPI.php'">PATIENTS</button>
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
+            <button onclick="location.href='ajouterPatient.php'">AJOUTER</button>
+            <button onclick="location.href='SupprimerPatient.php'">SUPPRIMER</button>
+            <?php
+            session_start();
+            echo '<br>';
+            if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='transition.php'>Passer en mode etu</button>";}
+            echo '<br>';
+            if ($_SESSION["Role"] == "admin") {echo "<button onclick=location.href='AttributionRole.php'>attribuer role</button>";}
+            echo '<br>';
+            if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='RetourMode.php'>retour mode prof</button>";}
+            ?>
         </div>
     </div>
     <div class="droite">
@@ -50,49 +62,8 @@ session_start();
         }
 
         try {
-            function change($p,$rm){
-                $o = 1;
-                if($_SESSION['patient1']!=null){
-                    $pat = 'patient'.$o;
-                    for($i=0;$i<$_SESSION['incrPat']+24;$i++){
-                        if (isset($_SESSION[$pat])!=null){
-                            $_SESSION[$pat]=null;
-                        }
-                        $o+=1;
-                        $pat='patient'.$o;
-                    }
-                }
-                $db_username = '.';
-                $db_password = '.';
-                $db_name     = '.';
-                $db_host     = '.';
-
-                $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
-                if($rm!='aucun'){
-                    $stmt = $dbh->prepare("SELECT IPP, nom FROM patient WHERE nom like ? LIMIT ?");
-                    $stmt->bindParam(1,$rm);
-                    $lim = $_SESSION['incrPat']+25;
-                    $stmt->bindParam(2,$lim);
-                    $stmt->execute();
-                }
-                if ($p=='Date hospitalisation' && $rm=='aucun') {
-                    $stmt = $dbh->prepare("SELECT IPP,nom FROM patient ORDER BY admission LIMIT ?");
-                    $lim = $_SESSION['incrPat']+25;
-                    $stmt->bindParam(1,$lim);
-                    $stmt->execute();
-                } elseif ($p=='Ordre alphabetique' && $rm=='aucun'){
-                    $stmt = $dbh->prepare("SELECT IPP,nom FROM patient ORDER BY nom LIMIT ?");
-                    $lim = $_SESSION['incrPat']+25;
-                    $stmt->bindParam(1,$lim);
-                    $stmt->execute();
-                } elseif($rm=='aucun') {
-                    $stmt = $dbh->prepare("SELECT IPP,nom FROM patient LIMIT ?");
-                    $lim = $_SESSION['incrPat']+25;
-                    $stmt->bindParam(1,$lim);
-                    $stmt->execute();
-                }
-                return $stmt;
-            }
+                DataBase_Change($p,$rm);
+                
             if(isset($_GET['next'])){
                 $_SESSION['incrPat']+=24;
 
@@ -116,7 +87,7 @@ session_start();
                 $_SESSION['rechercheManu']='aucun';
             }
 
-            $stmt = change($_SESSION['paramRecherche'],$_SESSION['rechercheManu']);
+            $stmt = DataBase_Change($_SESSION['paramRecherche'],$_SESSION['rechercheManu']);
             $i = 1;
 
             foreach ($stmt as $p){
@@ -150,7 +121,7 @@ session_start();
                 $_SESSION['patientActuel']='patient'.$i;
                 $id = ''.$i;
                 $_SESSION['idActuel'] = $id;
-                ?> <div onclick="location.href='principale.php';" style="cursor:pointer;" onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)">
+                ?> <div onclick="location.href='DPI.php';" style="cursor:pointer;" onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)">
                     <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']]; ?>
                     <div class="<?php if($_SESSION['idActuel']%6==0) echo 'hideLeft'; else echo 'hide'; ?>" id=<?php echo $_SESSION['idActuel'] ?>>WOW</div>
                 </div>

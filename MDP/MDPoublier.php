@@ -7,7 +7,7 @@
 </head>
 <body>
 <form action="Verification_PasswordChange.php" method="post">
-    <h1>Mot de passe oubliÃƒÂ© ?</h1>
+    <h1>Mot de passe oublié ?</h1>
     <div class="Separation"></div>
     <div class="Formulaire">
         <div class="formGauche">
@@ -45,7 +45,7 @@
     <div class="Separation2"></div>
     <div class="Inscription">
         <div class="Phraseinscrit">
-            <p>Retourner ÃƒÂ  la page prÃƒÂ©cÃƒÂ©dente</p>
+            <p>Retourner à la page précédente</p>
         </div>
         <div class="piedDePage2">
             <div class="droite">

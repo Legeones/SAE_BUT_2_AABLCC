@@ -61,7 +61,7 @@
                 <input type="submit" value="Connexion">
             </div>
             <div class="mdpOublie" align="right">
-                <a href="../MDP/MDPoubler.php"><strong>Mot de passe oublié</strong></a>
+                <a href="../MDP/MDPoublier.php"><strong>Mot de passe oublié</strong></a>
             </div>
         </div>
         <div class="Separation2"></div>
@@ -70,11 +70,11 @@
                 <p>Pour vous inscrire</p>
             </div>
             <div class="inscrit" align="center">
-                <input type="button" onclick="window.location.href ='Inscription_formulaire.php';" value="S'inscrire"/>
+                <input type="button" onclick="window.location.href ='../Inscription/Inscription_formulaire.php';" value="S'inscrire"/>
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
-                    <a href="../Charte_Utilisation/charte_utilisation.html"><strong>Charte d'utilisation</strong></a>
+                    <a href="../Charte_Utilisation/charte_utilisation.php"><strong>Charte d'utilisation</strong></a>
                 </div>
                 <div class="droite">
                     <input type="button" onclick="window.location.href ='Aide.php';" value="?"/>

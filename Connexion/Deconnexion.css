@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Handlee&family=Purple+Purse&display=swap');
+
+body {
+    background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20210924/pngtree-health-care-abstract-light-effect-icon-decoration-image_906585.png");
+    background-size: 1550px;
+    padding: 0px;
+    margin: 0px;
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    transform: translate(-65%,-50%);
+    font-family: 'Bungee Spice', cursive;
+    font-family: 'Handlee', cursive;
+    font-family: 'Purple Purse', cursive;
+}
+
+ h1 {
+     text-align: center;
+     border: none;
+     padding: 5px;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 1rem;
+     border-radius: 8px;
+     background-color: black;
+     color: lightskyblue;
+ }
+
+form{
+    background-color: white;
+    padding: 35px 80px 35px 80px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 10px 5px 0 rgba(0, 0, 0, 0.24);
+    text-align: center;
+    border:5px solid black;
+
+}
+
+.logo {
+    width: 20%;
+    height: 80%;
+
+}
+
+
+
+

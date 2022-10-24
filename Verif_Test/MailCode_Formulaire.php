@@ -13,12 +13,12 @@
         <div class="Groupe">
             <script>
                 var a = document.createElement('a');
-                a.href = window.location.replace='Aide.php';
-                var lien = document.createTextNode("Vous n'avez pas reçu le code ?");
+                a.href = window.location.replace='../Verif_Test/MailCode_Formulaire.php?after=3';
+                var lien = document.createTextNode("Vous n'avez pas reÃ§u le code ?");
                 a.appendChild(lien);
                 document.body.appendChild(a);
             </script>
-            <label> Saisissez le code de validation reçu par mail : </label>
+            <label> Saisissez le code de validation reÃ§u par mail : </label>
             <input type="text" placeholder="Saisir votre code" name="Key" />
         </div>
     </div>
@@ -31,10 +31,18 @@
         if(isset($_GET['after']))
         {   
             $aft = $_GET['after'];
-            if($aft==0)
-            { header('Location: ../Connexion/Login.php'); }
+            // if($aft==0)
+            // { header('Location: ../Connexion/Login.php'); }
             if($aft==1)
+            { echo "<p style='color:red'>Votre Code a expiré</p>"; }
+            if($aft==2)
             { echo "<p style='color:red'>Code Invalide</p>"; }
+            if($aft==3)
+            {   
+                require('../Verif_Test/Mail.php');
+                Resend();
+                echo "<p style='color:red'>Code renvoyé</p>";
+            }
         }
         ?>
         

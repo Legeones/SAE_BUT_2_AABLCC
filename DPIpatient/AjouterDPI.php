@@ -17,14 +17,14 @@ session_start();
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='../DPIpatient/principale.php'">PATIENTS</button>
+            <button onclick="location.href='../DPIpatient/DPI.php'">PATIENTS</button>
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
         </div>
     </div>
     <!-- zone de connexion -->
     <div class="droite">
-        <form action="principale.php" method="get">
+        <form action="DPI.php" method="get">
             <input name="recherche_barre"></input>
             <select name="select">
                 <option name="aucun">Aucun</option>

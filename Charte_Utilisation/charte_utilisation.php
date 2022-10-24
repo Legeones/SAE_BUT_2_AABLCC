@@ -3,12 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="../Charte_Utilisation/charte_utilisationCSS.css">
-
-
-    <!-- zone d'écriture  -->
-
 <body>
 <h1>Charte d’utilisation</h1>
 <h3>Préambule</h3>
@@ -27,7 +22,6 @@
 <h5>Le manquement aux règles et mesures de sécurité de la présente charte est susceptible d’engager la responsabilité de l’utilisateur et d’entraîner à son encontre des avertissements, des limitations ou suspensions d’utiliser tout ou partie du SI, voire des sanctions disciplinaires, proportionnées la gravité des faits concernés.</h5>
 <h3>5 Entrée en vigueur </h3>
 <h5>La présente charte est applicable à compter du < DATE ENTRÉE EN VIGUEUR ></h5>
-
 <div class="droite">
     <a href="../Connexion/login.php"><strong>Retour</strong></a>
 </div>

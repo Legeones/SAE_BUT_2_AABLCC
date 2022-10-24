@@ -51,10 +51,10 @@ elseif ($VerifPassword_Uppercase==1 or $VerifPassword_Lowercase==1){
 }
 
 else {
-    $db_username = 'iutinfo86';
-    $db_password = 'pmD5t+DV';
-    $db_name = 'iutinfo86';
-    $db_host = 'iutinfo-sgbd.uphf.fr';
+    $db_username = '';
+    $db_password = '';
+    $db_name = '';
+    $db_host = '';
 
     try {
         $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
@@ -71,7 +71,7 @@ else {
             $stmt->bindParam(2, $_POST['nom']);
             $stmt->bindParam(3, $_POST['date']);
             $stmt->execute();
-            header('Location: principale.php');
+            header('Location: DPI.php');
         }
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
