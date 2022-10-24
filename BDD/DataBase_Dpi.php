@@ -67,4 +67,27 @@ function DataBase_Add_Patient($IPP,$nom,$date)
     }
 }
 
+function DataBase_Delete_Patient()
+{
+    try {
+        $dbh = $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("SELECT count(*) FROM patient WHERE IPP=?");
+        $stmt2->bindParam(1, $_SESSION["IPP_SUPP"]);
+        $stmt2->execute();
+        $res= $stmt2->fetchColumn(0);
+        if($res==0){
+            header('Location: ../DPIpatient/SupprimerPatient.php?erreur=2');
+        }
+        else{
+            $stmt = $dbh->prepare("DELETE FROM patient WHERE IPP=?");
+            $stmt->bindParam(1, $_SESSION["IPP_SUPP"]);
+            $stmt->execute();
+            header('Location: ../DPIpatient/DPI.php');
+        }
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
 ?>
