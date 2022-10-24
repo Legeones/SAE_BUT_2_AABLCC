@@ -33,6 +33,10 @@ session_start();
             <input type="button" id="imagerie" onmouseover="alterner('imagerie')" onmouseout="alterner('imagerie')" onclick="location.href='DPIpatientImagerie.php';" value="Imagerie">
             <input type="button" id="courrier" onmouseover="alterner('courrier')" onmouseout="alterner('courrier')" onclick="location.href='DPIpatientCourriers.php';" value="Courriers">
         </form>
+        <div class="info">
+            <h2>Observation médicales</h2>
+            <p></p>
+        </div>
 
     </div>
 </div>

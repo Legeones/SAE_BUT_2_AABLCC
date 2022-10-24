@@ -35,118 +35,22 @@ session_start();
             if ($_SESSION["Role"] == "admin") {echo "<button onclick=location.href='AttributionRole.php'>attribuer role</button>";}
             echo '<br>';
             if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='RetourMode.php'>retour mode prof</button>";}
+            $_SESSION['infosPatient']=[];
             ?>
         </div>
     </div>
     <div class="droite">
-        <form action="principale.php" method="get">
+        <form action="actionPrincipale.php" method="get">
             <input name="recherche_barre"></input>
                 <select name="select">
                 <option name="aucun">Aucun</option>
                 <option name="dh">Date hospitalisation</option>
                 <option name="oa">Ordre alphabetique</option>
             </select>
-                <button type="submit">Rechercher</button>
-                <button name="next">Next</button>
-                <button name="back">Back</button>
+            <button type="submit">Rechercher</button>
+            <button name="back">Back</button>
+            <button name="next">Next</button>
         </form>
-
-        </p>
-        <?php
-        $db_username = 'theo';
-        $db_password = 'theo';
-        $db_name = 'postgres';
-        $db_host = 'localhost';
-
-        if(!isset($_SESSION['incrPat'])){
-            $_SESSION['incrPat']=0;
-        }
-
-        try {
-            function change($p,$rm){
-                $o = 1;
-                if(isset($_SESSION['patient1']) && $_SESSION['patient1']!=null){
-                    $pat = 'patient'.$o;
-                    for($i=0;$i<$_SESSION['incrPat']+24;$i++){
-                        if (isset($_SESSION[$pat])!=null){
-                            $_SESSION[$pat]=null;
-                        }
-                        $o+=1;
-                        $pat='patient'.$o;
-                    }
-                }
-
-                $dbh = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;','theo','theo');
-                if($rm!='aucun'){
-                    $stmt = $dbh->prepare("SELECT IPP, nom FROM patient WHERE nom like ? LIMIT ? OFFSET ?");
-                    $stmt->bindParam(1,$rm);
-                    $lim = $_SESSION['incrPat']+25;
-                    $stmt->bindParam(2,$lim);
-                    $stmt->bindParam(3,$_SESSION['incrPat']);
-                    $stmt->execute();
-                }
-                if ($p=='Date hospitalisation' && $rm=='aucun') {
-                    $stmt = $dbh->prepare("SELECT patient.ipp,nom FROM patient JOIN admission ON admission.idadmission = patient.iep ORDER BY admission LIMIT ? OFFSET ?");
-                    $lim = $_SESSION['incrPat']+25;
-                    $stmt->bindParam(1,$lim);
-                    $stmt->bindParam(2,$_SESSION['incrPat']);
-                    $stmt->execute();
-                } elseif ($p=='Ordre alphabetique' && $rm=='aucun'){
-                    $stmt = $dbh->prepare("SELECT IPP,nom FROM patient ORDER BY nom LIMIT ? OFFSET ?");
-                    $lim = $_SESSION['incrPat']+25;
-                    $stmt->bindParam(1,$lim);
-                    $stmt->bindParam(2,$_SESSION['incrPat']);
-                    $stmt->execute();
-                } elseif($rm=='aucun') {
-                    $stmt = $dbh->prepare("SELECT IPP,nom FROM patient LIMIT ? OFFSET ?");
-                    $lim = $_SESSION['incrPat']+25;
-                    $stmt->bindParam(1,$lim);
-                    $stmt->bindParam(2,$_SESSION['incrPat']);
-                    $stmt->execute();
-                }
-                return $stmt;
-            }
-            if(isset($_GET['next'])){
-                $_SESSION['incrPat']+=24;
-
-            }
-            if(isset($_GET['back'])){
-                if($_SESSION['incrPat']>0){
-                    $_SESSION['incrPat']-=24;
-                }
-
-            }
-
-            if(isset($_GET['select'])){
-                $_SESSION['paramRecherche']=$_GET['select'];
-            } else {
-                $_SESSION['paramRecherche']='aucun';
-            }
-
-            if(isset($_GET['recherche_barre']) && $_GET['recherche_barre']!=''){
-                $_SESSION['rechercheManu']=$_GET['recherche_barre'];
-            } else {
-                $_SESSION['rechercheManu']='aucun';
-            }
-
-            $stmt = change($_SESSION['paramRecherche'],$_SESSION['rechercheManu']);
-            $i = 1;
-
-            foreach ($stmt as $p){
-                if($i<$_SESSION['incrPat']){
-                    $i = $i+1;
-                } else {
-                    $_SESSION['np'] = "patient".$i;
-                    $_SESSION[$_SESSION['np']] = $p;
-                    $i = $i+1;
-                }
-
-            }
-        } catch (PDOException $e){
-            print "Erreur:".$e->getMessage();
-        }
-
-        ?>
         <script>
             function apparait(id){
                 var elt = document.getElementById(id);
@@ -157,7 +61,7 @@ session_start();
                 }
             }
         </script>
-        <form name="choixPatient" action="DPIpatientMacrocible.php" method="post" class="grid-container">
+        <form name="choixPatient" action="actionDPI.php" method="post" class="grid-container">
             <?php
             for($i=1;$i<25;$i++){
                 $_SESSION['patientActuel']='patient'.$i;
@@ -179,17 +83,3 @@ session_start();
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

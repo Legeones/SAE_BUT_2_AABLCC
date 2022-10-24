@@ -2,9 +2,9 @@
 
     function DataBase_Creator_Unit()
     {
-        $db_username = 'postgres';
-        $db_password = 'Post';
-        $db_name = 'test';
+        $db_username = 'theo';
+        $db_password = 'theo';
+        $db_name = 'postgres';
         $db_host = 'localhost';
         
         return new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
@@ -69,7 +69,7 @@
             $stmt = $dbh->prepare("SELECT mdp FROM utilisateur where login = ? ");
             $stmt->bindParam(1, $username);
             $stmt->execute();
-            $stmt2 = $dbh->prepare("SELECT roles FROM utilisateur where login = ? ");
+            $stmt2 = $dbh->prepare("SELECT role FROM utilisateur where login = ? ");
             $stmt2->bindParam(1, $username);
             $stmt2->execute();
             $result = $stmt->fetchColumn(0);
@@ -137,5 +137,76 @@
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
         }
+    }
+
+    function Patient_Parcour($p,$rm){
+        $o = 1;
+        if(isset($_SESSION['patient1']) && $_SESSION['patient1']!=null){
+            $pat = 'patient'.$o;
+            for($i=0;$i<$_SESSION['incrPat']+24;$i++){
+                if (isset($_SESSION[$pat])!=null){
+                    $_SESSION[$pat]=null;
+                }
+                $o+=1;
+                $pat='patient'.$o;
+            }
+        }
+
+        $dbh = DataBase_Creator_Unit();
+        if($rm!='aucun'){
+            $stmt = $dbh->prepare("SELECT IPP, nom FROM patient WHERE nom like ? LIMIT ? OFFSET ?");
+            $stmt->bindParam(1,$rm);
+            $lim = $_SESSION['incrPat']+25;
+            $stmt->bindParam(2,$lim);
+            $stmt->bindParam(3,$_SESSION['incrPat']);
+            $stmt->execute();
+        }
+        if ($p=='Date hospitalisation' && $rm=='aucun') {
+            $stmt = $dbh->prepare("SELECT patient.ipp,nom FROM patient JOIN admission ON admission.idadmission = patient.iep ORDER BY admission LIMIT ? OFFSET ?");
+            $lim = $_SESSION['incrPat']+25;
+            $stmt->bindParam(1,$lim);
+            $stmt->bindParam(2,$_SESSION['incrPat']);
+            $stmt->execute();
+        } elseif ($p=='Ordre alphabetique' && $rm=='aucun'){
+            $stmt = $dbh->prepare("SELECT IPP,nom FROM patient ORDER BY nom LIMIT ? OFFSET ?");
+            $lim = $_SESSION['incrPat']+25;
+            $stmt->bindParam(1,$lim);
+            $stmt->bindParam(2,$_SESSION['incrPat']);
+            $stmt->execute();
+        } elseif($rm=='aucun') {
+            $stmt = $dbh->prepare("SELECT IPP,nom FROM patient LIMIT ? OFFSET ?");
+            $lim = $_SESSION['incrPat']+25;
+            $stmt->bindParam(1,$lim);
+            $stmt->bindParam(2,$_SESSION['incrPat']);
+            $stmt->execute();
+        }
+        $i = 1;
+        foreach ($stmt as $p){
+            if($i<$_SESSION['incrPat']){
+                $i = $i+1;
+            } else {
+                $_SESSION['np'] = "patient".$i;
+                $_SESSION[$_SESSION['np']] = $p;
+                $i = $i+1;
+            }
+        }
+        header('Location: ../DPIpatient/principale.php');
+    }
+    function Data_Patient_Querry($nomPatient,$nomCateg){
+        $pdo = DataBase_Creator_Unit();
+        if ($nomCateg == "macrocible"){
+            $stmt = $pdo->prepare("SELECT * FROM patient LEFT JOIN personneconfiance p on patient.idpcon = p.idpcon LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel LEFT JOIN admission a on patient.ipp = a.ipp LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp WHERE patient.nom = ?");
+            $stmt -> bindParam(1,$nomPatient);
+            $stmt->execute();
+            print_r($stmt);$_SESSION['infosPatient']=[];
+            foreach ($stmt as $item){
+                $_SESSION['infosPatient']+=$item;
+            }
+        } elseif ($nomCateg == "observations"){
+            $stmt = $pdo->prepare("SELECT * FROM ");
+        }
+
+        header("Location: ../DPIpatient/DPIpatientMacrocible.php");
+
     }
 ?>
