@@ -1,6 +1,6 @@
 <?php
 session_start();
-require ("../BDD/DataBase.php");
+require ("../BDD/DataBase_Dpi.php");
 foreach($_POST as $key => $items) {
     if ($key!=null){
         $_SESSION['patientSuivi'] = "".$key;

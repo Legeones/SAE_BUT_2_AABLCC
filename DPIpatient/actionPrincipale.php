@@ -1,6 +1,6 @@
 <?php
 session_start();
-require ("../BDD/DataBase.php");
+require ("../BDD/DataBase_Dpi.php");
 
 if(isset($_GET['next'])){
     $_SESSION['incrPat']+=24;

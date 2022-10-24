@@ -1,5 +1,4 @@
 <?php
-require('../BDD/DataBase_DPI.php');
 session_start();
 ?>
 <html>
@@ -21,28 +20,27 @@ session_start();
         });
     </script>-->
     <div class="gauche">
-        <div class="profile" id="space-invader">
+        <div class="profile">
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
             <button onclick="location.href='DPI.php'">PATIENTS</button>
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
-            <button onclick="location.href='ajouterPatient.php'">AJOUTER</button>
-            <button onclick="location.href='SupprimerPatient.php'">SUPPRIMER</button>
+            <!-- choix du rôle -->
             <?php
-            session_start();
             echo '<br>';
             if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='transition.php'>Passer en mode etu</button>";}
             echo '<br>';
             if ($_SESSION["Role"] == "admin") {echo "<button onclick=location.href='AttributionRole.php'>attribuer role</button>";}
             echo '<br>';
             if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='RetourMode.php'>retour mode prof</button>";}
+            $_SESSION['infosPatient']=[];
             ?>
         </div>
     </div>
     <div class="droite">
-        <form action="DPI.php" method="get">
+        <form action="actionPrincipale.php" method="get">
             <input name="recherche_barre"></input>
             <select name="select">
                 <option name="aucun">Aucun</option>
@@ -50,61 +48,9 @@ session_start();
                 <option name="oa">Ordre alphabetique</option>
             </select>
             <button type="submit">Rechercher</button>
-            <button name="next">Next</button>
             <button name="back">Back</button>
+            <button name="next">Next</button>
         </form>
-
-        </p>
-        <?php
-
-        if(!isset($_SESSION['incrPat'])){
-            $_SESSION['incrPat']=0;
-        }
-
-        try {
-                DataBase_Change($p,$rm);
-                
-            if(isset($_GET['next'])){
-                $_SESSION['incrPat']+=24;
-
-            }
-            if(isset($_GET['back'])){
-                if($_SESSION['incrPat']>0){
-                    $_SESSION['incrPat']-=24;
-                }
-
-            }
-
-            if(isset($_GET['select'])){
-                $_SESSION['paramRecherche']=$_GET['select'];
-            } else {
-                $_SESSION['paramRecherche']='aucun';
-            }
-
-            if(isset($_GET['recherche_barre']) && $_GET['recherche_barre']!=''){
-                $_SESSION['rechercheManu']=$_GET['recherche_barre'];
-            } else {
-                $_SESSION['rechercheManu']='aucun';
-            }
-
-            $stmt = DataBase_Change($_SESSION['paramRecherche'],$_SESSION['rechercheManu']);
-            $i = 1;
-
-            foreach ($stmt as $p){
-                if($i<$_SESSION['incrPat']){
-                    $i = $i+1;
-                } else {
-                    $_SESSION['np'] = "patient".$i;
-                    $_SESSION[$_SESSION['np']] = $p[1];
-                    $i = $i+1;
-                }
-
-            }
-        } catch (PDOException $e){
-            print "Erreur:".$e->getMessage();
-        }
-
-        ?>
         <script>
             function apparait(id){
                 var elt = document.getElementById(id);
@@ -115,20 +61,23 @@ session_start();
                 }
             }
         </script>
-        <div class="grid-container">
+        <form name="choixPatient" action="actionDPI.php" method="post" class="grid-container">
             <?php
             for($i=1;$i<25;$i++){
                 $_SESSION['patientActuel']='patient'.$i;
                 $id = ''.$i;
                 $_SESSION['idActuel'] = $id;
-                ?> <div onclick="location.href='DPI.php';" style="cursor:pointer;" onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)">
-                    <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']]; ?>
-                    <div class="<?php if($_SESSION['idActuel']%6==0) echo 'hideLeft'; else echo 'hide'; ?>" id=<?php echo $_SESSION['idActuel'] ?>>WOW</div>
-                </div>
+                ?> <input type="submit" name="<?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];} else {print $_SESSION['idActuel'];}?>"
+                          style="cursor:pointer;" <?php if(isset($_SESSION[$_SESSION['patientActuel']])){?>
+                    onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)"<?php }?>
+                          value = <?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];}?>>
+                <div class="<?php if($_SESSION['idActuel']%6==0) echo 'hideLeft'; else echo 'hide'; ?>" id=<?php echo $_SESSION['idActuel'] ?>>
+                    <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']][0];?></div>
+                </input>
             <?php }
             ?>
 
-        </div>
+        </form>
 
     </div>
 
