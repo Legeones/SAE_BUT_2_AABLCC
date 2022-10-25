@@ -18,7 +18,6 @@
         <div class="droite">
             <input type="button" onclick="window.location.href ='login.php';" value="Connexion "/>
         </div>
-
     </form>
 </head>
 <body>
