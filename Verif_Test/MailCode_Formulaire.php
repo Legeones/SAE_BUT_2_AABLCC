@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Importation des fichiers de style -->
+
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../Inscription/InscriptionCSS.css" media="screen" type="text/css" />
     <title>Inscription</title>
 </head>
 <body>
+<!-- Zone de connexion -->
+
 <form action="Verification_KeyCode.php" method="post">
     <h1>Inscription</h1>
     <div class="Separation"></div>
@@ -26,7 +30,8 @@
         <div class="Validation" align="center" >
             <input type="submit" value="Valider">
         </div>
-        
+        <!-- Gestion des erreurs -->
+
         <?php
         if(isset($_GET['after']))
         {   

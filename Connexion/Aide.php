@@ -30,7 +30,9 @@
         <div class="Validation" align="center" >
             <input type="submit" value="Envoyer le message">
         </div>
-        
+        <!-- Gestion des erreurs -->
+
+
         <?php
 
     if(isset($_GET['erreur'])){

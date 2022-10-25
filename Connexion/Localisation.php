@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang=en" xmlns="http://www.w3.org/1999/html">
 <head>
+    <!-- Importation des fichier de style -->
+
     <meta charset="UTF-8">
     <title>Localisation</title>
     <link rel="stylesheet" href="Localisation.css">
 <body>
+
+<!-- Zone d'écriture -->
 
 <h1>Ou nous trouver ? </h1>
 <div>
