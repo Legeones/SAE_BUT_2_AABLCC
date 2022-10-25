@@ -24,14 +24,15 @@ session_start();
     </div>
     <div class="droite">
         <!-- zone d'ajout de boutons -->
-        <form name="cat" method="get" class="btn-line">
-            <input type="button" id="macrocible" onmouseover="alterner('macrocible')" onmouseout="alterner('macrocible')" onclick="location.href='DPIpatient.php';" value="macrocible">
-            <input type="button" id="observation" onmouseover="alterner('observation')" onmouseout="alterner('observation')" onclick="location.href='DPIpatientObservation.php';" value="Observation médicale">
-            <input type="button" id="prescription" onmouseover="alterner('prescription')" onmouseout="alterner('prescription')" onclick="location.href='DPIpatientPrescription.php';" value="Prescription">
-            <input type="button" id="diagramme" onmouseover="alterner('diagramme')" onmouseout="alterner('diagramme')" onclick="location.href='DPIpatientDiagramme.php';" value="Diagramme de soins">
-            <input type="button" id="biologie" onmouseover="alterner('biologie')" onmouseout="alterner('biologie')" onclick="location.href='DPIpatientBiologie.php';" value="Biologie">
-            <input type="button" id="imagerie" onmouseover="alterner('imagerie')" onmouseout="alterner('imagerie')" onclick="location.href='DPIpatientImagerie.php';" value="Imagerie">
-            <input type="button" id="courrier" onmouseover="alterner('courrier')" onmouseout="alterner('courrier')" onclick="location.href='DPIpatientCourriers.php';" value="Courriers">
+        <form action="actionDPI.php" name="cat" method="get" class="btn-line">
+            <!-- zone d'ajout de boutons -->
+            <input type="submit" name="macrocible" onmouseover="alterner('macrocible')" onmouseout="alterner('macrocible')" value="macrocible">
+            <input type="submit" name="observation" onmouseover="alterner('observation')" onmouseout="alterner('observation')" value="Observation médicale">
+            <input type="submit" name="prescription" onmouseover="alterner('prescription')" onmouseout="alterner('prescription')" value="Prescription">
+            <input type="submit" name="diagramme" onmouseover="alterner('diagramme')" onmouseout="alterner('diagramme')" value="Diagramme de soins">
+            <input type="submit" name="biologie" onmouseover="alterner('biologie')" onmouseout="alterner('biologie')" value="Biologie">
+            <input type="submit" name="imagerie" onmouseover="alterner('imagerie')" onmouseout="alterner('imagerie')" value="Imagerie">
+            <input type="submit" name="courrier" onmouseover="alterner('courrier')" onmouseout="alterner('courrier')" value="Courriers">
         </form>
 
     </div>

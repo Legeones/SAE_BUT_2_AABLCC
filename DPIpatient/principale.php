@@ -19,14 +19,12 @@ session_start();
             });
         });
     </script>-->
-    <!-- Zone de connexion -->
-
     <div class="gauche">
-        <div class="profile">
+        <div class="profile" id="space-invader">
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='DPI.php'">PATIENTS</button>
+            <button onclick="location.href='principale.php'">PATIENTS</button>
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
             <!-- choix du rôle -->
@@ -38,14 +36,13 @@ session_start();
             echo '<br>';
             if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='RetourMode.php'>retour mode prof</button>";}
             $_SESSION['infosPatient']=[];
-            $_SESSION['cat']="macrocible";
             ?>
         </div>
     </div>
     <div class="droite">
         <form action="actionPrincipale.php" method="get">
             <input name="recherche_barre"></input>
-            <select name="select">
+                <select name="select">
                 <option name="aucun">Aucun</option>
                 <option name="dh">Date hospitalisation</option>
                 <option name="oa">Ordre alphabetique</option>
@@ -71,18 +68,18 @@ session_start();
                 $id = ''.$i;
                 $_SESSION['idActuel'] = $id;
                 ?> <input type="submit" name="<?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];} else {print $_SESSION['idActuel'];}?>"
-                          style="cursor:pointer;" <?php if(isset($_SESSION[$_SESSION['patientActuel']])){?>
+                style="cursor:pointer;" <?php if(isset($_SESSION[$_SESSION['patientActuel']])){?>
                     onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)"<?php }?>
                           value = <?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];}?>>
-                <div class="<?php if($_SESSION['idActuel']%6==0) echo 'hideLeft'; else echo 'hide'; ?>" id=<?php echo $_SESSION['idActuel'] ?>>
-                    <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']][0];?></div>
+                    <div class="<?php if($_SESSION['idActuel']%6==0) echo 'hideLeft'; else echo 'hide'; ?>" id=<?php echo $_SESSION['idActuel'] ?>>
+                        <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']][0];?></div>
                 </input>
             <?php }
             ?>
 
         </form>
 
-    </div>
+</div>
 
 </body>
 </html>
