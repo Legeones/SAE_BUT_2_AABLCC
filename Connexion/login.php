@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <!-- importation des fichiers de style -->
-    <link rel="stylesheet" href="../Connexion/ConnexionCss.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../Verif_Test/CSS.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
 </head>
@@ -65,11 +65,11 @@
             </div>
         </div>
         <div class="Separation2"></div>
-        <div class="Inscription">
-            <div class="Phraseinscrit">
+        <div class="CssUnified">
+            <div class="Phrase">
                 <p>Pour vous inscrire</p>
             </div>
-            <div class="inscrit" align="center">
+            <div class="CSS1" align="center">
                 <input type="button" onclick="window.location.href ='../Inscription/Inscription_formulaire.php';" value="S'inscrire"/>
             </div>
             <div class="piedDePage2">
