@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang=en" xmlns="http://www.w3.org/1999/html">
 <head>
+    <!-- Importation des fichier de styles -->
+
     <meta charset="UTF-8">
     <title>Localisation</title>
     <link rel="stylesheet" href="Localisation.css">
 <body>
+
+<!-- Zone d'écriture -->
 
 <h1>Ou nous trouver ? </h1>
 <div>
@@ -29,4 +33,8 @@
     Par le bus (réseau Stibus) : arrêt Calmette au pied de l’Institut ligne C ou D de la ligne 62 ou 64 ou navette Citadine <br>
     Par la route : départementale 195 (N° 44 boulevard Pasteur)</h4>
 
+
+    <div class="droite">
+        <a href="Page_Accueil.php"><strong>Retour</strong></a>
+    </div>
 </div>

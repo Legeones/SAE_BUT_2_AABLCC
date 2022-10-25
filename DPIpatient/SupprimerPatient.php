@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Zone de connexion -->
+
     <meta charset="UTF-8">
     <title>Supprimer Patient</title>
 </head>

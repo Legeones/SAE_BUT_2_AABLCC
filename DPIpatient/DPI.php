@@ -19,6 +19,8 @@ session_start();
             });
         });
     </script>-->
+    <!-- Zone de connexion -->
+
     <div class="gauche">
         <div class="profile">
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">

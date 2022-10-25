@@ -21,7 +21,9 @@
             </div>
         </div>
     </div>
-    
+    <!-- Gestion des erreurs -->
+
+
     <?php
     if(isset($_GET['erreur']))
         {
@@ -35,7 +37,9 @@
             }
         }
     ?>
-    
+
+    <!-- Zone de connexion -->
+
     <div class="piedDePage">
         <div class="Validation" align="center" >
             <input type="submit" value="Suivant">

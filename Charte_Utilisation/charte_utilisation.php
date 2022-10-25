@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang=en" xmlns="http://www.w3.org/1999/html">
 <head>
+    <!-- Importation des fichiers de style -->
+
     <meta charset="UTF-8">
     <title>Connexion</title>
     <link rel="stylesheet" href="../Charte_Utilisation/charte_utilisationCSS.css">
 <body>
+<!-- Zone d'écriture -->
+
 <h1>Charte d’utilisation</h1>
 <h3>Préambule</h3>
 <h5>L’IFSI de Maubeuge, met en œuvre un système d’information et de communication nécessaire à son activité, comprenant notamment un réseau informatique et téléphonique.<br>
