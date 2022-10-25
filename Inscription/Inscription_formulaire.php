@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- importation des fichiers de style -->
-    <link rel="stylesheet" href="../Inscription/InscriptionCSS.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../Verif_Test/CSS.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
     <title>Inscription</title>
@@ -98,11 +98,11 @@
 
     </div>
     <div class="Separation2"></div>
-    <div class="Connexion1">
-        <div class="Phraseconnect">
+    <div class="CssUnified">
+        <div class="Phrase">
             <p>Pour vous Connectez</p>
         </div>
-        <div class="connect" align="center">
+        <div class="CSS1" align="center">
             <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Se connecter"/>
         </div>
         <div class="piedDePage2">
