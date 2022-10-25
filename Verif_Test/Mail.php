@@ -75,6 +75,7 @@ function SendRequestMail($email,$body)
     {
         echo "Successfully sent!";
     }
+}
     
 function MailPreparator($indexkey,$email)
 {
