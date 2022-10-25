@@ -1,10 +1,14 @@
 <html lang=en">
 <head>
+    <!-- Importation des fichiers de styles -->
+
     <meta charset="UTF-8">
     <title>Aide</title>
     <link rel="stylesheet" href="../Connexion/AideCss.css">
 </head>
 <body>
+<!-- Zone de connexion -->
+
 <form action="Aide_Send.php" method="POST">
     <h1>Aide</h1>
     <div class="Separation"></div>

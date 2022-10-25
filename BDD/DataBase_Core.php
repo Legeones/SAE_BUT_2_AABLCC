@@ -2,6 +2,7 @@
 
 function DataBase_Creator_Unit()
 {
+    //Zone de connexion à la base de données
     $db_username = 'postgres';
     $db_password = 'Post';
     $db_name = 'dpi';

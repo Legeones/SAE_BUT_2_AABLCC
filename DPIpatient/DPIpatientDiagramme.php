@@ -11,6 +11,8 @@ session_start();
     <img class="logo" src="https://moodle.uphf.fr/pluginfile.php/358899/mod_resource/content/1/logoIFSI.png">
 </header>
 <body>
+<!-- Zone de connexion -->
+
 <div class="global">
     <div class="gauche">
         <div class="profile" id="space-invader">

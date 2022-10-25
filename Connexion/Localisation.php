@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang=en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <!-- Importation des fichier de style -->
+    <!-- Importation des fichier de styles -->
 
     <meta charset="UTF-8">
     <title>Localisation</title>
