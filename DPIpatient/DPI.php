@@ -36,6 +36,7 @@ session_start();
             echo '<br>';
             if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='RetourMode.php'>retour mode prof</button>";}
             $_SESSION['infosPatient']=[];
+            $_SESSION['cat']="macrocible";
             ?>
         </div>
     </div>

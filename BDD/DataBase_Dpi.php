@@ -53,7 +53,7 @@ function Patient_Parcour($p,$rm){
             $i = $i+1;
         }
     }
-    header('Location: ../DPIpatient/principale.php');
+    header('Location: ../DPIpatient/DPI.php');
 }
 
 function Data_Patient_Querry($nomPatient, $nomCateg){
@@ -64,33 +64,33 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
         $stmt->execute();
         $_SESSION['infosPatient']=[];
 
-    } elseif ($nomCateg == "observations"){
-        $stmt = $pdo->prepare("SELECT * FROM patient WHERE ?");
+    } elseif ($nomCateg == "observation"){
+        $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
     } elseif ($nomCateg == "prescription"){
-        $stmt = $pdo->prepare("SELECT * FROM patient WHERE ?");
+        $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
     } elseif ($nomCateg == "diagramme"){
-        $stmt = $pdo->prepare("SELECT * FROM patient WHERE ?");
+        $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
     } elseif ($nomCateg == "biologie"){
-        $stmt = $pdo->prepare("SELECT * FROM patient WHERE ?");
+        $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
     } elseif ($nomCateg == "imagerie"){
-        $stmt = $pdo->prepare("SELECT * FROM patient WHERE ?");
+        $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
     } elseif ($nomCateg == "courriers"){
-        $stmt = $pdo->prepare("SELECT * FROM patient WHERE ?");
+        $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
@@ -98,7 +98,7 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
     foreach ($stmt as $item){
         $_SESSION['infosPatient']+=$item;
     }
-    header("Location: ../DPIpatient/DPIpatientMacrocible.php");
+    header("Location: ../DPIpatient/DPIpatient".$nomCateg.".php");
 
 }
 
