@@ -33,6 +33,7 @@ function SendMail($keys,$email)
     $mail->Body = "Votre code de verification est " . $keys;
     
     if(!$mail->Send())
+        
     {
         echo "Mailer Error: " . $mail->ErrorInfo;
     }
