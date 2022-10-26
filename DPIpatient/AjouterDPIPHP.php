@@ -85,7 +85,7 @@ try {
 
 
         if (!empty($erreurs)){
-            $_SESSION['MessErreur'] = "<p style='color:red'> !! Veuillez vérifier que le formulaire de comporte pas d'erreur !!</p>";
+            $_SESSION['MessErreur'] = "<p style='color:red'> !! Veuillez vérifier que le formulaire ne comporte pas d'erreur !!</p>";
         }
         else{$_SESSION['MessErreur'] = null;}
         /*********************************************************************************************************/
@@ -149,7 +149,7 @@ try {
         else{$_SESSION['lienCp'] = $_POST['lienC'];}
 
         if (empty($erreurs)) {
-            $PDO = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;', 'postgres', 'Housezalex59330');
+            $PDO = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;', 'postgres', 'mdr');
 
             $_SESSION['nomp'] = null;
 

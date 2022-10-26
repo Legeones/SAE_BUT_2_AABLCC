@@ -102,7 +102,7 @@ session_start();
                                 </p>
                             </div>
                         <?php endif ?>
-                        <p class="infoForm"><li><u>Certaine infomation ne son pas nessecaire et se défisse pas "*".</u></li></p>
+                        <p class="infoForm"><li><u>Certaines informations ne sont pas nécessaires et se défisse par "*".</u></li></p>
                         <label> Nom : </label>
                         <input type="text" placeholder="Saisir un nom" name="nom" value="<?= $_SESSION['nomp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['nomf'])):?>
