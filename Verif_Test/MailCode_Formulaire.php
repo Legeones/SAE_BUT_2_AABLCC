@@ -4,7 +4,7 @@
     <!-- Importation des fichiers de style -->
 
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../Inscription/InscriptionCSS.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../Verif_Test/CSS.css" media="screen" type="text/css" />
     <title>Inscription</title>
 </head>
 <body>
