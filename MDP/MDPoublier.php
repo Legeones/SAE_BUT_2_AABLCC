@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Mot de passe oublier</title>
-    <link rel="stylesheet" href="../MDP/MDPoublierCSS.css">
+    <link rel="stylesheet" href="../Verif_Test/CSS.css">
 </head>
 <body>
 <form action="Verification_PasswordChange.php" method="post">
@@ -47,8 +47,8 @@
     </div>
 
     <div class="Separation2"></div>
-    <div class="Inscription">
-        <div class="Phraseinscrit">
+    <div class="CssUnified">
+        <div class="Phrase">
             <p>Retourner à la page précédente</p>
         </div>
         <div class="piedDePage2">
