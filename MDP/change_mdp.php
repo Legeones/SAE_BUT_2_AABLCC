@@ -4,7 +4,7 @@
     <!-- Importation des fichiers de style -->
     <meta charset="UTF-8">
     <title>change mdp</title>
-    <link rel="stylesheet" href="../Connexion/ConnexionCss.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../Verif_Test/CSS.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 </head>
 <body>
