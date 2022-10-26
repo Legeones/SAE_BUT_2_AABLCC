@@ -87,12 +87,22 @@ session_start();
                 <button id="boutondebut2" style="background-color:#66CCCC" onclick="suivantCourt('formConfiance','formDPI','formContact'), changeCouleurBouton('boutondebut2','boutondebut','boutondebut1')"">Confiance</button>
 
             </div>
-            <form id="form" action="AjouterDPI_PHP.php" method="post">
+            <form id="form" action="AjouterDPIPHP.php" method="post">
                 <div id="formDPI" style="display: block">
                     <div class="Titreform">
                         <h1><u>Ajouter un DPI</u></h1>
                     </div>
                     <div class="Groupe">
+
+                        <?php if (isset($_SESSION['MessErreur']) && !empty($_SESSION['MessErreur'])):?>
+                            <div class="groupeErreur">
+                                <p>
+                                    <?= $_SESSION['MessErreur'] ?>
+                                    <?php $_SESSION['MessErreur'] = null ?>
+                                </p>
+                            </div>
+                        <?php endif ?>
+                        <p class="infoForm"><li><u>Certaine infomation ne son pas nessecaire et se défisse pas "*".</u></li></p>
                         <label> Nom : </label>
                         <input type="text" placeholder="Saisir un nom" name="nom" value="<?= $_SESSION['nomp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['nomf'])):?>
@@ -116,7 +126,7 @@ session_start();
 
                     <div class="Groupe">
                         <label> Date de Naissance : </label>
-                        <input type="date" placeholder="Saisir une date de naissance"  name="DDN"/>
+                        <input type="date" placeholder="Saisir une date de naissance"  name="DDN" value="<?= $_SESSION['DDNp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['DDNf'])):?>
                             <p>
                                 <?= $_SESSION['DDNf'] ?>
@@ -127,7 +137,7 @@ session_start();
 
                     <div class="Groupe">
                         <label> Taille en CM :</label>
-                        <input type="number"placeholder="Saisir une taille en cm" name="taille" />
+                        <input type="number"placeholder="Saisir une taille en cm" name="taille" value="<?= $_SESSION['taillep'] ?? '' ?>" />
                         <?php if (isset($_SESSION['taillef'])):?>
                             <p>
                                 <?= $_SESSION['taillef'] ?>
@@ -149,7 +159,7 @@ session_start();
 
                     <div class="Groupe">
                         <label> Adresse :</label>
-                        <input type="text" placeholder="Saisir une adresse" name="adresse" />
+                        <input type="text" placeholder="Saisir une adresse" name="adresse" value="<?= $_SESSION['adressep'] ?? '' ?>" />
                         <?php if (isset($_SESSION['adressef'])):?>
                             <p>
                                 <?= $_SESSION['adressef'] ?>
@@ -160,7 +170,7 @@ session_start();
 
                     <div class="Groupe">
                         <label> Code Postal : </label>
-                        <input type="number" placeholder="Saisir un code postal"  name="CP"/>
+                        <input type="number" placeholder="Saisir un code postal"  name="CP" value="<?= $_SESSION['CPp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['CPf'])):?>
                             <p>
                                 <?= $_SESSION['CPf'] ?>
@@ -171,7 +181,7 @@ session_start();
 
                     <div class="Groupe">
                         <label> Ville :</label>
-                        <input type="text"placeholder="Saisir une Ville" name="ville" />
+                        <input type="text"placeholder="Saisir une Ville" name="ville" value="<?= $_SESSION['villep'] ?? '' ?>" />
                         <?php if (isset($_SESSION['villef'])):?>
                             <p>
                                 <?= $_SESSION['villef'] ?>
@@ -182,7 +192,7 @@ session_start();
 
                     <div class="Groupe">
                         <label> Téléphone Personnel :</label>
-                        <input type="text" placeholder="Saisir un numéro de téléphone personnel" name="telperso" />
+                        <input type="text" placeholder="Saisir un numéro de téléphone personnel" name="telperso" value="<?= $_SESSION['telpersop'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['telpersof'])):?>
                             <p>
                                 <?= $_SESSION['telpersof'] ?>
@@ -192,40 +202,151 @@ session_start();
                     </div>
 
                     <div class="Groupe">
-                        <label> Téléphone Profesionnel : </label>
+                        <label> *Téléphone Profesionnel : </label>
                         <input type="text" placeholder="Saisir un numéro de téléphone professionnel"  name="telpro"/>
                     </div>
 
                     <div class="Groupe">
-                        <label> Allergies:</label>
+                        <label> *Allergies:</label>
                         <input type="text"placeholder="Saisir les allergies" name="allergies" />
                     </div>
 
                     <div class="Groupe">
-                        <label> Antecedents : </label>
+                        <label> *Antecedents : </label>
                         <input type="text" placeholder="Saisir les antécédents" name="antecedents" />
                     </div>
 
                     <div class="Groupe">
-                        <label> Obstericaux :</label>
+                        <label> *Obstericaux :</label>
                         <input type="text" placeholder="Saisir les Obsetricaux" name="Obs" />
                     </div>
 
                     <div class="Groupe">
-                        <label> Document Médicaux : </label>
+                        <label> *Document Médicaux : </label>
                         <input type="text" placeholder="Saisir le document médical"  name="docMed"/>
                     </div>
 
                     <div class="Groupe">
-                        <label> Document Chirurgicaux :</label>
+                        <label> *Document Chirurgicaux :</label>
                         <input type="text"placeholder="Saisir le document chirurgical" name="docChir" />
+                    </div>
+
+                    <div class="Groupe1">
+                        <label> Mesure de protection :</label>
+                        <div class="Boolean">
+                            <input type="radio" name="MP" value="1">
+                            <label>OUI</label>
+                            <input type="radio" name="MP" value="0">
+                            <label>NON</label>
+                        </div>
+                    </div>
+
+                    <div class="Groupe1">
+                        <label> A-il une Assistante Sociale :</label>
+                        <div class="Boolean">
+                            <input type="radio" name="AC" value="1">
+                            <label>OUI</label>
+                            <input type="radio" name="AC" value="0">
+                            <label>NON</label>
+                        </div>
+                    </div>
+
+                    <div class="Groupe">
+                        <label> *Mode de Vie :</label>
+                        <input type="text"placeholder="Saisir le mode de vie" name="MDV" />
+                    </div>
+
+                    <div class="Groupe">
+                        <label> Synthèse d'Entrée :</label>
+                        <input type="text"placeholder="Saisir la sythèse d'entrée" name="synEntree" />
+                    </div>
+
+                    <div class="Groupe">
+                        <label> *Traitement à domicile :</label>
+                        <input type="text"placeholder="Saisir le traitement à domicile" name="tradomi" />
+                    </div>
+
+                    <div class="Groupe">
+                        <label> *Donnée physique et/ou psychologique :</label>
+                        <input type="text"placeholder="Saisir les Données physiques et/ou psychologiques " name="doPhyPsy" />
+                    </div>
+
+                    <div class="Groupe1">
+                        <label> Capacité à se Déplacer :</label>
+                        <div class="Boolean">
+                            <input type="radio" name="CD" value="1">
+                            <label>Autonome</label>
+                            <input type="radio" name="CD" value="2">
+                            <label>Aide Partielle</label>
+                            <input type="radio" name="CD" value="3">
+                            <label>Aide Totale</label>
+                        </div>
+                    </div>
+
+                    <div class="Groupe1">
+                        <label> Capacité à Manger :</label>
+                        <div class="Boolean">
+                            <input type="radio" name="CM" value="1">
+                            <label>Autonome</label>
+                            <input type="radio" name="CM" value="2">
+                            <label>Aide Partielle</label>
+                            <input type="radio" name="CM" value="3">
+                            <label>Aide Totale</label>
+                        </div>
+                    </div>
+
+                    <div class="Groupe1">
+                        <label> Capacité à se Laver:</label>
+                        <div class="Boolean">
+                            <input type="radio" name="CL" value="1">
+                            <label>Autonome</label>
+                            <input type="radio" name="CL" value="2">
+                            <label>Aide Partielle</label>
+                            <input type="radio" name="CL" value="3">
+                            <label>Aide Totale</label>
+                        </div>
+                    </div>
+
+                    <div class="Groupe1">
+                        <label> Capacité à aller au Toilette :</label>
+                        <div class="Boolean">
+                            <input type="radio" name="CT" value="1">
+                            <label>Autonome</label>
+                            <input type="radio" name="CT" value="2">
+                            <label>Aide Partielle</label>
+                            <input type="radio" name="CT" value="3">
+                            <label>Aide Totale</label>
+                        </div>
+                    </div>
+
+                    <div class="Groupe1">
+                        <label> Capacité à s'habiller :</label>
+                        <div class="Boolean">
+                            <input type="radio" name="Mob" value="1">
+                            <label>Autonome</label>
+                            <input type="radio" name="Mob" value="2">
+                            <label>Aide Partielle</label>
+                            <input type="radio" name="Mob" value="3">
+                            <label>Aide Totale</label>
+                        </div>
+                    </div>
+
+                    <div class="Groupe1">
+                        <label> Capacité de continance :</label>
+                        <div class="Boolean">
+                            <input type="radio" name="conti" value="1">
+                            <label>Autonome</label>
+                            <input type="radio" name="conti" value="2">
+                            <label>Aide Partielle</label>
+                            <input type="radio" name="conti" value="3">
+                            <label>Aide Totale</label>
+                        </div>
                     </div>
 
                     <div class="Validation" align="center">
                         <button type="button" id="boutonSuivant2" onclick="suivant('formDPI','formContact'), changeCouleurBouton('boutondebut1','boutondebut','boutondebut2')">Suivant !</button>
                     </div>
                 </div>
-
                 <!*****************************************************************************************************>
                 <div id="formContact" style="display:none">
                     <div class="Titreform">
@@ -233,7 +354,7 @@ session_start();
                     </div>
                     <div class="Groupe">
                         <label> Nom :</label>
-                        <input type="text" placeholder="Saisir le nom" name="nomCT" />
+                        <input type="text" placeholder="Saisir le nom" name="nomCT" value="<?= $_SESSION['nomCTp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['nomCTf'])):?>
                             <p>
                                 <?= $_SESSION['nomCTf'] ?>
@@ -244,7 +365,7 @@ session_start();
 
                     <div class="Groupe">
                         <label> Prénom : </label>
-                        <input type="text" placeholder="Saisir le prénom"  name="prenomCT"/>
+                        <input type="text" placeholder="Saisir le prénom"  name="prenomCT" value="<?= $_SESSION['prenomCTp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['prenomCTf'])):?>
                             <p>
                                 <?= $_SESSION['prenomCTf'] ?>
@@ -255,7 +376,7 @@ session_start();
 
                     <div class="Groupe">
                         <label> Téléphone :</label>
-                        <input type="text"placeholder="Saisir le numéro de téléphone" name="telCT" />
+                        <input type="text"placeholder="Saisir le numéro de téléphone" name="telCT" value="<?= $_SESSION['telCTp'] ?? '' ?>" />
                         <?php if (isset($_SESSION['telCTf'])):?>
                             <p>
                                 <?= $_SESSION['telCTf'] ?>
@@ -266,7 +387,7 @@ session_start();
 
                     <div class="Groupe">
                         <label> Lien Parenté :</label>
-                        <input type="text"placeholder="Saisir le lien parenté" name="lienCT" />
+                        <input type="text"placeholder="Saisir le lien parenté" name="lienCT" value="<?= $_SESSION['lienCTp'] ?? '' ?>" />
                         <?php if (isset($_SESSION['lienCTf'])):?>
                             <p>
                                 <?= $_SESSION['lienCTf'] ?>
@@ -288,7 +409,7 @@ session_start();
                     </div>
                     <div class="Groupe">
                         <label> Nom :</label>
-                        <input type="text" placeholder="Saisir le nom" name="nomC" />
+                        <input type="text" placeholder="Saisir le nom" name="nomC" value="<?= $_SESSION['nomCp'] ?? '' ?>" />
                         <?php if (isset($_SESSION['nomCf'])):?>
                             <p>
                                 <?= $_SESSION['nomCf'] ?>
@@ -299,7 +420,7 @@ session_start();
 
                     <div class="Groupe">
                         <label> Prénom : </label>
-                        <input type="text" placeholder="Saisir le prénom"  name="prenomC"/>
+                        <input type="text" placeholder="Saisir le prénom"  name="prenomC" value="<?= $_SESSION['prenomCp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['prenomCf'])):?>
                             <p>
                                 <?= $_SESSION['prenomCf'] ?>
@@ -310,7 +431,7 @@ session_start();
 
                     <div class="Groupe">
                         <label> Téléphone :</label>
-                        <input type="text"placeholder="Saisir le numéro de téléphone" name="telC" />
+                        <input type="text"placeholder="Saisir le numéro de téléphone" name="telC" value="<?= $_SESSION['telCp'] ?? '' ?>" />
                         <?php if (isset($_SESSION['telCf'])):?>
                             <p>
                                 <?= $_SESSION['telCf'] ?>
@@ -321,7 +442,7 @@ session_start();
 
                     <div class="Groupe">
                         <label> Lien Parenté :</label>
-                        <input type="text"placeholder="Saisir le lien parenté" name="lienC" />
+                        <input type="text"placeholder="Saisir le lien parenté" name="lienC" value="<?= $_SESSION['lienCp'] ?? '' ?>" />
                         <?php if (isset($_SESSION['lienCf'])):?>
                             <p>
                                 <?= $_SESSION['lienCf'] ?>
@@ -337,10 +458,28 @@ session_start();
                 </div>
             </form>
             <?php $_SESSION['nomp'] = null ;
+            $_SESSION['prenomp']= null;
+            $_SESSION['DDNp'] = null;
+            $_SESSION['taillep'] = null;
             $_SESSION['poidsp'] =null;
-            $_SESSION['prenomp']= null ?>
+            $_SESSION['adressep'] =null;
+            $_SESSION['CPp'] =null;
+            $_SESSION['villep'] =null;
+            $_SESSION['telpersop'] =null;
+
+            $_SESSION['nomCTp'] =null;
+            $_SESSION['prenomCTp'] =null;
+            $_SESSION['telCTp'] =null;
+            $_SESSION['lienCTp'] =null;
+
+            $_SESSION['nomCp'] =null;
+            $_SESSION['prenomCp'] =null;
+            $_SESSION['telCp'] =null;
+            $_SESSION['lienCp'] =null;
+            ?>
         </div>
     </div>
+</div>
 </body>
 </html>
 

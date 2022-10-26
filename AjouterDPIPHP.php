@@ -7,6 +7,7 @@ try {
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+
         $erreurs = [];
 
         if (empty($_POST['nom'])){
@@ -54,62 +55,99 @@ try {
         }
         else{$_SESSION['poidsp'] = $_POST['poids'];}
 
-        /*
         if (empty($_POST['adresse'])) {
             $erreurs['adresse'] = "<p style='color:red'>L'adresse est obligatoire</p>";
             $_SESSION['adressef'] = $erreurs['adresse'];
+            $_SESSION['adressep'] = null;
         }
+        else{$_SESSION['adressep'] = $_POST['adresse'];}
+
         if (empty($_POST['CP'])) {
             $erreurs['CP'] = "<p style='color:red'>Le code postale est obligatoire</p>";
             $_SESSION['CPf'] = $erreurs['CP'];
+            $_SESSION['CPp'] = null;
         }
+        else{$_SESSION['CPp'] = $_POST['CP'];}
+
         if (empty($_POST['ville'])) {
             $erreurs['ville'] = "<p style='color:red'>La ville est obligatoire</p>";
             $_SESSION['villef'] = $erreurs['ville'];
+            $_SESSION['villep'] = null;
         }
+        else{$_SESSION['villep'] = $_POST['ville'];}
+
         if (empty($_POST['telperso'])) {
             $erreurs['telperso'] = "<p style='color:red'>Le téléphone personnel est obligatoire</p>";
             $_SESSION['telpersof'] = $erreurs['telperso'];
+            $_SESSION['telpersop'] = null;
         }
+        else{$_SESSION['telpersop'] = $_POST['telperso'];}
 
+
+        if (!empty($erreurs)){
+            $_SESSION['MessErreur'] = "<p style='color:red'> !! Veuillez vérifier que le formulaire de comporte pas d'erreur !!</p>";
+        }
+        else{$_SESSION['MessErreur'] = null;}
         /*********************************************************************************************************/
-/*
+
         if (empty($_POST['nomCT'])) {
             $erreurs['nomCT'] = "<p style='color:red'>Le nom de la personne à contacter est obligatoire</p>";
             $_SESSION['nomCTf'] = $erreurs['nomCT'];
+            $_SESSION['nomCTp'] = null;
         }
+        else{$_SESSION['nomCTp'] = $_POST['nomCT'];}
+
         if (empty($_POST['prenomCT'])) {
             $erreurs['prenomCT'] = "<p style='color:red'>Le prenom de la personne à contacter est obligatoire</p>";
             $_SESSION['prenomCTf'] = $erreurs['prenomCT'];
+            $_SESSION['prenomCTp'] = null;
         }
+        else{$_SESSION['prenomCTp'] = $_POST['prenomCT'];}
+
         if (empty($_POST['telCT'])) {
             $erreurs['telCT'] = "<p style='color:red'>Le téléphone de la personne à contacter est obligatoire</p>";
             $_SESSION['telCTf'] = $erreurs['telCT'];
+            $_SESSION['telCTp'] = null;
         }
+        else{$_SESSION['telCTp'] = $_POST['telCT'];}
+
         if (empty($_POST['lienCT'])) {
             $erreurs['lienCT'] = "<p style='color:red'>Le lien familial de la personne à contacter est obligatoire</p>";
             $_SESSION['lienCTf'] = $erreurs['lienCT'];
+            $_SESSION['lienCTp'] = null;
         }
+        else{$_SESSION['lienCTp'] = $_POST['lienCT'];}
 
         /*********************************************************************************************************/
-/*
+
         if (empty($_POST['nomC'])) {
             $erreurs['nomC'] = "<p style='color:red'>Le nom de la personne de confiance est obligatoire</p>";
             $_SESSION['nomCf'] = $erreurs['nomC'];
+            $_SESSION['nomCp'] = null;
         }
+        else{$_SESSION['nomCp'] = $_POST['nomC'];}
+
         if (empty($_POST['prenomC'])) {
             $erreurs['prenomC'] = "<p style='color:red'>Le prenom du contact de confiance est obligatoire</p>";
             $_SESSION['prenomCf'] = $erreurs['prenomC'];
+            $_SESSION['prenomCp'] = null;
         }
+        else{$_SESSION['prenomCp'] = $_POST['prenomC'];}
+
         if (empty($_POST['telC'])) {
             $erreurs['telC'] = "<p style='color:red'>Le téléphone de la personne de confiance est obligatoire</p>";
             $_SESSION['telCf'] = $erreurs['telC'];
+            $_SESSION['telCp'] = null;
         }
+        else{$_SESSION['telCp'] = $_POST['telC'];}
+
         if (empty($_POST['lienC'])) {
             $erreurs['lienC'] = "<p style='color:red'>Le lien familial de la personne de confiance est obligatoire</p>";
             $_SESSION['lienCf'] = $erreurs['lienC'];
+            $_SESSION['lienCp'] = null;
         }
-*/
+        else{$_SESSION['lienCp'] = $_POST['lienC'];}
+
         if (empty($erreurs)) {
             $PDO = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;', 'postgres', 'Housezalex59330');
 
@@ -202,7 +240,7 @@ try {
 
 
         }
-        header('Location: http://localhost:63342/AjouterDPI.php/AjouterDPI.php?_ijt=sc2ldh7qsve9t7rbtjn44kf3pb&_ij_reload=RELOAD_ON_SAVE');
+        header('Location: AjouterDPI.php');
     }
 }
 catch (PDOException $e){

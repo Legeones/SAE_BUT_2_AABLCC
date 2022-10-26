@@ -35,6 +35,22 @@ input[type=number], input[type=date]{
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+
+.global .Groupe1 {
+    margin-right: 25px;
+    margin-top: 10px;
+    border: 6px solid white;
+    padding: 5px 20px 5px 5px;
+}
+
+.global .Groupe1 label{
+    font-size: 19px;
+}
+
+.global .Groupe1 .Boolean label{
+    font-size: 15px;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Handlee&family=Purple+Purse&display=swap');
 
 .global .bas .Titreform{
@@ -47,6 +63,16 @@ input[type=number], input[type=date]{
 
 .global .bas .Groupe{
     margin: 12px 0px;
+}
+.global .bas .Groupe .groupeErreur{
+    background-color: white;
+    border: 3px solid red;
+    width: 38%;
+    padding: 5px 5px;
+    margin-bottom: 10px;
+}
+.global .bas .Groupe li{
+    margin-bottom: 10px;
 }
 
 .global .bas .lesForms #boutondebut, #boutondebut1, #boutondebut2{
@@ -84,10 +110,6 @@ input[type=number], input[type=date]{
     width: 100%;
 }
 
-/*#gauche, #droite{
-    display: inline-block;
-    vertical-align: top;
-}*/
 .gauche{
     float: left;
     width: 20%;
