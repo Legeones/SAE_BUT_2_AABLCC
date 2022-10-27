@@ -1,0 +1,40 @@
+body {
+    background-image: url("https://static.vecteezy.com/ti/vecteur-libre/p1/4586062-blanc-gris-abstract-background-conception-de-fond-avec-style-propre-et-moderne-lisse-blanc-et-gris-fond-degrade-modele-vectoriel.jpg");
+    background-size: 2000px;
+    padding: 0px;
+    margin: 0px;
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    transform: translate(-50%,-50%);
+    font-family: 'Bungee Spice', cursive;
+    font-family: 'Handlee', cursive;
+    font-family: 'Purple Purse', cursive;
+}
+
+
+h1 {
+    font-size: 200%;
+    color: red;
+    text-align: center;
+    border-width:3px;
+    border-style:double;
+    border-color:black;
+    padding: 10px;
+}
+
+div {
+    font-size: 100%;
+    color: black;
+    text-align: center;
+    border-width:3px;
+    border-style:double;
+    border-color:black;
+}
+
+h3 {
+    font-size: 100%;
+    color: steelblue;
+    text-align: center;
+}
+Footer

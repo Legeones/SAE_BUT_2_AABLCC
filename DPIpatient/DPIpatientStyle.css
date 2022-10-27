@@ -1,0 +1,154 @@
+body{
+    background-color: white;
+    font-family: Arial;
+}
+
+#container h1{
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+h4{
+    font-size: 15px;
+}
+
+p{
+
+}
+
+.info{
+    margin-inline: 1px;
+}
+
+.info > p{
+    margin-inline-end: auto;
+}
+
+.global{
+    width: 100%;
+}
+.gauche{
+    float: left;
+    width: 20%;
+    background-color: white;
+    height: 90%;
+    position: absolute;
+    left: 0px;
+    top: 10%;
+    z-index: 1;
+    border-right: black solid;
+    border-width: thin;
+    box-shadow: 2px 0px 0px dimgrey;
+
+}
+.droite{
+    float: right;
+    width: auto;
+    height: 85.6%;
+    position: absolute;
+    right: 0px;
+    top: 10%;
+    left: 20.1%;
+    background-color: white;
+}
+
+header{
+    width: 100%;
+    float: left;
+    height: 10%;
+    position: absolute;
+    top: 0px;
+    left: 0%;
+    background-color: white;
+    border-bottom: black solid;
+    border-width: thin;
+    z-index: 2;
+    box-shadow: 0px 1px 0px dimgrey;
+}
+.btn-group button {
+    background-color: white; /* Green background */
+    border: 1px solid black; /* Green border */
+    color: black; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    margin-left: 3%;
+    width: 94%;
+    border-radius: 5px;
+    margin-top: 1%;
+    box-shadow: 2px 2px 2px dimgrey;
+    font-size: 15px;
+    font-family: "Gill Sans MT";
+    font-weight: bold;
+
+}
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: cornflowerblue;
+    box-shadow: 1px 1px 1px dimgrey;
+}
+.profile{
+    width: 95%;
+    height: 40%;
+    background-color: dimgrey;
+    margin: 2% 1% 1% 2%;
+    border-radius: 5px;
+    border: black solid;
+}
+.logo {
+    width: 10%;
+    height: 90%;
+    margin-top: 0.25%;
+    margin-left: 0.25%;
+
+}
+
+.btn-line{
+    background-color: white; /* Green background */
+    color: black; /* White text */
+    width: 100%;
+    box-shadow: 2px 2px 2px dimgrey;
+    font-size: 15px;
+    font-family: "Gill Sans MT";
+    font-weight: bold;
+    float: right;
+}
+.btn-line > input{
+    width: 13.990%;
+    height: 8%;
+    cursor: pointer;
+    background-color: white;
+
+}
+.btn-line:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+table,
+td {
+    border: 1px solid #333;
+}
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
+
+.container {
+    width: 98%;
+    height: 90.5%;
+    padding: 1%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}
