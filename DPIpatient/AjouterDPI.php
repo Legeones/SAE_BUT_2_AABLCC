@@ -322,11 +322,11 @@ session_start();
                     <div class="Groupe1">
                         <label> Capacité à s'habiller :</label>
                         <div class="Boolean">
-                            <input type="radio" name="Mob" value="1">
+                            <input type="radio" name="CH" value="1">
                             <label>Autonome</label>
-                            <input type="radio" name="Mob" value="2">
+                            <input type="radio" name="CH" value="2">
                             <label>Aide Partielle</label>
-                            <input type="radio" name="Mob" value="3">
+                            <input type="radio" name="CH" value="3">
                             <label>Aide Totale</label>
                         </div>
                     </div>

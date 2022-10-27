@@ -236,6 +236,18 @@ try {
             $Patient1->bindParam(17, $_POST['docChir']);
             $Patient1->bindParam(18, $confiance1);
             $Patient1->bindParam(19, $contacte1);
+            $Patient1->bindParam(20, $_POST['MP']);
+            $Patient1->bindParam(21, $_POST['AC']);
+            $Patient1->bindParam(22, $_POST['MDV']);
+            $Patient1->bindParam(23, $_POST['synEntree']);
+            $Patient1->bindParam(24, $_POST['tradomi']);
+            $Patient1->bindParam(25, $_POST['doPhyPsy']);
+            $Patient1->bindParam(26, $_POST['CD']);
+            $Patient1->bindParam(27, $_POST['CM']);
+            $Patient1->bindParam(28, $_POST['CL']);
+            $Patient1->bindParam(29, $_POST['CT']);
+            $Patient1->bindParam(30, $_POST['CH']);
+            $Patient1->bindParam(31, $_POST['conti']);
             $Patient1->execute();
 
 
