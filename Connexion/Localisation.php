@@ -5,7 +5,7 @@
 
     <meta charset="UTF-8">
     <title>Localisation</title>
-    <link rel="stylesheet" href="Localisation.css">
+    <link rel="stylesheet" href="../Verif_Test/CSS.css">
 <body>
 
 <!-- Zone d'écriture -->
