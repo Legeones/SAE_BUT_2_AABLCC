@@ -28,6 +28,17 @@ local {
     font-family: 'Purple Purse', cursive;
 }
 
+accueil h1 {
+    text-align: center;
+    border: none;
+    padding: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    border-radius: 8px;
+    background-color: gray;
+    color: lightskyblue;
+}
 
 local h1 {
     font-size: 200%;
