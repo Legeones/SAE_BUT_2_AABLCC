@@ -29,13 +29,13 @@ session_start();
             <button>JSAISPAS</button>
             <!-- choix du rôle -->
             <?php
-            echo '<br>';
-            if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='transition.php'>Passer en mode etu</button>";}
-            echo '<br>';
-            if ($_SESSION["Role"] == "admin") {echo "<button onclick=location.href='AttributionRole.php'>attribuer role</button>";}
-            echo '<br>';
-            if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='RetourMode.php'>retour mode prof</button>";}
-            $_SESSION['infosPatient']=[];
+            //echo '<br>';
+            //if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='transition.php'>Passer en mode etu</button>";}
+            //echo '<br>';
+            //if ($_SESSION["Role"] == "admin") {echo "<button onclick=location.href='AttributionRole.php'>attribuer role</button>";}
+            //echo '<br>';
+            //if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='RetourMode.php'>retour mode prof</button>";}
+            //$_SESSION['infosPatient']=[];
             ?>
         </div>
     </div>
@@ -53,15 +53,18 @@ session_start();
         </form>
         <script>
             function apparait(id){
+                console.log("wow");
                 var elt = document.getElementById(id);
                 if(elt.style.visibility=="visible"){
                     elt.style.visibility = "hidden";
                 } else {
                     elt.style.visibility = "visible";
                 }
+
             }
         </script>
-        <form name="choixPatient" action="actionDPI.php" method="post" class="grid-container">
+
+        <form name="choixPatient" action="actionDPI.php" method="post" class="grid-container" id="form">
             <?php
             for($i=1;$i<25;$i++){
                 $_SESSION['patientActuel']='patient'.$i;
@@ -71,8 +74,10 @@ session_start();
                 style="cursor:pointer;" <?php if(isset($_SESSION[$_SESSION['patientActuel']])){?>
                     onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)"<?php }?>
                           value = <?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];}?>>
-                    <div class="<?php if($_SESSION['idActuel']%6==0) echo 'hideLeft'; else echo 'hide'; ?>" id=<?php echo $_SESSION['idActuel'] ?>>
-                        <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']][0];?></div>
+
+                <div class="hide" id=<?php echo $_SESSION['idActuel'] ?>>
+                        <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']][0];?>
+                </div>
                 </input>
             <?php }
             ?>
