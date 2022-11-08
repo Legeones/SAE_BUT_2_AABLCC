@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Handlee&family=Purple+Purse&display=swap');
+
+body {
+    background-image: url("https://static.vecteezy.com/ti/vecteur-libre/p1/4586062-blanc-gris-abstract-background-conception-de-fond-avec-style-propre-et-moderne-lisse-blanc-et-gris-fond-degrade-modele-vectoriel.jpg");
+    background-size: 1550px;
+    padding: 0px;
+    margin: 0px;
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    transform: translate(-65%,-50%);
+    font-family: 'Bungee Spice', cursive;
+    font-family: 'Handlee', cursive;
+    font-family: 'Purple Purse', cursive;
+}
+
+h1 {
+    text-align: center;
+    border: none;
+    padding: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    border-radius: 8px;
+    background-color: gray;
+    color: lightskyblue;
+}
+
+form{
+    background-color: white;
+    padding: 35px 80px 35px 80px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 10px 5px 0 rgba(0, 0, 0, 0.24);
+    text-align: center;
+    border:5px solid blue;
+
+}
+
+.logo {
+    width: 20%;
+    height: 80%;
+
+}
+
+form .piedDePage .piedDePage2 .droite {
+    border-radius: 8px;
+    padding: 4px 7px 4px 7px;
+    font-size: 10px;
+    background-color: lightskyblue;
+    border: none;
+    color: black;
+    text-decoration: none;
+}
+
+form .gauche input {
+    margin-left: 600px;
+    background-color: lightskyblue;
+    border: none;
+    color: black;
+    padding : 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: -20px;
+    border-radius: 8px;
+
+}
+
+form .droite input {
+    margin-right: 600px;
+    background-color: lightskyblue;
+    border: none;
+    color: black;
+    padding : 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: -10px;
+    border-radius: 8px;
+}
