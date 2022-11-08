@@ -11,6 +11,8 @@ session_start();
     <img class="logo" src="../Images/logoIFSI.png">
 </header>
 <body>
+<!-- Zone de connexion -->
+
 <div class="global">
     <div class="gauche">
         <div class="profile" id="space-invader">
@@ -35,22 +37,31 @@ session_start();
             <input type="submit" name="imagerie" onmouseover="alterner('imagerie')" onmouseout="alterner('imagerie')" value="Imagerie">
             <input type="submit" name="courriers" onmouseover="alterner('courriers')" onmouseout="alterner('courriers')" value="Courriers">
         </form>
-        <div class="container">
-            <div class="info">
-                <h2>Données personnelles</h2>
-                <h4>Nom:<?php print($_SESSION['infosPersoPatient']['nom']) ?></h4>
-                <h4>Prenom:<?php print($_SESSION['infosPersoPatient']['prenom']) ?></h4>
-                <h4>Ville de naissance:</h4>
-                <h4>Date de naissance:<?php print($_SESSION['infosPersoPatient']['ddn']) ?></h4>
-                <h4>Poids:<?php print($_SESSION['infosPersoPatient']['poids_kg']) ?>kg</h4>
-                <h4>Taille:<?php print($_SESSION['infosPersoPatient']['taille_cm']) ?>cm</h4>
-                <h4>IEP:<?php print($_SESSION['infosPersoPatient']['iep']); ?></h4>
-                <h4>IPP: <?php print($_SESSION['infosPersoPatient']['ipp']); ?></h4>
-                <h4>Type hospitalisation: </h4>
-                <h4>Date d'admission: <?php print($_SESSION['infosPersoPatient']['datedebut']); ?></h4>
-                <h4>Date de sortie: <?php print($_SESSION['infosPersoPatient']['datefin']); ?></h4>
-            </div>
+        <div class="info">
+            <h2>Données personnelles</h2>
+            <h4>Nom:<?php print($_SESSION['infosPersoPatient']['nom']) ?></h4>
+            <h4>Prenom:<?php print($_SESSION['infosPersoPatient']['prenom']) ?></h4>
+            <h4>Ville de naissance:</h4>
+            <h4>Date de naissance:<?php print($_SESSION['infosPersoPatient']['ddn']) ?></h4>
+            <h4>Poids:<?php print($_SESSION['infosPersoPatient']['poids_kg']) ?>kg</h4>
+            <h4>Taille:<?php print($_SESSION['infosPersoPatient']['taille_cm']) ?>cm</h4>
+            <h4>IEP:<?php print($_SESSION['infosPersoPatient']['iep']); ?></h4>
+            <h4>IPP: <?php print($_SESSION['infosPersoPatient']['ipp']); ?></h4>
+            <h4>Type hospitalisation: </h4>
+            <h4>Date d'admission: <?php print($_SESSION['infosPersoPatient']['datedebut']); ?></h4>
+            <h4>Date de sortie: <?php print($_SESSION['infosPersoPatient']['datefin']); ?></h4>
         </div>
+        <div class="container">
+            <table>
+                <tr>Intervenants</tr>
+                <tr>
+                    <td>Date</td>
+                    <td>Profession</td>
+                    <td>Compte rendu</td>
+                </tr>
+            </table>
+        </div>
+
     </div>
 </div>
 </body>

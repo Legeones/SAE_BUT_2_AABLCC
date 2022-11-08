@@ -121,7 +121,7 @@ header{
     float: right;
 }
 .btn-line > input{
-    width: 13.990%;
+    width: 12.150%;
     height: 8%;
     cursor: pointer;
     background-color: white;
@@ -133,22 +133,52 @@ header{
     display: table;
 }
 
-table,
+table{
+    width: 100%;
+
+}
+tr {
+    border: black solid thin;
+}
 td {
-    border: 1px solid #333;
+    border: black solid thin;
 }
 
-thead,
-tfoot {
-    background-color: #333;
-    color: #fff;
-}
 
 .container {
     width: 98%;
-    height: 90.5%;
-    padding: 1%;
+    height: auto;
+    padding: 1% 1% 1% 1%;
     overflow-x: hidden;
     overflow-y: auto;
     text-align:justify;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: 96.6%;
+    gap: 5px;
+    background-color: lightgrey;
+    padding: 5px;
+    box-shadow: 3px 3px 3px 3px dimgrey;
+    font-family: Arial;
+    font-size: 11px;
+    z-index: 10;
+    position: absolute;
+}
+
+.grid-container > div {
+    background-color: white;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;
+    box-shadow: 3px 2px 2px dimgrey;
+    height: auto;
+    cursor: pointer;
+}
+
+.info-intern{
+    display: none;
 }
