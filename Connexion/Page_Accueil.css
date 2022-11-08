@@ -33,7 +33,7 @@ form{
     border-radius: 15px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 10px 5px 0 rgba(0, 0, 0, 0.24);
     text-align: center;
-    border:5px solid black;
+    border:5px solid blue;
 
 }
 
@@ -53,12 +53,27 @@ form .piedDePage .piedDePage2 .droite {
     text-decoration: none;
 }
 
-form .gauche {
-    position: absolute;
-    margin-right: 500px;
+form .gauche input {
+    margin-left: 600px;
+    background-color: lightskyblue;
+    border: none;
+    color: black;
+    padding : 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: -20px;
+    border-radius: 8px;
+
 }
 
-form .droite {
-    position:absolute;
-    margin-left: 550px;
+form .droite input {
+    margin-right: 600px;
+    background-color: lightskyblue;
+    border: none;
+    color: black;
+    padding : 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: -10px;
+    border-radius: 8px;
 }

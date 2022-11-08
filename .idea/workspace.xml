@@ -1,26 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf01e71b-028e-4a32-baed-ec2520a331db" name="Changes" comment="">
+    <list default="true" id="20d765c5-f117-4bf3-ac65-0264993d413b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BDD/DataBase_Core.php" beforeDir="false" afterPath="$PROJECT_DIR$/BDD/DataBase_Core.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BDD/DataBase_Dpi.php" beforeDir="false" afterPath="$PROJECT_DIR$/BDD/DataBase_Dpi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientBiologie.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientBiologie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientCourriers.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientCourriers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientDiagramme.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientDiagramme.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientImagerie.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientImagerie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientMacrocible.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientMacrocible.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientObservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientObservation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientPrescription.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientPrescription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/PrincipaleStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/PrincipaleStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/actionDPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/actionDPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/principale.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/principale.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/scriptsDPIpatient.js" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/scriptsDPIpatient.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,9 +37,6 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -73,7 +52,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cf01e71b-028e-4a32-baed-ec2520a331db" name="Changes" comment="" />
+      <changelist id="20d765c5-f117-4bf3-ac65-0264993d413b" name="Changes" comment="" />
       <created>1665221697650</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -101,9 +80,8 @@
       <workItem from="1666362078115" duration="1179000" />
       <workItem from="1666592197528" duration="4922000" />
       <workItem from="1666699515166" duration="564000" />
-      <workItem from="1666775938894" duration="635000" />
-      <workItem from="1666862889237" duration="1540000" />
-      <workItem from="1667896882618" duration="2677000" />
+      <workItem from="1666700572876" duration="3794000" />
+      <workItem from="1666764411259" duration="955000" />
     </task>
     <servers />
   </component>

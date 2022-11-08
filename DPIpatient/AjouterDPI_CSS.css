@@ -35,6 +35,22 @@ input[type=number], input[type=date]{
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+
+.global .Groupe1 {
+    margin-right: 25px;
+    margin-top: 10px;
+    border: 6px solid white;
+    padding: 5px 20px 5px 5px;
+}
+
+.global .Groupe1 label{
+    font-size: 19px;
+}
+
+.global .Groupe1 .Boolean label{
+    font-size: 15px;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Handlee&family=Purple+Purse&display=swap');
 
 .global .bas .Titreform{
@@ -48,34 +64,52 @@ input[type=number], input[type=date]{
 .global .bas .Groupe{
     margin: 12px 0px;
 }
+.global .bas .Groupe .groupeErreur{
+    background-color: white;
+    border: 3px solid red;
+    width: 38%;
+    padding: 5px 5px;
+    margin-bottom: 10px;
+}
+.global .bas .Groupe li{
+    margin-bottom: 10px;
+}
+
+.global .bas .lesForms #boutondebut, #boutondebut1, #boutondebut2{
+    background-color: wheat;
+    color: black;
+    margin: 0px 8px;
+    cursor: pointer;
+    width: 150px;
+    border: 1px solid gray;
+}
 
 .global .bas .Groupe label{
     font-size: 19px;
 }
 /* Set a style for all buttons */
-.global .bas input[type=submit] {
+.global .bas input[type=submit] , button[type=button]{
     background-color: white;
     color: black;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 8px 0px;
     border: none;
     cursor: pointer;
     width: 11%;
 }
-.global .bas input[type=submit]:hover {
+.global .bas input[type=submit]:hover , button[type=button]:hover {
     background-color: white;
     color: gray;
     border: 1px solid black;
 }
 
+.global .bas .Groupe p{
+    margin: -2px 5px;
+}
 .global{
     width: 100%;
 }
 
-/*#gauche, #droite{
-    display: inline-block;
-    vertical-align: top;
-}*/
 .gauche{
     float: left;
     width: 20%;
@@ -227,14 +261,22 @@ footer{
     background-color: gray;
     width: 96%;
     height: 84%;
-    padding: 2%;
+    padding: 0% 2% 2% 2%;
 
 }
 
-.global .bas form {
+.global .bas #form {
     background-color: wheat;
     width: 98%;
-    height: 95%;
+    height: 92%;
     overflow: auto;
 
+}
+.global .bas .lesForms button {
+    background-color: white;
+    color: black;
+    padding: 3px 20px;
+    margin: 2px;
+    border: none;
+    cursor: pointer;
 }

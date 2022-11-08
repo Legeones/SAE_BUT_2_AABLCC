@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Handlee&family=Purple+Purse&display=swap');
 
 body{
@@ -14,12 +13,27 @@ body{
     font-family: 'Handlee', cursive;
     font-family: 'Purple Purse', cursive;
 }
+
+.deconnexion h1 {
+     text-align: center;
+     border: none;
+     padding: 5px;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 1rem;
+     border-radius: 8px;
+     background-color: black;
+     color: lightskyblue;
+}
+
 form{
     background-color: white;
     padding: 35px 80px 35px 80px;
     width: 100%;
     border-radius: 15px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    text-align: center;
+    border:5px solid black;
 }
 form h1{
     font-size: 30px;
@@ -46,7 +60,14 @@ form .Formulaire .Groupe input{
     border : 2px solid gray;
     outline-color: cornflowerblue;
     border-radius: 5px;
+}
 
+form .Formulaire .Groupe textarea{
+    margin-top: 3px;
+    padding: 4px 7px 4px 2px;
+    border : 2px solid gray;
+    outline-color: cornflowerblue;
+    border-radius: 5px;
 }
 
 form .Validation input {
@@ -78,11 +99,11 @@ form .Separation2{
     background-color: cornflowerblue;
     margin: 1px;
 }
-form .Inscription .Phraseinscrit{
+form .CssUnified .Phrase{
     text-align: center;
 }
 
-form .Inscription .inscrit input{
+form .CssUnified .CSS1 input{
     background-color: lightskyblue;
     border: none;
     color: black;
@@ -95,19 +116,21 @@ form .Inscription .inscrit input{
 }
 
 
-form .Inscription .inscrit input:hover {
+form .CssUnified .CSS1 input:hover {
     background-color: black;
     color: lightskyblue;
 }
 
-form .Inscription .piedDePage2 .droite{
+form .CssUnified .piedDePage2 .droite{
+	text-align: center;
     position: absolute;
     left: 118%;
 }
 
-form .Inscription .piedDePage2 .droite input{
+form .CssUnified .piedDePage2 .droite input{
     border-radius: 90px;
     font-size: 17px;
+    padding: 4px 7px 4px 7px;
     background-color: lightskyblue;
     border: none;
     color: black;
@@ -115,14 +138,28 @@ form .Inscription .piedDePage2 .droite input{
     padding-left: 7px;
     padding-right: 7px;
 }
-form .Inscription .piedDePage2 .gauche{
+form .CssUnified .piedDePage2 .gauche{
     text-align: left;
     color: dodgerblue ;
 
 }
-form .Inscription .piedDePage2 {
+form .CssUnified .piedDePage2 {
     display: flex;
     margin-top: 13px;
+}
 
+.logo {
+    width: 20%;
+    height: 80%;
 
+}
+
+form.GroupeLOGO{
+    display: inline;
+    padding : 1px 2px 1em 4px;
+}
+
+form.eyes {
+    display: flow;
+    padding: 5px;
 }
