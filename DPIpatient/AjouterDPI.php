@@ -22,7 +22,7 @@ session_start();
         </div>
     </div>
     <div class="droite">
-        <form action="principale.php" method="get">
+        <form action="DPI.php" method="get">
             <input name="recherche_barre"/>
             <select name="select">
                 <option name="aucun">Aucun</option>

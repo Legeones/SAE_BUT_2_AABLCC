@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="20d765c5-f117-4bf3-ac65-0264993d413b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/AjouterDPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/AjouterDPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/principale.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Verif_Test/test_etu_prof.php" beforeDir="false" afterPath="$PROJECT_DIR$/Verif_Test/test_etu_prof.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +85,7 @@
       <workItem from="1666699515166" duration="564000" />
       <workItem from="1666700572876" duration="3794000" />
       <workItem from="1666764411259" duration="955000" />
+      <workItem from="1667899042757" duration="776000" />
     </task>
     <servers />
   </component>
