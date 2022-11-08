@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Page d'accueil</title>
     <!-- importation des fichiers de style -->
-    <link rel="stylesheet" href="Page_Accueil.css">
+    <link rel="stylesheet" href="../Verif_Test/CSS.css">
 
     <form>
         <h1>Bienvenue à l'IFSI de Maubeuge</h1>
@@ -13,10 +13,10 @@
         </header>
         </div>
         <div class="droite">
-            <input type="button" onclick="window.location.href ='Localisation.php';" value="Ou nous trouver ?"/>
+            <input type="button" onclick="window.location.href ='../Connexion/Localisation.php';" value="Ou nous trouver ?"/>
         </div>
         <div class="gauche">
-            <input type="button" onclick="window.location.href ='login.php';" value="Connexion "/>
+            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Connexion "/>
         </div>
     </form>
 </head>
