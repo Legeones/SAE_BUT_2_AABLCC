@@ -14,6 +14,46 @@ body{
     font-family: 'Purple Purse', cursive;
 }
 
+local {
+    background-image: url("https://static.vecteezy.com/ti/vecteur-libre/p1/4586062-blanc-gris-abstract-background-conception-de-fond-avec-style-propre-et-moderne-lisse-blanc-et-gris-fond-degrade-modele-vectoriel.jpg");
+    background-size: 1550px;
+    padding: 0px;
+    margin: 0px;
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    transform: translate(-50%,-50%);
+    font-family: 'Bungee Spice', cursive;
+    font-family: 'Handlee', cursive;
+    font-family: 'Purple Purse', cursive;
+}
+
+
+local h1 {
+    font-size: 200%;
+    color: red;
+    text-align: center;
+    border-width:3px;
+    border-style:double;
+    border-color:black;
+    padding: 10px;
+}
+
+local div {
+    font-size: 100%;
+    color: black;
+    text-align: center;
+    border-width:3px;
+    border-style:double;
+    border-color:black;
+}
+
+local h3 {
+    font-size: 100%;
+    color: steelblue;
+    text-align: center;
+}
+
 .deconnexion h1 {
      text-align: center;
      border: none;
@@ -163,3 +203,5 @@ form.eyes {
     display: flow;
     padding: 5px;
 }
+
+Footer
