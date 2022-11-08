@@ -12,13 +12,6 @@ session_start();
     <img class="logo" src="https://moodle.uphf.fr/pluginfile.php/358899/mod_resource/content/1/logoIFSI.png">
 </header>
 <div class="global">
-    <!--<script type="text/javascript">
-        $(document).ready(function(){
-            $("#showit").click(function(){
-                $("#myform").css("display","block");
-            });
-        });
-    </script>-->
     <!-- Zone de connexion -->
 
     <div class="gauche">
