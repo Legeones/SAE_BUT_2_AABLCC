@@ -4,7 +4,7 @@
 
     <meta charset="UTF-8">
     <title>Aide</title>
-    <link rel="stylesheet" href="../Connexion/AideCss.css">
+    <link rel="stylesheet" href="../Verif_Test/CSS.css">
 </head>
 <body>
 <!-- Zone de connexion -->
