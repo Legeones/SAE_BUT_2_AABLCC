@@ -33,6 +33,7 @@
     Par le bus (réseau Stibus) : arrêt Calmette au pied de l’Institut ligne C ou D de la ligne 62 ou 64 ou navette Citadine <br>
     Par la route : départementale 195 (N° 44 boulevard Pasteur)</h4>
 
+    <!-- zone de connexion -->
 
     <div class="droite">
         <a href="Page_Accueil.php"><strong>Retour</strong></a>

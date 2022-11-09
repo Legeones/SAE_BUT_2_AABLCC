@@ -3,9 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="20d765c5-f117-4bf3-ac65-0264993d413b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BDD/DataBase.php" beforeDir="false" afterPath="$PROJECT_DIR$/BDD/DataBase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Aide.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Aide.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Aide_Send.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Aide_Send.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Deconnexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Deconnexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Localisation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Localisation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Page_Accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Page_Accueil.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DPIpatient/AjouterDPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/AjouterDPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/principale.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Verif_Test/test_etu_prof.php" beforeDir="false" afterPath="$PROJECT_DIR$/Verif_Test/test_etu_prof.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/AjouterDPIPHP.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/AjouterDPIPHP.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
