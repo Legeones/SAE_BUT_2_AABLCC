@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../Verif_Test/CSS.css" media="screen" type="text/css" />
     <title>Inscription</title>
 </head>
-<body>
+<body id="general">
 <!-- Zone de connexion -->
 
 <form action="Verification_KeyCode.php" method="post">
