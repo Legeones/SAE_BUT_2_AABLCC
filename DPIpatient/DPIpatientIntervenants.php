@@ -59,6 +59,17 @@ session_start();
                     </div>
                 </div>
             </div>
+
+        </div>
+        <div class="table-container">
+            <table>
+                <tr>Intervenants</tr>
+                <tr>
+                    <td>Date</td>
+                    <td>Profession</td>
+                    <td>Compte rendu</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

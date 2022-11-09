@@ -9,9 +9,10 @@ session_start();
     <link rel="stylesheet" href="DPIpatientStyle.css" media="screen" type="text/css" />
 </head>
 <header>
-    <img class="logo" src="https://moodle.uphf.fr/pluginfile.php/358899/mod_resource/content/1/logoIFSI.png">
+    <img class="logo" src="../Images/logoIFSI.png">
 </header>
 <body>
+<script type="text/javascript" src="scriptsDPIpatient.js"></script>
 <div class="global">
     <div class="gauche">
         <div class="profile">
@@ -26,112 +27,132 @@ session_start();
     <div class="droite">
         <form action="actionDPI.php" name="cat" method="get" class="btn-line">
             <!-- zone d'ajout de boutons -->
-            <input type="submit" name="macrocible" onmouseover="alterner('macrocible')" onmouseout="alterner('macrocible')" value="macrocible">
-            <input type="submit" name="observation" onmouseover="alterner('observation')" onmouseout="alterner('observation')" value="Observation médicale">
-            <input type="submit" name="prescription" onmouseover="alterner('prescription')" onmouseout="alterner('prescription')" value="Prescription">
-            <input type="submit" name="diagramme" onmouseover="alterner('diagramme')" onmouseout="alterner('diagramme')" value="Diagramme de soins">
-            <input type="submit" name="biologie" onmouseover="alterner('biologie')" onmouseout="alterner('biologie')" value="Biologie">
-            <input type="submit" name="imagerie" onmouseover="alterner('imagerie')" onmouseout="alterner('imagerie')" value="Imagerie">
-            <input type="submit" name="courrier" onmouseover="alterner('courrier')" onmouseout="alterner('courrier')" value="Courriers">
+            <input type="submit" id="macrocible" name="macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">
+            <input type="submit" id="observation" name="observation" onmouseover="alterner('observation');" onmouseout="alterner('observation');" value="Observation médicale">
+            <input type="submit" id="prescription" name="prescription" onmouseover="alterner('prescription');" onmouseout="alterner('prescription');" value="Prescription">
+            <input type="submit" id="intervenants" name="intervenants" onmouseover="alterner('intervenants');" onmouseout="alterner('intervenants');" value="Intervenants">
+            <input type="submit" id="diagramme" name="diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
+            <input type="submit" id="biologie" name="biologie" onmouseover="alterner('biologie');" onmouseout="alterner('biologie');" value="Biologie">
+            <input type="submit" id="imagerie" name="imagerie" onmouseover="alterner('imagerie');" onmouseout="alterner('imagerie');" value="Imagerie">
+            <input type="submit" id="courriers" name="courriers" onmouseover="alterner('courriers');" onmouseout="alterner('courriers');" value="Courriers">
         </form>
         <script type="text/javascript">
 
         </script>
-        <div class="container">
-            <?php
-            //print_r($_SESSION['infosPatient']);
-            ?>
-            <NOBR>
-            <div class="info">
-                <h2>Données personnelles</h2>
-                <h4>Nom:<?php print($_SESSION['infosPatient'][2]) ?></h4>
-                <h4>Prenom:<?php print($_SESSION['infosPatient'][3]) ?></h4>
-                <h4>Ville de naissance:</h4>
-                <h4>Date de naissance:<?php print($_SESSION['infosPatient'][4]) ?></h4>
-                <h4>Poids:<?php print($_SESSION['infosPatient'][5]) ?>kg</h4>
-                <h4>Taille:<?php print($_SESSION['infosPatient'][6]) ?>cm</h4>
-                <h4>IEP:<?php print($_SESSION['infosPatient'][1]); ?></h4>
-                <h4>IPP: <?php print($_SESSION['infosPatient'][0]); ?></h4>
-                <h4>Type hospitalisation: </h4>
-                <h4>Date d'admission: <?php print($_SESSION['infosPatient'][31]); ?></h4>
-                <h4>Date de sortie: <?php print($_SESSION['infosPatient'][32]); ?></h4>
-            </div>
-            <div class="info">
-                <h2>Données administratives</h2>
-                <h4>Adresse: </h4>
-                <p><?php print($_SESSION['infosPatient'][7].", ".$_SESSION['infosPatient'][8]." ".$_SESSION['infosPatient'][9]) ?></p>
-                <h4>Tel personnel:</h4>
-                <p><?php print($_SESSION['infosPatient'][10]); ?></p>
-                <h4>Tel professionnel:</h4>
-                <p><?php print($_SESSION['infosPatient'][11]); ?></p>
-                <h4>Personne a prevenir:</h4>
-                <p><?php print("Nom: ".$_SESSION['infosPatient'][26].", prénom: ".$_SESSION['infosPatient'][27]." (".$_SESSION['infosPatient'][29].")"); ?></p>
-                <p><?php print("Tel: ".$_SESSION['infosPatient'][28])?></p>
-                <h4>Personne de confiance:</h4>
-                <p><?php print("Nom: ".$_SESSION['infosPatient'][20].", prénom: ".$_SESSION['infosPatient'][21]." (".$_SESSION['infosPatient'][23].")")?></p>
-                <p><?php print("Tel: ".$_SESSION['infosPatient'][22])?></p>
-            </div>
-            <div class="info">
-                <h2>Données sociales</h2>
-                <h4>Mesure de protection: A implementer</h4>
-                <h4>Suivi assistant social: A implementer</h4>
-            </div>
-            <div class="info">
-                <h2>Infos médicales</h2>
-                <h4>Medecin traitant:</h4>
-                <h4>Medecin specialisé:</h4>
-                <h4>Medecin referent:</h4>
-            </div>
-            <div class="info">
-                <h2>Données médicales</h2>
-                <h4>Allergies:</h4>
-                <p><?php print($_SESSION['infosPatient'][12]); ?></p>
-                <h4>Antecedents:</h4>
-                <p><?php print($_SESSION['infosPatient'][13]); ?></p>
-                <h4>Obstetricaux:</h4>
-                <p><?php print($_SESSION['infosPatient'][14]); ?></p>
-                <h4>Medicaux:</h4>
-                <p><?php print($_SESSION['infosPatient'][15]); ?></p>
-                <h4>Chirurgicaux:</h4>
-                <p><?php print($_SESSION['infosPatient'][16]); ?></p>
-            </div>
-            <div class="info">
-                <h2>Traitement à domicile</h2>
-                <p></p>
-            </div>
-            <div class="info">
-                <h2>Macrocible d'entrée</h2>
-                <h4>Synthèse d'entrée</h4>
-                <p><?php print($_SESSION['infosPatient'][10]); ?></p>
-                <p></p>
-                <h4>Bilan d'autonomie:</h4>
-                <table>
-                    <tbody>
-                    <tr>
-                        <td>Mobilité</td>
-                        <td>Oui</td>
-                    </tr>
-                    <tr>
-                        <td>Alimentation</td>
-                        <td>Oui</td>
-                    </tr>
-                    <tr>
-                        <td>Hygiène corporelle</td>
-                        <td>Oui</td>
-                    </tr>
-                    <tr>
-                        <td>Elimination</td>
-                        <td>Oui</td>
-                    </tr>
-                    <tr>
-                        <td>Habillement</td>
-                        <td>Oui</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <p>Légende : 1 autonome / 2 avec aide partielle  / 3 avec aide totale</p>
-            </div>
 
+        <div class="container" >
+            <div class="grid-container">
+
+                <div class="info" onclick="show_data_patient_div('donn-perso');">
+                    <h2>Données personnelles</h2>
+                    <div class="info-intern" id="donn-perso">
+
+                        <h4>Nom:<?php print($_SESSION['infosPersoPatient']['nom']) ?></h4>
+                        <h4>Prenom:<?php print($_SESSION['infosPersoPatient']['prenom']) ?></h4>
+                        <h4>Ville de naissance:</h4>
+                        <h4>Date de naissance:<?php print($_SESSION['infosPersoPatient']['ddn']) ?></h4>
+                        <h4>Poids:<?php print($_SESSION['infosPersoPatient']['poids_kg']) ?>kg</h4>
+                        <h4>Taille:<?php print($_SESSION['infosPersoPatient']['taille_cm']) ?>cm</h4>
+                        <h4>IEP:<?php print($_SESSION['infosPersoPatient']['iep']); ?></h4>
+                        <h4>IPP: <?php print($_SESSION['infosPersoPatient']['ipp']); ?></h4>
+                        <h4>Type hospitalisation: </h4>
+                        <h4>Date d'admission: <?php print($_SESSION['infosPersoPatient']['datedebut']); ?></h4>
+                        <h4>Date de sortie: <?php print($_SESSION['infosPersoPatient']['datefin']); ?></h4>
+                    </div>
+                </div>
+            <div class="info" onclick="show_data_patient_div('donn-admin');">
+                <h2>Données administratives</h2>
+                <div class="info-intern" id="donn-admin">
+                    <h4>Adresse: </h4>
+                    <p><?php print($_SESSION['infosPatient'][7].", ".$_SESSION['infosPatient'][8]." ".$_SESSION['infosPatient'][9]) ?></p>
+                    <h4>Tel personnel:</h4>
+                    <p><?php print($_SESSION['infosPatient'][10]); ?></p>
+                    <h4>Tel professionnel:</h4>
+                    <p><?php print($_SESSION['infosPatient'][11]); ?></p>
+                    <h4>Personne a prevenir:</h4>
+                    <p><?php print("Nom: ".$_SESSION['infosPatient'][26].", prénom: ".$_SESSION['infosPatient'][27]." (".$_SESSION['infosPatient'][29].")"); ?></p>
+                    <p><?php print("Tel: ".$_SESSION['infosPatient'][28])?></p>
+                    <h4>Personne de confiance:</h4>
+                    <p><?php print("Nom: ".$_SESSION['infosPatient'][20].", prénom: ".$_SESSION['infosPatient'][21]." (".$_SESSION['infosPatient'][23].")")?></p>
+                    <p><?php print("Tel: ".$_SESSION['infosPatient'][22])?></p>
+                </div>
+            </div>
+            <div class="info" onclick="show_data_patient_div('donn-soc');">
+                <h2>Données sociales</h2>
+                <div class="info-intern" id="donn-soc">
+                    <h4>Mesure de protection: A implementer</h4>
+                    <h4>Suivi assistant social: A implementer</h4>
+                </div>
+
+            </div>
+            <div class="info" onclick="show_data_patient_div('info-medi');">
+                <h2>Infos médicales</h2>
+                <div class="info-intern" id="info-medi">
+                    <h4>Medecin traitant:</h4>
+                    <h4>Medecin specialisé:</h4>
+                    <h4>Medecin referent:</h4>
+                </div>
+
+            </div>
+            <div class="info" onclick="show_data_patient_div('donn-medi');">
+                <h2>Données médicales</h2>
+                <div class="info-intern" id="donn-medi">
+                    <h4>Allergies:</h4>
+                    <p><?php print($_SESSION['infosPatient'][12]); ?></p>
+                    <h4>Antecedents:</h4>
+                    <p><?php print($_SESSION['infosPatient'][13]); ?></p>
+                    <h4>Obstetricaux:</h4>
+                    <p><?php print($_SESSION['infosPatient'][14]); ?></p>
+                    <h4>Medicaux:</h4>
+                    <p><?php print($_SESSION['infosPatient'][15]); ?></p>
+                    <h4>Chirurgicaux:</h4>
+                    <p><?php print($_SESSION['infosPatient'][16]); ?></p>
+                </div>
+
+            </div>
+            <div class="info" onclick="show_data_patient_div('trait-dom');">
+                <h2>Traitement à domicile</h2>
+                <div class="info-intern" id="trait-dom">
+                    <p>Vide</p>
+                </div>
+
+            </div>
+            <div class="info" onclick="show_data_patient_div('macro-ent');">
+                <h2>Macrocible d'entrée</h2>
+                <div class="info-intern" id="macro-ent">
+                    <h4>Synthèse d'entrée</h4>
+                    <p><?php print($_SESSION['infosPatient'][10]); ?></p>
+                    <p></p>
+                    <h4>Bilan d'autonomie:</h4>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Mobilité</td>
+                            <td><?php print($_SESSION['infosPatient']['mobilite'])?></td>
+                        </tr>
+                        <tr>
+                            <td>Alimentation</td>
+                            <td><?php print($_SESSION['infosPatient']['alimentation'])?></td>
+                        </tr>
+                        <tr>
+                            <td>Hygiène corporelle</td>
+                            <td><?php print($_SESSION['infosPatient']['hygiene'])?></td>
+                        </tr>
+                        <tr>
+                            <td>Elimination</td>
+                            <td><?php print($_SESSION['infosPatient']['toilette'])?></td>
+                        </tr>
+                        <tr>
+                            <td>Habillement</td>
+                            <td><?php print($_SESSION['infosPatient']['habit'])?></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p>Légende : 1 autonome / 2 avec aide partielle  / 3 avec aide totale</p>
+                </div>
+
+            </div>
+        </div>
 
         </div>
     </div>

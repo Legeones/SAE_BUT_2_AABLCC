@@ -58,6 +58,13 @@ function Patient_Parcour($p,$rm){
 
 function Data_Patient_Querry($nomPatient, $nomCateg){
     $pdo = DataBase_Creator_Unit();
+    $info = $pdo->prepare("SELECT patient.ipp, iep, nom, prenom, ddn, ville, poids_kg, taille_cm, datedebut, datefin FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE patient.nom = ?");
+    $info -> bindParam(1,$nomPatient);
+    $info->execute();
+    $_SESSION['infosPersoPatient']=[];
+    foreach ($info as $item){
+        $_SESSION['infosPersoPatient']+=$item;
+    }
     if ($nomCateg == "macrocible"){
         $stmt = $pdo->prepare("SELECT * FROM patient LEFT JOIN personneconfiance p on patient.idpcon = p.idpcon LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel LEFT JOIN admission a on patient.ipp = a.ipp LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp WHERE patient.nom = ?");
         $stmt -> bindParam(1,$nomPatient);
@@ -65,7 +72,7 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
         $_SESSION['infosPatient']=[];
 
     } elseif ($nomCateg == "observation"){
-        $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
+        $stmt = $pdo->prepare("SELECT * FROM patient WHERE patient.nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
