@@ -6,7 +6,7 @@
     <title>Aide</title>
     <link rel="stylesheet" href="../Verif_Test/CSS.css">
 </head>
-<body>
+<body id="general">
 <!-- Zone de connexion -->
 
 <form action="Aide_Send.php" method="POST">
