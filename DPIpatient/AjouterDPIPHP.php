@@ -69,6 +69,10 @@ try {
             $erreurs['CP'] = "<p style='color:red'>Le code postal est obligatoire</p>";
             $_SESSION['CPf'] = $erreurs['CP'];
             $_SESSION['CPp'] = null;
+        } elseif ($_POST['CP']<= 10000 || $_POST['CP'] >= 99999) {
+            $erreurs['CP'] = "<p style='color:red'>Le code postal invalide</p>";
+            $_SESSION['CPf'] = $erreurs['CP'];
+            $_SESSION['CPp'] = null;
         } else {
             $_SESSION['CPp'] = $_POST['CP'];
         }
