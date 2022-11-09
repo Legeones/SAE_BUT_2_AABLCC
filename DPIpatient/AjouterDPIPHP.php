@@ -55,7 +55,8 @@ try {
             $erreurs['poids'] = "<p style='color:red'>Le poids est trop grand</p>";
             $_SESSION['poidsf'] = $erreurs['poids'];
             $_SESSION['poidsp'] = $_POST['poids'];
-        } else {
+        }
+        else {
             $_SESSION['poidsp'] = $_POST['poids'];
         }
 // Ici une erreur est affiché si l'adresse de la personne n'est pas renseigné //
