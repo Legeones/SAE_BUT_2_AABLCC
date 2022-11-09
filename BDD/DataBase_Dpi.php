@@ -177,7 +177,7 @@ function DataBase_Attribute_Role($ID,$Role)
                 $stmt->bindParam(2, $_POST["ID"]);
                 
                 $stmt->execute();
-                header('Location: login.php');
+                header('Location: ../DPIpatient/DPI.php');
             } catch (PDOException $e) {
                 print "Erreur !: " . $e->getMessage() . "<br/>";
                 die();

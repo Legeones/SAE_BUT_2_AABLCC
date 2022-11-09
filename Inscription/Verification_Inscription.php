@@ -18,7 +18,7 @@ $VerifEmail=VerifEmail($_POST["email"]);
 session_start();
 $_SESSION['EMAIL'] = $_POST['email'];
 $_SESSION['IDENTIFIANT'] = $_POST['ID'];
-$_SESSION['ROLE'] = 'etu';
+$_SESSION['ROLE'] = 'etudiant';
 $_SESSION['PASSWORD'] = $_POST["Password_A"];
 
 if ($resVerifPassword_Equality==0){
@@ -54,6 +54,6 @@ elseif ($VerifEmail==0){
 }
 
 else
-{ MailPreparator(1,$_POST['mail']); }
+{ MailPreparator(1,$_POST['email']); }
 
 ?>
