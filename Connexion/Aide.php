@@ -38,7 +38,7 @@
 
 
         <?php
-
+    //Gestion des erreurs//
     if(isset($_GET['erreur'])){
         $err = $_GET['erreur'];
         if($err==1){
@@ -50,7 +50,7 @@
         }
     }
     ?>
-        
+        <!-- zone de connexion -->
     </div>
     <div class="Separation2"></div>
     <div class="Inscription">

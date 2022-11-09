@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../Verif_Test/CSS.css">
 
 <form>
+    <!-- zone de connexion -->
     <div class="deconnexion">
     <h1>Vous avez été déconnecté avec succès</h1>
     <header>

@@ -12,6 +12,7 @@
             <img class="logo" src="https://moodle.uphf.fr/pluginfile.php/358899/mod_resource/content/1/logoIFSI.png">
         </header>
         </div>
+        <!-- Ajout de boutons -->
         <div class="droite">
             <input type="button" onclick="window.location.href ='../Connexion/Localisation.php';" value="Ou nous trouver ?"/>
         </div>

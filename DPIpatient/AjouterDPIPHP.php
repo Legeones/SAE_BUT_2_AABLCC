@@ -9,73 +9,75 @@ try {
 
 
         $erreurs = [];
-
+// Ici une erreur est affiché si le nom de la personne n'est pas renseigné //
         if (empty($_POST['nom'])){
             $erreurs['nom'] = "<p style='color:red'>Le nom est obligatoire</p>";
             $_SESSION['nomf'] = $erreurs['nom'];
             $_SESSION['nomp'] = null;
         }
         else{$_SESSION['nomp'] = $_POST['nom'];}
-
+// Ici une erreur est affiché si le prénom de la personne n'est pas renseigné //
         if (empty($_POST['prenom'])){
             $erreurs['prenom'] = "<p style='color:red'>Le prénom est obligatoire</p>";
             $_SESSION['prenomf'] = $erreurs['prenom'];
             $_SESSION['prenomp'] = null;
         }
         else{$_SESSION['prenomp'] = $_POST['prenom'];}
-
+// Ici une erreur est affiché si la date de naissance de la personne n'est pas renseigné //
         if (empty($_POST['DDN'])){
             $erreurs['DDN'] = "<p style='color:red'>La date de naissance est obligatoire</p>";
             $_SESSION['DDNf'] = $erreurs['DDN'];
             $_SESSION['DDNp'] = null;
         }
         else{$_SESSION['DDNp'] = $_POST['DDN'];}
-
+// Ici une erreur est affiché si la taille de la personne n'est pas renseigné //
         if (empty($_POST['taille'])){
             $erreurs['taille'] = "<p style='color:red'>La taille est obligatoire</p>";
             $_SESSION['taillef'] = $erreurs['taille'];
             $_SESSION['taillep'] = null;
         }
         else{$_SESSION['taillep'] = $_POST['taille'];}
-
+// Ici une erreur est affiché si la poids de la personne n'est pas renseigné //
         if (empty($_POST['poids'])){
             $erreurs['poids'] = "<p style='color:red'>Le poids est obligatoire</p>";
             $_SESSION['poidsf'] = $erreurs['poids'];
             $_SESSION['poidsp'] = null;
         }
+// Ici une erreur est affiché si le poids de la personne est inférieur à 3KG //
         elseif ($_POST['poids'] < 3 ){
             $erreurs['poids'] = "<p style='color:red'>Le poids est trop petit</p>";
             $_SESSION['poidsf'] = $erreurs['poids'];
             $_SESSION['poidsp'] = $_POST['poids'];
         }
+// Ici une erreur est affiché si le poids de la personne est supérieur à 600KG //
         elseif ($_POST['poids'] > 600 ){
             $erreurs['poids'] = "<p style='color:red'>Le poids est trop grand</p>";
             $_SESSION['poidsf'] = $erreurs['poids'];
             $_SESSION['poidsp'] = $_POST['poids'];
         }
         else{$_SESSION['poidsp'] = $_POST['poids'];}
-
+// Ici une erreur est affiché si l'adresse de la personne n'est pas renseigné //
         if (empty($_POST['adresse'])) {
             $erreurs['adresse'] = "<p style='color:red'>L'adresse est obligatoire</p>";
             $_SESSION['adressef'] = $erreurs['adresse'];
             $_SESSION['adressep'] = null;
         }
         else{$_SESSION['adressep'] = $_POST['adresse'];}
-
+// Ici une erreur est affiché si le code postal de la personne n'est pas renseigné //
         if (empty($_POST['CP'])) {
-            $erreurs['CP'] = "<p style='color:red'>Le code postale est obligatoire</p>";
+            $erreurs['CP'] = "<p style='color:red'>Le code postal est obligatoire</p>";
             $_SESSION['CPf'] = $erreurs['CP'];
             $_SESSION['CPp'] = null;
         }
         else{$_SESSION['CPp'] = $_POST['CP'];}
-
+// Ici une erreur est affiché si la ville de la personne n'est pas renseigné //
         if (empty($_POST['ville'])) {
             $erreurs['ville'] = "<p style='color:red'>La ville est obligatoire</p>";
             $_SESSION['villef'] = $erreurs['ville'];
             $_SESSION['villep'] = null;
         }
         else{$_SESSION['villep'] = $_POST['ville'];}
-
+// Ici une erreur est affiché si le téléphone personnel de la personne n'est pas renseigné //
         if (empty($_POST['telperso'])) {
             $erreurs['telperso'] = "<p style='color:red'>Le téléphone personnel est obligatoire</p>";
             $_SESSION['telpersof'] = $erreurs['telperso'];
@@ -83,34 +85,34 @@ try {
         }
         else{$_SESSION['telpersop'] = $_POST['telperso'];}
 
-
+// Un message d'erreur s'affiche si le formulaire comporte des erreurs //
         if (!empty($erreurs)){
             $_SESSION['MessErreur'] = "<p style='color:red'> !! Veuillez vérifier que le formulaire ne comporte pas d'erreur !!</p>";
         }
         else{$_SESSION['MessErreur'] = null;}
         /*********************************************************************************************************/
-
+// Ici une erreur est affiché si le nom de la personne à contacter n'est pas renseigné //
         if (empty($_POST['nomCT'])) {
             $erreurs['nomCT'] = "<p style='color:red'>Le nom de la personne à contacter est obligatoire</p>";
             $_SESSION['nomCTf'] = $erreurs['nomCT'];
             $_SESSION['nomCTp'] = null;
         }
         else{$_SESSION['nomCTp'] = $_POST['nomCT'];}
-
+// Ici une erreur est affiché si le prénom de la personne à contacter n'est pas renseigné //
         if (empty($_POST['prenomCT'])) {
             $erreurs['prenomCT'] = "<p style='color:red'>Le prenom de la personne à contacter est obligatoire</p>";
             $_SESSION['prenomCTf'] = $erreurs['prenomCT'];
             $_SESSION['prenomCTp'] = null;
         }
         else{$_SESSION['prenomCTp'] = $_POST['prenomCT'];}
-
+// Ici une erreur est affiché si le téléphone de la personne à contacter n'est pas renseigné //
         if (empty($_POST['telCT'])) {
             $erreurs['telCT'] = "<p style='color:red'>Le téléphone de la personne à contacter est obligatoire</p>";
             $_SESSION['telCTf'] = $erreurs['telCT'];
             $_SESSION['telCTp'] = null;
         }
         else{$_SESSION['telCTp'] = $_POST['telCT'];}
-
+// Ici une erreur est affiché si le lien familial de la personne à contacter n'est pas renseigné //
         if (empty($_POST['lienCT'])) {
             $erreurs['lienCT'] = "<p style='color:red'>Le lien familial de la personne à contacter est obligatoire</p>";
             $_SESSION['lienCTf'] = $erreurs['lienCT'];
@@ -119,28 +121,28 @@ try {
         else{$_SESSION['lienCTp'] = $_POST['lienCT'];}
 
         /*********************************************************************************************************/
-
+// Ici une erreur est affiché si le nom de la personne de confiance n'est pas renseigné //
         if (empty($_POST['nomC'])) {
             $erreurs['nomC'] = "<p style='color:red'>Le nom de la personne de confiance est obligatoire</p>";
             $_SESSION['nomCf'] = $erreurs['nomC'];
             $_SESSION['nomCp'] = null;
         }
         else{$_SESSION['nomCp'] = $_POST['nomC'];}
-
+// Ici une erreur est affiché si le prénom du contact de confiance n'est pas renseigné //
         if (empty($_POST['prenomC'])) {
             $erreurs['prenomC'] = "<p style='color:red'>Le prenom du contact de confiance est obligatoire</p>";
             $_SESSION['prenomCf'] = $erreurs['prenomC'];
             $_SESSION['prenomCp'] = null;
         }
         else{$_SESSION['prenomCp'] = $_POST['prenomC'];}
-
+// Ici une erreur est affiché si le téléphone de la personne de confiance n'est pas renseigné //
         if (empty($_POST['telC'])) {
             $erreurs['telC'] = "<p style='color:red'>Le téléphone de la personne de confiance est obligatoire</p>";
             $_SESSION['telCf'] = $erreurs['telC'];
             $_SESSION['telCp'] = null;
         }
         else{$_SESSION['telCp'] = $_POST['telC'];}
-
+// Ici une erreur est affiché si le lien familial de la personne de confiance n'est pas renseigné //
         if (empty($_POST['lienC'])) {
             $erreurs['lienC'] = "<p style='color:red'>Le lien familial de la personne de confiance est obligatoire</p>";
             $_SESSION['lienCf'] = $erreurs['lienC'];
