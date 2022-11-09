@@ -1,5 +1,5 @@
 <?php
-
+//Connexion à la base de données//
     function DataBase_Creator_Unit()
     {
         $db_username = 'theo';
@@ -48,12 +48,12 @@
                 $stmt2->bindParam(4, $_SESSION['ROLE']);
                 
                 $stmt2->execute();
-                    
+                    //Gestion des erreurs//
                 } catch (PDOException $e) {
                     print "Erreur !: " . $e->getMessage() . "<br/>";
                     die();
                 }
-            
+            //Gestion des erreurs//
         }catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();

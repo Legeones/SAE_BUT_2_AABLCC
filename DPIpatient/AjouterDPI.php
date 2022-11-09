@@ -3,11 +3,14 @@ session_start();
 ?>
 <html>
 <head>
+    <!-- zone d'importation des fichiers de style -->
+
     <meta charset="utf-8">
     <link rel="stylesheet" href="AjouterDPI_CSS.css" media="screen" type="text/css" />
 </head>
 <body>
 <header>
+    <!-- Ajout du logo -->
     <img class="logo" src="https://moodle.uphf.fr/pluginfile.php/358899/mod_resource/content/1/logoIFSI.png">
 </header>
 <div class="global">
@@ -21,6 +24,7 @@ session_start();
             <button>JSAISPAS</button>
         </div>
     </div>
+    <!-- zone de connexion -->
     <div class="droite">
         <form action="DPI.php" method="get">
             <input name="recherche_barre"/>
