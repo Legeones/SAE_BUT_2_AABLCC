@@ -21,4 +21,4 @@
         </div>
     </form>
 </head>
-<body>
+<body id="general">
