@@ -102,7 +102,7 @@ session_start();
                                 </p>
                             </div>
                         <?php endif ?>
-                        <p class="infoForm"><li><u>Certaine infomation ne son pas nessecaire et se défisse pas "*".</u></li></p>
+                        <p class="infoForm"><li><u>Certaines informations ne sont pas necessaires et se défissent par "*".</u></li></p>
                         <label> Nom : </label>
                         <input type="text" placeholder="Saisir un nom" name="nom" value="<?= $_SESSION['nomp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['nomf'])):?>
@@ -203,143 +203,197 @@ session_start();
 
                     <div class="Groupe">
                         <label> *Téléphone Profesionnel : </label>
-                        <input type="text" placeholder="Saisir un numéro de téléphone professionnel"  name="telpro"/>
+                        <input type="text" placeholder="Saisir un numéro de téléphone professionnel"  name="telpro"  value="<?= $_SESSION['telprop'] ?? '' ?>"/>
                     </div>
 
                     <div class="Groupe">
                         <label> *Allergies:</label>
-                        <input type="text"placeholder="Saisir les allergies" name="allergies" />
+                        <input type="text"placeholder="Saisir les allergies" name="allergies" value="<?= $_SESSION['allergiesp'] ?? '' ?>" />
                     </div>
 
                     <div class="Groupe">
                         <label> *Antecedents : </label>
-                        <input type="text" placeholder="Saisir les antécédents" name="antecedents" />
+                        <input type="text" placeholder="Saisir les antécédents" name="antecedents" value="<?= $_SESSION['antecedentsp'] ?? '' ?>" />
                     </div>
 
                     <div class="Groupe">
                         <label> *Obstericaux :</label>
-                        <input type="text" placeholder="Saisir les Obsetricaux" name="Obs" />
+                        <input type="text" placeholder="Saisir les Obsetricaux" name="Obs" value="<?= $_SESSION['Obsp'] ?? '' ?>" />
                     </div>
 
                     <div class="Groupe">
                         <label> *Document Médicaux : </label>
-                        <input type="text" placeholder="Saisir le document médical"  name="docMed"/>
+                        <input type="text" placeholder="Saisir le document médical"  name="docMed" value="<?= $_SESSION['docMedp'] ?? '' ?>"/>
                     </div>
 
                     <div class="Groupe">
                         <label> *Document Chirurgicaux :</label>
-                        <input type="text"placeholder="Saisir le document chirurgical" name="docChir" />
+                        <input type="text"placeholder="Saisir le document chirurgical" name="docChir" value="<?= $_SESSION['docChirp'] ?? '' ?>" />
                     </div>
 
                     <div class="Groupe1">
                         <label> Mesure de protection :</label>
                         <div class="Boolean">
-                            <input type="radio" name="MP" value="1">
+                            <input type="radio" name="MP" value="true" <?php if($_SESSION['MPp'] == "true"):?> checked <?php endif ?>>
                             <label>OUI</label>
-                            <input type="radio" name="MP" value="0">
+                            <input type="radio" name="MP" value="false" <?php if($_SESSION['MPp'] == "false"):?> checked <?php endif ?>>
                             <label>NON</label>
+                            <?php if (isset($_SESSION['MPf'])):?>
+                                <p>
+                                    <?= $_SESSION['MPf'] ?>
+                                    <?php $_SESSION['MPf'] = null ?>
+                                </p>
+                            <?php endif ?>
                         </div>
                     </div>
 
                     <div class="Groupe1">
                         <label> A-il une Assistante Sociale :</label>
                         <div class="Boolean">
-                            <input type="radio" name="AC" value="1">
+                            <input type="radio" name="AC" value="true" <?php if($_SESSION['ACp'] == "true"):?> checked <?php endif ?>>
                             <label>OUI</label>
-                            <input type="radio" name="AC" value="0">
+                            <input type="radio" name="AC" value="false" <?php if($_SESSION['ACp'] == "false"):?> checked <?php endif ?>>
                             <label>NON</label>
+                            <?php if (isset($_SESSION['ACf'])):?>
+                                <p>
+                                    <?= $_SESSION['ACf'] ?>
+                                    <?php $_SESSION['ACf'] = null ?>
+                                </p>
+                            <?php endif ?>
                         </div>
                     </div>
 
                     <div class="Groupe">
                         <label> *Mode de Vie :</label>
-                        <input type="text"placeholder="Saisir le mode de vie" name="MDV" />
+                        <input type="text"placeholder="Saisir le mode de vie" name="MDV" value="<?= $_SESSION['MDVp'] ?? '' ?>"/>
                     </div>
 
                     <div class="Groupe">
                         <label> Synthèse d'Entrée :</label>
-                        <input type="text"placeholder="Saisir la sythèse d'entrée" name="synEntree" />
+                        <input type="text"placeholder="Saisir la sythèse d'entrée" name="synEntree" value="<?= $_SESSION['synEntreep'] ?? '' ?>"/>
+                        <?php if (isset($_SESSION['synEntreef'])):?>
+                            <p>
+                                <?= $_SESSION['synEntreef'] ?>
+                                <?php $_SESSION['synEntreef'] = null ?>
+                            </p>
+                        <?php endif ?>
                     </div>
 
                     <div class="Groupe">
                         <label> *Traitement à domicile :</label>
-                        <input type="text"placeholder="Saisir le traitement à domicile" name="tradomi" />
+                        <input type="text"placeholder="Saisir le traitement à domicile" name="tradomi" value="<?= $_SESSION['tradomip'] ?? '' ?>"/>
                     </div>
 
                     <div class="Groupe">
                         <label> *Donnée physique et/ou psychologique :</label>
-                        <input type="text"placeholder="Saisir les Données physiques et/ou psychologiques " name="doPhyPsy" />
+                        <input type="text"placeholder="Saisir les Données physiques et/ou psychologiques " name="doPhyPsy" value="<?= $_SESSION['doPhyPsyp'] ?? '' ?>"/>
                     </div>
 
                     <div class="Groupe1">
                         <label> Capacité à se Déplacer :</label>
                         <div class="Boolean">
-                            <input type="radio" name="CD" value="1">
+                            <input type="radio" name="CD" value="1" <?php if($_SESSION['CDp'] == 1):?> checked <?php endif ?>>
                             <label>Autonome</label>
-                            <input type="radio" name="CD" value="2">
+                            <input type="radio" name="CD" value="2" <?php if($_SESSION['CDp'] == 2):?> checked <?php endif ?>>
                             <label>Aide Partielle</label>
-                            <input type="radio" name="CD" value="3">
+                            <input type="radio" name="CD" value="3" <?php if($_SESSION['CDp'] == 3):?> checked <?php endif ?>>
                             <label>Aide Totale</label>
+                            <?php if (isset($_SESSION['CDf'])):?>
+                                <p>
+                                    <?= $_SESSION['CDf'] ?>
+                                    <?php $_SESSION['CDf'] = null ?>
+                                </p>
+                            <?php endif ?>
                         </div>
                     </div>
 
                     <div class="Groupe1">
                         <label> Capacité à Manger :</label>
                         <div class="Boolean">
-                            <input type="radio" name="CM" value="1">
+                            <input type="radio" name="CM" value="1" <?php if($_SESSION['CMp'] == 1):?> checked <?php endif ?>>
                             <label>Autonome</label>
-                            <input type="radio" name="CM" value="2">
+                            <input type="radio" name="CM" value="2" <?php if($_SESSION['CMp'] == 2):?> checked <?php endif ?>>
                             <label>Aide Partielle</label>
-                            <input type="radio" name="CM" value="3">
+                            <input type="radio" name="CM" value="3" <?php if($_SESSION['CMp'] == 3):?> checked <?php endif ?>>
                             <label>Aide Totale</label>
+                            <?php if (isset($_SESSION['CMf'])):?>
+                                <p>
+                                    <?= $_SESSION['CMf'] ?>
+                                    <?php $_SESSION['CMf'] = null ?>
+                                </p>
+                            <?php endif ?>
                         </div>
                     </div>
 
                     <div class="Groupe1">
                         <label> Capacité à se Laver:</label>
                         <div class="Boolean">
-                            <input type="radio" name="CL" value="1">
+                            <input type="radio" name="CL" value="1" <?php if($_SESSION['CLp'] == 1):?> checked <?php endif ?>>
                             <label>Autonome</label>
-                            <input type="radio" name="CL" value="2">
+                            <input type="radio" name="CL" value="2" <?php if($_SESSION['CLp'] == 3):?> checked <?php endif ?>>
                             <label>Aide Partielle</label>
-                            <input type="radio" name="CL" value="3">
+                            <input type="radio" name="CL" value="3" <?php if($_SESSION['CLp'] == 3):?> checked <?php endif ?>>
                             <label>Aide Totale</label>
+                            <?php if (isset($_SESSION['CLf'])):?>
+                                <p>
+                                    <?= $_SESSION['CLf'] ?>
+                                    <?php $_SESSION['CLf'] = null ?>
+                                </p>
+                            <?php endif ?>
                         </div>
                     </div>
 
                     <div class="Groupe1">
                         <label> Capacité à aller au Toilette :</label>
                         <div class="Boolean">
-                            <input type="radio" name="CT" value="1">
+                            <input type="radio" name="CT" value="1" <?php if($_SESSION['CTp'] == 1):?> checked <?php endif ?>>
                             <label>Autonome</label>
-                            <input type="radio" name="CT" value="2">
+                            <input type="radio" name="CT" value="2" <?php if($_SESSION['CTp'] == 2):?> checked <?php endif ?>>
                             <label>Aide Partielle</label>
-                            <input type="radio" name="CT" value="3">
+                            <input type="radio" name="CT" value="3" <?php if($_SESSION['CTp'] == 3):?> checked <?php endif ?>>
                             <label>Aide Totale</label>
+                            <?php if (isset($_SESSION['CTf'])):?>
+                                <p>
+                                    <?= $_SESSION['CTf'] ?>
+                                    <?php $_SESSION['CTf'] = null ?>
+                                </p>
+                            <?php endif ?>
                         </div>
                     </div>
 
                     <div class="Groupe1">
                         <label> Capacité à s'habiller :</label>
                         <div class="Boolean">
-                            <input type="radio" name="CH" value="1">
+                            <input type="radio" name="CH" value="1" <?php if($_SESSION['CHp'] == 1):?> checked <?php endif ?>>
                             <label>Autonome</label>
-                            <input type="radio" name="CH" value="2">
+                            <input type="radio" name="CH" value="2" <?php if($_SESSION['CHp'] == 2):?> checked <?php endif ?>>
                             <label>Aide Partielle</label>
-                            <input type="radio" name="CH" value="3">
+                            <input type="radio" name="CH" value="3" <?php if($_SESSION['CHp'] == 3):?> checked <?php endif ?>>
                             <label>Aide Totale</label>
+                            <?php if (isset($_SESSION['CHf'])):?>
+                                <p>
+                                    <?= $_SESSION['CHf'] ?>
+                                    <?php $_SESSION['CHf'] = null ?>
+                                </p>
+                            <?php endif ?>
                         </div>
                     </div>
 
                     <div class="Groupe1">
                         <label> Capacité de continance :</label>
                         <div class="Boolean">
-                            <input type="radio" name="conti" value="1">
+                            <input type="radio" name="conti" value="1" <?php if($_SESSION['contip'] == 1):?> checked <?php endif ?>>
                             <label>Autonome</label>
-                            <input type="radio" name="conti" value="2">
+                            <input type="radio" name="conti" value="2" <?php if($_SESSION['contip'] == 2):?> checked <?php endif ?>>
                             <label>Aide Partielle</label>
-                            <input type="radio" name="conti" value="3">
+                            <input type="radio" name="conti" value="3" <?php if($_SESSION['contip'] == 3):?> checked <?php endif ?>>
                             <label>Aide Totale</label>
+                            <?php if (isset($_SESSION['contif'])):?>
+                                <p>
+                                    <?= $_SESSION['contif'] ?>
+                                    <?php $_SESSION['contif'] = null ?>
+                                </p>
+                            <?php endif ?>
                         </div>
                     </div>
 
@@ -466,6 +520,27 @@ session_start();
             $_SESSION['CPp'] =null;
             $_SESSION['villep'] =null;
             $_SESSION['telpersop'] =null;
+            $_SESSION['telprop'] =null;
+            $_SESSION['allergiesp'] =null;
+            $_SESSION['antecedentsp'] =null;
+            $_SESSION['Obsp'] =null;
+            $_SESSION['docMedp'] =null;
+            $_SESSION['docChirp'] =null;
+            $_SESSION['MPp'] =null;
+            $_SESSION['ACp'] =null;
+            $_SESSION['MDVp'] =null;
+            $_SESSION['synEntreep'] =null;
+            $_SESSION['tradomip'] =null;
+            $_SESSION['doPhyPsyp'] =null;
+            $_SESSION['CDp'] =null;
+            $_SESSION['CMp'] =null;
+            $_SESSION['CLp'] =null;
+            $_SESSION['CTp'] =null;
+            $_SESSION['CHp'] =null;
+            $_SESSION['contip'] =null;
+
+
+
 
             $_SESSION['nomCTp'] =null;
             $_SESSION['prenomCTp'] =null;
