@@ -152,6 +152,7 @@ td {
     overflow-x: hidden;
     overflow-y: auto;
     text-align:justify;
+    min-height: 20%;
 }
 
 .grid-container{
@@ -166,6 +167,8 @@ td {
     font-size: 11px;
     z-index: 10;
     position: absolute;
+    height: auto;
+    min-height: 14%;
 }
 
 .grid-container > div {
@@ -181,4 +184,12 @@ td {
 
 .info-intern{
     display: none;
+    color: black;
+    background-color: lightgray;
+    border: black solid thin;
+}
+
+.table-container{
+    margin-top: 1%;
+    padding: 1%;
 }

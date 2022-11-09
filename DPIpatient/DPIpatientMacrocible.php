@@ -12,6 +12,7 @@ session_start();
     <img class="logo" src="../Images/logoIFSI.png">
 </header>
 <body>
+<script type="text/javascript" src="scriptsDPIpatient.js"></script>
 <div class="global">
     <div class="gauche">
         <div class="profile">
@@ -26,23 +27,23 @@ session_start();
     <div class="droite">
         <form action="actionDPI.php" name="cat" method="get" class="btn-line">
             <!-- zone d'ajout de boutons -->
-            <input type="submit" name="macrocible" onmouseover="alterner('macrocible')" onmouseout="alterner('macrocible')" value="macrocible">
-            <input type="submit" name="observation" onmouseover="alterner('observation')" onmouseout="alterner('observation')" value="Observation médicale">
-            <input type="submit" name="prescription" onmouseover="alterner('prescription')" onmouseout="alterner('prescription')" value="Prescription">
-            <input type="submit" name="intervenants" onmouseover="alterner('inytervenants')" onmouseout="alterner('intervenants')" value="Intervenants">
-            <input type="submit" name="diagramme" onmouseover="alterner('diagramme')" onmouseout="alterner('diagramme')" value="Diagramme de soins">
-            <input type="submit" name="biologie" onmouseover="alterner('biologie')" onmouseout="alterner('biologie')" value="Biologie">
-            <input type="submit" name="imagerie" onmouseover="alterner('imagerie')" onmouseout="alterner('imagerie')" value="Imagerie">
-            <input type="submit" name="courriers" onmouseover="alterner('courriers')" onmouseout="alterner('courriers')" value="Courriers">
+            <input type="submit" id="macrocible" name="macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">
+            <input type="submit" id="observation" name="observation" onmouseover="alterner('observation');" onmouseout="alterner('observation');" value="Observation médicale">
+            <input type="submit" id="prescription" name="prescription" onmouseover="alterner('prescription');" onmouseout="alterner('prescription');" value="Prescription">
+            <input type="submit" id="intervenants" name="intervenants" onmouseover="alterner('intervenants');" onmouseout="alterner('intervenants');" value="Intervenants">
+            <input type="submit" id="diagramme" name="diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
+            <input type="submit" id="biologie" name="biologie" onmouseover="alterner('biologie');" onmouseout="alterner('biologie');" value="Biologie">
+            <input type="submit" id="imagerie" name="imagerie" onmouseover="alterner('imagerie');" onmouseout="alterner('imagerie');" value="Imagerie">
+            <input type="submit" id="courriers" name="courriers" onmouseover="alterner('courriers');" onmouseout="alterner('courriers');" value="Courriers">
         </form>
         <script type="text/javascript">
 
         </script>
 
-        <div class="container" onclick="show_data_patient_div('donn-perso')">
+        <div class="container" >
             <div class="grid-container">
 
-                <div class="info">
+                <div class="info" onclick="show_data_patient_div('donn-perso');">
                     <h2>Données personnelles</h2>
                     <div class="info-intern" id="donn-perso">
 
@@ -58,10 +59,8 @@ session_start();
                         <h4>Date d'admission: <?php print($_SESSION['infosPersoPatient']['datedebut']); ?></h4>
                         <h4>Date de sortie: <?php print($_SESSION['infosPersoPatient']['datefin']); ?></h4>
                     </div>
-
-
                 </div>
-            <div class="info">
+            <div class="info" onclick="show_data_patient_div('donn-admin');">
                 <h2>Données administratives</h2>
                 <div class="info-intern" id="donn-admin">
                     <h4>Adresse: </h4>
@@ -78,7 +77,7 @@ session_start();
                     <p><?php print("Tel: ".$_SESSION['infosPatient'][22])?></p>
                 </div>
             </div>
-            <div class="info">
+            <div class="info" onclick="show_data_patient_div('donn-soc');">
                 <h2>Données sociales</h2>
                 <div class="info-intern" id="donn-soc">
                     <h4>Mesure de protection: A implementer</h4>
@@ -86,7 +85,7 @@ session_start();
                 </div>
 
             </div>
-            <div class="info">
+            <div class="info" onclick="show_data_patient_div('info-medi');">
                 <h2>Infos médicales</h2>
                 <div class="info-intern" id="info-medi">
                     <h4>Medecin traitant:</h4>
@@ -95,7 +94,7 @@ session_start();
                 </div>
 
             </div>
-            <div class="info">
+            <div class="info" onclick="show_data_patient_div('donn-medi');">
                 <h2>Données médicales</h2>
                 <div class="info-intern" id="donn-medi">
                     <h4>Allergies:</h4>
@@ -111,14 +110,14 @@ session_start();
                 </div>
 
             </div>
-            <div class="info">
+            <div class="info" onclick="show_data_patient_div('trait-dom');">
                 <h2>Traitement à domicile</h2>
                 <div class="info-intern" id="trait-dom">
-                    <p></p>
+                    <p>Vide</p>
                 </div>
 
             </div>
-            <div class="info">
+            <div class="info" onclick="show_data_patient_div('macro-ent');">
                 <h2>Macrocible d'entrée</h2>
                 <div class="info-intern" id="macro-ent">
                     <h4>Synthèse d'entrée</h4>
