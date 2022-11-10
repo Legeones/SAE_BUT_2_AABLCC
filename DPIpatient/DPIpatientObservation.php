@@ -77,7 +77,8 @@ session_start();
                     <td>Resultats</td>
                 </tr>
                 <?php
-                    foreach ($_SESSION['infosPersoPatient'] as $item){
+                $test = [];
+                    foreach ($test as $item){
                         echo "<tr>";
                         echo "<td></td>";
                         echo "<td></td>";
@@ -98,6 +99,7 @@ session_start();
                 </tr>
 
             </table>
+            <input type="submit" value="Mettre à jour">
         </form>
         <?php print $_SESSION['patientSuivi']?>
 

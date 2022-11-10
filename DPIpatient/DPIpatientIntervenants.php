@@ -67,9 +67,25 @@ session_start();
                 <tr>
                     <td>Date</td>
                     <td>Profession</td>
-                    <td>Compte rendu</td>
+                    <td style="width: 70%; max-width: 70%;">Compte rendu</td>
+                </tr>
+                <?php
+                $test = [["2022-10-03","Urgentiste","Pas en form"],["2002-01-03","Médecin généraliste","En forme"]];
+                foreach ($test as $item){
+                    echo "<tr>";
+                    echo "<td>$item[0]</td>";
+                    echo "<td>$item[1]</td>";
+                    echo "<td>$item[2]</td>";
+                    echo "</tr>";
+                }
+                ?>
+                <tr>
+                    <td><input type="date"></td>
+                    <td><input type="text"></td>
+                    <td><textarea></textarea></td>
                 </tr>
             </table>
+            <input type="submit" value="Mettre à jour">
         </div>
     </div>
 </div>
