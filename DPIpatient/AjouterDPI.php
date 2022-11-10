@@ -544,8 +544,6 @@ session_start();
             $_SESSION['contip'] =null;
 
 
-
-
             $_SESSION['nomCTp'] =null;
             $_SESSION['prenomCTp'] =null;
             $_SESSION['telCTp'] =null;

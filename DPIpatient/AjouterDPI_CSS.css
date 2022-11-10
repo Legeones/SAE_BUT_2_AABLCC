@@ -285,3 +285,44 @@ footer{
     border: none;
     cursor: pointer;
 }
+
+/***********************************************************/
+/*MDF dpi*/
+
+.global .basMDF #formMDF {
+    margin-top: 10px ;
+    background-color: wheat;
+    width: 97.5%;
+    height: 94%;
+
+}
+
+.global .basMDF {
+    background-color: gray;
+    width: 96%;
+    height: 84%;
+    padding: 1% 2% 2% 2%;
+
+}
+.global .basMDF .Titreform{
+    text-align: center;
+    font-family: 'Bungee Spice', cursive;
+    font-family: 'Handlee', cursive;
+    font-family: 'Purple Purse', cursive;
+
+}
+
+.global .basMDF input[type=submit] , button[type=button]{
+    background-color: white;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0px;
+    border: none;
+    cursor: pointer;
+    width: 11%;
+}
+.global .basMDF input[type=submit]:hover , button[type=button]:hover {
+    background-color: white;
+    color: gray;
+    border: 1px solid black;
+}
