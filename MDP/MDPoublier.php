@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Mot de passe oublier</title>
     <link rel="stylesheet" href="../Verif_Test/CSS.css">
-</head>
+</head id="general">
 <body>
 <form action="Verification_PasswordChange.php" method="post">
     <h1>Mot de passe oublié ?</h1>

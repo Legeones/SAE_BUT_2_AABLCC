@@ -69,12 +69,14 @@ function Database_Check_User_Exist($username,$password)
         } else {
             $res2=0;
         }
-        if($res2==5 and $result2=='prof'){
+        if($res2==5 and ($result2=='prof' or $result2=='admin')){
             $_SESSION['username'] = $username;
+            $_SESSION['Role'] = $result2;
             header('Location: ../DPIpatient/DPI.php');
         }
-        elseif ($res2==5 and $result2=='etu'){
+        elseif ($res2==5 and $result2=='etudiant'){
             $_SESSION['username'] = $username;
+            $_SESSION['Role'] = $result2;
             header('Location: ../DPIpatient/DPI.php');
         }
         else{

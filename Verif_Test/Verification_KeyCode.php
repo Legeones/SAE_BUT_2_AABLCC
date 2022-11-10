@@ -15,7 +15,7 @@ function Key_Validation()
         }
         else
         {
-            header('Location: ../Verif_Test/MailCode_Formulaire.php?after=1');
+            header('Location: ../Verif_Test/MailCode_Formulaire.php?after=2');
         }
     }
     else if ( $_SESSION['Key_Index'] == 2 )
@@ -26,7 +26,7 @@ function Key_Validation()
         }
         else
         {
-            header('Location: ../Verif_Test/MailCode_Formulaire.php?after=1');
+            header('Location: ../Verif_Test/MailCode_Formulaire.php?after=2');
         }
     }
 }

@@ -8,7 +8,7 @@
 
     <title>Inscription</title>
 </head>
-<body>
+<body id="general">
 <!-- zone de connexion -->
 
 <form action="Verification_Inscription.php" method="post">

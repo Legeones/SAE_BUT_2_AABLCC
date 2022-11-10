@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../Verif_Test/CSS.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 </head>
-<body>
+<body id="general">
 <!-- Zone de connexion -->
 <form action="New_mdp.php" method="post">
     <label for="identifiant">Identifiant : </label>
