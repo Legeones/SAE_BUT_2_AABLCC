@@ -18,18 +18,18 @@ $_SESSION['cat']=null;
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='../DPIpatient/principale.php'">PATIENTS</button>
+            <button onclick="location.href='../DPIpatient/DPI.php'">PATIENTS</button>
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
             <!-- choix du rôle -->
             <?php
-            //echo '<br>';
-            //if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='transition.php'>Passer en mode etu</button>";}
-            //echo '<br>';
-            //if ($_SESSION["Role"] == "admin") {echo "<button onclick=location.href='AttributionRole.php'>attribuer role</button>";}
-            //echo '<br>';
-            //if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='RetourMode.php'>retour mode prof</button>";}
-            //$_SESSION['infosPatient']=[];
+            echo '<br>';
+            if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='transition.php'>Passer en mode etu</button>";}
+            echo '<br>';
+            if ($_SESSION["Role"] == "admin") {echo "<button onclick=location.href='AttributionRole.php'>attribuer role</button>";}
+            echo '<br>';
+            if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='RetourMode.php'>retour mode prof</button>";}
+            $_SESSION['infosPatient']=[];
             ?>
         </div>
     </div>
