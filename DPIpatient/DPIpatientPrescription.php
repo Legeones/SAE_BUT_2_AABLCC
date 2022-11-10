@@ -59,7 +59,85 @@ session_start();
                     </div>
                 </div>
             </div>
+
         </div>
+        <form class="table-container">
+            <table>
+                <caption>Plan d'administration</caption>
+                <tr>
+                    <td style="width: 20%">Médicaments</td>
+                    <td>09/10/2022</td>
+                    <td>10/10/2022</td>
+                    <?php
+                    foreach ($_SESSION[''] as $item ){
+                        echo "<td></td>";
+                    }
+                    ?>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td style="text-align: center">_</td>
+                            </tr>
+                            <tr>PO</tr>
+                            <tr>
+                                <td>Merci</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+
+                            <tr>
+                                <td>20:00</td>
+                                <td>12:00</td>
+                                <td>08:00</td>
+                            </tr>
+                            <tr>PO</tr>
+                            <tr>
+                                <td>1 gr</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>20:00</td>
+                                <td>12:00</td>
+                                <td>08:00</td>
+                            </tr>
+                            <tr>PO</tr>
+                            <tr>
+                                <td>1 gr</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <?php
+                    echo "<td>";
+                        echo "<table>";
+                            echo "<tr>";
+                                echo "<td>20:00</td>";
+                                echo "<td>12:00</td>";
+                                echo "<td>08:00</td>";
+                            echo "</tr>";
+                            echo "<tr>PO</tr>";
+                            echo "<tr>";
+                                echo "<td>.</td>";
+                                echo "<td></td>";
+                                echo "<td></td>";
+                            echo "</tr>";
+                        echo "</table>";
+                    echo "</td>";
+                    ?>
+                </tr>
+            </table>
+        </form>
     </div>
 </div>
 </body>

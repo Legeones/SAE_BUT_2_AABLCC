@@ -144,6 +144,15 @@ td {
     border: black solid thin;
 }
 
+td > input{
+    width: 100%;
+}
+
+td > textarea{
+    width: 100%;
+    resize: vertical;
+}
+
 
 .container {
     width: 98%;
