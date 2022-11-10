@@ -71,25 +71,32 @@
     if(isset($_GET['erreur'])){
         $err = $_GET['erreur'];
         if($err==1){
+            // Ici une erreur est affiché si le mot de passe contient moins de 8 caractères //
             echo "<p style='color:red'>le mot de passse a moins de 8 caractères</p>";
         }
         if($err==2){
+            // Ici une erreur est affiché si les 2 mot de passe ne sont pas identiques //
             echo "<p style='color:red'>le mot de passe et sa confirmation sont diffèrents</p>";
         }
         if($err==3){
+            // Ici une erreur est affiché s'il y a des minuscules //
             echo "<p style='color:red'> pas de minuscule </p>";
         }
         if($err==4){
+            // Ici une erreur est affiché s'il y a des numéros //
             echo "<p style='color:red'> pas de numero </p>";
         }
         if($err==5){
+            // Ici une erreur est affiché s'il y a des majuscules //
             echo "<p style='color:red'> pas de majusucule </p>";
         }
         if($err==6){
+            // Ici une erreur est affiché si les champs ne sont pas complétement remplis //
             echo "<p style='color:red'> tous les champs doivent être remplis </p>";
         }
 
         if($err==7){
+            // Ici une erreur est affiché si le mail ou le login est invalide //
             echo "<p style='color:red'> mail ou login invalide </p>";
         }
     }
