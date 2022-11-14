@@ -70,7 +70,7 @@ session_start();
                     <td style="width: 70%; max-width: 70%;">Compte rendu</td>
                 </tr>
                 <?php
-                $test = [["2022-10-03","Urgentiste","Pas en form"],["2002-01-03","Médecin généraliste","En forme"]];
+                $test = [["2022-10-03","Urgentiste","Pas en forme"],["2002-01-03","Médecin généraliste","En forme"]];
                 foreach ($test as $item){
                     echo "<tr>";
                     echo "<td>$item[0]</td>";
