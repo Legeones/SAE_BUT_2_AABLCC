@@ -6,7 +6,7 @@ $_SESSION['cat']=null;
 <head>
     <meta charset="utf-8">
     <!-- importation des fichiers de style -->
-    <link rel="stylesheet" href="PrincipaleStyle.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../Verif_Test/CSS_DPI.css" media="screen" type="text/css" />
 </head>
 <body>
 <header>

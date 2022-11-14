@@ -1,4 +1,4 @@
-drop table if exists PersonneConfiance, PersonneContacte, Patient, Intervenant,Utilisateur, Intervention, Admission, Soin, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient;
+drop table if exists PersonneConfiance,Utilisateur, PersonneContacte,Corbeille, Patient, Intervenant, Intervention, Admission, Soin, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient;
 
 
 create table PersonneConfiance (
@@ -17,6 +17,7 @@ create table PersonneContacte (
                                   tel text not null ,
                                   lien text not null
 );
+
 
 create table Patient(
                         IPP numeric(13,0) not null primary key,
@@ -38,20 +39,19 @@ create table Patient(
                         doChirurgicaux text ,
                         idPcon serial not null unique references PersonneConfiance ON DELETE CASCADE,
                         idPtel serial not null unique references PersonneContacte ON DELETE CASCADE,
-			                  MesuredeProtection boolean not null,
-			                  AsistantSocial boolean not null,
-			                  MDV text,
-			                  SynEntre text not null,
-			                  TraiDomi text,
-			                  doPhyPsy text,
-			                  mobilite int check(mobilite>=1 and mobilite<=3) not null,
-			                  alimentation int check(alimentation>=1 and alimentation<=3) not null,
-			                  Hygiene int check(Hygiene>=1 and Hygiene<=3) not null,
-			                  toilette int check(toilette>=1 and toilette<=3) not null,
-			                  Habit int check(Habit>=1 and Habit<=3) not null,
-			                  continence int check(continence>=1 and continence<=3) not null
+                        MesuredeProtection boolean not null,
+                        AsistantSocial boolean not null,
+                        MDV text,
+                        SynEntre text not null,
+                        TraiDomi text,
+                        doPhyPsy text,
+                        mobilite int check(mobilite>=1 and mobilite<=3) not null,
+                        alimentation int check(alimentation>=1 and alimentation<=3) not null,
+                        Hygiene int check(Hygiene>=1 and Hygiene<=3) not null,
+                        toilette int check(toilette>=1 and toilette<=3) not null,
+                        Habit int check(Habit>=1 and Habit<=3) not null,
+                        continence int check(continence>=1 and continence<=3) not null
 );
-
 
 create table Intervenant (
                              idIntervenant serial primary key ,
@@ -71,7 +71,7 @@ create table Intervention (
 create table Admission (
                            idAdmission serial primary key,
                            dateDebut date not null,
-                           dateFin date,
+                           dateFin date not null,
                            IPP numeric(13,0) not null references Patient ON DELETE CASCADE
 );
 
@@ -112,6 +112,11 @@ create table Prescription (
                               type text not null
 );
 
+create table Corbeille(
+    IPPCorb numeric(13,0)  references Patient ON DELETE CASCADE primary key
+);
+
+
 create table PrescriptionPatient (
                                      idPP serial primary key,
                                      jour date not null ,
@@ -123,15 +128,6 @@ create table PrescriptionPatient (
                                      idPrescription serial not null references Prescription ON DELETE CASCADE
 );
 
-create table Utilisateur (
-    login text primary key,
-    mdp text not null,
-    email text check ( email ~ '@' ) not null unique ,
-    roles text not null
-);
-
-
-
 insert into PersonneConfiance
 values (1, 'Berthe', 'Henry', '0671458653', 'Pere', false),
        (2, 'Dupont', 'Eric', '0745632514', 'Fere', true),
@@ -139,6 +135,7 @@ values (1, 'Berthe', 'Henry', '0671458653', 'Pere', false),
        (4, 'Clarry', 'Bertrand', '0625863517', 'Cousin', false),
        (5, 'Lavoisier', 'Anthonny', '0783592079', 'Fils', true),
        (6,'Edison','Tesla','0324859746','Ami',true);
+
 
 insert into PersonneContacte
 values (1, 'Poitier', 'Antoine', '0625226384', 'Voisin'),
@@ -154,7 +151,6 @@ values (1, 'Cartier', 'Charles', 'chirurgien'),
        (3, 'Bendoucha', 'Jaweed', 'psychologue'),
        (4, 'La Couronne', 'Adam', 'dentiste'),
        (5, 'Kappet', 'Andy', 'reeducateur');
-
 
 insert into Patient
 values (8000000000000, 1, 'Armand', 'Pierre', '1967-10-25', 182, 93, '20 rue du tiermonde', 42900, 'Saint-Etienne', '0778845621', null, 'chat,pollen,acharien', null, null, 'traitement pour allergies', null, 1, 1,false,false,'agrigulteur','main ouverte',null,null,3,2,1,3,2,1),
@@ -229,7 +225,15 @@ insert into PrescriptionPatient
 values (1, '2010-04-08', '20h00','2000-1-12', 'deux doses medicamenteuses d_antidouleurs par intervalle de 6h00', true, 8000000000002, 1),
        (2, '2010-04-08', '20h00', '2010-04-12', 'une dose medicamenteuse d_antidepresseurs', true, 8000000000002, 3),
        (3, '2012-08-20', '16h00', '2010-08-24', 'une dose medicamenteuse d_antidouleurs', true, 8000000000004, 1),
-       (4, '2010-04-10', '08h00', '2010-04-13', 'deux doses medicamenteuses de canabis avec intervalle de 10h00', true, 8000000000001, 4);
+       (4, '2010-04-10', '08h00', '2010-04-13', 'deux doses medicamenteuses de canabis avec intervalle de 10h00', true, 8000000000001, 4)
+       
+       
+create table Utilisateur (
+    login text primary key,
+    mdp text not null,
+    email text check ( email ~ '@' ) not null unique ,
+    roles text not null
+);
 
 insert into Utilisateur
 values ('aurelien.leveque', 'leveque', 'Aurelien.Leveque@uphf.fr', 'etudiant'),
@@ -237,5 +241,5 @@ values ('aurelien.leveque', 'leveque', 'Aurelien.Leveque@uphf.fr', 'etudiant'),
        ('theo.bernaville', 'bernaville', 'Theo.Bernaville@uphf.fr', 'etudiant'),
        ('samuel.applencourt', 'applencourt', 'Samuel.Applencourt@uphf.fr', 'etudiant'),
        ('dorian.petit', '$2y$12$Z/gsoP/SkQMBSc0WXmWQnO2GfhNgnQe0erqMLuvjjuqNPIm4.vQaS', 'Dorian.Petit@uphf.fr', 'prof'),
-       ('rtyu','$2y$12$oNKQlblFYAK169xZLtIsBeRb0loYOPb5xc92tj68G9/Qm8jI7f.G.','erencrane9@gmail.com','admin'),
-       ('abcd','$2$12$aP7pS7yf1J9bG9aBL5mIN.0k6OeVKnDe3TyN598U/3jmVnXpAaJRK','charlierlaurent19@gmail.com','etudiant');
+       ('rtyu','$2y$12$oNKQlblFYAK169xZLtIsBeRb0loYOPb5xc92tj68G9/Qm8jI7f.G.','rtyu@uphf.fr','admin'),
+       ('abcd','$2$12$aP7pS7yf1J9bG9aBL5mIN.0k6OeVKnDe3TyN598U/3jmVnXpAaJRK','abcd@uphf.fr','etudiant');
