@@ -17,7 +17,7 @@ function Patient_Parcour($p,$rm){
 
     $dbh = DataBase_Creator_Unit();
     if($rm!='aucun'){
-        $stmt = $dbh->prepare("SELECT IPP, nom FROM patient WHERE nom like ? LIMIT ? OFFSET ?");
+        $stmt = $dbh->prepare("SELECT IPP, nom FROM patient  left join Corbeille C on Patient.IPP = C.IPPCorb WHERE nom like ? and IPPCorb is null LIMIT ? OFFSET ?");
         $stmt->bindParam(1,$rm);
         $lim = $_SESSION['incrPat']+25;
         $stmt->bindParam(2,$lim);
@@ -25,19 +25,19 @@ function Patient_Parcour($p,$rm){
         $stmt->execute();
     }
     if ($p=='Date hospitalisation' && $rm=='aucun') {
-        $stmt = $dbh->prepare("SELECT patient.ipp,nom FROM patient JOIN admission ON admission.idadmission = patient.iep ORDER BY admission LIMIT ? OFFSET ?");
+        $stmt = $dbh->prepare("SELECT patient.ipp,nom FROM patient JOIN admission ON admission.idadmission = patient.iep  left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is  null ORDER BY admission LIMIT ? OFFSET ?");
         $lim = $_SESSION['incrPat']+25;
         $stmt->bindParam(1,$lim);
         $stmt->bindParam(2,$_SESSION['incrPat']);
         $stmt->execute();
     } elseif ($p=='Ordre alphabetique' && $rm=='aucun'){
-        $stmt = $dbh->prepare("SELECT IPP,nom FROM patient ORDER BY nom LIMIT ? OFFSET ?");
+        $stmt = $dbh->prepare("SELECT IPP,nom FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY nom LIMIT ? OFFSET ?");
         $lim = $_SESSION['incrPat']+25;
         $stmt->bindParam(1,$lim);
         $stmt->bindParam(2,$_SESSION['incrPat']);
         $stmt->execute();
     } elseif($rm=='aucun') {
-        $stmt = $dbh->prepare("SELECT IPP,nom FROM patient LIMIT ? OFFSET ?");
+        $stmt = $dbh->prepare("SELECT IPP,nom FROM patient  left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null LIMIT ? OFFSET ?");
         $lim = $_SESSION['incrPat']+25;
         $stmt->bindParam(1,$lim);
         $stmt->bindParam(2,$_SESSION['incrPat']);
@@ -110,7 +110,7 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
 }
 
 function DataBase_Add_Patient($IPP,$nom,$date)
-{   
+{
     try {
         $dbh = DataBase_Creator_Unit();
         $stmt2 = $dbh->prepare("SELECT count(*) FROM patient WHERE IPP=?");
@@ -134,13 +134,38 @@ function DataBase_Add_Patient($IPP,$nom,$date)
     }
 }
 
+function DataBase_Corbeille_Patient()
+{
+    session_start();
+
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("SELECT count(*) FROM Patient WHERE IPP=?");
+        $stmt2->bindParam(1, $_SESSION["IPP_CORB"]);
+        $stmt2->execute();
+        $res= $stmt2->fetchColumn(0);
+        if($res==0){
+            header('Location: ../DPIpatient/Corbeille.php?erreur=2');
+        }
+        else{
+            $stmt = $dbh->prepare("insert into corbeille values (?);");
+            $stmt->bindParam(1, $_SESSION["IPP_CORB"]);
+            $stmt->execute();
+            header('Location: ../DPIpatient/DPI.php');
+        }
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
 function DataBase_Delete_Patient()
 {
     session_start();
-    
+
     try {
-        $dbh = $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("SELECT count(*) FROM patient WHERE IPP=?");
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("select count(*) from corbeille WHERE IPPCorb=?");
         $stmt2->bindParam(1, $_SESSION["IPP_SUPP"]);
         $stmt2->execute();
         $res= $stmt2->fetchColumn(0);
@@ -167,15 +192,15 @@ function DataBase_Attribute_Role($ID,$Role)
         $stmt->bindParam(1, $_POST["ID"]);
         $stmt->execute();
         $result = $stmt->fetchColumn(0);
-        
+
         if($result==1){
-            
+
             try {
                 $dbh = $dbh = DataBase_Creator_Unit();
                 $stmt = $dbh->prepare("UPDATE utilisateur SET roles=? WHERE login=?");
                 $stmt->bindParam(1, $_POST["Role"]);
                 $stmt->bindParam(2, $_POST["ID"]);
-                
+
                 $stmt->execute();
                 header('Location: ../DPIpatient/DPI.php');
             } catch (PDOException $e) {
@@ -183,7 +208,7 @@ function DataBase_Attribute_Role($ID,$Role)
                 die();
             }
         }
-        
+
         else{
             header('Location: ../DPIpatient/AttributionRole.php?erreur=1');
         }
