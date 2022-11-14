@@ -22,14 +22,14 @@
 if (isset($_GET['erreur'])) {
     $err = $_GET['erreur'];
     if ($err == 1) {
-        //Ici une erreur est affiché si tous les champs ne sont pas remplis //
+        //Ici une erreur est affichée si tous les champs ne sont pas remplis //
         echo "<p style='color:red'>tous les champs doivent etre remplis</p>";
     }
-    // Ici une erreur est affiché si IPP n'est pas dans la BBD //
+    // Ici une erreur est affichée si IPP n'est pas dans la BBD //
     if ($err == 2) {
         echo "<p style='color:red'>IPP n'est pas dans la BDD</p>";
     }
-    // Ici une erreur est affiché si IPP contient des lettres //
+    // Ici une erreur est affichée si IPP contient des lettres //
     if ($err == 3) {
         echo "<p style='color:red'>IPP ne doit pas avoir de lettre</p>";
     }
