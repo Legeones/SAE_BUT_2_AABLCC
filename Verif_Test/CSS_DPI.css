@@ -240,6 +240,16 @@ footer{
     min-height: 14.16%;
 }
 
+.grid-container > input {
+    background-color: white;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;
+    box-shadow: 3px 2px 2px dimgrey;
+    min-width: 16.1%;
+    min-height: 14.16%;
+}
 
 .hide{
     position: absolute;
