@@ -24,7 +24,7 @@ foreach($_GET as $key => $items) {
     }
 }
 if($_SESSION['cat']==null){
-    $_SESSION['cat']="macrocible";
+    $_SESSION['cat']="Macrocible";
 }
 
 //Appel du Querry qui recherche les informations du patient

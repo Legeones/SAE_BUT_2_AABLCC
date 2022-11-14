@@ -77,8 +77,8 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
         $stmt->execute();
         $_SESSION['infosPatient']=[];
     } elseif ($nomCateg == "prescription"){
-        $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
-        $stmt -> bindParam(1,$nomPatient);
+        $stmt = $pdo->prepare("SELECT * FROM prescriptionpatient WHERE ipp = ? ORDER BY jour");
+        $stmt -> bindParam(1,$_SESSION['infosPersoPatient']['ipp']);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
     } elseif ($nomCateg == "diagramme"){

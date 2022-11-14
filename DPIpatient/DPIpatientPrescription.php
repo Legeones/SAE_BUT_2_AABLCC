@@ -29,14 +29,14 @@ session_start();
         <!-- zone d'ajout de boutons -->
         <form action="actionDPI.php" name="cat" method="get" class="btn-line">
             <!-- zone d'ajout de boutons -->
-            <input type="submit" id="macrocible" name="macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">
-            <input type="submit" id="observation" name="observation" onmouseover="alterner('observation');" onmouseout="alterner('observation');" value="Observation médicale">
-            <input type="submit" id="prescription" name="prescription" onmouseover="alterner('prescription');" onmouseout="alterner('prescription');" value="Prescription">
-            <input type="submit" id="intervenants" name="intervenants" onmouseover="alterner('intervenants');" onmouseout="alterner('intervenants');" value="Intervenants">
-            <input type="submit" id="diagramme" name="diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
-            <input type="submit" id="biologie" name="biologie" onmouseover="alterner('biologie');" onmouseout="alterner('biologie');" value="Biologie">
-            <input type="submit" id="imagerie" name="imagerie" onmouseover="alterner('imagerie');" onmouseout="alterner('imagerie');" value="Imagerie">
-            <input type="submit" id="courriers" name="courriers" onmouseover="alterner('courriers');" onmouseout="alterner('courriers');" value="Courriers">
+            <input type="submit" id="macrocible" name="Macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">
+            <input type="submit" id="observation" name="Observation" onmouseover="alterner('observation');" onmouseout="alterner('observation');" value="Observation médicale">
+            <input type="submit" id="prescription" name="Prescription" onmouseover="alterner('prescription');" onmouseout="alterner('prescription');" value="Prescription">
+            <input type="submit" id="intervenants" name="Intervenants" onmouseover="alterner('intervenants');" onmouseout="alterner('intervenants');" value="Intervenants">
+            <input type="submit" id="diagramme" name="Diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
+            <input type="submit" id="biologie" name="Biologie" onmouseover="alterner('biologie');" onmouseout="alterner('biologie');" value="Biologie">
+            <input type="submit" id="imagerie" name="Imagerie" onmouseover="alterner('imagerie');" onmouseout="alterner('imagerie');" value="Imagerie">
+            <input type="submit" id="courriers" name="Courriers" onmouseover="alterner('courriers');" onmouseout="alterner('courriers');" value="Courriers">
         </form>
         <div class="container" >
             <div class="grid-container">
@@ -66,11 +66,13 @@ session_start();
                 <caption>Plan d'administration</caption>
                 <tr>
                     <td style="width: 20%">Médicaments</td>
-                    <td>09/10/2022</td>
-                    <td>10/10/2022</td>
                     <?php
-                    foreach ($_SESSION[''] as $item ){
-                        echo "<td></td>";
+                    if ($_SESSION['infosPersoPatient']['datefin']==""){
+                        echo "<td>".date("o")."/".date("m")."/".date("d")."</td>";
+                    }
+                    echo $_SESSION['infosPersoPatient']['ipp'];
+                    foreach ($_SESSION['infosPatient'] as $item ){
+                        echo "<td>".$_SESSION['infosPatient']['jour']."</td>";
                     }
                     ?>
                 </tr>
@@ -78,46 +80,54 @@ session_start();
                     <td>
                         <table>
                             <tr>
-                                <td style="text-align: center">_</td>
+                                <td style="color: white">.</td>
                             </tr>
                             <tr>PO</tr>
                             <tr>
-                                <td>Merci</td>
+                                <?php
+                                /*foreach ($_SESSION[''] as $item){
+                                    echo "<td>$item[]</td>";
+                                }*/
+                                ?>
                             </tr>
                         </table>
                     </td>
                     <?php
-                    echo "<td>";
-                    echo "<table>";
-                    echo "<tr>";
-                    echo "<td>20:00</td>";
-                    echo "<td>12:00</td>";
-                    echo "<td>08:00</td>";
-                    echo "</tr>";
-                    echo "<tr>PO</tr>";
-                    echo "<tr>";
-                    echo "<td>.</td>";
-                    echo "<td></td>";
-                    echo "<td></td>";
-                    echo "</tr>";
-                    echo "</table>";
-                    echo "</td>";
+                    if ($_SESSION['infosPersoPatient']['datefin']==""){
+                        echo "<td>";
+                        echo "<table>";
+                        echo "<tr>";
+                        echo "<td>20:00</td>";
+                        echo "<td>12:00</td>";
+                        echo "<td>08:00</td>";
+                        echo "</tr>";
+                        echo "<tr>PO</tr>";
+                        echo "<tr>";
+                        echo "<td>.</td>";
+                        echo "<td></td>";
+                        echo "<td></td>";
+                        echo "</tr>";
+                        echo "</table>";
+                        echo "</td>";
+                    }
+                    /*foreach ($_SESSION[''] as $item){
+                        echo "<td>";
+                        echo "<table>";
+                        echo "<tr>";
+                        echo "<td>20:00</td>";
+                        echo "<td>12:00</td>";
+                        echo "<td>08:00</td>";
+                        echo "</tr>";
+                        echo "<tr>PO</tr>";
+                        echo "<tr>";
+                        echo "<td>.</td>";
+                        echo "<td></td>";
+                        echo "<td></td>";
+                        echo "</tr>";
+                        echo "</table>";
+                        echo "</td>";
+                    }*/
                     ?>
-                    <td>
-                        <table>
-                            <tr>
-                                <td>20:00</td>
-                                <td>12:00</td>
-                                <td>08:00</td>
-                            </tr>
-                            <tr>PO</tr>
-                            <tr>
-                                <td>1 gr</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </td>
                 </tr>
             </table>
         </form>
