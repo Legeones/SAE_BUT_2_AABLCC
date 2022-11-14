@@ -85,9 +85,16 @@ session_start();
                             <tr>PO</tr>
                             <tr>
                                 <?php
-                                /*foreach ($_SESSION[''] as $item){
-                                    echo "<td>$item[]</td>";
-                                }*/
+                                $liste = [];
+                                $liste += [$_SESSION['infosPatient']];
+                                print_r($_SESSION['infosPatient']);
+                                foreach ($_SESSION['infosPatient'] as $item){
+                                    echo "<tr>";
+                                    echo "<td>$item[4]</td>";
+                                    echo "</tr>";
+                                }
+                                echo "<td>/</td>";
+
                                 ?>
                             </tr>
                         </table>

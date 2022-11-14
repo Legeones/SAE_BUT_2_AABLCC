@@ -65,46 +65,50 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
     foreach ($info as $item){
         $_SESSION['infosPersoPatient']+=$item;
     }
-    if ($nomCateg == "macrocible"){
+    if ($nomCateg == "Macrocible"){
         $stmt = $pdo->prepare("SELECT * FROM patient LEFT JOIN personneconfiance p on patient.idpcon = p.idpcon LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel LEFT JOIN admission a on patient.ipp = a.ipp LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp WHERE patient.nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
 
-    } elseif ($nomCateg == "observation"){
+    } elseif ($nomCateg == "Observation"){
         $stmt = $pdo->prepare("SELECT * FROM patient WHERE patient.nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
-    } elseif ($nomCateg == "prescription"){
+    } elseif ($nomCateg == "Prescription"){
         $stmt = $pdo->prepare("SELECT * FROM prescriptionpatient WHERE ipp = ? ORDER BY jour");
         $stmt -> bindParam(1,$_SESSION['infosPersoPatient']['ipp']);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
-    } elseif ($nomCateg == "diagramme"){
+    } elseif ($nomCateg == "Diagramme"){
         $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
-    } elseif ($nomCateg == "biologie"){
+    } elseif ($nomCateg == "Biologie"){
         $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
-    } elseif ($nomCateg == "imagerie"){
+    } elseif ($nomCateg == "Imagerie"){
         $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
-    } elseif ($nomCateg == "courriers"){
+    } elseif ($nomCateg == "Courriers"){
         $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
     }
+    $_SESSION['infosPatient']=array();
+    $donn = array();
     foreach ($stmt as $item){
-        $_SESSION['infosPatient']+=$item;
+        $donn+=$item;
     }
+    $_SESSION['infosPatient'] -> push($donn);
+
     header("Location: ../DPIpatient/DPIpatient".$nomCateg.".php");
 
 }
