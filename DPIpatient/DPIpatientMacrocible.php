@@ -27,14 +27,14 @@ session_start();
     <div class="droite">
         <form action="actionDPI.php" name="cat" method="get" class="btn-line">
             <!-- zone d'ajout de boutons -->
-            <input type="submit" id="macrocible" name="macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">
-            <input type="submit" id="observation" name="observation" onmouseover="alterner('observation');" onmouseout="alterner('observation');" value="Observation médicale">
-            <input type="submit" id="prescription" name="prescription" onmouseover="alterner('prescription');" onmouseout="alterner('prescription');" value="Prescription">
-            <input type="submit" id="intervenants" name="intervenants" onmouseover="alterner('intervenants');" onmouseout="alterner('intervenants');" value="Intervenants">
-            <input type="submit" id="diagramme" name="diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
-            <input type="submit" id="biologie" name="biologie" onmouseover="alterner('biologie');" onmouseout="alterner('biologie');" value="Biologie">
-            <input type="submit" id="imagerie" name="imagerie" onmouseover="alterner('imagerie');" onmouseout="alterner('imagerie');" value="Imagerie">
-            <input type="submit" id="courriers" name="courriers" onmouseover="alterner('courriers');" onmouseout="alterner('courriers');" value="Courriers">
+            <input type="submit" id="macrocible" name="Macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">
+            <input type="submit" id="observation" name="Observation" onmouseover="alterner('observation');" onmouseout="alterner('observation');" value="Observation médicale">
+            <input type="submit" id="prescription" name="Prescription" onmouseover="alterner('prescription');" onmouseout="alterner('prescription');" value="Prescription">
+            <input type="submit" id="intervenants" name="Intervenants" onmouseover="alterner('intervenants');" onmouseout="alterner('intervenants');" value="Intervenants">
+            <input type="submit" id="diagramme" name="Diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
+            <input type="submit" id="biologie" name="Biologie" onmouseover="alterner('biologie');" onmouseout="alterner('biologie');" value="Biologie">
+            <input type="submit" id="imagerie" name="Imagerie" onmouseover="alterner('imagerie');" onmouseout="alterner('imagerie');" value="Imagerie">
+            <input type="submit" id="courriers" name="Courriers" onmouseover="alterner('courriers');" onmouseout="alterner('courriers');" value="Courriers">
         </form>
         <script type="text/javascript">
 

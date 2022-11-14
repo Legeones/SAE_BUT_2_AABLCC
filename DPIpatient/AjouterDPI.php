@@ -6,7 +6,7 @@ session_start();
     <!-- zone d'importation des fichiers de style -->
 
     <meta charset="utf-8">
-    <link rel="stylesheet" href="AjouterDPI_CSS.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../Verif_Test/CSS_DPI.css" media="screen" type="text/css" />
 </head>
 <body>
 <header>
@@ -19,7 +19,7 @@ session_start();
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='principale.php'">PATIENTS</button>
+            <button onclick="location.href='principale.php'">PATIENTS</button> // ohé l'arborescence ici?
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
         </div>
@@ -85,7 +85,7 @@ session_start();
                                 </p>
                             </div>
                         <?php endif ?>
-                        <p class="infoForm"><li><u>Certaines informations ne sont pas necessaires et se défissent par "*".</u></li></p>
+                        <p class="infoForm"><li><u>Certaines informations ne sont pas necéssaires et se définissent par "*".</u></li></p>
                         <label> Nom : </label>
                         <input type="text" placeholder="Saisir un nom" name="nom" value="<?= $_SESSION['nomp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['nomf'])):?>

@@ -128,4 +128,79 @@ function Database_User_New_Pass_Modify($ID,$password)
         die();
     }
 }
+
+function DataBase_Attribute_Role($ID,$Role)
+{
+    session_start();
+    
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt = $dbh->prepare("SELECT count(*) FROM utilisateur where login = ? ");
+        $stmt->bindParam(1, $_POST["ID"]);
+        $stmt->execute();
+        $result = $stmt->fetchColumn(0);
+        
+        if($result==1){
+            
+            try {
+                $dbh = $dbh = DataBase_Creator_Unit();
+                $stmt = $dbh->prepare("UPDATE utilisateur SET roles=? WHERE login=?");
+                $stmt->bindParam(1, $_POST["Role"]);
+                $stmt->bindParam(2, $_POST["ID"]);
+                
+                $stmt->execute();
+                header('Location: ../DPIpatient/DPI.php');
+            } catch (PDOException $e) {
+                print "Erreur !: " . $e->getMessage() . "<br/>";
+                die();
+            }
+        }
+        
+        else{
+            header('Location: ../DPIpatient/AttributionRole.php?erreur=1');
+        }
+    }catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
+function DataBase_Pseudo_Etu_Return()
+{
+    session_start();
+    
+    if($_SESSION["Role"]=="pseudo-etu") {
+        try {
+            $dbh = DataBase_Creator_Unit();
+            $stmt = $dbh->prepare("SELECT count(*) FROM utilisateur where login = ? ");
+            $stmt->bindParam(1, $_SESSION["username"]);
+            $stmt->execute();
+            $result = $stmt->fetchColumn(0);
+            
+            if($result==1){
+                
+                try {
+                    $dbh = DataBase_Creator_Unit();
+                    $stmt = $dbh->prepare("SELECT roles FROM utilisateur where login = ? ");
+                    $stmt->bindParam(1, $_SESSION["username"]);
+                    $stmt->execute();
+                    $result = $stmt->fetchColumn(0);
+                    $_SESSION["Role"] = $result;
+                    header("Location: DPI.php");
+                } catch (PDOException $e) {
+                    print "Erreur !: " . $e->getMessage() . "<br/>";
+                    die();
+                }
+                
+            }
+            else{
+                header('Location: AttributionRole.php?erreur=1');
+            }
+        }catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+}
+?>
 ?>

@@ -1,6 +1,6 @@
 <?php
 require('../Verif_Test/Verifiant.php');
-require('../BDD/DataBase_Dpi.php');
+require('../BDD/DataBase_User.php');
 
 $VerifEmptyContent1=VerifEmptyContent($_POST["ID"]);
 $VerifEmptyContent2=VerifEmptyContent($_POST["Role"]);
