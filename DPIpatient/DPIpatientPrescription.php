@@ -62,17 +62,23 @@ session_start();
 
         </div>
         <form class="table-container">
+            <?php //print_r($_SESSION['infosPatient']); ?>
             <table>
                 <caption>Plan d'administration</caption>
                 <tr>
                     <td style="width: 20%">Médicaments</td>
                     <?php
                     if ($_SESSION['infosPersoPatient']['datefin']==""){
-                        echo "<td>".date("o")."/".date("m")."/".date("d")."</td>";
+                        echo "<td>".date("o")."-".date("m")."-".date("d")."</td>";
                     }
-                    echo $_SESSION['infosPersoPatient']['ipp'];
+                    $listeJour = array();
                     foreach ($_SESSION['infosPatient'] as $item ){
-                        echo "<td>".$_SESSION['infosPatient']['jour']."</td>";
+                        if (in_array($item['jour'],$listeJour)){
+
+                        } else {
+                            $listeJour[] = $item['jour'];
+                            echo "<td>".$item['jour']."</td>";
+                        }
                     }
                     ?>
                 </tr>
@@ -85,12 +91,9 @@ session_start();
                             <tr>PO</tr>
                             <tr>
                                 <?php
-                                $liste = [];
-                                $liste += [$_SESSION['infosPatient']];
-                                print_r($_SESSION['infosPatient']);
                                 foreach ($_SESSION['infosPatient'] as $item){
                                     echo "<tr>";
-                                    echo "<td>$item[4]</td>";
+                                    echo "<td>".$item['traitement']."</td>";
                                     echo "</tr>";
                                 }
                                 echo "<td>/</td>";
@@ -117,7 +120,7 @@ session_start();
                         echo "</table>";
                         echo "</td>";
                     }
-                    /*foreach ($_SESSION[''] as $item){
+                    foreach ($listeJour as $item){
                         echo "<td>";
                         echo "<table>";
                         echo "<tr>";
@@ -126,14 +129,28 @@ session_start();
                         echo "<td>08:00</td>";
                         echo "</tr>";
                         echo "<tr>PO</tr>";
-                        echo "<tr>";
-                        echo "<td>.</td>";
-                        echo "<td></td>";
-                        echo "<td></td>";
-                        echo "</tr>";
+                        foreach ($_SESSION['infosPatient'] as $value){
+                            echo "<tr>";
+                            if ($value['heure']=="20h00"){
+                                echo "<td>".$value['fait']."</td>";
+                            } else {
+                                echo "<td></td>";
+                            }
+                            if ($value['heure']=="12h00"){
+                                echo "<td>".$value['fait']."</td>";
+                            } else {
+                                echo "<td></td>";
+                            }
+                            if ($value['heure']=="08h00"){
+                                echo "<td>".$value['fait']."</td>";
+                            } else {
+                                echo "<td></td>";
+                            }
+                            echo "</tr>";
+                        }
                         echo "</table>";
                         echo "</td>";
-                    }*/
+                    }
                     ?>
                 </tr>
             </table>

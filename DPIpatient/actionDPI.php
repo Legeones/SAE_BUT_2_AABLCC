@@ -28,5 +28,10 @@ if($_SESSION['cat']==null){
 }
 
 //Appel du Querry qui recherche les informations du patient
-Data_Patient_Querry($_SESSION['patientSuivi'],$_SESSION['cat']);
+if ($_SESSION['patientSuivi']!="null"){
+    Data_Patient_Querry($_SESSION['patientSuivi'],$_SESSION['cat']);
+} else {
+    header("Location: ../DPIpatient/DPI.php");
+}
+
 ?>

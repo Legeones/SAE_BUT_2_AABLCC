@@ -25,6 +25,7 @@ session_start();
         </div>
     </div>
     <div class="droite">
+        <?= $_SESSION['patientSuivi'] ?>
         <form action="actionDPI.php" name="cat" method="get" class="btn-line">
             <!-- zone d'ajout de boutons -->
             <input type="submit" id="macrocible" name="Macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">

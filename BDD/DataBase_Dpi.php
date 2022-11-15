@@ -103,13 +103,12 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
         $_SESSION['infosPatient']=[];
     }
     $_SESSION['infosPatient']=array();
-    $donn = array();
     foreach ($stmt as $item){
-        $donn+=$item;
+        $_SESSION['infosPatient'][]=$item;
     }
-    $_SESSION['infosPatient'] -> push($donn);
 
     header("Location: ../DPIpatient/DPIpatient".$nomCateg.".php");
+
 
 }
 
