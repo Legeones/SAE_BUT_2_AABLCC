@@ -6,14 +6,14 @@ ini_set('display_errors', true);
 require('../Verif_Test/Mail.php');
 require('../Verif_Test/Verifiant.php');
 
-$resVerifPassword_Uppercase=VerifPassword_Uppercase($_POST["Password_A"]);
-$resVerifPassword_Number=VerifPassword_Number($_POST["Password_A"]);
-$resVerifPassword_Equality=VerifPassword_Equality($_POST["Password_A"], $_POST["Password_B"]);
-$resVerifPassword_Lenght=VerifPassword_Lenght($_POST["Password_A"]);
-$resVerifPassword_Lowercase=VerifPassword_Lowercase($_POST["Password_A"]);
-$VerifEmptyContent1=VerifEmptyContent($_POST["email"]);
-$VerifEmptyContent2=VerifEmptyContent($_POST["ID"]);
-$VerifEmail=VerifEmail($_POST["email"]);
+$resVerifPassword_Uppercase=VerifPassword_Uppercase($_POST["Password_A"]); // Vérification du Password_A
+$resVerifPassword_Number=VerifPassword_Number($_POST["Password_A"]); // Vérification du Password_B
+$resVerifPassword_Equality=VerifPassword_Equality($_POST["Password_A"], $_POST["Password_B"]); // Vérification si le Password_A = Password_B
+$resVerifPassword_Lenght=VerifPassword_Lenght($_POST["Password_A"]); // Vérification de la longueur du Password_A
+$resVerifPassword_Lowercase=VerifPassword_Lowercase($_POST["Password_A"]); // Vérification Password_A
+$VerifEmptyContent1=VerifEmptyContent($_POST["email"]); // Vérification de l'email
+$VerifEmptyContent2=VerifEmptyContent($_POST["ID"]); // Vérification de l'ID
+$VerifEmail=VerifEmail($_POST["email"]); // Vérification de l'email
 
 session_start();
 $_SESSION['EMAIL'] = $_POST['email'];
@@ -21,32 +21,32 @@ $_SESSION['IDENTIFIANT'] = $_POST['ID'];
 $_SESSION['ROLE'] = 'etudiant';
 $_SESSION['PASSWORD'] = $_POST["Password_A"];
 
+// Erreur page inscription
 if ($resVerifPassword_Equality==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=2');
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=2'); // erreur le mot de passe et sa confirmation sont différents
 }
-
 elseif ($resVerifPassword_Lenght==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=1');
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=1'); // erreur le mot de passe à moins de 8 caractères
 }
 
 elseif($resVerifPassword_Lowercase==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=3');
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=3'); // Erreur minuscule
 }
 
 elseif($resVerifPassword_Number==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=4');
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=4'); // Erreur numéro
 }
 
 elseif($resVerifPassword_Uppercase==0) {
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=5');
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=5'); // Erreur majuscule
 }
 
 elseif ($VerifEmptyContent1==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=6');
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=6'); // Erreur login invalide
 }
 
 elseif ($VerifEmptyContent2==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=6');
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=6'); // Erreur login invalide
 }
 
 elseif ($VerifEmail==0){
