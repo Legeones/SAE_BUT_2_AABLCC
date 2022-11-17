@@ -15,7 +15,7 @@
         </div>
         <div class="btn-group">
             <button onclick="location.href='principale.php'">PATIENTS</button>
-            <button>SCENARIOS</button>
+            <button>SCENARIOS</button> <!-- Bouton permettant d'accèder au scenarios -->
             <button>JSAISPAS</button>
         </div>
     </div>
@@ -38,6 +38,7 @@
                 session_start();
                 require ("Code.php");
                 try{
+                    // Zone de connexion à la base de données
                 $db_username = 'postgres';
                 $db_password = 'steven59330';
                 $db_name = 'postgres';

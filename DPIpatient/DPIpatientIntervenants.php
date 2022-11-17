@@ -26,7 +26,6 @@ session_start();
     </div>
     <div class="droite">
         <script type="text/javascript" src="scriptsDPIpatient.js"></script>
-        <!-- zone d'ajout de boutons -->
         <form action="actionDPI.php" name="cat" method="get" class="btn-line">
             <!-- zone d'ajout de boutons -->
             <input type="submit" id="macrocible" name="Macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">
