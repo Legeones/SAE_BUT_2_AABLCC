@@ -23,7 +23,7 @@
                 document.body.appendChild(a);
             </script>
             <label> Saisissez le code de validation reçu par mail : </label>
-            <input type="text" placeholder="Saisir votre code" name="Key" />
+            <input type="text" placeholder="Saisir votre code" name="Key" /> <!-- Demande à l'utilisateur de saisir le code reçu par mail -->
         </div>
     </div>
     <div class="piedDePage">

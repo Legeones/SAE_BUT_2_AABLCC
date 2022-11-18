@@ -19,7 +19,7 @@ session_start();
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='principale.php'">PATIENTS</button> // ohé l'arborescence ici?
+            <button onclick="location.href='DPI.php'">PATIENTS</button> // ohé l'arborescence ici?
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
         </div>

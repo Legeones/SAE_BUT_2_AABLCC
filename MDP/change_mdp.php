@@ -11,11 +11,11 @@
 <!-- Zone de connexion -->
 <form action="New_mdp.php" method="post">
     <label for="identifiant">Identifiant : </label>
-    <input type="text" placeholder="Saisir votre identifiant" name="username" /><br>
+    <input type="text" placeholder="Saisir votre identifiant" name="username" /><br> <!-- Demande à l'utilisateur de saisir son identifiant -->
     <label for="mot de passe"> Saisissez votre mot de passe : </label>
-    <input type="text" placeholder="Saisissez votre mot de passe" name="MDP" /><br>
+    <input type="text" placeholder="Saisissez votre mot de passe" name="MDP" /><br> <!-- Demande à l'utilisateur de saisir son identifiant -->
     <label for="re_mot_de_passe"> Confirmer votre mot de passe : </label>
-    <input type="text" placeholder="Confirmer mot de passe" name="Re_MDP" />
+    <input type="text" placeholder="Confirmer mot de passe" name="Re_MDP" /> <!-- Demande à l'utilisateur de confirmer son mot de passe -->
 
     <!-- Gestion des erreurs -->
 
