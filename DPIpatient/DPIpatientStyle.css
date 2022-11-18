@@ -135,8 +135,21 @@ header{
 
 table{
     width: 100%;
-
 }
+
+.table-td-recipient{
+    height: 50px;
+    max-height: 50px;
+    overflow-y: auto;
+    white-space: normal;
+}
+
+.table-td-div-recipient{
+    height: 50px;
+    max-height: 50px;
+    overflow: auto;
+}
+
 tr {
     border: black solid thin;
 }
