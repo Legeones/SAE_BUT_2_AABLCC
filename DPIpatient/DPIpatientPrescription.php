@@ -68,7 +68,8 @@ session_start();
                 <tr>
                     <td style="width: 20%">Médicaments</td>
                     <?php
-                    if ($_SESSION['infosPersoPatient']['datefin']==""){
+                    $present = array_search(date("o")."-".date("m")."-".date("d"),$_SESSION['infosPatient']);
+                    if ($_SESSION['infosPersoPatient']['datefin']=="" && !$present){
                         echo "<td>".date("o")."-".date("m")."-".date("d")."</td>";
                     }
                     $listeJour = array();
@@ -85,72 +86,89 @@ session_start();
                 <tr>
                     <td>
                         <table>
+                            <tr>PO</tr>
                             <tr>
                                 <td style="color: white">.</td>
                             </tr>
-                            <tr>PO</tr>
-                            <tr>
                                 <?php
                                 foreach ($_SESSION['infosPatient'] as $item){
-                                    echo "<tr>";
-                                    echo "<td>".$item['traitement']."</td>";
+                                    echo "<tr class='table-tr-recipient'>";
+                                    echo "<td class='table-td-recipient'><div class='table-td-div-recipient'>".$item['traitement']."</div></td>";
                                     echo "</tr>";
                                 }
-                                echo "<td>/</td>";
-
+                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'><i></i></div></td>";
                                 ?>
-                            </tr>
                         </table>
                     </td>
                     <?php
-                    if ($_SESSION['infosPersoPatient']['datefin']==""){
-                        echo "<td>";
-                        echo "<table>";
-                        echo "<tr>";
-                        echo "<td>20:00</td>";
-                        echo "<td>12:00</td>";
-                        echo "<td>08:00</td>";
-                        echo "</tr>";
-                        echo "<tr>PO</tr>";
-                        echo "<tr>";
-                        echo "<td>.</td>";
-                        echo "<td></td>";
-                        echo "<td></td>";
-                        echo "</tr>";
-                        echo "</table>";
-                        echo "</td>";
-                    }
-                    foreach ($listeJour as $item){
-                        echo "<td>";
-                        echo "<table>";
-                        echo "<tr>";
-                        echo "<td>20:00</td>";
-                        echo "<td>12:00</td>";
-                        echo "<td>08:00</td>";
-                        echo "</tr>";
-                        echo "<tr>PO</tr>";
+                    print_r($_SESSION['infosPersoPatient']['datefin']);
+                    if ($_SESSION['infosPersoPatient']['datefin']=="" && !$present){ ?>
+                        <td>
+                            <table>
+                                <tr>PO</tr>
+                                <tr>
+                                    <td>20:00</td>
+                                    <td>12:00</td>
+                                    <td>08:00</td>
+                                </tr>
+                                <?php
+                                foreach ($_SESSION['infosPatient'] as $value){
+                                    ?>
+                                    <tr>
+                                        <?php if ($value['heure']=="20h00") {
+                                            echo "<td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text' value=".$value['fait']."></div></td>";
+                                        } elseif ($value['heure']=="12h00"){
+                                            echo "<td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text' value=".$value['fait']."></div></td>";
+                                        } elseif ($value['heure']=="08h00"){
+                                            echo "<td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text' value=".$value['fait']."></div></td>";
+                                        }
+                                        ?>
+                                    </tr>
+                                <?php } ?>
+                                <tr>
+                                    <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text' value=""></div></td>
+                                    <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                    <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                </tr>
+                        </td>
+                    <?php }
+                    foreach ($listeJour as $item){ ?>
+                        <td>
+                            <table>
+                                <tr>PO</tr>
+                                <tr>
+                                    <td>20:00</td>
+                                    <td>12:00</td>
+                                    <td>08:00</td>
+                                </tr>
+                        <?php
                         foreach ($_SESSION['infosPatient'] as $value){
-                            echo "<tr>";
+                            echo "<tr class='table-tr-recipient'>";
                             if ($value['heure']=="20h00"){
-                                echo "<td>".$value['fait']."</td>";
+                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'>".$value['fait']."</div></td>";
                             } else {
-                                echo "<td></td>";
+                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
                             }
                             if ($value['heure']=="12h00"){
-                                echo "<td>".$value['fait']."</td>";
+                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'>".$value['fait']."</div></td>";
                             } else {
-                                echo "<td></td>";
+                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
                             }
                             if ($value['heure']=="08h00"){
-                                echo "<td>".$value['fait']."</td>";
+                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'>".$value['fait']."</div></td>";
                             } else {
-                                echo "<td></td>";
+                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
                             }
                             echo "</tr>";
-                        }
-                        echo "</table>";
-                        echo "</td>";
-                    }
+                        } ?>
+                                <tr>
+                                    <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                    <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                    <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                </tr>
+                            </table>
+                        </td>
+                    <?php }
                     ?>
                 </tr>
             </table>
