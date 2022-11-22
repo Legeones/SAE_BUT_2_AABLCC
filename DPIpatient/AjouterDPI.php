@@ -19,7 +19,7 @@ session_start();
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='principale.php'">PATIENTS</button> // ohé l'arborescence ici?
+            <button onclick="location.href='DPI.php'">PATIENTS</button> // ohé l'arborescence ici?
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
         </div>
@@ -87,6 +87,7 @@ session_start();
                         <?php endif ?>
                         <p class="infoForm"><li><u>Certaines informations ne sont pas necéssaires et se définissent par "*".</u></li></p>
                         <label> Nom : </label>
+                        <!-- Demande à l'utilisateur de saisir le nom de la personne -->
                         <input type="text" placeholder="Saisir un nom" name="nom" value="<?= $_SESSION['nomp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['nomf'])):?>
                             <p>
@@ -98,6 +99,7 @@ session_start();
 
                     <div class="Groupe">
                         <label> Prénom :</label>
+                        <!-- Demande à l'utilisateur de saisir le prénom de la personne -->
                         <input type="text" placeholder="Saisir un prenom" name="prenom" value="<?= $_SESSION['prenomp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['prenomf'])):?>
                             <p>
@@ -108,6 +110,7 @@ session_start();
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir la date de naissance de la personne -->
                         <label> Date de Naissance : </label>
                         <input type="date" placeholder="Saisir une date de naissance"  name="DDN" value="<?= $_SESSION['DDNp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['DDNf'])):?>
@@ -119,6 +122,7 @@ session_start();
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir la taille de la personne  -->
                         <label> Taille en CM :</label>
                         <input type="number"placeholder="Saisir une taille en cm" name="taille" value="<?= $_SESSION['taillep'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['taillef'])):?>
@@ -130,6 +134,7 @@ session_start();
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir le poids de la personne -->
                         <label> Poids en KG : </label>
                         <input type="number" step="0.1" placeholder="Saisir un poids en kg" name="poids" value="<?= $_SESSION['poidsp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['poidsf'])):?>
@@ -141,6 +146,7 @@ session_start();
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir l'adresse de la personne -->
                         <label> Adresse :</label>
                         <input type="text" placeholder="Saisir une adresse" name="adresse" value="<?= $_SESSION['adressep'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['adressef'])):?>
@@ -153,6 +159,7 @@ session_start();
 
                     <div class="Groupe">
                         <label> Code Postal : </label>
+                        <!-- Demande à l'utilisateur de saisir le code postal de la personne -->
                         <input type="number" placeholder="Saisir un code postal"  name="CP" value="<?= $_SESSION['CPp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['CPf'])):?>
                             <p>
@@ -163,6 +170,7 @@ session_start();
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir la ville de la personne -->
                         <label> Ville :</label>
                         <input type="text"placeholder="Saisir une Ville" name="ville" value="<?= $_SESSION['villep'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['villef'])):?>
@@ -174,6 +182,7 @@ session_start();
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir le numéro de téléphone personnel de la personne -->
                         <label> Téléphone Personnel :</label>
                         <input type="text" placeholder="Saisir un numéro de téléphone personnel" name="telperso" value="<?= $_SESSION['telpersop'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['telpersof'])):?>
@@ -185,32 +194,38 @@ session_start();
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir le numéro de téléphone professionnel de la personne -->
                         <label> *Téléphone Profesionnel : </label>
                         <input type="text" placeholder="Saisir un numéro de téléphone professionnel"  name="telpro"  value="<?= $_SESSION['telprop'] ?? '' ?>"/>
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir les allergies de la personne -->
                         <label> *Allergies:</label>
                         <input type="text"placeholder="Saisir les allergies" name="allergies" value="<?= $_SESSION['allergiesp'] ?? '' ?>"/>
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir les antécédents de la personne -->
                         <label> *Antecedents : </label>
                         <input type="text" placeholder="Saisir les antécédents" name="antecedents" value="<?= $_SESSION['antecedentsp'] ?? '' ?>"/>
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir les obsetricaux de la personne -->
                         <label> *Obstericaux :</label>
                         <input type="text" placeholder="Saisir les Obsetricaux" name="Obs" value="<?= $_SESSION['Obsp'] ?? '' ?>"/>
                     </div>
 
                     <div class="Groupe">
-                        <label> *Document Médicaux : </label>
+                        <!-- Demande à l'utilisateur de saisir les documents médicaux de la personne -->
+                        <label> *Documents Médicaux : </label>
                         <input type="text" placeholder="Saisir le document médical"  name="docMed" value="<?= $_SESSION['docMedp'] ?? '' ?>"/>
                     </div>
 
                     <div class="Groupe">
-                        <label> *Document Chirurgicaux :</label>
+                        <!-- Demande à l'utilisateur de saisir les documents chirurgicaux de la personne -->
+                        <label> *Documents Chirurgicaux :</label>
                         <input type="text" placeholder="Saisir le document chirurgical" name="docChir" value="<?= $_SESSION['docChirp'] ?? '' ?>"/>
                     </div>
 
@@ -247,11 +262,13 @@ session_start();
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir le mode de vie de la personne -->
                         <label> *Mode de Vie :</label>
                         <input type="text"placeholder="Saisir le mode de vie" name="MDV" value="<?= $_SESSION['MDVp'] ?? '' ?>"/>
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir la synthèse d'entrée de la personne -->
                         <label> Synthèse d'Entrée :</label>
                         <input type="text"placeholder="Saisir la sythèse d'entrée" name="synEntree" value="<?= $_SESSION['synEntreep'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['synEntreef'])):?>
@@ -263,11 +280,13 @@ session_start();
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir le traitement à domicile de la personne -->
                         <label> *Traitement à domicile :</label>
                         <input type="text"placeholder="Saisir le traitement à domicile" name="tradomi" value="<?= $_SESSION['tradomip'] ?? '' ?>"/>
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir les données physique et/ou psychologique de la personne -->
                         <label> *Donnée physique et/ou psychologique :</label>
                         <input type="text"placeholder="Saisir les Données physiques et/ou psychologiques " name="doPhyPsy" value="<?= $_SESSION['doPhyPsyp'] ?? '' ?>"/>
                     </div>
@@ -390,6 +409,7 @@ session_start();
                         <h1><u>Ajouter une Personne à Contacter </u></h1>
                     </div>
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir le nom de la personne à contacter -->
                         <label> Nom :</label>
                         <input type="text" placeholder="Saisir le nom" name="nomCT" value="<?= $_SESSION['nomCTp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['nomCTf'])):?>
@@ -401,6 +421,7 @@ session_start();
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir le prénom de la personne à contacter -->
                         <label> Prénom : </label>
                         <input type="text" placeholder="Saisir le prénom"  name="prenomCT" value="<?= $_SESSION['prenomCTp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['prenomCTf'])):?>
@@ -412,6 +433,7 @@ session_start();
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir le numéro de téléphone de la personne à contacter -->
                         <label> Téléphone :</label>
                         <input type="text"placeholder="Saisir le numéro de téléphone" name="telCT" value="<?= $_SESSION['telCTp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['telCTf'])):?>
@@ -423,6 +445,7 @@ session_start();
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir le lien de paranté de la personne à contacter -->
                         <label> Lien Parenté :</label>
                         <input type="text"placeholder="Saisir le lien parenté" name="lienCT" value="<?= $_SESSION['lienCTp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['lienCTf'])):?>
@@ -445,6 +468,7 @@ session_start();
                         <h1><u>Ajouter une Personne de Confiance</u></h1>
                     </div>
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir le nom de la personne de confiance -->
                         <label> Nom :</label>
                         <input type="text" placeholder="Saisir le nom" name="nomC" value="<?= $_SESSION['nomCp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['nomCf'])):?>
@@ -456,6 +480,7 @@ session_start();
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir le prénom de la personne de confiance -->
                         <label> Prénom : </label>
                         <input type="text" placeholder="Saisir le prénom"  name="prenomC" value="<?= $_SESSION['prenomCp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['prenomCf'])):?>
@@ -467,6 +492,7 @@ session_start();
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir le numéro de téléphone de la personne de confiance -->
                         <label> Téléphone :</label>
                         <input type="text"placeholder="Saisir le numéro de téléphone" name="telC" value="<?= $_SESSION['telCp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['telCf'])):?>
@@ -478,6 +504,7 @@ session_start();
                     </div>
 
                     <div class="Groupe">
+                        <!-- Demande à l'utilisateur de saisir le lien de parenté de la personne de confiance -->
                         <label> Lien Parenté :</label>
                         <input type="text"placeholder="Saisir le lien parenté" name="lienC" value="<?= $_SESSION['lienCp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['lienCf'])):?>

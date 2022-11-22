@@ -14,10 +14,10 @@
         </div>
         <!-- Ajout de boutons -->
         <div class="droite">
-            <input type="button" onclick="window.location.href ='../Connexion/Localisation.php';" value="Ou nous trouver ?"/>
+            <input type="button" onclick="window.location.href ='../Connexion/Localisation.php';" value="Ou nous trouver ?"/> <!-- Permet d'accèder à la page ou nous trouver-->
         </div>
         <div class="gauche">
-            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Connexion "/>
+            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Connexion "/> <!-- Permet d'accèder à la page connexion -->
         </div>
     </form>
 </head>

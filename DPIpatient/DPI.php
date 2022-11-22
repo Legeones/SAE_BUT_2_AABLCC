@@ -1,6 +1,7 @@
 <?php
 session_start();
 $_SESSION['cat']=null;
+$_SESSION['patientSuivi']=null;
 ?>
 <html>
 <head>
@@ -22,13 +23,22 @@ $_SESSION['cat']=null;
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
             <!-- choix du rôle -->
-            <?php
+           <?php
             echo '<br>';
             if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='transition.php'>Passer en mode etu</button>";}
             echo '<br>';
             if ($_SESSION["Role"] == "admin") {echo "<button onclick=location.href='AttributionRole.php'>attribuer role</button>";}
             echo '<br>';
             if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='RetourMode.php'>retour mode prof</button>";}
+            echo '<br>';
+            if ($_SESSION["Role"] == "admin") {echo "<button onclick=location.href='SupprimerPatient.php'>Supprimer</button>";}
+            echo '<br>';
+            if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='FormulaireUpload.php'>Upload Image</button>";}
+            echo '<br>';
+            if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='Corbeille.php'> Mettre a la Corbeille</button>";
+            echo '<br>';
+            echo "<button onclick=location.href='AjouterDPI.php'> Ajouter</button>";}
+            echo '<br>';
             $_SESSION['infosPatient']=[];
             ?>
         </div>
@@ -64,7 +74,7 @@ $_SESSION['cat']=null;
                 $_SESSION['patientActuel']='patient'.$i;
                 $id = ''.$i;
                 $_SESSION['idActuel'] = $id;
-                ?> <input type="submit" name="<?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];} else {print $_SESSION['idActuel'];}?>"
+                ?> <input type="submit" name="<?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];} else {print "null";}?>"
                           style="cursor:pointer;" <?php if(isset($_SESSION[$_SESSION['patientActuel']])){?>
                     onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)"<?php }?>
                           value = <?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];}?>>

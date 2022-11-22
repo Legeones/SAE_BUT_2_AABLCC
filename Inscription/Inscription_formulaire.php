@@ -17,21 +17,21 @@
     <div class="Formulaire">
         <div class="Groupe">
             <label> Identifiant : </label>
-            <input type="text" placeholder="Saisir votre identifiant" name="ID" />
+            <input type="text" placeholder="Saisir votre identifiant" name="ID" /> <!-- Demande à l'utilisateur de saisir son identifiant -->
         </div>
         <div class="Groupe">
             <label> Mot de passe :</label>
-            <input type="password" name="Password_A" id="password" placeholder="Saisir votre mot de passe" />
+            <input type="password" name="Password_A" id="password" placeholder="Saisir votre mot de passe" /> <!-- Demande à l'utilisateur de saisir son mot de passe -->
             <i class="bi bi-eye-slash" id="togglePassword"></i>
         </div>
         <div class="Groupe">
             <label> Confirmation mot de passe : </label>
-            <input type="password" name="Password_B" id="password1" placeholder="Confirmer votre mot de passe" />
+            <input type="password" name="Password_B" id="password1" placeholder="Confirmer votre mot de passe" /> <!-- Demande à l'utilisateur de confirmer son mot de passe -->
             <i class="bi bi-eye-slash" id="togglePassword1"></i>
         </div>
         <div class="Groupe">
             <label> Adresse mail :</label>
-            <input type="text"placeholder="Saisir votre adresse mail" name="email" />
+            <input type="text"placeholder="Saisir votre adresse mail" name="email" /> <!-- Demande à l'utilisateur de saisir votre adresse mail -->
         </div>
     </div>
     <div class="piedDePage">
@@ -110,11 +110,11 @@
             <p>Pour vous Connectez</p>
         </div>
         <div class="CSS1" align="center">
-            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Se connecter"/>
+            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Se connecter"/> <!-- Bouton permettant à l'utilisateur de se connecter -->
         </div>
         <div class="piedDePage2">
             <div class="droite">
-                <input type="button" onclick="window.location.href ='../Connexion/Aide.php';" value="?"/>
+                <input type="button" onclick="window.location.href ='../Connexion/Aide.php';" value="?"/> <!-- Bouton permettant d'accèder à l'aide -->
             </div>
         </div>
     </div>
