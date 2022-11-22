@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -20,46 +19,103 @@
         </div>
     </div>
     <div class="droite">
-        <form action="" method="post">
-            <input name="recherche_barre">
-            <select name="select">
-            </select>
-            <button type="submit">Rechercher</button>
-            <button name="next">Next</button>
-            <button name="back">Back</button>
-        </form>
-
         <div class="bas">
-            <form name="form" action="Code.php" method="POST">
+            <form name="form" action="" method="POST">
                 <div class="Titreform">
                     <h1><u>Création scenario</u></h1>
                 </div>
+
                 <?php
                 session_start();
-                require ("Code.php");
-                try{
-                $db_username = 'postgres';
-                $db_password = 'steven59330';
-                $db_name = 'postgres';
-                $db_host = 'localhost';
-
-                $dbh = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
-                echo 'Connexion réussie';
+                require ('Code.php');
 
 
-
-
-                }catch (PDOException $e){
-                    echo 'Erreur : ' . $e->getMessage();}
-
-                    $conn= null;
+                try {
+                    $db_username = 'postgres';
+                    $db_password = 'steven59330';
+                    $db_name = 'postgres';
+                    $db_host = 'localhost';
+                    $db = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
 
                 ?>
 
+                <div class="choix">
+                    <select id="selectDPI" name="selectDPI">
+                        <option id="ipp" value="defaut">--Choisissez votre DPI--</option>
+                        <?php
 
+                        $recuppatient= $db->prepare('select ipp,nom, prenom from Patient');
+                        $recuppatient->execute();
+                        while ($row = $recuppatient->fetch(PDO::FETCH_ASSOC)) {
+                            unset($id, $nom, $prenom);
+                            $id = $row['ipp'];
+                            $nom = $row['nom'];
+                            $prenom = $row['prenom'];
+                            echo "<option value='$id'> $nom $prenom </option>";
+
+                        }
+                        ?>
+                        <input name="valueipp" id="valueipp">
+                        <input name="nomipp" id="nomipp">
+                    </select>
+                    <script>
+                        document.getElementById('selectDPI').addEventListener('change',function(){
+                            document.getElementById('valueipp').value = this.value;
+                            document.getElementById('nomipp').value = this.options[this.selectedIndex].textContent;});
+                    </script>
+                    <?php
+
+
+
+
+
+
+
+
+                    }catch (PDOException $e) {
+                        echo 'Erreur : ' . $e->getMessage();
+                    }
+
+                    ?>
+
+                    <button id="selectDPI" value="valider"> Valider</button>
+                    <div id="stock">
+                        <?php
+
+                        if(isset($_SESSION['val'])){
+                            if (isset($db)) {
+                                $donnees = takeDPI($db);
+                                $colonnes = takeColumnPatient($db);
+                                $name = 0;
+                                $cpt =0;
+                                $cp =0;
+                                $id = 1;
+                                foreach ($donnees as $row){
+                                    $strrow = "".$row;
+                                    if($strrow!="" && $cpt%2==0){
+                                        echo "<label style='padding-left: 7px; text-effect: engrave'> $colonnes[$cp]</label>";
+                                        echo "<br>";
+                                        echo "<input id='$id' name='$name' value='$strrow' size='50px' width='50px' style='color: purple; border-radius: 50px; border-color: mediumpurple; background-color: peachpuff;
+                                        text-align: justify-all; padding: 7px'>";
+                                        echo "<br><br>";
+                                        $cpt+=1;
+                                        $cp +=1;
+
+                                    }
+                                    else{ $cpt+=1;}
+                                    }
+
+                                }
+
+                        }
+                        ?>
+                        <div
+
+
+                    </div>
+                </div>
             </form>
         </div>
     </div>
 </body>
 </html>
-
