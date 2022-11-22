@@ -187,8 +187,6 @@ function ADD_Image_Bio($IPP,$lien)
         $stmt2->bindParam(1, $lien);
         $stmt2->bindParam(2, $IPP);
         $stmt2->execute();
-        $res= $stmt2->fetchColumn(0);
-        return $res;
 
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
@@ -205,8 +203,6 @@ function ADD_Image_Cour($IPP,$lien)
         $stmt2->bindParam(1, $lien);
         $stmt2->bindParam(2, $IPP);
         $stmt2->execute();
-        $res= $stmt2->fetchColumn(0);
-        return $res;
 
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
@@ -223,8 +219,6 @@ function ADD_Image_Rad($IPP,$lien)
         $stmt2->bindParam(1, $lien);
         $stmt2->bindParam(2, $IPP);
         $stmt2->execute();
-        $res= $stmt2->fetchColumn(0);
-        return $res;
 
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
