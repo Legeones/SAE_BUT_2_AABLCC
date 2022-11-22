@@ -38,6 +38,7 @@
                 session_start();
                 require ("Code.php");
                 try{
+                    // Zone de connexion à la base de données
                 $db_username = 'postgres';
                 $db_password = 'steven59330';
                 $db_name = 'postgres';
@@ -148,8 +149,8 @@
                 <br>
 
                 <div class="valider/resetSimulation">
-                    <button type="submit" name="valideSimu"> Créer la simulation</button>
-                    <button type="reset" name="resetSimu"> Reset les infos</button>
+                    <button type="submit" name="valideSimu"> Créer la simulation</button> <!-- Bouton permettant de créer la simulation -->
+                    <button type="reset" name="resetSimu"> Reset les infos</button> <!-- Bouton permettant d'effacer les informations rentrées -->
                 </div>
 
             </form>

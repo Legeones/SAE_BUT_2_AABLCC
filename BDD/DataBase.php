@@ -1,5 +1,5 @@
 <?php
-//Connexion Ã  la base de donnÃ©es// // Veuiller Aligner par rapport au autre fichier du repertoire S.V.P. //
+//Connexion à la base de données// // Veuiller Aligner par rapport au autre fichier du repertoire S.V.P. //
 require('../BDD/DataBase_Core.php');
 
     function Patient_Parcour($p,$rm){

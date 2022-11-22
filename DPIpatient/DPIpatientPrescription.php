@@ -45,88 +45,130 @@ session_start();
                     <h2>Données personnelles</h2>
                     <div class="info-intern" id="donn-perso">
 
-                        <h4>Nom:<?php print($_SESSION['infosPersoPatient']['nom']) ?></h4>
-                        <h4>Prenom:<?php print($_SESSION['infosPersoPatient']['prenom']) ?></h4>
-                        <h4>Ville de naissance:</h4>
-                        <h4>Date de naissance:<?php print($_SESSION['infosPersoPatient']['ddn']) ?></h4>
-                        <h4>Poids:<?php print($_SESSION['infosPersoPatient']['poids_kg']) ?>kg</h4>
-                        <h4>Taille:<?php print($_SESSION['infosPersoPatient']['taille_cm']) ?>cm</h4>
-                        <h4>IEP:<?php print($_SESSION['infosPersoPatient']['iep']); ?></h4>
-                        <h4>IPP: <?php print($_SESSION['infosPersoPatient']['ipp']); ?></h4>
-                        <h4>Type hospitalisation: </h4>
-                        <h4>Date d'admission: <?php print($_SESSION['infosPersoPatient']['datedebut']); ?></h4>
-                        <h4>Date de sortie: <?php print($_SESSION['infosPersoPatient']['datefin']); ?></h4>
+                        <h4>Nom:<?php print($_SESSION['infosPersoPatient']['nom']) ?></h4> <!-- Permet d'afficher le nom de la personne cherchée dans la base de données -->
+                        <h4>Prenom:<?php print($_SESSION['infosPersoPatient']['prenom']) ?></h4> <!-- Permet d'afficher le prénom de la personne cherchée dans la base de données -->
+                        <h4>Ville de naissance:</h4> <!-- Onglet ville de naissance -->
+                        <h4>Date de naissance:<?php print($_SESSION['infosPersoPatient']['ddn']) ?></h4> <!-- Permet d'afficher la date de naissance de la personne cherchée dans la base de données -->
+                        <h4>Poids:<?php print($_SESSION['infosPersoPatient']['poids_kg']) ?>kg</h4> <!-- Permet d'afficher le poids de la personne cherchée dans la base de données -->
+                        <h4>Taille:<?php print($_SESSION['infosPersoPatient']['taille_cm']) ?>cm</h4> <!-- Permet d'afficher la taille de la personne cherchée dans la base de données -->
+                        <h4>IEP:<?php print($_SESSION['infosPersoPatient']['iep']); ?></h4> <!-- Permet d'afficher l'iep de la personne cherchée dans la base de données -->
+                        <h4>IPP: <?php print($_SESSION['infosPersoPatient']['ipp']); ?></h4> <!-- Permet d'afficher l'ipp de la personne cherchée dans la base de données -->
+                        <h4>Type hospitalisation: </h4> <!-- Onglet type d'hospitalisation -->
+                        <h4>Date d'admission: <?php print($_SESSION['infosPersoPatient']['datedebut']); ?></h4> <!-- Permet d'afficher la date de début d'hospitalisation de la personne cherchée dans la base de données -->
+                        <h4>Date de sortie: <?php print($_SESSION['infosPersoPatient']['datefin']); ?></h4> <!-- Permet d'afficher la date de sortie d'hospitalisation de la personne cherchée dans la base de données -->
                     </div>
                 </div>
             </div>
 
         </div>
         <form class="table-container">
+            <?php //print_r($_SESSION['infosPatient']); ?>
             <table>
                 <caption>Plan d'administration</caption>
                 <tr>
                     <td style="width: 20%">Médicaments</td>
                     <?php
-                    if ($_SESSION['infosPersoPatient']['datefin']==""){
-                        echo "<td>".date("o")."/".date("m")."/".date("d")."</td>";
+                    $present = array_search(date("o")."-".date("m")."-".date("d"),$_SESSION['infosPatient']);
+                    if ($_SESSION['infosPersoPatient']['datefin']=="" && !$present){
+                        echo "<td>".date("o")."-".date("m")."-".date("d")."</td>";
                     }
-                    echo $_SESSION['infosPersoPatient']['ipp'];
+                    $listeJour = array();
                     foreach ($_SESSION['infosPatient'] as $item ){
-                        echo "<td>".$_SESSION['infosPatient']['jour']."</td>";
+                        if (in_array($item['jour'],$listeJour)){
+
+                        } else {
+                            $listeJour[] = $item['jour'];
+                            echo "<td>".$item['jour']."</td>";
+                        }
                     }
                     ?>
                 </tr>
                 <tr>
                     <td>
                         <table>
+                            <tr>PO</tr>
                             <tr>
                                 <td style="color: white">.</td>
                             </tr>
-                            <tr>PO</tr>
-                            <tr>
                                 <?php
-                                /*foreach ($_SESSION[''] as $item){
-                                    echo "<td>$item[]</td>";
-                                }*/
+                                foreach ($_SESSION['infosPatient'] as $item){
+                                    echo "<tr class='table-tr-recipient'>";
+                                    echo "<td class='table-td-recipient'><div class='table-td-div-recipient'>".$item['traitement']."</div></td>";
+                                    echo "</tr>";
+                                }
+                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'><i></i></div></td>";
                                 ?>
-                            </tr>
                         </table>
                     </td>
                     <?php
-                    if ($_SESSION['infosPersoPatient']['datefin']==""){
-                        echo "<td>";
-                        echo "<table>";
-                        echo "<tr>";
-                        echo "<td>20:00</td>";
-                        echo "<td>12:00</td>";
-                        echo "<td>08:00</td>";
-                        echo "</tr>";
-                        echo "<tr>PO</tr>";
-                        echo "<tr>";
-                        echo "<td>.</td>";
-                        echo "<td></td>";
-                        echo "<td></td>";
-                        echo "</tr>";
-                        echo "</table>";
-                        echo "</td>";
-                    }
-                    /*foreach ($_SESSION[''] as $item){
-                        echo "<td>";
-                        echo "<table>";
-                        echo "<tr>";
-                        echo "<td>20:00</td>";
-                        echo "<td>12:00</td>";
-                        echo "<td>08:00</td>";
-                        echo "</tr>";
-                        echo "<tr>PO</tr>";
-                        echo "<tr>";
-                        echo "<td>.</td>";
-                        echo "<td></td>";
-                        echo "<td></td>";
-                        echo "</tr>";
-                        echo "</table>";
-                        echo "</td>";
-                    }*/
+                    print_r($_SESSION['infosPersoPatient']['datefin']);
+                    if ($_SESSION['infosPersoPatient']['datefin']=="" && !$present){ ?>
+                        <td>
+                            <table>
+                                <tr>PO</tr>
+                                <tr>
+                                    <td>20:00</td>
+                                    <td>12:00</td>
+                                    <td>08:00</td>
+                                </tr>
+                                <?php
+                                foreach ($_SESSION['infosPatient'] as $value){
+                                    ?>
+                                    <tr>
+                                        <?php if ($value['heure']=="20h00") {
+                                            echo "<td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text' value=".$value['fait']."></div></td>";
+                                        } elseif ($value['heure']=="12h00"){
+                                            echo "<td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text' value=".$value['fait']."></div></td>";
+                                        } elseif ($value['heure']=="08h00"){
+                                            echo "<td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text' value=".$value['fait']."></div></td>";
+                                        }
+                                        ?>
+                                    </tr>
+                                <?php } ?>
+                                <tr>
+                                    <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text' value=""></div></td>
+                                    <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                    <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                </tr>
+                        </td>
+                    <?php }
+                    foreach ($listeJour as $item){ ?>
+                        <td>
+                            <table>
+                                <tr>PO</tr>
+                                <tr>
+                                    <td>20:00</td>
+                                    <td>12:00</td>
+                                    <td>08:00</td>
+                                </tr>
+                        <?php
+                        foreach ($_SESSION['infosPatient'] as $value){
+                            echo "<tr class='table-tr-recipient'>";
+                            if ($value['heure']=="20h00"){
+                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'>".$value['fait']."</div></td>";
+                            } else {
+                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
+                            }
+                            if ($value['heure']=="12h00"){
+                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'>".$value['fait']."</div></td>";
+                            } else {
+                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
+                            }
+                            if ($value['heure']=="08h00"){
+                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'>".$value['fait']."</div></td>";
+                            } else {
+                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
+                            }
+                            echo "</tr>";
+                        } ?>
+                                <tr>
+                                    <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                    <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                    <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                </tr>
+                            </table>
+                        </td>
+                    <?php }
                     ?>
                 </tr>
             </table>

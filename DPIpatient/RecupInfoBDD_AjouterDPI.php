@@ -2,12 +2,12 @@
 <?php
 function verification($elt){
     if (empty($elt)) {
-        $elt = null;
+        $elt = 'rien';
     }
     return $elt;
 }
 function Connection(){
-    $PDO = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;', 'postgres', '');
+    $PDO = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;', 'postgres',                                         'Housezalex59330');
     return $PDO;
 
 }
@@ -157,5 +157,39 @@ VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
     $_SESSION['telCp'] = null;
     $_SESSION['lienCp'] = null;
 
+}
+
+function StockDPI ()
+{
+    $DPI1 = Connection();
+    $DPI = $DPI1->prepare("Select * from Patient where ipp = ?");
+    $DPI->bindParam(1, $_POST['recherche']);
+    $DPI->execute();
+    foreach ($DPI as $info) {
+        return $info;
+    }
+}
+
+function lstderoulante(){
+    $DPI2 = Connection();
+    $DPI = $DPI2->prepare("Select ipp, nom, prenom from Patient");
+    $DPI->execute();
+    return $DPI;
+}
+
+function nameColonne (){
+    $DPI3 = Connection();
+    $colonne = $DPI3->prepare("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ? order by ordinal_position");
+    $table = 'patient';
+    $colonne->bindParam(1,$table);
+    $colonne->execute();
+    $donnees = [];
+    $typedonnees = [];
+    foreach ($colonne as $don){
+        $donnees[] = $don[0];
+        $typedonnees[] = $don[1];;
+    }
+    $res = [$donnees,$typedonnees];
+    return $res;
 }
 ?>

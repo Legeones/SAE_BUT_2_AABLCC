@@ -26,7 +26,6 @@ session_start();
     </div>
     <div class="droite">
         <script type="text/javascript" src="scriptsDPIpatient.js"></script>
-        <!-- zone d'ajout de boutons -->
         <form action="actionDPI.php" name="cat" method="get" class="btn-line">
             <!-- zone d'ajout de boutons -->
             <input type="submit" id="macrocible" name="Macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">
@@ -70,7 +69,7 @@ session_start();
                     <td style="width: 70%; max-width: 70%;">Compte rendu</td>
                 </tr>
                 <?php
-                $test = [["2022-10-03","Urgentiste","Pas en form"],["2002-01-03","Médecin généraliste","En forme"]];
+                $test = [["2022-10-03","Urgentiste","Pas en forme"],["2002-01-03","Médecin généraliste","En forme"]];
                 foreach ($test as $item){
                     echo "<tr>";
                     echo "<td>$item[0]</td>";
