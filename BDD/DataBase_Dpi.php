@@ -2,6 +2,7 @@
 
 require('../BDD/DataBase_Core.php');
 
+
 function Patient_Parcour($p,$rm){
     $o = 1;
     if(isset($_SESSION['patient1']) && $_SESSION['patient1']!=null){
@@ -65,67 +66,47 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
     foreach ($info as $item){
         $_SESSION['infosPersoPatient']+=$item;
     }
-    if ($nomCateg == "Macrocible"){
+    if ($nomCateg == "macrocible"){
         $stmt = $pdo->prepare("SELECT * FROM patient LEFT JOIN personneconfiance p on patient.idpcon = p.idpcon LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel LEFT JOIN admission a on patient.ipp = a.ipp LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp WHERE patient.nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
-        foreach ($stmt as $item){
-            $_SESSION['infosPatient']+=$item;
-        }
-    } elseif ($nomCateg == "Observation"){
+
+    } elseif ($nomCateg == "observation"){
         $stmt = $pdo->prepare("SELECT * FROM patient WHERE patient.nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
-        foreach ($stmt as $item){
-            $_SESSION['infosPatient']+=$item;
-        }
-    } elseif ($nomCateg == "Prescription"){
+    } elseif ($nomCateg == "prescription"){
         $stmt = $pdo->prepare("SELECT * FROM prescriptionpatient WHERE ipp = ? ORDER BY jour");
         $stmt -> bindParam(1,$_SESSION['infosPersoPatient']['ipp']);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
-        $_SESSION['infosPatient']=array();
-        foreach ($stmt as $item){
-            $_SESSION['infosPatient'][]=$item;
-        }
-    } elseif ($nomCateg == "Diagramme"){
+    } elseif ($nomCateg == "diagramme"){
         $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
-        foreach ($stmt as $item){
-            $_SESSION['infosPatient']+=$item;
-        }
-    } elseif ($nomCateg == "Biologie"){
+    } elseif ($nomCateg == "biologie"){
         $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
-        foreach ($stmt as $item){
-            $_SESSION['infosPatient']+=$item;
-        }
-    } elseif ($nomCateg == "Imagerie"){
+    } elseif ($nomCateg == "imagerie"){
         $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
-        foreach ($stmt as $item){
-            $_SESSION['infosPatient']+=$item;
-        }
-    } elseif ($nomCateg == "Courriers"){
+    } elseif ($nomCateg == "courriers"){
         $stmt = $pdo->prepare("SELECT * FROM patient WHERE nom = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=[];
-        foreach ($stmt as $item){
-            $_SESSION['infosPatient']+=$item;
-        }
     }
-
+    foreach ($stmt as $item){
+        $_SESSION['infosPatient']+=$item;
+    }
     header("Location: ../DPIpatient/DPIpatient".$nomCateg.".php");
-
 
 }
 
@@ -168,11 +149,83 @@ function DataBase_Corbeille_Patient()
             header('Location: ../DPIpatient/Corbeille.php?erreur=2');
         }
         else{
-            $stmt = $dbh->prepare("insert into corbeille values (?);");
+            $stmt = $dbh->prepare("insert into corbeille values (?)");
             $stmt->bindParam(1, $_SESSION["IPP_CORB"]);
             $stmt->execute();
             header('Location: ../DPIpatient/DPI.php');
         }
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
+function Check_Patient($IPP)
+{
+    session_start();
+
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("SELECT count(*) FROM Patient WHERE IPP=?");
+        $stmt2->bindParam(1, $IPP);
+        $stmt2->execute();
+        $res= $stmt2->fetchColumn(0);
+        return $res;
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
+function ADD_Image_Bio($IPP,$lien)
+{
+
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("INSERT INTO Biologie values (?,?)");
+        $stmt2->bindParam(1, $lien);
+        $stmt2->bindParam(2, $IPP);
+        $stmt2->execute();
+        $res= $stmt2->fetchColumn(0);
+        return $res;
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
+function ADD_Image_Cour($IPP,$lien)
+{
+
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("INSERT INTO couriel values (?,?)");
+        $stmt2->bindParam(1, $lien);
+        $stmt2->bindParam(2, $IPP);
+        $stmt2->execute();
+        $res= $stmt2->fetchColumn(0);
+        return $res;
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
+function ADD_Image_Rad($IPP,$lien)
+{
+
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("INSERT INTO radio values (?,?)");
+        $stmt2->bindParam(1, $lien);
+        $stmt2->bindParam(2, $IPP);
+        $stmt2->execute();
+        $res= $stmt2->fetchColumn(0);
+        return $res;
+
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
         die();
