@@ -8,38 +8,36 @@
 </head>
 <div class="droite">
     <br><select name="l">
-        <option value="en" selected="selected">English</option>
+        <option value="fr" selected="selected">Français</option>
     </select>
     <div class="retour">
-        <input type="button" onclick="window.location.href ='loginEN.php';" value="Go"/>
+        <input type="button" onclick="window.location.href ='login.php';" value="Go"/>
     </div>
 <body id="general">
 <div id="container">
     <!-- zone de connexion -->
 
     <form action="Verification_Login.php" method="POST">
-        <h1>Connexion</h1>
+        <h1>Connection</h1>
         <div class="Separation"></div>
         <div class="Formulaire">
             <div class="Groupe">
-                <label for="identifiant">Identifiant : </label>
-                <input type="text" placeholder="Saisir votre identifiant" name="username" /> <!-- Demande à l'utilisateur de saisir son identifiant -->
+                <label for="identifiant">ID : </label>
+                <input type="text" placeholder="Enter your ID" name="username" /> <!-- Demande à l'utilisateur de saisir son identifiant -->
             </div>
-
             <div class="Groupe">
                 <div class="eyes">
                     <div class="labelMDP">
-                        <label for="mot de passe">Mot de passe :</label>
+                        <label for="mot de passe">Password :</label>
                     </div>
                     <div class="GroupeLOGO">
-                        <input type="password" name="password" id="password" placeholder="Saisir votre mot de passe" /> <!-- Demande à l'utilisateur de saisir son mot de passe -->
+                        <input type="password" name="password" id="password" placeholder="Enter your password" /> <!-- Demande à l'utilisateur de saisir son mot de passe -->
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
                         <i class="bi bi-eye-slash" id="togglePassword"></i>
                     </div>
                 </div>
             </div>
         </div>
-
         <script>
             <!-- zone de gestion d'apparition ou non du mot de passe -->
 
@@ -59,7 +57,7 @@
         if(isset($_GET['erreur'])){
             $err = $_GET['erreur'];
             if($err==1 || $err==2){
-                echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+                echo "<p style='color:red'>Incorrect username or password</p>";
             }
         }
         ?>
@@ -68,23 +66,23 @@
 
         <div class="piedDePage">
             <div class="Validation" align="center" >
-                <input type="submit" value="Connexion">
+                <input type="submit" value="Connection">
             </div>
             <div class="mdpOublie" align="right">
-                <a href="../MDP/MDPoublier.php"><strong>Mot de passe oublié</strong></a> <!-- Permet d'accèder à la page mot de passe oublié -->
+                <a href="../MDP/MDPoublier.php"><strong>Forgot your password</strong></a> <!-- Permet d'accèder à la page mot de passe oublié -->
             </div>
         </div>
         <div class="Separation2"></div>
         <div class="CssUnified">
             <div class="Phrase">
-                <p>Pour vous inscrire</p>
+                <p>To register</p>
             </div>
             <div class="CSS1" align="center">
-                <input type="button" onclick="window.location.href ='../Inscription/Inscription_formulaire.php';" value="S'inscrire"/>
+                <input type="button" onclick="window.location.href ='../Inscription/Inscription_formulaire.php';" value="Register"/>
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
-                    <a href="../Charte_Utilisation/charte_utilisation.php"><strong>Charte d'utilisation</strong></a> <!-- Permet d'accéder à la page charte d'utilisation -->
+                    <a href="../Charte_Utilisation/charte_utilisation.php"><strong>User Charter</strong></a> <!-- Permet d'accéder à la page charte d'utilisation -->
                 </div>
                 <div class="droite">
                     <input type="button" onclick="window.location.href ='Aide.php';" value="?"/> <!-- Permet d'accéder à la page aide -->
