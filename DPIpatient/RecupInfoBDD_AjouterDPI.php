@@ -51,10 +51,10 @@ function AjouterDPI ()
     $contacte1 = Contact($PDO);
     $Contacte = $PDO->prepare("insert into personnecontacte (idptel, nom, prenom, tel, lien) VALUES (?,?,?,?,?)");
     $Contacte->bindParam(1, $contacte1);
-    $Contacte->bindParam(2, $_POST['nomCT']);
-    $Contacte->bindParam(3, $_POST['prenomCT']);
-    $Contacte->bindParam(4, $_POST['telCT']);
-    $Contacte->bindParam(5, $_POST['lienCT']);
+    $Contacte->bindParam(2, $_POST['nomCT']); // Permets de récupérer le nom du contact de la personne saisi dans le formulaire
+    $Contacte->bindParam(3, $_POST['prenomCT']); // Permets de récupérer le prénom du contact de la personne saisi dans le formulaire
+    $Contacte->bindParam(4, $_POST['telCT']); // Permets de récupérer le téléphone du contact de la personne saisi dans le formulaire
+    $Contacte->bindParam(5, $_POST['lienCT']); // Permets de récupérer le lien de parenté du contact de la personne saisi dans le formulaire
     $Contacte->execute();
 
 
@@ -62,10 +62,10 @@ function AjouterDPI ()
     $boo = "true";
     $Confiance = $PDO->prepare("insert into personneconfiance (idpcon, nom, prenom, tel, lien, formulaire) VALUES (?,?,?,?,?,?)");
     $Confiance->bindParam(1, $confiance1);
-    $Confiance->bindParam(2, $_POST['nomC']);
-    $Confiance->bindParam(3, $_POST['prenomC']);
-    $Confiance->bindParam(4, $_POST['telC']);
-    $Confiance->bindParam(5, $_POST['lienC']);
+    $Confiance->bindParam(2, $_POST['nomC']); // Permets de récupérer le nom de la personne de confiance saisi dans le formulaire
+    $Confiance->bindParam(3, $_POST['prenomC']); // Permets de récupérer le prénom de la personne de confiance saisi dans le formulaire
+    $Confiance->bindParam(4, $_POST['telC']); // Permets de récupérer le téléphone de la personne de confiance saisi dans le formulaire
+    $Confiance->bindParam(5, $_POST['lienC']); // Permets de récupérer le lien de parenté de la personne de confiance saisi dans le formulaire
     $Confiance->bindParam(6, $boo);
     $Confiance->execute();
 
@@ -77,20 +77,20 @@ function AjouterDPI ()
 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
     $Patient1->bindParam(1, $patientipp);
     $Patient1->bindParam(2, $patientiep);
-    $Patient1->bindParam(3, $_POST['nom']);
-    $Patient1->bindParam(4, $_POST['prenom']);
-    $Patient1->bindParam(5, $_POST['DDN']);
-    $Patient1->bindParam(6, $_POST['taille']);
-    $Patient1->bindParam(7, $_POST['poids']);
-    $Patient1->bindParam(8, $_POST['adresse']);
-    $Patient1->bindParam(9, $_POST['CP']);
-    $Patient1->bindParam(10, $_POST['ville']);
-    $Patient1->bindParam(11, $_POST['telperso']);
-    $telpro = verification($_POST['telpro']);
+    $Patient1->bindParam(3, $_POST['nom']); // Permets de récupérer le nom saisi dans le formulaire
+    $Patient1->bindParam(4, $_POST['prenom']); // Permets de récupérer le prénom saisi dans le formulaire
+    $Patient1->bindParam(5, $_POST['DDN']); // Permets de récupérer la date de naissance saisie dans le formulaire
+    $Patient1->bindParam(6, $_POST['taille']); // Permets de récupérer la taille saisie dans le formulaire
+    $Patient1->bindParam(7, $_POST['poids']); // Permets de récupérer le poids saisi dans le formulaire
+    $Patient1->bindParam(8, $_POST['adresse']); // Permets de récupérer l'adresse saisie dans le formulaire
+    $Patient1->bindParam(9, $_POST['CP']); // Permets de récupérer le code postal saisi dans le formulaire
+    $Patient1->bindParam(10, $_POST['ville']); // Permets de récupérer la ville saisie dans le formulaire
+    $Patient1->bindParam(11, $_POST['telperso']); // Permets de récupérer le telperso saisi dans le formulaire
+    $telpro = verification($_POST['telpro']); // Permets de vérifier si le telpro est bien saisi
     $Patient1->bindParam(12, $telpro);
-    $allergies = verification($_POST['allergies']);
+    $allergies = verification($_POST['allergies']); // Permets de vérifier si les allergies sont bien saisi
     $Patient1->bindParam(13, $allergies);
-    $antecedents = verification($_POST['antecedents']);
+    $antecedents = verification($_POST['antecedents']); // Permets de vérifier si les antécédents sont bien saisi
     $Patient1->bindParam(14, $antecedents);
     $Obs = verification($_POST['Obs']);
     $Patient1->bindParam(15, $Obs);
@@ -109,12 +109,12 @@ VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
     $Patient1->bindParam(24, $tradomi);
     $doPhyPsy = verification($_POST['doPhyPsy']);
     $Patient1->bindParam(25, $doPhyPsy);
-    $Patient1->bindParam(26, $_POST['CD']);
-    $Patient1->bindParam(27, $_POST['CM']);
-    $Patient1->bindParam(28, $_POST['CL']);
-    $Patient1->bindParam(29, $_POST['CT']);
-    $Patient1->bindParam(30, $_POST['CH']);
-    $Patient1->bindParam(31, $_POST['conti']);
+    $Patient1->bindParam(26, $_POST['CD']); // Permets de récupérer CD saisi dans le formulaire
+    $Patient1->bindParam(27, $_POST['CM']); // Permets de récupérer CM saisi dans le formulaire
+    $Patient1->bindParam(28, $_POST['CL']); // Permets de récupérer CL saisi dans le formulaire
+    $Patient1->bindParam(29, $_POST['CT']); // Permets de récupérer CT saisi dans le formulaire
+    $Patient1->bindParam(30, $_POST['CH']); // Permets de récupérer CH saisi dans le formulaire
+    $Patient1->bindParam(31, $_POST['conti']); // Permets de récupérer conti saisie dans le formulaire
     $Patient1->execute();
 
 // Permet d'afficher null dans la base de données si des informations ne sont pas renseignés //
