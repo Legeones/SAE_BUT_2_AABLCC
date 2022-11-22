@@ -51,24 +51,31 @@
         if(isset($_GET['erreur'])){
             $err = $_GET['erreur'];
             if($err==1){
+                // Affiche une erreur si le format du fichier n'est pas valide
                 echo "<p style='color:red'>Erreur : Veuillez sélectionner un format de fichier valide.</p>";
             }
             if($err==2){
+                // Affiche une erreur si la taille du fichier est supérieure à la limite autorisée
                 echo "<p style='color:red'>Error: La taille du fichier est supérieure à la limite autorisée.</p>";
             }
             if($err==3){
+                // Affiche une erreur quand le téléchargement a rencontré un problème
                 echo "<p style='color:red'>Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer.</p>";
             }
             if($err==4){
+                // Affiche une erreur
                 echo "<p style='color:red'>Error</p>";
             }
             if($err==5){
+                // Affiche une erreur quand le fichier existe déjà
                 echo "<p style='color:red'>Error: le fichier existe déjà.</p>";
             }
             if($err==6){
+                // Affiche une erreur quand l'IPP n'est pas remplis
                 echo "<p style='color:red'>Error: L'IPP doit etre remplis</p>";
             }
             if($err==7){
+                // Affiche une erreur quand l'IPP n'existe pas
                 echo "<p style='color:red'>Error: L'IPP n'existe pas</p>";
             }
         }
