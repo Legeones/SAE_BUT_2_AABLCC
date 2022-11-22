@@ -1,4 +1,4 @@
-drop table if exists PersonneConfiance,Utilisateur, PersonneContacte,Corbeille, Patient, Intervenant, Intervention, Admission, Soin, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient;
+drop table if exists PersonneConfiance,Utilisateur, PersonneContacte,Corbeille, Patient, Intervenant, Intervention, Admission, Soin, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient,radio,Biologie,couriel;
 
 
 create table PersonneConfiance (
@@ -126,6 +126,21 @@ create table PrescriptionPatient (
                                      fait boolean not null ,
                                      IPP numeric(13,0) not null references Patient ON DELETE CASCADE,
                                      idPrescription serial not null references Prescription ON DELETE CASCADE
+);
+
+create table radio(
+    lien text primary key ,
+    IPPRadio numeric(13,0)  references Patient ON DELETE CASCADE not null
+);
+
+create table couriel(
+                      lien text primary key ,
+                      IPPCour numeric(13,0)  references Patient ON DELETE CASCADE not null
+);
+
+create table Biologie(
+                        lien text primary key ,
+                        IPPBio numeric(13,0)  references Patient ON DELETE CASCADE not null
 );
 
 insert into PersonneConfiance
