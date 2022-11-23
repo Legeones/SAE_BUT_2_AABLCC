@@ -521,6 +521,7 @@ session_start();
                     </div>
                 </div>
             </form>
+            <!-- Affiche null si les informations ne sont pas saisie dans la base de données -->
             <?php $_SESSION['nomp'] = null ;
             $_SESSION['prenomp']= null;
             $_SESSION['DDNp'] = null;
