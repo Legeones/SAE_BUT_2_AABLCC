@@ -1,39 +1,60 @@
 <?php
-
-
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(empty($_POST["textArea"])){
-        $t= 'Vous devez saisir des données dans la zone de texte';
-    }else{
-        $t = $_POST["textArea"];
-    }
-
-    echo 'vous avez entré les données suivantes :' . $t;
-}
-
-if (isset($_POST['selectDPI']) && $_POST['selectDPI'] != 'defaut') {
-
-    echo "Vous avez choisi <b>" . $_POST['selectDPI'] . "</b>";
-
-}
-
-
-?>
-
-<?php
-
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(!empty($_POST['selectDPI'])){
-        if (!empty($id)) {
-            $dpi = $id;
-            echo "voici le dpi" . $dpi;
+        $_SESSION['val'] = $_POST['valueipp'];
+        if (empty($_SESSION['val'])) {
+            echo "il n'y a pas de données";
         }
     }
-    if (isset($_POST['valideSimu'])){
-        $motC = $_POST['textArea'];
+
+    function takeDPI($dbh)
+    {
+        $dpi = $dbh->prepare("select *
+                            from patient where IPP=?");
+        $id = $_SESSION['val'];
+        $dpi->bindparam(1,$id);
+        $dpi->execute();
+        $donnees = array();
+        foreach($dpi as $row){
+            $donnees += $row;
+        }
+        return($donnees);
+    }
+
+    function takeColumnPatient($dbh): array
+    {
+        $info = $dbh->prepare("select  column_name
+                        from  information_schema.columns where table_name= ? order by ordinal_position");
+        $val = 'patient';
+        $info->bindparam(1,$val);
+        $info->execute();
+        $donnees = [];
+        foreach ($info as $row){
+            $donnees[] = $row[0];
+        }
+        return $donnees;
+    }
+
+    function modif_dpi($dbh): string
+    {
+        $donnees = takeDPI($dbh);
+        $requete = $dbh->prepare("update patient
+                        set ipp = ?, iep= ?, nom= ?, prenom= ?, ddn= ?, taille_cm= ?, poids_kg= ?, adresse= ?, cp= ?, ville= ?, telpersonnel= ?,
+                        telprofessionnel= ?, allergies= ?, antecedents= ?, obstericaux= ?, domedicaux= ?, dochirurgicaux= ?, idpcon= ?, idptel= ?,
+                        mesuredeprotection= ?, asistantsocial= ?, mdv= ?, synentre= ?, traidomi= ?, dophypsy= ?, mobilite= ?, alimentation= ?,
+                        hygiene= ?, toilette= ?, habit= ?, continence = ?
+                            where ipp = ?");
+
+        for($i=1; $i<= sizeof($donnees); $i++){
+            $requete->bindparams($i, $_SESSION[$i]);
+        }
+        $requete->execute();
+        return "fait";
 
     }
 
 }
+
+
 ?>
