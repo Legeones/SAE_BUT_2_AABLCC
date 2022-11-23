@@ -92,22 +92,22 @@ VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
     $Patient1->bindParam(13, $allergies);
     $antecedents = verification($_POST['antecedents']); // Permets de vérifier si les antécédents sont bien saisi
     $Patient1->bindParam(14, $antecedents);
-    $Obs = verification($_POST['Obs']);
+    $Obs = verification($_POST['Obs']); // Permets de vérifier si les Obs sont bien saisi
     $Patient1->bindParam(15, $Obs);
-    $docMed = verification($_POST['docMed']);
+    $docMed = verification($_POST['docMed']); // Permets de vérifier si les docMed sont bien saisi
     $Patient1->bindParam(16, $docMed);
-    $docChir = verification($_POST['docChir']);
+    $docChir = verification($_POST['docChir']); // Permets de vérifier si les docChir sont bien saisi
     $Patient1->bindParam(17, $docChir);
     $Patient1->bindParam(18, $confiance1);
     $Patient1->bindParam(19, $contacte1);
-    $Patient1->bindParam(20, $_POST['MP']);
-    $Patient1->bindParam(21, $_POST['AC']);
+    $Patient1->bindParam(20, $_POST['MP']); // Permets de récuperer les MP saisi dans le formulaire
+    $Patient1->bindParam(21, $_POST['AC']); // Permets de récupérer les AC saisi dans le formulaire
     $MDV = verification($_POST['MDV']);
     $Patient1->bindParam(22, $MDV);
-    $Patient1->bindParam(23, $_POST['synEntree']);
-    $tradomi = verification($_POST['tradomi']);
+    $Patient1->bindParam(23, $_POST['synEntree']); // Permets de récupérer la synEntree saisi dans le formulaire
+    $tradomi = verification($_POST['tradomi']); // Permets de vérifier si tradomi est bien saisi
     $Patient1->bindParam(24, $tradomi);
-    $doPhyPsy = verification($_POST['doPhyPsy']);
+    $doPhyPsy = verification($_POST['doPhyPsy']); // Permets de vérifier si doPhyPsy est bien saisi
     $Patient1->bindParam(25, $doPhyPsy);
     $Patient1->bindParam(26, $_POST['CD']); // Permets de récupérer CD saisi dans le formulaire
     $Patient1->bindParam(27, $_POST['CM']); // Permets de récupérer CM saisi dans le formulaire
