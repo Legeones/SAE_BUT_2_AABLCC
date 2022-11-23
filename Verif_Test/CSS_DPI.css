@@ -24,14 +24,12 @@ form {
 input[type=text], input[type=password]{
     width: 100%;
     padding: 12px 9px;
-    display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
 input[type=number], input[type=date]{
     width: 29%;
     padding: 12px 9px;
-    display: flex;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
@@ -265,7 +263,7 @@ footer{
 .global .bas {
     background-color: gray;
     width: 96%;
-    height: 84%;
+    height: 95%;
     padding: 0% 2% 2% 2%;
 
 }
@@ -273,7 +271,7 @@ footer{
 .global .bas #form {
     background-color: wheat;
     width: 98%;
-    height: 92%;
+    height: 91%;
     overflow: auto;
 
 }
@@ -289,4 +287,32 @@ footer{
 /***********************************************************/
 /*MDF dpi*/
 
+.bas .recherche{
+    height: 15%;
+    width: 100%;
 
+}
+.bas .separation{
+    padding: 1px;
+    background-color: black;
+}
+
+.bas .recherche .contenuRech .reche , select{
+    width: 30%;
+    padding: 14px 9px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.bas .recherche .contenuRech input[type=submit]{
+    width: 10%;
+    padding: 14px 9px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.recherche .labIPP {
+    font-size: 20px;
+}
+.bas .recherche .contenuRech{
+    margin-top: 12px;
+}
