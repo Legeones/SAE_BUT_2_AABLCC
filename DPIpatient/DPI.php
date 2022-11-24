@@ -38,6 +38,8 @@ $_SESSION['patientSuivi']=null;
                 echo "<button onclick=location.href='FormulaireUnlink.php'>Supprimer Image</button>";
                 echo '<br>';
                 echo "<button onclick=location.href='SupprimerPatient.php'>Supprimer</button>";
+                echo '<br>';
+                echo "<button onclick=location.href='RecupCorbeille.php'>Recup Patient</button>";
                 echo '<br>';}
             if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='RetourMode.php'>retour mode prof</button>";
                 echo '<br>';}
