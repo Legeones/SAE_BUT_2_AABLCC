@@ -10,7 +10,5 @@ for ($i = 2 ; $i<=31 ; $i++) {
     $_SESSION[$name] = StockDPI()[$i];
 }
 
-
-
 header('Location: MDFDPI.php');
 ?>

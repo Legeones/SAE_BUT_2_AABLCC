@@ -131,9 +131,7 @@ require ("RecupInfoBDD_AjouterDPI.php");
 
                     if ($i < 25 && $i >20 || $i<19):?>
                     <div class="Groupe">
-                        <?php
-                        echo "<label for='$res'> $lst[$i]: </label><br>";
-                        ?>
+                        <?php echo "<label for='$res'> $lst[$i]: </label><br>"; ?>
                         <input id="<?=$res?>" type="<?=$type?>" name="<?=$res?>" value="<?= $_SESSION[$res2] ?? '' ?>"/>
                     </div>
                     <?php endif;
@@ -143,11 +141,10 @@ require ("RecupInfoBDD_AjouterDPI.php");
                         <?php echo "<label for='$res'> $lst[$i]: </label><br>";
                         $type = "radio"?>
                         <div class="Boolean">
-                            <input id="<?=$res?>" type="<?=$type?>" name="<?=$res?>" value="true" <?php if(isset($_SESSION[$res2])&&$_SESSION[$res2] == 'true'):?> checked <?php endif ?>/>
+                            <input id="<?=$res?>" type="<?=$type?>" name="<?=$res?>" value="true" <?php if(isset($_SESSION[$res2])&&$_SESSION[$res2] == "false"):?> checked <?php endif ?>/>
                             <?php echo "<label for='$res'>OUI</label>"?>
-                            <input id="<?=$res?>" type="<?=$type?>" name="<?=$res?>" value="false" <?php if(isset($_SESSION[$res2])&&$_SESSION[$res2] == 'false'):?> checked <?php endif ?>/>
-                            <?php echo "<label for='$res'>NON</label>";
-                            echo $_SESSION[$res2];?>
+                            <input id="<?=$res?>" type="<?=$type?>" name="<?=$res?>" value="false" <?php if(isset($_SESSION[$res2])&&$_SESSION[$res2] != "false"):?> checked <?php endif ?>/>
+                            <?php echo "<label for='$res'>NON</label>";?>
 
                         </div>
                     </div>
@@ -155,7 +152,10 @@ require ("RecupInfoBDD_AjouterDPI.php");
                     $_SESSION[$res2] = null;
                     ?>
                     <?php endfor;?>
-
+                    <div class="modif" align="center">
+                        <br>
+                        <input onclick="" type="submit" value="Modifier" >
+                    </div>
                     <div id="formINFO" style="display: none">
                     </div>
             </form>

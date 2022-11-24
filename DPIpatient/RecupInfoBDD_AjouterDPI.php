@@ -2,12 +2,12 @@
 <?php
 function verification($elt){
     if (empty($elt)) {
-        $elt = 'rien';
+        $elt = null;
     }
     return $elt;
 }
 function Connection(){
-    $PDO = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;', 'postgres',                                         'Housezalex59330');
+    $PDO = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;', 'postgres',                                         '');
     return $PDO;
 
 }
@@ -192,4 +192,44 @@ function nameColonne (){
     $res = [$donnees,$typedonnees];
     return $res;
 }
+
+function modifer($ipp){
+    $mod = Connection();
+    $modif = $mod->prepare("UPDATE patient set nom = ?, prenom = ?, ddn = ?, taille_cm = ?, poids_kg = ?, adresse = ?,
+                   cp = ?, ville = ?, telpersonnel = ?, telprofessionnel = ?, allergies = ?, antecedents = ?, obstericaux = ?, 
+                   domedicaux = ?,dochirurgicaux = ?, mesuredeprotection = ?, asistantsocial = ?, mdv = ?, synentre = ?, 
+                   dophypsy = ?, mobilite = ?, alimentation = ?, hygiene = ?, toilette = ?, habit = ?, continence= ? where ipp = ?");
+    $modif->bindParam(1,$_POST['val2']);
+    $modif->bindParam(2,$_POST['val3']);
+    $modif->bindParam(3,$_POST['val4']);
+    $modif->bindParam(4,$_POST['val5']);
+    $modif->bindParam(5,$_POST['val6']);
+    $modif->bindParam(6,$_POST['val7']);
+    $modif->bindParam(7,$_POST['val8']);
+    $modif->bindParam(8,$_POST['val9']);
+    $modif->bindParam(9,$_POST['val10']);
+    $modif->bindParam(10,$_POST['val11']);
+    $modif->bindParam(11,$_POST['val12']);
+    $modif->bindParam(12,$_POST['val13']);
+    $modif->bindParam(13,$_POST['val14']);
+    $modif->bindParam(14,$_POST['val15']);
+    $modif->bindParam(15,$_POST['val16']);
+    $modif->bindParam(16,$_POST['val19']);
+    $modif->bindParam(17,$_POST['val20']);
+    $modif->bindParam(18,$_POST['val21']);
+    $modif->bindParam(19,$_POST['val22']);
+    $modif->bindParam(20,$_POST['val23']);
+    $modif->bindParam(21,$_POST['val24']);
+    $modif->bindParam(22,$_POST['val25']);
+    $modif->bindParam(23,$_POST['val26']);
+    $modif->bindParam(24,$_POST['val27']);
+    $modif->bindParam(25,$_POST['val28']);
+    $modif->bindParam(26,$_POST['val29']);
+    $modif->bindParam(27,$ipp);
+    $modif->execute();
+
+
+
+}
 ?>
+

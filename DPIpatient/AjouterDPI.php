@@ -111,7 +111,7 @@ session_start();
 
                     <div class="Groupe">
                         <!-- Demande à l'utilisateur de saisir la date de naissance de la personne -->
-                        <label> Date de Naissance : </label>
+                        <label> Date de Naissance : </label><br>
                         <input type="date" placeholder="Saisir une date de naissance"  name="DDN" value="<?= $_SESSION['DDNp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['DDNf'])):?>
                             <p>
@@ -123,7 +123,7 @@ session_start();
 
                     <div class="Groupe">
                         <!-- Demande à l'utilisateur de saisir la taille de la personne  -->
-                        <label> Taille en CM :</label>
+                        <label> Taille en CM :</label><br>
                         <input type="number"placeholder="Saisir une taille en cm" name="taille" value="<?= $_SESSION['taillep'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['taillef'])):?>
                             <p>
@@ -135,7 +135,7 @@ session_start();
 
                     <div class="Groupe">
                         <!-- Demande à l'utilisateur de saisir le poids de la personne -->
-                        <label> Poids en KG : </label>
+                        <label> Poids en KG : </label><br>
                         <input type="number" step="0.1" placeholder="Saisir un poids en kg" name="poids" value="<?= $_SESSION['poidsp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['poidsf'])):?>
                             <p>
@@ -158,7 +158,7 @@ session_start();
                     </div>
 
                     <div class="Groupe">
-                        <label> Code Postal : </label>
+                        <label> Code Postal : </label><br>
                         <!-- Demande à l'utilisateur de saisir le code postal de la personne -->
                         <input type="number" placeholder="Saisir un code postal"  name="CP" value="<?= $_SESSION['CPp'] ?? '' ?>"/>
                         <?php if (isset($_SESSION['CPf'])):?>
@@ -248,9 +248,9 @@ session_start();
                     <div class="Groupe1">
                         <label> A-il une Assistante Sociale :</label>
                         <div class="Boolean">
-                            <input type="radio" name="AC" value="true" <?php if(isset($_SESSION['APp'])&&$_SESSION['ACp'] == "true"):?> checked <?php endif ?>>
+                            <input type="radio" name="AC" value="true" <?php if(isset($_SESSION['ACp'])&&$_SESSION['ACp'] == "true"):?> checked <?php endif ?>>
                             <label>OUI</label>
-                            <input type="radio" name="AC" value="false" <?php if(isset($_SESSION['APp'])&&$_SESSION['ACp'] == "false"):?> checked <?php endif ?>>
+                            <input type="radio" name="AC" value="false" <?php if(isset($_SESSION['ACp'])&&$_SESSION['ACp'] == "false"):?> checked <?php endif ?>>
                             <label>NON</label>
                             <?php if (isset($_SESSION['ACf'])):?>
                                 <p>
