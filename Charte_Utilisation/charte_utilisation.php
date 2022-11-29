@@ -5,13 +5,10 @@
     <title>Connexion</title>
     <link rel="stylesheet" href="../Verif_Test/CSS.css">
 </head>
-<div class="droite">
-    <br><select name="l">
-        <option value="en" selected="selected">English</option>
-    </select>
-    <div class="retour">
-        <input type="button" onclick="window.location.href ='charte_utilisationEN.php';" value="Go"/>
+    <div class="button">
+        <input type="button" onclick="window.location.href ='charte_utilisationEN.php';" value="English"/>
     </div>
+</div>
 <body id="chartecase">
 <div class="charte">
 <h1>Charte d'utilisation</h1>

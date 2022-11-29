@@ -128,20 +128,22 @@ create table PrescriptionPatient (
                                      IPP numeric(13,0) not null references Patient ON DELETE CASCADE,
                                      idPrescription serial not null references Prescription ON DELETE CASCADE
 );
-
 create table radio(
-    lien text primary key ,
-    IPPRadio numeric(13,0)  references Patient ON DELETE CASCADE not null
+                      lien text primary key ,
+                      nom text not null ,
+                      IPPRadio numeric(13,0)  references Patient ON DELETE CASCADE not null
 );
 
 create table couriel(
-                      lien text primary key ,
-                      IPPCour numeric(13,0)  references Patient ON DELETE CASCADE not null
+                        lien text primary key ,
+                        nom text not null ,
+                        IPPCour numeric(13,0)  references Patient ON DELETE CASCADE not null
 );
 
 create table Biologie(
-                        lien text primary key ,
-                        IPPBio numeric(13,0)  references Patient ON DELETE CASCADE not null
+                         lien text primary key ,
+                         nom text not null ,
+                         IPPBio numeric(13,0)  references Patient ON DELETE CASCADE not null
 );
 
 create table ObservationMedical(

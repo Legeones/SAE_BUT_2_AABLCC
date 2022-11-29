@@ -41,13 +41,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             } else{
                 move_uploaded_file($_FILES["photo"]["tmp_name"], "../Images/".$_POST['cat']."/". $_FILES["photo"]["name"]);
                 if($_POST['cat']=='Biologie'){
-                    ADD_Image_Bio($_POST['IPPImage'],"../Images/".$_POST['cat']."/". $_FILES["photo"]["name"]);
+                    ADD_Image_Bio($_POST['IPPImage'],$_FILES["photo"]["name"],"../Images/".$_POST['cat']."/". $_FILES["photo"]["name"]);
                 }
                 else if($_POST['cat']=='Imagerie'){
-                    ADD_Image_Rad($_POST['IPPImage'],"../Images/".$_POST['cat']."/". $_FILES["photo"]["name"]);
+                    ADD_Image_Rad($_POST['IPPImage'],$_FILES["photo"]["name"],"../Images/".$_POST['cat']."/". $_FILES["photo"]["name"]);
                 }
                 else if($_POST['cat']=='Courriel'){
-                    ADD_Image_Cour($_POST['IPPImage'],"../Images/".$_POST['cat']."/". $_FILES["photo"]["name"]);
+                    ADD_Image_Cour($_POST['IPPImage'],$_FILES["photo"]["name"],"../Images/".$_POST['cat']."/". $_FILES["photo"]["name"]);
                 }
                 header('Location: ../DPIpatient/DPI.php');
                 //var_dump($_FILES['photo']);

@@ -240,14 +240,15 @@ function Check_Patient($IPP)
     }
 }
 
-function ADD_Image_Bio($IPP,$lien)
+function ADD_Image_Bio($IPP,$nom,$lien)
 {
 
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("INSERT INTO Biologie values (?,?)");
+        $stmt2 = $dbh->prepare("INSERT INTO Biologie values (?,?,?)");
         $stmt2->bindParam(1, $lien);
-        $stmt2->bindParam(2, $IPP);
+        $stmt2->bindParam(2, $nom);
+        $stmt2->bindParam(3, $IPP);
         $stmt2->execute();
 
     } catch (PDOException $e) {
@@ -256,14 +257,15 @@ function ADD_Image_Bio($IPP,$lien)
     }
 }
 
-function ADD_Image_Cour($IPP,$lien)
+function ADD_Image_Cour($IPP,$nom,$lien)
 {
 
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("INSERT INTO couriel values (?,?)");
+        $stmt2 = $dbh->prepare("INSERT INTO couriel values (?,?,?)");
         $stmt2->bindParam(1, $lien);
-        $stmt2->bindParam(2, $IPP);
+        $stmt2->bindParam(2, $nom);
+        $stmt2->bindParam(3, $IPP);
         $stmt2->execute();
 
     } catch (PDOException $e) {
@@ -272,14 +274,15 @@ function ADD_Image_Cour($IPP,$lien)
     }
 }
 
-function ADD_Image_Rad($IPP,$lien)
+function ADD_Image_Rad($IPP,$nom,$lien)
 {
 
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("INSERT INTO radio values (?,?)");
+        $stmt2 = $dbh->prepare("INSERT INTO radio values (?,?,?)");
         $stmt2->bindParam(1, $lien);
-        $stmt2->bindParam(2, $IPP);
+        $stmt2->bindParam(2, $nom);
+        $stmt2->bindParam(3, $IPP);
         $stmt2->execute();
 
     } catch (PDOException $e) {
@@ -287,7 +290,6 @@ function ADD_Image_Rad($IPP,$lien)
         die();
     }
 }
-
 function Check_Image_Imagerie($IPP,$nomIma)
 {
     session_start();
