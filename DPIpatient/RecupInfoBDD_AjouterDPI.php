@@ -11,7 +11,7 @@ function Connection(){
     return $PDO;
 
 }
-
+// Fonction permettant d'intéragir avec la BDD
 function Contact($PDO){
     $idContact = $PDO->prepare("SELECT max(idptel) from personnecontacte");
     $idContact->execute();
@@ -19,7 +19,7 @@ function Contact($PDO){
         return $idcont[0] + 1;
     }
 }
-
+// Fonction permettant d'intéragir avec la BDD
 function Confiant($PDO){
     $idConfiance = $PDO->prepare("SELECT max(idpcon) from personneconfiance");
     $idConfiance->execute();
@@ -27,7 +27,7 @@ function Confiant($PDO){
         return $idconf[0] + 1;
     }
 }
-
+// Fonction permettant d'intéragir avec la BDD
 function PatientIPP($PDO){
     $idPatientIpp = $PDO->prepare("SELECT max(ipp)from patient");
     $idPatientIpp->execute();
@@ -36,6 +36,7 @@ function PatientIPP($PDO){
     }
 }
 
+// Fonction permettant d'intéragir avec la BDD
 function PatientIEP($PDO)
 {
     $idPatientIep = $PDO->prepare("SELECT max(iep)from patient");

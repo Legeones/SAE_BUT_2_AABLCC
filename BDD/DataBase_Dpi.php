@@ -331,6 +331,31 @@ function Check_Image_Courriel($IPP,$nomIma)
     }
 }
 
+function DataBase_Delete_Corbeille($ipp)
+{
+    session_start();
+
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("select count(*) from corbeille WHERE IPPCorb=?");
+        $stmt2->bindParam(1, $ipp);
+        $stmt2->execute();
+        $res= $stmt2->fetchColumn(0);
+        if($res==0){
+            header('Location: ../DPIpatient/RecupCorbeille.php?erreur=2');
+        }
+        else{
+            $stmt = $dbh->prepare("DELETE FROM corbeille WHERE IPPCorb=?");
+            $stmt->bindParam(1, $ipp);
+            $stmt->execute();
+            header('Location: ../DPIpatient/DPI.php');
+        }
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
 function DataBase_Delete_Patient()
 {
     session_start();
