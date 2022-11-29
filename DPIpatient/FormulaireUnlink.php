@@ -39,7 +39,29 @@
             <input type="radio" name="catSUPP" value="Imagerie"> Imagerie
             <br>
             <br>
-            <input type="text" name="IPPImageSupp" > IPP Patient
+            <select name="DPI" id="DPI_Patient">
+                <option value="defaut">--Choisir le DPI--</option>
+                <?php
+                require ('../DPIpatient/RecupInfoBDD_AjouterDPI.php');
+                $der = lstderoulante();
+                while ($row =$der->fetch(PDO::FETCH_ASSOC)) {
+                    unset($id, $nom, $prenom);
+                    $id = $row['ipp'];
+                    $nom = $row['nom'];
+                    $prenom = $row['prenom'];
+                    echo "<option value='$id'> $nom $prenom </option>";
+
+                }
+
+                ?>
+                <script>
+                    document.getElementById('DPI_Patient').addEventListener('change',function(){
+                        document.getElementById('rech').value = this.value;
+                    });
+                </script>
+                <label for="rech" class="labIPP">Numéro IPP</label>
+                <input class="reche" type="text" id="rech" name="IPPImageSupp" value="<?php $id?>">
+            </select>
             <br>
             <br>
             <input type="text" name="nomImageSupp" > nom Image
@@ -50,19 +72,16 @@
             <?php
             if(isset($_GET['erreur'])){
                 $err = $_GET['erreur'];
-                // Affiche une erreur si le nom et l'ipp sont incompatible
                 if($err==1){
                     echo "<p style='color:red'>Error: Imcompatibilité entre le nom et l'ipp.</p>";
                 }
-                // Affiche une erreur si le fichier n'existe pas
+
                 if($err==5){
                     echo "<p style='color:red'>Error: le fichier n'existe pas.</p>";
                 }
-                // Affiche une erreur si tous les champs ne sont pas remplis
                 if($err==6){
                     echo "<p style='color:red'>Error: Tous les champs doivent etre remplis</p>";
                 }
-                // Affiche une erreur si l'IPP n'existe pas
                 if($err==7){
                     echo "<p style='color:red'>Error: L'IPP n'existe pas</p>";
                 }
