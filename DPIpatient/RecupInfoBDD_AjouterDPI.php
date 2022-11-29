@@ -7,7 +7,7 @@ function verification($elt){
     return $elt;
 }
 function Connection(){
-    $PDO = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;', 'postgres',                                         'Housezalex59330');
+    $PDO = new PDO('pgsql:host=localhost;port=5432;dbname=postgres;', 'postgres',                                         'steven59330');
     return $PDO;
 
 }
