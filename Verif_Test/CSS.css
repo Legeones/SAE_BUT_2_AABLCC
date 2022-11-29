@@ -109,6 +109,14 @@ form{
     text-align: center;
     border:5px solid black;
 }
+
+form .droite{
+    text-align: initial;
+}
+
+form .gauche{
+    text-align: right;
+}
 form h1{
     font-size: 30px;
     text-align: center;
