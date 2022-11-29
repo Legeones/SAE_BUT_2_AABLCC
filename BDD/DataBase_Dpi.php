@@ -67,13 +67,42 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
         $_SESSION['infosPersoPatient']+=$item;
     }
     if ($nomCateg == "Macrocible"){
-        $stmt = $pdo->prepare("SELECT * FROM patient LEFT JOIN personneconfiance p on patient.idpcon = p.idpcon LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel LEFT JOIN admission a on patient.ipp = a.ipp LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp WHERE patient.ipp = ?");
+        $stmt2 = $pdo->prepare("SELECT p.* FROM patient LEFT JOIN personneconfiance p on p.idpcon = patient.idpcon WHERE ipp = ?");
+        $stmt2 -> bindParam(1,$nomPatient);
+        $stmt2->execute();
+        $stmt = $pdo->prepare("SELECT p2.* FROM patient LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel WHERE patient.ipp = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
-        $_SESSION['infosPatient']=[];
+        $stmt3 = $pdo->prepare("SELECT a.* FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE patient.ipp = ?");
+        $stmt3 -> bindParam(1,$nomPatient);
+        $stmt3->execute();
+        $stmt4 = $pdo->prepare("SELECT p3.* FROM patient LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp WHERE patient.ipp = ?");
+        $stmt4 -> bindParam(1,$nomPatient);
+        $stmt4->execute();
+        $stmt5 = $pdo->prepare("SELECT * FROM patient WHERE patient.ipp = ?");
+        $stmt5 -> bindParam(1,$nomPatient);
+        $stmt5->execute();
+        $_SESSION['infosPersonneConf']=[];
         foreach ($stmt as $item){
+            $_SESSION['infosPersonneConf']+=$item;
+        }
+        $_SESSION['infosPersonneCont']=[];
+        foreach ($stmt2 as $item){
+            $_SESSION['infosPersonneCont']+=$item;
+        }
+        $_SESSION['infosAdm']=[];
+        foreach ($stmt3 as $item){
+            $_SESSION['infosAdm']+=$item;
+        }
+        $_SESSION['infosPersonneMed']=[];
+        foreach ($stmt4 as $item){
+            $_SESSION['infosPersonneMed']+=$item;
+        }
+        $_SESSION['infosPatient']=[];
+        foreach ($stmt5 as $item){
             $_SESSION['infosPatient']+=$item;
         }
+
     } elseif ($nomCateg == "Observation"){
         $stmt = $pdo->prepare("SELECT * FROM observationmedical o WHERE o.ipp = ?");
         $stmt2 = $pdo->prepare("SELECT * FROM transmissionsciblees o WHERE o.ipp = ?");

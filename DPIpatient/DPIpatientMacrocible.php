@@ -41,6 +41,11 @@ session_start();
         </script>
 
         <div class="container" >
+            <?= print_r($_SESSION['infosPersonneConf']);
+            print_r($_SESSION['infosPersonneCont']);
+            print_r($_SESSION['infosAdm']);
+            print_r($_SESSION['infosPersonneMed']);
+            print_r($_SESSION['infosPatient'])?>
             <div class="grid-container">
 
                 <div class="info" onclick="show_data_patient_div('donn-perso');">
@@ -64,17 +69,17 @@ session_start();
                 <h2>Données administratives</h2>
                 <div class="info-intern" id="donn-admin">
                     <h4>Adresse: </h4>
-                    <p><?php print($_SESSION['infosPatient'][7].", ".$_SESSION['infosPatient'][8]." ".$_SESSION['infosPatient'][9]) ?></p>
+                    <p><?php print($_SESSION['infosPatient']['adresse'].", ".$_SESSION['infosPatient']['cp']." ".$_SESSION['infosPatient']['ville']) ?></p>
                     <h4>Tel personnel:</h4>
-                    <p><?php print($_SESSION['infosPatient'][10]); ?></p>
+                    <p><?php print($_SESSION['infosPatient']['telpersonnel']); ?></p>
                     <h4>Tel professionnel:</h4>
-                    <p><?php print($_SESSION['infosPatient'][11]); ?></p>
+                    <p><?php print($_SESSION['infosPatient']['telprofessionnel']); ?></p>
                     <h4>Personne a prevenir:</h4>
-                    <p><?php print("Nom: ".$_SESSION['infosPatient'][26].", prénom: ".$_SESSION['infosPatient'][27]." (".$_SESSION['infosPatient'][29].")"); ?></p>
-                    <p><?php print("Tel: ".$_SESSION['infosPatient'][28])?></p>
+                    <p><?php print("Nom: ".$_SESSION['infosPersonneCont']['nom'].", prénom: ".$_SESSION['infosPersonneCont']['prenom']." (".$_SESSION['infosPersonneCont']['lien'].")"); ?></p>
+                    <p><?php print("Tel: ".$_SESSION['infosPersonneCont']['tel'])?></p>
                     <h4>Personne de confiance:</h4>
-                    <p><?php print("Nom: ".$_SESSION['infosPatient'][20].", prénom: ".$_SESSION['infosPatient'][21]." (".$_SESSION['infosPatient'][23].")")?></p>
-                    <p><?php print("Tel: ".$_SESSION['infosPatient'][22])?></p>
+                    <p><?php print("Nom: ".$_SESSION['infosPersonneConf']['nom'].", prénom: ".$_SESSION['infosPersonneConf']['prenom']." (".$_SESSION['infosPersonneConf']['lien'].")")?></p>
+                    <p><?php print("Tel: ".$_SESSION['infosPersonneConf']['tel'])?></p>
                 </div>
             </div>
             <div class="info" onclick="show_data_patient_div('donn-soc');">

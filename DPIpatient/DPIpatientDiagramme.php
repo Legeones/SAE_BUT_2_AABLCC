@@ -156,48 +156,61 @@ session_start();
                                             <td>08:00</td>
                                         </tr>
                                         <?php
-                                        $comp = 0;
                                         foreach ($ligne as $value){
+                                            $casesRemplis = [];
                                             echo "<tr class='table-tr-recipient'>";
                                             if (in_array($value,$categories)){
                                                 echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
                                                 echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
                                                 echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
-                                            }
-                                            foreach ($_SESSION['infosPatient'] as $item){
-                                                if (!in_array($value,$categories)) {
-                                                    if ($item['jour'] == $jour && $item['heure'] >= '20:00:00.00' && $item['heure'] < '08:00:00.00' && $item['nom'] == $value) {
-                                                        if($item['effectuer']){
-                                                            echo "<td class='table-td-recipient' style='background-color: green'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
-                                                        }else{
-                                                            echo "<td class='table-td-recipient' style='background-color: red'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
+                                            } else {
+                                                foreach ($_SESSION['infosPatient'] as $item) {
+                                                    if (!in_array($value, $categories)) {
+                                                        if ($item['jour'] == $jour && $item['heure'] >= '20:00:00.00' && $item['heure'] < '08:00:00.00' && $item['nom'] == $value) {
+                                                            $casesRemplis[] = 20;
+                                                            if ($item['effectuer']) {
+                                                                echo "<td class='table-td-recipient' style='background-color: green'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
+                                                            } else {
+                                                                echo "<td class='table-td-recipient' style='background-color: red'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
+                                                            }
                                                         }
                                                     }
-                                                    if ($item['jour'] == $jour && $item['heure'] >= '12:00:00.00' && $item['heure'] < '20:00:00.00' && $item['nom'] == $value) {
-                                                        if($item['effectuer']){
-                                                            echo "<td class='table-td-recipient' style='background-color: green'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
-                                                        }else{
-                                                            echo "<td class='table-td-recipient' style='background-color: red'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
-                                                        }
-                                                    }
-                                                    if ($item['jour'] == $jour && $item['heure'] >= '08:00:00.00' && $item['heure'] < '12:00:00.00' && $item['nom'] == $value) {
-                                                        if($item['effectuer']){
-                                                            echo "<td class='table-td-recipient' style='background-color: green'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
-                                                        }else{
-                                                            echo "<td class='table-td-recipient' style='background-color: red'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
-                                                        }
-                                                    }
-                                                    $comp += 1;
                                                 }
+                                                if (!in_array(20,$casesRemplis)) {
+                                                    echo "<td id='pro' class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
+                                                }
+                                                foreach ($_SESSION['infosPatient'] as $item) {
+                                                    if (!in_array($value, $categories)) {
+                                                        if ($item['jour'] == $jour && $item['heure'] >= '12:00:00.00' && $item['heure'] < '20:00:00.00' && $item['nom'] == $value) {
+                                                            $casesRemplis[] = 12;
+                                                            if ($item['effectuer']) {
+                                                                echo "<td class='table-td-recipient' style='background-color: green'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
+                                                            } else {
+                                                                echo "<td class='table-td-recipient' style='background-color: red'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                if (!in_array(12,$casesRemplis)) {
+                                                    echo "<td id='pro' class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
+                                                }
+                                                foreach ($_SESSION['infosPatient'] as $item) {
+                                                    if (!in_array($value, $categories)) {
+                                                        if ($item['jour'] == $jour && $item['heure'] >= '08:00:00.00' && $item['heure'] < '12:00:00.00' && $item['nom'] == $value) {
+                                                            $casesRemplis[] = 8;
+                                                            if ($item['effectuer']) {
+                                                                echo "<td class='table-td-recipient' style='background-color: green'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
+                                                            } else {
+                                                                echo "<td class='table-td-recipient' style='background-color: red'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                if (!in_array(8,$casesRemplis)) {
+                                                    echo "<td id='pro' class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
+                                                }
+                                                echo "</tr>";
                                             }
-                                            if ($item['jour'] != $jour || $item['heure'] < '20:00:00.00' || $item['heure'] >= '08:00:00.00' || $item['nom'] != $value){
-                                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
-                                            } else if($item['jour'] != $jour || $item['heure'] < '12:00:00.00' || $item['heure'] >= '20:00:00.00' || $item['nom'] != $value) {
-                                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
-                                            } else if ($item['jour'] != $jour || $item['heure'] < '08:00:00.00' || $item['heure'] >= '12:00:00.00' || $item['nom'] != $value) {
-                                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
-                                            }
-                                            echo "</tr>";
                                             }
                                          ?>
                                         <tr>
