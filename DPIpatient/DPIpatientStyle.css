@@ -9,6 +9,10 @@ body{
     padding-bottom: 10px;
 }
 
+form > input{
+    background-color: white;
+}
+
 h4{
     font-size: 15px;
 }
@@ -214,4 +218,23 @@ td > textarea{
 .table-container{
     margin-top: 1%;
     padding: 1%;
+}
+
+.img {
+    width: auto;
+    height: auto;
+    max-height: 500px;
+    max-width: 1000px;
+}
+
+.container-img {
+    border: black solid medium;
+    margin-top: 13%;
+    width: 98%;
+    height: 60%;
+    padding: 1% 1% 1% 1%;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    text-align:justify;
+    min-height: 20%;
 }

@@ -33,7 +33,7 @@ session_start();
             <input type="submit" id="observation" name="Observation" onmouseover="alterner('observation');" onmouseout="alterner('observation');" value="Observation médicale">
             <input type="submit" id="prescription" name="Prescription" onmouseover="alterner('prescription');" onmouseout="alterner('prescription');" value="Prescription">
             <input type="submit" id="intervenants" name="Intervenants" onmouseover="alterner('intervenants');" onmouseout="alterner('intervenants');" value="Intervenants">
-            <input type="submit" id="diagramme" name="Diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
+            <input style="background-color: gray; color: white;" type="submit" id="diagramme" name="Diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
             <input type="submit" id="biologie" name="Biologie" onmouseover="alterner('biologie');" onmouseout="alterner('biologie');" value="Biologie">
             <input type="submit" id="imagerie" name="Imagerie" onmouseover="alterner('imagerie');" onmouseout="alterner('imagerie');" value="Imagerie">
             <input type="submit" id="courriers" name="Courriers" onmouseover="alterner('courriers');" onmouseout="alterner('courriers');" value="Courriers">
@@ -61,6 +61,158 @@ session_start();
                 </div>
             </div>
         </div>
+        <form class="table-container" method="post" action="AjouterDPI.php">
+            <table>
+                <caption>Plan d'administration</caption>
+                <tr>
+                    <td style="width: 20%">Médicaments</td>
+                    <?php
+                    $present = array_search(date("o")."-".date("m")."-".date("d"),$_SESSION['infosPatient']);
+                    if ($_SESSION['infosPersoPatient']['datefin']=="" && !$present){
+                        echo "<td>".date("o")."-".date("m")."-".date("d")."</td>";
+                    }
+                    $listeJour = array();
+                    foreach ($_SESSION['infosPatient'] as $item ){
+                        if (in_array($item['jour'],$listeJour)){
+
+                        } else {
+                            $listeJour[] = $item['jour'];
+                            echo "<td>".$item['jour']."</td>";
+                        }
+                    }
+                    ?>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>PO</tr>
+                            <tr>
+                                <td style="color: white">.</td>
+                            </tr>
+                            <?php
+                            $ligne=array();
+                            $categories = array();
+                            $nomsoin = array();
+                            foreach ($_SESSION['infosPatient'] as $item){
+                                if (in_array($item['categorie'],$categories)){
+
+                                } else {
+                                    array_push($categories,$item['categorie']);array_push($ligne,$item['categorie']);
+                                    echo "<tr class='table-tr-recipient'>";
+                                    echo "<td class='table-td-recipient'><div class='table-td-div-recipient'>".$item['categorie']."</div></td>";
+                                    echo "</tr>";
+                                    foreach ($_SESSION['infosPatient'] as $value){
+                                        if (!in_array($value['nom'],$nomsoin) && $value['categorie'] == $item['categorie']){
+                                            array_push($nomsoin,$value['nom']);array_push($ligne,$value['nom']);
+                                            echo "<tr class='table-tr-recipient'>";
+                                            echo "<td class='table-td-recipient'><div class='table-td-div-recipient'>".$value['nom']."</div></td>";
+                                            echo "</tr>";
+                                        }
+                                    }
+                                }
+                            }
+                            echo "<td class='table-td-recipient'><div class='table-td-div-recipient'><i></i></div></td>";
+                            ?>
+                        </table>
+                    </td>
+                    <?php
+                    if ($_SESSION['infosPersoPatient']['datefin']=="" && !$present){ ?>
+                    <td>
+                        <table>
+                            <tr>PO</tr>
+                            <tr>
+                                <td>20:00</td>
+                                <td>12:00</td>
+                                <td>08:00</td>
+                            </tr>
+                            <?php
+                            foreach ($_SESSION['infosPatient'] as $value){
+                                ?>
+                                <tr>
+                                    <?php if ($value['heure']>='20:00:00.00' && $value['heure']<'08:00:00.00') {
+                                        echo "<td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text' value=".$value['fait']."></div></td>";
+                                    } elseif ($value['heure']>='12:00:00.00' && $value['heure']<'20:00:00.00'){
+                                        echo "<td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text' value=".$value['fait']."></div></td>";
+                                    } elseif ($value['heure']>='08:00:00.00' && $value['heure']<'12:00:00.00'){
+                                        echo "<td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text' value=".$value['fait']."></div></td>";
+                                    }
+                                    ?>
+                                </tr>
+                            <?php } ?>
+                            <tr>
+                                <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text' value=""></div></td>
+                                <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                            </tr>
+                            </td>
+                            <?php }
+                            foreach ($listeJour as $jour){?>
+                                <td>
+                                    <table>
+                                        <tr>PO</tr>
+                                        <tr>
+                                            <td>20:00</td>
+                                            <td>12:00</td>
+                                            <td>08:00</td>
+                                        </tr>
+                                        <?php
+                                        $comp = 0;
+                                        foreach ($ligne as $value){
+                                            echo "<tr class='table-tr-recipient'>";
+                                            if (in_array($value,$categories)){
+                                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
+                                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
+                                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
+                                            }
+                                            foreach ($_SESSION['infosPatient'] as $item){
+                                                if (!in_array($value,$categories)) {
+                                                    if ($item['jour'] == $jour && $item['heure'] >= '20:00:00.00' && $item['heure'] < '08:00:00.00' && $item['nom'] == $value) {
+                                                        if($item['effectuer']){
+                                                            echo "<td class='table-td-recipient' style='background-color: green'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
+                                                        }else{
+                                                            echo "<td class='table-td-recipient' style='background-color: red'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
+                                                        }
+                                                    }
+                                                    if ($item['jour'] == $jour && $item['heure'] >= '12:00:00.00' && $item['heure'] < '20:00:00.00' && $item['nom'] == $value) {
+                                                        if($item['effectuer']){
+                                                            echo "<td class='table-td-recipient' style='background-color: green'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
+                                                        }else{
+                                                            echo "<td class='table-td-recipient' style='background-color: red'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
+                                                        }
+                                                    }
+                                                    if ($item['jour'] == $jour && $item['heure'] >= '08:00:00.00' && $item['heure'] < '12:00:00.00' && $item['nom'] == $value) {
+                                                        if($item['effectuer']){
+                                                            echo "<td class='table-td-recipient' style='background-color: green'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
+                                                        }else{
+                                                            echo "<td class='table-td-recipient' style='background-color: red'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
+                                                        }
+                                                    }
+                                                    $comp += 1;
+                                                }
+                                            }
+                                            if ($item['jour'] != $jour || $item['heure'] < '20:00:00.00' || $item['heure'] >= '08:00:00.00' || $item['nom'] != $value){
+                                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
+                                            } else if($item['jour'] != $jour || $item['heure'] < '12:00:00.00' || $item['heure'] >= '20:00:00.00' || $item['nom'] != $value) {
+                                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
+                                            } else if ($item['jour'] != $jour || $item['heure'] < '08:00:00.00' || $item['heure'] >= '12:00:00.00' || $item['nom'] != $value) {
+                                                echo "<td class='table-td-recipient'><div class='table-td-div-recipient'></div></td>";
+                                            }
+                                            echo "</tr>";
+                                            }
+                                         ?>
+                                        <tr>
+                                            <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                            <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                            <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            <?php
+                            }
+                            ?>
+                            </tr>
+                        </table><input type="submit" value="Enregistrer" formtarget="_top">
+        </form>
     </div>
 </div>
 </body>

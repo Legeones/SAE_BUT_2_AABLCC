@@ -31,7 +31,7 @@ session_start();
             <input type="submit" id="macrocible" name="Macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">
             <input type="submit" id="observation" name="Observation" onmouseover="alterner('observation');" onmouseout="alterner('observation');" value="Observation médicale">
             <input type="submit" id="prescription" name="Prescription" onmouseover="alterner('prescription');" onmouseout="alterner('prescription');" value="Prescription">
-            <input type="submit" id="intervenants" name="Intervenants" onmouseover="alterner('intervenants');" onmouseout="alterner('intervenants');" value="Intervenants">
+            <input style="background-color: gray; color: white;" type="submit" id="intervenants" name="Intervenants" onmouseover="alterner('intervenants');" onmouseout="alterner('intervenants');" value="Intervenants">
             <input type="submit" id="diagramme" name="Diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
             <input type="submit" id="biologie" name="Biologie" onmouseover="alterner('biologie');" onmouseout="alterner('biologie');" value="Biologie">
             <input type="submit" id="imagerie" name="Imagerie" onmouseover="alterner('imagerie');" onmouseout="alterner('imagerie');" value="Imagerie">
@@ -69,14 +69,13 @@ session_start();
                     <td style="width: 70%; max-width: 70%;">Compte rendu</td>
                 </tr>
                 <?php
-                $test = [["2022-10-03","Urgentiste","Pas en forme"],["2002-01-03","Médecin généraliste","En forme"]];
-                foreach ($test as $item){
-                    echo "<tr>";
-                    echo "<td>$item[0]</td>";
-                    echo "<td>$item[1]</td>";
-                    echo "<td>$item[2]</td>";
-                    echo "</tr>";
-                }
+                foreach ($_SESSION['infosPatient'] as $item){?>
+                    <tr>
+                    <td><?=$item['date']?></td>
+                    <td><?=$item['fonction']?></td>
+                    <td><?=$item['compterendu']?></td>
+                    </tr>
+                <?php }
                 ?>
                 <tr>
                     <td><input type="date"></td>

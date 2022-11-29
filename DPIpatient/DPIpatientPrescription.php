@@ -31,7 +31,7 @@ session_start();
             <!-- zone d'ajout de boutons -->
             <input type="submit" id="macrocible" name="Macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">
             <input type="submit" id="observation" name="Observation" onmouseover="alterner('observation');" onmouseout="alterner('observation');" value="Observation médicale">
-            <input type="submit" id="prescription" name="Prescription" onmouseover="alterner('prescription');" onmouseout="alterner('prescription');" value="Prescription">
+            <input style="background-color: gray; color: white;" type="submit" id="prescription" name="Prescription" onmouseover="alterner('prescription');" onmouseout="alterner('prescription');" value="Prescription">
             <input type="submit" id="intervenants" name="Intervenants" onmouseover="alterner('intervenants');" onmouseout="alterner('intervenants');" value="Intervenants">
             <input type="submit" id="diagramme" name="Diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
             <input type="submit" id="biologie" name="Biologie" onmouseover="alterner('biologie');" onmouseout="alterner('biologie');" value="Biologie">
@@ -61,8 +61,7 @@ session_start();
             </div>
 
         </div>
-        <form class="table-container">
-            <?php //print_r($_SESSION['infosPatient']); ?>
+        <form class="table-container" method="post" action="AjouterDPI.php">
             <table>
                 <caption>Plan d'administration</caption>
                 <tr>
@@ -101,7 +100,6 @@ session_start();
                         </table>
                     </td>
                     <?php
-                    print_r($_SESSION['infosPersoPatient']['datefin']);
                     if ($_SESSION['infosPersoPatient']['datefin']=="" && !$present){ ?>
                         <td>
                             <table>
@@ -171,7 +169,7 @@ session_start();
                     <?php }
                     ?>
                 </tr>
-            </table>
+            </table><input type="submit" value="Enregistrer" formtarget="_top">
         </form>
     </div>
 </div>

@@ -30,7 +30,7 @@ session_start();
         <form action="actionDPI.php" name="cat" method="get" class="btn-line">
             <!-- zone d'ajout de boutons -->
             <input type="submit" id="macrocible" name="Macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">
-            <input type="submit" id="observation" name="Observation" onmouseover="alterner('observation');" onmouseout="alterner('observation');" value="Observation médicale">
+            <input style="background-color: gray; color: white;" type="submit" id="observation" name="Observation" onmouseover="alterner('observation');" onmouseout="alterner('observation');" value="Observation médicale">
             <input type="submit" id="prescription" name="Prescription" onmouseover="alterner('prescription');" onmouseout="alterner('prescription');" value="Prescription">
             <input type="submit" id="intervenants" name="Intervenants" onmouseover="alterner('intervenants');" onmouseout="alterner('intervenants');" value="Intervenants">
             <input type="submit" id="diagramme" name="Diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
@@ -60,14 +60,21 @@ session_start();
                     <div class="info" onclick="show_data_patient_div('obs-medi');">
                         <h2>Observation médicales</h2>
                         <div class="info-intern" id="obs-medi">
-
+                            <?php
+                            foreach ($_SESSION['observationsMed'] as $item){
+                                echo "<div>";
+                                echo "<p> Le ".$item['dateom']." : ".$item['rapport']."</p>";
+                                echo "<p>"."</p>";
+                                echo "</div>";
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
         </div>
         <form class="table-container">
             <table>
-                <tr>Transmission ciblée</tr>
+                <caption>Transmission ciblée</caption>
                 <tr>
                     <td>Date</td>
                     <td>Initiales</td>
@@ -77,15 +84,14 @@ session_start();
                     <td>Resultats</td>
                 </tr>
                 <?php
-                $test = [];
-                    foreach ($test as $item){
+                    foreach ($_SESSION['transmissionCib'] as $item){
                         echo "<tr>";
-                        echo "<td></td>";
-                        echo "<td></td>";
-                        echo "<td></td>";
-                        echo "<td></td>";
-                        echo "<td></td>";
-                        echo "<td></td>";
+                        echo "<td>".$item['date']."</td>";
+                        echo "<td>".$item['initiale']."</td>";
+                        echo "<td>".$item['cible']."</td>";
+                        echo "<td>".$item['donnee']."</td>";
+                        echo "<td>".$item['actions']."</td>";
+                        echo "<td>".$item['resultat']."</td>";
                         echo "</tr>";
                     }
                 ?>
@@ -101,7 +107,6 @@ session_start();
             </table>
             <input type="submit" value="Mettre à jour">
         </form>
-        <?php print $_SESSION['patientSuivi']?>
 
     </div>
 </div>

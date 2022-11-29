@@ -1,5 +1,6 @@
 <?php
 session_start();
+require "../BDD/DataBase_Dpi.php"
 ?>
 <html>
 <head>
@@ -36,7 +37,7 @@ session_start();
             <input type="submit" id="diagramme" name="Diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
             <input type="submit" id="biologie" name="Biologie" onmouseover="alterner('biologie');" onmouseout="alterner('biologie');" value="Biologie">
             <input type="submit" id="imagerie" name="Imagerie" onmouseover="alterner('imagerie');" onmouseout="alterner('imagerie');" value="Imagerie">
-            <input type="submit" id="courriers" name="Courriers" onmouseover="alterner('courriers');" onmouseout="alterner('courriers');" value="Courriers">
+            <input style="background-color: gray; color: white;" type="submit" id="courriers" name="Courriers" onmouseover="alterner('courriers');" onmouseout="alterner('courriers');" value="Courriers">
         </form>
 
         <div class="container" >
@@ -60,6 +61,16 @@ session_start();
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="container-img">
+            <?php
+            $result= VisuCour($_SESSION['infosPersoPatient']['ipp']);
+
+            foreach ($result as $p){
+                echo "<img class='img' src=$p>";
+                echo "<br>";
+            }
+            ?>
         </div>
     </div>
 </div>

@@ -1,5 +1,6 @@
 <?php
 session_start();
+require "../BDD/DataBase_Dpi.php";
 ?>
 <html>
 <head>
@@ -35,7 +36,7 @@ session_start();
             <input type="submit" id="intervenants" name="Intervenants" onmouseover="alterner('intervenants');" onmouseout="alterner('intervenants');" value="Intervenants">
             <input type="submit" id="diagramme" name="Diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
             <input type="submit" id="biologie" name="Biologie" onmouseover="alterner('biologie');" onmouseout="alterner('biologie');" value="Biologie">
-            <input type="submit" id="imagerie" name="Imagerie" onmouseover="alterner('imagerie');" onmouseout="alterner('imagerie');" value="Imagerie">
+            <input style="background-color: gray; color: white;" type="submit" id="imagerie" name="Imagerie" onmouseover="alterner('imagerie');" onmouseout="alterner('imagerie');" value="Imagerie">
             <input type="submit" id="courriers" name="Courriers" onmouseover="alterner('courriers');" onmouseout="alterner('courriers');" value="Courriers">
         </form>
 
@@ -59,6 +60,16 @@ session_start();
                         <h4>Date de sortie: <?php print($_SESSION['infosPersoPatient']['datefin']); ?></h4> <!-- Permet d'afficher la date de sortie d'hospitalisation de la personne cherchée dans la base de données -->
                     </div>
                 </div>
+            </div>
+            <div class="container-img">
+                <?php
+                $result= VisuImagerie($_SESSION['infosPersoPatient']['ipp']);
+
+                foreach ($result as $p){
+                    echo "<img class='img' src=$p>";
+                    echo "<br>";
+                }
+                ?>
             </div>
         </div>
     </div>
