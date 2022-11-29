@@ -257,4 +257,4 @@ values ('aurelien.leveque', 'leveque', 'Aurelien.Leveque@uphf.fr', 'etudiant'),
        ('samuel.applencourt', 'applencourt', 'Samuel.Applencourt@uphf.fr', 'etudiant'),
        ('dorian.petit', '$2y$12$Z/gsoP/SkQMBSc0WXmWQnO2GfhNgnQe0erqMLuvjjuqNPIm4.vQaS', 'Dorian.Petit@uphf.fr', 'prof'),
        ('rtyu','$2y$12$oNKQlblFYAK169xZLtIsBeRb0loYOPb5xc92tj68G9/Qm8jI7f.G.','rtyu@uphf.fr','admin'),
-       ('abcd','$2$12$aP7pS7yf1J9bG9aBL5mIN.0k6OeVKnDe3TyN598U/3jmVnXpAaJRK','abcd@uphf.fr','etudiant');
+       ('abcd','$2y$12$aP7pS7yf1J9bG9aBL5mIN.0k6OeVKnDe3TyN598U/3jmVnXpAaJRK','abcd@uphf.fr','etudiant');

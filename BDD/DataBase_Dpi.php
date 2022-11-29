@@ -226,6 +226,136 @@ function ADD_Image_Rad($IPP,$lien)
     }
 }
 
+function Check_Image_Imagerie($IPP,$nomIma)
+{
+    session_start();
+
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("SELECT count(*) FROM radio WHERE IPPRadio=? and lien=?");
+        $stmt2->bindParam(1, $IPP);
+        $stmt2->bindParam(2,$nomIma);
+        $stmt2->execute();
+        $res= $stmt2->fetchColumn(0);
+        return $res;
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
+function Check_Image_Biologie($IPP,$nomIma)
+{
+    session_start();
+
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("SELECT count(*) FROM Biologie WHERE IPPBio=? and lien=?");
+        $stmt2->bindParam(1, $IPP);
+        $stmt2->bindParam(2,$nomIma);
+        $stmt2->execute();
+        $res= $stmt2->fetchColumn(0);
+        return $res;
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
+function Delete_Image_Courriel($nomIma)
+{
+    session_start();
+
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("DELETE FROM couriel WHERE lien=? ");
+        $stmt2->bindParam(1,$nomIma);
+        $stmt2->execute();
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
+function Delete_Image_Imagerie($nomIma)
+{
+    session_start();
+
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("DELETE FROM radio WHERE lien=? ");
+        $stmt2->bindParam(1,$nomIma);
+        $stmt2->execute();
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
+function Delete_Image_Biologie($nomIma)
+{
+    session_start();
+
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("DELETE FROM Biologie WHERE lien=? ");
+        $stmt2->bindParam(1,$nomIma);
+        $stmt2->execute();
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
+function Check_Image_Courriel($IPP,$nomIma)
+{
+    session_start();
+
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("SELECT count(*) FROM couriel WHERE IPPCour=? and lien=?");
+        $stmt2->bindParam(1, $IPP);
+        $stmt2->bindParam(2,$nomIma);
+        $stmt2->execute();
+        $res= $stmt2->fetchColumn(0);
+        return $res;
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
+function DataBase_Delete_Corbeille($ipp)
+{
+    session_start();
+
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("select count(*) from corbeille WHERE IPPCorb=?");
+        $stmt2->bindParam(1, $ipp);
+        $stmt2->execute();
+        $res= $stmt2->fetchColumn(0);
+        if($res==0){
+            header('Location: ../DPIpatient/RecupCorbeille.php?erreur=2');
+        }
+        else{
+            $stmt = $dbh->prepare("DELETE FROM corbeille WHERE IPPCorb=?");
+            $stmt->bindParam(1, $ipp);
+            $stmt->execute();
+            header('Location: ../DPIpatient/DPI.php');
+        }
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
 function DataBase_Delete_Patient()
 {
     session_start();

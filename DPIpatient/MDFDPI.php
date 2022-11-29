@@ -1,12 +1,13 @@
 <?php
 session_start();
+require ("RecupInfoBDD_AjouterDPI.php");
 ?>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <!-- zone d'importation des fichiers de style -->
 
     <meta charset="utf-8">
-    <link rel="stylesheet" href="AjouterDPI_CSS.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../Verif_Test/CSS_DPI.css" media="screen" type="text/css" />
 </head>
 <body>
 <header>
@@ -26,30 +27,10 @@ session_start();
     </div>
     <!-- zone de connexion -->
     <div class="droite">
-        <form action="DPI.php" method="get">
-            <input name="recherche_barre"/>
-            <select name="select">
-                <option name="aucun">Aucun</option>
-                <option name="dh">Date hospitalisation</option>
-                <option name="oa">Ordre alphabetique</option>
-            </select>
-            <button type="submit">Rechercher</button>
-            <button name="next">Next</button>
-            <button name="back">Back</button>
-        </form>
+        <div class="bas">
 
-        <div class="basMDF">
+
             <script>
-                function retirer(text){
-                    var titre1 = document.getElementById(text);
-                    if(titre1.style.visibility == "hidden"){
-                        titre1.style.visibility="visible";
-                    } else {
-                        titre1.style.visibility="hidden";
-                    }
-                    console.log("un click à été éffectué");
-                };
-
                 function suivant(div1, div2){
                     var defaut = document.getElementById(div1);
                     var autre = document.getElementById(div2)
@@ -57,47 +38,148 @@ session_start();
                     autre.style.display = 'block';
                 }
 
-                function suivantCourt (div1, div2, div3){
+                function suivantCourt (div1, div2){
                     var defaut = document.getElementById(div1);
                     var autre = document.getElementById(div2);
-                    var autre1 = document.getElementById(div3);
                     if (defaut.style.display == 'none'){
                         if (autre.style.display == 'block'){
                             autre.style.display = 'none';
                         }
-                        else if (autre1.style.display == 'block'){
-                            autre1.style.display = 'none';
-                        }
                         defaut.style.display = 'block';
                     }
                 }
-                function changeCouleurBouton(b1,b2,b3) {
+                function changeCouleurBouton(b1,b2) {
                     var bouton = document.getElementById(b1);
                     var bouton1 = document.getElementById(b2);
-                    var bouton2 = document.getElementById(b3);
                     if (bouton.style.background = '#66CCCC'){
                         bouton.style.background = 'red';
                         bouton1.style.background = '#66CCCC';
-                        bouton2.style.background = '#66CCCC';
+                    }
+
+
+                }
+                function bool(){
+                    var boolean = false
+                    if (boolean == false){
+                        boolean = true;
+                    }
+                    return boolean;
+                }
+                function verification(b1,b2) {
+                    var b1bool = false;
+                    var bouton = document.getElementById(b1);
+                    var bouton1 = document.getElementById(b2);
+                    if (b1bool == false) {
+                        bouton1.disabled = true;
+                        b1bool = bool();
+                    }
+                    else {
+                        bouton1.disabled = false;
                     }
 
                 }
-
             </script>
 
-            <form id="formMDF" action="" method="post">
-                <div id="formDPI" style="display: block">
-                    <div class="Titreform" align="center">
-                        <h1><u>Ajouter un DPI</u></h1>
-                    </div>
 
-                    <div class="Validation" align="center">
-                        <input type="submit" value="Valider">
+            <div class="lesForms">
+                <button id="boutondebut" style="background-color:red" onclick="suivantCourt('formMDF','formINFO'), changeCouleurBouton('boutondebut','boutondebut1')">Recherche DPI</button>
+                <button id="boutondebut1" style="background-color:#66CCCC" onclick="suivantCourt('formINFO','formMDF'), changeCouleurBouton('boutondebut1','boutondebut')">Modification</button>
+
+            </div>
+            <form id="form" action="MDPDPI_PHP.php" method="post">
+                <div class="recherche">
+                    <div class="contenuRech">
+                        <select name="DPI" id="DPI_Patient">
+                            <option value="defaut">--Choisir le DPI à modifier--</option>
+                            <?php
+                            $der = lstderoulante();
+                            while ($row =$der->fetch(PDO::FETCH_ASSOC)) {
+                                unset($id, $nom, $prenom);
+                                $id = $row['ipp'];
+                                $nom = $row['nom'];
+                                $prenom = $row['prenom'];
+                                echo "<option value='$id'> $nom $prenom </option>";
+
+                            }
+                            ?>
+                            <script>
+                                document.getElementById('DPI_Patient').addEventListener('change',function(){
+                                    document.getElementById('rech').value = this.value;
+                                });
+                            </script>
+                            <label for="rech" class="labIPP">Numéro IPP</label>
+                            <input class="reche" type="text" id="rech" name="recherche" value="<?php $id?>">
+                            <input id="b1" onclick="" type="submit" value="Recherche">
+                        </select>
                     </div>
                 </div>
+                <div class="separation"></div>
+                <div id="formMDF" style="display: block">
+                    <div class="Titreform">
+                        <h1><u>Modifier un DPI</u></h1>
+                    </div>
+
+                    <?php
+
+                    $lst = nameColonne()[0];
+                    $lst1 = nameColonne()[1];
+                    for ($i = 2 ; $i<sizeof($lst) ; $i++):?> <!-- le 2 evite de prendre l'ipp et iep-->
+                    <?php
+                    $res = "$lst[$i]";
+                    if ($i == 17 ) {$i += 1;}
+                    if ($i == 18) {$i+=1;}
+                    $type = "$lst1[$i]";
+                    $res2 = 'val' . $i;
+                    if ($type == 'integer' || $type == 'double precision'){$type = "number";}
+                    else if ($type == 'timestamp without time zone'){$type = "date";}
+                    if ($i >= 25 ):?>
+                    <div class="Groupe1">
+                        <?php echo "<label for='$res'> $lst[$i]: </label><br>";
+                        $type = "radio"?>
+                        <div class="Boolean">
+                            <input id="<?=$res?>" type="<?=$type?>" name="<?=$res?>" value="1" <?php if(isset($_SESSION[$res2])&&$_SESSION[$res2] == 1):?> checked <?php endif ?>/>
+                            <?php echo "<label for='$res'>Autonome</label>"?>
+                            <input id="<?=$res?>" type="<?=$type?>" name="<?=$res?>" value="2" <?php if(isset($_SESSION[$res2])&&$_SESSION[$res2] == 2):?> checked <?php endif ?>/>
+                            <?php echo "<label for='$res'>Aide Partielle</label>"?>
+                            <input id="<?=$res?>" type="<?=$type?>" name="<?=$res?>" value="3" <?php if(isset($_SESSION[$res2])&&$_SESSION[$res2] == 3):?> checked <?php endif ?>/>
+                            <?php echo "<label for='$res'>Aide Totale</label>"?>
+                        </div>
+                    </div>
+                    <?php endif;
+
+                    if ($i < 25 && $i >20 || $i<19):?>
+                    <div class="Groupe">
+                        <?php echo "<label for='$res'> $lst[$i]: </label><br>"; ?>
+                        <input id="<?=$res?>" type="<?=$type?>" name="<?=$res?>" value="<?= $_SESSION[$res2] ?? '' ?>"/>
+                    </div>
+                    <?php endif;
+
+                    if ($i == 19 || $i == 20):?>
+                    <div class="Groupe1">
+                        <?php echo "<label for='$res'> $lst[$i]: </label><br>";
+                        $type = "radio"?>
+                        <div class="Boolean">
+                            <input id="<?=$res?>" type="<?=$type?>" name="<?=$res?>" value="true" <?php if(isset($_SESSION[$res2])&&$_SESSION[$res2] == "false"):?> checked <?php endif ?>/>
+                            <?php echo "<label for='$res'>OUI</label>"?>
+                            <input id="<?=$res?>" type="<?=$type?>" name="<?=$res?>" value="false" <?php if(isset($_SESSION[$res2])&&$_SESSION[$res2] != "false"):?> checked <?php endif ?>/>
+                            <?php echo "<label for='$res'>NON</label>";?>
+
+                        </div>
+                    </div>
+                    <?php endif;
+                    $_SESSION[$res2] = null;
+                    ?>
+                    <?php endfor;?>
+                    <div class="modif" align="center">
+                        <br>
+                        <input id="b2" onclick="verification('b1','b2')" type="submit" value="Modifier" >
+                    </div>
+                    <div id="formINFO" style="display: none">
+                    </div>
             </form>
         </div>
     </div>
 </div>
 </body>
 </html>
+}
