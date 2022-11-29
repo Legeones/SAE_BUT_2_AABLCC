@@ -58,7 +58,26 @@ require ("RecupInfoBDD_AjouterDPI.php");
 
 
                 }
+                function bool(){
+                    var boolean = false
+                    if (boolean == false){
+                        boolean = true;
+                    }
+                    return boolean;
+                }
+                function verification(b1,b2) {
+                    var b1bool = false;
+                    var bouton = document.getElementById(b1);
+                    var bouton1 = document.getElementById(b2);
+                    if (b1bool == false) {
+                        bouton1.disabled = true;
+                        b1bool = bool();
+                    }
+                    else {
+                        bouton1.disabled = false;
+                    }
 
+                }
             </script>
 
 
@@ -82,7 +101,6 @@ require ("RecupInfoBDD_AjouterDPI.php");
                                 echo "<option value='$id'> $nom $prenom </option>";
 
                             }
-
                             ?>
                             <script>
                                 document.getElementById('DPI_Patient').addEventListener('change',function(){
@@ -91,7 +109,7 @@ require ("RecupInfoBDD_AjouterDPI.php");
                             </script>
                             <label for="rech" class="labIPP">Numéro IPP</label>
                             <input class="reche" type="text" id="rech" name="recherche" value="<?php $id?>">
-                            <input type="submit" value="Recherche">
+                            <input id="b1" onclick="" type="submit" value="Recherche">
                         </select>
                     </div>
                 </div>
@@ -154,7 +172,7 @@ require ("RecupInfoBDD_AjouterDPI.php");
                     <?php endfor;?>
                     <div class="modif" align="center">
                         <br>
-                        <input onclick="" type="submit" value="Modifier" >
+                        <input id="b2" onclick="verification('b1','b2')" type="submit" value="Modifier" >
                     </div>
                     <div id="formINFO" style="display: none">
                     </div>
