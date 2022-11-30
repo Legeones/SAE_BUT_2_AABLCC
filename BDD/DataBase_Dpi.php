@@ -417,8 +417,7 @@ function VisuBio($IPP){
         $stmt2 = $dbh->prepare("select lien from Biologie where IPPBio=?");
         $stmt2->bindParam(1, $IPP);
         $stmt2->execute();
-        $result = $stmt2->fetchAll(PDO::FETCH_COLUMN, 0);
-        return $result;
+        return $stmt2->fetchAll(PDO::FETCH_COLUMN, 0);
         //echo "<img class='logo' src=$res>";
     } catch (PDOException $e) {
         Errorprint($e);
@@ -432,8 +431,7 @@ function VisuCour($IPP){
         $stmt2 = $dbh->prepare("select lien from couriel where IPPCour=?");
         $stmt2->bindParam(1, $IPP);
         $stmt2->execute();
-        $result = $stmt2->fetchAll(PDO::FETCH_COLUMN, 0);
-        return $result;
+        return $stmt2->fetchAll(PDO::FETCH_COLUMN, 0);
         //echo "<img class='logo' src=$res>";
     } catch (PDOException $e) {
         Errorprint($e);
