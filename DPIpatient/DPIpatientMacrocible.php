@@ -41,11 +41,6 @@ session_start();
         </script>
 
         <div class="container" >
-            <?= print_r($_SESSION['infosPersonneConf']);
-            print_r($_SESSION['infosPersonneCont']);
-            print_r($_SESSION['infosAdm']);
-            print_r($_SESSION['infosPersonneMed']);
-            print_r($_SESSION['infosPatient'])?>
             <div class="grid-container">
 
                 <div class="info" onclick="show_data_patient_div('donn-perso');">
@@ -85,17 +80,23 @@ session_start();
             <div class="info" onclick="show_data_patient_div('donn-soc');">
                 <h2>Données sociales</h2>
                 <div class="info-intern" id="donn-soc">
-                    <h4>Mesure de protection: A implementer</h4>
-                    <h4>Suivi assistant social: A implementer</h4>
+                    <h4>Mesure de protection:<?php print($_SESSION['infosPatient']['mesuredeprotection'])?></h4>
+                    <h4>Suivi assistant social:<?php print($_SESSION['infosPatient']['asistantsocial'])?></h4>
                 </div>
 
             </div>
             <div class="info" onclick="show_data_patient_div('info-medi');">
                 <h2>Infos médicales</h2>
                 <div class="info-intern" id="info-medi">
-                    <h4>Medecin traitant:</h4>
-                    <h4>Medecin specialisé:</h4>
-                    <h4>Medecin referent:</h4>
+                    <?php foreach ($_SESSION['infosPersonneMed'] as $m){
+                        ?>
+                            <h3>Medecin <?php print($m['lienmed']) ?></h3>
+                            <p>Nom:<?php print($m['nom'])?></p>
+                            <p>Prénom:<?php print($m['prenom'])?></p>
+                            <p>Adresse:<?php print($m['adresse']).",".$m['cp'].",".$m['ville']?></p>
+                        <?php
+                    }
+                    ?>
                 </div>
 
             </div>
@@ -103,22 +104,22 @@ session_start();
                 <h2>Données médicales</h2>
                 <div class="info-intern" id="donn-medi">
                     <h4>Allergies:</h4>
-                    <p><?php print($_SESSION['infosPatient'][12]); ?></p>
+                    <p><?php print($_SESSION['infosPatient']['allergies']); ?></p>
                     <h4>Antecedents:</h4>
-                    <p><?php print($_SESSION['infosPatient'][13]); ?></p>
+                    <p><?php print($_SESSION['infosPatient']['antecedents']); ?></p>
                     <h4>Obstetricaux:</h4>
-                    <p><?php print($_SESSION['infosPatient'][14]); ?></p>
+                    <p><?php print($_SESSION['infosPatient']['obstericaux']); ?></p>
                     <h4>Medicaux:</h4>
-                    <p><?php print($_SESSION['infosPatient'][15]); ?></p>
+                    <p><?php print($_SESSION['infosPatient']['domedicaux']); ?></p>
                     <h4>Chirurgicaux:</h4>
-                    <p><?php print($_SESSION['infosPatient'][16]); ?></p>
+                    <p><?php print($_SESSION['infosPatient']['dochirurgicaux']); ?></p>
                 </div>
 
             </div>
             <div class="info" onclick="show_data_patient_div('trait-dom');">
                 <h2>Traitement à domicile</h2>
                 <div class="info-intern" id="trait-dom">
-                    <p>Vide</p>
+                    <p><?= $_SESSION['infosPatient']['traidomi'] ?></p>
                 </div>
 
             </div>
@@ -126,7 +127,7 @@ session_start();
                 <h2>Macrocible d'entrée</h2>
                 <div class="info-intern" id="macro-ent">
                     <h4>Synthèse d'entrée</h4>
-                    <p><?php print($_SESSION['infosPatient'][10]); ?></p>
+                    <p><?php print($_SESSION['infosPatient']['synentre']); ?></p>
                     <p></p>
                     <h4>Bilan d'autonomie:</h4>
                     <table>

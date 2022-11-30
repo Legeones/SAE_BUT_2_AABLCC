@@ -76,7 +76,7 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
         $stmt3 = $pdo->prepare("SELECT a.* FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE patient.ipp = ?");
         $stmt3 -> bindParam(1,$nomPatient);
         $stmt3->execute();
-        $stmt4 = $pdo->prepare("SELECT p3.* FROM patient LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp WHERE patient.ipp = ?");
+        $stmt4 = $pdo->prepare("SELECT m.nom,m.prenom,m.adresse,m.ville,m.cp,p3.type,p3.lienmed FROM patient LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp LEFT JOIN medecin m on p3.idmedecin = m.idmedecin WHERE patient.ipp = ?");
         $stmt4 -> bindParam(1,$nomPatient);
         $stmt4->execute();
         $stmt5 = $pdo->prepare("SELECT * FROM patient WHERE patient.ipp = ?");
@@ -96,7 +96,7 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
         }
         $_SESSION['infosPersonneMed']=[];
         foreach ($stmt4 as $item){
-            $_SESSION['infosPersonneMed']+=$item;
+            $_SESSION['infosPersonneMed'][]=$item;
         }
         $_SESSION['infosPatient']=[];
         foreach ($stmt5 as $item){

@@ -104,7 +104,8 @@ create table PatientMedecin (
                                 IPP numeric(13,0)  references Patient ON DELETE CASCADE,
                                 idMedecin serial  references Medecin ON DELETE CASCADE,
                                 primary key (IPP, idMedecin),
-                                type text not null
+                                type text not null,
+                                lienMed text not null
 );
 
 create table Prescription (
@@ -243,11 +244,11 @@ values (1, 'Claviant', 'Marcel', '09 rue Despiet', '59540', 'Caudry'),
        (4, 'Moulin', 'Jean', '63 rue du Rempart', '59300', 'Valenciennes');
 
 insert into PatientMedecin
-values (8000000000000, 1, 'generaliste'),
-       (8000000000001, 4, 'medecine sante publique et sociale'),
-       (8000000000002, 1, 'generaliste'),
-       (8000000000003, 3, 'generaliste'),
-       (8000000000004, 2, 'generaliste');
+values (8000000000000, 1, 'generaliste','traitant'),
+       (8000000000001, 4, 'medecine sante publique et sociale','specialisé'),
+       (8000000000002, 1, 'generaliste','referent'),
+       (8000000000003, 3, 'generaliste','referent'),
+       (8000000000004, 2, 'generaliste','referent');
 
 insert into Prescription
 values (1, 'antidouleurs', 'listes 1&2'),
