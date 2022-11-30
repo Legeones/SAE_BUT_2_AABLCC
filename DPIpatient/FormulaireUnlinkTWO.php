@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-<html>
 <head>
     <title>Formulaire de supression de fichiers</title>
     <meta charset="utf-8">
@@ -23,42 +22,43 @@
         </div>
     </div>
     <div class="droite">
-        <form action="FormulaireUnlinkVerifUNO.php" method="post" enctype="multipart/form-data">
+        <form action="unlink.php" method="post" enctype="multipart/form-data">
 
             <h1>Unlink Fichier</h1>
             <br>
             <br>
-            <input type="radio" name="catSUPP" value="Biologie" checked> Biologie
-            <input type="radio" name="catSUPP" value="Courriel"> Courriel
-            <input type="radio" name="catSUPP" value="Imagerie"> Imagerie
-            <br>
-            <br>
             <select name="DPI" id="DPI_Patient">
-                <option value="defaut">--Choisir le DPI--</option>
+                <option selected="selected">Sélectionner une valeur</option>
                 <?php
-                require ('../DPIpatient/RecupInfoBDD_AjouterDPI.php');
-                $der = lstderoulante();
-                while ($row =$der->fetch(PDO::FETCH_ASSOC)) {
-                    unset($id, $nom, $prenom);
-                    $id = $row['ipp'];
-                    $nom = $row['nom'];
-                    $prenom = $row['prenom'];
-                    echo "<option value='$id'> $nom $prenom </option>";
-
+                session_start();
+                require  ('../DPIpatient/RecupInfoBDD_AjouterDPI.php');
+                if($_SESSION['catSUPP']=='Biologie'){
+                    $langages = lstderoulanteImageBio($_SESSION['IPPImageSupp']);
+                }
+               elseif ($_SESSION['catSUPP']=='Courriel'){
+                   $langages = lstderoulanteImageCou($_SESSION['IPPImageSupp']);
+               }
+                else{
+                    $langages = lstderoulanteImageRad($_SESSION['IPPImageSupp']);
                 }
 
+                // Parcourir le tableau
+                foreach($langages as $value){
+                    ?>
+                    <option value="<?php echo strtolower($value); ?>"><?php echo $value; ?></option>
+                    <?php
+                }
                 ?>
                 <script>
                     document.getElementById('DPI_Patient').addEventListener('change',function(){
                         document.getElementById('rech').value = this.value;
                     });
                 </script>
-                <label for="rech" class="labIPP">Numéro IPP</label>
-                <input class="reche" type="text" id="rech" name="IPPImageSupp" value="<?php $id?>">
+                <input class="reche" type="text" id="rech" name="nomImageSupp" value="<?php $value?>">
             </select>
             <br>
             <br>
-            <input type="submit" name="submit" value="suivant">
+            <input type="submit" name="submit" value="unlink">
 
             <?php
             if(isset($_GET['erreur'])){
