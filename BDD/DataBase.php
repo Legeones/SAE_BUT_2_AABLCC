@@ -63,39 +63,14 @@ require('../BDD/DataBase_Core.php');
  */
 function Data_Patient_Querry($nomPatient, $nomCateg){
         $pdo = DataBase_Creator_Unit();
+        $requestlambda = "SELECT * FROM patient WHERE ?";
         if ($nomCateg == "macrocible"){
             $stmt = $pdo->prepare("SELECT * FROM patient LEFT JOIN personneconfiance p on patient.idpcon = p.idpcon LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel LEFT JOIN admission a on patient.ipp = a.ipp LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp WHERE patient.nom = ?");
             $stmt -> bindParam(1,$nomPatient);
             $stmt->execute();
             $_SESSION['infosPatient']=[];
-
-        } elseif ($nomCateg == "observations"){
-            $stmt = $pdo->prepare("SELECT * FROM patient WHERE ?");
-            $stmt -> bindParam(1,$nomPatient);
-            $stmt->execute();
-            $_SESSION['infosPatient']=[];
-        } elseif ($nomCateg == "prescription"){
-            $stmt = $pdo->prepare("SELECT * FROM patient WHERE ?");
-            $stmt -> bindParam(1,$nomPatient);
-            $stmt->execute();
-            $_SESSION['infosPatient']=[];
-        } elseif ($nomCateg == "diagramme"){
-            $stmt = $pdo->prepare("SELECT * FROM patient WHERE ?");
-            $stmt -> bindParam(1,$nomPatient);
-            $stmt->execute();
-            $_SESSION['infosPatient']=[];
-        } elseif ($nomCateg == "biologie"){
-            $stmt = $pdo->prepare("SELECT * FROM patient WHERE ?");
-            $stmt -> bindParam(1,$nomPatient);
-            $stmt->execute();
-            $_SESSION['infosPatient']=[];
-        } elseif ($nomCateg == "imagerie"){
-            $stmt = $pdo->prepare("SELECT * FROM patient WHERE ?");
-            $stmt -> bindParam(1,$nomPatient);
-            $stmt->execute();
-            $_SESSION['infosPatient']=[];
-        } elseif ($nomCateg == "courriers"){
-            $stmt = $pdo->prepare("SELECT * FROM patient WHERE ?");
+        } elseif ($nomCateg == "observations" || $nomCateg == "prescription" || $nomCateg == "diagramme" || $nomCateg == "biologie" || $nomCateg == "imagerie" || $nomCateg == "courriers" ){
+            $stmt = $pdo->prepare($requestlambda);
             $stmt -> bindParam(1,$nomPatient);
             $stmt->execute();
             $_SESSION['infosPatient']=[];
