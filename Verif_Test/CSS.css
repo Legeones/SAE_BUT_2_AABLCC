@@ -110,13 +110,17 @@ form{
     border:5px solid black;
 }
 
-form .droite{
-    text-align: initial;
+form .gauche2{
+    text-align: match-parent;
+    width: 2px;
 }
 
-form .gauche{
-    text-align: right;
+form .Aide{
+    width: 2px;
+    position: relative;
+    left:500px;
 }
+
 form h1{
     font-size: 30px;
     text-align: center;
