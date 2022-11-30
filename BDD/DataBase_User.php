@@ -4,6 +4,8 @@ require('../BDD/DataBase_Core.php');
 
 session_start();
 
+$Check_User = "SELECT count(*) FROM utilisateur where login = ? ";
+
 function Database_Add_User()
 {
     $password_hashed = Hasher(12,$_SESSION['PASSWORD']);
@@ -13,17 +15,13 @@ function Database_Add_User()
         $stmt = $dbh->prepare("select count(*) from utilisateur where email= ?");
         $stmt->bindParam(1, $_SESSION['EMAIL']);
         $stmt->execute();
-        $stmt3 = $dbh->prepare("SELECT count(*) FROM utilisateur where login = ? ");
+        $stmt3 = $dbh->prepare($Check_User);
         $stmt3->bindParam(1, $_SESSION['IDENTIFIANT']);
         $stmt3->execute();
         $result = $stmt->fetchColumn(0);
         $result2 = $stmt3->fetchColumn(0);
 
-        if($result==1){
-            header('Location: ../Inscription/Inscription_formulaire.php?erreur=7');
-        }
-
-        elseif($result2==1){
+        if($result==1 || $result2==1){
             header('Location: ../Inscription/Inscription_formulaire.php?erreur=7');
         }
 
@@ -38,12 +36,12 @@ function Database_Add_User()
             $stmt2->execute();
 
         } catch (PDOException $e) {
-            print "Erreur !: " . $e->getMessage() . "<br/>";
+            Errorprint($e);
             die();
         }
 
     }catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        Errorprint($e);
         die();
     }
 }
@@ -69,12 +67,7 @@ function Database_Check_User_Exist($username,$password)
         } else {
             $res2=0;
         }
-        if($res2==5 and ($result2=='prof' or $result2=='admin')){
-            $_SESSION['username'] = $username;
-            $_SESSION['Role'] = $result2;
-            header('Location: ../DPIpatient/DPI.php');
-        }
-        elseif ($res2==5 and $result2=='etudiant'){
+        if($res2==5 && ($result2=='prof' || $result2=='admin' || $result2=='etudiant')){
             $_SESSION['username'] = $username;
             $_SESSION['Role'] = $result2;
             header('Location: ../DPIpatient/DPI.php');
@@ -84,7 +77,7 @@ function Database_Check_User_Exist($username,$password)
         }
 
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        Errorprint($e);
         die();
     }
 }
@@ -93,7 +86,7 @@ function Database_User_New_Pass_Check()
 {
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt = $dbh->prepare("SELECT count(*) FROM utilisateur where login = ? ");
+        $stmt = $dbh->prepare($Check_User);
         $stmt->bindParam(1, $_SESSION['IDENTIFIANT']);
         $stmt->execute();
         $result = $stmt->fetchColumn(0);
@@ -106,7 +99,7 @@ function Database_User_New_Pass_Check()
             header('Location: ../MDP/MDPoublier.php?erreur=1');
         }
     }catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        Errorprint($e);
         die();
     }
 }
@@ -124,7 +117,7 @@ function Database_User_New_Pass_Modify($ID,$password)
         $stmt->execute();
         header('Location: ../Connexion/login.php');
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        Errorprint($e);
         die();
     }
 }
@@ -135,8 +128,8 @@ function DataBase_Attribute_Role($ID,$Role)
 
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt = $dbh->prepare("SELECT count(*) FROM utilisateur where login = ? ");
-        $stmt->bindParam(1, $_POST["ID"]);
+        $stmt = $dbh->prepare($Check_User);
+        $stmt->bindParam(1, $ID);
         $stmt->execute();
         $result = $stmt->fetchColumn(0);
 
@@ -145,13 +138,13 @@ function DataBase_Attribute_Role($ID,$Role)
             try {
                 $dbh = $dbh = DataBase_Creator_Unit();
                 $stmt = $dbh->prepare("UPDATE utilisateur SET roles=? WHERE login=?");
-                $stmt->bindParam(1, $_POST["Role"]);
-                $stmt->bindParam(2, $_POST["ID"]);
+                $stmt->bindParam(1, $Role);
+                $stmt->bindParam(2, $ID);
 
                 $stmt->execute();
                 header('Location: ../DPIpatient/DPI.php');
             } catch (PDOException $e) {
-                print "Erreur !: " . $e->getMessage() . "<br/>";
+                Errorprint($e);
                 die();
             }
         }
@@ -160,7 +153,7 @@ function DataBase_Attribute_Role($ID,$Role)
             header('Location: ../DPIpatient/AttributionRole.php?erreur=1');
         }
     }catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        Errorprint($e);print "Erreur !: " . $e->getMessage() . "<br/>";
         die();
     }
 }
@@ -172,7 +165,7 @@ function DataBase_Pseudo_Etu_Return()
     if($_SESSION["Role"]=="pseudo-etu") {
         try {
             $dbh = DataBase_Creator_Unit();
-            $stmt = $dbh->prepare("SELECT count(*) FROM utilisateur where login = ? ");
+            $stmt = $dbh->prepare($Check_User);
             $stmt->bindParam(1, $_SESSION["username"]);
             $stmt->execute();
             $result = $stmt->fetchColumn(0);
@@ -188,7 +181,7 @@ function DataBase_Pseudo_Etu_Return()
                     $_SESSION["Role"] = $result;
                     header("Location: DPI.php");
                 } catch (PDOException $e) {
-                    print "Erreur !: " . $e->getMessage() . "<br/>";
+                    Errorprint($e);
                     die();
                 }
 
@@ -197,9 +190,14 @@ function DataBase_Pseudo_Etu_Return()
                 header('Location: AttributionRole.php?erreur=1');
             }
         }catch (PDOException $e) {
-            print "Erreur !: " . $e->getMessage() . "<br/>";
+            Errorprint($e);
             die();
         }
     }
+}
+
+function ErrorPrint($e)
+{
+    print "Erreur !: " . $e->getMessage() . "<br/>";
 }
 ?>
