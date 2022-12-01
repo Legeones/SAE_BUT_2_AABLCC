@@ -156,6 +156,10 @@ form .Formulaire .Groupe textarea{
     border-radius: 5px;
 }
 
+form .Validation{
+	text-align: center;
+}
+
 form .Validation input {
     background-color: lightskyblue;
     border: none;
@@ -185,6 +189,7 @@ form .Separation2{
     background-color: cornflowerblue;
     margin: 1px;
 }
+
 form .CssUnified .Phrase{
     text-align: center;
 }
