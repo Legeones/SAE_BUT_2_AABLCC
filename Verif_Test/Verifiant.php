@@ -40,9 +40,9 @@ function VerifPassword_Uppercase($pw1)
     $uppercasecheck = false;
     
     for( $i = 0 ; $i < strlen($pw1) ; $i++ )
-    { if(preg_match('/[A-Z]/', $pw1seg[$i]) == 1)  { $uppercasecheck = true;   /*echo "UpperCase Found <br>";*/ } }
+    { if(preg_match('/[A-Z]/', $pw1seg[$i]) == 1)  { $uppercasecheck = true; } }
     
-    if ( $uppercasecheck == false )
+    if ( !$uppercasecheck )
     { return 0; }
     else
     { return 1; }
@@ -54,9 +54,9 @@ function VerifPassword_Lowercase($pw1)
     $lowercasecheck = false;
     
     for( $i = 0 ; $i < strlen($pw1) ; $i++ )
-    { if(preg_match('/[a-z]/', $pw1seg[$i]) == 1)  { $lowercasecheck = true;   /*echo "LowerCase Found <br>";*/ } }
+    { if(preg_match('/[a-z]/', $pw1seg[$i]) == 1)  { $lowercasecheck = true; } }
     
-    if ( $lowercasecheck == false )
+    if ( !$lowercasecheck )
     { return 0; }
     else
     { return 1; }
@@ -68,9 +68,9 @@ function VerifPassword_Number($pw1)
     $numbercheck = false;
     
     for( $i = 0 ; $i < strlen($pw1) ; $i++ )
-    { if(preg_match('/[0-9]/', $pw1seg[$i]) == 1)  { $numbercheck = true;   /*echo "Number Found <br>";*/ } }
+    { if(preg_match('/[\d]/', $pw1seg[$i]) == 1)  { $numbercheck = true; } }
     
-    if ( $numbercheck == false )
+    if ( !$numbercheck )
     { return 0; }
     else
     { return 1; }
