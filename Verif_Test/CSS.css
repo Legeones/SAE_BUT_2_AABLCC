@@ -156,6 +156,10 @@ form .Formulaire .Groupe textarea{
     border-radius: 5px;
 }
 
+form .mdpOublie{
+	text-align: right;
+}
+
 form .Validation{
 	text-align: center;
 }
