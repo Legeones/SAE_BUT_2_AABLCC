@@ -4,8 +4,6 @@ require('../BDD/DataBase_Core.php');
 
 session_start();
 
-$Check_User = "SELECT count(*) FROM utilisateur where login = ? ";
-
 function Database_Add_User()
 {
     $password_hashed = Hasher(12,$_SESSION['PASSWORD']);
@@ -15,7 +13,7 @@ function Database_Add_User()
         $stmt = $dbh->prepare("select count(*) from utilisateur where email= ?");
         $stmt->bindParam(1, $_SESSION['EMAIL']);
         $stmt->execute();
-        $stmt3 = $dbh->prepare($Check_User);
+        $stmt3 = $dbh->prepare(CheckUser());
         $stmt3->bindParam(1, $_SESSION['IDENTIFIANT']);
         $stmt3->execute();
         $result = $stmt->fetchColumn(0);
@@ -86,7 +84,7 @@ function Database_User_New_Pass_Check()
 {
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt = $dbh->prepare($Check_User);
+        $stmt = $dbh->prepare(CheckUser());
         $stmt->bindParam(1, $_SESSION['IDENTIFIANT']);
         $stmt->execute();
         $result = $stmt->fetchColumn(0);
@@ -128,7 +126,7 @@ function DataBase_Attribute_Role($ID,$Role)
 
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt = $dbh->prepare($Check_User);
+        $stmt = $dbh->prepare(CheckUser());
         $stmt->bindParam(1, $ID);
         $stmt->execute();
         $result = $stmt->fetchColumn(0);
@@ -165,7 +163,7 @@ function DataBase_Pseudo_Etu_Return()
     if($_SESSION["Role"]=="pseudo-etu") {
         try {
             $dbh = DataBase_Creator_Unit();
-            $stmt = $dbh->prepare($Check_User);
+            $stmt = $dbh->prepare(CheckUser());
             $stmt->bindParam(1, $_SESSION["username"]);
             $stmt->execute();
             $result = $stmt->fetchColumn(0);
@@ -194,6 +192,11 @@ function DataBase_Pseudo_Etu_Return()
             die();
         }
     }
+}
+
+function CheckUser()
+{
+    return "SELECT count(*) FROM utilisateur where login = ? ";
 }
 
 function ErrorPrint($e)
