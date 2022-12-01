@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+//echo $_SESSION['patientSuivi']; (entre L12 et L13)
+
 //Ici nous allons chercher le fichier qui contient l'accès à la base
 require ("../BDD/DataBase_Dpi.php");
 
@@ -11,7 +13,6 @@ foreach($_POST as $key => $items) {
         echo $key;
     }
 }
-//echo $_SESSION['patientSuivi'];
 
 //Ici on va chercher dans quel page nous sommes
 foreach($_GET as $key => $items) {
