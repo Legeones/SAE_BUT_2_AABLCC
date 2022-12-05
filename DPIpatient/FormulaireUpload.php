@@ -44,7 +44,6 @@
     <br>
     <br>
     <select name="DPI" id="DPI_Patient">
-    <option value="defaut">--Choisir le DPI à modifier--</option>
     <?php
     require ('../DPIpatient/RecupInfoBDD_AjouterDPI.php');
     $der = lstderoulante();

@@ -54,9 +54,9 @@
                     });
                 </script>
                 <label for="rech" class="labIPP">Numéro IPP</label>
-                <input class="reche" type="text" id="rech" name="IPPImageSupp" value="<?php $id?>">
             </select>
             <br>
+            <input class="reche" type="text" id="rech" name="IPPImageSupp" value="<?php $id?>">
             <br>
             <input type="submit" name="submit" value="suivant">
 
