@@ -1,56 +1,56 @@
 drop table if exists PersonneConfiance,Utilisateur, PersonneContacte,Corbeille, Patient, Intervenant, Intervention, Admission, Soin, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient,radio,Biologie,couriel,ObservationMedical,TransmissionsCiblees;
 
 
-create table PersonneConfiance (
-                                   idPcon serial not null primary key,
-                                   nom text not null ,
-                                   prenom text not null,
-                                   tel text not null ,
-                                   lien text not null ,
-                                   formulaire bool not null
+create table PersonneConfiance
+(
+    idPcon serial not null primary key,
+    nom text not null ,
+    prenom text not null,
+    telephone text not null ,
+    lien text not null ,
+    formulaire bool not null
 );
 
 create table PersonneContacte (
-                                  idPtel serial not null primary key,
-                                  nom text not null ,
-                                  prenom text not null,
-                                  tel text not null ,
-                                  lien text not null
+    idPtel serial not null primary key,
+    nom text not null ,
+    prenom text not null,
+    telephone text not null ,
+    lien text not null
 );
 
-
 create table Patient(
-                        IPP numeric(13,0) not null primary key,
-                        IEP serial not null,
-                        nom text not null ,
-                        prenom text not null ,
-                        DDN timestamp not null ,
-                        taille_cm int not null ,
-                        poids_kg float not null ,
-                        adresse text not null ,
-                        CP text not null check ( CP ~ '^[0-9][0-9][0-9][0-9][0-9]$'),
-                        ville text not null ,
-                        telPersonnel text not null ,
-                        telProfessionnel text ,
-                        allergies text  ,
-                        antecedents text  ,
-                        obstericaux text  ,
-                        doMedicaux text  ,
-                        doChirurgicaux text ,
-                        idPcon serial not null unique references PersonneConfiance ON DELETE CASCADE,
-                        idPtel serial not null unique references PersonneContacte ON DELETE CASCADE,
-                        MesuredeProtection boolean not null,
-                        AsistantSocial boolean not null,
-                        MDV text,
-                        SynEntre text not null,
-                        TraiDomi text,
-                        doPhyPsy text,
-                        mobilite int check(mobilite>=1 and mobilite<=3) not null,
-                        alimentation int check(alimentation>=1 and alimentation<=3) not null,
-                        Hygiene int check(Hygiene>=1 and Hygiene<=3) not null,
-                        toilette int check(toilette>=1 and toilette<=3) not null,
-                        Habit int check(Habit>=1 and Habit<=3) not null,
-                        continence int check(continence>=1 and continence<=3) not null
+    IPP numeric(13,0) not null primary key,
+    IEP serial not null,
+    Nom text not null ,
+    Prenom text not null ,
+    Date_de_Naissance date not null ,
+    Taille_cm int not null ,
+    Poids_kg float not null ,
+    Adresse text not null ,
+    Code_Postal text not null check ( Patient.code_postal ~ '^[0-9][0-9][0-9][0-9][0-9]$'),
+    Ville text not null ,
+    Telephone_Personnel text not null ,
+    Telephone_Professionnel text ,
+    Allergies text  ,
+    Antecedents text  ,
+    Obstericaux text  ,
+    Documents_Medicaux text  ,
+    Documents_Chirurgicaux text ,
+    idPcon serial not null unique references PersonneConfiance ON DELETE CASCADE,
+    idPtel serial not null unique references PersonneContacte ON DELETE CASCADE,
+    Mesure_de_Protection bool not null ,
+    Assistant_Social bool not null,
+    Mode_de_Vie text,
+    Synthese_Entree text not null,
+    Traitement_Domicile text,
+    Donnee_Physique_Psychologique text,
+    Mobilite int check(mobilite>=1 and mobilite<=3) not null,
+    Alimentation int check(alimentation>=1 and alimentation<=3) not null,
+    Hygiene int check(Hygiene>=1 and Hygiene<=3) not null,
+    Toilette int check(toilette>=1 and toilette<=3) not null,
+    Habit int check(Habit>=1 and Habit<=3) not null,
+    Continence int check(continence>=1 and continence<=3) not null
 );
 
 create table Intervenant (
