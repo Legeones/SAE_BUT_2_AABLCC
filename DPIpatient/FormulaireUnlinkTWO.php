@@ -65,16 +65,20 @@
                 $err = $_GET['erreur'];
                 if($err==1){
                     echo "<p style='color:red'>Error: Imcompatibilité entre le nom et l'ipp.</p>";
+                    // Un message d'erreur apparait lorsque il y a une imcompatibilité entre le nom et l'ipp
                 }
 
                 if($err==5){
                     echo "<p style='color:red'>Error: le fichier n'existe pas.</p>";
+                    // Un message d'erreur apparait lorsque le fichier n'existe pas
                 }
                 if($err==6){
                     echo "<p style='color:red'>Error: Tous les champs doivent etre remplis</p>";
+                    // un message d'erreur apparait lorsque tous les champs ne sont pas remplis
                 }
                 if($err==7){
                     echo "<p style='color:red'>Error: L'IPP n'existe pas</p>";
+                    // Un message d'erreur apparait lorsque l'IPP n'existe pas
                 }
             }
             ?>

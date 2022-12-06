@@ -26,7 +26,7 @@
         <div class="Formulaire">
             <div class="Groupe">
                 <label for="identifiant">ID : </label>
-                <input type="text" placeholder="Enter your ID" name="username" /> <!-- Demande Ã  l'utilisateur de saisir son identifiant -->
+                <input type="text" placeholder="Enter your ID" name="username" /> <!-- Demande à l'utilisateur de saisir son identifiant -->
             </div>
             <div class="Groupe">
                 <div class="eyes">
@@ -34,7 +34,7 @@
                         <label for="mot de passe">Password :</label>
                     </div>
                     <div class="GroupeLOGO">
-                        <input type="password" name="password" id="password" placeholder="Enter your password" /> <!-- Demande Ã  l'utilisateur de saisir son mot de passe -->
+                        <input type="password" name="password" id="password" placeholder="Enter your password" /> <!-- Demande à l'utilisateur de saisir son mot de passe -->
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
                         <em class="bi bi-eye-slash" id="togglePassword"></em>
                     </div>
@@ -72,7 +72,7 @@
                 <input type="submit" value="Connection">
             </div>
             <div class="mdpOublie">
-                <a href="../MDP/MDPoublier.php"><strong>Forgot your password</strong></a> <!-- Permet d'accÃ¨der Ã  la page mot de passe oubliÃ© -->
+                <a href="../MDP/MDPoublier.php"><strong>Forgot your password</strong></a> <!-- Permet d'accéder à la page mot de passe oubliée -->
             </div>
         </div>
         <div class="Separation2"></div>
@@ -85,10 +85,10 @@
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
-                    <a href="../Charte_Utilisation/charte_utilisation.php"><strong>User Charter</strong></a> <!-- Permet d'accÃ©der Ã  la page charte d'utilisation -->
+                    <a href="../Charte_Utilisation/charte_utilisation.php"><strong>User Charter</strong></a> <!-- Permet d'accéder à la page charte d'utilisation -->
                 </div>
                 <div class="droite">
-                    <input type="button" onclick="window.location.href ='Aide.php';" value="?"/> <!-- Permet d'accÃ©der Ã  la page aide -->
+                    <input type="button" onclick="window.location.href ='Aide.php';" value="?"/> <!-- Permet d'accéder à la page aide -->
                 </div>
             </div>
         </div>

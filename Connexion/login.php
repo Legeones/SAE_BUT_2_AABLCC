@@ -26,7 +26,7 @@
         <div class="Formulaire">
             <div class="Groupe">
                 <label for="identifiant">Identifiant : </label>
-                <input type="text" placeholder="Saisir votre identifiant" name="username" /> <!-- Demande Ã  l'utilisateur de saisir son identifiant -->
+                <input type="text" placeholder="Saisir votre identifiant" name="username" /> <!-- Demande à l'utilisateur de saisir son identifiant -->
             </div>
 
             <div class="Groupe">
@@ -74,7 +74,7 @@
                 <input type="submit" value="Connexion">
             </div>
             <div class="mdpOublie">
-                <a href="../MDP/MDPoublier.php"><strong>Mot de passe oubliÃ©</strong></a> <!-- Permet d'accÃ¨der Ã  la page mot de passe oubliÃ© -->
+                <a href="../MDP/MDPoublier.php"><strong>Mot de passe oublié</strong></a> <!-- Permet d'accéder à la page mot de passe oubliée -->
             </div>
         </div>
         <div class="Separation2"></div>
@@ -87,10 +87,10 @@
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
-                    <a href="../Charte_Utilisation/charte_utilisation.php"><strong>Charte d'utilisation</strong></a> <!-- Permet d'accÃ©der Ã  la page charte d'utilisation -->
+                    <a href="../Charte_Utilisation/charte_utilisation.php"><strong>Charte d'utilisation</strong></a> <!-- Permet d'accéder à la page charte d'utilisation -->
                 </div>
                 <div class="droite">
-                    <input type="button" onclick="window.location.href ='Aide.php';" value="?"/> <!-- Permet d'accÃ©der Ã  la page aide -->
+                    <input type="button" onclick="window.location.href ='Aide.php';" value="?"/> <!-- Permet d'accéder à la page aide -->
                 </div>
             </div>
         </div>

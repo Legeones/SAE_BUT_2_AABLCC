@@ -347,6 +347,7 @@ session_start();
 
                     <div class="Groupe1">
                         <label> Capacité à aller au Toilette :</label>
+                        <!-- Renseignement de la capacité du patient à aller au Toilette (Autonome,Partielle,Totale -->
                         <div class="Boolean">
                             <input type="radio" name="CT" value="1" <?php if(isset($_SESSION['CTp'])&&$_SESSION['CTp'] == 1):?> checked <?php endif ?>>
                             <label>Autonome</label>
@@ -365,6 +366,7 @@ session_start();
 
                     <div class="Groupe1">
                         <label> Capacité à s'habiller :</label>
+                        <!-- Renseignement de la capacité du patient à s'habiller (Autonome,Partielle,Totale -->
                         <div class="Boolean">
                             <input type="radio" name="CH" value="1" <?php if(isset($_SESSION['CHp'])&&$_SESSION['CHp'] == 1):?> checked <?php endif ?>>
                             <label>Autonome</label>
@@ -383,6 +385,7 @@ session_start();
 
                     <div class="Groupe1">
                         <label> Capacité de continance :</label>
+                        <!-- Renseignement de la capacité du patient à se retenir (Autonome,Partielle,Totale -->
                         <div class="Boolean">
                             <input type="radio" name="conti" value="1" <?php if(isset($_SESSION['contip'])&&$_SESSION['contip'] == 1):?> checked <?php endif ?>>
                             <label>Autonome</label>

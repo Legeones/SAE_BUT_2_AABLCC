@@ -22,7 +22,7 @@
     <?php
     if(isset($_GET['erreur'])){
         $err = $_GET['erreur'];
-        // Un message d'erreut apparait si le mot de passe comporte moins de 8 caractères
+        // Un message d'erreur apparait si le mot de passe comporte moins de 8 caractères
         if($err==1){
             echo "<p style='color:red'>le mot de passse a moins de 8 caractères</p>";
         }
