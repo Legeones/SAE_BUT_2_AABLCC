@@ -44,7 +44,7 @@ create table Patient(
     Mode_de_Vie text,
     Synthese_Entree text not null,
     Traitement_Domicile text,
-    donnée_Physique_Psychologique text,
+    Donnee_Physique_Psychologique text,
     Mobilite int check(mobilite>=1 and mobilite<=3) not null,
     Alimentation int check(alimentation>=1 and alimentation<=3) not null,
     Hygiene int check(Hygiene>=1 and Hygiene<=3) not null,
