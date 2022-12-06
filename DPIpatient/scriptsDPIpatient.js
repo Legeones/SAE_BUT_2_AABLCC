@@ -5,8 +5,10 @@ function alterner(id){
     let doc = document.getElementById(id);
     if(doc.style.backgroundColor=="cornflowerblue"){
         doc.style.backgroundColor = "white";
-    } else{
+    } else if (doc.style.backgroundColor=="white"){
         doc.style.backgroundColor = "cornflowerblue";
+    } else if (doc.style.backgroundColor=="gray"){
+        doc.style.backgroundColor = "gray";
     }
 }
 

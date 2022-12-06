@@ -1,6 +1,7 @@
 <?php
 session_start();
-require "../BDD/DataBase_Dpi.php"
+require "../BDD/DataBase_Dpi.php";
+require "patientDPIfunction.php";
 ?>
 <html>
 <head>
@@ -30,47 +31,31 @@ require "../BDD/DataBase_Dpi.php"
         <!-- zone d'ajout de boutons -->
         <form action="actionDPI.php" name="cat" method="get" class="btn-line">
             <!-- zone d'ajout de boutons -->
-            <input type="submit" id="macrocible" name="Macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">
-            <input type="submit" id="observation" name="Observation" onmouseover="alterner('observation');" onmouseout="alterner('observation');" value="Observation médicale">
-            <input type="submit" id="prescription" name="Prescription" onmouseover="alterner('prescription');" onmouseout="alterner('prescription');" value="Prescription">
-            <input type="submit" id="intervenants" name="Intervenants" onmouseover="alterner('intervenants');" onmouseout="alterner('intervenants');" value="Intervenants">
-            <input type="submit" id="diagramme" name="Diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
-            <input type="submit" id="biologie" name="Biologie" onmouseover="alterner('biologie');" onmouseout="alterner('biologie');" value="Biologie">
-            <input type="submit" id="imagerie" name="Imagerie" onmouseover="alterner('imagerie');" onmouseout="alterner('imagerie');" value="Imagerie">
+            <input style="background-color: white;" type="submit" id="macrocible" name="Macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">
+            <input style="background-color: white;" type="submit" id="observation" name="Observation" onmouseover="alterner('observation');" onmouseout="alterner('observation');" value="Observation médicale">
+            <input style="background-color: white;" type="submit" id="prescription" name="Prescription" onmouseover="alterner('prescription');" onmouseout="alterner('prescription');" value="Prescription">
+            <input style="background-color: white;" type="submit" id="intervenants" name="Intervenants" onmouseover="alterner('intervenants');" onmouseout="alterner('intervenants');" value="Intervenants">
+            <input style="background-color: white;" type="submit" id="diagramme" name="Diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
+            <input style="background-color: white;" type="submit" id="biologie" name="Biologie" onmouseover="alterner('biologie');" onmouseout="alterner('biologie');" value="Biologie">
+            <input style="background-color: white;" type="submit" id="imagerie" name="Imagerie" onmouseover="alterner('imagerie');" onmouseout="alterner('imagerie');" value="Imagerie">
             <input style="background-color: gray; color: white;" type="submit" id="courriers" name="Courriers" onmouseover="alterner('courriers');" onmouseout="alterner('courriers');" value="Courriers">
         </form>
 
         <div class="container" >
             <div class="grid-container">
 
-                <div class="info" onclick="show_data_patient_div('donn-perso');">
-                    <h2>Données personnelles</h2>
-                    <div class="info-intern" id="donn-perso">
-
-                        <h4>Nom:<?php print($_SESSION['infosPersoPatient']['nom']) ?></h4><!-- Permet d'afficher le nom de la personne cherchée dans la base de données -->
-                        <h4>Prenom:<?php print($_SESSION['infosPersoPatient']['prenom']) ?></h4><!-- Permet d'afficher le prénom de la personne cherchée dans la base de données -->
-                        <h4>Ville de naissance:</h4> <!-- Onglet ville de naissance -->
-                        <h4>Date de naissance:<?php print($_SESSION['infosPersoPatient']['ddn']) ?></h4> <!-- Permet d'afficher la date de naissance de la personne cherchée dans la base de données -->
-                        <h4>Poids:<?php print($_SESSION['infosPersoPatient']['poids_kg']) ?>kg</h4> <!-- Permet d'afficher le poids de la personne cherchée dans la base de données -->
-                        <h4>Taille:<?php print($_SESSION['infosPersoPatient']['taille_cm']) ?>cm</h4> <!-- Permet d'afficher la taille de la personne cherchée dans la base de données -->
-                        <h4>IEP:<?php print($_SESSION['infosPersoPatient']['iep']); ?></h4> <!-- Permet d'afficher l'iep de la personne cherchée dans la base de données -->
-                        <h4>IPP: <?php print($_SESSION['infosPersoPatient']['ipp']); ?></h4> <!-- Permet d'afficher l'ipp de la personne cherchée dans la base de données -->
-                        <h4>Type hospitalisation: </h4> <!-- Onglet type d'hospitalisation -->
-                        <h4>Date d'admission: <?php print($_SESSION['infosPersoPatient']['datedebut']); ?></h4> <!-- Permet d'afficher la date de début d'hospitalisation de la personne cherchée dans la base de données -->
-                        <h4>Date de sortie: <?php print($_SESSION['infosPersoPatient']['datefin']); ?></h4> <!-- Permet d'afficher la date de sortie d'hospitalisation de la personne cherchée dans la base de données -->
-                    </div>
-                </div>
+                <?= afficherDataPersos() ?>
             </div>
-        </div>
-        <div class="container-img">
-            <?php
-            $result= VisuCour($_SESSION['infosPersoPatient']['ipp']);
+            <div class="container-img">
+                <?php
+                $result= VisuCour($_SESSION['infosPersoPatient']['ipp']);
 
-            foreach ($result as $p){
-                echo "<img class='img' src=$p>";
-                echo "<br>";
-            }
-            ?>
+                foreach ($result as $p){
+                    echo "<img class='img' src=$p>";
+                    echo "<br>";
+                }
+                ?>
+            </div>
         </div>
     </div>
 </div>

@@ -55,6 +55,10 @@ $_SESSION['patientSuivi']=null;
                 <option name="dh">Date hospitalisation</option>
                 <option name="oa">Ordre alphabetique</option>
             </select>
+            <select name="admi">
+                <option value="IPP" name="IPP">IPP</option>
+                <option value="IEP" name="IEP">IEP</option>
+            </select>
             <button type="submit">Rechercher</button>
             <button name="back">Back</button>
             <button name="next">Next</button>
@@ -68,23 +72,22 @@ $_SESSION['patientSuivi']=null;
                 } else {
                     elt.style.visibility = "visible";
                 }
-
             }
         </script>
-
         <form name="choixPatient" action="actionDPI.php" method="post" class="grid-container" id="form">
             <?php
             for($i=1;$i<25;$i++){
                 $_SESSION['patientActuel']='patient'.$i;
                 $id = ''.$i;
                 $_SESSION['idActuel'] = $id;
-                ?> <input type="submit" name="<?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][0];} else {print "null";}?>"
+                ?> <input type="submit" name="<?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][0];} else {print 'null';}?>"
                           style="cursor:pointer;" <?php if(isset($_SESSION[$_SESSION['patientActuel']])){?>
                     onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)"<?php }?>
-                          value = <?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][1];}?>>
+                          value = <?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']]['nom'];}?>>
 
                 <div class="hide" id=<?php echo $_SESSION['idActuel'] ?>>
-                    <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print $_SESSION[$_SESSION['patientActuel']][0];?>
+                    <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print ("IPP:".$_SESSION[$_SESSION['patientActuel']]['ipp']."<br>");
+                    if(isset($_SESSION[$_SESSION['patientActuel']]['iep'])) print ("IEP:".$_SESSION[$_SESSION['patientActuel']]['iep']);?>
                 </div>
                 </input>
             <?php }
