@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="piedDePage">
-        <div class="Validation" align="center" >
+        <div class="Validation">
             <input type="submit" value="Valider">
         </div>
         <!-- Gestion des erreurs -->

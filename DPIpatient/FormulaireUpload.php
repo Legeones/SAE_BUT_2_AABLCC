@@ -44,30 +44,31 @@
     <br>
     <br>
     <select name="DPI" id="DPI_Patient">
-    <option value="defaut">--Choisir le DPI à modifier--</option>
-    <?php
-    require ('../DPIpatient/RecupInfoBDD_AjouterDPI.php');
-    $der = lstderoulante();
-    while ($row =$der->fetch(PDO::FETCH_ASSOC)) {
-        unset($id, $nom, $prenom);
-        $id = $row['ipp'];
-        $nom = $row['nom'];
-        $prenom = $row['prenom'];
-        echo "<option value='$id'> $nom $prenom </option>";
+        <option value="defaut">--Choisir le DPI--</option>
+        <?php
+        require ('../DPIpatient/RecupInfoBDD_AjouterDPI.php');
+        $der = lstderoulante();
+        while ($row =$der->fetch(PDO::FETCH_ASSOC)) {
+            unset($id, $nom, $prenom);
+            $id = $row['ipp'];
+            $nom = $row['nom'];
+            $prenom = $row['prenom'];
+            echo "<option value='$id'> $nom $prenom </option>";
 
-    }
+        }
 
-    ?>
-    <script>
-        document.getElementById('DPI_Patient').addEventListener('change',function(){
-            document.getElementById('rech').value = this.value;
-        });
-    </script>
-    <label for="rech" class="labIPP">Numéro IPP</label>
+        ?>
+        <script>
+            document.getElementById('DPI_Patient').addEventListener('change',function(){
+                document.getElementById('rech').value = this.value;
+            });
+        </script>
+        <label for="rech" class="labIPP">Numéro IPP</label>
+    </select>
+    <br>
     <input class="reche" type="text" id="rech" name="IPPImage" value="<?php $id?>">
     <input type="submit" name="submit" value="Upload">
     <p><strong>Note:</strong> Seuls les formats .jpg, .jpeg, .jpeg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
-    </select>
 
     <?php
         if(isset($_GET['erreur'])){

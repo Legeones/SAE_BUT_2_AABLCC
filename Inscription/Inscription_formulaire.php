@@ -22,12 +22,12 @@
         <div class="Groupe">
             <label> Mot de passe :</label>
             <input type="password" name="Password_A" id="password" placeholder="Saisir votre mot de passe" /> <!-- Demande à l'utilisateur de saisir son mot de passe -->
-            <i class="bi bi-eye-slash" id="togglePassword"></i>
+            <em class="bi bi-eye-slash" id="togglePassword"></em>
         </div>
         <div class="Groupe">
             <label> Confirmation mot de passe : </label>
             <input type="password" name="Password_B" id="password1" placeholder="Confirmer votre mot de passe" /> <!-- Demande à l'utilisateur de confirmer son mot de passe -->
-            <i class="bi bi-eye-slash" id="togglePassword1"></i>
+            <em class="bi bi-eye-slash" id="togglePassword1"></em>
         </div>
         <div class="Groupe">
             <label> Adresse mail :</label>
@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="piedDePage">
-        <div class="Validation" align="center" >
+        <div class="Validation" >
             <input type="submit" value="Inscription">
         </div>
         <script>
@@ -109,7 +109,7 @@
         <div class="Phrase">
             <p>Pour vous Connectez</p>
         </div>
-        <div class="CSS1" align="center">
+        <div class="CSS1"">
             <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Se connecter"/> <!-- Bouton permettant à l'utilisateur de se connecter -->
         </div>
         <div class="piedDePage2">

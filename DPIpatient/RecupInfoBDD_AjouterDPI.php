@@ -185,6 +185,33 @@ function lstderoulanteCorb(){
     return $DPI;
 }
 
+function lstderoulanteImageBio($ipp){
+    $DPI2 = Connection();
+    $DPI = $DPI2->prepare("select lien,nom,IPPBio from biologie where IPPBio= ?");
+    $DPI->bindParam(1,$ipp);
+    $DPI->execute();
+    $res=$DPI->fetchAll(PDO::FETCH_COLUMN, 1);
+    return $res;
+}
+
+function lstderoulanteImageRad($ipp){
+    $DPI2 = Connection();
+    $DPI = $DPI2->prepare("select lien,nom,IPPRadio from radio where IPPRadio= ?");
+    $DPI->bindParam(1,$ipp);
+    $DPI->execute();
+    $res=$DPI->fetchAll(PDO::FETCH_COLUMN, 1);
+    return $res;
+}
+
+function lstderoulanteImageCou($ipp){
+    $DPI2 = Connection();
+    $DPI = $DPI2->prepare("select lien,nom,IPPCour from couriel where IPPCour= ?");
+    $DPI->bindParam(1,$ipp);
+    $DPI->execute();
+    $res=$DPI->fetchAll(PDO::FETCH_COLUMN, 1);
+    return $res;
+}
+
 function nameColonne (){
     $DPI3 = Connection();
     $colonne = $DPI3->prepare("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ? order by ordinal_position");

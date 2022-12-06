@@ -29,9 +29,8 @@
             });
         </script>
         <label for="rech" class="labIPP">Numéro IPP</label>
-        <input class="reche" type="text" id="rech" name="IPP_SUPP" value="<?php $id?>">
     </select>
-
+    <input class="reche" type="text" id="rech" name="IPP_SUPP" value="<?php $id?>">
     <br>
     <input  type="submit" value="Confirmer" name="Confirmer" id="Confirmer">
 

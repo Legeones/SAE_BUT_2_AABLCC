@@ -35,9 +35,10 @@
         });
     </script>
     <label for="rech" class="labIPP">Numéro IPP</label>
+    
+</select>
     <input class="reche" type="text" id="rech" name="IPP_CORB" value="<?php $id?>">
     <input  type="submit" value="Confirmer" name="Confirmer" id="Confirmer">
-</select>
 </form>
 <?php
 

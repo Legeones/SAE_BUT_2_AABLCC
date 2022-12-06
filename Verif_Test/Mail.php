@@ -22,7 +22,7 @@ function SendMail($keys,$email)
     $mail->SMTPSecure = "ssl";          // dependant du smtp serveur utilisé
     $mail->Port = 465;                  // dependant du smtp serveur utilisé
     
-    $mail->SetFrom ('???@uphf.fr','EC');  // dependant de l'utilisateur (envoie)
+    $mail->SetFrom (GetMail(),'EC');  // dependant de l'utilisateur (envoie)
     $mail->AddAddress ($email, 'EC2');
     
     $mail->CharSet = 'windows-1250';
@@ -57,8 +57,8 @@ function SendRequestMail($email,$body)
     $mail->SMTPSecure = "ssl";          // dependant du smtp serveur utilisé
     $mail->Port = 465;                  // dependant du smtp serveur utilisé
     
-    $mail->SetFrom ('???@uphf.fr','Assistance');  // dependant de l'utilisateur (envoie)
-    $mail->AddAddress ('???@uphf.fr', 'Assistance');
+    $mail->SetFrom (GetMail(),'Assistance');  // dependant de l'utilisateur (envoie)
+    $mail->AddAddress (GetMail(), 'Assistance');
     
     $mail->CharSet = 'windows-1250';
     $mail->ContentType = 'text/plain';
@@ -87,6 +87,11 @@ function MailPreparator($indexkey,$email)
     SendMail($_SESSION['Code'],$email);
     
     header('Location: ../Verif_Test/MailCode_Formulaire.php?');
+}
+
+function GetMail()
+{
+    return '???@uphf.fr';
 }
 
     function Resend()
