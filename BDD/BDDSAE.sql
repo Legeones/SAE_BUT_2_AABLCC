@@ -31,7 +31,7 @@ create table Patient(
     Code_Postal text not null check ( Patient.code_postal ~ '^[0-9][0-9][0-9][0-9][0-9]$'),
     Ville text not null ,
     Telephone_Personnel text not null ,
-    Telephone_Pofessionnel text ,
+    Telephone_Professionnel text ,
     Allergies text  ,
     Antecedents text  ,
     Obstericaux text  ,
