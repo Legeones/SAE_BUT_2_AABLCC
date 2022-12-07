@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Page d'accueil</title>
     <!-- importation des fichiers de style -->
-    <link rel="stylesheet" href="../Verif_Test/CSS.css">
+    <link rel="stylesheet" href="AccueilCSS.css">
 
     <form>
         <h1>Bienvenue à l'IFSI de Maubeuge</h1>

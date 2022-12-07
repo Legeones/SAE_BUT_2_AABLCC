@@ -10,7 +10,7 @@
 </head>
 <div class="droite">
     <br><select name="l">
-        <option value="fr" selected="selected">FranÃ§ais</option>
+        <option value="fr" selected="selected">Français</option>
     </select>
     <div class="retour">
         <input type="button" onclick="window.location.href ='login.php';" value="Go"/>
