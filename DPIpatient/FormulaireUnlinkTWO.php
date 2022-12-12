@@ -31,7 +31,7 @@
                 <option selected="selected">Sélectionner une valeur</option>
                 <?php
                 session_start();
-                require  ('../BDD/DataBase_Core.php');
+                require  ('../BDD/DataBase_DPI.php');
                 if($_SESSION['catSUPP']=='Biologie'){
                     $langages = lstderoulanteImageBio($_SESSION['IPPImageSupp']);
                 }
