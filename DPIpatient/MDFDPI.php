@@ -1,6 +1,6 @@
 <?php
 session_start();
-require ("RecupInfoBDD_AjouterDPI.php");
+require ('../BDD/DataBase_Core.php');
 ?>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
