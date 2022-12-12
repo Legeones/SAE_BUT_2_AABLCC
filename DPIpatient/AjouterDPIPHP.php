@@ -95,27 +95,27 @@ try {
         } else {
             $_SESSION['telpersop'] = $_POST['telperso'];
         }
-        // Verification telpro
+
         if (!empty($_POST['telpro'])) {
             $_SESSION['telprop'] = $_POST['telpro'];
         }
-        // Verification allergies
+
         if (!empty($_POST['allergies'])) {
             $_SESSION['allergiesp'] = $_POST['allergies'];
         }
-        // Verification antecedents
+
         if (!empty($_POST['antecedents'])) {
             $_SESSION['antecedentsp'] = $_POST['antecedents'];
         }
-        // Verification Obs
+
         if (!empty($_POST['Obs'])) {
             $_SESSION['Obsp'] = $_POST['Obs'];
         }
-        // Verification docMed
+
         if (!empty($_POST['docMed'])) {
             $_SESSION['docMedp'] = $_POST['docMed'];
         }
-        // Verification docChir
+
         if (!empty($_POST['docChir'])) {
             $_SESSION['docChirp'] = $_POST['docChir'];
         }
@@ -135,7 +135,7 @@ try {
         } else {
             $_SESSION['ACp'] = $_POST['AC'];
         }
-        // Verification MDV
+
         if (!empty($_POST['MDV'])) {
             $_SESSION['MDVp'] = $_POST['MDV'];
         }
@@ -147,11 +147,11 @@ try {
         } else {
             $_SESSION['synEntreep'] = $_POST['synEntree'];
         }
-        // Verification tradomi
+
         if (!empty($_POST['tradomi'])) {
             $_SESSION['tradomip'] = $_POST['tradomi'];
         }
-        // Verification doPhyPsy
+
         if (!empty($_POST['doPhyPsy'])) {
             $_SESSION['doPhyPsyp'] = $_POST['doPhyPsy'];
         }
@@ -282,7 +282,7 @@ try {
         /*********************************************************************************************************/
 
         if (empty($erreurs)) {
-            require "RecupInfoBDD_AjouterDPI.php";
+            require '../BDD/DataBase_DPI.php';
             AjouterDPI();
         }
         header('Location: AjouterDPI.php');
