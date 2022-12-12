@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-require "RecupInfoBDD_AjouterDPI.php";
+require '../BDD/DataBase_Core.php';
 
 
 if (empty($_POST['recherche'])){
