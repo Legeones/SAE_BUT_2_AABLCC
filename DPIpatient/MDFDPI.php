@@ -1,6 +1,6 @@
 <?php
 session_start();
-require ('../BDD/DataBase_Core.php');
+require ('../BDD/DataBase_DPI.php');
 ?>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
