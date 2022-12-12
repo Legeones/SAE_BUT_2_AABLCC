@@ -8,13 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
 </head>
-<div class="droite">
-    <br><select name="l">
-        <option value="en" selected="selected">English</option>
-    </select>
-    <div class="retour">
-        <input type="button" onclick="window.location.href ='loginEN.php';" value="Go"/>
-    </div>
+<div class="button">
+    <input type="button" onclick="window.location.href ='loginEN.php';" value="English"/>
 </div>
 <body id="general">
 <div id="container">
