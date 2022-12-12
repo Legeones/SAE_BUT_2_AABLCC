@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-require '../BDD/DataBase_Core.php';
+require '../BDD/DataBase_DPI.php';
 
 
 if (empty($_POST['recherche'])){
