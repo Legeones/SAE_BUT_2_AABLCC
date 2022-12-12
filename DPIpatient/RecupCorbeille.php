@@ -11,7 +11,7 @@
     <select name="DPI" id="DPI_Patient">
         <option value="defaut">--Choisir le DPI à modifier--</option>
         <?php
-        require ('../DPIpatient/RecupInfoBDD_AjouterDPI.php');
+        require ('../BDD/DataBase_DPI.php');
         $der = lstderoulanteCorb();
         while ($row =$der->fetch(PDO::FETCH_ASSOC)) {
             unset($id, $nom, $prenom);
@@ -29,9 +29,8 @@
             });
         </script>
         <label for="rech" class="labIPP">Numéro IPP</label>
+        <input class="reche" type="text" id="rech" name="IPP_Recup" value="<?php $id?>">
     </select>
-    <br>
-    <input class="reche" type="text" id="rech" name="IPP_Recup" value="<?php $id?>">
     <br>
     <input  type="submit" value="Confirmer" name="Confirmer" id="Confirmer">
 
