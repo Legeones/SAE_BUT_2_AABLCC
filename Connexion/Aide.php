@@ -26,7 +26,7 @@
         <div class="formDroite">
             <div class="Groupe">
                 <label> Message :</label>
-                <textarea type="text" placeholder="Saisissez ici ..." name="body" ></textarea>
+                <input type="text" placeholder="Saisissez ici ..." name="body" />
             </div>
         </div>
     </div>
