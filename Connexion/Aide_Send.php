@@ -11,7 +11,7 @@ $VerifEmptyContent2=VerifEmptyContent($_POST['mail']);
 $VerifEmptyContent3=VerifEmptyContent($_POST['body']);
 
 $VerifEmail=VerifEmail($_POST["mail"]);
-//Zone de vérification//
+//Zone de vérification
 if ($VerifEmptyContent1==0){
     header('Location: ../Connexion/Aide.php?erreur=1');
 }
