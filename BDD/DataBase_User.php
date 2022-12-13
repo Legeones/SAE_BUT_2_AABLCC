@@ -86,8 +86,9 @@ function Database_User_New_Pass_Check()
 {
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt = $dbh->prepare(CheckUser());
+        $stmt = $dbh->prepare("SELECT count(*) FROM utilisateur where login = ? and email = ?");
         $stmt->bindParam(1, $_SESSION['IDENTIFIANT']);
+        $stmt->bindParam(1, $_SESSION['EMAIL']);
         $stmt->execute();
         $result = $stmt->fetchColumn(0);
 
