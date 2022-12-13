@@ -20,6 +20,8 @@ $VerifEmail=VerifEmail($_POST["email"]); // VÃ©rification de l'email
 session_start();
 $_SESSION['EMAIL'] = $_POST['email'];
 $_SESSION['IDENTIFIANT'] = $_POST['ID'];
+$_SESSION['ID_NOM'] = $_POST['nom'];
+$_SESSION['ID_PRENOM'] = $_POST['prenom'];
 $_SESSION['ROLE'] = 'etudiant';
 $_SESSION['PASSWORD'] = $_POST["Password_A"];
 
