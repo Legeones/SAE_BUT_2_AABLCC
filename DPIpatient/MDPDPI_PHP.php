@@ -1,24 +1,17 @@
 
 <?php
 session_start();
-require '../BDD/DataBase_DPI.php';
-
+require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php';
 
 if (empty($_POST['recherche'])){
     if(isset($_SESSION['mdf'])&& $_SESSION['mdf'] != null){
-        modifer($_SESSION['mdf']);
+        modifier($_SESSION['mdf']);
         $_SESSION['mdf'] = null;
     }
 }
 else {
     $_SESSION['mdf'] = $_POST['recherche'];
-    for ($i = 2; $i <= 29; $i++) {
-        if ($i == 17 || $i == 18) {
-            $i += 1;
-        }
-        $name = 'val' . $i;
-        $_SESSION[$name] = StockDPI()[$i];
-    }
+    creation_Session($_SESSION['table'],$_SESSION['Debut'],$_SESSION['Fin']);
 }
 header('Location: MDFDPI.php');
 ?>

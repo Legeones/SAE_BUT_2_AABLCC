@@ -1,5 +1,5 @@
 <?php
-require "RecupInfoBDD_AjouterDPI.php";
+require "../BDD/DataBase_Dpi.php";
 
 function formulaire($res,$lst,$i,$type,$res2){ ?>
     <div class="Groupe">
@@ -172,4 +172,6 @@ function erreur ($debDPI, $finDPI, $debCont, $finCont, $debConf, $finConf){
     return $erreur;
 
 }
+
+
 ?>
