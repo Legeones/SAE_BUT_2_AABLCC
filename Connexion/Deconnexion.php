@@ -13,7 +13,12 @@
     <header>
         <img class="logo" src="https://moodle.uphf.fr/pluginfile.php/358899/mod_resource/content/1/logoIFSI.png">
     </header>
+        <div class="gauche2">
+            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Connexion"/>
     </div>
+        <div class ="Aide">
+            <input type="button" onclick="window.location.href ='../Connexion/Page_Accueil.php';" value="Accueil"/>
+            </div>
 </form>
 </head>
 <body id="general">
