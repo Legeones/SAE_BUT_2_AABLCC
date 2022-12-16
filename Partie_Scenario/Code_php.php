@@ -8,6 +8,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
+    if(!empty($_POST['debut'] && $_POST['fin'])){
+        $_SESSION['debut'] = $_POST['debut'];
+        $_SESSION['fin'] = $_POST['fin'];
+        if ($_SESSION['fin'] < $_SESSION['debut']){
+            echo "<p style='color: red'> Erreur : dates non conformes ! </p>";
+        }
+    }
+    else {echo "<p style='color: red'>Vous avez oublié de remplir des champs ! </p>";}
+
+
+    if(!empty($_POST['nbevent'])){
+        $_SESSION['nb_event'] = $_POST['nbevent'];
+
+    }
+
+
+
+
+
     function takeDPI($dbh)
     {
         $dpi = $dbh->prepare("select *
@@ -36,23 +55,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         return $donnees;
     }
 
-    function modif_dpi($dbh): string
-    {
-        $donnees = takeDPI($dbh);
-        $requete = $dbh->prepare("update patient
-                        set ipp = ?, iep= ?, nom= ?, prenom= ?, ddn= ?, taille_cm= ?, poids_kg= ?, adresse= ?, cp= ?, ville= ?, telpersonnel= ?,
-                        telprofessionnel= ?, allergies= ?, antecedents= ?, obstericaux= ?, domedicaux= ?, dochirurgicaux= ?, idpcon= ?, idptel= ?,
-                        mesuredeprotection= ?, asistantsocial= ?, mdv= ?, synentre= ?, traidomi= ?, dophypsy= ?, mobilite= ?, alimentation= ?,
-                        hygiene= ?, toilette= ?, habit= ?, continence = ?
-                            where ipp = ?");
-
-        for($i=1; $i<= sizeof($donnees); $i++){
-            $requete->bindparams($i, $_SESSION[$i]);
-        }
-        $requete->execute();
-        return "fait";
-
-    }
 
     function creation_input($dbh): void
     {
@@ -75,29 +77,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             }
             else{ $cpt+=1;}
-        }
-
-
-        function ajout_scenario($db): void
-        {
-            $idscenario = search_indscenario($db);
-            $copy = takeDPI($db);
-            $date = function ($db){$d = $db->prepare("select current_date"); $d->execute();};
-            //insertion des données dans la table scenario
-            $insertion = $db->prepare("insert into scenario (idscenario, date, dpi_etu) VALUES (?,?,?)");
-            $insertion->bindparam(1, $idscenario);
-            $insertion->bindparam(2, $date);
-            $insertion->bindparam(3, $copy);
-
-            $insertion->execute();
-
-        }
-
-        function search_indscenario($db)
-        {
-            $src = $db->prepare("select max(idscenario)
-            from scenario");
-            return $src[0]+1;
         }
 
     }
