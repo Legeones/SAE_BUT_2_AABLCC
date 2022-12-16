@@ -95,7 +95,7 @@ input[type=number], input[type=date]{
     cursor: pointer;
     width: 11%;
 }
-.global .bas input[type=submit]:hover , button[type=button]:hover {
+.global .bas input[type=submit]:hover , button[type=button]:hover ,input[type=button]:hover{
     background-color: white;
     color: gray;
     border: 1px solid black;
@@ -304,15 +304,54 @@ footer{
     box-sizing: border-box;
 }
 
-.bas .recherche .contenuRech input[type=submit]{
+.bas .recherche .contenuRech input[type=submit],input[type=button]{
+    background-color: white;
     width: 10%;
     padding: 14px 9px;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+
+.bas .recherche .contenuRech input[type=submit]:hover,input[type=button]:hover {
+    background-color: wheat;
+    border: 1px solid black;
+    color: gray;
+}
+.bas .recherche .contenuRech .reset{
+    margin-left: 19%;
+}
+
 .recherche .labIPP {
     font-size: 20px;
 }
 .bas .recherche .contenuRech{
     margin-top: 12px;
+}
+.global .bas #formMDFDPI{
+    background-color: wheat;
+    width: 98%;
+    height: 93%;
+    overflow: auto;
+}
+.global .bas .Titreform .Question_mdf{
+    color: #66CCCC;
+    font-size: 60px;
+    margin-bottom: 50px;
+}
+
+.global .bas .accueil_bouton_mdf button[type=button]{
+    color: #66CCCC;
+    background-color: wheat;
+    width: 250px;
+    height: 100px;
+    margin: 30px 30px;
+
+}
+
+.global .bas .accueil_bouton_mdf {
+    text-align: center;
+}
+.global .bas .accueil_bouton_mdf label{
+    text-align: center;
+    font-size: 20px;
 }

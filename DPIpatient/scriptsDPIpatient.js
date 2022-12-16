@@ -20,3 +20,35 @@ function show_data_patient_div(id){
     }
 
 }
+function suivant(div1, div2){
+    var defaut = document.getElementById(div1);
+    var autre = document.getElementById(div2)
+    defaut.style.display = 'none';
+    autre.style.display = 'block';
+}
+
+function suivantCourt (div1, div2, div3){
+    var defaut = document.getElementById(div1);
+    var autre = document.getElementById(div2);
+    var autre1 = document.getElementById(div3);
+    if (defaut.style.display == 'none'){
+        if (autre.style.display == 'block'){
+            autre.style.display = 'none';
+        }
+        else if (autre1.style.display == 'block'){
+            autre1.style.display = 'none';
+        }
+        defaut.style.display = 'block';
+    }
+}
+function changeCouleurBouton(b1,b2,b3) {
+    var bouton = document.getElementById(b1);
+    var bouton1 = document.getElementById(b2);
+    var bouton2 = document.getElementById(b3);
+    if (bouton.style.background = '#66CCCC') {
+        bouton.style.background = 'red';
+        bouton1.style.background = '#66CCCC';
+        bouton2.style.background = '#66CCCC';
+    }
+}
+

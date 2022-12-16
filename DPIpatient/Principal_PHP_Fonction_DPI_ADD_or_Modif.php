@@ -98,7 +98,7 @@ function creation_Session_Add_DPI($deb,$fin){
     }
 }
 
-function creation_Session_Add_contacte($deb,$fin,){
+function creation_Session_Add_contacte($deb,$fin){
     $lst = nameColonne('personnecontacte')[0];
     $cpt = 1;
     for ($i = $deb; $i < $fin; $i++) {
@@ -109,7 +109,7 @@ function creation_Session_Add_contacte($deb,$fin,){
     }
 }
 
-function creation_Session_Add_confiance($deb,$fin,){
+function creation_Session_Add_confiance($deb,$fin){
     $lst = nameColonne('personneconfiance')[0];
     $cpt = 1;
     for ($i = $deb; $i < $fin; $i++) {
@@ -117,6 +117,14 @@ function creation_Session_Add_confiance($deb,$fin,){
         $_SESSION[$name] = $_POST["$lst[$cpt]".'cf'];
         $cpt += 1;
 
+    }
+}
+
+
+function reset_session(){
+    for ($i = 2; $i<40; $i++){
+        $res = 'val' .$i;
+        $_SESSION[$res] = null;
     }
 }
 
