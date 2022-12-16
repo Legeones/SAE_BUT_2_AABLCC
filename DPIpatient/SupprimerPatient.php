@@ -8,8 +8,29 @@
 </head>
 <body>
 <form action="ConfirSupp.php" method="post">
-    IPP: <input type="text" name="IPP_SUPP"><br>
+    <select name="DPI" id="DPI_Patient">
+        <option value="defaut">--Choisir le DPI à modifier--</option>
+        <?php
+        require ('../DPIpatient/RecupInfoBDD_AjouterDPI.php');
+        $der = lstderoulanteCorb();
+        while ($row =$der->fetch(PDO::FETCH_ASSOC)) {
+            unset($id, $nom, $prenom);
+            $id = $row['ipp'];
+            $nom = $row['nom'];
+            $prenom = $row['prenom'];
+            echo "<option value='$id'> $nom $prenom </option>";
 
+        }
+
+        ?>
+        <script>
+            document.getElementById('DPI_Patient').addEventListener('change',function(){
+                document.getElementById('rech').value = this.value;
+            });
+        </script>
+        <label for="rech" class="labIPP">Numéro IPP</label>
+        <input class="reche" type="text" id="rech" name="IPP_SUPP" value="<?php $id?>">
+    </select>
 
     <br>
     <input  type="submit" value="Confirmer" name="Confirmer" id="Confirmer">
