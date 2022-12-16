@@ -1,4 +1,4 @@
-drop table if exists PersonneConfiance,Utilisateur, PersonneContacte,Corbeille, Patient, Intervenant, Intervention, Admission, Soin, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient,radio,Biologie,couriel,ObservationMedical,TransmissionsCiblees;
+drop table if exists PersonneConfiance,Utilisateur, PersonneContacte,Corbeille, Patient, Intervenant, Intervention, Admission, Soin, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient,radio,Biologie,couriel,ObservationMedical,TransmissionsCiblees,Evenement,Scenario,ScenarioEvenement,ScenarioEtudiant,ScenarioCorbeille;
 
 
 create table PersonneConfiance
@@ -296,3 +296,61 @@ values (default,'2013-02-05','Patient agité taux de stress élévé',8000000000
 (default,'2012-12-25','Patient pret a partir',8000000000005),
 (default,'2012-10-15','Patient pret a partir',8000000000002),
 (default,'2012-08-24','Patient guerir et remis sur pieds',8000000000004);
+
+create table Evenement(
+    idEvenement serial primary key ,
+    nom text not null ,
+    description text not null
+);
+
+create table Scenario(
+    idScenario serial primary key ,
+    nom text not null ,
+    debut date not null ,
+    fin date not null check ( debut<fin ),
+    nbEv int not null,
+    createur text references Utilisateur on delete cascade not null
+);
+
+create table ScenarioEvenement(
+    idScenario serial references Scenario on delete cascade,
+    idEvenement serial references Evenement on delete cascade,
+    primary key (idScenario,idEvenement)
+);
+
+create table ScenarioEtudiant(
+    idS serial references Scenario on delete cascade,
+        idU text references Utilisateur on delete cascade,
+        idE serial references Evenement on delete cascade,
+        date timestamp not null ,
+        primary key (idS,idU,idE,date)
+);
+
+create table ScenarioCorbeille(
+                                 idSCorb serial references Scenario on delete cascade,
+                                 primary key (idSCorb)
+);
+
+
+
+insert into Evenement
+values (default,'epilepsie','votre patient fait une crise d epilepsie'),
+       (default,'monter temperature','la temperature du patient a monter de deux degrés'),
+       (default,'arret cardiaque','le patient a un arret cardiaque'),
+       (default,'nouveau traitement','il faut donner une nouvelle de paracetamol a 18h00'),
+       (default,'toilet','le patient vous appelle en urgence pour aller au toilet');
+
+
+insert into Scenario
+values (default,'Scenario 1','2022-12-07','2022-12-15',3,'dorian.petit'),
+       (default,'Scenario 3','2023-02-07','2023-03-15',2,'dorian.petit');
+
+insert into ScenarioEvenement
+values (1,1),
+       (1,2),
+       (1,3),
+       (1,4),
+       (1,5),
+       (2,3),
+       (2,1),
+       (2,5);
