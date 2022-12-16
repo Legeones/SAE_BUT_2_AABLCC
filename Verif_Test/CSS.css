@@ -111,14 +111,11 @@ form{
 }
 
 form .gauche2{
-    text-align: match-parent;
-    width: 2px;
+    text-align: center;
 }
 
 form .Aide{
-    width: 2px;
-    position: relative;
-    left:500px;
+    text-align: center;
 }
 
 form h1{

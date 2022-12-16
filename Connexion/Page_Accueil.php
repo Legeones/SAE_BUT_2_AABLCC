@@ -21,7 +21,6 @@
             <input type="button" onclick="window.location.href ='../Connexion/Aide.php';" value="Aide"/>
             <input type="button" onclick="window.location.href ='../Charte_Utilisation/charte_utilisation.php';" value="Charte"/>
 
-
         </div>
     </form>
 </head>
