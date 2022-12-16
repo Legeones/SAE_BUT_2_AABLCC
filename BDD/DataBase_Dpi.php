@@ -560,23 +560,23 @@ function AjouterDPI ()
 {
     $PDO = DataBase_Creator_Unit();
     $contacte1 = Contact($PDO);
-    $Contacte = $PDO->prepare("insert into personnecontacte (idptel, nom, prenom, tel, lien) VALUES (?,?,?,?,?)");
+    $Contacte = $PDO->prepare("insert into personnecontacte (idptel, nom, prenom, telephone, lien) VALUES (?,?,?,?,?)");
     $Contacte->bindParam(1, $contacte1);
-    $Contacte->bindParam(2, $_POST['nomCT']); // Permets de récupérer le nom du contact de la personne saisi dans le formulaire
-    $Contacte->bindParam(3, $_POST['prenomCT']); // Permets de récupérer le prénom du contact de la personne saisi dans le formulaire
-    $Contacte->bindParam(4, $_POST['telCT']); // Permets de récupérer le téléphone du contact de la personne saisi dans le formulaire
-    $Contacte->bindParam(5, $_POST['lienCT']); // Permets de récupérer le lien de parenté du contact de la personne saisi dans le formulaire
+    $Contacte->bindParam(2, $_POST['nomct']); // Permets de récupérer le nom du contact de la personne saisi dans le formulaire
+    $Contacte->bindParam(3, $_POST['prenomct']); // Permets de récupérer le prénom du contact de la personne saisi dans le formulaire
+    $Contacte->bindParam(4, $_POST['telephonect']); // Permets de récupérer le téléphone du contact de la personne saisi dans le formulaire
+    $Contacte->bindParam(5, $_POST['lienct']); // Permets de récupérer le lien de parenté du contact de la personne saisi dans le formulaire
     $Contacte->execute();
     
     
     $confiance1 = Confiant($PDO);
     $boo = "true";
-    $Confiance = $PDO->prepare("insert into personneconfiance (idpcon, nom, prenom, tel, lien, formulaire) VALUES (?,?,?,?,?,?)");
+    $Confiance = $PDO->prepare("insert into personneconfiance (idpcon, nom, prenom, telephone, lien, formulaire) VALUES (?,?,?,?,?,?)");
     $Confiance->bindParam(1, $confiance1);
-    $Confiance->bindParam(2, $_POST['nomC']); // Permets de récupérer le nom de la personne de confiance saisi dans le formulaire
-    $Confiance->bindParam(3, $_POST['prenomC']); // Permets de récupérer le prénom de la personne de confiance saisi dans le formulaire
-    $Confiance->bindParam(4, $_POST['telC']); // Permets de récupérer le téléphone de la personne de confiance saisi dans le formulaire
-    $Confiance->bindParam(5, $_POST['lienC']); // Permets de récupérer le lien de parenté de la personne de confiance saisi dans le formulaire
+    $Confiance->bindParam(2, $_POST['nomcf']); // Permets de récupérer le nom de la personne de confiance saisi dans le formulaire
+    $Confiance->bindParam(3, $_POST['prenomcf']); // Permets de récupérer le prénom de la personne de confiance saisi dans le formulaire
+    $Confiance->bindParam(4, $_POST['telephonecf']); // Permets de récupérer le téléphone de la personne de confiance saisi dans le formulaire
+    $Confiance->bindParam(5, $_POST['liencf']); // Permets de récupérer le lien de parenté de la personne de confiance saisi dans le formulaire
     $Confiance->bindParam(6, $boo);
     $Confiance->execute();
     
@@ -584,90 +584,50 @@ function AjouterDPI ()
     $patientipp = PatientIPP($PDO);
     $patientiep = PatientIEP($PDO);
     // Permet d'ajouter des informations dans la base de données //
-    $Patient1 = $PDO->prepare("insert into patient (ipp, iep, nom, prenom, ddn, taille_cm, poids_kg, adresse, cp, ville, telpersonnel, telprofessionnel, allergies, antecedents, obstericaux, domedicaux, dochirurgicaux, idpcon, idptel, mesuredeprotection, asistantsocial, mdv, synentre, traidomi, dophypsy, mobilite, alimentation, hygiene, toilette, habit, continence)
+    $Patient1 = $PDO->prepare("insert into patient (ipp, iep, nom, prenom, date_de_naissance, taille_cm, poids_kg, adresse, code_postal, ville, telephone_personnel, telephone_professionnel, allergies, antecedents, obstericaux, documents_medicaux, documents_chirurgicaux, idpcon, idptel, mesure_de_protection, assistant_social, mode_de_vie, synthese_entree, traitement_domicile, donnee_physique_psychologique, mobilite, alimentation, hygiene, toilette, habit, continence)
 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
     $Patient1->bindParam(1, $patientipp);
     $Patient1->bindParam(2, $patientiep);
     $Patient1->bindParam(3, $_POST['nom']); // Permets de récupérer le nom saisi dans le formulaire
     $Patient1->bindParam(4, $_POST['prenom']); // Permets de récupérer le prénom saisi dans le formulaire
-    $Patient1->bindParam(5, $_POST['DDN']); // Permets de récupérer la date de naissance saisie dans le formulaire
-    $Patient1->bindParam(6, $_POST['taille']); // Permets de récupérer la taille saisie dans le formulaire
-    $Patient1->bindParam(7, $_POST['poids']); // Permets de récupérer le poids saisi dans le formulaire
+    $Patient1->bindParam(5, $_POST['date_de_naissance']); // Permets de récupérer la date de naissance saisie dans le formulaire
+    $Patient1->bindParam(6, $_POST['taille_cm']); // Permets de récupérer la taille saisie dans le formulaire
+    $Patient1->bindParam(7, $_POST['poids_kg']); // Permets de récupérer le poids saisi dans le formulaire
     $Patient1->bindParam(8, $_POST['adresse']); // Permets de récupérer l'adresse saisie dans le formulaire
-    $Patient1->bindParam(9, $_POST['CP']); // Permets de récupérer le code postal saisi dans le formulaire
+    $Patient1->bindParam(9, $_POST['code_postal']); // Permets de récupérer le code postal saisi dans le formulaire
     $Patient1->bindParam(10, $_POST['ville']); // Permets de récupérer la ville saisie dans le formulaire
-    $Patient1->bindParam(11, $_POST['telperso']); // Permets de récupérer le telperso saisi dans le formulaire
-    $telpro = verification($_POST['telpro']); // Permets de vérifier si le telpro est bien saisi
+    $Patient1->bindParam(11, $_POST['telephone_personnel']); // Permets de récupérer le telperso saisi dans le formulaire
+    $telpro = verification($_POST['telephone_professionnel']); // Permets de vérifier si le telpro est bien saisi
     $Patient1->bindParam(12, $telpro);
     $allergies = verification($_POST['allergies']); // Permets de vérifier si les allergies sont bien saisi
     $Patient1->bindParam(13, $allergies);
     $antecedents = verification($_POST['antecedents']); // Permets de vérifier si les antécédents sont bien saisi
     $Patient1->bindParam(14, $antecedents);
-    $Obs = verification($_POST['Obs']); // Permets de vérifier si les Obs sont bien saisi
+    $Obs = verification($_POST['obstericaux']); // Permets de vérifier si les Obs sont bien saisi
     $Patient1->bindParam(15, $Obs);
-    $docMed = verification($_POST['docMed']); // Permets de vérifier si les docMed sont bien saisi
+    $docMed = verification($_POST['documents_medicaux']); // Permets de vérifier si les docMed sont bien saisi
     $Patient1->bindParam(16, $docMed);
-    $docChir = verification($_POST['docChir']); // Permets de vérifier si les docChir sont bien saisi
+    $docChir = verification($_POST['documents_chirurgicaux']); // Permets de vérifier si les docChir sont bien saisi
     $Patient1->bindParam(17, $docChir);
     $Patient1->bindParam(18, $confiance1);
     $Patient1->bindParam(19, $contacte1);
-    $Patient1->bindParam(20, $_POST['MP']); // Permets de récuperer les MP saisi dans le formulaire
-    $Patient1->bindParam(21, $_POST['AC']); // Permets de récupérer les AC saisi dans le formulaire
-    $MDV = verification($_POST['MDV']);
+    $Patient1->bindParam(20, $_POST['mesure_de_protection']); // Permets de récuperer les MP saisi dans le formulaire
+    $Patient1->bindParam(21, $_POST['assistant_social']); // Permets de récupérer les AC saisi dans le formulaire
+    $MDV = verification($_POST['mode_de_vie']);
     $Patient1->bindParam(22, $MDV);
-    $Patient1->bindParam(23, $_POST['synEntree']); // Permets de récupérer la synEntree saisi dans le formulaire
-    $tradomi = verification($_POST['tradomi']); // Permets de vérifier si tradomi est bien saisi
+    $Patient1->bindParam(23, $_POST['synthese_entree']); // Permets de récupérer la synEntree saisi dans le formulaire
+    $tradomi = verification($_POST['traitement_domicile']); // Permets de vérifier si tradomi est bien saisi
     $Patient1->bindParam(24, $tradomi);
-    $doPhyPsy = verification($_POST['doPhyPsy']); // Permets de vérifier si doPhyPsy est bien saisi
+    $doPhyPsy = verification($_POST['donnee_physique_psychologique']); // Permets de vérifier si doPhyPsy est bien saisi
     $Patient1->bindParam(25, $doPhyPsy);
-    $Patient1->bindParam(26, $_POST['CD']); // Permets de récupérer CD saisi dans le formulaire
-    $Patient1->bindParam(27, $_POST['CM']); // Permets de récupérer CM saisi dans le formulaire
-    $Patient1->bindParam(28, $_POST['CL']); // Permets de récupérer CL saisi dans le formulaire
-    $Patient1->bindParam(29, $_POST['CT']); // Permets de récupérer CT saisi dans le formulaire
-    $Patient1->bindParam(30, $_POST['CH']); // Permets de récupérer CH saisi dans le formulaire
-    $Patient1->bindParam(31, $_POST['conti']); // Permets de récupérer conti saisie dans le formulaire
+    $Patient1->bindParam(26, $_POST['mobilite']); // Permets de récupérer CD saisi dans le formulaire
+    $Patient1->bindParam(27, $_POST['alimentation']); // Permets de récupérer CM saisi dans le formulaire
+    $Patient1->bindParam(28, $_POST['hygiene']); // Permets de récupérer CL saisi dans le formulaire
+    $Patient1->bindParam(29, $_POST['toilette']); // Permets de récupérer CT saisi dans le formulaire
+    $Patient1->bindParam(30, $_POST['habit']); // Permets de récupérer CH saisi dans le formulaire
+    $Patient1->bindParam(31, $_POST['continence']); // Permets de récupérer conti saisie dans le formulaire
     $Patient1->execute();
-    
-    // Permet d'afficher null dans la base de données si des informations ne sont pas renseignés //
-    $_SESSION['nomp'] = null;
-    $_SESSION['prenomp'] = null;
-    $_SESSION['DDNp'] = null;
-    $_SESSION['taillep'] = null;
-    $_SESSION['poidsp'] = null;
-    $_SESSION['adressep'] = null;
-    $_SESSION['CPp'] = null;
-    $_SESSION['villep'] = null;
-    $_SESSION['telpersop'] = null;
-    $_SESSION['telprop'] = null;
-    $_SESSION['allergiesp'] = null;
-    $_SESSION['antecedentsp'] = null;
-    $_SESSION['Obsp'] = null;
-    $_SESSION['docMedp'] = null;
-    $_SESSION['docChirp'] = null;
-    $_SESSION['MPp'] = null;
-    $_SESSION['ACp'] = null;
-    $_SESSION['MDVp'] = null;
-    $_SESSION['synEntreep'] = null;
-    $_SESSION['tradomip'] = null;
-    $_SESSION['doPhyPsyp'] = null;
-    $_SESSION['CDp'] = null;
-    $_SESSION['CMp'] = null;
-    $_SESSION['CLp'] = null;
-    $_SESSION['CTp'] = null;
-    $_SESSION['CHp'] = null;
-    $_SESSION['contip'] = null;
-    
-    
-    $_SESSION['nomCTp'] = null;
-    $_SESSION['prenomCTp'] = null;
-    $_SESSION['telCTp'] = null;
-    $_SESSION['lienCTp'] = null;
-    
-    $_SESSION['nomCp'] = null;
-    $_SESSION['prenomCp'] = null;
-    $_SESSION['telCp'] = null;
-    $_SESSION['lienCp'] = null;
-    
+
 }
 
 function StockDPI ()
@@ -684,6 +644,13 @@ function StockDPI ()
 function lstderoulante(){
     $DPI2 = DataBase_Creator_Unit();
     $DPI = $DPI2->prepare("Select ipp, nom, prenom from Patient left join Corbeille C on Patient.IPP = C.IPPCorb WHERE IPPCorb is null");
+    $DPI->execute();
+    return $DPI;
+}
+
+function lstderoulante2(){
+    $DPI2 = DataBase_Creator_Unit();
+    $DPI = $DPI2->prepare("Select ipp, nom, prenom from Patient");
     $DPI->execute();
     return $DPI;
 }
@@ -719,10 +686,10 @@ function lstderoulanteImageCou($ipp){
     return $DPI->fetchAll(PDO::FETCH_COLUMN, 1);
 }
 
-function nameColonne (){
+function nameColonne ($tablesql){
     $DPI3 = DataBase_Creator_Unit();
     $colonne = $DPI3->prepare("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ? order by ordinal_position");
-    $table = 'patient';
+    $table = $tablesql;
     $colonne->bindParam(1,$table);
     $colonne->execute();
     $donnees = [];
@@ -733,6 +700,47 @@ function nameColonne (){
     }
     return [$donnees,$typedonnees];
 }
+
+
+function modifier($ipp){
+    $DPI3 = DataBase_Creator_Unit();
+    $MDF = $DPI3->prepare("UPDATE patient set nom = ? , prenom = ? , date_de_naissance = ? , taille_cm = ? , poids_kg = ?, adresse = ?, code_postal = ?, ville = ?, telephone_personnel = ?, telephone_professionnel = ?,allergies = ?, antecedents = ?, obstericaux = ?, documents_medicaux = ?, documents_chirurgicaux = ?, mesure_de_protection = ?,
+                   assistant_social = ?, mode_de_vie = ?, synthese_entree = ?, traitement_domicile = ?, donnee_physique_psychologique = ?, mobilite = ?, alimentation = ?, hygiene = ?, toilette = ?, habit = ? where ipp = ?;
+");
+    $MDF->bindParam(1, $_POST['nom']);
+    $MDF->bindParam(2, $_POST['prenom']);
+    $MDF->bindParam(3, $_POST['date_de_naissance']);
+    $MDF->bindParam(4, $_POST['taille_cm']);
+    $MDF->bindParam(5, $_POST['poids_kg']);
+    $MDF->bindParam(6, $_POST['adresse']);
+    $MDF->bindParam(7, $_POST['code_postal']);
+    $MDF->bindParam(8, $_POST['ville']);
+    $MDF->bindParam(9, $_POST['telephone_personnel']);
+    $MDF->bindParam(10, $_POST['telephone_professionnel']);
+    $MDF->bindParam(11, $_POST['allergies']);
+    $MDF->bindParam(12, $_POST['antecedents']);
+    $MDF->bindParam(13, $_POST['obstericaux']);
+    $MDF->bindParam(14, $_POST['documents_medicaux']);
+    $MDF->bindParam(15, $_POST['documents_chirurgicaux']);
+    $MDF->bindParam(16, $_POST['mesure_de_protection']);
+    $MDF->bindParam(17, $_POST['assistant_social']);
+    $MDF->bindParam(18, $_POST['mode_de_vie']);
+    $MDF->bindParam(19, $_POST['synthese_entree']);
+    $MDF->bindParam(20, $_POST['traitement_domicile']);
+    $MDF->bindParam(21, $_POST['donnee_physique_psychologique']);
+    $MDF->bindParam(22, $_POST['mobilite']);
+    $MDF->bindParam(23, $_POST['alimentation']);
+    $MDF->bindParam(24, $_POST['hygiene']);
+    $MDF->bindParam(25, $_POST['toilette']);
+    $MDF->bindParam(26, $_POST['habit']);
+    $MDF->bindParam(27, $ipp);
+    $MDF->execute();
+
+}
+
+
+
+
 // Separation
 
 function DPIReturn()
