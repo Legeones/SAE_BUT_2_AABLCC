@@ -8,11 +8,11 @@ $VerifEmptyContent=VerifEmptyContent($_POST["IdScenario"]);
 $VerifScenario=checkScenario($_POST['IdScenario']);
 
 if($VerifEmptyContent==0){
-    header('Location: ../testEve/choixScenario.php?erreur=6');
+    header('Location: ../Scenario/choixScenario.php?erreur=6');
 }
 
 else if($VerifScenario==0){
-    header('Location: ../testEve/choixScenario.php?erreur=7');
+    header('Location: ../Scenario/choixScenario.php?erreur=7');
 }
 
 else{
@@ -32,7 +32,7 @@ else{
     $_SESSION['nbev']=$info[3];
     $_SESSION['eve']=$eve;
 
-    header('Location: ../testEve/choixEtu.php');
+    header('Location: ../Scenario/choixEtu.php');
 }
 
 

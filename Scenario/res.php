@@ -57,9 +57,9 @@ if(isset($_POST['gout']))
             insertEvenSceEtu($_SESSION['IdScenario'],$_SESSION['eve'][$rand_keys],$valeur,$date_random);
         }
     }
-    header('Location: ../testEve/principaleEve.php');
+    header('Location: ../Scenario/principaleEve.php');
 }else{
-    header('Location: ../testEve/principaleEve.php');
+    header('Location: ../Scenario/principaleEve.php');
 }
 
 
