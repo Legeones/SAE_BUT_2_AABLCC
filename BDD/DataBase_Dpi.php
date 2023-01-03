@@ -3,7 +3,8 @@
 require('../BDD/DataBase_Core.php');
 
 
-function Patient_Parcour($p,$rm,$rma){
+function Patient_Parcour($p,$rm,$rma): void
+{
     $o = 1;
     if(isset($_SESSION['patient1']) && $_SESSION['patient1']!=null){
         $pat = 'patient'.$o;
@@ -76,9 +77,9 @@ function Patient_Parcour($p,$rm,$rma){
 function Data_Patient_Querry($nomPatient, $nomCateg){
     $pdo = DataBase_Creator_Unit();
     if ($_SESSION['paramRechercheAdmi']=='IPP'){
-        $info = $pdo->prepare("SELECT patient.ipp, iep, nom, prenom, ddn, ville, poids_kg, taille_cm, datedebut, datefin FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE patient.ipp = ?");
+        $info = $pdo->prepare("SELECT patient.ipp, a.iep, nom, prenom, date_de_naissance, ville, poids_kg, taille_cm, datedebut, datefin FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE patient.ipp = ?");
     } else{
-        $info = $pdo->prepare("SELECT patient.ipp, iep, nom, prenom, ddn, ville, poids_kg, taille_cm, datedebut, datefin FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE a.iep = ?");
+        $info = $pdo->prepare("SELECT patient.ipp, a.iep, nom, prenom, date_de_naissance, ville, poids_kg, taille_cm, datedebut, datefin FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE a.iep = ?");
     }
     $info -> bindParam(1,$nomPatient);
     $info->execute();
@@ -94,11 +95,11 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
             $stmt4 = $pdo->prepare("SELECT m.nom,m.prenom,m.adresse,m.ville,m.cp,p3.type,p3.lienmed FROM patient LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp LEFT JOIN medecin m on p3.idmedecin = m.idmedecin WHERE p3.ipp = ?");
             $stmt5 = $pdo->prepare("SELECT patient.* FROM patient WHERE ipp = ?");
         } else {
-            $stmt2 = $pdo->prepare("SELECT p.* FROM patient LEFT JOIN personneconfiance p on p.idpcon = patient.idpcon LEFT JOIN admission a on patient.ipp = a.ipp WHERE iep = ?");
-            $stmt = $pdo->prepare("SELECT p2.* FROM patient LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel LEFT JOIN admission a on patient.ipp = a.ipp WHERE iep = ?");
-            $stmt3 = $pdo->prepare("SELECT a.* FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE iep = ?");
-            $stmt4 = $pdo->prepare("SELECT m.nom,m.prenom,m.adresse,m.ville,m.cp,p3.type,p3.lienmed FROM patient LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp LEFT JOIN medecin m on p3.idmedecin = m.idmedecin LEFT JOIN admission a on patient.ipp = a.ipp WHERE iep = ?");
-            $stmt5 = $pdo->prepare("SELECT patient.* FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE iep = ?");
+            $stmt2 = $pdo->prepare("SELECT p.* FROM patient LEFT JOIN personneconfiance p on p.idpcon = patient.idpcon LEFT JOIN admission a on patient.ipp = a.ipp WHERE a.iep = ?");
+            $stmt = $pdo->prepare("SELECT p2.* FROM patient LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel LEFT JOIN admission a on patient.ipp = a.ipp WHERE a.iep = ?");
+            $stmt3 = $pdo->prepare("SELECT a.* FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE a.iep = ?");
+            $stmt4 = $pdo->prepare("SELECT m.nom,m.prenom,m.adresse,m.ville,m.cp,p3.type,p3.lienmed FROM patient LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp LEFT JOIN medecin m on p3.idmedecin = m.idmedecin LEFT JOIN admission a on patient.ipp = a.ipp WHERE a.iep = ?");
+            $stmt5 = $pdo->prepare("SELECT patient.* FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE a.iep = ?");
         }
         $stmt2 -> bindParam(1,$nomPatient);
         $stmt2->execute();
@@ -154,9 +155,9 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
         }
     } elseif ($nomCateg == "Prescription"){
         if ($_SESSION['paramRechercheAdmi']=='IPP'){
-            $stmt = $pdo->prepare("SELECT * FROM prescriptionpatient WHERE ipp = ? ORDER BY jour");
+            $stmt = $pdo->prepare("SELECT prescriptionpatient.*,p.type FROM prescriptionpatient LEFT JOIN prescription p on p.idprescription = prescriptionpatient.idprescription WHERE ipp = ? ORDER BY jour");
         } else {
-            $stmt = $pdo->prepare("SELECT * FROM prescriptionpatient WHERE iep = ? ORDER BY jour");
+            $stmt = $pdo->prepare("SELECT prescriptionpatient.*,p.type FROM prescriptionpatient LEFT JOIN prescription p on p.idprescription = prescriptionpatient.idprescription WHERE iep = ? ORDER BY jour");
         }
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
@@ -178,11 +179,10 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
         }
     } elseif ($nomCateg == "Diagramme"){
         if ($_SESSION['paramRechercheAdmi']=='IPP'){
-            $stmt = $pdo->prepare("SELECT soinpatient.*,s.* FROM soinpatient LEFT JOIN soin s on s.idsoin = soinpatient.idsoin WHERE soinpatient.ipp = ? ORDER BY jour DESC ");
+            $stmt = $pdo->prepare("SELECT * FROM soin LEFT JOIN soinpatientpredef spp on soin.idsoin = spp.idsoin LEFT JOIN soinpatient s on spp.idspp = s.idspp WHERE spp.ipp = ? ORDER BY s.jour DESC ");
         } else {
-            $stmt = $pdo->prepare("SELECT soinpatient.*,s.* FROM soinpatient LEFT JOIN soin s on s.idsoin = soinpatient.idsoin WHERE soinpatient.iep = ? ORDER BY jour DESC ");
+            $stmt = $pdo->prepare("SELECT * FROM soin LEFT JOIN soinpatientpredef spp on soin.idsoin = spp.idsoin LEFT JOIN soinpatient s on spp.idspp = s.idspp WHERE spp.iep = ? ORDER BY s.jour DESC ");
         }
-
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
         $_SESSION['infosPatient']=array();
@@ -262,16 +262,18 @@ function Check_Patient($IPP)
     }
 }
 
-function ADD_Image_Bio($IPP,$nom,$lien)
+function ADD_Image_Bio($IPP,$nom,$lien,$des,$til)
 {
 
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("INSERT INTO Biologie values (?,?,?,?)");
+        $stmt2 = $dbh->prepare("INSERT INTO Biologie values (?,?,?,?,?)");
         $stmt2->bindParam(1, $lien);
         $stmt2->bindParam(2, $nom);
         $stmt2->bindParam(3, $IPP);
-        $stmt2->bindParam(4,$_SESSION['infosPersoPatient']['iep']);
+        $stmt2->bindParam(4,$des);
+        $stmt2->bindParam(5,$til);
+        //$stmt2->bindParam(4,$_SESSION['infosPersoPatient']['iep']);
         $stmt2->execute();
 
     } catch (PDOException $e) {
@@ -559,6 +561,36 @@ function Modif_Observation($date,$init,$cible,$donn,$act,$res){
         $stmt -> bindParam(5,$act);
         $stmt -> bindParam(6,$res);
         $stmt -> bindParam(7,$_SESSION['infosPersoPatient']['ipp']);
+        $stmt -> bindParam(8,$_SESSION['infosPersoPatient']['iep']);
+        $stmt -> execute();
+        header("Location: ../DPIpatient/DPIpatientObservation.php");
+    } catch (PDOException $e){
+        print "Erreur :".$e->getMessage()."<br>";
+        die();
+    }
+}
+
+function Modif_Prescription($traitement,$type,$v){
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt1 = $dbh->prepare("SELECT idprescription FROM prescription WHERE nom = ?");
+        $stmt1->execute();
+        $idPrescription = $stmt1->fetchColumn(0) ?? "aucun";
+        if ($idPrescription == "aucun"){
+            $createPrescription = $dbh->prepare("INSERT INTO prescription VALUES (default,?,?)");
+            $createPrescription->bindParam(1,$traitement);
+            $createPrescription->bindParam(2,$type);
+            $createPrescription->execute();
+            $id = $dbh->lastInsertId();
+        }
+        $stmt = $dbh->prepare("INSERT INTO prescriptionpatient VALUES (default,?,?,?,?,?,?,?,?);");
+        $stmt -> bindParam(1,$date);
+        $stmt ->bindParam(2,$v);
+        $stmt -> bindParam(3,$cible);
+        $stmt -> bindParam(4,$traitement);
+        $stmt -> bindParam(5,$fait);
+        $stmt -> bindParam(6,$_SESSION['infosPersoPatient']['ipp']);
+        $stmt -> bindParam(7,$id);
         $stmt -> bindParam(8,$_SESSION['infosPersoPatient']['iep']);
         $stmt -> execute();
         header("Location: ../DPIpatient/DPIpatientObservation.php");

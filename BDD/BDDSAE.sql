@@ -1,4 +1,4 @@
-drop table if exists PersonneConfiance,Utilisateur, PersonneContacte,Corbeille, Patient, Intervenant, Intervention, Admission, Soin, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient,radio,Biologie,couriel,ObservationMedical,TransmissionsCiblees;
+drop table if exists PersonneConfiance,Utilisateur, PersonneContacte,Corbeille, Patient, Intervenant, Intervention, Admission, Soin,SoinPatientPredef, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient,radio,Biologie,couriel,ObservationMedical,TransmissionsCiblees;
 
 
 create table PersonneConfiance
@@ -82,15 +82,24 @@ nom text not null,
 categorie text not null
 );
 
+CREATE TABLE SoinPatientPredef(
+    idSPP serial primary key ,
+    debut date not null,
+    fin date,
+    heure time not null,
+    IPP numeric(13,0) not null references Patient ON DELETE CASCADE ,
+    iep int not null references Admission ON DELETE CASCADE,
+    idSoin int not null references Soin ON DELETE CASCADE
+);
+
 create table SoinPatient(
-idSP serial primary key ,
+idSP int not null primary key ,
 jour date not null ,
 heure time not null ,
 valeur text not null ,
-IPP numeric(13,0) not null references Patient ON DELETE CASCADE,
-idSoin serial not null references Soin ON DELETE CASCADE,
 effectuer boolean not null,
-iep int not null references Admission ON DELETE CASCADE
+iep int not null references Admission ON DELETE CASCADE,
+idSPP int not null references SoinPatientPredef ON DELETE CASCADE
 );
 
 create table Medecin (
@@ -120,7 +129,6 @@ create table Corbeille(
 IPPCorb numeric(13,0)  references Patient ON DELETE CASCADE primary key
 );
 
-
 create table PrescriptionPatient (
 idPP serial primary key,
 jour date not null ,
@@ -132,6 +140,7 @@ IPP numeric(13,0) not null references Patient ON DELETE CASCADE,
 idPrescription serial not null references Prescription ON DELETE CASCADE,
 iep int not null references Admission ON DELETE CASCADE
 );
+
 create table radio(
 lien text primary key ,
 nom text not null ,
@@ -147,7 +156,9 @@ IPPCour numeric(13,0)  references Patient ON DELETE CASCADE not null
 create table Biologie(
 lien text primary key ,
 nom text not null ,
-IPPBio numeric(13,0)  references Patient ON DELETE CASCADE not null
+IPPBio numeric(13,0)  references Patient ON DELETE CASCADE not null,
+description text,
+titre text not null
 );
 
 create table ObservationMedical(
@@ -223,20 +234,29 @@ values (1, 'changement pansemants', 'post operation'),
 (3, 'douche', 'avant et post operation'),
 (4, 'dose medicamenteuse', 'post operation');
 
+INSERT INTO SoinPatientPredef
+VALUES (default,'2012-10-14',null,'12:00:00.00',8000000000002,3,4),
+       (default,'2012-10-14',null,'08:00:00.00',8000000000002,3,2),
+       (default,'2012-10-14',null,'12:00:00.00',8000000000002,3,3),
+       (default,'2013-02-03',null,'12:00:00.00',8000000000002,5,1),
+       (default,'2013-02-03',null,'12:00:00.00',8000000000002,5,2),
+       (default,'2013-02-03',null,'20:00:00.00',8000000000002,5,3),
+       (default,'2013-02-03',null,'12:00:00.00',8000000000002,5,4);
+
 insert into SoinPatient
-values (1, '2012-10-14', '18:00:00.00', 'une fois', 8000000000002, 2, true, 3),
-(2, '2012-10-14', '19:00:00.00', 'une fois', 8000000000002, 2, true, 3),
-(3, '2012-10-15', '08:00:00.00', 'une fois', 8000000000002, 3, true, 3),
-(4, '2012-10-15', '09:00:00.00', 'une fois', 8000000000002, 2, true, 3),
-(5, '2012-10-15', '09:05:00.00', 'une fois', 8000000000002, 4, true, 3),
-(6, '2013-02-03', '18:00:00.00', 'une fois', 8000000000002, 3, true, 5),
-(7, '2013-02-03', '19:00:00.00', 'une fois', 8000000000002, 2, true, 5),
-(8, '2013-02-04', '08:00:00.00', 'une fois', 8000000000002, 3, true, 5),
-(9, '2013-02-04', '09:00:00.00', 'une fois', 8000000000002, 2, true, 5),
-(10, '2013-02-04', '09:05:00.00', 'une fois', 8000000000002, 4, true, 5),
-(11, '2013-02-04', '17:00:00.00', 'une fois', 8000000000002, 1, true, 5),
-(12, '2013-02-04', '18:00:00.00', 'une fois', 8000000000002, 3, true, 5),
-(13, '2013-02-04', '19:00:00.00', 'une fois', 8000000000002, 2, true, 5);
+values (1, '2012-10-14', '18:00:00.00', 'une fois',true, 3,2),
+(2, '2012-10-14', '19:00:00.00', 'une fois',true, 3,2),
+(3, '2012-10-15', '08:00:00.00', 'une fois',true, 3,3),
+(4, '2012-10-15', '09:00:00.00', 'une fois',true, 3,2),
+(5, '2012-10-15', '09:05:00.00', 'une fois',true, 3,1),
+(6, '2013-02-03', '18:00:00.00', 'une fois',true, 5,6),
+(7, '2013-02-03', '19:00:00.00', 'une fois',true, 5,5),
+(8, '2013-02-04', '08:00:00.00', 'une fois',true, 5,6),
+(9, '2013-02-04', '09:00:00.00', 'une fois',true, 5,5),
+(10, '2013-02-04', '09:05:00.00', 'une fois',true, 5,7),
+(11, '2013-02-04', '17:00:00.00', 'une fois',true, 5,4),
+(12, '2013-02-04', '18:00:00.00', 'une fois',true, 5,5),
+(13, '2013-02-04', '19:00:00.00', 'une fois',true, 5,5);
 
 
 

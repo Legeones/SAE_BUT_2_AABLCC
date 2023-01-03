@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../BDD/DataBase_Dpi.php";
+require"../BDD/DataBase_Dpi.php";
 require "patientDPIfunction.php";
 ?>
 <html>
@@ -43,7 +43,6 @@ require "patientDPIfunction.php";
 
         <div class="container" >
             <div class="grid-container">
-
                 <?= afficherDataPersos() ?>
             </div>
             <div class="container-img">

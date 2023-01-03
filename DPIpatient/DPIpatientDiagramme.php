@@ -15,7 +15,7 @@ require "patientDPIfunction.php";
 <!-- Zone de connexion -->
 
 <div class="global">
-    <div class="gauche">
+    <div class="gauche" style="height: auto !important; min-height: 90%;">
         <div class="profile" id="space-invader">
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
@@ -25,6 +25,7 @@ require "patientDPIfunction.php";
             <button>JSAISPAS</button>
         </div>
     </div>
+
     <div class="droite">
         <script type="text/javascript" src="scriptsDPIpatient.js"></script>
         <!-- zone d'ajout de boutons  -->
@@ -46,6 +47,7 @@ require "patientDPIfunction.php";
                 <?= afficherDataPersos() ?>
             </div>
         </div>
+        <div style="overflow-y: scroll; overflow-x: scroll;">
         <form class="table-container" method="post" action="AjouterDPI.php">
             <table>
                 <caption>Plan d'administration</caption>
@@ -211,6 +213,7 @@ require "patientDPIfunction.php";
                             </tr>
                         </table><input type="submit" value="Enregistrer" formtarget="_top">
         </form>
+        </div>
     </div>
 </div>
 </body>

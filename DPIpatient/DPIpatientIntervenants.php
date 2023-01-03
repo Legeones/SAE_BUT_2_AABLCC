@@ -45,30 +45,32 @@ require "patientDPIfunction.php";
             </div>
 
         </div>
-        <div class="table-container">
-            <table>
-                <tr>Intervenants</tr>
-                <tr>
-                    <td>Date</td>
-                    <td>Profession</td>
-                    <td style="width: 70%; max-width: 70%;">Compte rendu</td>
-                </tr>
-                <?php
-                foreach ($_SESSION['infosPatient'] as $item){?>
+        <div style="overflow-y: scroll; overflow-x: scroll;">
+            <form action="patientDPIfunction.php" method="get" class="table-container">
+                <table>
+                    <tr>Intervenants</tr>
                     <tr>
-                    <td><?=$item['date']?></td>
-                    <td><?=$item['fonction']?></td>
-                    <td><?=$item['compterendu']?></td>
+                        <td>Date</td>
+                        <td>Profession</td>
+                        <td style="width: 70%; max-width: 70%;">Compte rendu</td>
                     </tr>
-                <?php }
-                ?>
-                <tr>
-                    <td><input type="date"></td>
-                    <td><input type="text"></td>
-                    <td><textarea></textarea></td>
-                </tr>
-            </table>
-            <input type="submit" value="Mettre à jour">
+                    <?php
+                    foreach ($_SESSION['infosPatient'] as $item){?>
+                        <tr>
+                        <td><?=$item['date']?></td>
+                        <td><?=$item['fonction']?></td>
+                        <td><?=$item['compterendu']?></td>
+                        </tr>
+                    <?php }
+                    ?>
+                    <tr>
+                        <td><input type="date" name="date"></td>
+                        <td><input type="text" name="fonction" placeholder="Fonction du personnel"></td>
+                        <td><textarea name="compterendu" placeholder="Compte rendu"></textarea></td>
+                    </tr>
+                </table>
+                <input type="submit" value="Mettre à jour">
+            </form>
         </div>
     </div>
 </div>

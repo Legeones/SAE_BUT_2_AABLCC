@@ -57,41 +57,43 @@ require "patientDPIfunction.php";
                     </div>
                 </div>
         </div>
-        <form method="get" action="patientDPIfunction.php" class="table-container">
-            <table>
-                <caption>Transmission ciblée</caption>
-                <tr>
-                    <td>Date</td>
-                    <td>Initiales</td>
-                    <td>Cible</td>
-                    <td>Données</td>
-                    <td>Actions</td>
-                    <td>Resultats</td>
-                </tr>
-                <?php
-                    foreach ($_SESSION['transmissionCib'] as $item){
-                        echo "<tr>";
-                        echo "<td>".$item['date']."</td>";
-                        echo "<td>".$item['initiale']."</td>";
-                        echo "<td>".$item['cible']."</td>";
-                        echo "<td>".$item['donnee']."</td>";
-                        echo "<td>".$item['actions']."</td>";
-                        echo "<td>".$item['resultat']."</td>";
-                        echo "</tr>";
-                    }
-                ?>
-                <tr>
-                    <td><input name="date" type="date"></td>
-                    <td><input name="init" type="text" placeholder="Initiales intervenants"></td>
-                    <td><input name="cible" type="text" placeholder="Catégorie ciblée"></td>
-                    <td><textarea name="donn"></textarea></td>
-                    <td><textarea name="actions"></textarea></td>
-                    <td><textarea name="result"></textarea></td>
-                </tr>
+        <div style="overflow-x: scroll; overflow-y: scroll;">
+            <form method="get" action="patientDPIfunction.php" class="table-container">
+                <table>
+                    <caption>Transmission ciblée</caption>
+                    <tr>
+                        <td>Date</td>
+                        <td>Initiales</td>
+                        <td>Cible</td>
+                        <td>Données</td>
+                        <td>Actions</td>
+                        <td>Resultats</td>
+                    </tr>
+                    <?php
+                        foreach ($_SESSION['transmissionCib'] as $item){
+                            echo "<tr>";
+                            echo "<td>".$item['date']."</td>";
+                            echo "<td>".$item['initiale']."</td>";
+                            echo "<td>".$item['cible']."</td>";
+                            echo "<td>".$item['donnee']."</td>";
+                            echo "<td>".$item['actions']."</td>";
+                            echo "<td>".$item['resultat']."</td>";
+                            echo "</tr>";
+                        }
+                    ?>
+                    <tr>
+                        <td><input name="date" type="date"></td>
+                        <td><input name="init" type="text" placeholder="Initiales intervenants"></td>
+                        <td><input name="cible" type="text" placeholder="Catégorie ciblée"></td>
+                        <td><textarea name="donn"></textarea></td>
+                        <td><textarea name="actions"></textarea></td>
+                        <td><textarea name="result"></textarea></td>
+                    </tr>
 
-            </table>
-            <input type="submit" value="Mettre à jour">
-        </form>
+                </table>
+                <input type="submit" value="Mettre à jour">
+            </form>
+        </div>
 
     </div>
 </div>

@@ -47,10 +47,23 @@ require "patientDPIfunction.php";
                 <?php
                 $result= VisuBio($_SESSION['infosPersoPatient']['ipp']);
 
-                foreach ($result as $p){
-                    echo "<img class='img' src=$p>";
-                    echo "<br>";
-                }
+                foreach ($result as $p){ ?>
+                        <table>
+                            <caption></caption>
+                            <tr>
+                                <td>Description :</td>
+                            </tr>
+                            <tr>
+                                <td><?= $p ?></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class='img' src=<?= $p ?>>
+                                </td>
+                            </tr>
+                        </table>
+                    <br>
+                <?php }
                 ?>
             </div>
         </div>

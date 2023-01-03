@@ -49,24 +49,24 @@ require "patientDPIfunction.php";
                 <h2>Données administratives</h2>
                 <div class="info-intern" id="donn-admin">
                     <h4>Adresse: </h4>
-                    <p><?php print($_SESSION['infosPatient']['adresse'].", ".$_SESSION['infosPatient']['cp']." ".$_SESSION['infosPatient']['ville']) ?></p>
+                    <p><?php print($_SESSION['infosPatient']['adresse'].", ".$_SESSION['infosPatient']['code_postal']." ".$_SESSION['infosPatient']['ville']) ?></p>
                     <h4>Tel personnel:</h4>
-                    <p><?php print($_SESSION['infosPatient']['telpersonnel']); ?></p>
+                    <p><?php print($_SESSION['infosPatient']['telephone_personnel']); ?></p>
                     <h4>Tel professionnel:</h4>
-                    <p><?php print($_SESSION['infosPatient']['telprofessionnel']); ?></p>
+                    <p><?php print($_SESSION['infosPatient']['telephone_professionnel']); ?></p>
                     <h4>Personne a prevenir:</h4>
                     <p><?php print("Nom: ".$_SESSION['infosPersonneCont']['nom'].", prénom: ".$_SESSION['infosPersonneCont']['prenom']." (".$_SESSION['infosPersonneCont']['lien'].")"); ?></p>
-                    <p><?php print("Tel: ".$_SESSION['infosPersonneCont']['tel'])?></p>
+                    <p><?php print("Tel: ".$_SESSION['infosPersonneCont']['telephone'])?></p>
                     <h4>Personne de confiance:</h4>
                     <p><?php print("Nom: ".$_SESSION['infosPersonneConf']['nom'].", prénom: ".$_SESSION['infosPersonneConf']['prenom']." (".$_SESSION['infosPersonneConf']['lien'].")")?></p>
-                    <p><?php print("Tel: ".$_SESSION['infosPersonneConf']['tel'])?></p>
+                    <p><?php print("Tel: ".$_SESSION['infosPersonneConf']['telephone'])?></p>
                 </div>
             </div>
             <div class="info" onclick="show_data_patient_div('donn-soc');">
                 <h2>Données sociales</h2>
                 <div class="info-intern" id="donn-soc">
-                    <h4>Mesure de protection:<?php print($_SESSION['infosPatient']['mesuredeprotection'])?></h4>
-                    <h4>Suivi assistant social:<?php print($_SESSION['infosPatient']['asistantsocial'])?></h4>
+                    <h4>Mesure de protection:<?php print($_SESSION['infosPatient']['mesure_de_protection'])?></h4>
+                    <h4>Suivi assistant social:<?php print($_SESSION['infosPatient']['assistant_social'])?></h4>
                 </div>
 
             </div>
@@ -95,16 +95,16 @@ require "patientDPIfunction.php";
                     <h4>Obstetricaux:</h4>
                     <p><?php print($_SESSION['infosPatient']['obstericaux']); ?></p>
                     <h4>Medicaux:</h4>
-                    <p><?php print($_SESSION['infosPatient']['domedicaux']); ?></p>
+                    <p><?php print($_SESSION['infosPatient']['documents_medicaux']); ?></p>
                     <h4>Chirurgicaux:</h4>
-                    <p><?php print($_SESSION['infosPatient']['dochirurgicaux']); ?></p>
+                    <p><?php print($_SESSION['infosPatient']['documents_chirurgicaux']); ?></p>
                 </div>
 
             </div>
             <div class="info" onclick="show_data_patient_div('trait-dom');">
                 <h2>Traitement à domicile</h2>
                 <div class="info-intern" id="trait-dom">
-                    <p><?= $_SESSION['infosPatient']['traidomi'] ?></p>
+                    <p><?= $_SESSION['infosPatient']['traitement_domicile'] ?></p>
                 </div>
 
             </div>
@@ -112,7 +112,7 @@ require "patientDPIfunction.php";
                 <h2>Macrocible d'entrée</h2>
                 <div class="info-intern" id="macro-ent">
                     <h4>Synthèse d'entrée</h4>
-                    <p><?php print($_SESSION['infosPatient']['synentre']); ?></p>
+                    <p><?php print($_SESSION['infosPatient']['synthese_entree']); ?></p>
                     <p></p>
                     <h4>Bilan d'autonomie:</h4>
                     <table>
