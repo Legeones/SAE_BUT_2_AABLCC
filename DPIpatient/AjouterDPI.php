@@ -1,0 +1,139 @@
+<?php
+session_start();
+require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
+?>
+<html>
+<head>
+    <!-- zone d'importation des fichiers de style -->
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../Verif_Test/CSS_DPI.css" media="screen" type="text/css" />
+    <script src="scriptsDPIpatient.js"></script>
+</head>
+<body>
+<header>
+    <!-- Ajout du logo -->
+    <img class="logo" src="https://moodle.uphf.fr/pluginfile.php/358899/mod_resource/content/1/logoIFSI.png">
+</header>
+<div class="global">
+    <div class="gauche">
+        <div class="profile" id="space-invader">
+            <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
+        </div>
+        <div class="btn-group">
+            <button onclick="location.href='DPI.php'">PATIENTS</button>
+            <button>SCENARIOS</button>
+            <button>JSAISPAS</button>
+        </div>
+    </div>
+    <!-- zone de connexion -->
+    <div class="droite">
+        <div class="bas">
+            <div class="lesForms" align="center">
+                <button id="boutondebut" style="background-color:red" onclick="suivantCourt('formDPI','formContact','formConfiance'), changeCouleurBouton('boutondebut','boutondebut1','boutondebut2')">Ajouter_DPI</button>
+                <button id="boutondebut1" style="background-color:#66CCCC" onclick="suivantCourt('formContact','formDPI','formConfiance'), changeCouleurBouton('boutondebut1','boutondebut','boutondebut2')">Contact</button>
+                <button id="boutondebut2" style="background-color:#66CCCC" onclick="suivantCourt('formConfiance','formDPI','formContact'), changeCouleurBouton('boutondebut2','boutondebut','boutondebut1')"">Confiance</button>
+
+            </div>
+            <form id="form" action="AjouterDPIPHP.php" method="post">
+                <div id="formDPI" style="display: block">
+                    <div class="Titreform">
+                        <h1><u>Ajouter un DPI</u></h1>
+                    </div>
+                    <div class="Groupe">
+                        <?php if (isset($_SESSION['MessErreur']) && !empty($_SESSION['MessErreur'])):?>
+                            <div class="groupeErreur">
+                                <p>
+                                    <?= $_SESSION['MessErreur'] ?>
+                                    <?php $_SESSION['MessErreur'] = null ?>
+                                </p>
+                            </div>
+                        <?php endif ?>
+                        <p class="infoForm"><li><u>Certaines informations ne sont pas necéssaires et se définissent par "*".</u></li></p>
+                    </div>
+                    <?php
+
+                    $lst = nameColonne('patient')[0];
+                    $lst1 = nameColonne('patient')[1];
+                    $debut = 2;
+                    $fin = sizeof($lst);
+                    $_SESSION['Debut'] = $debut;
+                    $_SESSION['Fin'] = $fin;
+                    for ($i = $debut; $i < $fin; $i++) {
+                        if ($i == 17){$i +=1;}
+                        if ($i == 18){$i +=1;}
+                        $type = "$lst1[$i]";
+                        $res2 = 'val' . $i;
+                        $res = "$lst[$i]";
+                        if ($type == 'integer' || $type == 'double precision') {$type = "number";}
+                        if ($i <= 16 or $i >= 21 and $i<=24){formulaire($res, $lst, $i, $type, $res2);}
+                        elseif ($i >=19 and $i <=20){formulaire_duo_bool_radio($res,$lst,$i,$res2);}
+                        else {formulaire_trio_radio($res,$lst,$i,$res2);}
+                    }
+                    ?>
+                    <div class="Validation" align="center">
+                        <button type="button" id="boutonSuivant2" onclick="suivant('formDPI','formContact'), changeCouleurBouton('boutondebut1','boutondebut','boutondebut2')">Suivant !</button>
+                    </div>
+                </div>
+                <!*****************************************************************************************************>
+                <div id="formContact" style="display:none">
+                    <div class="Titreform">
+                        <h1><u>Ajouter une Personne à Contacter </u></h1>
+                    </div>
+                    <?php
+                    $lst = nameColonne('personnecontacte')[0];
+                    $lst1 = nameColonne('personnecontacte')[1];
+                    $debut = 31;
+                    $fin = 35;
+                    $_SESSION['Debutct'] = $debut;
+                    $_SESSION['Finct'] = $fin;
+                    $cpt = 1;
+                    for ($i = $debut; $i < $fin; $i++) {
+                        $type = "$lst1[$cpt]";
+                        $res2 = 'val' . $i;
+                        $res = "$lst[$cpt]".'ct';
+                        formulaire($res, $lst, $cpt, $type, $res2);
+                        $cpt +=1;
+
+                    }
+                    ?>
+                    <div class="Validation" align="center">
+                        <button type="button" id="precedent3" onclick="suivant('formContact','formDPI'), changeCouleurBouton('boutondebut','boutondebut2','boutondebut1')">Précedent</button>
+                        <button type="button" id="boutonSuivant2" onclick="suivant('formContact','formConfiance'), changeCouleurBouton('boutondebut2','boutondebut1','boutondebut')">Suivant !</button>
+                    </div>
+                </div>
+
+                <!*****************************************************************************************************>
+                <div id="formConfiance" style="display:none">
+                    <div class="Titreform">
+                        <h1><u>Ajouter une Personne de Confiance</u></h1>
+                    </div>
+                    <?php
+                    $lst = nameColonne('personneconfiance')[0];
+                    $lst1 = nameColonne('personneconfiance')[1];
+                    $debut = 35;
+                    $fin = 39;
+                    $_SESSION['Debutcf'] = $debut;
+                    $_SESSION['Fincf'] = $fin;
+                    $cpt = 1;
+                    for ($i = $debut; $i < $fin; $i++) {
+                        $type = "$lst1[$cpt]";
+                        $res2 = 'val' . $i;
+                        $res = "$lst[$cpt]".'cf';
+                        formulaire($res, $lst, $cpt, $type, $res2);
+                        $cpt += 1;
+                    }
+                    ?>
+                    <div class="Validation" align="center">
+                        <button type="button" id="precedent3" onclick="suivant('formConfiance','formContact'), changeCouleurBouton('boutondebut1','boutondebut2','boutondebut')">Précedent</button>
+                        <input type="submit" value="Valider">
+                    </div>
+                </div>
+            </form>
+            <?php $_SESSION['lstErreur'] = null;
+            reset_session();?>
+        </div>
+    </div>
+</div>
+</body>
+</html>

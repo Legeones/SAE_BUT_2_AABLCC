@@ -1,0 +1,240 @@
+body{
+    background-color: white;
+    font-family: Arial;
+}
+
+#container h1{
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+form > input{
+    background-color: white;
+}
+
+h4{
+    font-size: 15px;
+}
+
+p{
+
+}
+
+.info{
+    margin-inline: 1px;
+}
+
+.info > p{
+    margin-inline-end: auto;
+}
+
+.global{
+    width: 100%;
+}
+.gauche{
+    float: left;
+    width: 20%;
+    background-color: white;
+    height: 90%;
+    position: absolute;
+    left: 0px;
+    top: 10%;
+    z-index: 1;
+    border-right: black solid;
+    border-width: thin;
+    box-shadow: 2px 0px 0px dimgrey;
+
+}
+.droite{
+    float: right;
+    width: auto;
+    height: 85.6%;
+    position: absolute;
+    right: 0px;
+    top: 10%;
+    left: 20.1%;
+    background-color: white;
+}
+
+header{
+    width: 100%;
+    float: left;
+    height: 10%;
+    position: absolute;
+    top: 0px;
+    left: 0%;
+    background-color: white;
+    border-bottom: black solid;
+    border-width: thin;
+    z-index: 2;
+    box-shadow: 0px 1px 0px dimgrey;
+}
+.btn-group button {
+    background-color: white; /* Green background */
+    border: 1px solid black; /* Green border */
+    color: black; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    margin-left: 3%;
+    width: 94%;
+    border-radius: 5px;
+    margin-top: 1%;
+    box-shadow: 2px 2px 2px dimgrey;
+    font-size: 15px;
+    font-family: "Gill Sans MT";
+    font-weight: bold;
+
+}
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: cornflowerblue;
+    box-shadow: 1px 1px 1px dimgrey;
+}
+.profile{
+    width: 95%;
+    height: 40%;
+    background-color: dimgrey;
+    margin: 2% 1% 1% 2%;
+    border-radius: 5px;
+    border: black solid;
+}
+.logo {
+    width: 10%;
+    height: 90%;
+    margin-top: 0.25%;
+    margin-left: 0.25%;
+
+}
+
+.btn-line{
+    background-color: white; /* Green background */
+    color: black; /* White text */
+    width: 100%;
+    box-shadow: 2px 2px 2px dimgrey;
+    font-size: 15px;
+    font-family: "Gill Sans MT";
+    font-weight: bold;
+    float: right;
+}
+.btn-line > input{
+    width: 12.150%;
+    height: 8%;
+    cursor: pointer;
+    background-color: white;
+
+}
+.btn-line:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+table{
+    width: 100%;
+}
+
+.table-td-recipient{
+    height: 50px;
+    max-height: 50px;
+    overflow-y: auto;
+    white-space: normal;
+}
+
+.table-td-div-recipient{
+    height: 50px;
+    max-height: 50px;
+    overflow: auto;
+}
+
+tr {
+    border: black solid thin;
+}
+td {
+    border: black solid thin;
+}
+
+td > input{
+    width: 100%;
+}
+
+td > textarea{
+    width: 100%;
+    resize: vertical;
+}
+
+
+.container {
+    width: 98%;
+    height: auto;
+    padding: 1% 1% 1% 1%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+    min-height: 20%;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: 96.6%;
+    gap: 5px;
+    background-color: lightgrey;
+    padding: 5px;
+    box-shadow: 3px 3px 3px 3px dimgrey;
+    font-family: Arial;
+    font-size: 11px;
+    z-index: 10;
+    position: absolute;
+    height: auto;
+    min-height: 14%;
+}
+
+.grid-container > div {
+    background-color: white;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;
+    box-shadow: 3px 2px 2px dimgrey;
+    height: auto;
+    cursor: pointer;
+}
+
+.info-intern{
+    display: none;
+    color: black;
+    background-color: lightgray;
+    border: black solid thin;
+}
+
+.table-container{
+    margin-top: 1%;
+    padding: 1%;
+}
+
+.img {
+    width: auto;
+    height: auto;
+    max-height: 500px;
+    max-width: 1000px;
+}
+
+.container-img {
+    border: black solid medium;
+    margin-top: 13%;
+    width: 98%;
+    height: 60%;
+    padding: 1% 1% 1% 1%;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    text-align:justify;
+    min-height: 20%;
+}
