@@ -333,3 +333,16 @@ footer{
     height: 50%;
 
 }
+
+#stock{
+    background-color: papayawhip;
+    height: auto;
+    mso-default-height: 250px;
+    box-shadow: black;
+    border-color: blueviolet;
+    border-style: inset;
+    border-width: medium;
+    padding-top: 2%;
+    padding-left: 1%;
+}
+

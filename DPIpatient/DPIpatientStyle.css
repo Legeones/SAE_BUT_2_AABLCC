@@ -9,6 +9,10 @@ body{
     padding-bottom: 10px;
 }
 
+form > input{
+    background-color: white;
+}
+
 h4{
     font-size: 15px;
 }
@@ -54,6 +58,7 @@ p{
 }
 
 header{
+    position: sticky;
     width: 100%;
     float: left;
     height: 10%;
@@ -66,6 +71,9 @@ header{
     z-index: 2;
     box-shadow: 0px 1px 0px dimgrey;
 }
+
+
+
 .btn-group button {
     background-color: white; /* Green background */
     border: 1px solid black; /* Green border */
@@ -135,13 +143,35 @@ header{
 
 table{
     width: 100%;
-
 }
+
+.table-td-recipient{
+    height: 50px;
+    max-height: 50px;
+    overflow-y: auto;
+    white-space: normal;
+}
+
+.table-td-div-recipient{
+    height: 50px;
+    max-height: 50px;
+    overflow: auto;
+}
+
 tr {
     border: black solid thin;
 }
 td {
     border: black solid thin;
+}
+
+td > input{
+    width: 100%;
+}
+
+td > textarea{
+    width: 100%;
+    resize: vertical;
 }
 
 
@@ -152,6 +182,7 @@ td {
     overflow-x: hidden;
     overflow-y: auto;
     text-align:justify;
+    min-height: 20%;
 }
 
 .grid-container{
@@ -166,6 +197,8 @@ td {
     font-size: 11px;
     z-index: 10;
     position: absolute;
+    height: auto;
+    min-height: 14%;
 }
 
 .grid-container > div {
@@ -181,4 +214,31 @@ td {
 
 .info-intern{
     display: none;
+    color: black;
+    background-color: lightgray;
+    border: black solid thin;
+}
+
+.table-container{
+    margin-top: 1%;
+    padding: 1%;
+}
+
+.img {
+    width: auto;
+    height: auto;
+    max-height: 500px;
+    max-width: 1000px;
+}
+
+.container-img {
+    border: black solid medium;
+    margin-top: 13%;
+    width: 98%;
+    height: 60%;
+    padding: 1% 1% 1% 1%;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    text-align:justify;
+    min-height: 20%;
 }

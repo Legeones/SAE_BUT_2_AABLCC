@@ -5,7 +5,7 @@
     <title>Mot de passe oublier</title>
     <link rel="stylesheet" href="../Verif_Test/CSS.css">
 </head>
-<body>
+<body id="general">
 <form action="Verification_PasswordChange.php" method="post">
     <h1>Mot de passe oublié ?</h1>
     <div class="Separation"></div>
@@ -29,11 +29,11 @@
         {
             $err = $_GET['erreur'];
             if($err==1){
-                echo "<p style='color:red'> le mail est invalide </p>";
+                echo "<p style='color:red'> le mail est invalide </p>"; // Une erreur est affiché si le mail est invalide
             }
             
             if($err==2){
-                echo "<p style='color:red'> tous les champs doivent être remplis </p>";
+                echo "<p style='color:red'> tous les champs doivent être remplis </p>"; // Une erreur est affiché si tous les champs ne sont pas remplis
             }
         }
     ?>

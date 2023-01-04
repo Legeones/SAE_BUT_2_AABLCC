@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Page d'accueil</title>
     <!-- importation des fichiers de style -->
-    <link rel="stylesheet" href="Page_Accueil.css">
+    <link rel="stylesheet" href="../Verif_Test/CSS.css">
 
     <form>
         <h1>Bienvenue à l'IFSI de Maubeuge</h1>
@@ -12,12 +12,17 @@
             <img class="logo" src="https://moodle.uphf.fr/pluginfile.php/358899/mod_resource/content/1/logoIFSI.png">
         </header>
         </div>
-        <div class="droite">
-            <input type="button" onclick="window.location.href ='Localisation.php';" value="Ou nous trouver ?"/>
+        <!-- Ajout de boutons -->
+        <div class="gauche2">
+            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Connexion "/> <!-- Permet d'accèder à la page connexion -->
+            <input type="button" onclick="window.location.href ='../Connexion/Localisation.php';" value="Ou nous trouver ?"/> <!-- Permet d'accèder à la page ou nous trouver-->
         </div>
-        <div class="gauche">
-            <input type="button" onclick="window.location.href ='login.php';" value="Connexion "/>
+        <div class ="Aide">
+            <input type="button" onclick="window.location.href ='../Connexion/Aide.php';" value="Aide"/>
+            <input type="button" onclick="window.location.href ='../Charte_Utilisation/charte_utilisation.php';" value="Charte"/>
+
+
         </div>
     </form>
 </head>
-<body>
+<body id="general">

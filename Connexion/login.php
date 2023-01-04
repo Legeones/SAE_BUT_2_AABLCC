@@ -1,12 +1,22 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+	<title>Connexion</title>
     <meta charset="utf-8">
     <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="../Verif_Test/CSS.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
 </head>
-<body>
+<div class="droite">
+    <br><select name="l">
+        <option value="en" selected="selected">English</option>
+    </select>
+    <div class="retour">
+        <input type="button" onclick="window.location.href ='loginEN.php';" value="Go"/>
+    </div>
+</div>
+<body id="general">
 <div id="container">
     <!-- zone de connexion -->
 
@@ -16,21 +26,23 @@
         <div class="Formulaire">
             <div class="Groupe">
                 <label for="identifiant">Identifiant : </label>
-                <input type="text" placeholder="Saisir votre identifiant" name="username" />
+                <input type="text" placeholder="Saisir votre identifiant" name="username" /> <!-- Demande Ã  l'utilisateur de saisir son identifiant -->
             </div>
+
             <div class="Groupe">
                 <div class="eyes">
                     <div class="labelMDP">
                         <label for="mot de passe">Mot de passe :</label>
                     </div>
                     <div class="GroupeLOGO">
-                        <input type="password" name="password" id="password" placeholder="Saisir votre mot de passe" />
+                        <input type="password" name="password" id="password" placeholder="Saisir votre mot de passe" /> <!-- Demande Ã  l'utilisateur de saisir son mot de passe -->
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-                        <i class="bi bi-eye-slash" id="togglePassword"></i>
+                        <em class="bi bi-eye-slash" id="togglePassword"></em>
                     </div>
                 </div>
             </div>
         </div>
+
         <script>
             <!-- zone de gestion d'apparition ou non du mot de passe -->
 
@@ -46,6 +58,7 @@
         <!-- gestion des erreurs -->
 
         <?php
+        // Ici une erreur est affichÃ© si l'utilisateur ou le mot de passe sont incorrect
         if(isset($_GET['erreur'])){
             $err = $_GET['erreur'];
             if($err==1 || $err==2){
@@ -57,11 +70,11 @@
         <!-- zone de connexion -->
 
         <div class="piedDePage">
-            <div class="Validation" align="center" >
+            <div class="Validation">
                 <input type="submit" value="Connexion">
             </div>
-            <div class="mdpOublie" align="right">
-                <a href="../MDP/MDPoublier.php"><strong>Mot de passe oublié</strong></a>
+            <div class="mdpOublie">
+                <a href="../MDP/MDPoublier.php"><strong>Mot de passe oubliÃ©</strong></a> <!-- Permet d'accÃ¨der Ã  la page mot de passe oubliÃ© -->
             </div>
         </div>
         <div class="Separation2"></div>
@@ -69,15 +82,15 @@
             <div class="Phrase">
                 <p>Pour vous inscrire</p>
             </div>
-            <div class="CSS1" align="center">
+            <div class="CSS1">
                 <input type="button" onclick="window.location.href ='../Inscription/Inscription_formulaire.php';" value="S'inscrire"/>
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
-                    <a href="../Charte_Utilisation/charte_utilisation.php"><strong>Charte d'utilisation</strong></a>
+                    <a href="../Charte_Utilisation/charte_utilisation.php"><strong>Charte d'utilisation</strong></a> <!-- Permet d'accÃ©der Ã  la page charte d'utilisation -->
                 </div>
                 <div class="droite">
-                    <input type="button" onclick="window.location.href ='Aide.php';" value="?"/>
+                    <input type="button" onclick="window.location.href ='Aide.php';" value="?"/> <!-- Permet d'accÃ©der Ã  la page aide -->
                 </div>
             </div>
         </div>

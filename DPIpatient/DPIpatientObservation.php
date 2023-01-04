@@ -1,5 +1,6 @@
 <?php
 session_start();
+require "patientDPIfunction.php";
 ?>
 <html>
 <head>
@@ -25,47 +26,73 @@ session_start();
         </div>
     </div>
     <div class="droite">
+        <script type="text/javascript" src="scriptsDPIpatient.js"></script>
         <!-- zone d'ajout de boutons -->
         <form action="actionDPI.php" name="cat" method="get" class="btn-line">
             <!-- zone d'ajout de boutons -->
-            <input type="submit" name="macrocible" onmouseover="alterner('macrocible')" onmouseout="alterner('macrocible')" value="macrocible">
-            <input type="submit" name="observation" onmouseover="alterner('observation')" onmouseout="alterner('observation')" value="Observation médicale">
-            <input type="submit" name="prescription" onmouseover="alterner('prescription')" onmouseout="alterner('prescription')" value="Prescription">
-            <input type="submit" name="intervenants" onmouseover="alterner('inytervenants')" onmouseout="alterner('intervenants')" value="Intervenants">
-            <input type="submit" name="diagramme" onmouseover="alterner('diagramme')" onmouseout="alterner('diagramme')" value="Diagramme de soins">
-            <input type="submit" name="biologie" onmouseover="alterner('biologie')" onmouseout="alterner('biologie')" value="Biologie">
-            <input type="submit" name="imagerie" onmouseover="alterner('imagerie')" onmouseout="alterner('imagerie')" value="Imagerie">
-            <input type="submit" name="courriers" onmouseover="alterner('courriers')" onmouseout="alterner('courriers')" value="Courriers">
+            <input style="background-color: white;" type="submit" id="macrocible" name="Macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">
+            <input style="background-color: gray; color: white;" type="submit" id="observation" name="Observation" onmouseover="alterner('observation');" onmouseout="alterner('observation');" value="Observation médicale">
+            <input style="background-color: white;" type="submit" id="prescription" name="Prescription" onmouseover="alterner('prescription');" onmouseout="alterner('prescription');" value="Prescription">
+            <input style="background-color: white;" type="submit" id="intervenants" name="Intervenants" onmouseover="alterner('intervenants');" onmouseout="alterner('intervenants');" value="Intervenants">
+            <input style="background-color: white;" type="submit" id="diagramme" name="Diagramme" onmouseover="alterner('diagramme');" onmouseout="alterner('diagramme');" value="Diagramme de soins">
+            <input style="background-color: white;" type="submit" id="biologie" name="Biologie" onmouseover="alterner('biologie');" onmouseout="alterner('biologie');" value="Biologie">
+            <input style="background-color: white;" type="submit" id="imagerie" name="Imagerie" onmouseover="alterner('imagerie');" onmouseout="alterner('imagerie');" value="Imagerie">
+            <input style="background-color: white;" type="submit" id="courriers" name="Courriers" onmouseover="alterner('courriers');" onmouseout="alterner('courriers');" value="Courriers">
         </form>
         <div class="container">
-            <div class="info">
-                <h2>Données personnelles</h2>
-                <h4>Nom:<?php print($_SESSION['infosPersoPatient']['nom']) ?></h4>
-                <h4>Prenom:<?php print($_SESSION['infosPersoPatient']['prenom']) ?></h4>
-                <h4>Ville de naissance:</h4>
-                <h4>Date de naissance:<?php print($_SESSION['infosPersoPatient']['ddn']) ?></h4>
-                <h4>Poids:<?php print($_SESSION['infosPersoPatient']['poids_kg']) ?>kg</h4>
-                <h4>Taille:<?php print($_SESSION['infosPersoPatient']['taille_cm']) ?>cm</h4>
-                <h4>IEP:<?php print($_SESSION['infosPersoPatient']['iep']); ?></h4>
-                <h4>IPP: <?php print($_SESSION['infosPersoPatient']['ipp']); ?></h4>
-                <h4>Type hospitalisation: </h4>
-                <h4>Date d'admission: <?php print($_SESSION['infosPersoPatient']['datedebut']); ?></h4>
-                <h4>Date de sortie: <?php print($_SESSION['infosPersoPatient']['datefin']); ?></h4>
-            </div>
-            <div class="info">
-                <h2>Observation médicales</h2>
-                <p></p>
-            </div>
-            <table>
-                <title>Transmissions ciblées</title>
-                <tr>
-                    <td>Date</td>
-                    <td>Cible</td>
-                    <td>Données</td>
-                    <td>Resultats</td>
-                </tr>
-                <?php print $_SESSION['patientSuivi']?>
-            </table>
+                <div class="grid-container">
+                    <?= afficherDataPersos() ?>
+                    <div class="info" onclick="show_data_patient_div('obs-medi');">
+                        <h2>Observation médicales</h2>
+                        <div class="info-intern" id="obs-medi">
+                            <?php
+                            foreach ($_SESSION['observationsMed'] as $item){
+                                echo "<div>";
+                                echo "<p> Le ".$item['dateom']." : ".$item['rapport']."</p>";
+                                echo "<p>"."</p>";
+                                echo "</div>";
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div style="overflow-x: scroll; overflow-y: scroll;">
+            <form method="get" action="patientDPIfunction.php" class="table-container">
+                <table>
+                    <caption>Transmission ciblée</caption>
+                    <tr>
+                        <td>Date</td>
+                        <td>Initiales</td>
+                        <td>Cible</td>
+                        <td>Données</td>
+                        <td>Actions</td>
+                        <td>Resultats</td>
+                    </tr>
+                    <?php
+                        foreach ($_SESSION['transmissionCib'] as $item){
+                            echo "<tr>";
+                            echo "<td>".$item['date']."</td>";
+                            echo "<td>".$item['initiale']."</td>";
+                            echo "<td>".$item['cible']."</td>";
+                            echo "<td>".$item['donnee']."</td>";
+                            echo "<td>".$item['actions']."</td>";
+                            echo "<td>".$item['resultat']."</td>";
+                            echo "</tr>";
+                        }
+                    ?>
+                    <tr>
+                        <td><input name="date" type="date"></td>
+                        <td><input name="init" type="text" placeholder="Initiales intervenants"></td>
+                        <td><input name="cible" type="text" placeholder="Catégorie ciblée"></td>
+                        <td><textarea name="donn"></textarea></td>
+                        <td><textarea name="actions"></textarea></td>
+                        <td><textarea name="result"></textarea></td>
+                    </tr>
+
+                </table>
+                <input type="submit" value="Mettre à jour">
+            </form>
         </div>
 
     </div>

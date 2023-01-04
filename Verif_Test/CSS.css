@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Handlee&family=Purple+Purse&display=swap');
 
-body{
+#general{
     background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20210924/pngtree-health-care-abstract-light-effect-icon-decoration-image_906585.png") ;
     background-size: 1550px;
     padding: 0px;
@@ -12,6 +12,80 @@ body{
     font-family: 'Bungee Spice', cursive;
     font-family: 'Handlee', cursive;
     font-family: 'Purple Purse', cursive;
+}
+
+#chartecase {
+    background-image: url("https://img.freepik.com/photos-gratuite/ancien-mur-ciment-texture_1149-1280.jpg?w=2000");
+    background-color: white;
+    font-family: Arial;
+    font-size: 90%;
+    text-align: center;
+}
+
+#localcase {
+    background-image: url("https://static.vecteezy.com/ti/vecteur-libre/p1/4586062-blanc-gris-abstract-background-conception-de-fond-avec-style-propre-et-moderne-lisse-blanc-et-gris-fond-degrade-modele-vectoriel.jpg");
+    background-size: 1550px;
+    padding: 0px;
+    margin: 0px;
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    transform: translate(-50%,-50%);
+    font-family: 'Bungee Spice', cursive;
+    font-family: 'Handlee', cursive;
+    font-family: 'Purple Purse', cursive;
+}
+
+accueil h1 {
+    text-align: center;
+    border: none;
+    padding: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    border-radius: 8px;
+    background-color: gray;
+    color: lightskyblue;
+}
+
+.local h1 {
+    font-size: 200%;
+    color: red;
+    text-align: center;
+    border-width:3px;
+    border-style:double;
+    border-color:black;
+    padding: 10px;
+}
+
+.local div {
+    font-size: 100%;
+    color: black;
+    text-align: center;
+    border-width:3px;
+    border-style:double;
+    border-color:black;
+}
+
+.local h3 {
+    font-size: 100%;
+    color: steelblue;
+    text-align: center;
+}
+
+.charte h1 {
+    font-size: 200%;
+    color: red;
+    text-align: center;
+    border-width:3px;
+    border-style:double;
+    border-color:black;
+}
+
+.charte h3 {
+    font-size: 100%;
+    color: steelblue;
+    text-align: center;
 }
 
 .deconnexion h1 {
@@ -35,6 +109,18 @@ form{
     text-align: center;
     border:5px solid black;
 }
+
+form .gauche2{
+    text-align: match-parent;
+    width: 2px;
+}
+
+form .Aide{
+    width: 2px;
+    position: relative;
+    left:500px;
+}
+
 form h1{
     font-size: 30px;
     text-align: center;
@@ -70,6 +156,14 @@ form .Formulaire .Groupe textarea{
     border-radius: 5px;
 }
 
+form .mdpOublie{
+	text-align: right;
+}
+
+form .Validation{
+	text-align: center;
+}
+
 form .Validation input {
     background-color: lightskyblue;
     border: none;
@@ -99,6 +193,7 @@ form .Separation2{
     background-color: cornflowerblue;
     margin: 1px;
 }
+
 form .CssUnified .Phrase{
     text-align: center;
 }
@@ -163,3 +258,5 @@ form.eyes {
     display: flow;
     padding: 5px;
 }
+
+Footer
