@@ -28,30 +28,16 @@
             <h1>choix scenario</h1>
             <br>
             <br>
-            <select name="DPI" id="DPI_Patient">
-                <option value="defaut">--Choisir le Scenario--</option>
                 <?php
                 require ('../BDD/DataBase_Scenario.php');
                 $der = lstderoulanteScenario();
-                var_dump($der);
-                while ($row =$der->fetch(PDO::FETCH_ASSOC)) {
-                    unset($idscenario, $nom);
-                    $idscenario = $row['idscenario'];
-                    $nom = $row['nom'];
-                    echo "<option value='$idscenario'> $nom </option>";
-
+                foreach ($der as $val){
+                    echo "<input type='radio' name='idscenario' value={$val['idscenario']} /> {$val['nom']}<br/>";
                 }
 
                 ?>
-                <script>
-                    document.getElementById('DPI_Patient').addEventListener('change',function(){
-                        document.getElementById('rech').value = this.value;
-                    });
-                </script>
-                <label for="rech" class="labIPP">Numéro IPP</label>
-            </select>
             <br>
-            <input class="reche" type="text" id="rech" name="IdScenario" value="<?php $idscenario?>">
+
             <br>
             <input type="submit" name="submit" value="suivant">
 
@@ -61,9 +47,11 @@
 
                 if($err==6){
                     echo "<p style='color:red'>Error: Tous les champs doivent etre remplis</p>";
+                    // Affiche une erreur si tous les champs ne sont pas remplis
                 }
                 if($err==7){
                     echo "<p style='color:red'>Error: Le scenario n'existe pas</p>";
+                    // Affiche une erreur si le scenario n'existe pas
                 }
             }
             ?>

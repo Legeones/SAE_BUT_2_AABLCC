@@ -12,7 +12,7 @@ $_SESSION["IPP_SUPP"]=$_POST["IPP_SUPP"];
 </head>
 <body>
 
-<H1> etez-vous sur de vouloir supprimer ce patient ?</H1>  <!-- Message d'information avant la validation de la saisie -->
+<H1> etez-vous sur de vouloir supprimer ce patient ?</H1>
 <br>
 <?php
 

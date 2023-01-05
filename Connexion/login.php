@@ -30,7 +30,7 @@
                         <label for="mot de passe">Mot de passe :</label>
                     </div>
                     <div class="GroupeLOGO">
-                        <input type="password" name="password" id="password" placeholder="Saisir votre mot de passe" /> <!-- Demande Ã  l'utilisateur de saisir son mot de passe -->
+                        <input type="password" name="password" id="password" placeholder="Saisir votre mot de passe" /> <!-- Demande à l'utilisateur de saisir son mot de passe -->
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
                         <em class="bi bi-eye-slash" id="togglePassword"></em>
                     </div>
@@ -53,7 +53,7 @@
         <!-- gestion des erreurs -->
 
         <?php
-        // Ici une erreur est affichÃ© si l'utilisateur ou le mot de passe sont incorrect
+        // Ici une erreur est affichée si l'utilisateur ou le mot de passe sont incorrect
         if(isset($_GET['erreur'])){
             $err = $_GET['erreur'];
             if($err==1 || $err==2){
