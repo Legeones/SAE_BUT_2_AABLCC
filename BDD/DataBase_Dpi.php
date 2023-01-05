@@ -539,12 +539,14 @@ function Confiant($PDO){
     }
 }
 
-function PatientIPP($PDO){
-    $idPatientIpp = $PDO->prepare("SELECT max(ipp)from patient");
-    $idPatientIpp->execute();
-    foreach ($idPatientIpp as $idpatIpp) {
-        return $idpatIpp[0] + 1;
+function getLstIPP (){
+    $PDO = DataBase_Creator_Unit();
+    $ipp = $PDO->prepare("Select ipp from patient");
+    $lstipp = [];
+    foreach ($ipp as $ipps) {
+        $lstipp[] = $ipps[0];
     }
+    return $lstipp;
 }
 
 function PatientIEP($PDO)
@@ -580,13 +582,12 @@ function AjouterDPI ()
     $Confiance->bindParam(6, $boo);
     $Confiance->execute();
     
-    
-    $patientipp = PatientIPP($PDO);
+
     $patientiep = PatientIEP($PDO);
     // Permet d'ajouter des informations dans la base de données //
     $Patient1 = $PDO->prepare("insert into patient (ipp, iep, nom, prenom, date_de_naissance, taille_cm, poids_kg, adresse, code_postal, ville, telephone_personnel, telephone_professionnel, allergies, antecedents, obstericaux, documents_medicaux, documents_chirurgicaux, idpcon, idptel, mesure_de_protection, assistant_social, mode_de_vie, synthese_entree, traitement_domicile, donnee_physique_psychologique, mobilite, alimentation, hygiene, toilette, habit, continence)
 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $Patient1->bindParam(1, $patientipp);
+    $Patient1->bindParam(1, $_POST['ipp']);
     $Patient1->bindParam(2, $patientiep);
     $Patient1->bindParam(3, $_POST['nom']); // Permets de récupérer le nom saisi dans le formulaire
     $Patient1->bindParam(4, $_POST['prenom']); // Permets de récupérer le prénom saisi dans le formulaire
