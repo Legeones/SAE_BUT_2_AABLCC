@@ -36,7 +36,7 @@
             <select name="DPI" id="DPI_Patient">
                 <option value="defaut">--Choisir le DPI--</option>
                 <?php
-                require ('../DPIpatient/RecupInfoBDD_AjouterDPI.php');
+                require ('../BDD/DataBase_Dpi.php');
                 $der = lstderoulante();
                 while ($row =$der->fetch(PDO::FETCH_ASSOC)) {
                     unset($id, $nom, $prenom);
@@ -65,16 +65,20 @@
                 $err = $_GET['erreur'];
                 if($err==1){
                     echo "<p style='color:red'>Error: Imcompatibilité entre le nom et l'ipp.</p>";
+                    // Un message d'erreur apparait lorsque il y a une imcompatibilité entre le nom et l'ipp
                 }
 
                 if($err==5){
                     echo "<p style='color:red'>Error: le fichier n'existe pas.</p>";
+                    // Un message d'erreur apparait lorsque le fichier n'existe pas
                 }
                 if($err==6){
                     echo "<p style='color:red'>Error: Tous les champs doivent etre remplis</p>";
+                    // Un message d'erreur apparait lorsque tous les champs ne sont pas remplis
                 }
                 if($err==7){
                     echo "<p style='color:red'>Error: L'IPP n'existe pas</p>";
+                    // Un message d'erreur apparait lorsque l'ipp n'existe pas
                 }
             }
             ?>
