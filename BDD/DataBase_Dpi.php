@@ -593,9 +593,10 @@ function Confiant($PDO){
     }
 }
 
-function getLstIPP (){
+function getLstIPP(){
     $PDO = DataBase_Creator_Unit();
     $ipp = $PDO->prepare("Select ipp from patient");
+    $ipp->execute();
     $lstipp = [];
     foreach ($ipp as $ipps) {
         $lstipp[] = $ipps[0];
