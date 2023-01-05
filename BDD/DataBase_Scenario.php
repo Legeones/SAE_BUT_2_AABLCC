@@ -5,7 +5,7 @@ session_start();
 function lstderoulanteScenario(){
     try {
     $DPI2 = DataBase_Creator_Unit();
-    $DPI = $DPI2->prepare("select idScenario,nom from Scenario left join ScenarioCorbeille SC on Scenario.idScenario = SC.idSCorb where createur= ? and idSCorb is null");
+    $DPI = $DPI2->prepare("select idScenario,nom from Scenario left join ScenarioCorbeille SC on Scenario.idScenario = SC.idSCorb where createur= ? and idSCorb is null and (debut>current_date or fin<current_date)");
     $DPI->bindParam(1,$_SESSION['username']);
         $DPI->execute();
         $result = $DPI->fetchAll();
@@ -17,14 +17,51 @@ function lstderoulanteScenario(){
     }
 }
 
-function lstderoulanteScenarioCorb(){
-    $DPI2 = DataBase_Creator_Unit();
-    $DPI = $DPI2->prepare("select idScenario,nom from ScenarioCorbeille  where createur= ?");
-    $DPI->bindParam(1,$_SESSION['username']);
-    $DPI->execute();
-    return $DPI;
+function addCorbeilleSce($idS){
+    try{
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("INSERT INTO ScenarioCorbeille values (?)");
+        $stmt2->bindParam(1, $idS);
+        $stmt2->execute();
+    }catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+
+    }
+
 }
 
+
+
+function lstderoulanteScenarioCorb(){
+    try {
+        $DPI2 = DataBase_Creator_Unit();
+        $DPI = $DPI2->prepare("select idScenario,nom from ScenarioCorbeille join Scenario S on S.idScenario = ScenarioCorbeille.idSCorb where createur= ?");
+        $DPI->bindParam(1,$_SESSION['username']);
+        $DPI->execute();
+        $result = $DPI->fetchAll();
+        return $result;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+
+    }
+
+}
+
+function RecupCorbeilleSce($idS){
+    try{
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("delete from ScenarioCorbeille where idSCorb=?");
+        $stmt2->bindParam(1, $idS);
+        $stmt2->execute();
+    }catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+
+    }
+
+}
 
 function checkScenario($id){
     try {
