@@ -47,9 +47,11 @@
 
                 if($err==6){
                     echo "<p style='color:red'>Error: Tous les champs doivent etre remplis</p>";
+                    // Affiche une erreur si tous les champs ne sont pas remplis
                 }
                 if($err==7){
                     echo "<p style='color:red'>Error: Le scenario n'existe pas</p>";
+                    // Affiche une erreur si le scenario n'existe pas
                 }
             }
             ?>

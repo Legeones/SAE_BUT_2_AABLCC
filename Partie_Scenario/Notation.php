@@ -194,7 +194,7 @@
         <div class="bas">
             <form name="form" action="Code_php.php" method="POST">
                 <div class="Titreform">
-                    <h1><u>Création simulation</u></h1>
+                    <h1><u>Création simulation</u></h1> <!-- Onglet création simulation -->
                 </div>
                 <?php
                 session_start();

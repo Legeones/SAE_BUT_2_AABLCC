@@ -17,31 +17,31 @@
     <div class="Formulaire">
         <div class="Groupe">
             <label> Identifiant : </label>
-            <input type="text" placeholder="Saisir votre identifiant" name="ID" /> <!-- Demande Ã  l'utilisateur de saisir son identifiant -->
+            <input type="text" placeholder="Saisir votre identifiant" name="ID" /> <!-- Demande à l'utilisateur de saisir son identifiant -->
         </div>
         
         <div class="Groupe">
             <label> Nom : </label>
-            <input type="text" placeholder="Saisir votre Nom" name="nom" /> <!-- Demande Ã  l'utilisateur de saisir son nom -->
+            <input type="text" placeholder="Saisir votre Nom" name="nom" /> <!-- Demande à l'utilisateur de saisir son nom -->
         </div>
         <div class="Groupe">
             <label> Prenom : </label>
-            <input type="text" placeholder="Saisir votre Prenom" name="prenom" /> <!-- Demande Ã  l'utilisateur de saisir son prenom -->
+            <input type="text" placeholder="Saisir votre Prenom" name="prenom" /> <!-- Demande à l'utilisateur de saisir son prenom -->
         </div>
         
         <div class="Groupe">
             <label> Mot de passe :</label>
-            <input type="password" name="Password_A" id="password" placeholder="Saisir votre mot de passe" /> <!-- Demande Ã  l'utilisateur de saisir son mot de passe -->
+            <input type="password" name="Password_A" id="password" placeholder="Saisir votre mot de passe" /> <!-- Demande à l'utilisateur de saisir son mot de passe -->
             <em class="bi bi-eye-slash" id="togglePassword"></em>
         </div>
         <div class="Groupe">
             <label> Confirmation mot de passe : </label>
-            <input type="password" name="Password_B" id="password1" placeholder="Confirmer votre mot de passe" /> <!-- Demande Ã  l'utilisateur de confirmer son mot de passe -->
+            <input type="password" name="Password_B" id="password1" placeholder="Confirmer votre mot de passe" /> <!-- Demande à l'utilisateur de confirmer son mot de passe -->
             <em class="bi bi-eye-slash" id="togglePassword1"></em>
         </div>
         <div class="Groupe">
             <label> Adresse mail :</label>
-            <input type="text"placeholder="Saisir votre adresse mail" name="email" /> <!-- Demande Ã  l'utilisateur de saisir votre adresse mail -->
+            <input type="text"placeholder="Saisir votre adresse mail" name="email" /> <!-- Demande à l'utilisateur de saisir votre adresse mail -->
         </div>
     </div>
     <div class="piedDePage">
@@ -81,37 +81,37 @@
     if(isset($_GET['erreur'])){
         $err = $_GET['erreur'];
         if($err==1){
-            // Ici une erreur est affichÃ© si le mot de passe contient moins de 8 caractÃ¨res //
+            // Ici une erreur est affichée si le mot de passe contient moins de 8 caractéres //
             echo "<p style='color:red'>le mot de passse a moins de 8 caractÃ¨res</p>";
         }
         if($err==2){
-            // Ici une erreur est affichÃ© si les 2 mot de passe ne sont pas identiques //
+            // Ici une erreur est affichée si les 2 mot de passe ne sont pas identiques //
             echo "<p style='color:red'>le mot de passe et sa confirmation sont diffÃ¨rents</p>";
         }
         if($err==3){
-            // Ici une erreur est affichÃ© s'il y a des minuscules //
+            // Ici une erreur est affichée s'il y a des minuscules //
             echo "<p style='color:red'> pas de minuscule </p>";
         }
         if($err==4){
-            // Ici une erreur est affichÃ© s'il y a des numÃ©ros //
+            // Ici une erreur est affichée s'il y a des numéros //
             echo "<p style='color:red'> pas de numero </p>";
         }
         if($err==5){
-            // Ici une erreur est affichÃ© s'il y a des majuscules //
+            // Ici une erreur est affichée s'il y a des majuscules //
             echo "<p style='color:red'> pas de majusucule </p>";
         }
         if($err==6){
-            // Ici une erreur est affichÃ© si les champs ne sont pas complÃ©tement remplis //
+            // Ici une erreur est affichée si les champs ne sont pas complétement remplis //
             echo "<p style='color:red'> tous les champs doivent Ãªtre remplis </p>";
         }
 
         if($err==7){
-            // Ici une erreur est affichÃ© si le mail ou le login est invalide //
+            // Ici une erreur est affichée si le mail ou le login est invalide //
             echo "<p style='color:red'> mail ou login invalide </p>";
         }
         
         if($err==8){
-            // Ici une erreur est affichÃ© si le nom et ou prenom sont vide //
+            // Ici une erreur est affichée si le nom et ou prenom sont vide //
             echo "<p style='color:red'> Champs nom et/ou prenom doivent être remplis </p>";
         }
     }

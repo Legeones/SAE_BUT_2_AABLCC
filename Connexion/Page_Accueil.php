@@ -18,8 +18,8 @@
             <input type="button" onclick="window.location.href ='../Connexion/Localisation.php';" value="Ou nous trouver ?"/> <!-- Permet d'accèder à la page ou nous trouver-->
         </div>
         <div class ="Aide">
-            <input type="button" onclick="window.location.href ='../Connexion/Aide.php';" value="Aide"/>
-            <input type="button" onclick="window.location.href ='../Charte_Utilisation/charte_utilisation.php';" value="Charte"/>
+            <input type="button" onclick="window.location.href ='../Connexion/Aide.php';" value="Aide"/> <!-- Permet d'accèder à la page Aide -->
+            <input type="button" onclick="window.location.href ='../Charte_Utilisation/charte_utilisation.php';" value="Charte"/>  <!-- Permet d'accèder à la page Charte -->
 
         </div>
     </form>

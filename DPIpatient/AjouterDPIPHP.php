@@ -22,6 +22,7 @@ try {
         }
         else{
             $_SESSION['MessErreur'] = "<p style='color:red'>!! Veuillez vérifier que le formulaire ne comporte pas d'erreur !!</p>";
+            // Ici un message d'erreur apparait pour inviter à l'utilisateur de vérifier le formulaire
         }
         header('Location: AjouterDPI.php');
     }

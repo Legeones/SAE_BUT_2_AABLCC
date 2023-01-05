@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2110909-c6c5-47ce-99df-de1c8bfafe88" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/DPIpatient/scriptsDPIpatient.js" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/scriptsDPIpatient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Aide_Send.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Aide_Send.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/RecupCorbeilleSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/RecupCorbeilleSQL.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/transition.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/transition.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/Verification_PasswordChange.php" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/Verification_PasswordChange.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Partie_Scenario/Notation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Partie_Scenario/Notation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +23,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectId" id="2JoVGOL5vqcjrVZ9L904iEbNdoE" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -40,6 +49,7 @@
       <option name="presentableId" value="Default" />
       <updated>1672744331946</updated>
       <workItem from="1672744335304" duration="89000" />
+      <workItem from="1672914988350" duration="762000" />
     </task>
     <servers />
   </component>

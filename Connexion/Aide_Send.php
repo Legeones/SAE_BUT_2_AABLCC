@@ -13,19 +13,19 @@ $VerifEmptyContent3=VerifEmptyContent($_POST['body']);
 $VerifEmail=VerifEmail($_POST["mail"]);
 //Zone de vérification
 if ($VerifEmptyContent1==0){
-    header('Location: ../Connexion/Aide.php?erreur=1');
+    header('Location: ../Connexion/Aide.php?erreur=1'); // Zone de vérification
 }
 
 elseif ($VerifEmptyContent2==0){
-    header('Location: ../Connexion/Aide.php?erreur=1');
+    header('Location: ../Connexion/Aide.php?erreur=1'); // Zone de vérification
 }
 
 elseif ($VerifEmptyContent3==0){
-    header('Location: ../Connexion/Aide.php?erreur=1');
+    header('Location: ../Connexion/Aide.php?erreur=1'); // Zone de vérification
 }
 
 elseif ($VerifEmail==0){
-    header('Location: ../Connexion/Aide.php?erreur=2');
+    header('Location: ../Connexion/Aide.php?erreur=2'); // Zone de vérification
 }
 
 else

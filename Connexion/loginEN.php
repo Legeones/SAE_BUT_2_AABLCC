@@ -51,7 +51,7 @@
         <!-- gestion des erreurs -->
 
         <?php
-        // Ici une erreur est affichÃ© si l'utilisateur ou le mot de passe sont incorrect
+        // Ici une erreur est affichée si l'utilisateur ou le mot de passe sont incorrect
         if(isset($_GET['erreur'])){
             $err = $_GET['erreur'];
             if($err==1 || $err==2){
