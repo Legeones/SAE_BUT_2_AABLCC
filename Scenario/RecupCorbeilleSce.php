@@ -2,7 +2,7 @@
 <html lang="fr">
 <html>
 <head>
-    <title>choix etudiant</title>
+    <title>Corbeille Scenario</title>
     <meta charset="utf-8">
     <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="../Verif_Test/CSS_DPI.css" media="screen" type="text/css" />
@@ -23,39 +23,30 @@
         </div>
     </div>
     <div class="droite">
-        <form action="res.php" method="post" enctype="multipart/form-data">
+        <form action="RecupCorbeilleSCESQL.php" method="post" enctype="multipart/form-data">
 
-            <h1>choix etu</h1>
+            <h1>choix scenario recuperer</h1>
             <br>
             <br>
-                <?php
-                require ('../BDD/DataBase_Scenario.php');
-                session_start();
-                $der = lstderoulanteEtu($_SESSION['IdScenario']);
-                foreach ($der as $val){
-                    echo "<input type='checkbox' name='gout[]' value={$val['login']} /> {$val['nom']} {$val['prenom']}<br/>";
-                }
+            <?php
+            require ('../BDD/DataBase_Scenario.php');
+            $der = lstderoulanteScenarioCorb();
+            foreach ($der as $val){
+                echo "<input type='radio' name='RecupCorscenario' checked value={$val['idscenario']} /> {$val['nom']}<br/>";
+            }
 
-                ?>
+            ?>
             <br>
+
             <br>
             <input type="submit" name="submit" value="suivant">
 
             <?php
             if(isset($_GET['erreur'])){
                 $err = $_GET['erreur'];
-                if($err==1){
-                    echo "<p style='color:red'>Error: Imcompatibilité entre le nom et l'ipp.</p>";
-                }
 
-                if($err==5){
-                    echo "<p style='color:red'>Error: le fichier n'existe pas.</p>";
-                }
-                if($err==6){
-                    echo "<p style='color:red'>Error: Tous les champs doivent etre remplis</p>";
-                }
                 if($err==7){
-                    echo "<p style='color:red'>Error: L'IPP n'existe pas</p>";
+                    echo "<p style='color:red'>Error: Le scenario n'existe pas</p>";
                 }
             }
             ?>
