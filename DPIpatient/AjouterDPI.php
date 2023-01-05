@@ -8,7 +8,7 @@ require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
 
     <meta charset="utf-8">
     <link rel="stylesheet" href="../Verif_Test/CSS_DPI.css" media="screen" type="text/css" />
-    <script src="scriptsDPIpatient.js"></script>
+    <script src="../DPIpatient/scriptsDPIpatient.js"></script>
 </head>
 <body>
 <header>
