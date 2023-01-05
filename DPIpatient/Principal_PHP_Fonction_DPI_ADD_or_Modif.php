@@ -7,11 +7,16 @@ function formulaire($res,$lst,$i,$type,$res2){ ?>
         $label = formulaire_pas_obligatoire_affichage($lst[$i],$i);
         echo "<label for='$res'>  $label: </label><br>"; ?>
         <input id="<?=$res?>" type="<?=$type?>" name="<?=$res?>" value="<?= $_SESSION[$res2] ?? '' ?>"/>
-        <?php if (empty($res2)){echo "<p style='color:red'>Ce champ est obligatoire</p>";} ?>
         <?php if (isset($_SESSION['lstErreur']) and comparaison($_SESSION['lstErreur'],$res) == true){
             if (!(($i >= 11 and $i <= 16) or ($i == 21) or ($i >= 23 and $i <= 24 ))){
             echo "<p style='color:red'>Ce champ est obligatoire </p>";
-        }} ?>
+        }}
+        if (isset($_SESSION['lstErreur_specifique']) and comparaison($_SESSION['lstErreur_specifique'], $res) == true) {
+            if ($i ==0 or $i == 8) {
+                echo "<p style='color:red'>Ce champ est invalide</p>";
+            }
+        }
+        ?>
     </div>
 <?php }
 
@@ -80,7 +85,7 @@ function deroulementDPI(){?>
 
 function creation_Session($table,$deb,$fin){
     for ($i = $deb; $i < $fin; $i++) {
-        if ($i == 17){$i += 1;}
+        if ($i == 1 or $i == 17){$i += 1;}
         if ($i == 18) {$i += 1;}
         $name = 'val' . $i;
         $_SESSION[$name] = StockDPI($table,$_POST['recherche'])[$i];
@@ -90,7 +95,7 @@ function creation_Session($table,$deb,$fin){
 function creation_Session_Add_DPI($deb,$fin){
     $lst = nameColonne('patient')[0];
     for ($i = $deb; $i < $fin; $i++) {
-        if ($i == 17){$i += 1;}
+        if ($i == 1 or $i == 17){$i += 1;}
         if ($i == 18) {$i += 1;}
         $name = 'val' . $i;
         $_SESSION[$name] = $_POST["$lst[$i]"];
@@ -122,7 +127,7 @@ function creation_Session_Add_confiance($deb,$fin){
 
 
 function reset_session(){
-    for ($i = 2; $i<40; $i++){
+    for ($i = 0; $i<40; $i++){
         $res = 'val' .$i;
         $_SESSION[$res] = null;
     }
@@ -151,10 +156,16 @@ function formulaire_pas_obligatoire_affichage($elt,$i){
 
 function erreur ($debDPI, $finDPI, $debCont, $finCont, $debConf, $finConf){
     $erreur = array();
+    $erreur_specifique = array();
     $lst = nameColonne('patient')[0];
     for ($i = $debDPI; $i <$finDPI ; $i++){
-        if ($i == 17){$i += 1;}
+        if ($i == 1 or $i == 17){$i += 1;}
         if ($i == 18) {$i += 1;}
+        if (!empty($_POST[$lst[$i]]) and $i == 0){
+            if (($_POST[$lst[0]] < 100000000 or  $_POST[$lst[$i]] > 9999999999999) or comparaison(getLstIPP(),$_POST[$lst[0]]) == true){$erreur_specifique[] = $lst[0];}}
+        if (!empty($_POST[$lst[$i]]) and $i == 8){
+            if (($_POST[$lst[8]] < 10000 or  $_POST[$lst[8]] > 99999)){$erreur_specifique[] = $lst[8];}
+        }
         if (empty($_POST["$lst[$i]"])){
             if ((!(($i >= 11 and $i <= 16) or ($i == 21) or ($i >= 23 and $i <= 24 )))){
                 $erreur[] = $lst[$i];
@@ -177,7 +188,7 @@ function erreur ($debDPI, $finDPI, $debCont, $finCont, $debConf, $finConf){
         }
         $cptconfiance+=1;
     }
-    return $erreur;
+    return [$erreur, $erreur_specifique];
 
 }
 

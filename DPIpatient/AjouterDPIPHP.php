@@ -9,14 +9,14 @@ try {
         creation_Session_Add_DPI($_SESSION['Debut'], $_SESSION['Fin']);
         creation_Session_Add_contacte($_SESSION['Debutct'], $_SESSION['Finct']);
         creation_Session_Add_confiance($_SESSION['Debutcf'], $_SESSION['Fincf']);
-
-        echo $_SESSION['val2'];
-        $lesErreurs = erreur($_SESSION['Debut'], $_SESSION['Fin'], $_SESSION['Debutct'], $_SESSION['Finct'], $_SESSION['Debutcf'], $_SESSION['Fincf']);
+        $lesErreurs = erreur($_SESSION['Debut'], $_SESSION['Fin'], $_SESSION['Debutct'], $_SESSION['Finct'], $_SESSION['Debutcf'], $_SESSION['Fincf'])[0];
         $_SESSION['lstErreur'] = $lesErreurs;
+        $lesErreurs_specifique = erreur($_SESSION['Debut'], $_SESSION['Fin'], $_SESSION['Debutct'], $_SESSION['Finct'], $_SESSION['Debutcf'], $_SESSION['Fincf'])[1];
+        $_SESSION['lstErreur_specifique'] = $lesErreurs_specifique;
+        print_r($lesErreurs);
+        print_r($lesErreurs_specifique);
 
-
-
-        if (empty($lesErreurs)) {
+        if (empty($lesErreurs) and empty($lesErreurs_specifique)) {
             AjouterDPI();
             reset_session();
         }

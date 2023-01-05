@@ -55,17 +55,17 @@ require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
 
                     $lst = nameColonne('patient')[0];
                     $lst1 = nameColonne('patient')[1];
-                    $debut = 2;
+                    $debut = 0;
                     $fin = sizeof($lst);
                     $_SESSION['Debut'] = $debut;
                     $_SESSION['Fin'] = $fin;
                     for ($i = $debut; $i < $fin; $i++) {
-                        if ($i == 17){$i +=1;}
+                        if ($i == 1 or $i == 17){$i +=1;}
                         if ($i == 18){$i +=1;}
                         $type = "$lst1[$i]";
                         $res2 = 'val' . $i;
                         $res = "$lst[$i]";
-                        if ($type == 'integer' || $type == 'double precision') {$type = "number";}
+                        if ($type == 'integer' or $type == 'double precision' or $type == 'numeric') {$type = "number";}
                         if ($i <= 16 or $i >= 21 and $i<=24){formulaire($res, $lst, $i, $type, $res2);}
                         elseif ($i >=19 and $i <=20){formulaire_duo_bool_radio($res,$lst,$i,$res2);}
                         else {formulaire_trio_radio($res,$lst,$i,$res2);}
@@ -131,6 +131,7 @@ require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
                 </div>
             </form>
             <?php $_SESSION['lstErreur'] = null;
+            $_SESSION['lstErreur_specifique'] = null;
             reset_session();?>
         </div>
     </div>
