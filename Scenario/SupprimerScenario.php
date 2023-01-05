@@ -4,21 +4,20 @@
     <!-- Zone de connexion -->
 
     <meta charset="UTF-8">
-    <title>Recup Patient</title>
+    <title>Supprimer Scenario</title>
 </head>
 <body>
-<form action="RecupCorbeilleSQL.php" method="post">
+<form action="ConfirSuppSCE.php" method="post">
     <select name="DPI" id="DPI_Patient">
-        <option value="defaut">--Choisir le DPI à modifier--</option>
+        <option value="defaut">--Choisir le Scenario--</option>
         <?php
-        require ('../BDD/DataBase_Dpi.php');
-        $der = lstderoulanteCorb();
+        require ('../BDD/DataBase_Scenario.php');
+        $der = lstderoulanteScenario();
         while ($row =$der->fetch(PDO::FETCH_ASSOC)) {
-            unset($id, $nom, $prenom);
-            $id = $row['ipp'];
+            unset($idscenario, $nom);
+            $idscenario = $row['idscenario'];
             $nom = $row['nom'];
-            $prenom = $row['prenom'];
-            echo "<option value='$id'> $nom $prenom </option>";
+            echo "<option value='$idscenario'> $nom </option>";
 
         }
 
@@ -30,7 +29,11 @@
         </script>
         <label for="rech" class="labIPP">Numéro IPP</label>
     </select>
-    <input class="reche" type="text" id="rech" name="IPP_Recup" value="<?php $id?>">
+    <br>
+    <input class="reche" type="text" id="rech" name="IdScenario" value="<?php $idscenario?>">
+    <br>
+    <input type="submit" name="submit" value="suivant">
+
     <br>
     <input  type="submit" value="Confirmer" name="Confirmer" id="Confirmer">
 
@@ -49,9 +52,14 @@ if (isset($_GET['erreur'])) {
     if ($err == 2) {
         echo "<p style='color:red'>IPP n'est pas dans la corbeille</p>";
         // Ici une erreur est affiché si IPP n'est pas dans la BBD
+
     }
     if ($err == 3) {
         echo "<p style='color:red'>IPP ne doit pas avoir de lettre</p>";
         // Ici une erreur est affiché si IPP contient des lettres
+
     }
 }
+
+
+?>

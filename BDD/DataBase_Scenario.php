@@ -3,11 +3,18 @@ require('../BDD/DataBase_Core.php');
 session_start();
 
 function lstderoulanteScenario(){
+    try {
     $DPI2 = DataBase_Creator_Unit();
     $DPI = $DPI2->prepare("select idScenario,nom from Scenario left join ScenarioCorbeille SC on Scenario.idScenario = SC.idSCorb where createur= ? and idSCorb is null");
     $DPI->bindParam(1,$_SESSION['username']);
-    $DPI->execute();
-    return $DPI;
+        $DPI->execute();
+        $result = $DPI->fetchAll();
+        return $result;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+
+    }
 }
 
 function lstderoulanteScenarioCorb(){
