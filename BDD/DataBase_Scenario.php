@@ -31,6 +31,20 @@ function addCorbeilleSce($idS){
 
 }
 
+function supCorbeilleSce($idS){
+    try{
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("delete from Scenario where idScenario=?");
+        $stmt2->bindParam(1, $idS);
+        $stmt2->execute();
+    }catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+
+    }
+
+}
+
 
 
 function lstderoulanteScenarioCorb(){
@@ -115,7 +129,7 @@ function lstderoulanteEtu($idS)
     try {
         $DPI2 = DataBase_Creator_Unit();
         $DPI = $DPI2->prepare("select distinct login,nom,prenom from utilisateur left join ScenarioEtudiant SE on Utilisateur.login = SE.idU
-where roles=? and (idS is null or idS!=?);");
+where roles=? and (idS is null or idS!=?) order by nom,prenom;");
         $DPI->bindParam(1, $etu);
         $DPI->bindParam(2,$idS);
         $DPI->execute();
