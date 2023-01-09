@@ -29,17 +29,17 @@ function SendMail($keys,$email)
     $mail->ContentType = 'text/plain';  // 
     
     $mail->IsHTML(false);
-    $mail->Subject = "Test Code de Verification";
+    $mail->Subject = "Test Code de Verification"; // Permet la vérification du code
     $mail->Body = "Votre code de verification est " . $keys;    // keys fait référence au code de vérification
     
     if(!$mail->Send())
         
     {
-        echo "Mailer Error: " . $mail->ErrorInfo;
+        echo "Mailer Error: " . $mail->ErrorInfo; // Erreur dans l'envoie du mail
     }
     else
     {
-        echo "Successfully sent!";
+        echo "Successfully sent!"; // Mail envoyé avec succèes
     }
 }
 
