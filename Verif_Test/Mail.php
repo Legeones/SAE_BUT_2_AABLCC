@@ -6,7 +6,7 @@ ini_set('display_errors', true);
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'C:\?????\vendor\autoload.php';      // changer avec l'emplacement du fichier vendor/autoload.php
+require '...\vendor\autoload.php';      // corespond a l'emplacement du fichier vendor/autoload.php
 
 function SendMail($keys,$email)
 {
@@ -14,23 +14,23 @@ function SendMail($keys,$email)
     
     $mail->SMTPDebug = 1;
     $mail->IsSMTP();
-    $mail->Host = "smtp.uphf.fr";       // dependant du smtp serveur utilisé
-    $mail->SMTPAuth = true;
-    $mail->AuthType = 'LOGIN';
-    $mail->Username = "???";      // dependant de l'utilisateur (envoie)
-    $mail->Password = "???";   // dependant de l'utilisateur (envoie)
-    $mail->SMTPSecure = "ssl";          // dependant du smtp serveur utilisé
-    $mail->Port = 465;                  // dependant du smtp serveur utilisé
+    $mail->Host = "smtp.uphf.fr";       // serveur SMTP utilisé
+    $mail->SMTPAuth = true;             // authentification active/inactive
+    $mail->AuthType = 'LOGIN';          // type d'authentification
+    $mail->Username = "XXX";            // identifiant (login)
+    $mail->Password = "XXX";            // mot de passe
+    $mail->SMTPSecure = "ssl";          // dependant du smtp serveur utilisÃ©
+    $mail->Port = 465;                  // dependant du smtp serveur utilisÃ©
     
-    $mail->SetFrom (GetMail(),'EC');  // dependant de l'utilisateur (envoie)
-    $mail->AddAddress ($email, 'EC2');
+    $mail->SetFrom (GetMail(),'EC');    // prend l'adresse d'envoie + un nom d'identification
+    $mail->AddAddress ($email, 'EC2');  // définit l'adresse d'envoie
     
-    $mail->CharSet = 'windows-1250';
-    $mail->ContentType = 'text/plain';
+    $mail->CharSet = 'windows-1250';    // définit la type d'écrit
+    $mail->ContentType = 'text/plain';  // 
     
     $mail->IsHTML(false);
-    $mail->Subject = "Test Code de Verification"; // permet de tester le code de vérification
-    $mail->Body = "Votre code de verification est " . $keys;
+    $mail->Subject = "Test Code de Verification";
+    $mail->Body = "Votre code de verification est " . $keys;    // keys fait référence au code de vérification
     
     if(!$mail->Send())
         
@@ -49,23 +49,23 @@ function SendRequestMail($email,$body)
     
     $mail->SMTPDebug = 1;
     $mail->IsSMTP();
-    $mail->Host = "smtp.uphf.fr";       // dependant du smtp serveur utilisé
-    $mail->SMTPAuth = true;
-    $mail->AuthType = 'LOGIN';
-    $mail->Username = "???";      // dependant de l'utilisateur (envoie)
-    $mail->Password = "???";   // dependant de l'utilisateur (envoie)
-    $mail->SMTPSecure = "ssl";          // dependant du smtp serveur utilisé
-    $mail->Port = 465;                  // dependant du smtp serveur utilisé
+    $mail->Host = "smtp.uphf.fr";       // serveur SMTP utilisé
+    $mail->SMTPAuth = true;             // authentification active/inactive
+    $mail->AuthType = 'LOGIN';          // type d'authentification
+    $mail->Username = "XXX";            // identifiant (login)
+    $mail->Password = "XXX";            // mot de passe
+    $mail->SMTPSecure = "ssl";          // dependant du smtp serveur utilisÃ©
+    $mail->Port = 465;                  // dependant du smtp serveur utilisÃ©
     
-    $mail->SetFrom (GetMail(),'Assistance');  // dependant de l'utilisateur (envoie)
-    $mail->AddAddress (GetMail(), 'Assistance');
+    $mail->SetFrom (GetMail(),'Assistance');        // prend l'adresse d'envoie + un nom d'identification
+    $mail->AddAddress (GetMail(), 'Assistance');    // dans ce cas, le mail est renvoyé vers lui même
     
-    $mail->CharSet = 'windows-1250';
-    $mail->ContentType = 'text/plain';
+    $mail->CharSet = 'windows-1250';     // définit la type d'écrit
+    $mail->ContentType = 'text/plain';   //
     
     $mail->IsHTML(false);
     $mail->Subject = "Requete d'assistance de : $email";
-    $mail->Body = $body;
+    $mail->Body = $body;        // contient le message de la part de l'utilisateur
     
     if(!$mail->Send())
     {
@@ -80,20 +80,23 @@ function SendRequestMail($email,$body)
 function MailPreparator($indexkey,$email)
 {
     session_start();
-    $_SESSION['Code'] = rand(100000,999999);
-    $_SESSION['Key_Index'] = $indexkey;
+    $_SESSION['Code'] = rand(100000,999999);    // génère un code aléatoire a 6 chiffre
+    $_SESSION['Key_Index'] = $indexkey;         // insère le code dans la session en cours, cela permettra la verification coté utilisateur
     $_SESSION['CodeTimer'] = time();
     
-    SendMail($_SESSION['Code'],$email);
+    SendMail($_SESSION['Code'],$email);         // envoie le mail avec le code généré
     
     header('Location: ../Verif_Test/MailCode_Formulaire.php?');
 }
 
 function GetMail()
 {
-    return '???@uphf.fr';
+    return 'XXX@uphf.fr';     // adresse mail servant a l'envoie
 }
 
-    function Resend()
-{ session_start();      MailPreparator($_SESSION['Key_Index'],$_SESSION['EMAIL']); }
+function Resend()   // option permettant la reconduite d'un mail, si non envoyé
+{
+    session_start();
+    MailPreparator($_SESSION['Key_Index'],$_SESSION['EMAIL']);
+}
 ?>
