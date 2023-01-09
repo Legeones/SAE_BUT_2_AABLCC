@@ -1,5 +1,4 @@
 <?php
-require('../Verif_Test/Verifiant.php');
 require('../BDD/DataBase_Scenario.php');
 
 
