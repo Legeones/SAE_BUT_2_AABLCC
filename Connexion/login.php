@@ -78,7 +78,7 @@
                 <p>Pour vous inscrire</p>
             </div>
             <div class="CSS1">
-                <input type="button" onclick="window.location.href ='../Inscription/Inscription_formulaire.php';" value="S'inscrire"/>
+                <input type="button" onclick="window.location.href ='../Inscription/Inscription_formulaire.php';" value="S'inscrire"/> <!-- permet d'accèder à la page S'inscrire -->
             </div>
             <div class="piedDePage2">
                 <div class="gauche">

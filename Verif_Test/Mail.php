@@ -29,7 +29,7 @@ function SendMail($keys,$email)
     $mail->ContentType = 'text/plain';
     
     $mail->IsHTML(false);
-    $mail->Subject = "Test Code de Verification";
+    $mail->Subject = "Test Code de Verification"; // permet de tester le code de vérification
     $mail->Body = "Votre code de verification est " . $keys;
     
     if(!$mail->Send())

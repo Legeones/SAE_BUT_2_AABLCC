@@ -6,11 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e2110909-c6c5-47ce-99df-de1c8bfafe88" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Connexion/Aide_Send.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Aide_Send.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/RecupCorbeilleSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/RecupCorbeilleSQL.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/transition.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/transition.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/Verification_PasswordChange.php" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/Verification_PasswordChange.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Partie_Scenario/Notation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Partie_Scenario/Notation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/FormulaireUnlinkVerifUNO.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/FormulaireUnlinkVerifUNO.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/MDF_Accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/MDF_Accueil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Verif_Test/Mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Verif_Test/Mail.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +50,7 @@
       <updated>1672744331946</updated>
       <workItem from="1672744335304" duration="89000" />
       <workItem from="1672914988350" duration="762000" />
+      <workItem from="1673248467046" duration="1375000" />
     </task>
     <servers />
   </component>
