@@ -17,6 +17,8 @@ function lstderoulanteScenario(){
     }
 }
 
+
+//fonction pour mettre un scenario dans la corbeille
 function addCorbeilleSce($idS){
     try{
         $dbh = DataBase_Creator_Unit();
@@ -31,6 +33,7 @@ function addCorbeilleSce($idS){
 
 }
 
+//fonction pour supprimer un scenario
 function supCorbeilleSce($idS){
     try{
         $dbh = DataBase_Creator_Unit();
@@ -46,7 +49,7 @@ function supCorbeilleSce($idS){
 }
 
 
-
+//fonction qui permet de recupérer les scénario d'un professeur mis dans la corbeille
 function lstderoulanteScenarioCorb(){
     try {
         $DPI2 = DataBase_Creator_Unit();
@@ -63,6 +66,7 @@ function lstderoulanteScenarioCorb(){
 
 }
 
+//fonction pour récupérer un scénario mis dans la corbeille
 function RecupCorbeilleSce($idS){
     try{
         $dbh = DataBase_Creator_Unit();
@@ -93,6 +97,8 @@ function checkScenario($id){
     }
 }
 
+
+//fonction pour récuperer les informations d'un scénario
 function recupInfoScenario($id){
     $DPI2 = DataBase_Creator_Unit();
     $DPI = $DPI2->prepare("select nom,debut,fin,nbev from Scenario where idScenario=? and createur= ?");
@@ -106,6 +112,7 @@ function recupInfoScenario($id){
     return $liste;
 }
 
+//fonction pour récupérer les evenement liée a un scénario
 function recupEvenScenario($id)
 {
     try {
@@ -123,6 +130,7 @@ function recupEvenScenario($id)
     }
 }
 
+//fonction pour récupérer les étudiants qui ne sont pas encore inscrit a un scenario
 function lstderoulanteEtu($idS)
 {
     $etu = 'etudiant';
@@ -142,6 +150,7 @@ where roles=? and (idS is null or idS!=?) order by nom,prenom;");
     }
 }
 
+//fonction pour affecter a un etudiant un evenement a une date pour un scenario
 function insertEvenSceEtu($idS,$idEv,$idEtu,$date){
     try {
         $dbh = DataBase_Creator_Unit();
