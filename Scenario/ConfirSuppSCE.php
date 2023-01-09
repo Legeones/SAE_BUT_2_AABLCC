@@ -15,7 +15,7 @@ $_SESSION["SupCorscenario"]=$_POST["SupCorscenario"];
 <H1> etez-vous sur de vouloir supprimer ce patient ?</H1>
 <br>
 <?php
-
+//demande de confirmation pour la suppresion
 echo "etes vous sur de vouloir supprimer ce scenario ";
 ?>
 <br>

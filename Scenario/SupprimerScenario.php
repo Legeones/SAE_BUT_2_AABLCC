@@ -30,6 +30,7 @@
             <br>
             <?php
             require ('../BDD/DataBase_Scenario.php');
+            // création de bouton pour les scenario qui sont dans la corbeille
             $der = lstderoulanteScenarioCorb();
             foreach ($der as $val){
                 echo "<input type='radio' name='SupCorscenario' checked value={$val['idscenario']} /> {$val['nom']}<br/>";
@@ -42,6 +43,7 @@
             <input type="submit" name="submit" value="suivant">
 
             <?php
+            //gestion des erreurs
             if(isset($_GET['erreur'])){
                 $err = $_GET['erreur'];
 
