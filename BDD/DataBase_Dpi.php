@@ -4,6 +4,13 @@ require('../BDD/DataBase_Core.php');
 
 
 function Patient_Parcour($p,$rm,$rma): void
+/*
+ * Cette fonction parcour tous les patients et les ressorts en fonction des paramètres de recherche implantés.
+ * $rm sert à la recherche par nom
+ * $p sert à la recherche via Aucun, Date d'hospitalisation et enfin Ordre alphabétique
+ * $rma sert pour la recherche renvoyant soit la dernière hospitalisation en fonction de l'IPP ou alors toutes les
+ * hospitalisations en fonction de l'IPP
+ */
 {
     $o = 1;
     if(isset($_SESSION['patient1']) && $_SESSION['patient1']!=null){
@@ -20,9 +27,9 @@ function Patient_Parcour($p,$rm,$rma): void
     $dbh = DataBase_Creator_Unit();
     if($rm!='aucun'){
         if ($rma == 'IPP'){
-            $stmt = $dbh->prepare("SELECT patient.IPP, nom FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb WHERE nom like ? and IPPCorb is null LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT patient.IPP, nom, prenom, datedebut FROM patient LEFT JOIN admission ON patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb WHERE nom like ? and IPPCorb is null LIMIT ? OFFSET ?");
         } else if ($rma == 'IEP'){
-            $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP, nom FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb WHERE nom like ? and IPPCorb is null ORDER BY iep DESC LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP, nom, prenom, datedebut FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb WHERE nom like ? and IPPCorb is null ORDER BY iep DESC LIMIT ? OFFSET ?");
         }
         $stmt->bindParam(1,$rm);
         $lim = $_SESSION['incrPat']+25;
@@ -30,12 +37,12 @@ function Patient_Parcour($p,$rm,$rma): void
         $stmt->bindParam(3,$_SESSION['incrPat']);
         $stmt->execute();
     }
-    
+
     if ($p=='Date hospitalisation' && $rm=='aucun') {
         if ($rma == 'IPP'){
-            $stmt = $dbh->prepare("SELECT patient.ipp,nom FROM patient JOIN admission ON admission.ipp = patient.ipp  left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT patient.ipp,nom,prenom, datedebut FROM patient JOIN admission ON admission.ipp = patient.ipp  left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null LIMIT ? OFFSET ?");
         } else if ($rma == 'IEP'){
-            $stmt = $dbh->prepare("SELECT admission.iep,patient.ipp,nom FROM patient JOIN admission ON admission.ipp = patient.ipp  left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is  null ORDER BY admission.iep DESC LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT admission.iep,patient.ipp,nom,prenom, datedebut FROM patient JOIN admission ON admission.ipp = patient.ipp  left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is  null ORDER BY admission.iep DESC LIMIT ? OFFSET ?");
         }
         $lim = $_SESSION['incrPat']+25;
         $stmt->bindParam(1,$lim);
@@ -43,9 +50,9 @@ function Patient_Parcour($p,$rm,$rma): void
         $stmt->execute();
     } elseif ($p=='Ordre alphabetique' && $rm=='aucun'){
         if ($rma == 'IPP'){
-            $stmt = $dbh->prepare("SELECT patient.IPP,nom FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY nom LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT patient.IPP,nom,prenom,datedebut FROM patient LEFT JOIN admission ON patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY nom LIMIT ? OFFSET ?");
         } else if ($rma == 'IEP'){
-            $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP,nom FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY nom, admission.iep LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP,nom,prenom,datedebut FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY nom, admission.iep LIMIT ? OFFSET ?");
         }
         $lim = $_SESSION['incrPat']+25;
         $stmt->bindParam(1,$lim);
@@ -53,9 +60,9 @@ function Patient_Parcour($p,$rm,$rma): void
         $stmt->execute();
     } elseif($rm=='aucun') {
         if ($rma == 'IPP'){
-            $stmt = $dbh->prepare("SELECT patient.IPP,nom FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT patient.IPP,nom,prenom,datedebut FROM patient LEFT JOIN admission ON patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null LIMIT ? OFFSET ?");
         } else if ($rma == 'IEP'){
-            $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP,nom FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY admission.iep LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP,nom,prenom,datedebut FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY admission.iep LIMIT ? OFFSET ?");
         }
         $lim = $_SESSION['incrPat']+25;
         $stmt->bindParam(1,$lim);
@@ -76,6 +83,16 @@ function Patient_Parcour($p,$rm,$rma): void
 }
 
 function Data_Patient_Querry($nomPatient, $nomCateg){
+    /*
+     * Ce code PHP contient une fonction appelée "Data_Patient_Querry", qui prend en entrée le nom d'un patient
+     * et le nom d'une catégorie de recherche de données. La fonction utilise la classe PDO pour se connecter à
+     * une base de données et exécuter une requête en fonction de la catégorie de recherche de données. La fonction
+     * stocke les informations sur le patient dans une variable de session, puis utilise une boucle foreach pour
+     * ajouter ces informations à une variable appelée "infosPersoPatient". Enfin, il vérifie si la catégorie de
+     * recherche de données est "Macrocible" ou autres et exécute des requêtes supplémentaires pour récupérer des informations
+     * supplémentaires sur le patient en utilisant le nom ou le numéro de l'IPP ou IEP qui est stocké dans une variable
+     * de session.
+     */
     $pdo = DataBase_Creator_Unit();
     if ($_SESSION['paramRechercheAdmi']=='IPP'){
         $info = $pdo->prepare("SELECT patient.ipp, a.iep, nom, prenom, date_de_naissance, ville, poids_kg, taille_cm, datedebut, datefin FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE patient.ipp = ?");
