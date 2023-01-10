@@ -32,7 +32,7 @@
                     <div class="GroupeLOGO">
                         <input type="password" name="password" id="password" placeholder="Saisir votre mot de passe" /> <!-- Demande à l'utilisateur de saisir son mot de passe -->
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-                        <em class="bi bi-eye-slash" id="togglePassword"></em>
+                        <em class="bi bi-eye-slash" id="togglePassword"></em> <!-- class permettant l'apparition ou non du mot de passe -->
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                 <p>Pour vous inscrire</p>
             </div>
             <div class="CSS1">
-                <input type="button" onclick="window.location.href ='../Inscription/Inscription_formulaire.php';" value="S'inscrire"/>
+                <input type="button" onclick="window.location.href ='../Inscription/Inscription_formulaire.php';" value="S'inscrire"/> <!-- permet d'accèder à la page S'inscrire -->
             </div>
             <div class="piedDePage2">
                 <div class="gauche">

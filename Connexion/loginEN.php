@@ -3,7 +3,7 @@
 <head>
 	<title>Connection</title>
     <meta charset="utf-8">
-    <!-- importation des fichiers de style -->
+    <!-- importing style files -->
     <link rel="stylesheet" href="../Verif_Test/CSS.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
@@ -13,7 +13,7 @@
 </div>
 <body id="general">
 <div id="container">
-    <!-- zone de connexion -->
+    <!-- login area -->
 
     <form action="Verification_Login.php" method="POST">
         <h1>Connection</h1>
@@ -21,7 +21,7 @@
         <div class="Formulaire">
             <div class="Groupe">
                 <label for="identifiant">ID : </label>
-                <input type="text" placeholder="Enter your ID" name="username" /> <!-- Demande à l'utilisateur de saisir son identifiant -->
+                <input type="text" placeholder="Enter your ID" name="username" /> <!-- Ask the user to enter their username -->
             </div>
             <div class="Groupe">
                 <div class="eyes">
@@ -29,15 +29,15 @@
                         <label for="mot de passe">Password :</label>
                     </div>
                     <div class="GroupeLOGO">
-                        <input type="password" name="password" id="password" placeholder="Enter your password" /> <!-- Demande à l'utilisateur de saisir son mot de passe -->
+                    <input type="password" name="password" id="password" placeholder="Enter your password" /> <!-- Ask the user to enter their password -->
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-                        <em class="bi bi-eye-slash" id="togglePassword"></em>
+                        <em class="bi bi-eye-slash" id="togglePassword"></em> <!-- class allowing the appearance or not of the password -->
                     </div>
                 </div>
             </div>
         </div>
         <script>
-            <!-- zone de gestion d'apparition ou non du mot de passe -->
+            <!-- Area for managing the appearace or not of the password -->
 
             const togglePassword = document.querySelector("#togglePassword");
             const password = document.querySelector("#password");
@@ -48,10 +48,10 @@
             });
         </script>
 
-        <!-- gestion des erreurs -->
+        <!-- error management -->
 
         <?php
-        // Ici une erreur est affichée si l'utilisateur ou le mot de passe sont incorrect
+        // here an error is dsplayed if the username or password is incorrect
         if(isset($_GET['erreur'])){
             $err = $_GET['erreur'];
             if($err==1 || $err==2){
@@ -60,14 +60,14 @@
         }
         ?>
 
-        <!-- zone de connexion -->
+        <!-- Login area -->
 
         <div class="piedDePage">
             <div class="Validation">
                 <input type="submit" value="Connection">
             </div>
             <div class="mdpOublie">
-                <a href="../MDP/MDPoublier.php"><strong>Forgot your password</strong></a> <!-- Permet d'accéder à la page mot de passe oubliée -->
+                <a href="../MDP/MDPoublier.php"><strong>Forgot your password</strong></a> <!-- Allows access to the forgotten password page -->
             </div>
         </div>
         <div class="Separation2"></div>
@@ -80,10 +80,10 @@
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
-                    <a href="../Charte_Utilisation/charte_utilisation.php"><strong>User Charter</strong></a> <!-- Permet d'accéder à la page charte d'utilisation -->
+                    <a href="../Charte_Utilisation/charte_utilisation.php"><strong>User Charter</strong></a> <!-- Provides access to the terms of use page -->
                 </div>
                 <div class="droite">
-                    <input type="button" onclick="window.location.href ='Aide.php';" value="?"/> <!-- Permet d'accéder à la page aide -->
+                    <input type="button" onclick="window.location.href ='Aide.php';" value="?"/> <!-- Allows access to the help page -->
                 </div>
             </div>
         </div>

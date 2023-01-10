@@ -1,65 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+<html>
 <head>
-    <!-- Zone de connexion -->
-
-    <meta charset="UTF-8">
-    <title>Supprimer Scenario</title>
+    <title>suppression Scenario</title>
+    <meta charset="utf-8">
+    <!-- importation des fichiers de style -->
+    <link rel="stylesheet" href="../Verif_Test/CSS_DPI.css" media="screen" type="text/css" />
 </head>
 <body>
-<form action="ConfirSuppSCE.php" method="post">
-    <select name="DPI" id="DPI_Patient">
-        <option value="defaut">--Choisir le Scenario--</option>
-        <?php
-        require ('../BDD/DataBase_Scenario.php');
-        $der = lstderoulanteScenario();
-        while ($row =$der->fetch(PDO::FETCH_ASSOC)) {
-            unset($idscenario, $nom);
-            $idscenario = $row['idscenario'];
-            $nom = $row['nom'];
-            echo "<option value='$idscenario'> $nom </option>";
+<header>
+    <img class="logo" src="../Images/logoIFSI.png">
+</header>
+<div class="global">
+    <div class="gauche">
+        <div class="profile" id="space-invader">
+            <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
+        </div>
+        <div class="btn-group">
+            <button onclick="location.href='../DPIpatient/DPI.php'">PATIENTS</button>
+            <button onclick="location.href='principaleEve.php'">SCENARIOS</button>
+            <button>JSAISPAS</button>
+        </div>
+    </div>
+    <div class="droite">
+        <form action="ConfirSuppSCE.php" method="post" enctype="multipart/form-data">
 
-        }
+            <h1>choix scenario a supprimer</h1>
+            <br>
+            <br>
+            <?php
+            require ('../BDD/DataBase_Scenario.php');
+            // création de bouton pour les scenario qui sont dans la corbeille
+            $der = lstderoulanteScenarioCorb();
+            foreach ($der as $val){
+                echo "<input type='radio' name='SupCorscenario' checked value={$val['idscenario']} /> {$val['nom']}<br/>";
+            }
 
-        ?>
-        <script>
-            document.getElementById('DPI_Patient').addEventListener('change',function(){
-                document.getElementById('rech').value = this.value;
-            });
-        </script>
-        <label for="rech" class="labIPP">Numéro IPP</label>
-    </select>
-    <br>
-    <input class="reche" type="text" id="rech" name="IdScenario" value="<?php $idscenario?>">
-    <br>
-    <input type="submit" name="submit" value="suivant">
+            ?>
+            <br>
 
-    <br>
-    <input  type="submit" value="Confirmer" name="Confirmer" id="Confirmer">
+            <br>
+            <input type="submit" name="submit" value="suivant">
 
-</form>
+            <?php
+            //gestion des erreurs
+            if(isset($_GET['erreur'])){
+                $err = $_GET['erreur'];
 
-<!-- gestion des erreurs -->
+                if($err==7){
+                    echo "<p style='color:red'>Error: Le scenario n'existe pas</p>";
+                }
+            }
+            ?>
 
-<?php
-if (isset($_GET['erreur'])) {
-    $err = $_GET['erreur'];
-    if ($err == 1) {
-        echo "<p style='color:red'>tous les champs doivent etre remplis</p>";
-        //Ici une erreur est affiché si tous les champs ne sont pas remplis
-
-    }
-    if ($err == 2) {
-        echo "<p style='color:red'>IPP n'est pas dans la corbeille</p>";
-        // Ici une erreur est affiché si IPP n'est pas dans la BBD
-
-    }
-    if ($err == 3) {
-        echo "<p style='color:red'>IPP ne doit pas avoir de lettre</p>";
-        // Ici une erreur est affiché si IPP contient des lettres
-
-    }
-}
-
-
-?>
+        </form>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="fr">
 <html>
 <head>
-    <title>Corbeille Scenario</title>
+    <title>Corbeille Recup Scenario</title>
     <meta charset="utf-8">
     <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="../Verif_Test/CSS_DPI.css" media="screen" type="text/css" />
@@ -29,6 +29,7 @@
             <br>
             <br>
             <?php
+            // création de bouton pour les scenario qui sont dans la corbeille
             require ('../BDD/DataBase_Scenario.php');
             $der = lstderoulanteScenarioCorb();
             foreach ($der as $val){
@@ -42,6 +43,7 @@
             <input type="submit" name="submit" value="suivant">
 
             <?php
+            //gestion des erreurs
             if(isset($_GET['erreur'])){
                 $err = $_GET['erreur'];
 

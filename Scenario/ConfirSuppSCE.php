@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$_SESSION["IPP_SUPP"]=$_POST["IPP_SUPP"];
+$_SESSION["SupCorscenario"]=$_POST["SupCorscenario"];
 ?>
 
 <!DOCTYPE html>
@@ -15,12 +15,12 @@ $_SESSION["IPP_SUPP"]=$_POST["IPP_SUPP"];
 <H1> etez-vous sur de vouloir supprimer ce patient ?</H1>
 <br>
 <?php
-
-echo $_SESSION["IPP_SUPP"];
+//demande de confirmation pour la suppresion
+echo "etes vous sur de vouloir supprimer ce scenario ";
 ?>
 <br>
 
-<button onclick="location.href='SupprimerPatientSQL.php'">OUI</button> <!-- Bouton oui supprimer patient -->
-<button onclick="location.href='SupprimerPatient.php'">NON</button> <!-- Bouton non supprimer patient -->
+<button onclick="location.href='SupSceSQL.php'">OUI</button> <!-- Bouton oui supprimer patient -->
+<button onclick="location.href='principaleEve.php'">NON</button> <!-- Bouton non supprimer patient -->
 </body>
 </html>

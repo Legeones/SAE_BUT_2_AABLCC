@@ -40,10 +40,13 @@ require "patientDPIfunction.php";
         </form>
         <div class="container" >
             <div class="grid-container">
-
-                <?= afficherDataPersos() ?>
+                <div class="info" onclick="openForm('donn-perso');">
+                    <h2>Données personnelles</h2>
+                </div>
             </div>
-
+        </div>
+        <div class="login-popup">
+            <?= afficherDataPersos() ?>
         </div>
         <div style="overflow-y: scroll; overflow-x: scroll;">
             <form action="patientDPIfunction.php" method="get" class="table-container">

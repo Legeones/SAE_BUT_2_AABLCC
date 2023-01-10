@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang=en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Page de déconnexion</title>
@@ -14,10 +14,10 @@
         <img class="logo" src="https://moodle.uphf.fr/pluginfile.php/358899/mod_resource/content/1/logoIFSI.png">
     </header>
         <div class="gauche2">
-            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Connexion"/>
+            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Connexion"/> <!-- Permet d'accèder à la page Connexion -->
     </div>
         <div class ="Aide">
-            <input type="button" onclick="window.location.href ='../Connexion/Page_Accueil.php';" value="Accueil"/>
+            <input type="button" onclick="window.location.href ='../Connexion/Page_Accueil.php';" value="Accueil"/> <!-- Permet d'accèder à la page Accueil -->
             </div>
 </form>
 </head>
