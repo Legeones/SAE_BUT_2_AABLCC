@@ -2,7 +2,7 @@
 <html lang="fr">
 <html>
 <head>
-    <title>suppression Scenario</title>
+    <title>Corbeille Scenario</title>
     <meta charset="utf-8">
     <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="../Verif_Test/CSS_DPI.css" media="screen" type="text/css" />
@@ -23,17 +23,16 @@
         </div>
     </div>
     <div class="droite">
-        <form action="ConfirSuppSCE.php" method="post" enctype="multipart/form-data">
+        <form action="CorbeilleSceSQl.php" method="post" enctype="multipart/form-data">
 
-            <h1>choix scenario a supprimer</h1>
+            <h1>choix scenario</h1>
             <br>
             <br>
             <?php
             require ('../BDD/DataBase_Scenario.php');
-            // création de bouton pour les scenario qui sont dans la corbeille
-            $der = lstderoulanteScenarioCorb();
+            $der = lstderoulanteScenario();
             foreach ($der as $val){
-                echo "<input type='radio' name='SupCorscenario' checked value={$val['idscenario']} /> {$val['nom']}<br/>";
+                echo "<input type='radio' name='Corscenario' checked value={$val['idscenario']} /> {$val['nom']}<br/>";
             }
 
             ?>
@@ -43,7 +42,6 @@
             <input type="submit" name="submit" value="suivant">
 
             <?php
-            //gestion des erreurs
             if(isset($_GET['erreur'])){
                 $err = $_GET['erreur'];
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang=en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
@@ -26,5 +26,7 @@
     <h5>Failure to comply with the rules and security measures of this charter is likely to engage the responsibility of the user and lead to warnings, limitations or suspensions of use of all or part of the IS, or even penalties. disciplinary, in proportion to the seriousness of the facts concerned.</h5>
     <h3>5 Coming into force </h3>
     <h5>This charter is applicable from < DATE ENTRY INTO FORCE ></h5>
+    <a href="../Connexion/login.php"><strong>Retour</strong></a><br>
+
 </div>
 </body>

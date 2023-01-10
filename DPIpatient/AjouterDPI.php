@@ -39,6 +39,7 @@ require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
                 <div id="formDPI" style="display: block">
                     <div class="Titreform">
                         <h1><u>Ajouter un DPI</u></h1>
+                        <!-- Onglet ajouter un DPI -->
                     </div>
                     <div class="Groupe">
                         <?php if (isset($_SESSION['MessErreur']) && !empty($_SESSION['MessErreur'])):?>
@@ -50,22 +51,24 @@ require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
                             </div>
                         <?php endif ?>
                         <p class="infoForm"><li><u>Certaines informations ne sont pas necéssaires et se définissent par "*".</u></li></p>
+                        <!-- Ici un message apparait pour nous dire que certaines informations non nécessaire et se définissenent par * -->
+
                     </div>
                     <?php
 
                     $lst = nameColonne('patient')[0];
                     $lst1 = nameColonne('patient')[1];
-                    $debut = 2;
+                    $debut = 0;
                     $fin = sizeof($lst);
                     $_SESSION['Debut'] = $debut;
                     $_SESSION['Fin'] = $fin;
                     for ($i = $debut; $i < $fin; $i++) {
-                        if ($i == 17){$i +=1;}
+                        if ($i == 1 or $i == 17){$i +=1;}
                         if ($i == 18){$i +=1;}
                         $type = "$lst1[$i]";
                         $res2 = 'val' . $i;
                         $res = "$lst[$i]";
-                        if ($type == 'integer' || $type == 'double precision') {$type = "number";}
+                        if ($type == 'integer' or $type == 'double precision' or $type == 'numeric') {$type = "number";}
                         if ($i <= 16 or $i >= 21 and $i<=24){formulaire($res, $lst, $i, $type, $res2);}
                         elseif ($i >=19 and $i <=20){formulaire_duo_bool_radio($res,$lst,$i,$res2);}
                         else {formulaire_trio_radio($res,$lst,$i,$res2);}
@@ -79,6 +82,7 @@ require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
                 <div id="formContact" style="display:none">
                     <div class="Titreform">
                         <h1><u>Ajouter une Personne à Contacter </u></h1>
+                        <!-- Onglet ajouter une personne à contacter -->
                     </div>
                     <?php
                     $lst = nameColonne('personnecontacte')[0];
@@ -107,6 +111,7 @@ require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
                 <div id="formConfiance" style="display:none">
                     <div class="Titreform">
                         <h1><u>Ajouter une Personne de Confiance</u></h1>
+                        <!-- Onglet ajouter une personne de confiance -->
                     </div>
                     <?php
                     $lst = nameColonne('personneconfiance')[0];
@@ -131,6 +136,7 @@ require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
                 </div>
             </form>
             <?php $_SESSION['lstErreur'] = null;
+            $_SESSION['lstErreur_specifique'] = null;
             reset_session();?>
         </div>
     </div>

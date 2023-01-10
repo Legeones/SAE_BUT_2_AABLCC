@@ -52,10 +52,10 @@ else {
                     //var_dump($_FILES['photo']);
                 }
             } else {
-                header('Location: ../DPIpatient/FormulaireUpload.php?erreur=3');
+                header('Location: ../DPIpatient/FormulaireUpload.php?erreur=3'); // Zone de gestion des erreurs
             }
         } else {
-            header('Location: ../DPIpatient/FormulaireUpload.php?erreur=4');
+            header('Location: ../DPIpatient/FormulaireUpload.php?erreur=4'); // Zone de gestion des erreurs
         }
     }
 }

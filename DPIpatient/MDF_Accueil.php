@@ -38,9 +38,9 @@ require("Principal_PHP_Fonction_DPI_ADD_or_Modif.php");
                 <div class="Titreform">
                     <h1 class="Question_mdf"><u>Que voulez-vous modifier</u></h1>
                 </div>
-                <button type="button" id="bouton1" onclick="location.href='MDFDPI.php'"><label><b>Patient</b></label></button><br>
-                <button type="button" id="bouton2" onclick="location.href='MDF_Personne_de_contacte.php'"><label><b>Personne de Contacte</b></label></button>
-                <button type="button" id="bouton3" onclick="location.href='MDF_Personne_de_confiance.php'"><label><b>Personne de Confiance</b></label></button>
+                <button type="button" id="bouton1" onclick="location.href='MDFDPI.php'"><label><b>Patient</b></label></button><br> <!-- Permet d'accèder à l'onglet Patient -->
+                <button type="button" id="bouton2" onclick="location.href='MDF_Personne_de_contacte.php'"><label><b>Personne de Contacte</b></label></button> <!-- Permet d'accèder à l'onglet Personne de Contacte -->
+                <button type="button" id="bouton3" onclick="location.href='MDF_Personne_de_confiance.php'"><label><b>Personne de Confiance</b></label></button> <!-- Permet d'accèder à l'onglet Personne de Confiance -->
 
             </div>
         </div>

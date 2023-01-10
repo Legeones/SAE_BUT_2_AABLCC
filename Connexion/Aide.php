@@ -1,4 +1,4 @@
-<html lang=en">
+<html lang="en">
 <head>
     <!-- Importation des fichiers de styles -->
 
@@ -26,7 +26,7 @@
         <div class="formDroite">
             <div class="Groupe">
                 <label> Message :</label>
-                <input type="text" placeholder="Saisissez ici ..." name="body" />
+                <input type="text" placeholder="Saisissez ici ..." name="body" /> <!-- Zone de saisie -->
             </div>
         </div>
     </div>

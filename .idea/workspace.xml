@@ -5,30 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2110909-c6c5-47ce-99df-de1c8bfafe88" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/18956045-3c8b-4637-bae7-71178d74f341/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/18956045-3c8b-4637-bae7-71178d74f341/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/18956045-3c8b-4637-bae7-71178d74f341/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/18956045-3c8b-4637-bae7-71178d74f341/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/57d57f69-b418-46ce-a51f-befa0bf25b68/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/57d57f69-b418-46ce-a51f-befa0bf25b68/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/57d57f69-b418-46ce-a51f-befa0bf25b68/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/57d57f69-b418-46ce-a51f-befa0bf25b68/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e7f8b7f2-f1f3-4477-9c2f-6b21be9c0ba1/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BDD/DataBase_Dpi.php" beforeDir="false" afterPath="$PROJECT_DIR$/BDD/DataBase_Dpi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientBiologie.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientBiologie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientCourriers.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientCourriers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientDiagramme.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientDiagramme.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientImagerie.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientImagerie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientIntervenants.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientIntervenants.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientMacrocible.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientMacrocible.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientObservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientObservation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientPrescription.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientPrescription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/DPIpatientStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/patientDPIfunction.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/patientDPIfunction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DPIpatient/scriptsDPIpatient.js" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/scriptsDPIpatient.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Verif_Test/CSS_DPI.css" beforeDir="false" afterPath="$PROJECT_DIR$/Verif_Test/CSS_DPI.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charte_Utilisation/charte_utilisation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Charte_Utilisation/charte_utilisation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charte_Utilisation/charte_utilisationEN.php" beforeDir="false" afterPath="$PROJECT_DIR$/Charte_Utilisation/charte_utilisationEN.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Aide.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Aide.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Deconnexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Deconnexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Localisation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Localisation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Page_Accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Page_Accueil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/MDPoublier.php" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/MDPoublier.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,21 +39,9 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
-    <configuration name="BDDSAE.sql" type="DatabaseScript" editBeforeRun="true" nameIsGenerated="true">
-      <script-file value="$PROJECT_DIR$/BDD/BDDSAE.sql" />
-      <script-mode>FILE</script-mode>
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -79,9 +51,9 @@
       <option name="presentableId" value="Default" />
       <updated>1672744331946</updated>
       <workItem from="1672744335304" duration="89000" />
-      <workItem from="1673002212691" duration="4147000" />
-      <workItem from="1673250277015" duration="3701000" />
-      <workItem from="1673341560371" duration="2238000" />
+      <workItem from="1672914988350" duration="762000" />
+      <workItem from="1673248467046" duration="3382000" />
+      <workItem from="1673341611507" duration="1422000" />
     </task>
     <servers />
   </component>
