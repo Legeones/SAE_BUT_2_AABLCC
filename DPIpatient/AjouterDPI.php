@@ -42,36 +42,36 @@ require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
                         <!-- Onglet ajouter un DPI -->
                     </div>
                     <div class="Groupe">
-                        <?php if (isset($_SESSION['MessErreur']) && !empty($_SESSION['MessErreur'])):?>
+                        <?php if (isset($_SESSION['MessErreur']) && !empty($_SESSION['MessErreur'])):?> <!-- si la session comporte une erreur ou plus -->
                             <div class="groupeErreur">
                                 <p>
-                                    <?= $_SESSION['MessErreur'] ?>
-                                    <?php $_SESSION['MessErreur'] = null ?>
+                                    <?= $_SESSION['MessErreur'] ?> <!-- elle affiche le message d'erreur stoke dans la session -->
+                                    <?php $_SESSION['MessErreur'] = null ?> <!-- elle est mise à nulle pour éviter que le message s'affiche même lors d'un reset de la page -->
                                 </p>
                             </div>
                         <?php endif ?>
                         <p class="infoForm"><li><u>Certaines informations ne sont pas necéssaires et se définissent par "*".</u></li></p>
-                        <!-- Ici un message apparait pour nous dire que certaines informations non nécessaire et se définissenent par * -->
+                        <!-- Ici un message apparait pour nous dire que certaines informations non nécessaires et se définissent par "*" -->
 
                     </div>
                     <?php
 
-                    $lst = nameColonne('patient')[0];
-                    $lst1 = nameColonne('patient')[1];
+                    $lst = nameColonne('patient')[0]; // liste de tous les noms de la colonne
+                    $lst1 = nameColonne('patient')[1]; // liste de tous les types de chaque colonne
                     $debut = 0;
                     $fin = sizeof($lst);
-                    $_SESSION['Debut'] = $debut;
+                    $_SESSION['Debut'] = $debut; // session pour le debut de l'intervalle qui sert pour les creations de sessions
                     $_SESSION['Fin'] = $fin;
                     for ($i = $debut; $i < $fin; $i++) {
-                        if ($i == 1 or $i == 17){$i +=1;}
-                        if ($i == 18){$i +=1;}
-                        $type = "$lst1[$i]";
-                        $res2 = 'val' . $i;
-                        $res = "$lst[$i]";
-                        if ($type == 'integer' or $type == 'double precision' or $type == 'numeric') {$type = "number";}
-                        if ($i <= 16 or $i >= 21 and $i<=24){formulaire($res, $lst, $i, $type, $res2);}
-                        elseif ($i >=19 and $i <=20){formulaire_duo_bool_radio($res,$lst,$i,$res2);}
-                        else {formulaire_trio_radio($res,$lst,$i,$res2);}
+                        if ($i == 1 or $i == 17){$i +=1;} // colonne pas utilisée pour le formulaire
+                        if ($i == 18){$i +=1;} // colonne pas utilisée pour le formulaire
+                        $type = "$lst1[$i]"; // type de formulaire
+                        $res2 = 'val' . $i; // nom des sessions
+                        $res = "$lst[$i]"; // nom des ids pour les inputs
+                        if ($type == 'integer' or $type == 'double precision' or $type == 'numeric') {$type = "number";} // tout ce qui se rapproche à number deviennent number
+                        if ($i <= 16 or $i >= 21 and $i<=24){formulaire($res, $lst, $i, $type, $res2);} // creation du formulaire en fonction de son type ainsi que sa forme (si c une check box ou autre )
+                        elseif ($i >=19 and $i <=20){formulaire_duo_bool_radio($res,$lst,$i,$res2);} // creation du formulaire en fonction de son type ainsi que sa forme (si c une check box ou autre )
+                        else {formulaire_trio_radio($res,$lst,$i,$res2);} // creation du formulaire en fonction de son type ainsi que sa forme (si c une check box ou autre )
                     }
                     ?>
                     <div class="Validation" align="center">
@@ -91,7 +91,7 @@ require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
                     $fin = 35;
                     $_SESSION['Debutct'] = $debut;
                     $_SESSION['Finct'] = $fin;
-                    $cpt = 1;
+                    $cpt = 1; // pour commencer les listes nameColonne avec un compteur est non pas de 31
                     for ($i = $debut; $i < $fin; $i++) {
                         $type = "$lst1[$cpt]";
                         $res2 = 'val' . $i;
@@ -120,7 +120,7 @@ require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
                     $fin = 39;
                     $_SESSION['Debutcf'] = $debut;
                     $_SESSION['Fincf'] = $fin;
-                    $cpt = 1;
+                    $cpt = 1; // pour commencer les listes nameColonne avec un compteur est non pas de 35
                     for ($i = $debut; $i < $fin; $i++) {
                         $type = "$lst1[$cpt]";
                         $res2 = 'val' . $i;
@@ -135,6 +135,7 @@ require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
                     </div>
                 </div>
             </form>
+            // met à 0 toutes les sessions utilisé
             <?php $_SESSION['lstErreur'] = null;
             $_SESSION['lstErreur_specifique'] = null;
             reset_session();?>

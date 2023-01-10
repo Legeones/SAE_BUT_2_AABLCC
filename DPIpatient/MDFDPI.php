@@ -46,7 +46,7 @@ require ('Principal_PHP_Fonction_DPI_ADD_or_Modif.php');
                     $_SESSION['table'] = 'patient';
                     $lst = nameColonne('patient')[0];
                     $lst1 = nameColonne('patient')[1];
-                    $debut = 2;
+                    $debut = 1;
                     $fin = sizeof($lst);
                     $_SESSION['Debut'] = $debut;
                     $_SESSION['Fin'] = $fin;
