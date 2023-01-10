@@ -43,108 +43,113 @@ require "patientDPIfunction.php";
 
         <div class="container" >
             <div class="grid-container">
-
-                <?= afficherDataPersos() ?>
-            <div class="info" onclick="show_data_patient_div('donn-admin');">
-                <h2>Données administratives</h2>
-                <div class="info-intern" id="donn-admin">
-                    <h4>Adresse: </h4>
-                    <p><?php print($_SESSION['infosPatient']['adresse'].", ".$_SESSION['infosPatient']['code_postal']." ".$_SESSION['infosPatient']['ville']) ?></p>
-                    <h4>Tel personnel:</h4>
-                    <p><?php print($_SESSION['infosPatient']['telephone_personnel']); ?></p>
-                    <h4>Tel professionnel:</h4>
-                    <p><?php print($_SESSION['infosPatient']['telephone_professionnel']); ?></p>
-                    <h4>Personne a prevenir:</h4>
-                    <p><?php print("Nom: ".$_SESSION['infosPersonneCont']['nom'].", prénom: ".$_SESSION['infosPersonneCont']['prenom']." (".$_SESSION['infosPersonneCont']['lien'].")"); ?></p>
-                    <p><?php print("Tel: ".$_SESSION['infosPersonneCont']['telephone'])?></p>
-                    <h4>Personne de confiance:</h4>
-                    <p><?php print("Nom: ".$_SESSION['infosPersonneConf']['nom'].", prénom: ".$_SESSION['infosPersonneConf']['prenom']." (".$_SESSION['infosPersonneConf']['lien'].")")?></p>
-                    <p><?php print("Tel: ".$_SESSION['infosPersonneConf']['telephone'])?></p>
+                <div class="info" onclick="openForm('donn-perso');">
+                    <h2>Données personnelles</h2>
                 </div>
-            </div>
-            <div class="info" onclick="show_data_patient_div('donn-soc');">
-                <h2>Données sociales</h2>
-                <div class="info-intern" id="donn-soc">
-                    <h4>Mesure de protection:<?php print($_SESSION['infosPatient']['mesure_de_protection'])?></h4>
-                    <h4>Suivi assistant social:<?php print($_SESSION['infosPatient']['assistant_social'])?></h4>
+                <div class="info" onclick="openForm('donn-admin');">
+                    <h2>Données administratives</h2>
                 </div>
-
-            </div>
-            <div class="info" onclick="show_data_patient_div('info-medi');">
-                <h2>Infos médicales</h2>
-                <div class="info-intern" id="info-medi">
-                    <?php foreach ($_SESSION['infosPersonneMed'] as $m){
-                        ?>
-                            <h3>Medecin <?php print($m['lienmed']) ?></h3>
-                            <p>Nom:<?php print($m['nom'])?></p>
-                            <p>Prénom:<?php print($m['prenom'])?></p>
-                            <p>Adresse:<?php print($m['adresse']).",".$m['cp'].",".$m['ville']?></p>
-                        <?php
-                    }
-                    ?>
+                <div class="info" onclick="openForm('donn-soc');">
+                    <h2>Données sociales</h2>
                 </div>
-
-            </div>
-            <div class="info" onclick="show_data_patient_div('donn-medi');">
-                <h2>Données médicales</h2>
-                <div class="info-intern" id="donn-medi">
-                    <h4>Allergies:</h4>
-                    <p><?php print($_SESSION['infosPatient']['allergies']); ?></p>
-                    <h4>Antecedents:</h4>
-                    <p><?php print($_SESSION['infosPatient']['antecedents']); ?></p>
-                    <h4>Obstetricaux:</h4>
-                    <p><?php print($_SESSION['infosPatient']['obstericaux']); ?></p>
-                    <h4>Medicaux:</h4>
-                    <p><?php print($_SESSION['infosPatient']['documents_medicaux']); ?></p>
-                    <h4>Chirurgicaux:</h4>
-                    <p><?php print($_SESSION['infosPatient']['documents_chirurgicaux']); ?></p>
+                <div class="info" onclick="openForm('info-medi');">
+                    <h2>Infos médicales</h2>
                 </div>
-
-            </div>
-            <div class="info" onclick="show_data_patient_div('trait-dom');">
-                <h2>Traitement à domicile</h2>
-                <div class="info-intern" id="trait-dom">
-                    <p><?= $_SESSION['infosPatient']['traitement_domicile'] ?></p>
+                <div class="info" onclick="openForm('donn-medi');">
+                    <h2>Données médicales</h2>
                 </div>
-
-            </div>
-            <div class="info" onclick="show_data_patient_div('macro-ent');">
-                <h2>Macrocible d'entrée</h2>
-                <div class="info-intern" id="macro-ent">
-                    <h4>Synthèse d'entrée</h4>
-                    <p><?php print($_SESSION['infosPatient']['synthese_entree']); ?></p>
-                    <p></p>
-                    <h4>Bilan d'autonomie:</h4>
-                    <table>
-                        <tbody>
-                        <tr>
-                            <td>Mobilité</td>
-                            <td><?php print($_SESSION['infosPatient']['mobilite'])?></td>
-                        </tr>
-                        <tr>
-                            <td>Alimentation</td>
-                            <td><?php print($_SESSION['infosPatient']['alimentation'])?></td>
-                        </tr>
-                        <tr>
-                            <td>Hygiène corporelle</td>
-                            <td><?php print($_SESSION['infosPatient']['hygiene'])?></td>
-                        </tr>
-                        <tr>
-                            <td>Elimination</td>
-                            <td><?php print($_SESSION['infosPatient']['toilette'])?></td>
-                        </tr>
-                        <tr>
-                            <td>Habillement</td>
-                            <td><?php print($_SESSION['infosPatient']['habit'])?></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <p>Légende : 1 autonome / 2 avec aide partielle  / 3 avec aide totale</p>
+                <div class="info" onclick="openForm('trait-dom');">
+                    <h2>Traitement à domicile</h2>
                 </div>
-
+                <div class="info" onclick="openForm('macro-ent');">
+                    <h2>Macrocible d'entrée</h2>
+                </div>
             </div>
         </div>
-
+        <div class="login-popup">
+            <?= afficherDataPersos() ?>
+            <div class="info-popup" id="donn-admin">
+                <h4>Adresse: </h4>
+                <p><?php print($_SESSION['infosPatient']['adresse'].", ".$_SESSION['infosPatient']['code_postal']." ".$_SESSION['infosPatient']['ville']) ?></p>
+                <h4>Tel personnel:</h4>
+                <p><?php print($_SESSION['infosPatient']['telephone_personnel']); ?></p>
+                <h4>Tel professionnel:</h4>
+                <p><?php print($_SESSION['infosPatient']['telephone_professionnel']); ?></p>
+                <h4>Personne a prevenir:</h4>
+                <p><?php print("Nom: ".$_SESSION['infosPersonneCont']['nom'].", prénom: ".$_SESSION['infosPersonneCont']['prenom']." (".$_SESSION['infosPersonneCont']['lien'].")"); ?></p>
+                <p><?php print("Tel: ".$_SESSION['infosPersonneCont']['telephone'])?></p>
+                <h4>Personne de confiance:</h4>
+                <p><?php print("Nom: ".$_SESSION['infosPersonneConf']['nom'].", prénom: ".$_SESSION['infosPersonneConf']['prenom']." (".$_SESSION['infosPersonneConf']['lien'].")")?></p>
+                <p><?php print("Tel: ".$_SESSION['infosPersonneConf']['telephone'])?></p>
+                <button onclick="closeForm('donn-admin')">Fermer</button>
+            </div>
+            <div class="info-popup" id="donn-soc">
+                <h4>Mesure de protection:<?php print($_SESSION['infosPatient']['mesure_de_protection'])?></h4>
+                <h4>Suivi assistant social:<?php print($_SESSION['infosPatient']['assistant_social'])?></h4>
+                <button onclick="closeForm('donn-soc')">Fermer</button>
+            </div>
+            <div class="info-popup" id="info-medi">
+                <?php foreach ($_SESSION['infosPersonneMed'] as $m){
+                    ?>
+                    <h3>Medecin <?php print($m['lienmed']) ?></h3>
+                    <p>Nom:<?php print($m['nom'])?></p>
+                    <p>Prénom:<?php print($m['prenom'])?></p>
+                    <p>Adresse:<?php print($m['adresse']).",".$m['cp'].",".$m['ville']?></p>
+                    <?php
+                }
+                ?>
+                <button onclick="closeForm('info-medi')">Fermer</button>
+            </div>
+            <div class="info-popup" id="donn-medi">
+                <h4>Allergies:</h4>
+                <p><?php print($_SESSION['infosPatient']['allergies']); ?></p>
+                <h4>Antecedents:</h4>
+                <p><?php print($_SESSION['infosPatient']['antecedents']); ?></p>
+                <h4>Obstetricaux:</h4>
+                <p><?php print($_SESSION['infosPatient']['obstericaux']); ?></p>
+                <h4>Medicaux:</h4>
+                <p><?php print($_SESSION['infosPatient']['documents_medicaux']); ?></p>
+                <h4>Chirurgicaux:</h4>
+                <p><?php print($_SESSION['infosPatient']['documents_chirurgicaux']); ?></p>
+                <button onclick="closeForm('donn-medi')">Fermer</button>
+            </div>
+            <div class="info-popup" id="trait-dom">
+                <p><?= $_SESSION['infosPatient']['traitement_domicile'] ?></p>
+                <button onclick="closeForm('trait-dom')">Fermer</button>
+            </div>
+            <div class="info-popup" id="macro-ent">
+                <h4>Synthèse d'entrée</h4>
+                <p><?php print($_SESSION['infosPatient']['synthese_entree']); ?></p>
+                <p></p>
+                <h4>Bilan d'autonomie:</h4>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>Mobilité</td>
+                        <td><?php print($_SESSION['infosPatient']['mobilite'])?></td>
+                    </tr>
+                    <tr>
+                        <td>Alimentation</td>
+                        <td><?php print($_SESSION['infosPatient']['alimentation'])?></td>
+                    </tr>
+                    <tr>
+                        <td>Hygiène corporelle</td>
+                        <td><?php print($_SESSION['infosPatient']['hygiene'])?></td>
+                    </tr>
+                    <tr>
+                        <td>Elimination</td>
+                        <td><?php print($_SESSION['infosPatient']['toilette'])?></td>
+                    </tr>
+                    <tr>
+                        <td>Habillement</td>
+                        <td><?php print($_SESSION['infosPatient']['habit'])?></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>Légende : 1 autonome / 2 avec aide partielle / 3 avec aide totale</p>
+                <button onclick="closeForm('macro-ent')">Fermer</button>
+            </div>
+        </div>
         </div>
     </div>
 </div>

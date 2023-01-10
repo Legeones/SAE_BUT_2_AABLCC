@@ -43,6 +43,11 @@ require "patientDPIfunction.php";
 
         <div class="container" >
             <div class="grid-container">
+                <div class="info" onclick="openForm('donn-perso');">
+                    <h2>Données personnelles</h2>
+                </div>
+            </div>
+            <div class="login-popup">
                 <?= afficherDataPersos() ?>
             </div>
             <div class="container-img">

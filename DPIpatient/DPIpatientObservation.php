@@ -39,24 +39,31 @@ require "patientDPIfunction.php";
             <input style="background-color: white;" type="submit" id="imagerie" name="Imagerie" onmouseover="alterner('imagerie');" onmouseout="alterner('imagerie');" value="Imagerie">
             <input style="background-color: white;" type="submit" id="courriers" name="Courriers" onmouseover="alterner('courriers');" onmouseout="alterner('courriers');" value="Courriers">
         </form>
-        <div class="container">
-                <div class="grid-container">
-                    <?= afficherDataPersos() ?>
-                    <div class="info" onclick="show_data_patient_div('obs-medi');">
-                        <h2>Observation médicales</h2>
-                        <div class="info-intern" id="obs-medi">
-                            <?php
-                            foreach ($_SESSION['observationsMed'] as $item){
-                                echo "<div>";
-                                echo "<p> Le ".$item['dateom']." : ".$item['rapport']."</p>";
-                                echo "<p>"."</p>";
-                                echo "</div>";
-                            }
-                            ?>
-                        </div>
-                    </div>
+        <div class="container" >
+            <div class="grid-container">
+                <div class="info" onclick="openForm('donn-perso');">
+                    <h2>Données personnelles</h2>
                 </div>
+            </div>
         </div>
+        <div class="login-popup">
+            <?= afficherDataPersos() ?>
+        </div>
+        <div class="login-popup">
+            <?= afficherDataPersos() ?>
+            <div class="info-popup" id="obs-medi">
+                <?php
+                foreach ($_SESSION['observationsMed'] as $item){
+                    echo "<div>";
+                    echo "<p> Le ".$item['dateom']." : ".$item['rapport']."</p>";
+                    echo "<p>"."</p>";
+                    echo "</div>";
+                }
+                ?>
+                <button onclick="closeForm('obs-medi')">Fermer</button>
+            </div>
+        </div>
+
         <div style="overflow-x: scroll; overflow-y: scroll;">
             <form method="get" action="patientDPIfunction.php" class="table-container">
                 <table>
