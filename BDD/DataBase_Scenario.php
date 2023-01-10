@@ -80,7 +80,7 @@ function RecupCorbeilleSce($idS){
     }
 
 }
-
+// Fonction permettant de check un scénario
 function checkScenario($id){
     try {
         $dbh = DataBase_Creator_Unit();

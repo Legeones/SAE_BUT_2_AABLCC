@@ -6,13 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e2110909-c6c5-47ce-99df-de1c8bfafe88" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Charte_Utilisation/charte_utilisation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Charte_Utilisation/charte_utilisation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Charte_Utilisation/charte_utilisationEN.php" beforeDir="false" afterPath="$PROJECT_DIR$/Charte_Utilisation/charte_utilisationEN.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Connexion/Aide.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Aide.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Connexion/Deconnexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Deconnexion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Connexion/Localisation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Localisation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BDD/DataBase_Scenario.php" beforeDir="false" afterPath="$PROJECT_DIR$/BDD/DataBase_Scenario.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Connexion/Page_Accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/Page_Accueil.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/MDPoublier.php" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/MDPoublier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/loginEN.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/loginEN.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/CorbeilleSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/DPIpatient/CorbeilleSQL.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +51,7 @@
       <workItem from="1672744335304" duration="89000" />
       <workItem from="1672914988350" duration="762000" />
       <workItem from="1673248467046" duration="3382000" />
-      <workItem from="1673341611507" duration="1422000" />
+      <workItem from="1673341611507" duration="2605000" />
     </task>
     <servers />
   </component>

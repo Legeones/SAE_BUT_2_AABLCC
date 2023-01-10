@@ -31,7 +31,7 @@
                     <div class="GroupeLOGO">
                     <input type="password" name="password" id="password" placeholder="Enter your password" /> <!-- Ask the user to enter their password -->
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-                        <em class="bi bi-eye-slash" id="togglePassword"></em>
+                        <em class="bi bi-eye-slash" id="togglePassword"></em> <!-- class allowing the appearance or not of the password -->
                     </div>
                 </div>
             </div>

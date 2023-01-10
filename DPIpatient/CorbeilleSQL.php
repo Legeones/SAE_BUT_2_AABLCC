@@ -11,10 +11,10 @@ $VerifPassword_Lowercase=VerifPassword_Lowercase($_SESSION["IPP_CORB"]);
 
 
 if($VerifEmptyContent==0)
-{ header('Location: ../DPIpatient/Corbeille.php?erreur=1'); }
+{ header('Location: ../DPIpatient/Corbeille.php?erreur=1'); } // Zone de gestion des erreurs
 
 elseif ($VerifPassword_Uppercase==1 || $VerifPassword_Lowercase==1)
-{ header('Location: ../DPIpatient/Corbeille.php?erreur=3'); }
+{ header('Location: ../DPIpatient/Corbeille.php?erreur=3'); } // Zone de gestion des erreurs
 
 
 else { DataBase_Corbeille_Patient(); }
