@@ -1,4 +1,4 @@
-<html lang=en">
+<html lang="en">
 <head>
     <!-- Importation des fichiers de styles -->
 
