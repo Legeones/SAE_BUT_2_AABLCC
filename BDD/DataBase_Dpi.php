@@ -27,7 +27,7 @@ function Patient_Parcour($p,$rm,$rma): void
     $dbh = DataBase_Creator_Unit();
     if($rm!='aucun'){
         if ($rma == 'IPP'){
-            $stmt = $dbh->prepare("SELECT patient.IPP, nom, prenom, datedebut FROM patient LEFT JOIN admission ON patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb WHERE nom like ? and IPPCorb is null LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT DISTINCT ON (patient.ipp) patient.ipp, nom, prenom, admission.dateDebut FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb LEFT JOIN(SELECT datedebut, ipp FROM admission ORDER BY iep DESC) admission ON admission.ipp = patient.IPP where nom like ? and IPPCorb is null LIMIT ? OFFSET ?");
         } else if ($rma == 'IEP'){
             $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP, nom, prenom, datedebut FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb WHERE nom like ? and IPPCorb is null ORDER BY iep DESC LIMIT ? OFFSET ?");
         }
@@ -40,7 +40,7 @@ function Patient_Parcour($p,$rm,$rma): void
 
     if ($p=='Date hospitalisation' && $rm=='aucun') {
         if ($rma == 'IPP'){
-            $stmt = $dbh->prepare("SELECT patient.ipp,nom,prenom, datedebut FROM patient JOIN admission ON admission.ipp = patient.ipp  left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT * FROM(SELECT DISTINCT ON (patient.ipp) patient.ipp, nom, prenom, admission.dateDebut FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb JOIN(SELECT datedebut, ipp FROM admission ORDER BY iep DESC) admission ON admission.ipp = patient.IPP where IPPCorb is null LIMIT ? OFFSET ?) patients ORDER BY patients.datedebut DESC ");
         } else if ($rma == 'IEP'){
             $stmt = $dbh->prepare("SELECT admission.iep,patient.ipp,nom,prenom, datedebut FROM patient JOIN admission ON admission.ipp = patient.ipp  left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is  null ORDER BY admission.iep DESC LIMIT ? OFFSET ?");
         }
@@ -50,7 +50,7 @@ function Patient_Parcour($p,$rm,$rma): void
         $stmt->execute();
     } elseif ($p=='Ordre alphabetique' && $rm=='aucun'){
         if ($rma == 'IPP'){
-            $stmt = $dbh->prepare("SELECT patient.IPP,nom,prenom,datedebut FROM patient LEFT JOIN admission ON patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY nom LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT DISTINCT ON (patient.ipp,nom) patient.ipp, nom, prenom, MAX(admission.dateDebut) as dateDebut FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb LEFT JOIN(SELECT datedebut, ipp FROM admission ORDER BY iep DESC) admission ON admission.ipp = patient.IPP where IPPCorb is null GROUP BY patient.ipp, nom, prenom ORDER BY nom LIMIT ? OFFSET ?");
         } else if ($rma == 'IEP'){
             $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP,nom,prenom,datedebut FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY nom, admission.iep LIMIT ? OFFSET ?");
         }
@@ -60,7 +60,7 @@ function Patient_Parcour($p,$rm,$rma): void
         $stmt->execute();
     } elseif($rm=='aucun') {
         if ($rma == 'IPP'){
-            $stmt = $dbh->prepare("SELECT patient.IPP,nom,prenom,datedebut FROM patient LEFT JOIN admission ON patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT DISTINCT ON (patient.ipp) patient.ipp, nom, prenom, MAX(admission.dateDebut) as dateDebut FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb LEFT JOIN(SELECT datedebut, ipp FROM admission ORDER BY iep DESC) admission ON admission.ipp = patient.IPP where IPPCorb is null GROUP BY patient.ipp, nom, prenom LIMIT ? OFFSET ?");
         } else if ($rma == 'IEP'){
             $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP,nom,prenom,datedebut FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY admission.iep LIMIT ? OFFSET ?");
         }
