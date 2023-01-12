@@ -21,8 +21,7 @@ require "patientDPIfunction.php";
         </div>
         <div class="btn-group">
             <button onclick="location.href='DPI.php'">PATIENTS</button>
-            <button>SCENARIOS</button>
-            <button>JSAISPAS</button>
+            <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button>
         </div>
     </div>
 
@@ -65,7 +64,6 @@ require "patientDPIfunction.php";
                     $listeJour = array();
                     foreach ($_SESSION['infosPatient'] as $item ){
                         if (in_array($item['jour'],$listeJour)){
-
                         } else {
                             $listeJour[] = $item['jour'];
                             echo "<td>".$item['jour']."</td>";
