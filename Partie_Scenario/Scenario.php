@@ -14,13 +14,8 @@
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-<<<<<<< HEAD
             <button onclick="location.href='principale.php'">PATIENTS</button>
-            <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button> <!-- Bouton permettant d'accéder aux scenarios -->
-=======
-            <button onclick="location.href='../DPIpatient/DPI.php'">PATIENTS</button>
             <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button> <!-- Bouton permettant d'accèder au scenarios -->
->>>>>>> ed9eec5c000669f0ea17a0f92b374e601d2b8c22
             <button>JSAISPAS</button>
         </div>
     </div>
