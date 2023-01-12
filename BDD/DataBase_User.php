@@ -27,8 +27,8 @@ function Database_Add_User()
             $dbh = DataBase_Creator_Unit();
             $stmt2 = $dbh->prepare("INSERT INTO utilisateur values (?,?,?,?,?,?)");
             $stmt2->bindParam(1, $_SESSION["IDENTIFIANT"]);
-            $smtp2->bindParam(2, $_SESSION["ID_NOM"]);
-            $smtp2->bindParam(3, $_SESSION["ID_PRENOM"]);
+            $stmt2->bindParam(2, $_SESSION["ID_NOM"]);
+            $stmt2->bindParam(3, $_SESSION["ID_PRENOM"]);
             $stmt2->bindParam(4, $password_hashed);
             $stmt2->bindParam(5, $_SESSION['EMAIL']);
             $stmt2->bindParam(6, $_SESSION['ROLE']);
