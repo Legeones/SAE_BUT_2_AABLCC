@@ -36,7 +36,8 @@
     <div class="droite">
 
         <?php
-        if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='choixScenario.php'>lancer scenario</button>";}
+        session_start();
+        if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='choixScenario.php'>lancer scenario</button>"; echo "<button onclick= location.href='../Partie_Scenario/Scenario.php'> scenario steven";}
         ?>
 </body>
 </html>

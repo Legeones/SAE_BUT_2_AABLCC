@@ -320,7 +320,8 @@ values (default,'2013-02-05','Patient agité taux de stress élévé',8000000000
 create table Evenement(
     idEvenement serial primary key ,
     nom text not null ,
-    description text not null
+    description text not null,
+    categorie text not null
 );
 
 create table Scenario(
@@ -354,11 +355,11 @@ create table ScenarioCorbeille(
 
 
 insert into Evenement
-values (default,'epilepsie','votre patient fait une crise d epilepsie'),
-       (default,'monter temperature','la temperature du patient a monter de deux degrés'),
-       (default,'arret cardiaque','le patient a un arret cardiaque'),
-       (default,'nouveau traitement','il faut donner une nouvelle de paracetamol a 18h00'),
-       (default,'toilet','le patient vous appelle en urgence pour aller au toilet');
+values (default,'epilepsie','votre patient fait une crise d epilepsie', 'changement rythme cardiaque'),
+       (default,'monter temperature','la temperature du patient a monter de deux degrés', 'changement température'),
+       (default,'arret cardiaque','le patient a un arret cardiaque', 'changement rythme cardiaque'),
+       (default,'nouveau traitement','il faut donner une nouvelle de paracetamol a 18h00', 'nouveau traitement'),
+       (default,'toilet','le patient vous appelle en urgence pour aller au toilet', 'besoin vital');
 
 
 insert into Scenario
