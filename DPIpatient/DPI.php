@@ -20,8 +20,7 @@ $_SESSION['patientSuivi']=null;
         </div>
         <div class="btn-group">
             <button onclick="location.href='../DPIpatient/DPI.php'">PATIENTS</button>
-            <button>SCENARIOS</button>
-            <button>JSAISPAS</button>
+            <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button>
             <!-- choix du rôle -->
            <?php
                         echo '<br>';
