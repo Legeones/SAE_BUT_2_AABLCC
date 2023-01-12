@@ -3,7 +3,7 @@ session_start();
 $_SESSION['cat']=null;
 $_SESSION['patientSuivi']=null;
 ?>
-<html>
+<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <!-- importation des fichiers de style -->
