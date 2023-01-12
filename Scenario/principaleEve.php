@@ -20,12 +20,22 @@
             <button onclick="location.href='../DPIpatient/DPI.php'">PATIENTS</button>
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
+            <?php
+            session_start();
+            if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {
+                echo "<button onclick=location.href='../Scenario/SupprimerScenario.php'>Supprimer Scenario</button>"; //Bouton permettant de supprimer des Scenario
+                echo '<br>';
+                echo "<button onclick=location.href='../Scenario/CorbeilleSce.php'> Mettre a la Corbeille</button>"; // Bouton permettant de mettre des Scenario dans la corbeille
+                echo '<br>';
+                echo "<button onclick=location.href='../Scenario/RecupCorbeilleSce.php'>Recuperer Scenario</button>"; //Bouton permettant de recupérer des Scenario dans la corbeille
+                echo '<br>';
+            }
+            ?>
         </div>
     </div>
     <div class="droite">
 
         <?php
-        session_start();
         if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='choixScenario.php'>lancer scenario</button>"; echo "<button onclick= location.href='../Partie_Scenario/Scenario.php'> scenario steven";}
         ?>
 </body>

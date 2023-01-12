@@ -3,7 +3,7 @@ session_start();
 $_SESSION['cat']=null;
 $_SESSION['patientSuivi']=null;
 ?>
-<html>
+<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <!-- importation des fichiers de style -->
@@ -153,9 +153,9 @@ $_SESSION['patientSuivi']=null;
                     onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)"<?php }?>
                           value = <?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']]['nom']."_".$_SESSION[$_SESSION['patientActuel']]['prenom'];}?>>
                 <div class="hide" id=<?php echo $_SESSION['idActuel'] ?>>
-                    <?php if(isset($_SESSION[$_SESSION['patientActuel']])) print ("IPP:".$_SESSION[$_SESSION['patientActuel']]['ipp']."<br>");
+                    <?php if(isset($_SESSION[$_SESSION['patientActuel']])){ print ("IPP:".$_SESSION[$_SESSION['patientActuel']]['ipp']."<br>");
                     if(isset($_SESSION[$_SESSION['patientActuel']]['iep'])) print ("IEP:".$_SESSION[$_SESSION['patientActuel']]['iep']."<br>");
-                    print("Date d'hospitalisation ".$_SESSION[$_SESSION['patientActuel']]['datedebut']); ?>
+                    print("Date d'hospitalisation ".$_SESSION[$_SESSION['patientActuel']]['datedebut']);} ?>
                 </div>
             <?php }
             ?>
