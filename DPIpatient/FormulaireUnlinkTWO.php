@@ -78,7 +78,7 @@
                 }
                 if($err==7){
                     echo "<p style='color:red'>Error: L'IPP n'existe pas</p>";
-                    // Une erreur est affiché si l'IPP n'existe pas
+                    // Une erreur est affichée si l'IPP n'existe pas
                 }
             }
             ?>
