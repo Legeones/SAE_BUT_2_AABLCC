@@ -251,11 +251,10 @@ values (1, '2012-10-14', '18:00:00.00', 'une fois',true, 3,2),
        (6, '2013-02-03', '18:00:00.00', 'une fois',true, 5,6),
        (7, '2013-02-03', '19:00:00.00', 'une fois',true, 5,5),
        (8, '2013-02-04', '08:00:00.00', 'une fois',true, 5,6),
-       (9, '2013-02-04', '09:00:00.00', 'une fois',true, 5,5),
-       (10, '2013-02-04', '09:05:00.00', 'une fois',true, 5,7),
-       (11, '2013-02-04', '17:00:00.00', 'une fois',true, 5,4),
-       (12, '2013-02-04', '18:00:00.00', 'une fois',true, 5,5),
-       (13, '2013-02-04', '19:00:00.00', 'une fois',true, 5,5);
+       (9, '2013-02-04', '09:05:00.00', 'une fois',true, 5,7),
+       (10, '2013-02-04', '17:00:00.00', 'une fois',true, 5,4),
+       (11, '2013-02-04', '18:00:00.00', 'une fois',true, 5,5),
+       (12, '2013-02-04', '19:00:00.00', 'une fois',true, 5,5);
 
 
 
@@ -288,21 +287,22 @@ values (1, '2012-10-14', '20h00','2000-1-12', 'deux doses medicamenteuses d_anti
 
 
 create table Utilisateur (
-                             login text primary key,
-                             mdp text not null,
-                             email text check ( email ~ '@' ) not null unique ,
-                             roles text not null
+    login text primary key,
+    nom text not null,
+    prenom text not null,
+    mdp text not null,
+    email text check ( email ~ '@' ) not null unique ,
+    roles text not null
 );
 
 insert into Utilisateur
-values ('aurelien.leveque', 'leveque', 'Aurelien.Leveque@uphf.fr', 'etudiant'),
-       ('steven.anselot', 'anselot', 'Steven.Anselot@uphf.fr', 'etudiant'),
-       ('theo.bernaville', 'bernaville', 'Theo.Bernaville@uphf.fr', 'etudiant'),
-       ('samuel.applencourt', 'applencourt', 'Samuel.Applencourt@uphf.fr', 'etudiant'),
-       ('dorian.petit', '$2y$12$Z/gsoP/SkQMBSc0WXmWQnO2GfhNgnQe0erqMLuvjjuqNPIm4.vQaS', 'Dorian.Petit@uphf.fr', 'prof'),
-       ('rtyu','$2y$12$oNKQlblFYAK169xZLtIsBeRb0loYOPb5xc92tj68G9/Qm8jI7f.G.','rtyu@uphf.fr','admin'),
-       ('abcd','$2$12$aP7pS7yf1J9bG9aBL5mIN.0k6OeVKnDe3TyN598U/3jmVnXpAaJRK','abcd@uphf.fr','etudiant');
-
+values ('aurelien.leveque','leveque','aurelien', 'leveque', 'Aurelien.Leveque@uphf.fr', 'etudiant'),
+       ('steven.anselot','anselot','steven', 'anselot', 'Steven.Anselot@uphf.fr', 'etudiant'),
+       ('theo.bernaville','bernaville','theo', 'bernaville', 'Theo.Bernaville@uphf.fr', 'etudiant'),
+       ('samuel.applencourt','applencourt','samuel', 'applencourt', 'Samuel.Applencourt@uphf.fr', 'etudiant'),
+       ('dorian.petit','petit','dorian', '$2y$12$Z/gsoP/SkQMBSc0WXmWQnO2GfhNgnQe0erqMLuvjjuqNPIm4.vQaS', 'Dorian.Petit@uphf.fr', 'prof'),
+       ('rtyu','rt','tt','$2y$12$oNKQlblFYAK169xZLtIsBeRb0loYOPb5xc92tj68G9/Qm8jI7f.G.','rtyu@uphf.fr','admin'),
+       ('abcd','bol','jack','$2$12$aP7pS7yf1J9bG9aBL5mIN.0k6OeVKnDe3TyN598U/3jmVnXpAaJRK','abcd@uphf.fr','etudiant');
 insert into TransmissionsCiblees
 values (default,'2013-02-05','IA-ep','Alimentation','mange peu','voir avec diet',null,8000000000002, 5),
        (default,'2013-02-06','IA-ep','hygienne',null,null,'surveiller ses aller au toilet',8000000000002, 5),
@@ -320,7 +320,8 @@ values (default,'2013-02-05','Patient agité taux de stress élévé',8000000000
 create table Evenement(
     idEvenement serial primary key ,
     nom text not null ,
-    description text not null
+    description text not null,
+    categorie text not null
 );
 
 create table Scenario(
@@ -354,11 +355,11 @@ create table ScenarioCorbeille(
 
 
 insert into Evenement
-values (default,'epilepsie','votre patient fait une crise d epilepsie'),
-       (default,'monter temperature','la temperature du patient a monter de deux degrés'),
-       (default,'arret cardiaque','le patient a un arret cardiaque'),
-       (default,'nouveau traitement','il faut donner une nouvelle de paracetamol a 18h00'),
-       (default,'toilet','le patient vous appelle en urgence pour aller au toilet');
+values (default,'epilepsie','votre patient fait une crise d epilepsie', 'changement rythme cardiaque'),
+       (default,'monter temperature','la temperature du patient a monter de deux degrés', 'changement température'),
+       (default,'arret cardiaque','le patient a un arret cardiaque', 'changement rythme cardiaque'),
+       (default,'nouveau traitement','il faut donner une nouvelle de paracetamol a 18h00', 'nouveau traitement'),
+       (default,'toilet','le patient vous appelle en urgence pour aller au toilet', 'besoin vital');
 
 
 insert into Scenario

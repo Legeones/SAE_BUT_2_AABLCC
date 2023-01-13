@@ -14,7 +14,7 @@ if(isset($_GET['back'])){
     }
 }
 
-//Ici on regarde si l'utilisateur a passer en paramêtre un ordre de tri
+//Ici on regarde si l'utilisateur a passer en paramétre un ordre de tri
 if(isset($_GET['select'])){
     $_SESSION['paramRecherche']=$_GET['select'];
 } else {

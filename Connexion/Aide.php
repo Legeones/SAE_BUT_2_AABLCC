@@ -45,7 +45,7 @@
         if($err==1){
             echo "<p style='color:red'> tous les champs doivent être remplis </p>";
         }
-        // Ici une erreur est affiché si le mail ou le login sont invalide
+        // Ici une erreur est affichée si le mail ou le login sont invalide
         if($err==2){
             echo "<p style='color:red'> mail ou login invalide </p>";
         }

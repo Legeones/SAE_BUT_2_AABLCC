@@ -53,7 +53,7 @@
         <!-- gestion des erreurs -->
 
         <?php
-        // Ici une erreur est affichée si l'utilisateur ou le mot de passe sont incorrect
+        // Ici une erreur est affichée si l'utilisateur ou le mot de passe sont incorrects
         if(isset($_GET['erreur'])){
             $err = $_GET['erreur'];
             if($err==1 || $err==2){
@@ -69,7 +69,7 @@
                 <input type="submit" value="Connexion">
             </div>
             <div class="mdpOublie">
-                <a href="../MDP/MDPoublier.php"><strong>Mot de passe oublié</strong></a> <!-- Permet d'accéder à la page mot de passe oubliée -->
+                <a href="../MDP/MDPoublier.php"><strong>Mot de passe oublié</strong></a> <!-- Permets d'accéder à la page mot de passe oubliée -->
             </div>
         </div>
         <div class="Separation2"></div>
@@ -78,14 +78,14 @@
                 <p>Pour vous inscrire</p>
             </div>
             <div class="CSS1">
-                <input type="button" onclick="window.location.href ='../Inscription/Inscription_formulaire.php';" value="S'inscrire"/> <!-- permet d'accèder à la page S'inscrire -->
+                <input type="button" onclick="window.location.href ='../Inscription/Inscription_formulaire.php';" value="S'inscrire"/> <!-- permet d'accéder à la page S'inscrire -->
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
-                    <a href="../Charte_Utilisation/charte_utilisation.php"><strong>Charte d'utilisation</strong></a> <!-- Permet d'accéder à la page charte d'utilisation -->
+                    <a href="../Charte_Utilisation/charte_utilisation.php"><strong>Charte d'utilisation</strong></a> <!-- Permets d'accéder à la page charte d'utilisation -->
                 </div>
                 <div class="droite">
-                    <input type="button" onclick="window.location.href ='Aide.php';" value="?"/> <!-- Permet d'accéder à la page aide -->
+                    <input type="button" onclick="window.location.href ='Aide.php';" value="?"/> <!-- Permets d'accéder à la page aide -->
                 </div>
             </div>
         </div>
