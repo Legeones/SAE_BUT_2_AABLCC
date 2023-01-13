@@ -97,15 +97,17 @@ function recup_event($dbh): array
     $donnees = recup_event_id($dbh);
     $les_ids= id_existance_categorie($dbh);
     $events = array();
-    if(!empty($i)){
-        while ($k != $i){
-            $r = random_int($donnees[0][0], $donnees[0][1]);
-            if (in_array($r, $les_ids[$k])){
-                $events[] = $r;
-                $k += 1;
+    if($les_ids != []){
+        if(!empty($i)){
+            while ($k != $i){
+                $r = random_int($donnees[0][0], $donnees[0][1]);
+                if (in_array($r, $les_ids[$k])){
+                    $events[] = $r;
+                    $k += 1;
+                }
             }
         }
-    }
+    }else{throw new Exception("Le nb d'event est trop élevé !");}
     return $events;
 }
 
@@ -165,6 +167,8 @@ function ajout_scenario($dbh): void //fonction qui permet d'ajouter des scénari
         }else{
             throw  new ErrorException();
         }
+        echo "<P style='color: green'>l'ajout a été effectué</p>";
+
     }
 
 }
