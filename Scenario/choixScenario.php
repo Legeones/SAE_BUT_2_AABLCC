@@ -31,7 +31,7 @@
                 require ('../BDD/DataBase_Scenario.php');
                 $der = lstderoulanteScenario();
                 foreach ($der as $val){
-                    echo "<input type='radio' name='idscenario' value={$val['idscenario']} /> {$val['nom']}<br/>";
+                    echo "<input checked type='radio' name='idscenario' value={$val['idscenario']} /> {$val['nom']}<br/>";
                 }
 
                 ?>

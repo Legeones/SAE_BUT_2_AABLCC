@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2110909-c6c5-47ce-99df-de1c8bfafe88" name="Changes" comment="changement">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/18956045-3c8b-4637-bae7-71178d74f341/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/18956045-3c8b-4637-bae7-71178d74f341/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Partie_Scenario/Code.php" beforeDir="false" afterPath="$PROJECT_DIR$/Partie_Scenario/Code.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BDD/DataBase_Core.php" beforeDir="false" afterPath="$PROJECT_DIR$/BDD/DataBase_Core.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/SupprimerScenario.php" beforeDir="false" afterPath="$PROJECT_DIR$/Scenario/SupprimerScenario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/choixEtu.php" beforeDir="false" afterPath="$PROJECT_DIR$/Scenario/choixEtu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/choixScenario.php" beforeDir="false" afterPath="$PROJECT_DIR$/Scenario/choixScenario.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +55,7 @@
       <workItem from="1673348169755" duration="401000" />
       <workItem from="1673518922376" duration="3251000" />
       <workItem from="1673601337817" duration="614000" />
+      <workItem from="1673616507341" duration="1248000" />
     </task>
     <task id="LOCAL-00001" summary="changement evenements">
       <created>1673519131955</created>

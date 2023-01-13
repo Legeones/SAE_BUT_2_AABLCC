@@ -29,7 +29,6 @@
             <br>
                 <?php
                 require ('../BDD/DataBase_Scenario.php');
-                session_start();
                 $der = lstderoulanteEtu($_SESSION['IdScenario']);
                 foreach ($der as $val){
                     echo "<input type='checkbox' name='gout[]' value={$val['login']} /> {$val['nom']} {$val['prenom']}<br/>";
