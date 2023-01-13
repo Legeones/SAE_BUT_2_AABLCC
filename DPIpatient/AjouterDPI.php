@@ -53,8 +53,8 @@ require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
                         <!-- Ici un message apparait pour nous dire que certaines informations non nécessaires et se définissent par "*" -->
 
                     </div>
+                    <p>L'ipp doit commencer par '80' et doit contenir 10 à 13 chiffres </p>
                     <?php
-
                     $lst = nameColonne('patient')[0]; // liste de tous les noms de la colonne
                     $lst1 = nameColonne('patient')[1]; // liste de tous les types de chaque colonne
                     $debut = 0;

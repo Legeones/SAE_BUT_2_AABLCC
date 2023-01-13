@@ -162,6 +162,12 @@ function formulaire_pas_obligatoire_affichage($elt,$i){
     else {return $elt;}
 }
 
+function commencementIpp ($val){
+    $nb = str_split((string)$val);
+    $twofirst =  ($nb[0] . $nb[1]);
+    return (int) $twofirst;
+}
+
 // cette fonction sert à stoker les erreurs dans une liste avec en entrée les intervalles du dpi de la personne de contact et de confiance
 function erreur ($debDPI, $finDPI, $debCont, $finCont, $debConf, $finConf){
     $erreur = array(); // liste d'erreur en cas de vide sur le formulaire
@@ -170,8 +176,8 @@ function erreur ($debDPI, $finDPI, $debCont, $finCont, $debConf, $finConf){
     for ($i = $debDPI; $i <$finDPI ; $i++){
         if ($i == 1 or $i == 17){$i += 1;}
         if ($i == 18) {$i += 1;}
-        if (!empty($_POST[$lst[$i]]) and $i == 0){ // si le ipp n'est pas vide (i == 0 c'est l'ipp dans le formulaire)
-            if (($_POST[$lst[0]] < 100000000 or  $_POST[$lst[$i]] > 9999999999999) or comparaison(getLstIPP(),$_POST[$lst[0]]) == true){$erreur_specifique[] = $lst[0];}} // le nom de colonne est ajouté dans la liste si l'ipp n'est pas entre l'intervalle or si elle existe dejà (verifier grace a la fonction compare)
+        if (!empty($_POST[$lst[$i]]) and $i == 0){ // si l'ipp n'est pas vide (i == 0 c'est l'ipp dans le formulaire)
+            if ((((floor(log($_POST[$lst[0]], 10)) + 1) < 10) or  ((floor(log($_POST[$lst[0]], 10)) + 1) > 13)) or (commencementIpp($_POST[$lst[0]]) != 80) or comparaison(getLstIPP(),$_POST[$lst[0]]) == true){$erreur_specifique[] = $lst[0];}} // le nom de colonne est ajouté dans la liste si l'ipp n'est pas entre l'intervalle or si elle existe dejà (verifier grace a la fonction compare)
         if (!empty($_POST[$lst[$i]]) and $i == 8){ // meme principe que pour ci-dessus
             if (($_POST[$lst[8]] < 10000 or  $_POST[$lst[8]] > 99999)){$erreur_specifique[] = $lst[8];}
         }
