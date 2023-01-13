@@ -24,8 +24,7 @@ require("Principal_PHP_Fonction_DPI_ADD_or_Modif.php");
         </div>
         <div class="btn-group">
             <button onclick="location.href='DPÏ.php'">PATIENTS</button>
-            <button>SCENARIOS</button>
-            <button>JSAISPAS</button>
+            <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button>
         </div>
     </div>
 
