@@ -2,14 +2,15 @@
 session_start();
 require "patientDPIfunction.php";
 ?>
-<html>
+<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
+    <title>Intervenants patient</title>
     <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="DPIpatientStyle.css" media="screen" type="text/css" />
 </head>
 <header>
-    <img class="logo" src="../Images/logoIFSI.png">
+    <img alt="LogoIFSI" class="logo" src="../Images/logoIFSI.png">
 </header>
 <body>
 <!-- Zone de connexion -->
@@ -17,7 +18,7 @@ require "patientDPIfunction.php";
 <div class="global">
     <div class="gauche">
         <div class="profile" id="space-invader">
-            <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
+            <img alt="Profile" width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
             <button onclick="location.href='DPI.php'">PATIENTS</button>
@@ -66,15 +67,14 @@ require "patientDPIfunction.php";
                     <?php }
                     ?>
                     <tr>
-                        <td><input type="date" name="date"></td>
-                        <td><input type="text" name="fonction" placeholder="Fonction du personnel"></td>
-                        <td><textarea name="compterendu" placeholder="Compte rendu"></textarea></td>
+                        <td><label><input type="date" name="date"></label></td>
+                        <td><label><input type="text" name="fonction" placeholder="Fonction du personnel"></label></td>
+                        <td><label><textarea name="compterendu" placeholder="Compte rendu"></textarea></label></td>
                     </tr>
                 </table>
-                <input type="submit" value="Mettre à jour">
+                <label><input type="submit" value="Mettre à jour"></label>
             </form>
         </div>
     </div>
 </div>
 </body>
-</html>

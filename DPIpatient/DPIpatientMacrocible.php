@@ -2,22 +2,23 @@
 session_start();
 require "patientDPIfunction.php";
 ?>
-<html>
+<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
+    <title>Macrocible patient</title>
     <!-- importation des fichiers de style -->
 
     <link rel="stylesheet" href="DPIpatientStyle.css" media="screen" type="text/css" />
 </head>
 <header>
-    <img class="logo" src="../Images/logoIFSI.png">
+    <img alt="LogoIFSI" class="logo" src="../Images/logoIFSI.png">
 </header>
 <body>
 <script type="text/javascript" src="scriptsDPIpatient.js"></script>
 <div class="global">
     <div class="gauche">
         <div class="profile">
-            <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
+            <img alt="Profile" width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
             <button onclick="location.href='DPI.php'">PATIENTS</button>
@@ -151,6 +152,4 @@ require "patientDPIfunction.php";
         </div>
         </div>
     </div>
-</div>
 </body>
-</html>

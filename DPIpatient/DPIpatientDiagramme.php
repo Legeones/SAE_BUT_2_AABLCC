@@ -2,14 +2,15 @@
 session_start();
 require "patientDPIfunction.php";
 ?>
-<html>
+<!DOCTYPE html>
 <head>
     <!-- importation des fichiers de style -->
+    <title>Diagramme patient</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="DPIpatientStyle.css" media="screen" type="text/css" />
 </head>
 <header>
-    <img class="logo" src="../Images/logoIFSI.png">
+    <img alt="LogoIFSI" class="logo" src="../Images/logoIFSI.png">
 </header>
 <body>
 <!-- Zone de connexion -->
@@ -17,7 +18,7 @@ require "patientDPIfunction.php";
 <div class="global">
     <div class="gauche" style="height: auto !important; min-height: 90%;">
         <div class="profile" id="space-invader">
-            <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
+            <img alt="Profile" width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
             <button onclick="location.href='DPI.php'">PATIENTS</button>
@@ -129,9 +130,9 @@ require "patientDPIfunction.php";
                                 </tr>
                             <?php } ?>
                             <tr>
-                                <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text' value=""></div></td>
-                                <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
-                                <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                <td class='table-td-recipient'><div class='table-td-div-recipient'><label><input type='text' value=""></label></div></td>
+                                <td class='table-td-recipient'><div class='table-td-div-recipient'><label><input type='text' value=""></label></div></td>
+                                <td class='table-td-recipient'><div class='table-td-div-recipient'><label><input type='text' value=""></label></div></td>
                             </tr>
                             </td>
                             <?php }
@@ -203,9 +204,9 @@ require "patientDPIfunction.php";
                                             }
                                          ?>
                                         <tr>
-                                            <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
-                                            <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
-                                            <td class='table-td-recipient'><div class='table-td-div-recipient'><input type='text'></div></td>
+                                            <td class='table-td-recipient'><div class='table-td-div-recipient'><label><input type='text' value=""></label></div></td>
+                                            <td class='table-td-recipient'><div class='table-td-div-recipient'><label><input type='text' value=""></label></div></td>
+                                            <td class='table-td-recipient'><div class='table-td-div-recipient'><label><input type='text' value=""></label></div></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -219,4 +220,4 @@ require "patientDPIfunction.php";
     </div>
 </div>
 </body>
-</html>
+</>

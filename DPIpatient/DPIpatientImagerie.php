@@ -3,14 +3,15 @@ session_start();
 require "../BDD/DataBase_Dpi.php";
 require "patientDPIfunction.php";
 ?>
-<html>
+<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
+    <title>Imagerie patient</title>
     <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="DPIpatientStyle.css" media="screen" type="text/css" />
 </head>
 <header>
-    <img class="logo" src="../Images/logoIFSI.png">
+    <img alt="LogoIFSI" class="logo" src="../Images/logoIFSI.png">
 </header>
 <body>
 <!-- Zone de connexion -->
@@ -18,7 +19,7 @@ require "patientDPIfunction.php";
 <div class="global">
     <div class="gauche">
         <div class="profile" id="space-invader">
-            <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
+            <img alt="LogoIFSI" width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
             <button onclick="location.href='DPI.php'">PATIENTS</button>
@@ -54,7 +55,7 @@ require "patientDPIfunction.php";
                 $result= VisuImagerie($_SESSION['infosPersoPatient']['ipp']);
 
                 foreach ($result as $p){
-                    echo "<img class='img' src=$p>";
+                    echo "<img alt='Image ' class='img' src=$p>";
                     echo "<br>";
                 }
                 ?>
@@ -63,4 +64,3 @@ require "patientDPIfunction.php";
     </div>
 </div>
 </body>
-</html>
