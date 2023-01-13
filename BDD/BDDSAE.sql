@@ -62,7 +62,7 @@ create table Intervenant (
 create table Admission (
                            iep serial primary key,
                            dateDebut date not null,
-                           dateFin date not null,
+                           dateFin date,
                            IPP numeric(13,0) not null references Patient ON DELETE CASCADE
 );
 
@@ -156,8 +156,7 @@ create table Biologie(
                          lien text primary key ,
                          nom text not null ,
                          IPPBio numeric(13,0)  references Patient ON DELETE CASCADE not null,
-                         description text,
-                         titre text not null
+                         description text
 );
 
 create table ObservationMedical(
@@ -375,3 +374,5 @@ values (1,1),
        (2,3),
        (2,1),
        (2,5);
+
+SELECT * FROM Admission

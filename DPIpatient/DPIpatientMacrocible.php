@@ -23,6 +23,14 @@ require "patientDPIfunction.php";
         <div class="btn-group">
             <button onclick="location.href='DPI.php'">PATIENTS</button>
             <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button>
+            <?php
+                        echo '<br>';
+            if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {
+                echo "<button onclick=location.href='../DPIpatient/AjouterAdmissionPatient.php'>AJOUT ADMISSION</button>";
+                echo '<br>';
+            }
+
+                ?>
         </div>
     </div>
     <div class="droite">

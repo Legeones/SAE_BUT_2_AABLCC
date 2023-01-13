@@ -1,5 +1,6 @@
 <script type="text/javascript" src="scriptsDPIpatient.js"></script>
 <?php
+session_start();
 function afficherDataPersos(){
     ?>
     <div class="info-popup" id="donn-perso">
@@ -17,7 +18,7 @@ function afficherDataPersos(){
         <button onclick="closeForm('donn-perso')">Fermer</button>
     </div>
 <?php }
-
+require '../BDD/DataBase_Dpi.php';
 if ($_SESSION['cat']=="Observation" && isset($_GET['date'])){
     try{
         $date = $_GET['date'];
@@ -38,6 +39,15 @@ if ($_SESSION['cat']=="Observation" && isset($_GET['date'])){
         Modif_Prescription($traitement,$type,$v);
     } catch (Exception $e){
         print "Problème de remplissage de données:".$e;
+    }
+}
+if (isset($_GET['date_admission']) && isset($_SESSION['infosPersoPatient']['ipp'])){
+    try {
+        $date = $_GET['date_admission'];
+        $ipp = $_SESSION['infosPersoPatient']['ipp'];
+        ajouterAdmissionPatient($ipp,$date);
+    } catch (Exception $e){
+        ErrorMessage($e);
     }
 }
 ?>

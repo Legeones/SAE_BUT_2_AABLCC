@@ -55,14 +55,14 @@ require "patientDPIfunction.php";
                         <table>
                             <caption></caption>
                             <tr>
-                                <td>Description :</td>
+                                <td>Description : <?= $p['description'] ?></td>
                             </tr>
                             <tr>
-                                <td><?= $p ?></td>
+                                <td><?= $p['nom'] ?></td>
                             </tr>
                             <tr>
                                 <td>
-                                    <img alt="Image biologie" class='img' src=<?= $p ?>>
+                                    <img alt="Image biologie" class='img' src=<?= $p['lien'] ?>>
                                 </td>
                             </tr>
                         </table>

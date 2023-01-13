@@ -42,7 +42,7 @@ else {
                 } else {
                     move_uploaded_file($_FILES["photo"]["tmp_name"], "../Images/" . $_POST['cat'] . "/" . $_FILES["photo"]["name"]);
                     if ($_POST['cat'] == 'Biologie') {
-                        ADD_Image_Bio($_POST['IPPImage'], $_FILES["photo"]["name"], "../Images/" . $_POST['cat'] . "/" . $_FILES["photo"]["name"]);
+                        ADD_Image_Bio($_POST['IPPImage'], $_FILES["photo"]["name"], "../Images/" . $_POST['cat'] . "/" . $_FILES["photo"]["name"],$_POST['descripBio']);
                     } else if ($_POST['cat'] == 'Imagerie') {
                         ADD_Image_Rad($_POST['IPPImage'], $_FILES["photo"]["name"], "../Images/" . $_POST['cat'] . "/" . $_FILES["photo"]["name"]);
                     } else if ($_POST['cat'] == 'Courriel') {
