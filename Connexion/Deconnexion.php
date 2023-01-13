@@ -19,6 +19,7 @@
         <div class ="Aide">
             <input type="button" onclick="window.location.href ='../Connexion/Page_Accueil.php';" value="Accueil"/> <!-- Permets d'accèder à la page Accueil -->
             </div>
+        <?php session_start(); session_destroy();?>
 </form>
 </head>
 <body id="general">

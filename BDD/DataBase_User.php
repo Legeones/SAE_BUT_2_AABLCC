@@ -48,7 +48,6 @@ function Database_Add_User()
 
 function Database_Check_User_Exist($username,$password)
 {
-    session_start();
 
     try {
         $dbh = DataBase_Creator_Unit();
