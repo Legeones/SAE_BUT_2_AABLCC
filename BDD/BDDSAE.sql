@@ -302,7 +302,7 @@ values ('aurelien.leveque','leveque','aurelien', 'leveque', 'Aurelien.Leveque@up
        ('samuel.applencourt','applencourt','samuel', 'applencourt', 'Samuel.Applencourt@uphf.fr', 'etudiant'),
        ('dorian.petit','petit','dorian', '$2y$12$Z/gsoP/SkQMBSc0WXmWQnO2GfhNgnQe0erqMLuvjjuqNPIm4.vQaS', 'Dorian.Petit@uphf.fr', 'prof'),
        ('rtyu','rt','tt','$2y$12$oNKQlblFYAK169xZLtIsBeRb0loYOPb5xc92tj68G9/Qm8jI7f.G.','rtyu@uphf.fr','admin'),
-       ('abcd','bol','jack','$2$12$aP7pS7yf1J9bG9aBL5mIN.0k6OeVKnDe3TyN598U/3jmVnXpAaJRK','abcd@uphf.fr','etudiant');
+       ('abcd','bol','jack','$2y$12$aP7pS7yf1J9bG9aBL5mIN.0k6OeVKnDe3TyN598U/3jmVnXpAaJRK','abcd@uphf.fr','etudiant');
 insert into TransmissionsCiblees
 values (default,'2013-02-05','IA-ep','Alimentation','mange peu','voir avec diet',null,8000000000002, 5),
        (default,'2013-02-06','IA-ep','hygienne',null,null,'surveiller ses aller au toilet',8000000000002, 5),
