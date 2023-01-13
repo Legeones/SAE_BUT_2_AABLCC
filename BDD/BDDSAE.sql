@@ -375,4 +375,5 @@ values (1,1),
        (2,1),
        (2,5);
 
-SELECT * FROM Admission
+SELECT * FROM Admission;
+UPDATE admission SET dateFin where ?

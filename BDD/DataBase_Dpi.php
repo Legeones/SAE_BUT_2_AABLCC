@@ -254,6 +254,19 @@ function ajouterAdmissionPatient($patient,$date){
     header(DPIReturn());
 }
 
+function terminerAdmissionPatient($patient,$iep){
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("UPDATE admission SET dateFin = ? where iep = ?");
+        $stmt2->bindParam(1, $date);
+        $stmt2->bindParam(2,$iep);
+        $stmt2->execute();
+    } catch (Exception $e){
+        ErrorMessage($e);
+        die();
+    }
+}
+
 function DataBase_Add_Patient($IPP,$nom,$date)
 {
     try {
