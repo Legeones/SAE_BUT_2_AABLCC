@@ -13,6 +13,7 @@ $_SESSION['patientSuivi']=null;
 <body>
 <header id="haut">
     <img class="logo" src="../Images/logoIFSI.png" alt="LogoIFSI">
+    <button title="Déconnexion" id="logout" onclick="location.href='../Connexion/Deconnexion.php'"><img id="img_logout" src="../Images/Logout.png"></button>
 </header>
 <div class="global">
     <div id="gauche" class="gauche">

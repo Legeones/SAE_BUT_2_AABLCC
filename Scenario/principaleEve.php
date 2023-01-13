@@ -10,6 +10,7 @@
 <body>
 <header>
     <img class="logo" src="../Images/logoIFSI.png">
+    <button title="Déconnexion" id="logout" onclick="location.href='../Connexion/Deconnexion.php'"><img id="img_logout" src="../Images/Logout.png"></button>
 </header>
 <div class="global">
     <div class="gauche">
@@ -18,8 +19,7 @@
         </div>
         <div class="btn-group">
             <button onclick="location.href='../DPIpatient/DPI.php'">PATIENTS</button>
-            <button>SCENARIOS</button>
-            <button>JSAISPAS</button>
+            <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button>
             <?php
             session_start();
             if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {
