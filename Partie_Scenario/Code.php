@@ -31,6 +31,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }else{
         echo "<p style='color: red'>la fin d'évènement est vide </p>";
     }
+
+    if($_POST['debut'] >= $_POST['fin']){
+        echo "<p style='color: #cc0000'> Le respect des dates n'est pas fait !</p>";
+    }
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -101,6 +105,8 @@ function recup_event($dbh): array
 }
 
 
+
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //Partie scénario
 
@@ -151,6 +157,8 @@ function ajout_scenario($dbh): void //fonction qui permet d'ajouter des scénari
             $insertion_event->bindparam(2, $id);
             $insertion_event->execute();
             $compt[]+=$id;
+        }else{
+            throw  new ErrorException();
         }
     }
 
