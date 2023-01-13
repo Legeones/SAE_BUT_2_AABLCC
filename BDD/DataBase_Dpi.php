@@ -777,36 +777,37 @@ function nameColonne ($tablesql){
 
 function modifier($ipp){
     $DPI3 = DataBase_Creator_Unit();
-    $MDF = $DPI3->prepare("UPDATE patient set nom = ? , prenom = ? , date_de_naissance = ? , taille_cm = ? , poids_kg = ?, adresse = ?, code_postal = ?, ville = ?, telephone_personnel = ?, telephone_professionnel = ?,allergies = ?, antecedents = ?, obstericaux = ?, documents_medicaux = ?, documents_chirurgicaux = ?, mesure_de_protection = ?,
+    $MDF = $DPI3->prepare("UPDATE patient set iep = ?, nom = ? , prenom = ? , date_de_naissance = ? , taille_cm = ? , poids_kg = ?, adresse = ?, code_postal = ?, ville = ?, telephone_personnel = ?, telephone_professionnel = ?,allergies = ?, antecedents = ?, obstericaux = ?, documents_medicaux = ?, documents_chirurgicaux = ?, mesure_de_protection = ?,
                    assistant_social = ?, mode_de_vie = ?, synthese_entree = ?, traitement_domicile = ?, donnee_physique_psychologique = ?, mobilite = ?, alimentation = ?, hygiene = ?, toilette = ?, habit = ? where ipp = ?;
 ");
-    $MDF->bindParam(1, $_POST['nom']);
-    $MDF->bindParam(2, $_POST['prenom']);
-    $MDF->bindParam(3, $_POST['date_de_naissance']);
-    $MDF->bindParam(4, $_POST['taille_cm']);
-    $MDF->bindParam(5, $_POST['poids_kg']);
-    $MDF->bindParam(6, $_POST['adresse']);
-    $MDF->bindParam(7, $_POST['code_postal']);
-    $MDF->bindParam(8, $_POST['ville']);
-    $MDF->bindParam(9, $_POST['telephone_personnel']);
-    $MDF->bindParam(10, $_POST['telephone_professionnel']);
-    $MDF->bindParam(11, $_POST['allergies']);
-    $MDF->bindParam(12, $_POST['antecedents']);
-    $MDF->bindParam(13, $_POST['obstericaux']);
-    $MDF->bindParam(14, $_POST['documents_medicaux']);
-    $MDF->bindParam(15, $_POST['documents_chirurgicaux']);
-    $MDF->bindParam(16, $_POST['mesure_de_protection']);
-    $MDF->bindParam(17, $_POST['assistant_social']);
-    $MDF->bindParam(18, $_POST['mode_de_vie']);
-    $MDF->bindParam(19, $_POST['synthese_entree']);
-    $MDF->bindParam(20, $_POST['traitement_domicile']);
-    $MDF->bindParam(21, $_POST['donnee_physique_psychologique']);
-    $MDF->bindParam(22, $_POST['mobilite']);
-    $MDF->bindParam(23, $_POST['alimentation']);
-    $MDF->bindParam(24, $_POST['hygiene']);
-    $MDF->bindParam(25, $_POST['toilette']);
-    $MDF->bindParam(26, $_POST['habit']);
-    $MDF->bindParam(27, $ipp);
+    $MDF->bindParam(1,$_POST['iep']);
+    $MDF->bindParam(2, $_POST['nom']);
+    $MDF->bindParam(3, $_POST['prenom']);
+    $MDF->bindParam(4, $_POST['date_de_naissance']);
+    $MDF->bindParam(5, $_POST['taille_cm']);
+    $MDF->bindParam(6, $_POST['poids_kg']);
+    $MDF->bindParam(7, $_POST['adresse']);
+    $MDF->bindParam(8, $_POST['code_postal']);
+    $MDF->bindParam(9, $_POST['ville']);
+    $MDF->bindParam(10, $_POST['telephone_personnel']);
+    $MDF->bindParam(11, $_POST['telephone_professionnel']);
+    $MDF->bindParam(12, $_POST['allergies']);
+    $MDF->bindParam(13, $_POST['antecedents']);
+    $MDF->bindParam(14, $_POST['obstericaux']);
+    $MDF->bindParam(15, $_POST['documents_medicaux']);
+    $MDF->bindParam(16, $_POST['documents_chirurgicaux']);
+    $MDF->bindParam(17, $_POST['mesure_de_protection']);
+    $MDF->bindParam(18, $_POST['assistant_social']);
+    $MDF->bindParam(19, $_POST['mode_de_vie']);
+    $MDF->bindParam(20, $_POST['synthese_entree']);
+    $MDF->bindParam(21, $_POST['traitement_domicile']);
+    $MDF->bindParam(22, $_POST['donnee_physique_psychologique']);
+    $MDF->bindParam(23, $_POST['mobilite']);
+    $MDF->bindParam(24, $_POST['alimentation']);
+    $MDF->bindParam(25, $_POST['hygiene']);
+    $MDF->bindParam(26, $_POST['toilette']);
+    $MDF->bindParam(27, $_POST['habit']);
+    $MDF->bindParam(28, $ipp);
     $MDF->execute();
 
 }
