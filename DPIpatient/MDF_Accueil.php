@@ -34,7 +34,7 @@ require("Principal_PHP_Fonction_DPI_ADD_or_Modif.php");
     <div class="droite">
         <div class="bas">
             <br>
-            <div id="accueil_bouton_mdf" class="accueil_bouton_mdf" >
+            <div id="accueil_bouton_mdf" class="accueil_bouton_mdf" align="center">
                 <div class="Titreform">
                     <h1 class="Question_mdf"><u>Que voulez-vous modifier</u></h1>
                 </div>

@@ -71,7 +71,7 @@ function changeCouleurBouton(b1,b2,b3) {
     var bouton1 = document.getElementById(b2);
     var bouton2 = document.getElementById(b3);
     if (bouton.style.background = '#66CCCC') {
-        bouton.style.background = 'red';
+        bouton.style.background = 'whitesmoke';
         bouton1.style.background = '#66CCCC';
         bouton2.style.background = '#66CCCC';
     }

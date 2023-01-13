@@ -1,6 +1,8 @@
 body{
     background-color: white;
 }
+
+
 #container{
     width:400px;
     margin:0 auto;
@@ -24,13 +26,13 @@ form {
 input[type=text], input[type=password]{
     width: 100%;
     padding: 12px 9px;
-    border: 1px solid #ccc;
+    border: 1px solid #729bbd;
     box-sizing: border-box;
 }
 input[type=number], input[type=date]{
     width: 29%;
     padding: 12px 9px;
-    border: 1px solid #ccc;
+    border: 1px solid #729bbd;
     box-sizing: border-box;
 }
 
@@ -86,16 +88,21 @@ input[type=number], input[type=date]{
     font-size: 19px;
 }
 /* Set a style for all buttons */
-.global .bas input[type=submit] , button[type=button]{
+.global .bas input[type=submit] , button[type=button] , input[type=button]{
     background-color: white;
     color: black;
     padding: 14px 20px;
     margin: 8px 0px;
-    border: none;
+    border: 1px solid #729bbd;
     cursor: pointer;
     width: 11%;
 }
-.global .bas input[type=submit]:hover , button[type=button]:hover ,input[type=button]:hover{
+
+.contenuRech input[type=button]{
+    margin-left: 200px;
+}
+
+.global .bas input[type=submit]:hover , button[type=button]:hover, input[type=button]:hover{
     background-color: white;
     color: gray;
     border: 1px solid black;
@@ -118,7 +125,7 @@ input[type=number], input[type=date]{
     width: 20%;
     /*background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20210924/pngtree-health-care-abstract-light-effect-icon-decoration-image_906585.png") ;
     */
-    background-color: white;
+    background-color: #729bbd;
     height: 90%;
     position: absolute;
     left: 0px;
@@ -139,7 +146,7 @@ input[type=number], input[type=date]{
     right: 0px;
     top: 10%;
     left: 20%;
-    background-color: white;
+    background-color: #d6ecfd;
 }
 header{
     width: 100%;
@@ -148,7 +155,7 @@ header{
     position: absolute;
     top: 0px;
     left: 0%;
-    background-color: white;
+    background-color: #729bbd;
     border-bottom: black solid;
     border-width: thin;
     z-index: 2;
@@ -238,29 +245,19 @@ footer{
     min-height: 14.16%;
 }
 
-.input_form_patients{
-    background-color: white;
-    border-radius: 5%;
-}
-
-.input_form_patients:hover{
-    background-color: whitesmoke;
-}
 
 .hide{
     position: absolute;
     margin: 0% 5% 0% 15%;
     background-color: bisque;
-    width: 20%;
+    min-width: 20%;
     height: 20%;
     visibility: hidden;
-    box-shadow: 2px 2px 2px 2px dimgrey;
-    border: black thin solid;
+    box-shadow: 1px 1px 1px 1px dimgrey;
 }
 
 .hideLeft{
     position: absolute;
-    margin: 0% 0% 0% 0%;
     right: 1px;
     background-color: bisque;
     width: 20%;
@@ -270,7 +267,7 @@ footer{
 }
 
 .global .bas {
-    background-color: gray;
+    background-color: #d6ecfd;
     width: 96%;
     height: 95%;
     padding: 0% 2% 2% 2%;
@@ -278,7 +275,7 @@ footer{
 }
 
 .global .bas #form {
-    background-color: wheat;
+    background-color: whitesmoke;
     width: 98%;
     height: 91%;
     overflow: auto;
@@ -313,54 +310,25 @@ footer{
     box-sizing: border-box;
 }
 
-.bas .recherche .contenuRech input[type=submit],input[type=button]{
-    background-color: white;
+.bas .recherche .contenuRech input[type=submit]{
     width: 10%;
     padding: 14px 9px;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
-
-.bas .recherche .contenuRech input[type=submit]:hover,input[type=button]:hover {
-    background-color: wheat;
-    border: 1px solid black;
-    color: gray;
-}
-.bas .recherche .contenuRech .reset{
-    margin-left: 19%;
-}
-
 .recherche .labIPP {
     font-size: 20px;
 }
 .bas .recherche .contenuRech{
     margin-top: 12px;
 }
-.global .bas #formMDFDPI{
-    background-color: wheat;
-    width: 98%;
-    height: 93%;
-    overflow: auto;
-}
-.global .bas .Titreform .Question_mdf{
-    color: #66CCCC;
-    font-size: 60px;
-    margin-bottom: 50px;
+
+#bouton1, #bouton2, #bouton3{
+    width: 25%;
+    height: 25%;
+    margin: 30px;
 }
 
-.global .bas .accueil_bouton_mdf button[type=button]{
-    color: #66CCCC;
-    background-color: wheat;
-    width: 250px;
-    height: 100px;
-    margin: 30px 30px;
-
-}
-
-.global .bas .accueil_bouton_mdf {
-    text-align: center;
-}
-.global .bas .accueil_bouton_mdf label{
-    text-align: center;
+.accueil_bouton_mdf label{
     font-size: 20px;
 }

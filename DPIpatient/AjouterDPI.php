@@ -30,7 +30,7 @@ require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
     <div class="droite">
         <div class="bas">
             <div class="lesForms" align="center">
-                <button id="boutondebut" style="background-color:red" onclick="suivantCourt('formDPI','formContact','formConfiance'), changeCouleurBouton('boutondebut','boutondebut1','boutondebut2')">Ajouter_DPI</button>
+                <button id="boutondebut" style="background-color:whitesmoke" onclick="suivantCourt('formDPI','formContact','formConfiance'), changeCouleurBouton('boutondebut','boutondebut1','boutondebut2')">Ajouter_DPI</button>
                 <button id="boutondebut1" style="background-color:#66CCCC" onclick="suivantCourt('formContact','formDPI','formConfiance'), changeCouleurBouton('boutondebut1','boutondebut','boutondebut2')">Contact</button>
                 <button id="boutondebut2" style="background-color:#66CCCC" onclick="suivantCourt('formConfiance','formDPI','formContact'), changeCouleurBouton('boutondebut2','boutondebut','boutondebut1')"">Confiance</button>
 
@@ -135,7 +135,7 @@ require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
                     </div>
                 </div>
             </form>
-            // met à 0 toutes les sessions utilisé
+            <!-- met à 0 toutes les sessions utilisées -->
             <?php $_SESSION['lstErreur'] = null;
             $_SESSION['lstErreur_specifique'] = null;
             reset_session();?>
