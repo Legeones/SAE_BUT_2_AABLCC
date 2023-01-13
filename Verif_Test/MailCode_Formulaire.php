@@ -43,7 +43,7 @@
             // Si l'utilisateur prend trop de temps à rentrer le code, un message apparait 'Votre code a expiré'
             if($aft==2)
             { echo "<p style='color:red'>Code Invalide</p>";
-                // Si l'utilisateur rentre un code qui ne correspond pas à celui reçu par mail, un message qui indique que son code est invalide
+                // Si l'utilisateur rentre un code qui ne correspond pas à celui reçu par mail, un message apparaît qui indique que son code est invalide
             }
             if($aft==3)
             {   

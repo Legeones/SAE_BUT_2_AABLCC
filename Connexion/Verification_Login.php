@@ -3,6 +3,6 @@
 require('../BDD/DataBase_User.php');
 
 DataBase_Check_User_Exist($_POST['username'],$_POST['password']);
-// Permet la vérification du login (username,password)
+// Permets la vérification du login (username,password)
 
 ?>
