@@ -32,7 +32,7 @@
             // création de bouton pour les scenario qui sont dans la corbeille
             $der = lstderoulanteScenarioCorb();
             foreach ($der as $val){
-                echo "<input type='radio' name='SupCorscenario' checked value={$val['idscenario']} /> {$val['nom']}<br/>";
+                echo "<input checked type='radio' name='SupCorscenario' checked value={$val['idscenario']} /> {$val['nom']}<br/>";
             }
 
             ?>
