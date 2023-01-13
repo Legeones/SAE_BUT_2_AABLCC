@@ -36,7 +36,7 @@
     <input type="file" name="photo" id="fileUpload">
     <br>
     <br>
-    <input type="radio" name="cat" value="Biologie" checked> Biologie
+    <input id="biolo" type="radio" name="cat" value="Biologie" checked> Biologie
     <input type="radio" name="cat" value="Courriel"> Courriel
     <input type="radio" name="cat" value="Imagerie"> Imagerie
     <br>
@@ -65,9 +65,27 @@
     </script>
     <label for="rech" class="labIPP">Numéro IPP</label>
     <input class="reche" type="text" id="rech" name="IPPImage" value="<?php $id?>">
+    </select>
+    <script>
+        // Sélectionnez tous les éléments input de type radio
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+
+        // Ajoutez un gestionnaire d'événements "change" à chaque bouton radio
+        radioButtons.forEach(button => {
+            button.addEventListener('change', event => {
+                // Vérifiez si le bouton radio est coché
+                if (event.target.checked && event.target.id === "biolo") {
+                    document.getElementById('textBio').style.display = "block";
+                } else {
+                    document.getElementById('textBio').style.display = "none";
+                }
+            });
+        });
+    </script>
+    <input placeholder="Description de l'image" id="textBio" name="descripBio" type="text" style="display: block">
     <input type="submit" name="submit" value="Upload">
     <p><strong>Note:</strong> Seuls les formats .jpg, .jpeg, .jpeg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
-    </select>
+
 
     <?php
         if(isset($_GET['erreur'])){

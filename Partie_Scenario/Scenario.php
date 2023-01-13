@@ -14,7 +14,7 @@
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='principale.php'">PATIENTS</button>
+            <button onclick="location.href='../DPIpatient/DPI.php'">PATIENTS</button>
             <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button> <!-- Bouton permettant d'accèder au scenarios -->
         </div>
     </div>
@@ -104,6 +104,7 @@
                         <div id="event_categorie" style="background-color: #66CCCC">
                             <label for="nbevent">Nombre d'évènement</label> <br> <input type="text" id="nbevent" name="nbevent" placeholder="Entrez le nombre d'event que vous voulez" style="width: 50%"><br>
                             <label for="type_categorie">Catégorie des évènements</label> <br> <input type="text" id="type_categorie" name="type_categorie" placeholder="Entrez la catégorie d'évènement que vous souhaitez" style="width: 50%">
+
                         </div>
 
                         <br><br>

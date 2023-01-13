@@ -62,7 +62,7 @@ create table Intervenant (
 create table Admission (
                            iep serial primary key,
                            dateDebut date not null,
-                           dateFin date not null,
+                           dateFin date,
                            IPP numeric(13,0) not null references Patient ON DELETE CASCADE
 );
 
@@ -156,8 +156,7 @@ create table Biologie(
                          lien text primary key ,
                          nom text not null ,
                          IPPBio numeric(13,0)  references Patient ON DELETE CASCADE not null,
-                         description text,
-                         titre text not null
+                         description text
 );
 
 create table ObservationMedical(
@@ -302,7 +301,7 @@ values ('aurelien.leveque','leveque','aurelien', 'leveque', 'Aurelien.Leveque@up
        ('samuel.applencourt','applencourt','samuel', 'applencourt', 'Samuel.Applencourt@uphf.fr', 'etudiant'),
        ('dorian.petit','petit','dorian', '$2y$12$Z/gsoP/SkQMBSc0WXmWQnO2GfhNgnQe0erqMLuvjjuqNPIm4.vQaS', 'Dorian.Petit@uphf.fr', 'prof'),
        ('rtyu','rt','tt','$2y$12$oNKQlblFYAK169xZLtIsBeRb0loYOPb5xc92tj68G9/Qm8jI7f.G.','rtyu@uphf.fr','admin'),
-       ('abcd','bol','jack','$2$12$aP7pS7yf1J9bG9aBL5mIN.0k6OeVKnDe3TyN598U/3jmVnXpAaJRK','abcd@uphf.fr','etudiant');
+       ('abcd','bol','jack','$2y$12$aP7pS7yf1J9bG9aBL5mIN.0k6OeVKnDe3TyN598U/3jmVnXpAaJRK','abcd@uphf.fr','etudiant');
 insert into TransmissionsCiblees
 values (default,'2013-02-05','IA-ep','Alimentation','mange peu','voir avec diet',null,8000000000002, 5),
        (default,'2013-02-06','IA-ep','hygienne',null,null,'surveiller ses aller au toilet',8000000000002, 5),
@@ -375,3 +374,5 @@ values (1,1),
        (2,3),
        (2,1),
        (2,5);
+
+SELECT * FROM Admission

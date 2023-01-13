@@ -240,6 +240,20 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
 
 }
 
+function ajouterAdmissionPatient($patient,$date){
+    try{
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("INSERT INTO admission(iep,datedebut,ipp) VALUES (default,?,?)");
+        $stmt2->bindParam(1, $date);
+        $stmt2->bindParam(2, $patient);
+        $stmt2->execute();
+    } catch (Exception $e){
+        ErrorMessage($e);
+        die();
+    }
+    header(DPIReturn());
+}
+
 function DataBase_Add_Patient($IPP,$nom,$date)
 {
     try {
@@ -307,18 +321,16 @@ function Check_Patient($IPP)
     }
 }
 
-function ADD_Image_Bio($IPP,$nom,$lien)
+function ADD_Image_Bio($IPP,$nom,$lien,$des)
 {
 
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("INSERT INTO Biologie values (?,?,?)");
+        $stmt2 = $dbh->prepare("INSERT INTO Biologie values (?,?,?,?)");
         $stmt2->bindParam(1, $lien);
         $stmt2->bindParam(2, $nom);
         $stmt2->bindParam(3, $IPP);
         $stmt2->bindParam(4,$des);
-        $stmt2->bindParam(5,$til);
-        //$stmt2->bindParam(4,$_SESSION['infosPersoPatient']['iep']);
         $stmt2->execute();
 
     } catch (PDOException $e) {
@@ -332,11 +344,10 @@ function ADD_Image_Cour($IPP,$nom,$lien)
 
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("INSERT INTO couriel values (?,?,?,?)");
+        $stmt2 = $dbh->prepare("INSERT INTO couriel values (?,?,?)");
         $stmt2->bindParam(1, $lien);
         $stmt2->bindParam(2, $nom);
         $stmt2->bindParam(3, $IPP);
-        $stmt2->bindParam(4,$_SESSION['infosPersoPatient']['iep']);
         $stmt2->execute();
 
     } catch (PDOException $e) {
@@ -563,10 +574,14 @@ function VisuImagerie($IPP){
 function VisuBio($IPP){
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("select lien from Biologie where IPPBio=?");
+        $stmt2 = $dbh->prepare("select lien,nom,description from Biologie where IPPBio=?");
         $stmt2->bindParam(1, $IPP);
         $stmt2->execute();
-        return $stmt2->fetchAll(PDO::FETCH_COLUMN, 0);
+        $res = [];
+        foreach ($stmt2 as $r){
+            $res[] = $r;
+        }
+        return $res;
     } catch (PDOException $e) {
         ErrorMessage($e);
         die();
