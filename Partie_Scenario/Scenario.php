@@ -89,7 +89,6 @@
                     if(!empty($db)) {
                         if (!empty($_SESSION['val']) && !empty($_SESSION['debut']) && !empty($_SESSION['fin'])) {
                             ajout_scenario($db);
-                            echo "<P style='color: green'>l'ajout a été effectué</p>";
                         }
 
                     }
