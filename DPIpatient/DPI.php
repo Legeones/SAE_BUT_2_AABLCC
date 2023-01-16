@@ -29,7 +29,7 @@ $_SESSION['patientSuivi']=null;
             if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {
                 echo "<button onclick=location.href='AjouterDPI.php'> Ajouter DPI</button>"; // Bouton permettant d'ajouter
                 echo '<br>';
-                echo "<button onclick=location.href='../Scenario/principaleEve.php'>Modifier DPI</button>";
+                echo "<button onclick=location.href='MDFDPI.php'>Modifier DPI</button>";
                 echo '<br>';
                 echo "<button onclick=location.href='Corbeille.php'>Corbeille DPI</button>"; // Bouton permettant de mettre à la corbeille
                 echo '<br>';

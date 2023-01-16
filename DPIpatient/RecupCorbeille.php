@@ -4,7 +4,7 @@
     <!-- Zone de connexion -->
 
     <meta charset="UTF-8">
-    <title>Recup Patient</title>
+    <title>Recuperation Patient</title>
     <link rel="stylesheet" href="../Verif_Test/CSS_DPI.css" media="screen" type="text/css" />
 </head>
 <body>
@@ -50,11 +50,7 @@
                 <br>
                 <input  type="submit" value="Confirmer" name="Confirmer" id="Confirmer">
             </form>
-        </div>
-    </div>
-</body>
-
-<!-- gestion des erreurs -->
+        <!-- gestion des erreurs -->
 
 <?php
 if (isset($_GET['erreur'])) {
@@ -72,4 +68,9 @@ if (isset($_GET['erreur'])) {
         echo "<p style='color:red'>IPP ne doit pas avoir de lettre</p>";
         // Ici une erreur est affiché si IPP contient des lettres
     }
-}
+} ?>
+        </div>
+    </div>
+</body>
+
+
