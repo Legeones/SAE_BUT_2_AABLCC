@@ -1,0 +1,52 @@
+form{
+    background-color: white;
+    padding: 35px 80px 35px 80px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    text-align: center;
+    border:5px solid black;
+}
+#general{
+    background-image: url("https://img.freepik.com/free-vector/medical-healthcare-blue-color_1017-26807.jpg?w=996&t=st=1671205087~exp=1671205687~hmac=a5b24ed7dd8e0fea25d70f929724060f5b3cdf02ea21da49331a1e401fad2da0") ;
+    background-size: 1600px;
+    padding: 0px;
+    margin: 0px;
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    transform: translate(-65%,-50%);
+    font-family: 'Bungee Spice', cursive;
+    font-family: 'Handlee', cursive;
+    font-family: 'Purple Purse', cursive;
+}
+
+.styled {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    background-image: linear-gradient(to top left,
+    rgba(0, 0, 0, .2),
+    rgba(0, 0, 0, .2) 30%,
+    rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+    inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.styled:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+.styled:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+    inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+
+

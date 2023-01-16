@@ -12,11 +12,11 @@ $VerifEmptyContent=VerifEmptyContent($_POST["IPPImageSupp"]);
 $VerifPatient=Check_Patient($_POST['IPPImageSupp']);
 
 if($VerifEmptyContent==0){
-    header('Location: ../DPIpatient/FormulaireUnlink.php?erreur=6');
+    header('Location: ../DPIpatient/FormulaireUnlink.php?erreur=6'); // Zone de gestion des erreurs
 }
 
 else if($VerifPatient==0){
-    header('Location: ../DPIpatient/FormulaireUnlink.php?erreur=7');
+    header('Location: ../DPIpatient/FormulaireUnlink.php?erreur=7'); // Zone de gestion des erreurs
 }
 
 else{

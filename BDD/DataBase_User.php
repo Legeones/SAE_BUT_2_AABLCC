@@ -25,11 +25,13 @@ function Database_Add_User()
 
         try {
             $dbh = DataBase_Creator_Unit();
-            $stmt2 = $dbh->prepare("INSERT INTO utilisateur values (?,?,?,?)");
+            $stmt2 = $dbh->prepare("INSERT INTO utilisateur values (?,?,?,?,?,?)");
             $stmt2->bindParam(1, $_SESSION["IDENTIFIANT"]);
-            $stmt2->bindParam(2, $password_hashed);
-            $stmt2->bindParam(3, $_SESSION['EMAIL']);
-            $stmt2->bindParam(4, $_SESSION['ROLE']);
+            $stmt2->bindParam(2, $_SESSION["ID_NOM"]);
+            $stmt2->bindParam(3, $_SESSION["ID_PRENOM"]);
+            $stmt2->bindParam(4, $password_hashed);
+            $stmt2->bindParam(5, $_SESSION['EMAIL']);
+            $stmt2->bindParam(6, $_SESSION['ROLE']);
 
             $stmt2->execute();
 
@@ -46,7 +48,6 @@ function Database_Add_User()
 
 function Database_Check_User_Exist($username,$password)
 {
-    session_start();
 
     try {
         $dbh = DataBase_Creator_Unit();
@@ -84,8 +85,9 @@ function Database_User_New_Pass_Check()
 {
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt = $dbh->prepare(CheckUser());
+        $stmt = $dbh->prepare("SELECT count(*) FROM utilisateur where login = ? and email = ?");
         $stmt->bindParam(1, $_SESSION['IDENTIFIANT']);
+        $stmt->bindParam(1, $_SESSION['EMAIL']);
         $stmt->execute();
         $result = $stmt->fetchColumn(0);
 

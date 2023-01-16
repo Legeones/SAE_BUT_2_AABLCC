@@ -13,20 +13,24 @@ $resVerifPassword_Lenght=VerifPassword_Lenght($_POST["Password_A"]); // Vérific
 $resVerifPassword_Lowercase=VerifPassword_Lowercase($_POST["Password_A"]); // Vérification Password_A
 $VerifEmptyContent1=VerifEmptyContent($_POST["email"]); // Vérification de l'email
 $VerifEmptyContent2=VerifEmptyContent($_POST["ID"]); // Vérification de l'ID
+$VerifEmptyContent3=VerifEmptyContent($_POST["nom"]); // Vérification du nom
+$VerifEmptyContent4=VerifEmptyContent($_POST["prenom"]); // Vérification du prenom
 $VerifEmail=VerifEmail($_POST["email"]); // Vérification de l'email
 
 session_start();
 $_SESSION['EMAIL'] = $_POST['email'];
 $_SESSION['IDENTIFIANT'] = $_POST['ID'];
+$_SESSION['ID_NOM'] = $_POST['nom'];
+$_SESSION['ID_PRENOM'] = $_POST['prenom'];
 $_SESSION['ROLE'] = 'etudiant';
 $_SESSION['PASSWORD'] = $_POST["Password_A"];
 
 // Erreur page inscription
 if ($resVerifPassword_Equality==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=2'); // erreur le mot de passe et sa confirmation sont différents
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=2'); // erreur le mot de passe et sa confirmation sont diffÃ©rents
 }
 elseif ($resVerifPassword_Lenght==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=1'); // erreur le mot de passe à moins de 8 caractères
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=1'); // erreur le mot de passe à moins de 8 caractéres
 }
 
 elseif($resVerifPassword_Lowercase==0){
@@ -47,6 +51,14 @@ elseif ($VerifEmptyContent1==0){
 
 elseif ($VerifEmptyContent2==0){
     header('Location: ../Inscription/Inscription_formulaire.php?erreur=6'); // Erreur login invalide
+}
+
+elseif ($VerifEmptyContent3==0){
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=7'); // Erreur Nom vide
+}
+
+elseif ($VerifEmptyContent4==0){
+    header('Location: ../Inscription/Inscription_formulaire.php?erreur=7'); // Erreur Prenom Vide
 }
 
 elseif ($VerifEmail==0){

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bee8e6e8-0233-4701-bc66-475819c72d90" name="Changes" comment="code final normalement">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BDD/DataBase_Core.php" beforeDir="false" afterPath="$PROJECT_DIR$/BDD/DataBase_Core.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="ProjectId" id="2JoVGOL5vqcjrVZ9L904iEbNdoE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bee8e6e8-0233-4701-bc66-475819c72d90" name="Changes" comment="code changement" />
+      <created>1672744331946</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1672744331946</updated>
+      <workItem from="1672744335304" duration="89000" />
+      <workItem from="1672914988350" duration="762000" />
+      <workItem from="1673248467046" duration="3382000" />
+      <workItem from="1673341611507" duration="2605000" />
+      <workItem from="1673345357044" duration="245000" />
+      <workItem from="1673348169755" duration="401000" />
+      <workItem from="1673518922376" duration="3251000" />
+      <workItem from="1673601337817" duration="614000" />
+      <workItem from="1673615431160" duration="8781000" />
+    </task>
+    <task id="LOCAL-00001" summary="changement evenements">
+      <created>1673519131955</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673519131955</updated>
+    </task>
+    <task id="LOCAL-00002" summary="changement">
+      <created>1673519695121</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1673519695121</updated>
+    </task>
+    <task id="LOCAL-00003" summary="changement">
+      <created>1673519898083</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1673519898083</updated>
+    </task>
+    <task id="LOCAL-00004" summary="changement">
+      <created>1673520009777</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1673520009777</updated>
+    </task>
+    <task id="LOCAL-00005" summary="code changement">
+      <created>1673605433273</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1673605433273</updated>
+    </task>
+    <task id="LOCAL-00006" summary="code changement">
+      <created>1673605456769</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1673605456769</updated>
+    </task>
+    <task id="LOCAL-00007" summary="code final normalement">
+      <created>1673621030777</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1673621030777</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="changement scenario et fonction ajout scenario" />
+    <MESSAGE value="changement evenements" />
+    <MESSAGE value="changement" />
+    <MESSAGE value="code changement" />
+    <MESSAGE value="code final normalement" />
+    <option name="LAST_COMMIT_MESSAGE" value="code final normalement" />
+  </component>
+</project>

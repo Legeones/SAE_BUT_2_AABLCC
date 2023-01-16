@@ -38,18 +38,19 @@
             $aft = $_GET['after'];
             // if($aft==0)
             // { header('Location: ../Connexion/Login.php'); }
-            // Si l'utilisateur prend trop de temps à rentrer le code, un message apparait 'Votre code a expiré'
             if($aft==1)
             { echo "<p style='color:red'>Votre Code a expiré</p>"; }
-            // Si l'utilisateur rentre un code qui ne correspond pas à celui reçu par mail, un message qui indique que son code est invalide
+            // Si l'utilisateur prend trop de temps à rentrer le code, un message apparait 'Votre code a expiré'
             if($aft==2)
-            { echo "<p style='color:red'>Code Invalide</p>"; }
-            // Si l'utilisateur veut un nouveau envoie de code
+            { echo "<p style='color:red'>Code Invalide</p>";
+                // Si l'utilisateur rentre un code qui ne correspond pas à celui reçu par mail, un message apparaît qui indique que son code est invalide
+            }
             if($aft==3)
             {   
                 require('../Verif_Test/Mail.php');
                 Resend();
                 echo "<p style='color:red'>Code renvoyé</p>";
+                // Si l'utilisateur veut un nouveau envoie de code
             }
         }
         ?>

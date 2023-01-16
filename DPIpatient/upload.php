@@ -42,7 +42,7 @@ else {
                 } else {
                     move_uploaded_file($_FILES["photo"]["tmp_name"], "../Images/" . $_POST['cat'] . "/" . $_FILES["photo"]["name"]);
                     if ($_POST['cat'] == 'Biologie') {
-                        ADD_Image_Bio($_POST['IPPImage'], $_FILES["photo"]["name"], "../Images/" . $_POST['cat'] . "/" . $_FILES["photo"]["name"]);
+                        ADD_Image_Bio($_POST['IPPImage'], $_FILES["photo"]["name"], "../Images/" . $_POST['cat'] . "/" . $_FILES["photo"]["name"],$_POST['descripBio']);
                     } else if ($_POST['cat'] == 'Imagerie') {
                         ADD_Image_Rad($_POST['IPPImage'], $_FILES["photo"]["name"], "../Images/" . $_POST['cat'] . "/" . $_FILES["photo"]["name"]);
                     } else if ($_POST['cat'] == 'Courriel') {
@@ -52,10 +52,10 @@ else {
                     //var_dump($_FILES['photo']);
                 }
             } else {
-                header('Location: ../DPIpatient/FormulaireUpload.php?erreur=3');
+                header('Location: ../DPIpatient/FormulaireUpload.php?erreur=3'); // Zone de gestion des erreurs
             }
         } else {
-            header('Location: ../DPIpatient/FormulaireUpload.php?erreur=4');
+            header('Location: ../DPIpatient/FormulaireUpload.php?erreur=4'); // Zone de gestion des erreurs
         }
     }
 }

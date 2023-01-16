@@ -4,6 +4,13 @@ require('../BDD/DataBase_Core.php');
 
 
 function Patient_Parcour($p,$rm,$rma): void
+/*
+ * Cette fonction parcour tous les patients et les ressorts en fonction des paramètres de recherche implantés.
+ * $rm sert à la recherche par nom
+ * $p sert à la recherche via Aucun, Date d'hospitalisation et enfin Ordre alphabétique
+ * $rma sert pour la recherche renvoyant soit la dernière hospitalisation en fonction de l'IPP ou alors toutes les
+ * hospitalisations en fonction de l'IPP
+ */
 {
     $o = 1;
     if(isset($_SESSION['patient1']) && $_SESSION['patient1']!=null){
@@ -20,9 +27,9 @@ function Patient_Parcour($p,$rm,$rma): void
     $dbh = DataBase_Creator_Unit();
     if($rm!='aucun'){
         if ($rma == 'IPP'){
-            $stmt = $dbh->prepare("SELECT patient.IPP, nom FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb WHERE nom like ? and IPPCorb is null LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT DISTINCT ON (patient.ipp) patient.ipp, nom, prenom, admission.dateDebut FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb LEFT JOIN(SELECT datedebut, ipp FROM admission ORDER BY iep DESC) admission ON admission.ipp = patient.IPP where nom like ? and IPPCorb is null LIMIT ? OFFSET ?");
         } else if ($rma == 'IEP'){
-            $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP, nom FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb WHERE nom like ? and IPPCorb is null ORDER BY iep DESC LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP, nom, prenom, datedebut FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb WHERE nom like ? and IPPCorb is null ORDER BY iep DESC LIMIT ? OFFSET ?");
         }
         $stmt->bindParam(1,$rm);
         $lim = $_SESSION['incrPat']+25;
@@ -30,11 +37,12 @@ function Patient_Parcour($p,$rm,$rma): void
         $stmt->bindParam(3,$_SESSION['incrPat']);
         $stmt->execute();
     }
+
     if ($p=='Date hospitalisation' && $rm=='aucun') {
         if ($rma == 'IPP'){
-            $stmt = $dbh->prepare("SELECT patient.ipp,nom FROM patient JOIN admission ON admission.ipp = patient.ipp  left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT * FROM(SELECT DISTINCT ON (patient.ipp) patient.ipp, nom, prenom, admission.dateDebut FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb JOIN(SELECT datedebut, ipp FROM admission ORDER BY iep DESC) admission ON admission.ipp = patient.IPP where IPPCorb is null LIMIT ? OFFSET ?) patients ORDER BY patients.datedebut DESC ");
         } else if ($rma == 'IEP'){
-            $stmt = $dbh->prepare("SELECT admission.iep,patient.ipp,nom FROM patient JOIN admission ON admission.ipp = patient.ipp  left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is  null ORDER BY admission.iep DESC LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT admission.iep,patient.ipp,nom,prenom, datedebut FROM patient JOIN admission ON admission.ipp = patient.ipp  left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is  null ORDER BY admission.iep DESC LIMIT ? OFFSET ?");
         }
         $lim = $_SESSION['incrPat']+25;
         $stmt->bindParam(1,$lim);
@@ -42,9 +50,9 @@ function Patient_Parcour($p,$rm,$rma): void
         $stmt->execute();
     } elseif ($p=='Ordre alphabetique' && $rm=='aucun'){
         if ($rma == 'IPP'){
-            $stmt = $dbh->prepare("SELECT patient.IPP,nom FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY nom LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT DISTINCT ON (patient.ipp,nom) patient.ipp, nom, prenom, MAX(admission.dateDebut) as dateDebut FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb LEFT JOIN(SELECT datedebut, ipp FROM admission ORDER BY iep DESC) admission ON admission.ipp = patient.IPP where IPPCorb is null GROUP BY patient.ipp, nom, prenom ORDER BY nom LIMIT ? OFFSET ?");
         } else if ($rma == 'IEP'){
-            $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP,nom FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY nom, admission.iep LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP,nom,prenom,datedebut FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY nom, admission.iep LIMIT ? OFFSET ?");
         }
         $lim = $_SESSION['incrPat']+25;
         $stmt->bindParam(1,$lim);
@@ -52,9 +60,9 @@ function Patient_Parcour($p,$rm,$rma): void
         $stmt->execute();
     } elseif($rm=='aucun') {
         if ($rma == 'IPP'){
-            $stmt = $dbh->prepare("SELECT patient.IPP,nom FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT DISTINCT ON (patient.ipp) patient.ipp, nom, prenom, MAX(admission.dateDebut) as dateDebut FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb LEFT JOIN(SELECT datedebut, ipp FROM admission ORDER BY iep DESC) admission ON admission.ipp = patient.IPP where IPPCorb is null GROUP BY patient.ipp, nom, prenom LIMIT ? OFFSET ?");
         } else if ($rma == 'IEP'){
-            $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP,nom FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY admission.iep LIMIT ? OFFSET ?");
+            $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP,nom,prenom,datedebut FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY admission.iep LIMIT ? OFFSET ?");
         }
         $lim = $_SESSION['incrPat']+25;
         $stmt->bindParam(1,$lim);
@@ -71,10 +79,20 @@ function Patient_Parcour($p,$rm,$rma): void
             $i = $i+1;
         }
     }
-    header('Location: ../DPIpatient/DPI.php');
+    header(DPIReturn());
 }
 
 function Data_Patient_Querry($nomPatient, $nomCateg){
+    /*
+     * Ce code PHP contient une fonction appelée "Data_Patient_Querry", qui prend en entrée le nom d'un patient
+     * et le nom d'une catégorie de recherche de données. La fonction utilise la classe PDO pour se connecter à
+     * une base de données et exécuter une requête en fonction de la catégorie de recherche de données. La fonction
+     * stocke les informations sur le patient dans une variable de session, puis utilise une boucle foreach pour
+     * ajouter ces informations à une variable appelée "infosPersoPatient". Enfin, il vérifie si la catégorie de
+     * recherche de données est "Macrocible" ou autres et exécute des requêtes supplémentaires pour récupérer des informations
+     * supplémentaires sur le patient en utilisant le nom ou le numéro de l'IPP ou IEP qui est stocké dans une variable
+     * de session.
+     */
     $pdo = DataBase_Creator_Unit();
     if ($_SESSION['paramRechercheAdmi']=='IPP'){
         $info = $pdo->prepare("SELECT patient.ipp, a.iep, nom, prenom, date_de_naissance, ville, poids_kg, taille_cm, datedebut, datefin FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE patient.ipp = ?");
@@ -103,12 +121,16 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
         }
         $stmt2 -> bindParam(1,$nomPatient);
         $stmt2->execute();
+        $stmt = $pdo->prepare("SELECT p2.* FROM patient LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel WHERE patient.ipp = ?");
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
+        $stmt3 = $pdo->prepare("SELECT a.* FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE patient.ipp = ?");
         $stmt3 -> bindParam(1,$nomPatient);
         $stmt3->execute();
+        $stmt4 = $pdo->prepare("SELECT m.nom,m.prenom,m.adresse,m.ville,m.cp,p3.type,p3.lienmed FROM patient LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp LEFT JOIN medecin m on p3.idmedecin = m.idmedecin WHERE patient.ipp = ?");
         $stmt4 -> bindParam(1,$nomPatient);
         $stmt4->execute();
+        $stmt5 = $pdo->prepare("SELECT * FROM patient WHERE patient.ipp = ?");
         $stmt5 -> bindParam(1,$nomPatient);
         $stmt5->execute();
         $_SESSION['infosPersonneConf']=[];
@@ -189,9 +211,60 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
         foreach ($stmt as $item){
             $_SESSION['infosPatient'][]=$item;
         }
+    } elseif ($nomCateg == "Biologie"){
+        $stmt = $pdo->prepare("SELECT * FROM patient WHERE ipp = ?");
+        $stmt -> bindParam(1,$nomPatient);
+        $stmt->execute();
+        $_SESSION['infosPatient']=[];
+        foreach ($stmt as $item){
+            $_SESSION['infosPatient']+=$item;
+        }
+    } elseif ($nomCateg == "Imagerie"){
+        $stmt = $pdo->prepare("SELECT * FROM patient WHERE ipp = ?");
+        $stmt -> bindParam(1,$nomPatient);
+        $stmt->execute();
+        $_SESSION['infosPatient']=[];
+        foreach ($stmt as $item){
+            $_SESSION['infosPatient']+=$item;
+        }
+    } elseif ($nomCateg == "Courriers"){
+        $stmt = $pdo->prepare("SELECT * FROM patient WHERE ipp = ?");
+        $stmt -> bindParam(1,$nomPatient);
+        $stmt->execute();
+        $_SESSION['infosPatient']=[];
+        foreach ($stmt as $item){
+            $_SESSION['infosPatient']+=$item;
+        }
     }
     header("Location: ../DPIpatient/DPIpatient".$nomCateg.".php");
 
+}
+
+function ajouterAdmissionPatient($patient,$date){
+    try{
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("INSERT INTO admission(iep,datedebut,ipp) VALUES (default,?,?)");
+        $stmt2->bindParam(1, $date);
+        $stmt2->bindParam(2, $patient);
+        $stmt2->execute();
+    } catch (Exception $e){
+        ErrorMessage($e);
+        die();
+    }
+    header(DPIReturn());
+}
+
+function terminerAdmissionPatient($patient,$iep){
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("UPDATE admission SET dateFin = ? where iep = ?");
+        $stmt2->bindParam(1, $date);
+        $stmt2->bindParam(2,$iep);
+        $stmt2->execute();
+    } catch (Exception $e){
+        ErrorMessage($e);
+        die();
+    }
 }
 
 function DataBase_Add_Patient($IPP,$nom,$date)
@@ -211,10 +284,10 @@ function DataBase_Add_Patient($IPP,$nom,$date)
             $stmt->bindParam(2, $nom);
             $stmt->bindParam(3, $date);
             $stmt->execute();
-            header('Location: ../DPIpatient/DPI.php');
+            header(DPIReturn());
         }
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
@@ -236,10 +309,10 @@ function DataBase_Corbeille_Patient()
             $stmt = $dbh->prepare("insert into corbeille values (?)");
             $stmt->bindParam(1, $_SESSION["IPP_CORB"]);
             $stmt->execute();
-            header('Location: ../DPIpatient/DPI.php');
+            header(DPIReturn());
         }
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
@@ -253,31 +326,28 @@ function Check_Patient($IPP)
         $stmt2 = $dbh->prepare("SELECT count(*) FROM Patient WHERE IPP=?");
         $stmt2->bindParam(1, $IPP);
         $stmt2->execute();
-        $res= $stmt2->fetchColumn(0);
-        return $res;
+        return $stmt2->fetchColumn(0);
 
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
 
-function ADD_Image_Bio($IPP,$nom,$lien,$des,$til)
+function ADD_Image_Bio($IPP,$nom,$lien,$des)
 {
 
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("INSERT INTO Biologie values (?,?,?,?,?)");
+        $stmt2 = $dbh->prepare("INSERT INTO Biologie values (?,?,?,?)");
         $stmt2->bindParam(1, $lien);
         $stmt2->bindParam(2, $nom);
         $stmt2->bindParam(3, $IPP);
         $stmt2->bindParam(4,$des);
-        $stmt2->bindParam(5,$til);
-        //$stmt2->bindParam(4,$_SESSION['infosPersoPatient']['iep']);
         $stmt2->execute();
 
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
@@ -287,11 +357,10 @@ function ADD_Image_Cour($IPP,$nom,$lien)
 
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("INSERT INTO couriel values (?,?,?,?)");
+        $stmt2 = $dbh->prepare("INSERT INTO couriel values (?,?,?)");
         $stmt2->bindParam(1, $lien);
         $stmt2->bindParam(2, $nom);
         $stmt2->bindParam(3, $IPP);
-        $stmt2->bindParam(4,$_SESSION['infosPersoPatient']['iep']);
         $stmt2->execute();
 
     } catch (PDOException $e) {
@@ -305,14 +374,14 @@ function ADD_Image_Rad($IPP,$nom,$lien)
 
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("INSERT INTO radio values (?,?,?,?)");
+        $stmt2 = $dbh->prepare("INSERT INTO radio values (?,?,?)");
         $stmt2->bindParam(1, $lien);
         $stmt2->bindParam(2, $nom);
-        $stmt2->bindParam(3, $IPP);$stmt2->bindParam(4,$_SESSION['infosPersoPatient']['iep']);
+        $stmt2->bindParam(3, $IPP);
         $stmt2->execute();
 
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
@@ -326,11 +395,10 @@ function Check_Image_Imagerie($IPP,$nomIma)
         $stmt2->bindParam(1, $IPP);
         $stmt2->bindParam(2,$nomIma);
         $stmt2->execute();
-        $res= $stmt2->fetchColumn(0);
-        return $res;
+        return $stmt2->fetchColumn(0);
 
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
@@ -345,11 +413,10 @@ function Check_Image_Biologie($IPP,$nomIma)
         $stmt2->bindParam(1, $IPP);
         $stmt2->bindParam(2,$nomIma);
         $stmt2->execute();
-        $res= $stmt2->fetchColumn(0);
-        return $res;
+        return $stmt2->fetchColumn(0);
 
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
@@ -365,7 +432,7 @@ function Delete_Image_Courriel($nomIma)
         $stmt2->execute();
 
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
@@ -381,7 +448,7 @@ function Delete_Image_Imagerie($nomIma)
         $stmt2->execute();
 
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
@@ -397,7 +464,7 @@ function Delete_Image_Biologie($nomIma)
         $stmt2->execute();
 
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
@@ -412,11 +479,10 @@ function Check_Image_Courriel($IPP,$nomIma)
         $stmt2->bindParam(1, $IPP);
         $stmt2->bindParam(2,$nomIma);
         $stmt2->execute();
-        $res= $stmt2->fetchColumn(0);
-        return $res;
+        return $stmt2->fetchColumn(0);
 
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
@@ -438,10 +504,10 @@ function DataBase_Delete_Corbeille($ipp)
             $stmt = $dbh->prepare("DELETE FROM corbeille WHERE IPPCorb=?");
             $stmt->bindParam(1, $ipp);
             $stmt->execute();
-            header('Location: ../DPIpatient/DPI.php');
+            header(DPIReturn());
         }
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
@@ -463,10 +529,10 @@ function DataBase_Delete_Patient()
             $stmt = $dbh->prepare("DELETE FROM patient WHERE IPP=?");
             $stmt->bindParam(1, $_SESSION["IPP_SUPP"]);
             $stmt->execute();
-            header('Location: ../DPIpatient/DPI.php');
+            header(DPIReturn());
         }
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
@@ -476,22 +542,22 @@ function DataBase_Attribute_Role($ID,$Role)
     try {
         $dbh = DataBase_Creator_Unit();
         $stmt = $dbh->prepare("SELECT count(*) FROM utilisateur where login = ? ");
-        $stmt->bindParam(1, $_POST["ID"]);
+        $stmt->bindParam(1, $ID);
         $stmt->execute();
         $result = $stmt->fetchColumn(0);
 
         if($result==1){
 
             try {
-                $dbh = $dbh = DataBase_Creator_Unit();
+                $dbh = $dbh = DataBase_Creator_Uit();
                 $stmt = $dbh->prepare("UPDATE utilisateur SET roles=? WHERE login=?");
-                $stmt->bindParam(1, $_POST["Role"]);
-                $stmt->bindParam(2, $_POST["ID"]);
+                $stmt->bindParam(1, $Role);
+                $stmt->bindParam(2, $ID);
 
                 $stmt->execute();
                 header('Location: ../DPIpatient/DPI.php');
             } catch (PDOException $e) {
-                print "Erreur !: " . $e->getMessage() . "<br/>";
+                ErrorMessage($e);
                 die();
             }
         }
@@ -500,7 +566,7 @@ function DataBase_Attribute_Role($ID,$Role)
             header('Location: ../DPIpatient/AttributionRole.php?erreur=1');
         }
     }catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
@@ -508,14 +574,12 @@ function DataBase_Attribute_Role($ID,$Role)
 function VisuImagerie($IPP){
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("select lien from radio where ippradio=?");
+        $stmt2 = $dbh->prepare("select lien from radio where IPPRadio=?");
         $stmt2->bindParam(1, $IPP);
         $stmt2->execute();
-        $result = $stmt2->fetchAll(PDO::FETCH_COLUMN, 0);
-        return $result;
-        //echo "<img class='logo' src=$res>";
+        return $stmt2->fetchAll(PDO::FETCH_COLUMN, 0);
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
@@ -523,14 +587,16 @@ function VisuImagerie($IPP){
 function VisuBio($IPP){
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("select lien from Biologie where IPPBio=?");
+        $stmt2 = $dbh->prepare("select lien,nom,description from Biologie where IPPBio=?");
         $stmt2->bindParam(1, $IPP);
         $stmt2->execute();
-        $result = $stmt2->fetchAll(PDO::FETCH_COLUMN, 0);
-        return $result;
-        //echo "<img class='logo' src=$res>";
+        $res = [];
+        foreach ($stmt2 as $r){
+            $res[] = $r;
+        }
+        return $res;
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
 }
@@ -541,13 +607,252 @@ function VisuCour($IPP){
         $stmt2 = $dbh->prepare("select lien from couriel where IPPCour=?");
         $stmt2->bindParam(1, $IPP);
         $stmt2->execute();
-        $result = $stmt2->fetchAll(PDO::FETCH_COLUMN, 0);
-        return $result;
-        //echo "<img class='logo' src=$res>";
+        return $stmt2->fetchAll(PDO::FETCH_COLUMN, 0);
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
+        ErrorMessage($e);
         die();
     }
+}
+
+// Separation
+function verification($elt){
+    if (empty($elt)) {
+        $elt = 'rien';
+    }
+    return $elt;
+}
+
+function Contact($PDO){
+    $idContact = $PDO->prepare("SELECT max(idptel) from personnecontacte");
+    $idContact->execute();
+    foreach ($idContact as $idcont) {
+        return $idcont[0] + 1;
+    }
+}
+
+function Confiant($PDO){
+    $idConfiance = $PDO->prepare("SELECT max(idpcon) from personneconfiance");
+    $idConfiance->execute();
+    foreach ($idConfiance as $idconf) {
+        return $idconf[0] + 1;
+    }
+}
+
+function getLstIPP(){
+    $PDO = DataBase_Creator_Unit();
+    $ipp = $PDO->prepare("Select ipp from patient");
+    $ipp->execute();
+    $lstipp = [];
+    foreach ($ipp as $ipps) {
+        $lstipp[] = $ipps[0];
+    }
+    return $lstipp;
+}
+
+function PatientIEP($PDO)
+{
+    $idPatientIep = $PDO->prepare("SELECT max(iep)from patient");
+    $idPatientIep->execute();
+    foreach ($idPatientIep as $idpatIep) {
+        return $idpatIep[0] + 1;
+    }
+}
+
+function AjouterDPI ()
+{
+    $PDO = DataBase_Creator_Unit();
+    $contacte1 = Contact($PDO);
+    $Contacte = $PDO->prepare("insert into personnecontacte (idptel, nom, prenom, telephone, lien) VALUES (?,?,?,?,?)");
+    $Contacte->bindParam(1, $contacte1);
+    $Contacte->bindParam(2, $_POST['nomct']); // Permets de récupérer le nom du contact de la personne saisi dans le formulaire
+    $Contacte->bindParam(3, $_POST['prenomct']); // Permets de récupérer le prénom du contact de la personne saisi dans le formulaire
+    $Contacte->bindParam(4, $_POST['telephonect']); // Permets de récupérer le téléphone du contact de la personne saisi dans le formulaire
+    $Contacte->bindParam(5, $_POST['lienct']); // Permets de récupérer le lien de parenté du contact de la personne saisi dans le formulaire
+    $Contacte->execute();
+
+
+    $confiance1 = Confiant($PDO);
+    $boo = "true";
+    $Confiance = $PDO->prepare("insert into personneconfiance (idpcon, nom, prenom, telephone, lien, formulaire) VALUES (?,?,?,?,?,?)");
+    $Confiance->bindParam(1, $confiance1);
+    $Confiance->bindParam(2, $_POST['nomcf']); // Permets de récupérer le nom de la personne de confiance saisi dans le formulaire
+    $Confiance->bindParam(3, $_POST['prenomcf']); // Permets de récupérer le prénom de la personne de confiance saisi dans le formulaire
+    $Confiance->bindParam(4, $_POST['telephonecf']); // Permets de récupérer le téléphone de la personne de confiance saisi dans le formulaire
+    $Confiance->bindParam(5, $_POST['liencf']); // Permets de récupérer le lien de parenté de la personne de confiance saisi dans le formulaire
+    $Confiance->bindParam(6, $boo);
+    $Confiance->execute();
+
+
+    $patientiep = PatientIEP($PDO);
+    // Permet d'ajouter des informations dans la base de données //
+    $Patient1 = $PDO->prepare("insert into patient (ipp, iep, nom, prenom, date_de_naissance, taille_cm, poids_kg, adresse, code_postal, ville, telephone_personnel, telephone_professionnel, allergies, antecedents, obstericaux, documents_medicaux, documents_chirurgicaux, idpcon, idptel, mesure_de_protection, assistant_social, mode_de_vie, synthese_entree, traitement_domicile, donnee_physique_psychologique, mobilite, alimentation, hygiene, toilette, habit, continence)
+VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $Patient1->bindParam(1, $_POST['ipp']);
+    $Patient1->bindParam(2, $patientiep);
+    $Patient1->bindParam(3, $_POST['nom']); // Permets de récupérer le nom saisi dans le formulaire
+    $Patient1->bindParam(4, $_POST['prenom']); // Permets de récupérer le prénom saisi dans le formulaire
+    $Patient1->bindParam(5, $_POST['date_de_naissance']); // Permets de récupérer la date de naissance saisie dans le formulaire
+    $Patient1->bindParam(6, $_POST['taille_cm']); // Permets de récupérer la taille saisie dans le formulaire
+    $Patient1->bindParam(7, $_POST['poids_kg']); // Permets de récupérer le poids saisi dans le formulaire
+    $Patient1->bindParam(8, $_POST['adresse']); // Permets de récupérer l'adresse saisie dans le formulaire
+    $Patient1->bindParam(9, $_POST['code_postal']); // Permets de récupérer le code postal saisi dans le formulaire
+    $Patient1->bindParam(10, $_POST['ville']); // Permets de récupérer la ville saisie dans le formulaire
+    $Patient1->bindParam(11, $_POST['telephone_personnel']); // Permets de récupérer le telperso saisi dans le formulaire
+    $telpro = verification($_POST['telephone_professionnel']); // Permets de vérifier si le telpro est bien saisi
+    $Patient1->bindParam(12, $telpro);
+    $allergies = verification($_POST['allergies']); // Permets de vérifier si les allergies sont bien saisi
+    $Patient1->bindParam(13, $allergies);
+    $antecedents = verification($_POST['antecedents']); // Permets de vérifier si les antécédents sont bien saisi
+    $Patient1->bindParam(14, $antecedents);
+    $Obs = verification($_POST['obstericaux']); // Permets de vérifier si les Obs sont bien saisi
+    $Patient1->bindParam(15, $Obs);
+    $docMed = verification($_POST['documents_medicaux']); // Permets de vérifier si les docMed sont bien saisi
+    $Patient1->bindParam(16, $docMed);
+    $docChir = verification($_POST['documents_chirurgicaux']); // Permets de vérifier si les docChir sont bien saisi
+    $Patient1->bindParam(17, $docChir);
+    $Patient1->bindParam(18, $confiance1);
+    $Patient1->bindParam(19, $contacte1);
+    $Patient1->bindParam(20, $_POST['mesure_de_protection']); // Permets de récuperer les MP saisi dans le formulaire
+    $Patient1->bindParam(21, $_POST['assistant_social']); // Permets de récupérer les AC saisi dans le formulaire
+    $MDV = verification($_POST['mode_de_vie']);
+    $Patient1->bindParam(22, $MDV);
+    $Patient1->bindParam(23, $_POST['synthese_entree']); // Permets de récupérer la synEntree saisi dans le formulaire
+    $tradomi = verification($_POST['traitement_domicile']); // Permets de vérifier si tradomi est bien saisi
+    $Patient1->bindParam(24, $tradomi);
+    $doPhyPsy = verification($_POST['donnee_physique_psychologique']); // Permets de vérifier si doPhyPsy est bien saisi
+    $Patient1->bindParam(25, $doPhyPsy);
+    $Patient1->bindParam(26, $_POST['mobilite']); // Permets de récupérer CD saisi dans le formulaire
+    $Patient1->bindParam(27, $_POST['alimentation']); // Permets de récupérer CM saisi dans le formulaire
+    $Patient1->bindParam(28, $_POST['hygiene']); // Permets de récupérer CL saisi dans le formulaire
+    $Patient1->bindParam(29, $_POST['toilette']); // Permets de récupérer CT saisi dans le formulaire
+    $Patient1->bindParam(30, $_POST['habit']); // Permets de récupérer CH saisi dans le formulaire
+    $Patient1->bindParam(31, $_POST['continence']); // Permets de récupérer conti saisie dans le formulaire
+    $Patient1->execute();
+
+}
+
+function StockDPI ()
+{
+    $DPI1 = DataBase_Creator_Unit();
+    $DPI = $DPI1->prepare("Select * from Patient where ipp = ?");
+    $DPI->bindParam(1, $_POST['recherche']);
+    $DPI->execute();
+    foreach ($DPI as $info) {
+        return $info;
+    }
+}
+
+function lstderoulante(){
+    $DPI2 = DataBase_Creator_Unit();
+    $DPI = $DPI2->prepare("Select ipp, nom, prenom from Patient left join Corbeille C on Patient.IPP = C.IPPCorb WHERE IPPCorb is null");
+    $DPI->execute();
+    return $DPI;
+}
+
+function lstderoulante2(){
+    $DPI2 = DataBase_Creator_Unit();
+    $DPI = $DPI2->prepare("Select ipp, nom, prenom from Patient");
+    $DPI->execute();
+    return $DPI;
+}
+
+function lstderoulanteCorb(){
+    $DPI2 = DataBase_Creator_Unit();
+    $DPI = $DPI2->prepare("Select ipp, nom, prenom from Patient left join Corbeille C on Patient.IPP = C.IPPCorb WHERE IPPCorb is not null");
+    $DPI->execute();
+    return $DPI;
+}
+
+function lstderoulanteImageBio($ipp){
+    $DPI2 = DataBase_Creator_Unit();
+    $DPI = $DPI2->prepare("select lien,nom,IPPBio from biologie where IPPBio= ?");
+    $DPI->bindParam(1,$ipp);
+    $DPI->execute();
+    return $DPI->fetchAll(PDO::FETCH_COLUMN, 1);
+}
+
+function lstderoulanteImageRad($ipp){
+    $DPI2 = DataBase_Creator_Unit();
+    $DPI = $DPI2->prepare("select lien,nom,IPPRadio from radio where IPPRadio= ?");
+    $DPI->bindParam(1,$ipp);
+    $DPI->execute();
+    return $DPI->fetchAll(PDO::FETCH_COLUMN, 1);
+}
+
+function lstderoulanteImageCou($ipp){
+    $DPI2 = DataBase_Creator_Unit();
+    $DPI = $DPI2->prepare("select lien,nom,IPPCour from couriel where IPPCour= ?");
+    $DPI->bindParam(1,$ipp);
+    $DPI->execute();
+    return $DPI->fetchAll(PDO::FETCH_COLUMN, 1);
+}
+
+function nameColonne ($tablesql){
+    $DPI3 = DataBase_Creator_Unit();
+    $colonne = $DPI3->prepare("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ? order by ordinal_position");
+    $table = $tablesql;
+    $colonne->bindParam(1,$table);
+    $colonne->execute();
+    $donnees = [];
+    $typedonnees = [];
+    foreach ($colonne as $don){
+        $donnees[] = $don[0];
+        $typedonnees[] = $don[1];;
+    }
+    return [$donnees,$typedonnees];
+}
+
+
+function modifier($ipp){
+    $DPI3 = DataBase_Creator_Unit();
+    $MDF = $DPI3->prepare("UPDATE patient set iep = ?, nom = ? , prenom = ? , date_de_naissance = ? , taille_cm = ? , poids_kg = ?, adresse = ?, code_postal = ?, ville = ?, telephone_personnel = ?, telephone_professionnel = ?,allergies = ?, antecedents = ?, obstericaux = ?, documents_medicaux = ?, documents_chirurgicaux = ?, mesure_de_protection = ?,
+                   assistant_social = ?, mode_de_vie = ?, synthese_entree = ?, traitement_domicile = ?, donnee_physique_psychologique = ?, mobilite = ?, alimentation = ?, hygiene = ?, toilette = ?, habit = ? where ipp = ?;
+");
+    $MDF->bindParam(1,$_POST['iep']);
+    $MDF->bindParam(2, $_POST['nom']);
+    $MDF->bindParam(3, $_POST['prenom']);
+    $MDF->bindParam(4, $_POST['date_de_naissance']);
+    $MDF->bindParam(5, $_POST['taille_cm']);
+    $MDF->bindParam(6, $_POST['poids_kg']);
+    $MDF->bindParam(7, $_POST['adresse']);
+    $MDF->bindParam(8, $_POST['code_postal']);
+    $MDF->bindParam(9, $_POST['ville']);
+    $MDF->bindParam(10, $_POST['telephone_personnel']);
+    $MDF->bindParam(11, $_POST['telephone_professionnel']);
+    $MDF->bindParam(12, $_POST['allergies']);
+    $MDF->bindParam(13, $_POST['antecedents']);
+    $MDF->bindParam(14, $_POST['obstericaux']);
+    $MDF->bindParam(15, $_POST['documents_medicaux']);
+    $MDF->bindParam(16, $_POST['documents_chirurgicaux']);
+    $MDF->bindParam(17, $_POST['mesure_de_protection']);
+    $MDF->bindParam(18, $_POST['assistant_social']);
+    $MDF->bindParam(19, $_POST['mode_de_vie']);
+    $MDF->bindParam(20, $_POST['synthese_entree']);
+    $MDF->bindParam(21, $_POST['traitement_domicile']);
+    $MDF->bindParam(22, $_POST['donnee_physique_psychologique']);
+    $MDF->bindParam(23, $_POST['mobilite']);
+    $MDF->bindParam(24, $_POST['alimentation']);
+    $MDF->bindParam(25, $_POST['hygiene']);
+    $MDF->bindParam(26, $_POST['toilette']);
+    $MDF->bindParam(27, $_POST['habit']);
+    $MDF->bindParam(28, $ipp);
+    $MDF->execute();
+
+}
+
+
+
+
+// Separation
+
+function DPIReturn()
+{
+    return 'Location: ../DPIpatient/DPI.php';
+}
+
+function ErrorMessage($e)
+{
+    print "Erreur !: " . $e->getMessage() . "<br/>";
 }
 
 function Modif_Observation($date,$init,$cible,$donn,$act,$res){

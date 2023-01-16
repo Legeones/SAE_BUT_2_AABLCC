@@ -22,27 +22,27 @@
     <?php
     if(isset($_GET['erreur'])){
         $err = $_GET['erreur'];
-        // Un message d'erreut apparait si le mot de passe comporte moins de 8 caractères
+        // Un message d'erreur apparaît si le mot de passe comporte moins de 8 caractères
         if($err==1){
             echo "<p style='color:red'>le mot de passse a moins de 8 caractères</p>";
         }
-        // Un message d'erreur apparait si le mot de passe et sa confirmation sont différents
+        // Un message d'erreur apparaît si le mot de passe et sa confirmation sont différents
         if($err==2){
             echo "<p style='color:red'>le mot de passe et sa confirmation sont différents</p>";
         }
-        // Un message d'erreur apparait si des minuscules sont ajoutées
+        // Un message d'erreur apparaît si des minuscules sont ajoutées
         if($err==3){
             echo "<p style='color:red'> pas de minuscule </p>";
         }
-        // Un message d'erreit apparrait si des numéros sont ajoutés
+        // Un message d'erreit apparaît si des numéros sont ajoutés
         if($err==4){
             echo "<p style='color:red'> pas de numero </p>";
         }
-        // Un message d'erreut apparrait si des majuscules sont ajoutées
+        // Un message d'erreut apparaît si des majuscules sont ajoutées
         if($err==5){
             echo "<p style='color:red'> pas de majusucule </p>";
         }
-        // Un message d'erreur apparait des le login est invalide
+        // Un message d'erreur apparaît des le login est invalide
         if($err==6){
             echo "<p style='color:red'> le login est invalide </p>";
         }

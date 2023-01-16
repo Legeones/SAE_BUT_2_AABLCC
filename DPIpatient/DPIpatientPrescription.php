@@ -21,8 +21,7 @@ require "patientDPIfunction.php";
         </div>
         <div class="btn-group">
             <button onclick="location.href='DPI.php'">PATIENTS</button>
-            <button>SCENARIOS</button>
-            <button>JSAISPAS</button>
+            <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button>
         </div>
     </div>
     <div class="droite">
@@ -41,10 +40,13 @@ require "patientDPIfunction.php";
         </form>
         <div class="container" >
             <div class="grid-container">
-
-                <?= afficherDataPersos() ?>
+                <div class="info" onclick="openForm('donn-perso');">
+                    <h2>Données personnelles</h2>
+                </div>
             </div>
-
+        </div>
+        <div class="login-popup">
+            <?= afficherDataPersos() ?>
         </div>
         <div style="overflow-x: scroll;overflow-y: scroll";>
             <form class="table-container" method="get" action="patientDPIfunction.php">

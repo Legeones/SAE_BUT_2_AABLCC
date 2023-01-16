@@ -1,0 +1,701 @@
+
+body{
+    background-color: white;
+}
+#container{
+    width:400px;
+    margin:0 auto;
+    margin-top:10%;
+}
+/* Bordered form */
+form {
+    padding: 1%;
+    right: 1%;
+    border: 3px solid white;
+    background: lightgrey;
+    box-shadow: 3px 3px 3px 3px dimgrey;
+}
+#container h1{
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password]{
+    width: 100%;
+    padding: 12px 9px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+input[type=number], input[type=date]{
+    width: 29%;
+    padding: 12px 9px;
+    display: flex;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Handlee&family=Purple+Purse&display=swap');
+
+.global .bas .Titreform{
+    text-align: center;
+    font-family: 'Bungee Spice', cursive;
+    font-family: 'Handlee', cursive;
+    font-family: 'Purple Purse', cursive;
+
+}
+
+.global .bas .Groupe{
+    margin: 12px 0px;
+}
+
+.global .bas .Groupe label{
+    font-size: 19px;
+}
+/* Set a style for all buttons */
+.global .bas input[type=submit] {
+    background-color: white;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 11%;
+}
+.global .bas input[type=submit]:hover {
+    background-color: white;
+    color: gray;
+    border: 1px solid black;
+}
+
+.global{
+    width: 100%;
+}
+
+/*#gauche, #droite{
+    display: inline-block;
+    vertical-align: top;
+}*/
+.gauche{
+    float: left;
+    width: 20%;
+    /*background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20210924/pngtree-health-care-abstract-light-effect-icon-decoration-image_906585.png") ;
+    */
+    background-color: white;
+    height: 90%;
+    position: absolute;
+    left: 0px;
+    top: 10%;
+    z-index: 1;
+    border-right: black solid;
+    border-width: thin;
+    box-shadow: 2px 0px 0px dimgrey;
+}
+.droite{
+    float: right;
+    padding: 1%;
+
+    /*padding: -1% -1% -1% -1%;*/
+    width: 78%;
+    height: 85.6%;
+    position: absolute;
+    right: 0px;
+    top: 10%;
+    left: 20%;
+    background-color: white;
+}
+header{
+    width: 100%;
+    float: left;
+    height: 10%;
+    position: absolute;
+    top: 0px;
+    left: 0%;
+    background-color: white;
+    border-bottom: black solid;
+    border-width: thin;
+    z-index: 2;
+    box-shadow: 0px 1px 0px dimgrey;
+}
+
+footer{
+    height: 6%;
+    width: 80%;
+    background-color: cornflowerblue;
+    position: absolute;
+    bottom: 0px;
+    left: 20%;
+}
+
+.btn-group button {
+    background-color: white; /* Green background */
+    border: 1px solid black; /* Green border */
+    color: black; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    margin-left: 3%;
+    width: 94%;
+    border-radius: 5px;
+    margin-top: 1%;
+    box-shadow: 2px 2px 2px dimgrey;
+    font-size: 15px;
+    font-family: "Gill Sans MT";
+    font-weight: bold;
+
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: cornflowerblue;
+    box-shadow: 1px 1px 1px dimgrey;
+}
+
+.profile{
+    width: 95%;
+    height: 40%;
+    background-color: dimgrey;
+    margin: 2% 1% 1% 2%;
+    border-radius: 5px;
+    border: black solid;
+}
+
+.logo {
+    width: 10%;
+    height: 90%;
+    margin-top: 0.25%;
+    margin-left: 0.25%;
+
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 16.2% 16.2% 16.2% 16.2% 16.2% 16.2%;
+    height: 85%;
+    width: 96.6%;
+    gap: 5px;
+    background-color: lightgrey;
+    padding: 5px;
+    box-shadow: 3px 3px 3px 3px dimgrey;
+    font-family: Arial;
+    font-size: 11px;
+    z-index: 10;
+    position: absolute;
+}
+
+.grid-container > div {
+    background-color: white;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;
+    box-shadow: 3px 2px 2px dimgrey;
+    min-width: 16.1%;
+    min-height: 14.16%;
+}
+
+
+.hide{
+    position: absolute;
+    margin: 0% 5% 0% 15%;
+    background-color: bisque;
+    width: 20%;
+    height: 20%;
+    visibility: hidden;
+    box-shadow: 1px 1px 1px 1px dimgrey;
+}
+
+.hideLeft{
+    position: absolute;
+    margin: 0% 0% 0% 0%;
+    right: 1px;
+    background-color: bisque;
+    width: 20%;
+    height: 20%;
+    visibility: hidden;
+    box-shadow: 1px 1px 1px 1px dimgrey;
+}
+
+.global .bas {
+    background-color: gray;
+    width: 96%;
+    height: 84%;
+    padding: 2%;
+
+}
+
+.global .bas form {
+    background-color: wheat;
+    width: 98%;
+    height: 95%;
+    overflow: auto;
+
+}
+
+.btnchoix button {
+    background-color: blue; /* Green background */
+    border: 1px solid black; /* Green border */
+    color: black; /* White text */
+    padding: 100%; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    margin-left: 3%;
+    width: 50%;
+    border-radius: 5px;
+    margin-top: 1%;
+    box-shadow: 2px 2px 2px dimgrey;
+    font-size: 15px;
+    font-family: "Gill Sans MT";
+    font-weight: bold;
+
+}
+
+
+/* Clear floats (clearfix hack) */
+.btnchoix:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.btnchoix button:hover {
+    background-color: gray;
+    box-shadow: 1px 1px 1px dimgrey;
+}
+
+.textArea input{
+    width: 50%;
+    height: 50%;
+    border: mediumpurple inset 5px;
+    padding-bottom: 50%;
+    background-color: lavender;
+}
+
+.btnchoix button {
+    background-color: white; /* Green background */
+    border: 1px solid black; /* Green border */
+    color: black; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    margin-left: 3%;
+    width: 25%;
+    border-radius: 5px;
+    margin-top: 1%;
+    box-shadow: 2px 2px 2px dimgrey;
+    font-size: 15px;
+    font-family: "Gill Sans MT";
+    font-weight: bold;
+
+}
+
+/* Clear floats (clearfix hack) */
+.btnchoix:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.btnchoix button:hover {
+    background-color: gray;
+    box-shadow: 1px 1px 1px dimgrey;
+}
+
+#selectEtu{
+    background-color: lavender;
+    box-shadow: black;
+    border-color: blueviolet;
+    border-style: inset;
+    border-width: medium;
+
+}
+
+#selectDPI{
+    background-color: lavender;
+    box-shadow: black;
+    border-color: blueviolet;
+    border-style: inset;
+    border-width: medium;
+
+}
+
+#textArea{
+    width: auto;
+    height: 50%;
+
+}
+
+#stock{
+    background-color: papayawhip;
+    height: auto;
+    mso-default-height: 250px;
+    box-shadow: black;
+    border-color: blueviolet;
+    border-style: inset;
+    border-width: medium;
+    padding-top: 2%;
+    padding-left: 1%;
+}
+
+body{
+    background-color: white;
+}
+#container{
+    width:400px;
+    margin:0 auto;
+    margin-top:10%;
+}
+/* Bordered form */
+form {
+    padding: 1%;
+    right: 1%;
+    border: 3px solid white;
+    background: lightgrey;
+    box-shadow: 3px 3px 3px 3px dimgrey;
+}
+#container h1{
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password]{
+    width: 100%;
+    padding: 12px 9px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+input[type=number], input[type=date]{
+    width: 29%;
+    padding: 12px 9px;
+    display: flex;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Handlee&family=Purple+Purse&display=swap');
+
+.global .bas .Titreform{
+    text-align: center;
+    font-family: 'Bungee Spice', cursive;
+    font-family: 'Handlee', cursive;
+    font-family: 'Purple Purse', cursive;
+
+}
+
+.global .bas .Groupe{
+    margin: 12px 0px;
+}
+
+.global .bas .Groupe label{
+    font-size: 19px;
+}
+/* Set a style for all buttons */
+.global .bas input[type=submit] {
+    background-color: white;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 11%;
+}
+.global .bas input[type=submit]:hover {
+    background-color: white;
+    color: gray;
+    border: 1px solid black;
+}
+
+.global{
+    width: 100%;
+}
+
+/*#gauche, #droite{
+    display: inline-block;
+    vertical-align: top;
+}*/
+.gauche{
+    float: left;
+    width: 20%;
+    /*background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20210924/pngtree-health-care-abstract-light-effect-icon-decoration-image_906585.png") ;
+    */
+    background-color: white;
+    height: 90%;
+    position: absolute;
+    left: 0px;
+    top: 10%;
+    z-index: 1;
+    border-right: black solid;
+    border-width: thin;
+    box-shadow: 2px 0px 0px dimgrey;
+}
+.droite{
+    float: right;
+    padding: 1%;
+
+    /*padding: -1% -1% -1% -1%;*/
+    width: 78%;
+    height: 85.6%;
+    position: absolute;
+    right: 0px;
+    top: 10%;
+    left: 20%;
+    background-color: white;
+}
+header{
+    width: 100%;
+    float: left;
+    height: 10%;
+    position: absolute;
+    top: 0px;
+    left: 0%;
+    background-color: white;
+    border-bottom: black solid;
+    border-width: thin;
+    z-index: 2;
+    box-shadow: 0px 1px 0px dimgrey;
+}
+
+footer{
+    height: 6%;
+    width: 80%;
+    background-color: cornflowerblue;
+    position: absolute;
+    bottom: 0px;
+    left: 20%;
+}
+
+.btn-group button {
+    background-color: white; /* Green background */
+    border: 1px solid black; /* Green border */
+    color: black; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    margin-left: 3%;
+    width: 94%;
+    border-radius: 5px;
+    margin-top: 1%;
+    box-shadow: 2px 2px 2px dimgrey;
+    font-size: 15px;
+    font-family: "Gill Sans MT";
+    font-weight: bold;
+
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: cornflowerblue;
+    box-shadow: 1px 1px 1px dimgrey;
+}
+
+.profile{
+    width: 95%;
+    height: 40%;
+    background-color: dimgrey;
+    margin: 2% 1% 1% 2%;
+    border-radius: 5px;
+    border: black solid;
+}
+
+.logo {
+    width: 10%;
+    height: 90%;
+    margin-top: 0.25%;
+    margin-left: 0.25%;
+
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 16.2% 16.2% 16.2% 16.2% 16.2% 16.2%;
+    height: 85%;
+    width: 96.6%;
+    gap: 5px;
+    background-color: lightgrey;
+    padding: 5px;
+    box-shadow: 3px 3px 3px 3px dimgrey;
+    font-family: Arial;
+    font-size: 11px;
+    z-index: 10;
+    position: absolute;
+}
+
+.grid-container > div {
+    background-color: white;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;
+    box-shadow: 3px 2px 2px dimgrey;
+    min-width: 16.1%;
+    min-height: 14.16%;
+}
+
+
+.hide{
+    position: absolute;
+    margin: 0% 5% 0% 15%;
+    background-color: bisque;
+    width: 20%;
+    height: 20%;
+    visibility: hidden;
+    box-shadow: 1px 1px 1px 1px dimgrey;
+}
+
+.hideLeft{
+    position: absolute;
+    margin: 0% 0% 0% 0%;
+    right: 1px;
+    background-color: bisque;
+    width: 20%;
+    height: 20%;
+    visibility: hidden;
+    box-shadow: 1px 1px 1px 1px dimgrey;
+}
+
+.global .bas {
+    background-color: gray;
+    width: 96%;
+    height: 84%;
+    padding: 2%;
+
+}
+
+.global .bas form {
+    background-color: wheat;
+    width: 98%;
+    height: 95%;
+    overflow: auto;
+
+}
+
+.btnchoix button {
+    background-color: blue; /* Green background */
+    border: 1px solid black; /* Green border */
+    color: black; /* White text */
+    padding: 100%; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    margin-left: 3%;
+    width: 50%;
+    border-radius: 5px;
+    margin-top: 1%;
+    box-shadow: 2px 2px 2px dimgrey;
+    font-size: 15px;
+    font-family: "Gill Sans MT";
+    font-weight: bold;
+
+}
+
+
+/* Clear floats (clearfix hack) */
+.btnchoix:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.btnchoix button:hover {
+    background-color: gray;
+    box-shadow: 1px 1px 1px dimgrey;
+}
+
+.textArea input{
+    width: 50%;
+    height: 50%;
+    border: mediumpurple inset 5px;
+    padding-bottom: 50%;
+    background-color: lavender;
+}
+
+.btnchoix button {
+    background-color: white; /* Green background */
+    border: 1px solid black; /* Green border */
+    color: black; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    margin-left: 3%;
+    width: 25%;
+    border-radius: 5px;
+    margin-top: 1%;
+    box-shadow: 2px 2px 2px dimgrey;
+    font-size: 15px;
+    font-family: "Gill Sans MT";
+    font-weight: bold;
+
+}
+
+/* Clear floats (clearfix hack) */
+.btnchoix:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.btnchoix button:hover {
+    background-color: gray;
+    box-shadow: 1px 1px 1px dimgrey;
+}
+
+#selectEtu{
+    background-color: lavender;
+    box-shadow: black;
+    border-color: blueviolet;
+    border-style: inset;
+    border-width: medium;
+
+}
+
+#selectDPI{
+    background-color: lavender;
+    box-shadow: black;
+    border-color: blueviolet;
+    border-style: inset;
+    border-width: medium;
+
+}
+
+#textArea{
+    width: auto;
+    height: 50%;
+
+}
+
+#stock, #ajout_event, #date_scenario{
+    height: auto;
+    mso-default-height: 250px;
+    box-shadow: black;
+    border-color: blueviolet;
+    border-style: inset;
+    border-width: medium;
+    padding-top: 2%;
+    padding-left: 1%;
+    padding-bottom: 2%;
+    background-color: whitesmoke;
+}
+
+
+
+

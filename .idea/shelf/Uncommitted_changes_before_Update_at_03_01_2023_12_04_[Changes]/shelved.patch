@@ -1,0 +1,17 @@
+Index: DPIpatient/DPI.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/DPIpatient/DPI.php b/DPIpatient/DPI.php
+--- a/DPIpatient/DPI.php	
++++ b/DPIpatient/DPI.php	
+@@ -20,7 +20,7 @@
+         </div>
+         <div class="btn-group">
+             <button onclick="location.href='../DPIpatient/DPI.php'">PATIENTS</button>
+-            <button>SCENARIOS</button>
++            <button onclick="location.href='../Partie_Scenario/Scenario.php'">SCENARIOS</button>
+             <button>JSAISPAS</button>
+             <!-- choix du rôle -->
+            <?php

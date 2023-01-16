@@ -14,13 +14,13 @@ $_SESSION['IDENTIFIANT'] = $_POST['username'];
 $_SESSION['EMAIL'] = $_POST['mail'];
 
 if ( $resVerifMail == 0 )
-{ header('Location: ../MDP/MDPoublier.php?erreur=1'); }
+{ header('Location: ../MDP/MDPoublier.php?erreur=1'); } // Zone de vérification
 
 if ( $resVerifemptymail == 0 )
-{ header('Location: ../MDP/MDPoublier.php?erreur=2'); }
+{ header('Location: ../MDP/MDPoublier.php?erreur=2'); } // Zone de vérification
 
 if ( $resVerifemptyusername == 0 )
-{ header('Location: ../MDP/MDPoublier.php?erreur=2'); }
+{ header('Location: ../MDP/MDPoublier.php?erreur=2'); } // Zone de vérification
 
 else 
 { MailPreparator(2,$_POST['mail']); }
