@@ -196,7 +196,6 @@ function ajout_scenario($dbh): void //fonction qui permet d'ajouter des scénari
 
         echo "<P style='color: green'>l'ajout a été effectué</p>";
     }
-
 }
 
 
