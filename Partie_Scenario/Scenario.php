@@ -86,11 +86,15 @@
 
                     //Main
                     if(!empty($db)) {
-                        if (!empty($_SESSION['val']) && !empty($_SESSION['debut']) && !empty($_SESSION['fin'])) {
+                        if (isset($_SESSION['val']) && isset($_SESSION['debut']) && isset($_SESSION['fin'])) {
                             ajout_scenario($db);
                         }
 
                     }
+
+                    unset($_SESSION['val']);
+                    unset($_SESSION['debut']);
+                    unset($_SESSION['fin']);
 
                     //gestion en cas d'exception
                     }catch (PDOException $e) {
