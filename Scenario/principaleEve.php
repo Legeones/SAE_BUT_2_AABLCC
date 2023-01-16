@@ -34,9 +34,11 @@
         </div>
     </div>
     <div class="droite">
+        <div class="div-norm-scenario">
+            <?php
+            if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button class='btn-norm' onclick=location.href='choixScenario.php'>Lancer scenario</button>"; echo "<button class='btn-norm' onclick= location.href='../Partie_Scenario/Scenario.php'>Création du scénario</button>";}
+            ?>
+        </div>
 
-        <?php
-        if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='choixScenario.php'>lancer scenario</button>"; echo "<button onclick= location.href='../Partie_Scenario/Scenario.php'> scenario steven";}
-        ?>
 </body>
 </html>

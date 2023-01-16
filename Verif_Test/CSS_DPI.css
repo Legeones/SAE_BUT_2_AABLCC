@@ -356,3 +356,28 @@ footer{
     width: 80%;
     height: 80%;
 }
+
+.div-norm-scenario{
+    border: black medium solid;
+    border-radius: 10px;
+    padding: 0.5%;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 6%;
+}
+
+.btn-norm{
+    padding: 1%;
+    border-radius: 10px;
+    border: black thin solid;
+    margin-left: 10px;
+    background-color: white;
+    height: 100%;
+
+}
+
+.btn-norm:hover{
+    box-shadow: black 1px 1px;
+    cursor: pointer;
+}

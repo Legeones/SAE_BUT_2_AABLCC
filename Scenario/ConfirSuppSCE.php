@@ -9,6 +9,7 @@ $_SESSION["SupCorscenario"]=$_POST["SupCorscenario"];
 <head>
     <meta charset="UTF-8">
     <title>test Dom</title>
+    <link rel="stylesheet" href="../Verif_Test/CSS_DPI.css">
 </head>
 <body>
 
@@ -19,8 +20,10 @@ $_SESSION["SupCorscenario"]=$_POST["SupCorscenario"];
 echo "etes vous sur de vouloir supprimer ce scenario ";
 ?>
 <br>
+<div class="div-norm-scenario">
+    <button class="btn-norm" onclick="location.href='SupSceSQL.php'">OUI</button> <!-- Bouton oui supprimer patient -->
+    <button class="btn-norm" onclick="location.href='principaleEve.php'">NON</button> <!-- Bouton non supprimer patient -->
+</div>
 
-<button onclick="location.href='SupSceSQL.php'">OUI</button> <!-- Bouton oui supprimer patient -->
-<button onclick="location.href='principaleEve.php'">NON</button> <!-- Bouton non supprimer patient -->
 </body>
 </html>

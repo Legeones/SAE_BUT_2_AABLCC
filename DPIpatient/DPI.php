@@ -26,23 +26,26 @@ $_SESSION['patientSuivi']=null;
             <!-- choix du rôle -->
            <?php
                         echo '<br>';
-            if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button onclick=location.href='transition.php'>Passer en mode etu</button>";
+            if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {
+                echo "<button onclick=location.href='AjouterDPI.php'> Ajouter DPI</button>"; // Bouton permettant d'ajouter
                 echo '<br>';
-                echo "<button onclick=location.href='Corbeille.php'> Mettre a la Corbeille</button>"; // Bouton permettant de mettre à la corbeille
+                echo "<button onclick=location.href='../Scenario/principaleEve.php'>Modifier DPI</button>";
                 echo '<br>';
-                echo "<button onclick=location.href='AjouterDPI.php'> Ajouter</button>"; // Bouton permettant d'ajouter
+                echo "<button onclick=location.href='Corbeille.php'>Corbeille DPI</button>"; // Bouton permettant de mettre à la corbeille
                 echo '<br>';
-                echo "<button onclick=location.href='FormulaireUpload.php'>Upload Image</button>";} // Bouton permettant d'upload une image
-            echo '<br>';
-            if ($_SESSION["Role"] == "admin") {echo "<button onclick=location.href='AttributionRole.php'>attribuer role</button>"; // Bouton permettant d'attribuer un rôle
+                echo "<button onclick=location.href='FormulaireUpload.php'>Upload Image</button>";
+                echo '<br>';
+                echo "<button onclick=location.href='transition.php'>Passer en mode etu</button>";
+                echo '<br>';} // Bouton permettant d'upload une image
+           if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='RetourMode.php'>Retour mode prof</button>"; // Bouton permettant de retourner dans le mode prof
+               echo '<br>';}
+            if ($_SESSION["Role"] == "admin") {echo "<button onclick=location.href='AttributionRole.php'>Attribuer Role</button>"; // Bouton permettant d'attribuer un rôle
                 echo '<br>';
                 echo "<button onclick=location.href='FormulaireUnlink.php'>Supprimer Image</button>"; // Bouton permettant de supprimer une image
                 echo '<br>';
-                echo "<button onclick=location.href='SupprimerPatient.php'>Supprimer</button>"; // Bouton permettant de supprimer un patient
+                echo "<button onclick=location.href='SupprimerPatient.php'>Supprimer DPI</button>"; // Bouton permettant de supprimer un patient
                 echo '<br>';
-                echo "<button onclick=location.href='RecupCorbeille.php'>Recup Patient</button>"; // Bouton permettant de récupèrer un patient
-                echo '<br>';}
-            if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='RetourMode.php'>retour mode prof</button>"; // Bouton permettant de retourner dans le mode prof
+                echo "<button onclick=location.href='RecupCorbeille.php'>Recuperation Patient</button>"; // Bouton permettant de récupèrer un patient
                 echo '<br>';}
             $_SESSION['infosPatient']=[];
             ?>

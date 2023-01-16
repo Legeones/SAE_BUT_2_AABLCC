@@ -26,7 +26,7 @@ require "patientDPIfunction.php";
             <?php
                         echo '<br>';
             if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {
-                echo "<button onclick=location.href='../DPIpatient/AjouterAdmissionPatient.php'>AJOUT ADMISSION</button>";
+                echo "<button onclick=location.href='../DPIpatient/AjouterAdmissionPatient.php'>AJOUT ADMISSION</button onclick=location.href='../DPIpatient/AjouterAdmissionPatient.php'>";
                 echo '<br>';
                 echo "<button onclick=affichePopUp('div_pop_up_accept')>TERMINER ADMISSION</button>";
             }
@@ -45,7 +45,7 @@ require "patientDPIfunction.php";
         <div style="display: none; z-index:30; position: relative; left: 200%; bottom: 20%; border: black thin solid" id="div_pop_up_accept">
             <H2>Terminaison d'admission</H2>
             <p>Souhaitez vous vraiment terminer l'admission de <?= $_SESSION['infosPatient']['nom'] ?></p>
-            <button onclick="location.href = '../DPIpatient/patientDPIfunction.php'">Valider</button><button onclick="affichePopUp('div_pop_up_accept')">Annuler</button>
+            <button>Valider</button><button onclick="affichePopUp('div_pop_up_accept')">Annuler</button>
         </div>
     </div>
     <div class="droite">
