@@ -47,6 +47,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if($_POST['debut'] >= $_POST['fin']){
         echo "<p style='color: #cc0000'> Le respect des dates n'est pas fait !</p>";
     }
+
+    if(isset($_POST['value'])){
+        $_SESSION['values'] = $_POST['value'];
+    }
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -163,6 +167,7 @@ function search_idscenario($db) //fonction qui permet de trouver l'id max des sc
  */
 function ajout_scenario($dbh): void //fonction qui permet d'ajouter des scénarios à la BBD
 {
+    $dpi = $_SESSION['values'];
     $idscenario = search_idscenario($dbh);
     $idevents = recup_event($dbh);
     $nbevents = $_POST['nbevent']+$_POST['nbevent_alea'];
@@ -180,28 +185,47 @@ function ajout_scenario($dbh): void //fonction qui permet d'ajouter des scénari
     $insertion->execute();
 
     $compt = [];
-    print_r($nbevents);
-    print_r($idevents);
     $k=0;
     while(sizeof($compt) < $nbevents){ //boucle pour l'insertion de l'association des évènements avec le scénario en question
         //$k = random_int(0, sizeof($idevents)-1);
         $id = $idevents[$k];
-         //vérification de la donnée qui n'est pas déjà présente dans la BDD
+        //vérification de la donnée qui n'est pas déjà présente dans la BDD
         $insertion_event = $dbh->prepare("insert into scenarioevenement (idscenario, idevenement) VALUES (?,?)"); //insertion des données dans la BDD
         $insertion_event->bindparam(1, $idscenario); //paramètres de la requête
         $insertion_event->bindparam(2, $id);
         $insertion_event->execute();
+
         $compt[]+=$id;
         $k += 1;
 
-        echo "<P style='color: green'>l'ajout a été effectué</p>";
+
+
     }
 
+    $b= 0;
+    while($b < sizeof($dpi)){
+        $insert = $dbh->prepare("insert into dpiScenario (ipp, idS) values (?,?)");
+        $insert->bindparam(1, $dpi[$b]);
+        $insert->bindparam(2, $idscenario);
+        $insert->execute();
+        $b += 1;
+    }
+    echo "<P style='color: green'>l'ajout a été effectué</p>";
 }
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-
-
+//DPI
+function lst_dpi($dbh){
+    try{
+        $req= $dbh->prepare("select ipp,nom, prenom from patient order by nom,prenom");
+        $req->execute();
+        $rs = $req->fetchAll();
+        return $rs;
+    }catch (PDOException $e){
+        print "Erreur" . $e->getmessage() . "<br>";
+        die();
+    }
+}
 
 ?>
