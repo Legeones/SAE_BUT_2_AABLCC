@@ -49,11 +49,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     if(isset($_POST['value'])){
-        $_SESSION['values'] = null;
-        foreach ($_POST['value'] as $v){
-            $_SESSION['values'] += $v;
+        $_SESSION['values'] = $_POST['value'];
         }
-    }
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -188,8 +185,6 @@ function ajout_scenario($dbh): void //fonction qui permet d'ajouter des scénari
     $insertion->execute();
 
     $compt = [];
-    print_r($nbevents);
-    print_r($idevents);
     $k=0;
     while(sizeof($compt) < $nbevents){ //boucle pour l'insertion de l'association des évènements avec le scénario en question
         //$k = random_int(0, sizeof($idevents)-1);
@@ -200,20 +195,23 @@ function ajout_scenario($dbh): void //fonction qui permet d'ajouter des scénari
         $insertion_event->bindparam(2, $id);
         $insertion_event->execute();
 
-        $c = [];
-        $b= 0;
-        while(sizeof($c) < count($dpi)){
-            $insert = $dbh->prepare("insert into dpiScenario (ipp, idS) values (?,?)");
-            $insert->bindparam(1, $dpi[$b]);
-            $insert->bindparam(2, $idscenario);
-            $b += 1;
-        }
         $compt[]+=$id;
         $k += 1;
 
 
-        echo "<P style='color: green'>l'ajout a été effectué</p>";
+
     }
+
+    $c = [];
+    $b= 0;
+    while($b < sizeof($dpi)){
+        $insert = $dbh->prepare("insert into dpiScenario (ipp, idS) values (?,?)");
+        $insert->bindparam(1, $dpi[$b]);
+        $insert->bindparam(2, $idscenario);
+        $insert->execute();
+        $b += 1;
+    }
+    echo "<P style='color: green'>l'ajout a été effectué</p>";
 }
 
 
