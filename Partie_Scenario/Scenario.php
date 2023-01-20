@@ -45,34 +45,12 @@
                 ?>
 
                 <div class="choix">
-                    <select id="selectDPI" name="selectDPI">
-                        <option id="ipp" value="defaut">--Choisissez votre DPI--</option>
-                        <?php
-
-                        //liste déroulante pour afficher les patients
-                        $recuppatient= $db->prepare('select ipp,nom, prenom from Patient');
-                        $recuppatient->execute();
-                        while ($row = $recuppatient->fetch(PDO::FETCH_ASSOC)) {
-                            unset($id, $nom, $prenom);
-                            $id = $row['ipp'];
-                            $nom = $row['nom'];
-                            $prenom = $row['prenom'];
-                            echo "<option value='$id'> $nom $prenom </option>";
-
-                        }
-
-                        ?>
-                        <!-- zone de récupération des patients-->
-                        <input name="valueipp" id="valueipp">
-                        <input name="nomipp" id="nomipp">
-                    </select>
-
-                    <script>
-                        //fonction pour récupérer les données des patients
-                        document.getElementById('selectDPI').addEventListener('change',function(){
-                            document.getElementById('valueipp').value = this.value;
-                            document.getElementById('nomipp').value = this.options[this.selectedIndex].textContent;});
-                    </script>
+                    <?php
+                    $dpi = lst_dpi($db);
+                    foreach ($dpi as $val){
+                        echo "<input type='checkbox' name='value[]' value={$val['ipp']} /> {$val['nom']} {$val['prenom']}<br/>";
+                    }
+                    ?>
 
                     <br><br><br>
                     <div id="date_scenario">
@@ -86,13 +64,13 @@
 
                     //Main
                     if(!empty($db)) {
-                        if (isset($_SESSION['val']) && isset($_SESSION['debut']) && isset($_SESSION['fin'])) {
+                        if (isset($_SESSION['values']) && isset($_SESSION['debut']) && isset($_SESSION['fin'])) {
                             ajout_scenario($db);
                         }
 
                     }
 
-                    unset($_SESSION['val']);
+                    unset($_SESSION['values']);
                     unset($_SESSION['debut']);
                     unset($_SESSION['fin']);
 
@@ -118,6 +96,7 @@
                         </div>
                     </div>
                     <br><br><br>
+
 
                     <div align="center" id="stock">
                         <br><br>

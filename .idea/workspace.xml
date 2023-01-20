@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bee8e6e8-0233-4701-bc66-475819c72d90" name="Changes" comment="code final normalement">
+    <list default="true" id="bee8e6e8-0233-4701-bc66-475819c72d90" name="Changes" comment="code final">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BDD/DataBase_Core.php" beforeDir="false" afterPath="$PROJECT_DIR$/BDD/DataBase_Core.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Partie_Scenario/Code.php" beforeDir="false" afterPath="$PROJECT_DIR$/Partie_Scenario/Code.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Partie_Scenario/Scenario.php" beforeDir="false" afterPath="$PROJECT_DIR$/Partie_Scenario/Scenario.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +55,8 @@
       <workItem from="1673518922376" duration="3251000" />
       <workItem from="1673601337817" duration="614000" />
       <workItem from="1673615431160" duration="8781000" />
+      <workItem from="1673864144292" duration="112000" />
+      <workItem from="1674219912172" duration="3996000" />
     </task>
     <task id="LOCAL-00001" summary="changement evenements">
       <created>1673519131955</created>
@@ -103,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673621030777</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="code final">
+      <created>1673864242735</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1673864242736</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +137,7 @@
     <MESSAGE value="changement" />
     <MESSAGE value="code changement" />
     <MESSAGE value="code final normalement" />
-    <option name="LAST_COMMIT_MESSAGE" value="code final normalement" />
+    <MESSAGE value="code final" />
+    <option name="LAST_COMMIT_MESSAGE" value="code final" />
   </component>
 </project>

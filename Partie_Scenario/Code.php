@@ -47,6 +47,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if($_POST['debut'] >= $_POST['fin']){
         echo "<p style='color: #cc0000'> Le respect des dates n'est pas fait !</p>";
     }
+
+    if(isset($_POST['value'])){
+        $_SESSION['values'] = null;
+        foreach ($_POST['value'] as $v){
+            $_SESSION['values'] += $v;
+        }
+    }
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -163,6 +170,7 @@ function search_idscenario($db) //fonction qui permet de trouver l'id max des sc
  */
 function ajout_scenario($dbh): void //fonction qui permet d'ajouter des scénarios à la BBD
 {
+    $dpi = $_SESSION['values'];
     $idscenario = search_idscenario($dbh);
     $idevents = recup_event($dbh);
     $nbevents = $_POST['nbevent']+$_POST['nbevent_alea'];
@@ -191,17 +199,36 @@ function ajout_scenario($dbh): void //fonction qui permet d'ajouter des scénari
         $insertion_event->bindparam(1, $idscenario); //paramètres de la requête
         $insertion_event->bindparam(2, $id);
         $insertion_event->execute();
+
+        $c = [];
+        $b= 0;
+        while(sizeof($c) < count($dpi)){
+            $insert = $dbh->prepare("insert into dpiScenario (ipp, idS) values (?,?)");
+            $insert->bindparam(1, $dpi[$b]);
+            $insert->bindparam(2, $idscenario);
+            $b += 1;
+        }
         $compt[]+=$id;
         $k += 1;
 
+
         echo "<P style='color: green'>l'ajout a été effectué</p>";
     }
-
 }
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-
-
+//DPI
+function lst_dpi($dbh){
+    try{
+        $req= $dbh->prepare("select ipp,nom, prenom from patient order by nom,prenom");
+        $req->execute();
+        $rs = $req->fetchAll();
+        return $rs;
+    }catch (PDOException $e){
+        print "Erreur" . $e->getmessage() . "<br>";
+        die();
+    }
+}
 
 ?>

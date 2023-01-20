@@ -1,4 +1,4 @@
-drop table if exists PersonneConfiance,Utilisateur, PersonneContacte,Corbeille, Patient, Intervenant, Intervention, Admission, Soin,SoinPatientPredef, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient,radio,Biologie,couriel,ObservationMedical,TransmissionsCiblees,Scenario,ScenarioCorbeille,ScenarioEtudiant,ScenarioEvenement, Evenement;
+drop table if exists PersonneConfiance,Utilisateur, PersonneContacte,Corbeille, Patient, Intervenant, Intervention, Admission, Soin,SoinPatientPredef, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient,radio,Biologie,couriel,ObservationMedical,TransmissionsCiblees,Scenario,ScenarioCorbeille,ScenarioEtudiant,ScenarioEvenement, Evenement, dpiScenario;
 
 create table PersonneConfiance
 (
@@ -374,3 +374,9 @@ values (1,1),
        (2,3),
        (2,1),
        (2,5);
+
+create table dpiScenario(
+    ipp numeric(13,0) references patient,
+    idS serial references scenario,
+    primary key (ipp, idS)
+);
