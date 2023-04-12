@@ -4,7 +4,7 @@
 	<title>Connexion</title>
     <meta charset="utf-8">
     <!-- importation des fichiers de style -->
-    <link rel="stylesheet" href="../Vue/CSS.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="CSS.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
 </head>
@@ -69,7 +69,7 @@
                 <input type="submit" value="Connexion">
             </div>
             <div class="mdpOublie">
-                <a href="../Vue/MDPoublier.php"><strong>Mot de passe oublié</strong></a> <!-- Permets d'accéder à la page mot de passe oubliée -->
+                <a href="MDPoublier.php"><strong>Mot de passe oublié</strong></a> <!-- Permets d'accéder à la page mot de passe oubliée -->
             </div>
         </div>
         <div class="Separation2"></div>
@@ -78,11 +78,11 @@
                 <p>Pour vous inscrire</p>
             </div>
             <div class="CSS1">
-                <input type="button" onclick="window.location.href ='../Vue/Inscription_formulaire.php';" value="S'inscrire"/> <!-- permet d'accéder à la page S'inscrire -->
+                <input type="button" onclick="window.location.href ='Inscription_formulaire.php';" value="S'inscrire"/> <!-- permet d'accéder à la page S'inscrire -->
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
-                    <a href="../Vue/charte_utilisation.php"><strong>Charte d'utilisation</strong></a> <!-- Permets d'accéder à la page charte d'utilisation -->
+                    <a href="charte_utilisation.php"><strong>Charte d'utilisation</strong></a> <!-- Permets d'accéder à la page charte d'utilisation -->
                 </div>
                 <div class="droite">
                     <input type="button" onclick="window.location.href ='Aide.php';" value="?"/> <!-- Permets d'accéder à la page aide -->

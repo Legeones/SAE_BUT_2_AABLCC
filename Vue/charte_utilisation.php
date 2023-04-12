@@ -27,7 +27,7 @@
 <h5>Le manquement aux règles et mesures de sécurité de la présente charte est susceptible d'engager la responsabilité de l'utilisateur et d'entraîner à son encontre des avertissements, des limitations ou suspensions d'utiliser tout ou une partie du SI, voire des sanctions disciplinaires, proportionnellement à la gravité des faits concernés.</h5>
 <h3>5 Entrée en vigueur </h3>
 <h5>La présente charte est applicable à compter du < DATE ENTREE EN VIGUEUR ></h5>
-    <a href="../Connexion/login.php"><strong>Retour</strong></a><br>
+    <a href="login.php"><strong>Retour</strong></a><br>
     </div>
     </body>
     </html>

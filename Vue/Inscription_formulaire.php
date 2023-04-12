@@ -125,7 +125,7 @@
             <p>Pour vous Connectez</p>
         </div>
         <div class="CSS1"">
-            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Se connecter"/> <!-- Bouton permettant Ã  l'utilisateur de se connecter -->
+            <input type="button" onclick="window.location.href ='login.php';" value="Se connecter"/> <!-- Bouton permettant Ã  l'utilisateur de se connecter -->
         </div>
         <div class="piedDePage2">
             <div class="droite">

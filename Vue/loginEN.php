@@ -4,7 +4,7 @@
 	<title>Connection</title>
     <meta charset="utf-8">
     <!-- importing style files -->
-    <link rel="stylesheet" href="../Vue/CSS.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="CSS.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
 </head>
@@ -67,7 +67,7 @@
                 <input type="submit" value="Connection">
             </div>
             <div class="mdpOublie">
-                <a href="../Vue/MDPoublier.php"><strong>Forgot your password</strong></a> <!-- Allows access to the forgotten password page -->
+                <a href="MDPoublier.php"><strong>Forgot your password</strong></a> <!-- Allows access to the forgotten password page -->
             </div>
         </div>
         <div class="Separation2"></div>
@@ -76,11 +76,11 @@
                 <p>To register</p>
             </div>
             <div class="CSS1">
-                <input type="button" onclick="window.location.href ='../Vue/Inscription_formulaire.php';" value="Register"/>
+                <input type="button" onclick="window.location.href ='Inscription_formulaire.php';" value="Register"/>
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
-                    <a href="../Vue/charte_utilisation.php"><strong>User Charter</strong></a> <!-- Provides access to the terms of use page -->
+                    <a href="charte_utilisation.php"><strong>User Charter</strong></a> <!-- Provides access to the terms of use page -->
                 </div>
                 <div class="droite">
                     <input type="button" onclick="window.location.href ='Aide.php';" value="?"/> <!-- Allows access to the help page -->

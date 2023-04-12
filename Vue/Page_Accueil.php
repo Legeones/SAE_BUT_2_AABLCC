@@ -14,7 +14,7 @@
         </div>
         <!-- Ajout de boutons -->
         <div class="gauche2">
-            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Connexion "/> <!-- Permets d'accéder à la page connexion -->
+            <input type="button" onclick="window.location.href ='login.php';" value="Connexion "/> <!-- Permets d'accéder à la page connexion -->
             <input type="button" onclick="window.location.href ='Localisation.php';" value="Ou nous trouver ?"/> <!-- Permets d'accéder à la page ou nous trouver-->
         </div>
         <div class ="Aide">
