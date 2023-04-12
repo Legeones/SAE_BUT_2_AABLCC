@@ -4,7 +4,7 @@
 	<title>Connection</title>
     <meta charset="utf-8">
     <!-- importing style files -->
-    <link rel="stylesheet" href="../Verif_Test/CSS.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../Vue/CSS.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
 </head>
@@ -15,7 +15,7 @@
 <div id="container">
     <!-- login area -->
 
-    <form action="Verification_Login.php" method="POST">
+    <form action="../Controleur/Verification_Login.php" method="POST">
         <h1>Connection</h1>
         <div class="Separation"></div>
         <div class="Formulaire">
@@ -67,7 +67,7 @@
                 <input type="submit" value="Connection">
             </div>
             <div class="mdpOublie">
-                <a href="../MDP/MDPoublier.php"><strong>Forgot your password</strong></a> <!-- Allows access to the forgotten password page -->
+                <a href="../Vue/MDPoublier.php"><strong>Forgot your password</strong></a> <!-- Allows access to the forgotten password page -->
             </div>
         </div>
         <div class="Separation2"></div>
@@ -76,11 +76,11 @@
                 <p>To register</p>
             </div>
             <div class="CSS1">
-                <input type="button" onclick="window.location.href ='../Inscription/Inscription_formulaire.php';" value="Register"/>
+                <input type="button" onclick="window.location.href ='../Vue/Inscription_formulaire.php';" value="Register"/>
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
-                    <a href="../Charte_Utilisation/charte_utilisation.php"><strong>User Charter</strong></a> <!-- Provides access to the terms of use page -->
+                    <a href="../Vue/charte_utilisation.php"><strong>User Charter</strong></a> <!-- Provides access to the terms of use page -->
                 </div>
                 <div class="droite">
                     <input type="button" onclick="window.location.href ='Aide.php';" value="?"/> <!-- Allows access to the help page -->

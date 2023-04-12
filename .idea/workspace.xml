@@ -4,9 +4,109 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bee8e6e8-0233-4701-bc66-475819c72d90" name="Changes" comment="Corrections bugs">
-      <change beforePath="$PROJECT_DIR$/Partie_Scenario/Code.php" beforeDir="false" afterPath="$PROJECT_DIR$/Partie_Scenario/Code.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Partie_Scenario/Scenario.php" beforeDir="false" afterPath="$PROJECT_DIR$/Partie_Scenario/Scenario.php" afterDir="false" />
+    <list default="true" id="bee8e6e8-0233-4701-bc66-475819c72d90" name="Changes" comment="update BDD">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/57d57f69-b418-46ce-a51f-befa0bf25b68/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BDD/BDDSAE.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Model/BDD/BDDSAE.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BDD/DataBase.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/BDD/DataBase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BDD/DataBase_Core.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/BDD/DataBase_Core.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BDD/DataBase_Dpi.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/BDD/DataBase_Dpi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BDD/DataBase_Scenario.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/BDD/DataBase_Scenario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BDD/DataBase_User.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/BDD/DataBase_User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BDD/bdd_temporaire.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Model/BDD/bdd_temporaire.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BDD/sae.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Model/BDD/sae.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BDDSAE.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charte d'utilisation.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charte_Utilisation/Charte d'utilisation.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charte_Utilisation/charte_utilisation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/charte_utilisation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charte_Utilisation/charte_utilisationEN.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/charte_utilisationEN.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/AccueilCSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/AccueilCSS.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Aide.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Aide.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Aide_Send.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Aide_Send.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Deconnexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Deconnexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Localisation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Localisation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Page_Accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Page_Accueil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/Verification_Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Verification_Login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connexion/loginEN.php" beforeDir="false" afterPath="$PROJECT_DIR$/Connexion/loginEN.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/AjouterAdmissionPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/AjouterAdmissionPatient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/AjouterDPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/AjouterDPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/AjouterDPIPHP.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/AjouterDPIPHP.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/AttributionRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/AttributionRole.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/AttributionRoleSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/AttributionRoleSQL.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/ConfirSupp.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/ConfirSupp.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/Corbeille.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Corbeille.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/CorbeilleSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/CorbeilleSQL.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientBiologie.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIpatientBiologie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientCourriers.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIpatientCourriers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientDiagramme.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIpatientDiagramme.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientImagerie.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIpatientImagerie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientIntervenants.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIpatientIntervenants.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientMacrocible.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIpatientMacrocible.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientObservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIpatientObservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientPrescription.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIpatientPrescription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/DPIpatientStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIpatientStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/FormulaireUnlink.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/FormulaireUnlink.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/FormulaireUnlinkTWO.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/FormulaireUnlinkTWO.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/FormulaireUnlinkVerifUNO.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/FormulaireUnlinkVerifUNO.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/FormulaireUpload.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/FormulaireUpload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/MDFDPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/MDFDPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/MDF_Accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/MDF_Accueil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/MDF_Personne_de_confiance.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/MDF_Personne_de_confiance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/MDF_Personne_de_contacte.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/MDF_Personne_de_contacte.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/MDPDPI_PHP.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/MDPDPI_PHP.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/Principal_PHP_Fonction_DPI_ADD_or_Modif.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Principal_PHP_Fonction_DPI_ADD_or_Modif.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/RecupCorbeille.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/RecupCorbeille.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/RecupCorbeilleSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/RecupCorbeilleSQL.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/RetourMode.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/RetourMode.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/SupprimerPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/SupprimerPatient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/SupprimerPatientSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/SupprimerPatientSQL.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/actionDPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/actionDPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/actionPrincipale.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/actionPrincipale.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/ajouterPatientSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/ajouterPatientSQL.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/patientDPIfunction.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/patientDPIfunction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/scriptsDPIpatient.js" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/scriptsDPIpatient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/transition.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/transition.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/unlink.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/unlink.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPIpatient/upload.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/upload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diagramme_class_BDD.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inscription/Inscription_Formulaire.html" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Inscription_Formulaire.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inscription/Inscription_formulaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Inscription_formulaire.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inscription/Verification_Inscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Verification_Inscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/MDPoublier.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/MDPoublier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/New_mdp.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/New_mdp.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/Verification_PasswordChange.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Verification_PasswordChange.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/change_mdp.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/change_mdp.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maquettage/sae_maquettage.bmpr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Partie_Scenario/Notation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Notation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Partie_Scenario/Scenario.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Scenario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Partie_Scenario/Simulation.css" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Simulation.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/1633281680-ux-vs-ui-cover-edited.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/ConfirSuppSCE.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/ConfirSuppSCE.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/CorbeilleSce.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/CorbeilleSce.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/CorbeilleSceSQl.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/CorbeilleSceSQl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/RecupCorbeilleSCESQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/RecupCorbeilleSCESQL.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/RecupCorbeilleSce.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/RecupCorbeilleSce.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/RecupInfoSce.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/RecupInfoSce.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/SupSceSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/SupSceSQL.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/SupprimerScenario.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/SupprimerScenario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/WIN_20211022_16_18_37_Pro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/choixEtu.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/choixEtu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/choixScenario.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/choixScenario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/principaleEve.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/principaleEve.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/res.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/res.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenario/uvhc2011_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Verif_Test/CSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/CSS.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Verif_Test/CSS_DPI.css" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/CSS_DPI.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Verif_Test/Mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Verif_Test/MailCode_Formulaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/MailCode_Formulaire.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Verif_Test/Verifiant.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Verifiant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Verif_Test/Verification_KeyCode.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controleur/Verification_KeyCode.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Verif_Test/test_etu_prof.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/test_etu_prof.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charte_utilisation.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/style2.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +137,13 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\steve\OneDrive\Documents\GitHub\SAE_BUT_2_AABLCC\Controleur" />
+      <recent name="C:\Users\steve\OneDrive\Documents\GitHub\SAE_BUT_2_AABLCC\Vue" />
+      <recent name="C:\Users\steve\OneDrive\Documents\GitHub\SAE_BUT_2_AABLCC\Model" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -54,6 +161,15 @@
       <workItem from="1673518922376" duration="3251000" />
       <workItem from="1673601337817" duration="614000" />
       <workItem from="1673615431160" duration="8781000" />
+      <workItem from="1675512162993" duration="151000" />
+      <workItem from="1675512379059" duration="2997000" />
+      <workItem from="1680248336194" duration="4000" />
+      <workItem from="1680253531630" duration="2171000" />
+      <workItem from="1680266023124" duration="2689000" />
+      <workItem from="1680429786952" duration="7000" />
+      <workItem from="1680611344711" duration="3000" />
+      <workItem from="1681201787434" duration="1076000" />
+      <workItem from="1681279740826" duration="2050000" />
     </task>
     <task id="LOCAL-00001" summary="changement evenements">
       <created>1673519131955</created>
@@ -111,7 +227,21 @@
       <option name="project" value="LOCAL" />
       <updated>1673879278659</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="update scenario avec plusieurs DPI">
+      <created>1674228357411</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674228357411</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update BDD">
+      <created>1674228432379</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1674228432379</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +265,8 @@
     <MESSAGE value="code changement" />
     <MESSAGE value="code final normalement" />
     <MESSAGE value="Corrections bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrections bugs" />
+    <MESSAGE value="update scenario avec plusieurs DPI" />
+    <MESSAGE value="update BDD" />
+    <option name="LAST_COMMIT_MESSAGE" value="update BDD" />
   </component>
 </project>
