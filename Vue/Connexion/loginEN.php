@@ -76,14 +76,14 @@
                 <p>To register</p>
             </div>
             <div class="CSS1">
-                <input type="button" onclick="window.location.href ='Inscription_formulaire.php';" value="Register"/>
+                <input type="button" onclick="window.location.href ='../Inscription/Inscription_formulaire.php';" value="Register"/>
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
                     <a href="../Accueil/charte_utilisation.php"><strong>User Charter</strong></a> <!-- Provides access to the terms of use page -->
                 </div>
                 <div class="droite">
-                    <input type="button" onclick="window.location.href ='Aide.php';" value="?"/> <!-- Allows access to the help page -->
+                    <input type="button" onclick="window.location.href ='../Accueil/Aide.php';" value="?"/> <!-- Allows access to the help page -->
                 </div>
             </div>
         </div>

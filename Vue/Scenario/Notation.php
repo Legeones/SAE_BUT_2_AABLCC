@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="Simulation.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../Simulation.css" media="screen" type="text/css" />
 </head>
 <body>
 <header>
@@ -15,7 +15,7 @@
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='principale.php'">PATIENTS</button>
+            <button onclick="location.href='../DPIPatient/DPI.php'">PATIENTS</button>
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
         </div>
@@ -31,13 +31,13 @@
         </form>
 
         <div class="bas">
-            <form name="form" action="../Partie_Scenario/Code.php" method="POST">
+            <form name="form" action="../../Model/BDD/Code.php" method="POST">
                 <div class="Titreform">
                     <h1><u>Création simulation</u></h1>
                 </div>
                 <?php
                 session_start();
-                require("Code.php");
+                require("../../Model/BDD/Code.php");
                 try{
                     // Zone de connexion à la base de données
                 $db_username = 'postgres';
@@ -164,7 +164,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="Simulation.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../Simulation.css" media="screen" type="text/css" />
 </head>
 <body>
 <header>
@@ -176,7 +176,7 @@
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='principale.php'">PATIENTS</button>
+            <button onclick="location.href='../DPIPatient/DPI.php'">PATIENTS</button>
             <button>SCENARIOS</button>
             <button>JSAISPAS</button>
         </div>

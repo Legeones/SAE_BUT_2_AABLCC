@@ -10,7 +10,7 @@
 <body>
 <header>
     <img class="logo" src="../../Images/logoIFSI.png">
-    <button title="Déconnexion" id="logout" onclick="location.href='../../Controleur/Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
+    <button title="Déconnexion" id="logout" onclick="location.href='../Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
 </header>
 <div class="global">
     <div class="gauche">
@@ -18,7 +18,7 @@
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='DPI.php'">PATIENTS</button>
+            <button onclick="location.href='../DPIPatient/DPI.php'">PATIENTS</button>
             <button onclick="location.href='principaleEve.php'">SCENARIOS</button>
             <?php
             session_start();
@@ -36,7 +36,7 @@
     <div class="droite">
         <div class="div-norm-scenario">
             <?php
-            if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button class='btn-norm' onclick=location.href='choixScenario.php'>Lancer scenario</button>"; echo "<button class='btn-norm' onclick= location.href='../../Model/BDD/Scenario.php'>Création du scénario</button>";}
+            if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {echo "<button class='btn-norm' onclick=location.href='choixScenario.php'>Lancer scenario</button>"; echo "<button class='btn-norm' onclick= location.href='Scenario.php'>Création du scénario</button>";}
             ?>
         </div>
 

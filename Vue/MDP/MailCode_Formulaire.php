@@ -46,8 +46,7 @@
                 // Si l'utilisateur rentre un code qui ne correspond pas à celui reçu par mail, un message apparaît qui indique que son code est invalide
             }
             if($aft==3)
-            {   
-                require('../Verif_Test/Mail.php');
+            {   require ('../../Controleur/Accueil/Mail.php');
                 Resend();
                 echo "<p style='color:red'>Code renvoyé</p>";
                 // Si l'utilisateur veut un nouveau envoie de code

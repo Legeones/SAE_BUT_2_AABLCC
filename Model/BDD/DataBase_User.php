@@ -1,6 +1,6 @@
 <?php
 
-require('../BDD/DataBase_Core.php');
+require ('../BDD/DataBase_Core.php');
 
 session_start();
 
@@ -20,7 +20,7 @@ function Database_Add_User()
         $result2 = $stmt3->fetchColumn(0);
 
         if($result==1 || $result2==1){
-            header('Location: ../Inscription/Inscription_formulaire.php?erreur=7');
+            header('Location: ../../Vue/Inscription/Inscription_formulaire.php?erreur=7');
         }
 
         try {
@@ -69,10 +69,10 @@ function Database_Check_User_Exist($username,$password)
         if($res2==5 && ($result2=='prof' || $result2=='admin' || $result2=='etudiant')){
             $_SESSION['username'] = $username;
             $_SESSION['Role'] = $result2;
-            header('Location: ../DPIpatient/DPI.php');
+            header('Location: ../../Vue/DPIPatient/DPI.php');
         }
         else{
-            header('Location: ../Connexion/login.php?erreur=1'); // utilisateur ou mot de passe incorrect
+            header('Location: ../../Vue/Connexion/login.php?erreur=1'); // utilisateur ou mot de passe incorrect
         }
 
     } catch (PDOException $e) {
@@ -91,12 +91,13 @@ function Database_User_New_Pass_Check()
         $stmt->execute();
         $result = $stmt->fetchColumn(0);
 
+
         if($result==1)
         {
-            header('Location: ../MDP/change_mdp.php');
+            header('Location: ../../Vue/MDP/change_mdp.php');
         }
         else{
-            header('Location: ../MDP/MDPoublier.php?erreur=1');
+            header('Location: ../../Vue/MDP/MDPoublier.php?erreur=1');
         }
     }catch (PDOException $e) {
         Errorprint($e);
@@ -113,9 +114,8 @@ function Database_User_New_Pass_Modify($ID,$password)
         $stmt = $dbh->prepare("UPDATE utilisateur SET mdp=? WHERE login=?");
         $stmt->bindParam(1, $res2);
         $stmt->bindParam(2, $ID);
-
         $stmt->execute();
-        header('Location: ../Connexion/login.php');
+        header('Location: ../../Vue/Connexion/login.php');
     } catch (PDOException $e) {
         Errorprint($e);
         die();
@@ -140,17 +140,15 @@ function DataBase_Attribute_Role($ID,$Role)
                 $stmt = $dbh->prepare("UPDATE utilisateur SET roles=? WHERE login=?");
                 $stmt->bindParam(1, $Role);
                 $stmt->bindParam(2, $ID);
-
                 $stmt->execute();
-                header('Location: ../DPIpatient/DPI.php');
+                header('Location: ../../Vue/DPIPatient/DPI.php');
             } catch (PDOException $e) {
                 Errorprint($e);
                 die();
             }
         }
-
         else{
-            header('Location: ../DPIpatient/AttributionRole.php?erreur=1');
+            header('Location: ../../Vue/Accueil/AttributionRole.php?erreur=1');
         }
     }catch (PDOException $e) {
         Errorprint($e);print "Erreur !: " . $e->getMessage() . "<br/>";
@@ -179,7 +177,7 @@ function DataBase_Pseudo_Etu_Return()
                     $stmt->execute();
                     $result = $stmt->fetchColumn(0);
                     $_SESSION["Role"] = $result;
-                    header("Location: DPI.php");
+                    header("Location: ../../Vue/DPIPatient/DPI.php");
                 } catch (PDOException $e) {
                     Errorprint($e);
                     die();
@@ -187,7 +185,7 @@ function DataBase_Pseudo_Etu_Return()
 
             }
             else{
-                header('Location: AttributionRole.php?erreur=1');
+                header('Location: ../../Vue/Accueil/AttributionRole.php?erreur=1');
             }
         }catch (PDOException $e) {
             Errorprint($e);

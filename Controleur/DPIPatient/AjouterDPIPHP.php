@@ -1,5 +1,6 @@
 <?php
-require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php';
+
+require ('../DPIPatient/Principal_PHP_Fonction_DPI_ADD_or_Modif.php');
 session_start();
 try {
 
@@ -22,7 +23,7 @@ try {
             $_SESSION['MessErreur'] = "<p style='color:red'>!! Veuillez vérifier que le formulaire ne comporte pas d'erreur !!</p>";
             // Ici un message d'erreur apparaît pour inviter à l'utilisateur de vérifier le formulaire
         }
-        header('Location: AjouterDPI.php'); // redirection vers la page AjouterDPI
+        header('Location: ../../Vue/DPIPatient/AjouterDPI.php'); // redirection vers la page AjouterDPI
     }
 }
 catch (PDOException $e){

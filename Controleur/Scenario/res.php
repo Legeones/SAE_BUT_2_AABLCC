@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-require('../BDD/DataBase_Scenario.php');
+
+require ('../../Model/BDD/DataBase_Scenario.php');
 
 $date = new DateTime($_SESSION['debut']);
 $date->modify('+1 day');
@@ -57,9 +58,8 @@ if(isset($_POST['gout']))
             insertEvenSceEtu($_SESSION['IdScenario'],$_SESSION['eve'][$rand_keys],$valeur,$date_random);
         }
     }
-    header('Location: ../Scenario/principaleEve.php');
+    header('Location: ../../Vue/Scenario/principaleEve.php');
 }else{
-    header('Location: ../Scenario/principaleEve.php');
+    header('Location: ../../Vue/Scenario/principaleEve.php');
 }
-
 

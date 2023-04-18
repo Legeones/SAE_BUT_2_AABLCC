@@ -4,7 +4,8 @@ session_start();
 //echo $_SESSION['patientSuivi']; (entre L12 et L13)
 
 //Ici nous allons chercher le fichier qui contient l'accès à la base
-require("../BDD/DataBase_Dpi.php");
+require("../../Model/BDD/DataBase_Dpi.php");
+
 
 //Ici on va rechercher le patient cliquer dans le principale.php
 foreach($_POST as $key => $items) {
@@ -28,7 +29,7 @@ if($_SESSION['cat']==null){
 if ($_SESSION['patientSuivi']!="null"){
     Data_Patient_Querry($_SESSION['patientSuivi'],$_SESSION['cat']);
 } else {
-    header("Location: ../DPIpatient/DPI.php");
+    header("Location: ../../Vue/DPIPatient/DPI.php");
 }
 
 ?>

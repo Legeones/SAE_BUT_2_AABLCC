@@ -18,7 +18,8 @@ function afficherDataPersos(){
         <button onclick="closeForm('donn-perso')">Fermer</button>
     </div>
 <?php }
-require_once '../BDD/DataBase_Dpi.php';
+
+require_once ('../../Model/BDD/DataBase_Dpi.php');
 if ($_SESSION['cat']=="Observation" && isset($_GET['date'])){
     try{
         $date = $_GET['date'];

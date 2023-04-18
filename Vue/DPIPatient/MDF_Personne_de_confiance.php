@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("Principal_PHP_Fonction_DPI_ADD_or_Modif.php");
+require ('../../Controleur/DPIPatient/Principal_PHP_Fonction_DPI_ADD_or_Modif.php')
 
 ?>
 <html xmlns="http://www.w3.org/1999/html">
@@ -24,7 +24,7 @@ require("Principal_PHP_Fonction_DPI_ADD_or_Modif.php");
         </div>
         <div class="btn-group">
             <button onclick="location.href='DPÏ.php'">PATIENTS</button>
-            <button onclick="location.href='principaleEve.php'">SCENARIOS</button>
+            <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button>
         </div>
     </div>
 

@@ -11,7 +11,7 @@ session_start();
 <body>
 <header id="haut">
     <img class="logo" src="../../Images/logoIFSI.png" alt="LogoIFSI">
-    <button title="Déconnexion" id="logout" onclick="location.href='../../Controleur/Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
+    <button title="Déconnexion" id="logout" onclick="location.href='../Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
 </header>
 <div class="global">
     <div id="gauche" class="gauche">
@@ -20,7 +20,7 @@ session_start();
         </div>
         <div class="btn-group">
             <button onclick="location.href='DPI.php'">PATIENTS</button>
-            <button onclick="location.href='principaleEve.php'">SCENARIOS</button>
+            <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button>
             <!-- choix du rôle -->
         </div>
     </div>

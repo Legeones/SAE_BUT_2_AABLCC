@@ -78,14 +78,14 @@
                 <p>Pour vous inscrire</p>
             </div>
             <div class="CSS1">
-                <input type="button" onclick="window.location.href ='Inscription_formulaire.php';" value="S'inscrire"/> <!-- permet d'accéder à la page S'inscrire -->
+                <input type="button" onclick="window.location.href ='../Inscription/Inscription_formulaire.php';" value="S'inscrire"/> <!-- permet d'accéder à la page S'inscrire -->
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
                     <a href="../Accueil/charte_utilisation.php"><strong>Charte d'utilisation</strong></a> <!-- Permets d'accéder à la page charte d'utilisation -->
                 </div>
                 <div class="droite">
-                    <input type="button" onclick="window.location.href ='Aide.php';" value="?"/> <!-- Permets d'accéder à la page aide -->
+                    <input type="button" onclick="window.location.href ='../Accueil/Aide.php';" value="?"/> <!-- Permets d'accéder à la page aide -->
                 </div>
             </div>
         </div>

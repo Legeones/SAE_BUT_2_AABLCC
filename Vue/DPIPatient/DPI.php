@@ -13,7 +13,7 @@ $_SESSION['patientSuivi']=null;
 <body>
 <header id="haut">
     <img class="logo" src="../../Images/logoIFSI.png" alt="LogoIFSI">
-    <button title="Déconnexion" id="logout" onclick="location.href='../../Controleur/Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
+    <button title="Déconnexion" id="logout" onclick="location.href='../Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
 </header>
 <div class="global">
     <div id="gauche" class="gauche">
@@ -22,7 +22,7 @@ $_SESSION['patientSuivi']=null;
         </div>
         <div class="btn-group">
             <button onclick="location.href='DPI.php'">PATIENTS</button>
-            <button onclick="location.href='principaleEve.php'">SCENARIOS</button>
+            <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button>
             <!-- choix du rôle -->
            <?php
                         echo '<br>';
@@ -35,11 +35,11 @@ $_SESSION['patientSuivi']=null;
                 echo '<br>';
                 echo "<button onclick=location.href='FormulaireUpload.php'>Upload Image</button>";
                 echo '<br>';
-                echo "<button onclick=location.href='transition.php'>Passer en mode etu</button>";
+                echo "<button onclick=location.href='../../Controleur/Accueil/transition.php'>Passer en mode etu</button>";
                 echo '<br>';} // Bouton permettant d'upload une image
-           if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='RetourMode.php'>Retour mode prof</button>"; // Bouton permettant de retourner dans le mode prof
+           if ($_SESSION["Role"] == "pseudo-etu") {echo "<button onclick=location.href='../../Controleur/Accueil/RetourMode.php'>Retour mode prof</button>"; // Bouton permettant de retourner dans le mode prof
                echo '<br>';}
-            if ($_SESSION["Role"] == "admin") {echo "<button onclick=location.href='AttributionRole.php'>Attribuer Role</button>"; // Bouton permettant d'attribuer un rôle
+            if ($_SESSION["Role"] == "admin") {echo "<button onclick=location.href='../../Vue/Accueil/AttributionRole.php'>Attribuer Role</button>"; // Bouton permettant d'attribuer un rôle
                 echo '<br>';
                 echo "<button onclick=location.href='FormulaireUnlink.php'>Supprimer Image</button>"; // Bouton permettant de supprimer une image
                 echo '<br>';

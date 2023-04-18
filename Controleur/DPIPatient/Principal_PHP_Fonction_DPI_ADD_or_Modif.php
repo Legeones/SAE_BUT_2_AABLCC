@@ -1,5 +1,6 @@
 <?php
-require "../BDD/DataBase_Dpi.php";
+
+require ('../../Model/BDD/DataBase_Dpi.php');
 
 // input d'un formulaire pour les types number et texte prenant en paramètre un nom d'ID, une liste contenant tous les noms de table, un compteur, le type de input et le nom d'une session )
 function formulaire($res,$lst,$i,$type,$res2){ ?>

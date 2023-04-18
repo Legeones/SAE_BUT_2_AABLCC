@@ -17,7 +17,7 @@
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='DPI.php'">PATIENTS</button>
+            <button onclick="location.href='../DPIPatient/DPI.php'">PATIENTS</button>
             <button onclick="location.href='principaleEve.php'">SCENARIOS</button>
         </div>
     </div>
@@ -28,7 +28,7 @@
             <br>
             <br>
                 <?php
-                require('../BDD/DataBase_Scenario.php');
+                require('../../Model/BDD/DataBase_Scenario.php');
                 $der = lstderoulanteScenario();
                 foreach ($der as $val){
                     echo "<input checked type='radio' name='idscenario' value={$val['idscenario']} /> {$val['nom']}<br/>";

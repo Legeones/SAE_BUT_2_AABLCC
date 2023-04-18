@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'Principal_PHP_Fonction_DPI_ADD_or_Modif.php'
+require ('../../Controleur/DPIPatient/Principal_PHP_Fonction_DPI_ADD_or_Modif.php')
 ?>
 <html>
 <head>

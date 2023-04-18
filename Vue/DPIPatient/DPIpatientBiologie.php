@@ -1,7 +1,8 @@
 <?php
 session_start();
-require "../BDD/DataBase_Dpi.php";
-require "patientDPIfunction.php";
+
+require ('../../Model/BDD/DataBase_Dpi.php');
+require ('../../Controleur/DPIPatient/patientDPIfunction.php');
 ?>
 <!DOCTYPE html>
 <head>
@@ -21,7 +22,7 @@ require "patientDPIfunction.php";
         </div>
         <div class="btn-group">
             <button onclick="location.href='DPI.php'">PATIENTS</button>
-            <button onclick="location.href='principaleEve.php'">SCENARIOS</button>
+            <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button>
         </div>
     </div>
     <div class="droite">

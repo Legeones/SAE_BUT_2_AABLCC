@@ -1,7 +1,8 @@
 <?php
-require('../Verif_Test/Verifiant.php');
-require('../BDD/DataBase_Scenario.php');
+
+require ('../Verifiant/Verifiant.php');
+require ('../../Model/BDD/DataBase_Scenario.php');
 
 
 addCorbeilleSce($_POST['Corscenario']);
-header('Location: ../Scenario/principaleEve.php');
+header('Location: ../../Vue/Scenario/principaleEve.php');

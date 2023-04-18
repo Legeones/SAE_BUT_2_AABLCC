@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "patientDPIfunction.php";
+require ('../../Controleur/DPIPatient/patientDPIfunction.php');
 ?>
 <html>
 <head>
@@ -21,7 +21,7 @@ require "patientDPIfunction.php";
         </div>
         <div class="btn-group">
             <button onclick="location.href='DPI.php'">PATIENTS</button>
-            <button onclick="location.href='principaleEve.php'">SCENARIOS</button>
+            <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button>
         </div>
     </div>
     <div class="droite">

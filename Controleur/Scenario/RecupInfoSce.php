@@ -1,7 +1,8 @@
 <?php
 
-require("../Verif_Test/Verifiant.php");
-require('../BDD/DataBase_Scenario.php');
+
+require ('../Verifiant/Verifiant.php');
+require ('../../Model/BDD/DataBase_Scenario.php');
 
 
 
@@ -9,7 +10,7 @@ $VerifScenario=checkScenario($_POST['idscenario']);
 
 
 if($VerifScenario==0){
-    header('Location: ../Scenario/choixScenario.php?erreur=7');
+    header('Location: ../../Vue/Scenario/choixScenario.php?erreur=7');
 }
 
 else{
@@ -29,7 +30,7 @@ else{
     $_SESSION['nbev']=$info[3];
     $_SESSION['eve']=$eve;
 
-    header('Location: ../Scenario/choixEtu.php');
+    header('Location: ../../Vue/Scenario/choixEtu.php');
 }
 
 

@@ -1,6 +1,7 @@
 <?php
-require('../BDD/DataBase_Scenario.php');
+
+require ('../../Model/BDD/DataBase_Scenario.php');
 
 
 RecupCorbeilleSce($_POST["RecupCorscenario"]);
-header('Location: ../Scenario/principaleEve.php');
+header('Location: ../../Vue/Scenario/principaleEve.php');

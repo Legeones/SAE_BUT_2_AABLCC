@@ -3,8 +3,8 @@
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
 
-require('../Verif_Test/Mail.php');
-require('../Verif_Test/Verifiant.php');
+require('../Accueil/Mail.php');
+require ('../Verifiant/Verifiant.php');
 
 $resVerifPassword_Uppercase=VerifPassword_Uppercase($_POST["Password_A"]); // Vérification du Password_A
 $resVerifPassword_Number=VerifPassword_Number($_POST["Password_A"]); // Vérification du Password_B
@@ -27,42 +27,42 @@ $_SESSION['PASSWORD'] = $_POST["Password_A"];
 
 // Erreur page inscription
 if ($resVerifPassword_Equality==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=2'); // erreur le mot de passe et sa confirmation sont diffÃ©rents
+    header('Location: ../../Vue/Inscription/Inscription_formulaire.php?erreur=2'); // erreur le mot de passe et sa confirmation sont diffÃ©rents
 }
 elseif ($resVerifPassword_Lenght==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=1'); // erreur le mot de passe à moins de 8 caractéres
+    header('Location: ../../Vue/Inscription/Inscription_formulaire.php?erreur=1'); // erreur le mot de passe à moins de 8 caractéres
 }
 
 elseif($resVerifPassword_Lowercase==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=3'); // Erreur minuscule
+    header('Location: ../../Vue/Inscription/Inscription_formulaire.php?erreur=3'); // Erreur minuscule
 }
 
 elseif($resVerifPassword_Number==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=4'); // Erreur numéro
+    header('Location: ../../Vue/Inscription/Inscription_formulaire.php?erreur=4'); // Erreur numéro
 }
 
 elseif($resVerifPassword_Uppercase==0) {
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=5'); // Erreur majuscule
+    header('Location: ../../Vue/Inscription/Inscription_formulaire.php?erreur=5'); // Erreur majuscule
 }
 
 elseif ($VerifEmptyContent1==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=6'); // Erreur login invalide
+    header('Location: ../../Vue/Inscription/Inscription_formulaire.php?erreur=6'); // Erreur login invalide
 }
 
 elseif ($VerifEmptyContent2==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=6'); // Erreur login invalide
+    header('Location: ../../Vue/Inscription/Inscription_formulaire.php?erreur=6'); // Erreur login invalide
 }
 
 elseif ($VerifEmptyContent3==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=7'); // Erreur Nom vide
+    header('Location: ../../Vue/Inscription/Inscription_formulaire.php?erreur=7'); // Erreur Nom vide
 }
 
 elseif ($VerifEmptyContent4==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=7'); // Erreur Prenom Vide
+    header('Location: ../../Vue/Inscription/Inscription_formulaire.php?erreur=7'); // Erreur Prenom Vide
 }
 
 elseif ($VerifEmail==0){
-    header('Location: ../Inscription/Inscription_formulaire.php?erreur=7');
+    header('Location: ../../Vue/Inscription/Inscription_formulaire.php?erreur=7');
 }
 
 else

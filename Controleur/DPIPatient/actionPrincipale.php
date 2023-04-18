@@ -1,7 +1,8 @@
 <?php
 session_start();
 //Ici nous allons chercher le fichier qui contient l'accès à la base
-require("../BDD/DataBase_Dpi.php");
+require("../../Model/BDD/DataBase_Dpi.php");
+
 
 //On vérifie quelles sont les actions effectuées par les utilisateurs
 //Passage vers une autre page

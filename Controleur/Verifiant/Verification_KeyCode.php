@@ -1,6 +1,6 @@
 <?php
 
-require('../BDD/DataBase_User.php');
+require ('../../Model/BDD/DataBase_User.php');
 
 function Key_Validation()
 {
@@ -11,11 +11,11 @@ function Key_Validation()
         if ( $_POST['Key'] == $_SESSION['Code'] )
         {
             DataBase_Add_User();
-            header('Location: ../Connexion/login.php?after=1');
+            header('Location: ../../Vue/Connexion/login.php?after=1');
         }
         else
         {
-            header('Location: ../Verif_Test/MailCode_Formulaire.php?after=2');
+            header('Location: ../../Vue/MDP/MailCode_Formulaire.php?after=2');
         }
     }
     else if ( $_SESSION['Key_Index'] == 2 )
@@ -26,7 +26,7 @@ function Key_Validation()
         }
         else
         {
-            header('Location: ../Verif_Test/MailCode_Formulaire.php?after=2');
+            header('Location: ../../Vue/MDP/MailCode_Formulaire.php?after=2');
         }
     }
 }

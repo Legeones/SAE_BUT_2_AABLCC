@@ -17,7 +17,7 @@
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='DPI.php'">PATIENTS</button>
+            <button onclick="location.href='../DPIPatient/DPI.php'">PATIENTS</button>
             <button onclick="location.href='principaleEve.php'">SCENARIOS</button>
         </div>
     </div>
@@ -29,7 +29,7 @@
             <br>
             <?php
             // création de bouton pour les scenario qui sont dans la corbeille
-            require('../BDD/DataBase_Scenario.php');
+            require('../../Model/BDD/DataBase_Scenario.php');
             $der = lstderoulanteScenarioCorb();
             foreach ($der as $val){
                 echo "<input type='radio' name='RecupCorscenario' checked value={$val['idscenario']} /> {$val['nom']}<br/>";

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8" lang="en">
-    <link rel="stylesheet" href="../../Vue/Simulation.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../Simulation.css" media="screen" type="text/css" />
     <title> Page des scénarios</title>
 </head>
 <body>
@@ -14,8 +14,8 @@
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
         <div class="btn-group">
-            <button onclick="location.href='../../Vue/DPIPatient/DPI.php'">PATIENTS</button>
-            <button onclick="location.href='../../Vue/Scenario/principaleEve.php'">SCENARIOS</button> <!-- Bouton permettant d'accèder au scenarios -->
+            <button onclick="location.href='../DPIPatient/DPI.php'">PATIENTS</button>
+            <button onclick="location.href='principaleEve.php'">SCENARIOS</button> <!-- Bouton permettant d'accèder au scenarios -->
         </div>
     </div>
     <div class="droite">
@@ -30,8 +30,8 @@
                 session_start();
 
 
-                require('../BDD/DataBase_Core.php');
-                require('../Partie_Scenario/Code.php');
+                require('../../Model/BDD/DataBase_Core.php');
+                require('../../Model/BDD/Code.php');
 
 
                 function Connection(): PDO

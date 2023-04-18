@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="droite">
-        <form action="FormulaireUnlinkVerifUNO.php" method="post" enctype="multipart/form-data">
+        <form action="../../Controleur/DPIPatient/FormulaireUnlinkVerifUNO.php" method="post" enctype="multipart/form-data">
 
             <h1>Unlink Fichier</h1>
             <br>
@@ -36,7 +36,7 @@
             <select name="DPI" id="DPI_Patient">
                 <option value="defaut">--Choisir le DPI--</option>
                 <?php
-                require('../BDD/DataBase_Dpi.php');
+                require('../../Model/BDD/DataBase_Dpi.php');
                 $der = lstderoulante();
                 while ($row =$der->fetch(PDO::FETCH_ASSOC)) {
                     unset($id, $nom, $prenom);

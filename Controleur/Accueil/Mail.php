@@ -86,8 +86,9 @@ function MailPreparator($indexkey,$email)
     
     SendMail($_SESSION['Code'],$email);         // envoie le mail avec le code généré
     
-    header('Location: ../Verif_Test/MailCode_Formulaire.php?');
+    header('Location: ../../Vue/MDP/MailCode_Formulaire.php?');
 }
+
 
 function GetMail()
 {

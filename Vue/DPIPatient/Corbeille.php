@@ -10,7 +10,7 @@
 <body>
 <header id="haut">
     <img class="logo" src="../../Images/logoIFSI.png" alt="LogoIFSI">
-    <button title="Déconnexion" id="logout" onclick="location.href='../../Controleur/Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
+    <button title="Déconnexion" id="logout" onclick="location.href='../Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
 </header>
 <div class="global">
     <div id="gauche" class="gauche">
@@ -19,7 +19,7 @@
         </div>
         <div class="btn-group">
             <button onclick="location.href='DPI.php'">PATIENTS</button>
-            <button onclick="location.href='principaleEve.php'">SCENARIOS</button>
+            <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button>
         </div>
     </div>
     <div id="droit" class="droite">
@@ -32,7 +32,7 @@
             <select name="DPI" id="DPI_Patient">
                 <option value="defaut">--Choisir le DPI à modifier--</option>
                 <?php
-                require('../BDD/DataBase_Dpi.php');
+                require('../../Model/BDD/DataBase_Dpi.php');
                 $der = lstderoulante();
                 while ($row =$der->fetch(PDO::FETCH_ASSOC)) {
                     unset($id, $nom, $prenom);
