@@ -1,6 +1,6 @@
 <?php
 
-require ('../BDD/DataBase_Core.php');
+require ('DataBase_Core.php');
 session_start();
 
 function lstderoulanteScenario(){

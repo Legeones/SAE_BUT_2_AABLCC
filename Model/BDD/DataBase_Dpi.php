@@ -1,6 +1,6 @@
 <?php
 
-require ('../BDD/DataBase_Core.php');
+require ('DataBase_Core.php');
 
 
 function Patient_Parcour($p,$rm,$rma): void
@@ -236,7 +236,7 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
             $_SESSION['infosPatient']+=$item;
         }
     }
-    header("Location: ../../Vue/DPIPatient".$nomCateg.".php");
+    header("Location: ../../Vue/DPIPatient/DPIpatient".$nomCateg.".php");
 
 }
 
