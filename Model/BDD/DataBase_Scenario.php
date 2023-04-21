@@ -137,8 +137,8 @@ function lstderoulanteEtu($idS)
     $etu = 'etudiant';
     try {
         $DPI2 = DataBase_Creator_Unit();
-        $DPI = $DPI2->prepare("select distinct login,nom,prenom from utilisateur left join ScenarioEtudiant SE on Utilisateur.login = SE.idU
-where roles=? and (idS is null or idS!=?) order by nom,prenom;");
+        $DPI = $DPI2->prepare("select login,nom,prenom from Utilisateur where roles=? except select distinct login,nom,prenom from utilisateur left join ScenarioEtudiant SE on Utilisateur.login = SE.idU
+where  idS=? order by nom,prenom;");
         $DPI->bindParam(1, $etu);
         $DPI->bindParam(2,$idS);
         $DPI->execute();
