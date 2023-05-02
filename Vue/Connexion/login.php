@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Connexion</title>
+
+    <title>Connexion</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
     <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="../CSS.css" media="screen" type="text/css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
 </head>
 <div class="button">
     <input type="button" onclick="window.location.href ='loginEN.php';" value="English"/>
 </div>
 <body id="general">
+
 <div id="container">
     <!-- zone de connexion -->
 
@@ -31,7 +34,6 @@
                     </div>
                     <div class="GroupeLOGO">
                         <input type="password" name="password" id="password" placeholder="Saisir votre mot de passe" /> <!-- Demande à l'utilisateur de saisir son mot de passe -->
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
                         <em class="bi bi-eye-slash" id="togglePassword"></em> <!-- class permettant l'apparition ou non du mot de passe -->
                     </div>
                 </div>
