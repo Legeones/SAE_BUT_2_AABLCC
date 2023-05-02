@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bee8e6e8-0233-4701-bc66-475819c72d90" name="Changes" comment="Lien corrigés pour DPI Model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vue/Accueil/charte_utilisation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Accueil/charte_utilisation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vue/CSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/CSS.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vue/Connexion/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Connexion/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vue/Inscription/Inscription_formulaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Inscription/Inscription_formulaire.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
