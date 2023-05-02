@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Page de déconnexion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
     <!-- importation des fichiers de style -->
     <link rel="stylesheet" href="../CSS.css">
 

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Localisation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
     <link rel="stylesheet" href="../CSS.css" media="screen" type="text/css">
 <body id="localcase">
 <div class="local">

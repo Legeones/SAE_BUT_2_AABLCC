@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bee8e6e8-0233-4701-bc66-475819c72d90" name="Changes" comment="Lien corrigés pour DPI Model" />
+    <list default="true" id="bee8e6e8-0233-4701-bc66-475819c72d90" name="Changes" comment="Lien corrigés pour DPI Model">
+      <change beforePath="$PROJECT_DIR$/Vue/Accueil/AttributionRole.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Accueil/AttributionRole.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/Accueil/Deconnexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Accueil/Deconnexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/Accueil/Localisation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Accueil/Localisation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/Accueil/Page_Accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Accueil/Page_Accueil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/Accueil/charte_utilisation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Accueil/charte_utilisation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/Accueil/charte_utilisationEN.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Accueil/charte_utilisationEN.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
