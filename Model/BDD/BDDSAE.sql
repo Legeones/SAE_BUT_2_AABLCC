@@ -66,6 +66,7 @@ create table Admission (
                            IPP numeric(13,0) not null references Patient ON DELETE CASCADE
 );
 
+
 create table Intervention (
                               idIntervention serial primary key ,
                               date date not null ,
@@ -81,6 +82,8 @@ create table Soin (
                       categorie text not null
 );
 
+
+
 CREATE TABLE SoinPatientPredef(
                                   idSPP serial primary key ,
                                   debut date not null,
@@ -90,6 +93,7 @@ CREATE TABLE SoinPatientPredef(
                                   iep int not null references Admission ON DELETE CASCADE,
                                   idSoin int not null references Soin ON DELETE CASCADE
 );
+
 
 create table SoinPatient(
                             idSP int not null primary key ,
@@ -128,6 +132,7 @@ create table Corbeille(
     IPPCorb numeric(13,0)  references Patient ON DELETE CASCADE primary key
 );
 
+
 create table PrescriptionPatient (
                                      idPP serial primary key,
                                      jour date not null ,
@@ -140,17 +145,20 @@ create table PrescriptionPatient (
                                      iep int not null references Admission ON DELETE CASCADE
 );
 
+---
 create table radio(
                       lien text primary key ,
                       nom text not null ,
                       IPPRadio numeric(13,0)  references Patient ON DELETE CASCADE not null
 );
 
+
 create table couriel(
                         lien text primary key ,
                         nom text not null ,
                         IPPCour numeric(13,0)  references Patient ON DELETE CASCADE not null
 );
+
 
 create table Biologie(
                          lien text primary key ,
@@ -159,6 +167,7 @@ create table Biologie(
                          description text
 );
 
+
 create table ObservationMedical(
                                    idOM serial primary key,
                                    dateOM date not null,
@@ -166,6 +175,7 @@ create table ObservationMedical(
                                    IPP numeric(13,0) references Patient on delete cascade not null,
                                    iep int not null references Admission ON DELETE CASCADE
 );
+
 
 create table TransmissionsCiblees(
                                      idOb serial primary key,
@@ -343,7 +353,8 @@ create table ScenarioEtudiant(
         idU text references Utilisateur on delete cascade,
         idE serial references Evenement on delete cascade,
         date timestamp not null ,
-        primary key (idS,idU,idE,date)
+	idIpp numeric(13,0) references Patient on delete cascade,
+        primary key (idS,idU,idE,date,idIpp)
 );
 
 create table ScenarioCorbeille(
@@ -362,8 +373,8 @@ values (default,'epilepsie','votre patient fait une crise d epilepsie', 'changem
 
 
 insert into Scenario
-values (default,'Scenario 1','2022-12-07','2022-12-15',3,'dorian.petit'),
-       (default,'Scenario 3','2023-02-07','2023-03-15',2,'dorian.petit');
+values (1,'Scenario 1','2022-12-07','2022-12-15',3,'dorian.petit'),
+       (2,'Scenario 3','2023-02-07','2023-03-15',2,'dorian.petit');
 
 insert into ScenarioEvenement
 values (1,1),
@@ -380,3 +391,9 @@ create table dpiScenario(
                             idS serial references scenario,
                             primary key (ipp, idS)
 );
+
+insert into dpiScenario
+values (8000000000001,1),
+	(8000000000002,1),
+	(8000000000003,2),
+	(8000000000004,2);

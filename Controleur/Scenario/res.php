@@ -46,16 +46,17 @@ function randomDate($startDate, $endDate, $count = 1 ,$dateFormat = 'Y-m-d H:i:s
     }
 }
 
-
 if(isset($_POST['gout']))
 {
+    $DPIListSce=recupDPIScenarion($_SESSION['IdScenario']);
     foreach($_POST['gout'] as $valeur)
     {
         $val=$_SESSION['eve'];
         for($i = 1; $i <= $_SESSION['nbev']; $i++){
             $rand_keys = array_rand($val);
+            $rand_Dpi=array_rand($DPIListSce);
             $date_random = randomDate($result,$result2);
-            insertEvenSceEtu($_SESSION['IdScenario'],$_SESSION['eve'][$rand_keys],$valeur,$date_random);
+            insertEvenSceEtu($_SESSION['IdScenario'],$_SESSION['eve'][$rand_keys],$valeur,$date_random,$DPIListSce[$rand_Dpi]);
         }
     }
     header('Location: ../../Vue/Scenario/principaleEve.php');
