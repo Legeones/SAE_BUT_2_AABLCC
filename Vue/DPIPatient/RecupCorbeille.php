@@ -62,11 +62,11 @@ if (isset($_GET['erreur'])) {
     }
     if ($err == 2) {
         echo "<p style='color:red'>IPP n'est pas dans la corbeille</p>";
-        // Ici une erreur est affiché si IPP n'est pas dans la BBD
+        // Ici une erreur est affichée si IPP n'est pas dans la BBD
     }
     if ($err == 3) {
         echo "<p style='color:red'>IPP ne doit pas avoir de lettre</p>";
-        // Ici une erreur est affiché si IPP contient des lettres
+        // Ici une erreur est affichée si IPP contient des lettres
     }
 } ?>
         </div>

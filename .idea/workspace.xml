@@ -5,15 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bee8e6e8-0233-4701-bc66-475819c72d90" name="Changes" comment="Lien corrigés pour DPI Model">
-      <change afterPath="$PROJECT_DIR$/SUJET/accompagnementSAE401.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aide.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDPoublier.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vue/Inscription/Inscription_Formulaire.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/DPIPatient/DPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIPatient/DPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/DPIPatient/RecupCorbeille.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIPatient/RecupCorbeille.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/DPIPatient/SupprimerPatient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIPatient/SupprimerPatient.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vue/MDP/MDPoublier.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/MDP/MDPoublier.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vue/MDP/MailCode_Formulaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/MDP/MailCode_Formulaire.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vue/MDP/change_mdp.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/MDP/change_mdp.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/Scenario/CorbeilleSce.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Scenario/CorbeilleSce.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/Scenario/RecupCorbeilleSce.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Scenario/RecupCorbeilleSce.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/Scenario/SupprimerScenario.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Scenario/SupprimerScenario.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vue/Scenario/choixEtu.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Scenario/choixEtu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/Scenario/choixScenario.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Scenario/choixScenario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/Scenario/principaleEve.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Scenario/principaleEve.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +94,7 @@
       <workItem from="1682063716141" duration="1263000" />
       <workItem from="1683020449080" duration="2570000" />
       <workItem from="1683031119508" duration="2041000" />
-      <workItem from="1683115828924" duration="2182000" />
+      <workItem from="1683115828924" duration="4429000" />
     </task>
     <task id="LOCAL-00001" summary="changement evenements">
       <created>1673519131955</created>

@@ -46,6 +46,7 @@
 
                 if($err==7){
                     echo "<p style='color:red'>Error: Le scenario n'existe pas</p>";
+                    // Une erreur est affichée lorsque le scenario n'existe pas
                 }
             }
             ?>
