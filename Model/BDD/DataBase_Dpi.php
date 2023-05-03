@@ -1,6 +1,6 @@
 <?php
 
-require('../BDD/DataBase_Core.php');
+require ('DataBase_Core.php');
 
 
 function Patient_Parcour($p,$rm,$rma): void
@@ -236,7 +236,7 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
             $_SESSION['infosPatient']+=$item;
         }
     }
-    header("Location: ../DPIpatient/DPIpatient".$nomCateg.".php");
+    header("Location: ../../Vue/DPIPatient/DPIpatient".$nomCateg.".php");
 
 }
 
@@ -276,7 +276,7 @@ function DataBase_Add_Patient($IPP,$nom,$date)
         $stmt2->execute();
         $res= $stmt2->fetchColumn(0);
         if($res==1){
-            header('Location: ../DPIpatient/ajouterPatient.php?erreur=2');
+            header('Location: ../../Vue/DPIPatient/ajouterPatient.php?erreur=2');
         }
         else{
             $stmt = $dbh->prepare("INSERT INTO patient values (?,?,?)");
@@ -303,7 +303,7 @@ function DataBase_Corbeille_Patient()
         $stmt2->execute();
         $res= $stmt2->fetchColumn(0);
         if($res==0){
-            header('Location: ../DPIpatient/Corbeille.php?erreur=2');
+            header('Location: ../../Vue/DPIPatient/Corbeille.php?erreur=2');
         }
         else{
             $stmt = $dbh->prepare("insert into corbeille values (?)");
@@ -498,7 +498,7 @@ function DataBase_Delete_Corbeille($ipp)
         $stmt2->execute();
         $res= $stmt2->fetchColumn(0);
         if($res==0){
-            header('Location: ../DPIpatient/RecupCorbeille.php?erreur=2');
+            header('Location: ../../Vue/DPIPatient/RecupCorbeille.php?erreur=2');
         }
         else{
             $stmt = $dbh->prepare("DELETE FROM corbeille WHERE IPPCorb=?");
@@ -523,7 +523,7 @@ function DataBase_Delete_Patient()
         $stmt2->execute();
         $res= $stmt2->fetchColumn(0);
         if($res==0){
-            header('Location: ../DPIpatient/SupprimerPatient.php?erreur=2');
+            header('Location: ../../Vue/DPIPatient/SupprimerPatient.php?erreur=2');
         }
         else{
             $stmt = $dbh->prepare("DELETE FROM patient WHERE IPP=?");
@@ -555,7 +555,7 @@ function DataBase_Attribute_Role($ID,$Role)
                 $stmt->bindParam(2, $ID);
 
                 $stmt->execute();
-                header('Location: ../DPIpatient/DPI.php');
+                header('Location: ../../Vue/DPIPatient/DPI.php');
             } catch (PDOException $e) {
                 ErrorMessage($e);
                 die();
@@ -563,7 +563,7 @@ function DataBase_Attribute_Role($ID,$Role)
         }
 
         else{
-            header('Location: ../DPIpatient/AttributionRole.php?erreur=1');
+            header('Location: ../../Vue/Accueil/AttributionRole.php?erreur=1');
         }
     }catch (PDOException $e) {
         ErrorMessage($e);
@@ -847,7 +847,7 @@ function modifier($ipp){
 
 function DPIReturn()
 {
-    return 'Location: ../DPIpatient/DPI.php';
+    return 'Location: ../../Vue/DPIPatient/DPI.php';
 }
 
 function ErrorMessage($e)
@@ -868,7 +868,7 @@ function Modif_Observation($date,$init,$cible,$donn,$act,$res){
         $stmt -> bindParam(7,$_SESSION['infosPersoPatient']['ipp']);
         $stmt -> bindParam(8,$_SESSION['infosPersoPatient']['iep']);
         $stmt -> execute();
-        header("Location: ../DPIpatient/DPIpatientObservation.php");
+        header("Location: ../../Vue/DPIPatient/DPIpatientObservation.php");
     } catch (PDOException $e){
         print "Erreur :".$e->getMessage()."<br>";
         die();
@@ -898,7 +898,7 @@ function Modif_Prescription($traitement,$type,$v){
         $stmt -> bindParam(7,$id);
         $stmt -> bindParam(8,$_SESSION['infosPersoPatient']['iep']);
         $stmt -> execute();
-        header("Location: ../DPIpatient/DPIpatientObservation.php");
+        header("Location: ../../Vue/DPIPatient/DPIpatientObservation.php");
     } catch (PDOException $e){
         print "Erreur :".$e->getMessage()."<br>";
         die();

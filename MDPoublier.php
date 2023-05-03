@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Mot de passe oublier</title>
-    <link rel="stylesheet" href="MDPoublierCSS.css">
+
 </head>
 <body>
 <form action="site.php" method="GET">

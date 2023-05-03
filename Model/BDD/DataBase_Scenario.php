@@ -1,5 +1,6 @@
 <?php
-require('../BDD/DataBase_Core.php');
+
+require ('DataBase_Core.php');
 session_start();
 
 function lstderoulanteScenario(){
@@ -130,6 +131,23 @@ function recupEvenScenario($id)
     }
 }
 
+//fonction pour récupérer les dpi d'un scénario
+function recupDPIScenarion($id){
+    try {
+        $DPI2 = DataBase_Creator_Unit();
+        $DPI = $DPI2->prepare("select ipp from dpiScenario where idS=? ");
+        $DPI->bindParam(1, $id);
+        $DPI->execute();
+        $result = $DPI->fetchAll(PDO::FETCH_COLUMN, 0);
+        return $result;
+        //echo "<img class='logo' src=$res>";
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+
+    }
+}
+
 //fonction pour récupérer les étudiants qui ne sont pas encore inscrit a un scenario
 function lstderoulanteEtu($idS)
 {
@@ -151,14 +169,15 @@ where roles=? and (idS is null or idS!=?) order by nom,prenom;");
 }
 
 //fonction pour affecter a un etudiant un evenement a une date pour un scenario
-function insertEvenSceEtu($idS,$idEv,$idEtu,$date){
+function insertEvenSceEtu($idS,$idEv,$idEtu,$date,$idIPP){
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("INSERT INTO ScenarioEtudiant values (?,?,?,?)");
+        $stmt2 = $dbh->prepare("INSERT INTO ScenarioEtudiant values (?,?,?,?,?)");
         $stmt2->bindParam(1, $idS);
         $stmt2->bindParam(2, $idEtu);
         $stmt2->bindParam(3, $idEv);
         $stmt2->bindParam(4, $date);
+        $stmt2->bindParam(5, $idIPP);
         $stmt2->execute();
 
     } catch (PDOException $e) {

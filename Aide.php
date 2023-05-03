@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Aide</title>
-    <link rel="stylesheet" href="AideCss.css">
+
 </head>
 <body>
 
