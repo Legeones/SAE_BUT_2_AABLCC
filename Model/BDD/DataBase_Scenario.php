@@ -131,31 +131,14 @@ function recupEvenScenario($id)
     }
 }
 
-//fonction pour récupérer les dpi d'un scénario
-function recupDPIScenarion($id){
-    try {
-        $DPI2 = DataBase_Creator_Unit();
-        $DPI = $DPI2->prepare("select ipp from dpiScenario where idS=? ");
-        $DPI->bindParam(1, $id);
-        $DPI->execute();
-        $result = $DPI->fetchAll(PDO::FETCH_COLUMN, 0);
-        return $result;
-        //echo "<img class='logo' src=$res>";
-    } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
-        die();
-
-    }
-}
-
 //fonction pour récupérer les étudiants qui ne sont pas encore inscrit a un scenario
 function lstderoulanteEtu($idS)
 {
     $etu = 'etudiant';
     try {
         $DPI2 = DataBase_Creator_Unit();
-        $DPI = $DPI2->prepare("select distinct login,nom,prenom from utilisateur left join ScenarioEtudiant SE on Utilisateur.login = SE.idU
-where roles=? and (idS is null or idS!=?) order by nom,prenom;");
+        $DPI = $DPI2->prepare("select login,nom,prenom from Utilisateur where roles=? except select distinct login,nom,prenom from utilisateur left join ScenarioEtudiant SE on Utilisateur.login = SE.idU
+where  idS=? order by nom,prenom;");
         $DPI->bindParam(1, $etu);
         $DPI->bindParam(2,$idS);
         $DPI->execute();
@@ -169,15 +152,38 @@ where roles=? and (idS is null or idS!=?) order by nom,prenom;");
 }
 
 //fonction pour affecter a un etudiant un evenement a une date pour un scenario
-function insertEvenSceEtu($idS,$idEv,$idEtu,$date,$idIPP){
+function insertEvenSceEtu($idS,$idEv,$idEtu,$date){
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("INSERT INTO ScenarioEtudiant values (?,?,?,?,?)");
+        $stmt2 = $dbh->prepare("INSERT INTO ScenarioEtudiant values (?,?,?,?)");
         $stmt2->bindParam(1, $idS);
         $stmt2->bindParam(2, $idEtu);
         $stmt2->bindParam(3, $idEv);
         $stmt2->bindParam(4, $date);
-        $stmt2->bindParam(5, $idIPP);
+        $stmt2->execute();
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+
+}
+
+function lstderoulCate(){
+    $DPI2 = DataBase_Creator_Unit();
+    $DPI = $DPI2->prepare("select distinct categorie from Evenement");
+    $DPI->execute();
+    return $DPI;
+}
+
+
+function insertEven($nom,$des,$cate){
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("INSERT INTO Evenement values (default,?,?,?)");
+        $stmt2->bindParam(1, $nom);
+        $stmt2->bindParam(2, $des);
+        $stmt2->bindParam(3, $cate);
         $stmt2->execute();
 
     } catch (PDOException $e) {
