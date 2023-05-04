@@ -101,8 +101,8 @@
 
                     <div align="center" id="stock">
                         <br><br>
-                        <button id="ajout_s" value="Ajout_s" style="position: center">Ajouter le scenario</button>
-                        <button type="reset" id="reset_s" value="reset_s"> Reset les informations</button>
+                        <button id="ajout_s" value="Ajout_s" style="position: center">Ajouter le scenario</button> <!-- Bouton permettant d'ajouter un scénario -->
+                        <button type="reset" id="reset_s" value="reset_s"> Reset les informations</button> <!-- Bouton permettant d'effacer les informations du scénario -->
 
 
                     </div>

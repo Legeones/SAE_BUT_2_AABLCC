@@ -29,5 +29,7 @@
     Par le train, la gare se situe à 10 minutes à pied<br>
     Par le bus (réseau Stibus) : arrêt Calmette au pied de l'Institut ligne C ou D de la ligne 62 ou 64 ou navette Citadine <br>
     Par la route : départementale 195 (N° 44 boulevard Pasteur)</h4>
+
+    <a href="../Connexion/login.php"><strong>Retour</strong></a><br>
 </div>
 

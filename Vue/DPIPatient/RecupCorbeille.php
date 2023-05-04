@@ -57,7 +57,7 @@ if (isset($_GET['erreur'])) {
     $err = $_GET['erreur'];
     if ($err == 1) {
         echo "<p style='color:red'>tous les champs doivent etre remplis</p>";
-        //Ici une erreur est affiché si tous les champs ne sont pas remplis
+        //Ici une erreur est affichée si tous les champs ne sont pas remplis
 
     }
     if ($err == 2) {
