@@ -7,10 +7,12 @@
 <<<<<<< Updated upstream
     <list default="true" id="bee8e6e8-0233-4701-bc66-475819c72d90" name="Changes" comment="Lien corrigés pour DPI Model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vue/Accueil/Localisation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Accueil/Localisation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vue/DPIPatient/RecupCorbeille.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIPatient/RecupCorbeille.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/DPIPatient/DPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIPatient/DPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/DPIPatient/DPIpatientMacrocible.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIPatient/DPIpatientMacrocible.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/MDP/MDPoublier.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/MDP/MDPoublier.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vue/MDP/change_mdp.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/MDP/change_mdp.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vue/Scenario/Scenario.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Scenario/Scenario.php" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/Vue/Scenario/addEvenement.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Scenario/addEvenement.php" afterDir="false" />
 =======
     <list default="true" id="bee8e6e8-0233-4701-bc66-475819c72d90" name="Changes" comment="Correction des bugs de recherche via IEP. Ajout et fin d'admission">
@@ -21,6 +23,8 @@
       <change beforePath="$PROJECT_DIR$/Vue/DPIPatient/DPIpatientMacrocible.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIPatient/DPIpatientMacrocible.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vue/DPIPatient/DPIpatientObservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIPatient/DPIpatientObservation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vue/DPIpatientStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIpatientStyle.css" afterDir="false" />
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,6 +104,7 @@
       <workItem from="1683020449080" duration="2570000" />
       <workItem from="1683031119508" duration="2041000" />
       <workItem from="1683115828924" duration="4429000" />
+<<<<<<< Updated upstream
 =======
       <workItem from="1681896496518" duration="3128000" />
       <workItem from="1681983685007" duration="2201000" />
@@ -111,6 +116,9 @@
       <workItem from="1683612168714" duration="1133000" />
       <workItem from="1683704865894" duration="187000" />
       <workItem from="1683709860626" duration="224000" />
+>>>>>>> Stashed changes
+=======
+      <workItem from="1683709687425" duration="749000" />
 >>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="changement evenements">

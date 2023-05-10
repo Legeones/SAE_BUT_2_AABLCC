@@ -31,11 +31,13 @@
         {
             $err = $_GET['erreur'];
             if($err==1){
-                echo "<p style='color:red'> le mail est invalide </p>"; // Une erreur est affichée si le mail est invalide
+                echo "<p style='color:red'> le mail est invalide </p>";
+                // Une erreur est affichée si le mail est invalide
             }
             
             if($err==2){
-                echo "<p style='color:red'> tous les champs doivent être remplis </p>"; // Une erreur est affichée si tous les champs ne sont pas remplis
+                echo "<p style='color:red'> tous les champs doivent être remplis </p>";
+                // Une erreur est affichée si tous les champs ne sont pas remplis
             }
         }
     ?>

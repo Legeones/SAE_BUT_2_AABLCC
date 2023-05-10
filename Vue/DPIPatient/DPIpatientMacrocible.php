@@ -144,24 +144,31 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
             <div class="grid-container">
                 <div class="info" onclick="openForm('donn-perso');">
                     <h2>Données personnelles</h2>
+                    <!-- Onglet permettant d'afficher les Données personnelles du patient -->
                 </div>
                 <div class="info" onclick="openForm('donn-admin');">
                     <h2>Données administratives</h2>
+                    <!-- Onglet permettant d'afficher les Données administratives du patient -->
                 </div>
                 <div class="info" onclick="openForm('donn-soc');">
                     <h2>Données sociales</h2>
+                    <!-- Onglet permettant d'afficher les Données sociales du patient -->
                 </div>
                 <div class="info" onclick="openForm('info-medi');">
                     <h2>Infos médicales</h2>
+                    <!-- Onglet permettant d'afficher les Informations médicales du patient -->
                 </div>
                 <div class="info" onclick="openForm('donn-medi');">
                     <h2>Données médicales</h2>
+                    <!-- Onglet permettant d'afficher les Données médicales du patient -->
                 </div>
                 <div class="info" onclick="openForm('trait-dom');">
                     <h2>Traitement à domicile</h2>
+                    <!-- Onglet permettant d'afficher les Traitements à domicile du patient -->
                 </div>
                 <div class="info" onclick="openForm('macro-ent');">
                     <h2>Macrocible d'entrée</h2>
+                    <!-- Onglet permettant d'afficher les Macrocibles d'entrée du patient -->
                 </div>
             </div>
         </div>
@@ -226,22 +233,27 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
                     <tr>
                         <td>Mobilité</td>
                         <td><?php print($_SESSION['infosPatient']['mobilite'])?></td>
+                        <!-- Informations concernant la mobilité du patient -->
                     </tr>
                     <tr>
                         <td>Alimentation</td>
                         <td><?php print($_SESSION['infosPatient']['alimentation'])?></td>
+                        <!-- Informations concernant l'Alimentation du patient -->
                     </tr>
                     <tr>
                         <td>Hygiène corporelle</td>
                         <td><?php print($_SESSION['infosPatient']['hygiene'])?></td>
+                        <!-- Informations concernant l'hygiene corporelle du patient -->
                     </tr>
                     <tr>
                         <td>Elimination</td>
                         <td><?php print($_SESSION['infosPatient']['toilette'])?></td>
+                        <!-- Informations concernant l'Elimination du patient -->
                     </tr>
                     <tr>
                         <td>Habillement</td>
                         <td><?php print($_SESSION['infosPatient']['habit'])?></td>
+                        <!-- Informations concernant l'Habillement du patient -->
                     </tr>
                     </tbody>
                 </table>

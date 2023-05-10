@@ -35,11 +35,11 @@
         if($err==3){
             echo "<p style='color:red'> pas de minuscule </p>";
         }
-        // Un message d'erreit apparaît si des numéros sont ajoutés
+        // Un message d'erreur apparaît si des numéros sont ajoutés
         if($err==4){
             echo "<p style='color:red'> pas de numero </p>";
         }
-        // Un message d'erreut apparaît si des majuscules sont ajoutées
+        // Un message d'erreur apparaît si des majuscules sont ajoutées
         if($err==5){
             echo "<p style='color:red'> pas de majusucule </p>";
         }
