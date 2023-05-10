@@ -10,13 +10,18 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
 
     <link rel="stylesheet" href="../DPIpatientStyle.css" media="screen" type="text/css" />
 </head>
-<header>
-    <img alt="LogoIFSI" class="logo" src="../../Images/logoIFSI.png">
+<header style="display: flex;">
+    <div style="padding: 5px">
+        <button class="arrow_right" id="hamburger"></button>
+    </div>
+    <div style="width: 1000px">
+        <img alt="LogoIFSI" class="logo" src="../../Images/logoIFSI.png">
+    </div>
 </header>
 <body>
 <script type="text/javascript" src="../../Controleur/DPIPatient/scriptsDPIpatient.js"></script>
 <div class="global">
-    <div class="gauche">
+    <div class="gauche" id="global_gauche">
         <div class="profile">
             <img alt="Profile" width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
@@ -33,6 +38,7 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
 
                 ?>
         </div>
+<<<<<<< Updated upstream
         <script>
             function affichePopUp(id){
                 if (document.getElementById(id).style.display == "none"){
@@ -42,13 +48,83 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
                 }
             }
         </script>
+=======
+>>>>>>> Stashed changes
         <div style="display: none; z-index:30; position: relative; left: 200%; bottom: 20%; border: black thin solid" id="div_pop_up_accept">
             <H2>Terminaison d'admission</H2>
             <p>Souhaitez vous vraiment terminer l'admission de <?= $_SESSION['infosPatient']['nom'] ?></p>
             <button>Valider</button><button onclick="affichePopUp('div_pop_up_accept')">Annuler</button>
         </div>
     </div>
-    <div class="droite">
+    <script>
+        const bouton = document.getElementById('hamburger');
+
+        bouton.addEventListener('click', function() {
+            if (document.getElementById("global_gauche").style.display === "none"){
+                afficherDiv();
+                //document.getElementById("global_gauche").style.display = "block";
+                document.getElementById("global_droit").style.width = "80%";
+                document.getElementById("global_droit").style.left = "20%";
+            } else {
+                cacherDiv();
+                //document.getElementById("global_gauche").style.display = "none";
+                document.getElementById("global_droit").style.width = "100%";
+                document.getElementById("global_droit").style.left = "0%";
+            }
+        });
+
+        var div = document.getElementById("global_gauche");
+        const divGlobalGaucheAffiches = [];
+        for (var i = 0; i < div.children.length; i++) {
+            for (var y = 0; y < div.children[i].children.length; y++){
+                if(div.children[i].children[y].tagName === "BUTTON") {
+                    divGlobalGaucheAffiches.push([i, y]);
+                }
+            }
+        }
+        console.log(divGlobalGaucheAffiches);
+
+        function cacherDiv() {
+            var div = document.getElementById("global_gauche");
+            var largeur = div.offsetWidth;
+            div.style.width = largeur + "%";
+            div.offsetWidth;
+            div.style.transition = "width 0.5s ease-out";
+            div.style.width = "0%";
+            window.setTimeout(function() {
+                for (var i = 0; i < divGlobalGaucheAffiches.length; i++) {
+                    div.children[divGlobalGaucheAffiches[i][0]].children[divGlobalGaucheAffiches[i][1]].style.display = "none";
+                }
+            }, 100);
+            window.setTimeout(function() {
+                div.style.display = "none";
+            }, 500);
+            document.getElementById("hamburger").className = "arrow-left";
+        }
+
+        function afficherDiv() {
+            var div = document.getElementById("global_gauche");
+            div.style.display = "block";
+            for (var i = 0; i < divGlobalGaucheAffiches.length; i++) {
+                div.children[divGlobalGaucheAffiches[i][0]].children[divGlobalGaucheAffiches[i][1]].style.display = "block";
+            }
+            var largeur = div.offsetWidth;
+            div.style.width = largeur + "%";
+            div.offsetWidth;
+            div.style.transition = "width 0.5s ease-out";
+            div.style.width = "20%";
+            document.getElementById("hamburger").className = "arrow_right";
+        }
+
+        function afficherPopUp() {
+            if(window.confirm("Fin d'admission pour "+<?= $_SESSION['infosPatient']['ipp'] ?>)){
+                window.location.replace("../DPIPatient/TerminerAdmissionPatient.php");
+            } else {
+                window.alert("Vous avez annuler la fin de l'admission")
+            }
+        }
+    </script>
+    <div class="droite" id="global_droit">
         <form action="../../Controleur/DPIPatient/actionDPI.php" name="cat" method="get" class="btn-line">
             <!-- zone d'ajout de boutons -->
             <input style="background-color: gray; color: white;" type="submit" id="macrocible" name="Macrocible" onmouseover="alterner('macrocible');" onmouseout="alterner('macrocible');" value="macrocible">

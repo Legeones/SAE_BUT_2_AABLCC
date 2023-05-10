@@ -111,7 +111,7 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
             $stmt = $pdo->prepare("SELECT p2.* FROM patient LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel WHERE patient.ipp = ?");
             $stmt3 = $pdo->prepare("SELECT a.* FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE patient.ipp = ?");
             $stmt4 = $pdo->prepare("SELECT m.nom,m.prenom,m.adresse,m.ville,m.cp,p3.type,p3.lienmed FROM patient LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp LEFT JOIN medecin m on p3.idmedecin = m.idmedecin WHERE p3.ipp = ?");
-            $stmt5 = $pdo->prepare("SELECT patient.* FROM patient WHERE ipp = ?");
+            $stmt5 = $pdo->prepare("SELECT patient.* FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE patient.ipp = ? ORDER BY a.iep");
         } else {
             $stmt2 = $pdo->prepare("SELECT p.* FROM patient LEFT JOIN personneconfiance p on p.idpcon = patient.idpcon LEFT JOIN admission a on patient.ipp = a.ipp WHERE a.iep = ?");
             $stmt = $pdo->prepare("SELECT p2.* FROM patient LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel LEFT JOIN admission a on patient.ipp = a.ipp WHERE a.iep = ?");
@@ -156,7 +156,7 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
 
     } elseif ($nomCateg == "Observation"){
         if ($_SESSION['paramRechercheAdmi']=='IPP'){
-            $stmt = $pdo->prepare("SELECT * FROM observationmedical o WHERE ipp = ?");
+            $stmt = $pdo->prepare("SELECT * FROM observationmedical o WHERE o.ipp = ?");
             $stmt2 = $pdo->prepare("SELECT * FROM transmissionsciblees o WHERE o.ipp = ?");
         } else {
             $stmt = $pdo->prepare("SELECT * FROM observationmedical o WHERE iep = ?");

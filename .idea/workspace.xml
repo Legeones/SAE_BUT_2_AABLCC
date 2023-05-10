@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="bee8e6e8-0233-4701-bc66-475819c72d90" name="Changes" comment="Lien corrigés pour DPI Model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vue/Accueil/Localisation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Accueil/Localisation.php" afterDir="false" />
@@ -11,6 +12,16 @@
       <change beforePath="$PROJECT_DIR$/Vue/MDP/change_mdp.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/MDP/change_mdp.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vue/Scenario/Scenario.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Scenario/Scenario.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vue/Scenario/addEvenement.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/Scenario/addEvenement.php" afterDir="false" />
+=======
+    <list default="true" id="bee8e6e8-0233-4701-bc66-475819c72d90" name="Changes" comment="Correction des bugs de recherche via IEP. Ajout et fin d'admission">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/BDD/DataBase_Dpi.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/BDD/DataBase_Dpi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/CSS_DPI.css" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/CSS_DPI.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/DPIPatient/DPIpatientDiagramme.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIPatient/DPIpatientDiagramme.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/DPIPatient/DPIpatientMacrocible.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIPatient/DPIpatientMacrocible.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/DPIPatient/DPIpatientObservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIPatient/DPIpatientObservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/DPIpatientStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/DPIpatientStyle.css" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,11 +94,24 @@
       <workItem from="1681279740826" duration="2050000" />
       <workItem from="1681828807779" duration="38000" />
       <workItem from="1681828847187" duration="871000" />
+<<<<<<< Updated upstream
       <workItem from="1681896496518" duration="926000" />
       <workItem from="1682063716141" duration="1263000" />
       <workItem from="1683020449080" duration="2570000" />
       <workItem from="1683031119508" duration="2041000" />
       <workItem from="1683115828924" duration="4429000" />
+=======
+      <workItem from="1681896496518" duration="3128000" />
+      <workItem from="1681983685007" duration="2201000" />
+      <workItem from="1682063497805" duration="8854000" />
+      <workItem from="1682078656714" duration="8000" />
+      <workItem from="1683019621364" duration="12610000" />
+      <workItem from="1683117705723" duration="1659000" />
+      <workItem from="1683187458723" duration="3452000" />
+      <workItem from="1683612168714" duration="1133000" />
+      <workItem from="1683704865894" duration="187000" />
+      <workItem from="1683709860626" duration="224000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="changement evenements">
       <created>1673519131955</created>
@@ -166,7 +190,25 @@
       <option name="project" value="LOCAL" />
       <updated>1681829710714</updated>
     </task>
+<<<<<<< Updated upstream
     <option name="localTasksCounter" value="12" />
+=======
+    <task id="LOCAL-00012" summary="Correction problème upload image">
+      <created>1681897463983</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1681897463983</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Correction des bugs de recherche via IEP. Ajout et fin d'admission">
+      <created>1682070637440</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1682070637440</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+>>>>>>> Stashed changes
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +235,12 @@
     <MESSAGE value="update scenario avec plusieurs DPI" />
     <MESSAGE value="update BDD" />
     <MESSAGE value="Lien corrigés pour DPI Model" />
+<<<<<<< Updated upstream
     <option name="LAST_COMMIT_MESSAGE" value="Lien corrigés pour DPI Model" />
+=======
+    <MESSAGE value="Correction problème upload image" />
+    <MESSAGE value="Correction des bugs de recherche via IEP. Ajout et fin d'admission" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correction des bugs de recherche via IEP. Ajout et fin d'admission" />
+>>>>>>> Stashed changes
   </component>
 </project>

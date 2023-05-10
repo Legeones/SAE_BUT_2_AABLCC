@@ -234,15 +234,81 @@ footer{
     position: absolute;
 }
 
+@media screen {
+
+}
+
+@media (max-width: 767px) {
+    .grid-container {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: grid;
+        grid-template-columns: 24.4% 24.4% 24.4% 24.4%;
+        height: 85%;
+        width: 96.6%;
+        gap: 5px;
+        background-color: lightgrey;
+        padding: 5px;
+        box-shadow: 3px 3px 3px 3px dimgrey;
+        font-family: Arial;
+        font-size: 10px;
+        z-index: 10;
+        position: absolute;
+    }
+
+    .grid-container::-webkit-scrollbar{
+        display: none;
+    }
+
+    .grid-container > div {
+        background-color: white;
+        text-align: center;
+        margin: 5px;
+        padding: 5px;
+        font-size: 10px;
+        box-shadow: 3px 2px 2px dimgrey;
+        min-width: 16.1%;
+        min-height: 14.16%;
+        border-radius: 10px;
+    }
+
+    .grid-container > input {
+        background-color: white;
+        text-align: center;
+        margin: 5px;
+        padding: 5px;
+        font-size: 10px;
+        box-shadow: 2px 2px 2px dimgrey;
+        min-width: 16.1%;
+        min-height: 14.16%;
+        border-radius: 5px;
+    }
+
+
+}
+
 .grid-container > div {
     background-color: white;
     text-align: center;
     margin: 5px;
     padding: 5px;
-    font-size: 20px;
+    font-size: 15px;
     box-shadow: 3px 2px 2px dimgrey;
     min-width: 16.1%;
     min-height: 14.16%;
+    border-radius: 10px;
+}
+
+.grid-container > input {
+    background-color: white;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    font-size: 15px;
+    box-shadow: 2px 2px 2px dimgrey;
+    min-width: 16.1%;
+    min-height: 14.16%;
+    border-radius: 5px;
 }
 
 

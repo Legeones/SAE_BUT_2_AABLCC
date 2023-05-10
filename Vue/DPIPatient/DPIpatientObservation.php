@@ -63,8 +63,8 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
             </div>
         </div>
 
-        <div style="overflow-x: scroll; overflow-y: scroll;">
-            <form method="get" action="../../Controleur/DPIPatient/patientDPIfunction.php" class="table-container">
+        <div class="table_container">
+            <form method="get" action="../../Controleur/DPIPatient/patientDPIfunction.php" class="table">
                 <table>
                     <caption>Transmission ciblée</caption>
                     <tr>

@@ -34,11 +34,13 @@ p{
 }
 .gauche{
     float: left;
+    display: block;
+    transition: width 0.5s ease-out;
     width: 20%;
     background-color: #729bbd;
     height: 90%;
     position: absolute;
-    left: 0px;
+    left: 0;
     top: 10%;
     z-index: 1;
     border-right: black solid;
@@ -47,6 +49,8 @@ p{
 
 }
 .droite{
+    display: block;
+    transition: width 0.5s ease-out, left 0.5s ease-out;
     float: right;
     width: auto;
     height: 85.6%;
@@ -57,8 +61,31 @@ p{
     background-color: #d6ecfd;
 }
 
+.arrow-left{
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 0 6px 10px;
+    border-color: transparent transparent transparent #000000;
+    background-color: #729bbd;
+    cursor: pointer;
+    left: 5px;
+    top: 5px;
+}
+
+.arrow_right {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 10px 6px 0;
+    border-color: transparent #000000 transparent transparent;
+    background-color: #729bbd;
+    cursor: pointer;
+    left: 5px;
+    top: 5px;
+}
+
 header{
-    position: sticky;
     width: 100%;
     float: left;
     height: 10%;
@@ -71,8 +98,6 @@ header{
     z-index: 2;
     box-shadow: 0px 1px 0px dimgrey;
 }
-
-
 
 .btn-group button {
     background-color: white; /* Green background */
@@ -211,6 +236,7 @@ td > textarea{
     box-shadow: 3px 2px 2px dimgrey;
     height: auto;
     cursor: pointer;
+    border-radius: 6px;
 }
 
 .info-intern{
@@ -220,7 +246,12 @@ td > textarea{
     border: black solid thin;
 }
 
-.table-container{
+.table_container{
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.table{
     margin-top: 1%;
     padding: 1%;
 }
