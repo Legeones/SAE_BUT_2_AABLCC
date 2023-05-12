@@ -11,10 +11,9 @@ require ('../../Controleur/DPIPatient/Principal_PHP_Fonction_DPI_ADD_or_Modif.ph
     <script src="../../Controleur/DPIPatient/scriptsDPIpatient.js"></script>
 </head>
 <body>
-<header>
-    <!-- Ajout du logo -->
-    <img class="logo" src="https://moodle.uphf.fr/pluginfile.php/358899/mod_resource/content/1/logoIFSI.png">
-</header>
+<?php
+include('../../Vue/Include/Header.php')
+?>
 <div class="global">
     <div class="gauche">
         <div class="profile" id="space-invader">
