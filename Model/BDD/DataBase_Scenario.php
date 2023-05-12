@@ -222,4 +222,18 @@ function desinsEtuSe($idS,$log){
         print "Erreur !: " . $e->getMessage() . "<br/>";
         die();
     }
+
+}
+
+
+function lst_deroulante_nom_Scenario(){
+
+    $DPI2 = DataBase_Creator_Unit();
+    $DPI = $DPI2->prepare("select scenario.nom
+                                from scenario
+                                join scenarioetudiant on scenario.idscenario = scenarioetudiant.ids where scenarioetudiant.idu = ?");
+    $DPI->bindParam(1,$_SESSION['username']);
+    $DPI->execute();
+    return $DPI->fetchAll();
+
 }

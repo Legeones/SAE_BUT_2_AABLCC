@@ -56,6 +56,8 @@ require ('DataBase_Core.php');
         header('Location: ../../Vue/DPIPatient/DPI.php');
     }
 
+
+
 /**
  * @param $nomPatient
  * @param $nomCateg
