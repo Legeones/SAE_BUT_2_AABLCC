@@ -151,15 +151,32 @@ where  idS=? order by nom,prenom;");
     }
 }
 
+function lstderoulanteEtuInscr($idS)
+{
+    try {
+        $DPI2 = DataBase_Creator_Unit();
+        $DPI = $DPI2->prepare("select login,nom,prenom from Utilisateur join ScenarioEtudiant SE on Utilisateur.login = SE.idU where idS=? order by nom,prenom;");
+        $DPI->bindParam(1,$idS);
+        $DPI->execute();
+        $result = $DPI->fetchAll();
+        return $result;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+
+    }
+}
+
 //fonction pour affecter a un etudiant un evenement a une date pour un scenario
-function insertEvenSceEtu($idS,$idEv,$idEtu,$date){
+function insertEvenSceEtu($idS,$idEv,$idEtu,$date,$idIPP){
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("INSERT INTO ScenarioEtudiant values (?,?,?,?)");
+        $stmt2 = $dbh->prepare("INSERT INTO ScenarioEtudiant values (?,?,?,?,?)");
         $stmt2->bindParam(1, $idS);
         $stmt2->bindParam(2, $idEtu);
         $stmt2->bindParam(3, $idEv);
         $stmt2->bindParam(4, $date);
+        $stmt2->bindParam(5, $idIPP);
         $stmt2->execute();
 
     } catch (PDOException $e) {
@@ -191,4 +208,18 @@ function insertEven($nom,$des,$cate){
         die();
     }
 
+}
+
+function desinsEtuSe($idS,$log){
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("delete from ScenarioEtudiant where idS=? and idE=?;");
+        $stmt2->bindParam(1, $idS);
+        $stmt2->bindParam(2, $log);
+        $stmt2->execute();
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
 }
