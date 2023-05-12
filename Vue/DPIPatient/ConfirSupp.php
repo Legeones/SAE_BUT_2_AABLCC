@@ -20,7 +20,9 @@ echo $_SESSION["IPP_SUPP"];
 ?>
 <br>
 
-<button onclick="location.href='../../Controleur/DPIPatient/SupprimerPatientSQL.php'">OUI</button> <!-- Bouton oui supprimer patient -->
-<button onclick="location.href='../../Vue/DPIPatient/SupprimerPatient.php'">NON</button> <!-- Bouton non supprimer patient -->
+<button onclick="location.href='../../Controleur/DPIPatient/SupprimerPatientSQL.php'">OUI</button>
+<!-- Bouton oui supprimer patient -->
+<button onclick="location.href='../../Vue/DPIPatient/SupprimerPatient.php'">NON</button>
+<!-- Bouton non supprimer patient -->
 </body>
 </html>

@@ -68,7 +68,8 @@
                 <input type="submit" value="Connection">
             </div>
             <div class="mdpOublie">
-                <a href="../MDP/MDPoublier.php"><strong>Forgot your password</strong></a> <!-- Allows access to the forgotten password page -->
+                <a href="../MDP/MDPoublier.php"><strong>Forgot your password</strong></a>
+                <!-- Allows access to the forgotten password page -->
             </div>
         </div>
         <div class="Separation2"></div>
@@ -81,10 +82,12 @@
             </div>
             <div class="piedDePage2">
                 <div class="gauche">
-                    <a href="../Accueil/charte_utilisation.php"><strong>User Charter</strong></a> <!-- Provides access to the terms of use page -->
+                    <a href="../Accueil/charte_utilisation.php"><strong>User Charter</strong></a>
+                    <!-- Provides access to the terms of use page -->
                 </div>
                 <div class="droite">
-                    <input type="button" onclick="window.location.href ='../Accueil/Aide.php';" value="?"/> <!-- Allows access to the help page -->
+                    <input type="button" onclick="window.location.href ='../Accueil/Aide.php';" value="?"/>
+                    <!-- Allows access to the help page -->
                 </div>
             </div>
         </div>

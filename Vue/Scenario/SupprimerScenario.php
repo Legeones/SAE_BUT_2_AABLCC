@@ -29,7 +29,7 @@
             <br>
             <?php
             require('../../Model/BDD/DataBase_Scenario.php');
-            // création de bouton pour les scenario qui sont dans la corbeille
+            // création de bouton pour les scenarios qui sont dans la corbeille
             $der = lstderoulanteScenarioCorb();
             foreach ($der as $val){
                 echo "<input checked type='radio' name='SupCorscenario' checked value={$val['idscenario']} /> {$val['nom']}<br/>";

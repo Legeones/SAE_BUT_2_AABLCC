@@ -150,8 +150,11 @@
                 <br>
 
                 <div class="valider/resetSimulation">
-                    <button type="submit" name="valideSimu"> Créer la simulation</button> <!-- Bouton permettant de créer la simulation -->
-                    <button type="reset" name="resetSimu"> Reset les infos</button> <!-- Bouton permettant d'effacer les informations rentrées -->
+                    <button type="submit" name="valideSimu"> Créer la simulation</button>
+                    <!-- Bouton permettant de créer la simulation -->
+
+                    <button type="reset" name="resetSimu"> Reset les infos</button>
+                    <!-- Bouton permettant d'effacer les informations rentrées -->
                 </div>
 
             </form>

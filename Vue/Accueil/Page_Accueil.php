@@ -16,12 +16,18 @@
         </div>
         <!-- Ajout de boutons -->
         <div class="gauche2">
-            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Connexion "/> <!-- Permets d'accéder à la page connexion -->
-            <input type="button" onclick="window.location.href ='Localisation.php';" value="Ou nous trouver ?"/> <!-- Permets d'accéder à la page ou nous trouver-->
+            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Connexion "/>
+            <!-- Permets d'accéder à la page connexion -->
+
+            <input type="button" onclick="window.location.href ='Localisation.php';" value="Ou nous trouver ?"/>
+            <!-- Permets d'accéder à la page ou nous trouver-->
         </div>
         <div class ="Aide">
-            <input type="button" onclick="window.location.href ='../../Vue/Accueil/Aide.php';" value="Aide"/> <!-- Permet d'accéder à la page Aide -->
-            <input type="button" onclick="window.location.href ='charte_utilisation.php';" value="Charte"/>  <!-- Permets d'accéder à la page Charte -->
+            <input type="button" onclick="window.location.href ='../../Vue/Accueil/Aide.php';" value="Aide"/>
+            <!-- Permet d'accéder à la page Aide -->
+
+            <input type="button" onclick="window.location.href ='charte_utilisation.php';" value="Charte"/>
+            <!-- Permets d'accéder à la page Charte -->
 
         </div>
     </form>

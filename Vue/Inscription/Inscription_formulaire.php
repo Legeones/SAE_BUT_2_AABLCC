@@ -18,31 +18,37 @@
     <div class="Formulaire">
         <div class="Groupe">
             <label> Identifiant : </label>
-            <input type="text" placeholder="Saisir votre identifiant" name="ID" /> <!-- Demande à l'utilisateur de saisir son identifiant -->
+            <input type="text" placeholder="Saisir votre identifiant" name="ID" />
+            <!-- Demande à l'utilisateur de saisir son identifiant -->
         </div>
         
         <div class="Groupe">
             <label> Nom : </label>
-            <input type="text" placeholder="Saisir votre Nom" name="nom" /> <!-- Demande à l'utilisateur de saisir son nom -->
+            <input type="text" placeholder="Saisir votre Nom" name="nom" />
+            <!-- Demande à l'utilisateur de saisir son nom -->
         </div>
         <div class="Groupe">
             <label> Prenom : </label>
-            <input type="text" placeholder="Saisir votre Prenom" name="prenom" /> <!-- Demande à l'utilisateur de saisir son prenom -->
+            <input type="text" placeholder="Saisir votre Prenom" name="prenom" />
+            <!-- Demande à l'utilisateur de saisir son prenom -->
         </div>
         
         <div class="Groupe">
             <label> Mot de passe :</label>
-            <input type="password" name="Password_A" id="password" placeholder="Saisir votre mot de passe" /> <!-- Demande à l'utilisateur de saisir son mot de passe -->
+            <input type="password" name="Password_A" id="password" placeholder="Saisir votre mot de passe" />
+            <!-- Demande à l'utilisateur de saisir son mot de passe -->
             <em class="bi bi-eye-slash" id="togglePassword"></em>
         </div>
         <div class="Groupe">
             <label> Confirmation mot de passe : </label>
-            <input type="password" name="Password_B" id="password1" placeholder="Confirmer votre mot de passe" /> <!-- Demande à l'utilisateur de confirmer son mot de passe -->
+            <input type="password" name="Password_B" id="password1" placeholder="Confirmer votre mot de passe" />
+            <!-- Demande à l'utilisateur de confirmer son mot de passe -->
             <em class="bi bi-eye-slash" id="togglePassword1"></em>
         </div>
         <div class="Groupe">
             <label> Adresse mail :</label>
-            <input type="text"placeholder="Saisir votre adresse mail" name="email" /> <!-- Demande à l'utilisateur de saisir votre adresse mail -->
+            <input type="text"placeholder="Saisir votre adresse mail" name="email" />
+            <!-- Demande à l'utilisateur de saisir votre adresse mail -->
         </div>
     </div>
     <div class="piedDePage">
@@ -83,11 +89,11 @@
         $err = $_GET['erreur'];
         if($err==1){
             // Ici une erreur est affichée si le mot de passe contient moins de 8 caractéres //
-            echo "<p style='color:red'>le mot de passse a moins de 8 caractÃ¨res</p>";
+            echo "<p style='color:red'>le mot de passse a moins de 8 caractéres</p>";
         }
         if($err==2){
             // Ici une erreur est affichée si les 2 mot de passe ne sont pas identiques //
-            echo "<p style='color:red'>le mot de passe et sa confirmation sont diffÃ¨rents</p>";
+            echo "<p style='color:red'>le mot de passe et sa confirmation sont différents</p>";
         }
         if($err==3){
             // Ici une erreur est affichée s'il y a des minuscules //
@@ -103,7 +109,7 @@
         }
         if($err==6){
             // Ici une erreur est affichée si les champs ne sont pas complétement remplis //
-            echo "<p style='color:red'> tous les champs doivent Ãªtre remplis </p>";
+            echo "<p style='color:red'> tous les champs doivent être remplis </p>";
         }
 
         if($err==7){
@@ -126,11 +132,13 @@
             <p>Pour vous Connectez</p>
         </div>
         <div class="CSS1"">
-            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Se connecter"/> <!-- Bouton permettant Ã  l'utilisateur de se connecter -->
+            <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Se connecter"/>
+        <!-- Bouton permettant à l'utilisateur de se connecter -->
         </div>
         <div class="piedDePage2">
             <div class="droite">
-                <input type="button" onclick="window.location.href ='../../Vue/Accueil/Aide.php';" value="?"/> <!-- Bouton permettant d'accÃ¨der Ã  l'aide -->
+                <input type="button" onclick="window.location.href ='../../Vue/Accueil/Aide.php';" value="?"/>
+                <!-- Bouton permettant d'accéder à l'aide -->
             </div>
         </div>
     </div>

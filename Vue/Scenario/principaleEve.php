@@ -23,11 +23,14 @@
             <?php
             session_start();
             if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {
-                echo "<button onclick=location.href='SupprimerScenario.php'>Supprimer Scenario</button>"; //Bouton permettant de supprimer des Scenarios
+                echo "<button onclick=location.href='SupprimerScenario.php'>Supprimer Scenario</button>";
+                //Bouton permettant de supprimer des Scenarios
                 echo '<br>';
-                echo "<button onclick=location.href='CorbeilleSce.php'> Mettre a la Corbeille</button>"; // Bouton permettant de mettre des Scenarios dans la corbeille
+                echo "<button onclick=location.href='CorbeilleSce.php'> Mettre a la Corbeille</button>";
+                // Bouton permettant de mettre des Scenarios dans la corbeille
                 echo '<br>';
-                echo "<button onclick=location.href='RecupCorbeilleSce.php'>Recuperer Scenario</button>"; //Bouton permettant de recupérer des Scenarios dans la corbeille
+                echo "<button onclick=location.href='RecupCorbeilleSce.php'>Recuperer Scenario</button>";
+                //Bouton permettant de récupérer des Scenarios dans la corbeille
                 echo '<br>';
             }
             ?>

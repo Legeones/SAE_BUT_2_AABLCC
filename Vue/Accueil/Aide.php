@@ -18,23 +18,27 @@
         <div class="formGauche">
             <div class="Groupe">
                 <label for="identifiant">Identifiant : </label>
-                <input type="text" placeholder="Saisir votre identifiant" name="username" /> <!-- Demande à l'utilisateur de saisir son identifiant -->
+                <input type="text" placeholder="Saisir votre identifiant" name="username" />
+                <!-- Demande à l'utilisateur de saisir son identifiant -->
             </div>
             <div class="Groupe">
                 <label for="adresse mail">Adresse mail :</label>
-                <input type="text"placeholder="Saisir votre adresse mail" name="mail" /> <!-- Demande à l'utilisateur de saisir son adresse mail -->
+                <input type="text"placeholder="Saisir votre adresse mail" name="mail" />
+                <!-- Demande à l'utilisateur de saisir son adresse mail -->
             </div>
         </div>
         <div class="formDroite">
             <div class="Groupe">
                 <label> Message :</label>
-                <input type="text" placeholder="Saisissez ici ..." name="body" /> <!-- Zone de saisie -->
+                <input type="text" placeholder="Saisissez ici ..." name="body" />
+                <!-- Zone de saisie -->
             </div>
         </div>
     </div>
     <div class="piedDePage">
         <div class="Validation" align="center" >
-            <input type="submit" value="Envoyer le message"> <!-- Bouton permettant d'envoyer son message -->
+            <input type="submit" value="Envoyer le message">
+            <!-- Bouton permettant d'envoyer son message -->
         </div>
         <!-- Gestion des erreurs -->
 
@@ -47,7 +51,7 @@
         if($err==1){
             echo "<p style='color:red'> tous les champs doivent être remplis </p>";
         }
-        // Ici une erreur est affichée si le mail ou le login sont invalide
+        // Ici une erreur est affichée si le mail ou le login sont invalides
         if($err==2){
             echo "<p style='color:red'> mail ou login invalide </p>";
         }
@@ -62,7 +66,8 @@
         </div>
         <div class="piedDePage2">
             <div class="droite">
-                <input type="button" onclick="window.history.back();return false;" value="Retour"/> <!-- Bouton permettant de retourner à la page précédente -->
+                <input type="button" onclick="window.history.back();return false;" value="Retour"/>
+                <!-- Bouton permettant de retourner à la page précédente -->
             </div>
         </div>
     </div>

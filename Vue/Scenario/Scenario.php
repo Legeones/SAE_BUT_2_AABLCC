@@ -15,7 +15,7 @@
         </div>
         <div class="btn-group">
             <button onclick="location.href='../DPIPatient/DPI.php'">PATIENTS</button>
-            <button onclick="location.href='principaleEve.php'">SCENARIOS</button> <!-- Bouton permettant d'accèder au scenarios -->
+            <button onclick="location.href='principaleEve.php'">SCENARIOS</button> <!-- Bouton permettant d'accèder aux scenarios -->
         </div>
     </div>
     <div class="droite">

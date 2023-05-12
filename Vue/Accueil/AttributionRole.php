@@ -31,13 +31,13 @@
             <?php
             if(isset($_GET['erreur'])){
                 $err = $_GET['erreur'];
-            // Ici une erreur est affichée si le login est invalide
                 if($err==1){
                     echo "<p style='color:red'> le login est invalide </p>";
+                    // Ici une erreur est affichée si le login est invalide
                 }
-            // Ici une erreur est affichée si tous les champs ne sont pas remplis
                 if($err==2){
                     echo "<p style='color:red'> les champs doivent etre remplis </p>";
+                    // Ici une erreur est affichée si tous les champs ne sont pas remplis
                 }
 
             }
