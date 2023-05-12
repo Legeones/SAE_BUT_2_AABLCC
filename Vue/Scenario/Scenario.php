@@ -94,6 +94,7 @@
 
                         <div id="event_aleatoire" style="background-color: mediumpurple">
                             <label for="nbevent_alea">Nombre d'évènement</label> <br> <input type="text" id="nbevent_alea" name="nbevent_alea" placeholder="Entrez le nombre d'event que vous voulez" style="width: 50%">
+                            <!-- Demande le nombre d'evenement -->
                         </div>
                     </div>
                     <br><br><br>
