@@ -155,7 +155,7 @@ function lstderoulanteEtuInscr($idS)
 {
     try {
         $DPI2 = DataBase_Creator_Unit();
-        $DPI = $DPI2->prepare("select login,nom,prenom from Utilisateur join ScenarioEtudiant SE on Utilisateur.login = SE.idU where idS=? order by nom,prenom;");
+        $DPI = $DPI2->prepare("select DISTINCT login,nom,prenom from Utilisateur join ScenarioEtudiant SE on Utilisateur.login = SE.idU where idS=? order by nom,prenom;");
         $DPI->bindParam(1,$idS);
         $DPI->execute();
         $result = $DPI->fetchAll();
@@ -193,6 +193,22 @@ function lstderoulCate(){
     return $DPI;
 }
 
+//fonction pour récupérer les dpi d'un scénario
+function recupDPIScenarion($id){
+    try {
+        $DPI2 = DataBase_Creator_Unit();
+        $DPI = $DPI2->prepare("select ipp from dpiScenario where idS=? ");
+        $DPI->bindParam(1, $id);
+        $DPI->execute();
+        $result = $DPI->fetchAll(PDO::FETCH_COLUMN, 0);
+        return $result;
+        //echo "<img class='logo' src=$res>";
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+
+    }
+}
 
 function insertEven($nom,$des,$cate){
     try {
@@ -213,7 +229,7 @@ function insertEven($nom,$des,$cate){
 function desinsEtuSe($idS,$log){
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("delete from ScenarioEtudiant where idS=? and idE=?;");
+        $stmt2 = $dbh->prepare("delete from ScenarioEtudiant where idS=? and idU=?");
         $stmt2->bindParam(1, $idS);
         $stmt2->bindParam(2, $log);
         $stmt2->execute();
@@ -222,17 +238,17 @@ function desinsEtuSe($idS,$log){
         print "Erreur !: " . $e->getMessage() . "<br/>";
         die();
     }
-
 }
 
 
-function lst_deroulante_nom_Scenario(){
+function lst_deroulante_nom_Scenario()
+{
 
     $DPI2 = DataBase_Creator_Unit();
     $DPI = $DPI2->prepare("select scenario.nom
                                 from scenario
                                 join scenarioetudiant on scenario.idscenario = scenarioetudiant.ids where scenarioetudiant.idu = ?");
-    $DPI->bindParam(1,$_SESSION['username']);
+    $DPI->bindParam(1, $_SESSION['username']);
     $DPI->execute();
     return $DPI->fetchAll();
 
