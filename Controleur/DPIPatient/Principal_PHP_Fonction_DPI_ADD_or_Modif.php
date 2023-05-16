@@ -11,11 +11,13 @@ function formulaire($res,$lst,$i,$type,$res2){ ?>
         <input id="<?=$res?>" type="<?=$type?>" name="<?=$res?>" value="<?= $_SESSION[$res2] ?? '' ?>"/> <!-- creation d'un input, le value sert à mettre la valeur de la session, si elle est nulle ou n'existe pas alors value sera nulle -->
         <?php if (isset($_SESSION['lstErreur']) and comparaison($_SESSION['lstErreur'],$res) == true){ // la session lstErreur est une liste contenant les inputs vides, si un nom de colonne se trouve dedans alors les colonnes obligatoires à remplir mettront une erreur
             if (!(($i >= 11 and $i <= 16) or ($i == 21) or ($i >= 23 and $i <= 24 ))){  // tri de toutes les colonnes obligatoire à remplir pour le formulaire
-            echo "<p style='color:red'>Ce champ est obligatoire </p>"; // message d'erreur
+            echo "<p style='color:red'>Ce champ est obligatoire </p>";
+            // Ici un message d'erreur apparait lorsque le champ n'est pas remplis
         }}
         if (isset($_SESSION['lstErreur_specifique']) and comparaison($_SESSION['lstErreur_specifique'], $res) == true) {
             if ($i ==0 or $i == 8) { // autre erreur en cas de condition non valide
                 echo "<p style='color:red'>Ce champ est invalide</p>";
+                // Une erreur est affichée lorsque le champ n'est pas valide
             }
         }
         ?>

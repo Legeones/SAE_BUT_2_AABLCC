@@ -47,13 +47,15 @@
     //Gestion des erreurs//
     if(isset($_GET['erreur'])){
         $err = $_GET['erreur'];
-        // Ici une erreur est affichée si tous les champs ne sont pas remplis
         if($err==1){
             echo "<p style='color:red'> tous les champs doivent être remplis </p>";
+            // Ici une erreur est affichée si tous les champs ne sont pas remplis
+
         }
-        // Ici une erreur est affichée si le mail ou le login sont invalides
         if($err==2){
             echo "<p style='color:red'> mail ou login invalide </p>";
+            // Ici une erreur est affichée si le mail ou le login sont invalides
+
         }
     }
     ?>

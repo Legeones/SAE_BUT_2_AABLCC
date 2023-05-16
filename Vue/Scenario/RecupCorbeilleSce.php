@@ -28,7 +28,7 @@
             <br>
             <br>
             <?php
-            // création de bouton pour les scenario qui sont dans la corbeille
+            // création de bouton pour les scenarios qui sont dans la corbeille
             require('../../Model/BDD/DataBase_Scenario.php');
             $der = lstderoulanteScenarioCorb();
             foreach ($der as $val){
