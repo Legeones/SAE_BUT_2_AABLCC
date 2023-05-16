@@ -198,16 +198,16 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
         }
         $stmt2 -> bindParam(1,$nomPatient);
         $stmt2->execute();
-        $stmt = $pdo->prepare("SELECT p2.* FROM patient LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel WHERE patient.ipp = ?");
+
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
-        $stmt3 = $pdo->prepare("SELECT a.* FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE patient.ipp = ?");
+
         $stmt3 -> bindParam(1,$nomPatient);
         $stmt3->execute();
-        $stmt4 = $pdo->prepare("SELECT m.nom,m.prenom,m.adresse,m.ville,m.cp,p3.type,p3.lienmed FROM patient LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp LEFT JOIN medecin m on p3.idmedecin = m.idmedecin WHERE patient.ipp = ?");
+
         $stmt4 -> bindParam(1,$nomPatient);
         $stmt4->execute();
-        $stmt5 = $pdo->prepare("SELECT * FROM patient WHERE patient.ipp = ?");
+
         $stmt5 -> bindParam(1,$nomPatient);
         $stmt5->execute();
         $_SESSION['infosPersonneConf']=[];
@@ -314,15 +314,28 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
         }
     }
     header("Location: ../../Vue/DPIPatient/DPIpatient".$nomCateg.".php");
+}
 
+function chercherDerniereIEP(){
+    try{
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("SELECT max(iep) FROM admission");
+        $stmt2->execute();
+    } catch (Exception $e){
+        ErrorMessage($e);
+        die();
+    }
+    return $stmt2->fetchColumn(0)+1;
 }
 
 function ajouterAdmissionPatient($patient,$date){
     try{
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("INSERT INTO admission(iep,datedebut,ipp) VALUES (default,?,?)");
-        $stmt2->bindParam(1, $date);
-        $stmt2->bindParam(2, $patient);
+        $stmt2 = $dbh->prepare("INSERT INTO admission(iep,datedebut,ipp) VALUES (?,?,?)");
+        $DerniereIEP = chercherDerniereIEP();
+        $stmt2->bindParam(1, $DerniereIEP);
+        $stmt2->bindParam(2, $date);
+        $stmt2->bindParam(3, $patient);
         $stmt2->execute();
     } catch (Exception $e){
         ErrorMessage($e);
@@ -331,17 +344,21 @@ function ajouterAdmissionPatient($patient,$date){
     header(DPIReturn());
 }
 
-function terminerAdmissionPatient($patient,$iep){
+function terminerAdmissionPatient($patient,$iep): void
+{
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("UPDATE admission SET dateFin = ? where iep = ?");
+        $stmt2 = $dbh->prepare("UPDATE admission SET dateFin = ? where iep = ? and ipp = ?");
+        $date = date("Y-m-d");
         $stmt2->bindParam(1, $date);
         $stmt2->bindParam(2,$iep);
+        $stmt2->bindParam(3, $patient);
         $stmt2->execute();
     } catch (Exception $e){
         ErrorMessage($e);
         die();
     }
+    header(DPIReturn());
 }
 
 function DataBase_Add_Patient($IPP,$nom,$date)
