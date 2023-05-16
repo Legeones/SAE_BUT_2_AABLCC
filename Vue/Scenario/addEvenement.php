@@ -63,7 +63,7 @@
                 $err = $_GET['erreur'];
                 if($err==1){
                     echo "<p style='color:red'>Error: Imcompatibilité entre le nom et l'ipp.</p>";
-                    // Une erreur est affichée lorsqu'il y a une imcompatibilité entre le nom et l'ipp
+                    // Une erreur est affichée lorsqu'il y a une Imcompatibilité entre le nom et l'ipp
                 }
 
                 if($err==5){

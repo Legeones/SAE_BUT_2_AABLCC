@@ -88,38 +88,46 @@
     if(isset($_GET['erreur'])){
         $err = $_GET['erreur'];
         if($err==1){
-            // Ici une erreur est affichée si le mot de passe contient moins de 8 caractéres //
             echo "<p style='color:red'>le mot de passse a moins de 8 caractéres</p>";
+            // Ici une erreur est affichée si le mot de passe contient moins de 8 caractéres
+
         }
         if($err==2){
-            // Ici une erreur est affichée si les 2 mot de passe ne sont pas identiques //
             echo "<p style='color:red'>le mot de passe et sa confirmation sont différents</p>";
+            // Ici une erreur est affichée si les 2 mot de passe ne sont pas identiques
+
         }
         if($err==3){
-            // Ici une erreur est affichée s'il y a des minuscules //
             echo "<p style='color:red'> pas de minuscule </p>";
+            // Ici une erreur est affichée s'il y a des minuscules
+
         }
         if($err==4){
-            // Ici une erreur est affichée s'il y a des numéros //
             echo "<p style='color:red'> pas de numero </p>";
+            // Ici une erreur est affichée s'il y a des numéros
+
         }
         if($err==5){
-            // Ici une erreur est affichée s'il y a des majuscules //
             echo "<p style='color:red'> pas de majusucule </p>";
+            // Ici une erreur est affichée s'il y a des majuscules
+
         }
         if($err==6){
-            // Ici une erreur est affichée si les champs ne sont pas complétement remplis //
             echo "<p style='color:red'> tous les champs doivent être remplis </p>";
+            // Ici une erreur est affichée si les champs ne sont pas complétement remplis
+
         }
 
         if($err==7){
-            // Ici une erreur est affichée si le mail ou le login est invalide //
             echo "<p style='color:red'> mail ou login invalide </p>";
+            // Ici une erreur est affichée si le mail ou le login est invalide
+
         }
         
         if($err==8){
-            // Ici une erreur est affichée si le nom et ou prenom sont vide //
             echo "<p style='color:red'> Champs nom et/ou prenom doivent être remplis </p>";
+            // Ici une erreur est affichée si le nom et ou prenom sont vides
+
         }
     }
     ?>

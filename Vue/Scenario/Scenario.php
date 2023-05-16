@@ -56,8 +56,13 @@
                     <br><br><br>
                     <div id="date_scenario">
                         <label for="nom_scenario"> Nom du scenario </label> <br> <input type="text" name="nom_scenario" id="nom_scenario"> <br>
+                        <!-- Balise indiquant le nom du scénario -->
+
                         <label for="debut"> début du scénario</label> <br> <input type="date" name="debut" id="debut"> <br>
+                        <!-- Balise indiquant le début du scénario -->
+
                         <label for="fin">fin du scénario</label> <br> <input type="date" name="fin" id="fin">
+                        <!-- Balise indiquant la fin du scénario -->
 
                     </div>
                     <br><br><br>
@@ -86,7 +91,9 @@
                     <div id="ajout_event">
                         <div id="event_categorie" style="background-color: #66CCCC">
                             <label for="nbevent">Nombre d'évènement</label> <br> <input type="text" id="nbevent" name="nbevent" placeholder="Entrez le nombre d'event que vous voulez" style="width: 50%"><br>
+                            <!-- Balise demandant à l'utilisateur d'entrer le nom d'événement qu'il souhaite -->
                             <label for="type_categorie">Catégorie des évènements</label> <br> <input type="text" id="type_categorie" name="type_categorie" placeholder="Entrez la catégorie d'évènement que vous souhaitez" style="width: 50%">
+                            <!-- Balise demandant à l'utilisateur d'entrer la catégorie d'événements qu'il souhaite -->
 
                         </div>
 

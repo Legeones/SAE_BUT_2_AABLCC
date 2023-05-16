@@ -17,11 +17,11 @@
     </header>
         <div class="gauche2">
             <input type="button" onclick="window.location.href ='../Connexion/login.php';" value="Connexion"/>
-            <!-- Permets d'accèder à la page Connexion -->
+            <!-- Permets d'accéder à la page Connexion -->
     </div>
         <div class ="Aide">
             <input type="button" onclick="window.location.href ='Page_Accueil.php';" value="Accueil"/>
-            <!-- Permets d'accèder à la page Accueil -->
+            <!-- Permets d'accéder à la page Accueil -->
             </div>
         <?php session_start(); session_destroy();?>
 </form>

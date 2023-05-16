@@ -29,6 +29,7 @@ else{
     $_SESSION['fin']=$info[2];
     $_SESSION['nbev']=$info[3];
     $_SESSION['eve']=$eve;
+    $_SESSION['choixInsDes']=$_POST['inscriptionDEscincription'];
 
     header('Location: ../../Vue/Scenario/choixEtu.php');
 }
