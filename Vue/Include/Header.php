@@ -1,5 +1,5 @@
 <?php
-require ('../../../SAE_BUT_2_AABLCC/Controleur/Scenario/Mode_Examen.php')
+require ('../../Controleur/Scenario/Mode_Examen.php')
 ?>
 
 <header id="haut">
