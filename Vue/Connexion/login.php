@@ -11,7 +11,7 @@
 
 </head>
 <div class="button">
-    <input type="button" onclick="window.location.href ='loginEN.php';" value="English"/>
+    <input type="button" id="bouton_francais" onclick="window.location.href ='loginEN.php';" value="English"/>
 </div>
 <body id="general">
 

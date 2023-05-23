@@ -259,4 +259,41 @@ form.eyes {
     padding: 5px;
 }
 
-Footer
+#bouton_francais{
+    text-decoration: none;
+    padding: 10px;
+    font-family: verdana;
+    font-size: 0.6em;
+    color: #FFFFFF;
+    background-color: #548dd4;
+    border-radius: 45px;
+    -webkit-border-radius: 45px;
+    -moz-border-radius: 45px;
+    border: 0px solid #000000;
+}
+
+#bouton_englais{
+    text-decoration: none;
+    padding: 10px;
+    font-family: verdana;
+    font-size: 0.6em;
+    color: #FFFFFF;
+    background-color: #548dd4;
+    border-radius: 45px;
+    -webkit-border-radius: 45px;
+    -moz-border-radius: 45px;
+    border: 0px solid #000000;
+}
+
+#retour_boutton {
+    border-radius: 90px;
+    font-size: 17px;
+    padding: 4px 7px 4px 7px;
+    background-color: lightskyblue;
+    border: none;
+    color: black;
+    text-decoration: none;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
