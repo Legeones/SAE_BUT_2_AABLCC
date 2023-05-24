@@ -13,21 +13,13 @@ require ('../../Controleur/DPIPatient/Principal_PHP_Fonction_DPI_ADD_or_Modif.ph
 
 </head>
 <body>
-<header>
-    <!-- Ajout du logo -->
-    <img class="logo" src="https://moodle.uphf.fr/pluginfile.php/358899/mod_resource/content/1/logoIFSI.png">
-</header>
+<?php
+include('../../Vue/Include/Header.php')
+?>
 <div class="global">
-    <div class="gauche">
-        <div class="profile" id="space-invader">
-            <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
-        </div>
-        <div class="btn-group">
-            <button onclick="location.href='DPÏ.php'">PATIENTS</button>
-            <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button>
-        </div>
-    </div>
-
+    <?php
+    include('../../Vue/Include/Menu_bouton.php')
+    ?>
 
     <!-- zone de connexion -->
     <div class="droite">

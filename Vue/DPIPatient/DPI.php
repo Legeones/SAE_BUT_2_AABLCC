@@ -1,7 +1,9 @@
 <?php
-session_start();
 $_SESSION['cat']=null;
 $_SESSION['patientSuivi']=null;
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <head>
@@ -16,19 +18,23 @@ include('../../Vue/Include/Header.php')
 ?>
 <div class="global">
     <?php
-    include('../../Vue/Include/Menu_bouton.php')
+        include('../../Vue/Include/Menu_bouton.php')
     ?>
     <div id="droit" class="droite">
         <form id="formulaire_recherche" action="../../Controleur/DPIPatient/actionPrincipale.php" method="get">
             <label><input name="recherche_barre"></label>
             <label><select name="select">
                 <option name="aucun">Aucun</option>
-                <option name="dh">Date hospitalisation</option>
-                <option name="oa">Ordre alphabetique</option>
+
+                    <option name="dh">Date hospitalisation</option>
+                    <option name="oa">Ordre alphabetique</option>
+
                 </select></label>
             <label><select name="admi">
-                <option value="IPP" name="IPP">IPP</option>
-                <option value="IEP" name="IEP">IEP</option>
+                    <option value="IPP" name="IPP">IPP</option>
+                    <?php if(isset($_SESSION['exam'])&& $_SESSION['exam'] == 0): ?>
+                        <option value="IEP" name="IEP">IEP</option>
+                    <?php endif; ?>
                 </select></label>
             <button type="submit">Rechercher</button>
             <button name="back">Back</button>
@@ -127,7 +133,9 @@ include('../../Vue/Include/Header.php')
                 <div class="hide" id=<?php echo $_SESSION['idActuel'] ?>>
                     <?php if(isset($_SESSION[$_SESSION['patientActuel']])){ print ("IPP:".$_SESSION[$_SESSION['patientActuel']]['ipp']."<br>");
                     if(isset($_SESSION[$_SESSION['patientActuel']]['iep'])) print ("IEP:".$_SESSION[$_SESSION['patientActuel']]['iep']."<br>");
-                    print("Date d'hospitalisation ".$_SESSION[$_SESSION['patientActuel']]['datedebut']);} ?>
+                    if ($_SESSION['exam'] == 0){
+                        print("Date d'hospitalisation ".$_SESSION[$_SESSION['patientActuel']]['datedebut']);}
+                    } ?>
                 </div>
             <?php }
             ?>
