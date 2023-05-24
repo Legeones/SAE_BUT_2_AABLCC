@@ -1,5 +1,8 @@
 <?php
-require ('../../../SAE_BUT_2_AABLCC/Controleur/Scenario/Mode_Examen.php')
+require ('../../Controleur/Scenario/Mode_Examen.php');
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <header id="haut">
@@ -11,14 +14,24 @@ require ('../../../SAE_BUT_2_AABLCC/Controleur/Scenario/Mode_Examen.php')
                 <select name="DPI" id="DPI_Patient">
                     <option value="defaut">--Choisir le Scenario--</option>
                     <?php
+                    if (!isset($_SESSION['name_senario'])) {?>
+                        <option value="defaut">--Choisir le Scenario--</option>;
+                    <?php } else{?>
+                        <option value="<?php echo $_SESSION['name_senario'] ?>"><?php echo $_SESSION['name_senario'] ?></option>
+                    <?php }
                     $lst = liste_nom_senario();
-                    for($i =0;$i<sizeof($lst);$i++):?>
+                    unset($lst[array_search($_SESSION['name_senario'] , $lst)]);
+                    for($i =0;$i<sizeof($lst);$i++){?>
+                        <?php if (isset($_SESSION['name_senario']) && $_SESSION['name_senario'] == $lst[$i]){
+                            $i += 1;
+                        }?>
                         <option value="<?php echo $lst[0][$i] ?>"><?php echo $lst[0][$i] ?></option>
-                    <?php endfor; ?>
+                    <?php } ?>
 
                 </select>
 
             </div>
+            <button type="submit" name="bt_affiche_dpi">Valider</button>
         </div>
         <button type="button" title="Déconnexion" id="logout" class="logout" onclick="location.href='../Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
 

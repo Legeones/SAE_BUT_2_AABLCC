@@ -68,7 +68,7 @@
         </div>
         <div class="piedDePage2">
             <div class="droite">
-                <input type="button" onclick="window.history.back();return false;" value="Retour"/>
+                <input type="button" id="retour_boutton" onclick="window.history.back();return false;" value="Retour"/>
                 <!-- Bouton permettant de retourner à la page précédente -->
             </div>
         </div>

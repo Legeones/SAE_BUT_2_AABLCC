@@ -83,8 +83,7 @@ function Patient_Parcour($p,$rm,$rma): array
     return $liste;
 }
 
-
-function Patient_Parcour_exam($p,$rm,$rma): void
+function Patient_Parcour_exam($senario_name): void
     /*
      * Cette fonction parcour tous les patients et les ressorts en fonction des paramètres de recherche implantés.
      * $rm sert à la recherche par nom
@@ -106,47 +105,14 @@ function Patient_Parcour_exam($p,$rm,$rma): void
     }
 
     $dbh = DataBase_Creator_Unit();
-    if($rm!='aucun'){
 
-        $stmt = $dbh->prepare("SELECT DISTINCT ON (patient.ipp) patient.ipp, nom, prenom, admission.dateDebut FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb LEFT JOIN(SELECT datedebut, ipp FROM admission ORDER BY iep DESC) admission ON admission.ipp = patient.IPP where nom like ? and IPPCorb is null LIMIT ? OFFSET ?");
-        $stmt->bindParam(1,$rm);
-        $lim = $_SESSION['incrPat']+25;
-        $stmt->bindParam(2,$lim);
-        $stmt->bindParam(3,$_SESSION['incrPat']);
-        $stmt->execute();
-    }
+    $stmt = $dbh->prepare("SELECT DISTINCT ON (patient.ipp) patient.ipp, nom, prenom FROM patient left join Corbeille co on Patient.IPP = co.IPPCorb intersect (SELECT DISTINCT ON (p.ipp) p.ipp, p.nom, p.prenom from scenario s join dpiscenario d on s.idscenario = d.ids join patient p on d.ipp = p.ipp left join Corbeille co2 on p.IPP = co2.IPPCorb where s.nom = ?) LIMIT ? OFFSET ?");
+    $lim = $_SESSION['incrPat']+25;
+    $stmt->bindParam(1,$senario_name);
+    $stmt->bindParam(2,$lim);
+    $stmt->bindParam(3,$_SESSION['incrPat']);
+    $stmt->execute();
 
-    if ($p=='Date hospitalisation' && $rm=='aucun') {
-        if ($rma == 'IPP'){
-            $stmt = $dbh->prepare("SELECT * FROM(SELECT DISTINCT ON (patient.ipp) patient.ipp, nom, prenom, admission.dateDebut FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb JOIN(SELECT datedebut, ipp FROM admission ORDER BY iep DESC) admission ON admission.ipp = patient.IPP where IPPCorb is null LIMIT ? OFFSET ?) patients ORDER BY patients.datedebut DESC ");
-        } else if ($rma == 'IEP'){
-            $stmt = $dbh->prepare("SELECT admission.iep,patient.ipp,nom,prenom, datedebut FROM patient JOIN admission ON admission.ipp = patient.ipp  left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is  null ORDER BY admission.iep DESC LIMIT ? OFFSET ?");
-        }
-        $lim = $_SESSION['incrPat']+25;
-        $stmt->bindParam(1,$lim);
-        $stmt->bindParam(2,$_SESSION['incrPat']);
-        $stmt->execute();
-    } elseif ($p=='Ordre alphabetique' && $rm=='aucun'){
-        if ($rma == 'IPP'){
-            $stmt = $dbh->prepare("SELECT DISTINCT ON (patient.ipp,nom) patient.ipp, nom, prenom, MAX(admission.dateDebut) as dateDebut FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb LEFT JOIN(SELECT datedebut, ipp FROM admission ORDER BY iep DESC) admission ON admission.ipp = patient.IPP where IPPCorb is null GROUP BY patient.ipp, nom, prenom ORDER BY nom LIMIT ? OFFSET ?");
-        } else if ($rma == 'IEP'){
-            $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP,nom,prenom,datedebut FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY nom, admission.iep LIMIT ? OFFSET ?");
-        }
-        $lim = $_SESSION['incrPat']+25;
-        $stmt->bindParam(1,$lim);
-        $stmt->bindParam(2,$_SESSION['incrPat']);
-        $stmt->execute();
-    } elseif($rm=='aucun') {
-        if ($rma == 'IPP'){
-            $stmt = $dbh->prepare("SELECT DISTINCT ON (patient.ipp) patient.ipp, nom, prenom, MAX(admission.dateDebut) as dateDebut FROM patient left join Corbeille C on Patient.IPP = C.IPPCorb LEFT JOIN(SELECT datedebut, ipp FROM admission ORDER BY iep DESC) admission ON admission.ipp = patient.IPP where IPPCorb is null GROUP BY patient.ipp, nom, prenom LIMIT ? OFFSET ?");
-        } else if ($rma == 'IEP'){
-            $stmt = $dbh->prepare("SELECT admission.iep,patient.IPP,nom,prenom,datedebut FROM patient left join admission on patient.ipp = admission.ipp left join Corbeille C on Patient.IPP = C.IPPCorb where IPPCorb is null ORDER BY admission.iep LIMIT ? OFFSET ?");
-        }
-        $lim = $_SESSION['incrPat']+25;
-        $stmt->bindParam(1,$lim);
-        $stmt->bindParam(2,$_SESSION['incrPat']);
-        $stmt->execute();
-    }
     $i = 1;
     foreach ($stmt as $p){
         if($i<$_SESSION['incrPat']){
@@ -157,7 +123,7 @@ function Patient_Parcour_exam($p,$rm,$rma): void
             $i = $i+1;
         }
     }
-    header(DPIReturn());
+    echo '<script>history.back();</script>';
 }
 
 function Data_Patient_Querry($nomPatient, $nomCateg){

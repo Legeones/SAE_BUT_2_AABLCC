@@ -10,7 +10,7 @@
 
 </head>
 <div class="button">
-    <input type="button" onclick="window.location.href ='login.php';" value="Français"/>
+    <input type="button" id="bouton_englais" onclick="window.location.href ='login.php';" value="Français"/>
 </div>
 <body id="general">
 <div id="container">

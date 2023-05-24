@@ -1,7 +1,9 @@
 <?php
-session_start();
 $_SESSION['cat']=null;
 $_SESSION['patientSuivi']=null;
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <head>
@@ -16,20 +18,24 @@ include('../../Vue/Include/Header.php')
 ?>
 <div class="global">
     <?php
-    include('../../Vue/Include/Menu_bouton.php')
+        include('../../Vue/Include/Menu_bouton.php')
     ?>
     <div id="droit" class="droite">
         <form id="formulaire_recherche" action="../../Controleur/DPIPatient/actionPrincipale.php" method="get">
             <label><input id="recherche_barre" name="recherche_barre"></label>
             <label><select id="ordre" name="select">
                 <option name="aucun">Aucun</option>
+
                 <option name="dh">Date hospitalisation</option>
                 <option name="oa">Ordre alphabetique</option>
+
                 </select></label>
             <label><select id="admission" name="admi">
                 <option value="IPP" name="IPP">IPP</option>
-                <option value="IEP" name="IEP">IEP</option>
-                </select></label>
+                <?php if(isset($_SESSION['exam'])&& $_SESSION['exam'] == 0): ?>
+                    <option value="IEP" name="IEP">IEP</option>
+                <?php endif; ?>
+            </select></label>
             <button id="rechercher" type="submit">Rechercher</button>
             <button name="back">Back</button>
             <button name="next">Next</button>
@@ -52,11 +58,11 @@ include('../../Vue/Include/Header.php')
             let mousePositionElement = document.getElementById('1');
             let onApparaitElement = false;
             function apparait(id) {
-                if (id !== "null"){
+                if (id != "null"){
                     mousePositionElement = document.getElementById(id);
                 }
                 let elt = document.getElementById(id);
-                if (elt.style.visibility === "visible") {
+                if (elt.style.visibility == "visible") {
                     elt.style.visibility = "hidden";
                     onApparaitElement = false;
                 } else {
@@ -83,6 +89,7 @@ include('../../Vue/Include/Header.php')
                     if (posbas > document.body.offsetHeight){
                         y = event.y-document.getElementById('haut').offsetHeight-mousePositionElement.offsetHeight-document.getElementById('formulaire_recherche').offsetHeight;
                         posbas = event.y+mousePositionElement.offsetHeight+40;
+                        console.log(document.body.offsetHeight+":"+(event.y+mousePositionElement.offsetHeight));
                     } else {
                         y = event.y-document.getElementById('haut').offsetHeight-document.getElementById('formulaire_recherche').offsetHeight;
                         posbas = event.y+mousePositionElement.offsetHeight+40;
