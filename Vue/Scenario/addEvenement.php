@@ -28,9 +28,11 @@
             <br>
             <br>
             <input type="text" placeholder="Saisir le nom de l'evenement" name="nomEve" />
+            <!-- Invite l'utilisateur à saisir le nom de l'événement -->
             <br>
             <br>
             <input type="text" placeholder="Saisir la description de l'evenement" name="desEve" />
+            <!-- Invite l'utilisateur à saisir la description de l'événement -->
             <br>
             <br>
             <select name="DPI" id="DPI_Patient">

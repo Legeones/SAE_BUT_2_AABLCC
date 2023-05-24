@@ -46,6 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if($_POST['debut'] >= $_POST['fin']){
         echo "<p style='color: #cc0000'> Le respect des dates n'est pas fait !</p>";
+        // Un message d'erreur apparaît quand les dates ne sont pas respectées
     }
 
     if(isset($_POST['value'])){
