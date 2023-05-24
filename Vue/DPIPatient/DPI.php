@@ -20,17 +20,17 @@ include('../../Vue/Include/Header.php')
     ?>
     <div id="droit" class="droite">
         <form id="formulaire_recherche" action="../../Controleur/DPIPatient/actionPrincipale.php" method="get">
-            <label><input name="recherche_barre"></label>
-            <label><select name="select">
+            <label><input id="recherche_barre" name="recherche_barre"></label>
+            <label><select id="ordre" name="select">
                 <option name="aucun">Aucun</option>
                 <option name="dh">Date hospitalisation</option>
                 <option name="oa">Ordre alphabetique</option>
                 </select></label>
-            <label><select name="admi">
+            <label><select id="admission" name="admi">
                 <option value="IPP" name="IPP">IPP</option>
                 <option value="IEP" name="IEP">IEP</option>
                 </select></label>
-            <button type="submit">Rechercher</button>
+            <button id="rechercher" type="submit">Rechercher</button>
             <button name="back">Back</button>
             <button name="next">Next</button>
         </form>
@@ -52,11 +52,11 @@ include('../../Vue/Include/Header.php')
             let mousePositionElement = document.getElementById('1');
             let onApparaitElement = false;
             function apparait(id) {
-                if (id != "null"){
+                if (id !== "null"){
                     mousePositionElement = document.getElementById(id);
                 }
                 let elt = document.getElementById(id);
-                if (elt.style.visibility == "visible") {
+                if (elt.style.visibility === "visible") {
                     elt.style.visibility = "hidden";
                     onApparaitElement = false;
                 } else {
@@ -83,7 +83,6 @@ include('../../Vue/Include/Header.php')
                     if (posbas > document.body.offsetHeight){
                         y = event.y-document.getElementById('haut').offsetHeight-mousePositionElement.offsetHeight-document.getElementById('formulaire_recherche').offsetHeight;
                         posbas = event.y+mousePositionElement.offsetHeight+40;
-                        console.log(document.body.offsetHeight+":"+(event.y+mousePositionElement.offsetHeight));
                     } else {
                         y = event.y-document.getElementById('haut').offsetHeight-document.getElementById('formulaire_recherche').offsetHeight;
                         posbas = event.y+mousePositionElement.offsetHeight+40;
@@ -93,44 +92,109 @@ include('../../Vue/Include/Header.php')
                 }
 
             });
+
+            function patientParcour(select, admi, recherche, callback){
+                var xhr = new XMLHttpRequest();
+                let selectURL = "";
+                let admiURL = "";
+                let rechercheURL = "";
+                if (select!=="") selectURL = "select="+select;
+                if (admi!=="") admiURL = "&admi="+admi;
+                if (recherche!=="") rechercheURL = "&recherche_barre="+recherche;
+
+                // Gestionnaire d'événement pour la réponse
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // La requête a été traitée avec succès
+                        var responseHTML = xhr.responseText;
+                        callback(null, JSON.parse(responseHTML))
+                    } else {
+                        var error = new Error('Erreur de requête. Statut : ' + xhr.status);
+                        callback(error, null);
+                    }
+                };
+
+                // Ouverture de la requête GET vers la page PHP
+                xhr.open("GET", "../../Controleur/DPIPatient/actionPrincipale.php?"+selectURL+admiURL+rechercheURL, true);
+
+                // Envoi de la requête
+                xhr.send();
+            }
+
         </script>
         <form name="choixPatient" action="../../Controleur/DPIPatient/actionDPI.php" method="post" class="grid-container" id="form">
-            <?php
-            /*
-             * Ce code PHP crée une boucle qui itère de 1 à 24. Dans chaque itération, il définit une variable de session
-             * nommée 'patientActuel' en concaténant "patient" avec la valeur actuelle de $i. Il crée également une variable
-             * 'id' qui contient la valeur actuelle de $i convertie en chaîne de caractères. Il définit également une variable
-             * de session nommée 'idActuel' en lui donnant la valeur de 'id'.
-             *
-             * Ensuite, il affiche une entrée HTML de type "submit" avec un nom qui est la valeur de
-             * $_SESSION[$_SESSION['patientActuel']][0] si elle existe, ou 'null' sinon. Il donne également
-             * un style de curseur de pointeur à cette entrée. Il utilise également des conditionnels pour vérifier
-             * si $_SESSION[$_SESSION['patientActuel']] existe, et si c'est le cas, il ajoute des événements onmouseover
-             * et onmouseout qui appelle une fonction apparait en passant en argument $_SESSION['idActuel'].
-             *
-             * Il y a un élément div en dessous de l'entrée qui est caché par défaut et a un attribut d'identifiant
-             * qui est égal à $_SESSION['idActuel']. Il utilise des conditionnelles pour vérifier si certaines valeurs
-             * de $_SESSION[$_SESSION['patientActuel']] existent et les affiche. Il affiche également la date
-             * d'hospitalisation de cet utilisateur en utilisant $_SESSION[$_SESSION['patientActuel']]['datedebut'].
-             *
-             * Enfin, il finit la boucle pour passer à la prochaine itération. En gros c'est une boucle qui affiche
-             * une liste de patients en ayant pour infos principales leur nom, prenom,ipp,iep et date d'hospitalisation.
-             */
-            for($i=1;$i<25;$i++){
-                $_SESSION['patientActuel']='patient'.$i;
-                $id = ''.$i;
-                $_SESSION['idActuel'] = $id;
-                ?> <input class="input_form_patients" type="submit" name="<?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']][0];} else {print 'null';}?>"
-                          style="cursor:pointer;" <?php if(isset($_SESSION[$_SESSION['patientActuel']])){?>
-                    onmouseover="apparait(<?php echo $_SESSION['idActuel'] ?>)" onmouseout="apparait(<?php echo $_SESSION['idActuel'] ?>)"<?php }?>
-                          value = <?php if(isset($_SESSION[$_SESSION['patientActuel']])) { print $_SESSION[$_SESSION['patientActuel']]['nom']."_".$_SESSION[$_SESSION['patientActuel']]['prenom'];}?>>
-                <div class="hide" id=<?php echo $_SESSION['idActuel'] ?>>
-                    <?php if(isset($_SESSION[$_SESSION['patientActuel']])){ print ("IPP:".$_SESSION[$_SESSION['patientActuel']]['ipp']."<br>");
-                    if(isset($_SESSION[$_SESSION['patientActuel']]['iep'])) print ("IEP:".$_SESSION[$_SESSION['patientActuel']]['iep']."<br>");
-                    print("Date d'hospitalisation ".$_SESSION[$_SESSION['patientActuel']]['datedebut']);} ?>
-                </div>
-            <?php }
-            ?>
+            <script>
+                window.onload = () => {
+                    patientParcour("", "", "", function (error, response) {
+                        if (error){
+                            console.log(response);
+                        } else {
+                            console.log(response);
+                            tableauPatients(response);
+                        }
+                    });
+                };
+
+                document.querySelector("#rechercher").addEventListener('click', (event) => {
+                    event.preventDefault();
+                    let select = document.querySelector("#ordre").value;
+                    let admi = document.querySelector("#admission").value;
+                    let recherche = document.querySelector("#recherche_barre").value;
+                    patientParcour(select, admi, recherche, function (error, response) {
+                        if (error){
+                            console.log(response);
+                        } else {
+                            console.log(response);
+                            tableauPatients(response);
+                        }
+                    });
+                })
+
+                function cleanTableau(){
+                    let form = document.querySelector("#form");
+                    form.innerHTML = "";
+                }
+
+                function tableauPatients(reponse){
+                    cleanTableau();
+                    let form = document.querySelector("#form");
+                    for (let i = 1; i < 25; i++){
+                        let patientActuel = reponse["patient"+i];
+                        let id = ""+i;
+                        let input = document.createElement("input");
+                        input.classList.add("input_form_patients");
+                        input.type = "submit";
+                        input.style.cursor = "pointer";
+                        if (patientActuel){
+                            input.addEventListener('mouseover', () => {
+                                apparait(id);
+                            });
+                            input.addEventListener('mouseout', () => {
+                                apparait(id);
+                            });
+                        }
+
+                        if (patientActuel){
+                            input.name = patientActuel[0];
+                            input.value = patientActuel["nom"]+"_"+patientActuel["prenom"];
+                        } else {
+                            input.value = "";
+                        }
+                        form.appendChild(input);
+                        if (patientActuel) {
+                            let div = document.createElement("div");
+                            div.classList.add("hide");
+                            div.id = id;
+                            if (patientActuel) {
+                                div.innerHTML = "IPP : " + patientActuel["ipp"] + "<br>";
+                                if (patientActuel["iep"]) div.innerHTML += "IEP : " + patientActuel["iep"] + "<br>";
+                                if (patientActuel["datedebut"]) div.innerHTML += "Date d'hospitalisation : " + patientActuel["datedebut"];
+                            }
+                            form.appendChild(div);
+                        }
+                    }
+                }
+            </script>
         </form>
 
     </div>

@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 //echo $_SESSION['patientSuivi']; (entre L12 et L13)
 
@@ -32,4 +34,3 @@ if ($_SESSION['patientSuivi']!="null"){
     header("Location: ../../Vue/DPIPatient/DPI.php");
 }
 
-?>

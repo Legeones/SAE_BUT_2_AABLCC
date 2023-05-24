@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 //Ici nous allons chercher le fichier qui contient l'accès à la base
 require("../../Model/BDD/DataBase_Dpi.php");
 
@@ -36,5 +38,5 @@ if(isset($_GET['recherche_barre']) && $_GET['recherche_barre']!=''){
 }
 
 //L'appel à la fonction Patient_Parcour du fichier DataBase_DPI.php
-Patient_Parcour($_SESSION['paramRecherche'],$_SESSION['rechercheManu'],$_SESSION['paramRechercheAdmi'])
-?>
+$return = Patient_Parcour($_SESSION['paramRecherche'],$_SESSION['rechercheManu'],$_SESSION['paramRechercheAdmi']);
+echo json_encode($return);
