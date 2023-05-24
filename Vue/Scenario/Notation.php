@@ -211,6 +211,7 @@
 
                 $db = new PDO("pgsql:host=$db_host;port=5432;dbname=$db_name;user=$db_username;password=$db_password");
                 echo 'Connexion réussie';
+                // La connexion est réussie (l'identifiant et le mot de passe sont correctes)
 
                 ?>
                 <div class="btnchoix" >
@@ -221,6 +222,7 @@
                         ?>
                         <select id='selectDPI' name='selectDPI'>
                             <option value="defaut"> --Sélectionner un DPI--</option>
+                            <!-- Bouton permettant de sélectionner un DPI -->
                             <?php
                             //récupération des données pour les options
                             $recuppatient = $db->prepare('select ipp,nom, prenom from Patient');

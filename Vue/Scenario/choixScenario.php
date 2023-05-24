@@ -26,6 +26,9 @@
 
             <h1>choix scenario</h1>
             <br>
+            <input checked type="radio" name="inscriptionDEscincription" value="inscription" > inscription
+            <input type="radio" name="inscriptionDEscincription" value="deinscription"> desincription
+            <br>
             <br>
                 <?php
                 require('../../Model/BDD/DataBase_Scenario.php');
@@ -46,11 +49,11 @@
 
                 if($err==6){
                     echo "<p style='color:red'>Error: Tous les champs doivent etre remplis</p>";
-                    // Une erreur est affichée quand tous les champs ne sont pas remplis
+                    // Une erreur est affichée lorsque tous les champs ne sont pas remplis
                 }
                 if($err==7){
                     echo "<p style='color:red'>Error: Le scenario n'existe pas</p>";
-                    // Une erreur est affichée lorsque le scenario n'existe pas
+                    // Une erreur est affichée lorsque le scénario n'existe pas
                 }
             }
             ?>

@@ -1,6 +1,8 @@
 <script type="text/javascript" src="scriptsDPIpatient.js"></script>
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 function afficherDataPersos(){
     ?>
     <div class="info-popup" id="donn-perso">
@@ -47,6 +49,13 @@ if (isset($_GET['date_admission']) && isset($_SESSION['infosPersoPatient']['ipp'
         $date = $_GET['date_admission'];
         $ipp = $_SESSION['infosPersoPatient']['ipp'];
         ajouterAdmissionPatient($ipp,$date);
+    } catch (Exception $e){
+        ErrorMessage($e);
+    }
+}
+if (isset($_GET['patient_ipp'])&&isset($_GET['patient_iep'])) {
+    try {
+        terminerAdmissionPatient($_GET['patient_ipp'],$_GET['patient_iep']);
     } catch (Exception $e){
         ErrorMessage($e);
     }

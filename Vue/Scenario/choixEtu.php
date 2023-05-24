@@ -29,7 +29,11 @@
             <br>
                 <?php
                 require('../../Model/BDD/DataBase_Scenario.php');
-                $der = lstderoulanteEtu($_SESSION['IdScenario']);
+                if($_SESSION['choixInsDes']=='inscription'){
+                    $der = lstderoulanteEtu($_SESSION['IdScenario']);
+                }else{
+                    $der = lstderoulanteEtuInscr($_SESSION['IdScenario']);
+                }
                 foreach ($der as $val){
                     echo "<input type='checkbox' name='gout[]' value={$val['login']} /> {$val['nom']} {$val['prenom']}<br/>";
                 }

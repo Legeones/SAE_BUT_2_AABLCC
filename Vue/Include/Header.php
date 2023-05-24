@@ -12,6 +12,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <button type="submit" value="0" id="bt1_exam" name="bt1_exam" class="bt1_exam">Mode examen</button>
             <div style="display: none" id="select" class="select">
                 <select name="DPI" id="DPI_Patient">
+                    <option value="defaut">--Choisir le Scenario--</option>
                     <?php
                     if (!isset($_SESSION['name_senario'])) {?>
                         <option value="defaut">--Choisir le Scenario--</option>;
@@ -25,13 +26,14 @@ if (session_status() === PHP_SESSION_NONE) {
                             $i += 1;
                         }?>
                         <option value="<?php echo $lst[0][$i] ?>"><?php echo $lst[0][$i] ?></option>
-                    <?php }; ?>
+                    <?php } ?>
+
                 </select>
+
             </div>
             <button type="submit" name="bt_affiche_dpi">Valider</button>
         </div>
         <button type="button" title="Déconnexion" id="logout" class="logout" onclick="location.href='../Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
-
 
         <?php
             if(isset($_SESSION['exam']) && $_SESSION['exam'] == 0):

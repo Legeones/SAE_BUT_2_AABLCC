@@ -1,7 +1,17 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require ('../../Controleur/DPIPatient/patientDPIfunction.php');
+// Data_Patient_Querry($_SESSION['patientSuivi'],$_SESSION['cat']);
 ?>
+<script>
+    window.addEventListener('beforeunload', function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '../../Controleur/DPIPatient/patientDPIfunction.php', false);
+        xhr.send();
+    });
+</script>
 <html>
 <head>
     <meta charset="utf-8">
@@ -42,6 +52,9 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
             <div class="grid-container">
                 <div class="info" onclick="openForm('donn-perso');">
                     <h2>Données personnelles</h2>
+                </div>
+                <div class="observation" onclick="openForm('obs-medi');">
+                    <h2>Observations médicales</h2>
                 </div>
             </div>
         </div>

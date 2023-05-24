@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require ('../../Controleur/DPIPatient/patientDPIfunction.php');
 ?>
 <!DOCTYPE html>
@@ -10,14 +12,7 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
 
     <link rel="stylesheet" href="../DPIpatientStyle.css" media="screen" type="text/css" />
 </head>
-<header style="display: flex;">
-    <div style="padding: 5px">
-        <button class="arrow_right" id="hamburger"></button>
-    </div>
-    <div style="width: 1000px">
-        <img alt="LogoIFSI" class="logo" src="../../Images/logoIFSI.png">
-    </div>
-</header>
+
 <body>
 <script type="text/javascript" src="../../Controleur/DPIPatient/scriptsDPIpatient.js"></script>
 <div class="global">
@@ -38,86 +33,20 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
 
                 ?>
         </div>
-<<<<<<< Updated upstream
         <script>
             function affichePopUp(id){
-                if (document.getElementById(id).style.display == "none"){
-                    document.getElementById(id).style.display = "block";
-                }else{
-                    document.getElementById(id).style.display = "none";
+                if (<?= $_SESSION['infosPersoPatient']['datefin'] ?>){
+                    alert("Le patient n'est actuellement pas admis.")
+                }else if (window.confirm("Souhaitez vous vraiment terminer l'admission ?")){
+                    window.location.replace("../../Controleur/DPIPatient/patientDPIfunction.php?patient_ipp=<?= $_SESSION['infosPersoPatient']['ipp']."&patient_iep=".$_SESSION['infosPersoPatient']['iep'] ?>");
                 }
             }
         </script>
-=======
->>>>>>> Stashed changes
-        <div style="display: none; z-index:30; position: relative; left: 200%; bottom: 20%; border: black thin solid" id="div_pop_up_accept">
-            <H2>Terminaison d'admission</H2>
-            <p>Souhaitez vous vraiment terminer l'admission de <?= $_SESSION['infosPatient']['nom'] ?></p>
-            <button>Valider</button><button onclick="affichePopUp('div_pop_up_accept')">Annuler</button>
-        </div>
     </div>
     <script>
-        const bouton = document.getElementById('hamburger');
-
-        bouton.addEventListener('click', function() {
-            if (document.getElementById("global_gauche").style.display === "none"){
-                afficherDiv();
-                //document.getElementById("global_gauche").style.display = "block";
-                document.getElementById("global_droit").style.width = "80%";
-                document.getElementById("global_droit").style.left = "20%";
-            } else {
-                cacherDiv();
-                //document.getElementById("global_gauche").style.display = "none";
-                document.getElementById("global_droit").style.width = "100%";
-                document.getElementById("global_droit").style.left = "0%";
-            }
-        });
-
-        var div = document.getElementById("global_gauche");
-        const divGlobalGaucheAffiches = [];
-        for (var i = 0; i < div.children.length; i++) {
-            for (var y = 0; y < div.children[i].children.length; y++){
-                if(div.children[i].children[y].tagName === "BUTTON") {
-                    divGlobalGaucheAffiches.push([i, y]);
-                }
-            }
-        }
-        console.log(divGlobalGaucheAffiches);
-
-        function cacherDiv() {
-            var div = document.getElementById("global_gauche");
-            var largeur = div.offsetWidth;
-            div.style.width = largeur + "%";
-            div.offsetWidth;
-            div.style.transition = "width 0.5s ease-out";
-            div.style.width = "0%";
-            window.setTimeout(function() {
-                for (var i = 0; i < divGlobalGaucheAffiches.length; i++) {
-                    div.children[divGlobalGaucheAffiches[i][0]].children[divGlobalGaucheAffiches[i][1]].style.display = "none";
-                }
-            }, 100);
-            window.setTimeout(function() {
-                div.style.display = "none";
-            }, 500);
-            document.getElementById("hamburger").className = "arrow-left";
-        }
-
-        function afficherDiv() {
-            var div = document.getElementById("global_gauche");
-            div.style.display = "block";
-            for (var i = 0; i < divGlobalGaucheAffiches.length; i++) {
-                div.children[divGlobalGaucheAffiches[i][0]].children[divGlobalGaucheAffiches[i][1]].style.display = "block";
-            }
-            var largeur = div.offsetWidth;
-            div.style.width = largeur + "%";
-            div.offsetWidth;
-            div.style.transition = "width 0.5s ease-out";
-            div.style.width = "20%";
-            document.getElementById("hamburger").className = "arrow_right";
-        }
 
         function afficherPopUp() {
-            if(window.confirm("Fin d'admission pour "+<?= $_SESSION['infosPatient']['ipp'] ?>)){
+            if(window.confirm("Fin d'admission pour "+<?= $_SESSION['infosPersoPatient']['ipp'] ?>)){
                 window.location.replace("../DPIPatient/TerminerAdmissionPatient.php");
             } else {
                 window.alert("Vous avez annuler la fin de l'admission")

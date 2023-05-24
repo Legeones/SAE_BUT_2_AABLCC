@@ -1,17 +1,7 @@
 <?php
 session_start();
-
-
 require ('../../Model/BDD/DataBase_Scenario.php');
 
-$date = new DateTime($_SESSION['debut']);
-$date->modify('+1 day');
-$result = $date->format('Y-m-d');
-
-
-$date2 = new DateTime($_SESSION['fin']);
-$date2->modify('-1 day');
-$result2 = $date2->format('Y-m-d');
 
 //inspired by https://stackoverflow.com/questions/1972712/how-to-generate-random-date-between-two-dates-using-php
 function randomDate($startDate, $endDate, $count = 1 ,$dateFormat = 'Y-m-d H:i:s ')
@@ -46,21 +36,49 @@ function randomDate($startDate, $endDate, $count = 1 ,$dateFormat = 'Y-m-d H:i:s
     }
 }
 
-if(isset($_POST['gout']))
-{
-    $DPIListSce=recupDPIScenarion($_SESSION['IdScenario']);
-    foreach($_POST['gout'] as $valeur)
+function insciption($lis,$id,$eve,$deb,$fin,$nbev){
+    $date = new DateTime($deb);
+    $date->modify('+1 day');
+    $result = $date->format('Y-m-d');
+
+
+    $date2 = new DateTime($fin);
+    $date2->modify('-1 day');
+    $result2 = $date2->format('Y-m-d');
+
+    if(isset($lis))
     {
-        $val=$_SESSION['eve'];
-        for($i = 1; $i <= $_SESSION['nbev']; $i++){
-            $rand_keys = array_rand($val);
-            $rand_Dpi=array_rand($DPIListSce);
-            $date_random = randomDate($result,$result2);
-            insertEvenSceEtu($_SESSION['IdScenario'],$_SESSION['eve'][$rand_keys],$valeur,$date_random,$DPIListSce[$rand_Dpi]);
+        $DPIListSce=recupDPIScenarion($id);
+        echo $DPIListSce;
+        foreach($lis as $valeur)
+        {
+            $val=$eve;
+            for($i = 1; $i <= $nbev; $i++){
+                $rand_keys = array_rand($val);
+                $rand_Dpi=array_rand($DPIListSce);
+                $date_random = randomDate($result,$result2);
+                insertEvenSceEtu($id,$eve[$rand_keys],$valeur,$date_random,$DPIListSce[$rand_Dpi]);
+            }
         }
+        header('Location: ../../Vue/Scenario/principaleEve.php');
+    }else{
+        header('Location: ../../Vue/Scenario/principaleEve.php');
     }
-    header('Location: ../../Vue/Scenario/principaleEve.php');
-}else{
-    header('Location: ../../Vue/Scenario/principaleEve.php');
 }
 
+function desinscription($lis,$id){
+    if(isset($lis))
+    {
+        foreach($lis as $valeur)
+        {
+            desinsEtuSe($id,$valeur);
+        }
+        header('Location: ../../Vue/Scenario/principaleEve.php');
+    }
+}
+
+if($_SESSION['choixInsDes']=='inscription'){
+    insciption($_POST['gout'],$_SESSION['IdScenario'],$_SESSION['eve'],$_SESSION['debut'],$_SESSION['fin'],$_SESSION['nbev']);
+}else{
+    desinscription($_POST['gout'],$_SESSION['IdScenario']);
+}

@@ -1,16 +1,16 @@
 <?php
 
-require('../../Model/BDD/DataBase_Core.php');
+require ('DataBase_Core.php');
 
 
 function Patient_Parcour($p,$rm,$rma): void
-    /*
-     * Cette fonction parcour tous les patients et les ressorts en fonction des paramètres de recherche implantés.
-     * $rm sert à la recherche par nom
-     * $p sert à la recherche via Aucun, Date d'hospitalisation et enfin Ordre alphabétique
-     * $rma sert pour la recherche renvoyant soit la dernière hospitalisation en fonction de l'IPP ou alors toutes les
-     * hospitalisations en fonction de l'IPP
-     */
+/*
+ * Cette fonction parcour tous les patients et les ressorts en fonction des paramètres de recherche implantés.
+ * $rm sert à la recherche par nom
+ * $p sert à la recherche via Aucun, Date d'hospitalisation et enfin Ordre alphabétique
+ * $rma sert pour la recherche renvoyant soit la dernière hospitalisation en fonction de l'IPP ou alors toutes les
+ * hospitalisations en fonction de l'IPP
+ */
 {
     $o = 1;
     if(isset($_SESSION['patient1']) && $_SESSION['patient1']!=null){
@@ -154,7 +154,7 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
             $stmt = $pdo->prepare("SELECT p2.* FROM patient LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel WHERE patient.ipp = ?");
             $stmt3 = $pdo->prepare("SELECT a.* FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE patient.ipp = ?");
             $stmt4 = $pdo->prepare("SELECT m.nom,m.prenom,m.adresse,m.ville,m.cp,p3.type,p3.lienmed FROM patient LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp LEFT JOIN medecin m on p3.idmedecin = m.idmedecin WHERE p3.ipp = ?");
-            $stmt5 = $pdo->prepare("SELECT patient.* FROM patient WHERE ipp = ?");
+            $stmt5 = $pdo->prepare("SELECT patient.* FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE patient.ipp = ? ORDER BY a.iep");
         } else {
             $stmt2 = $pdo->prepare("SELECT p.* FROM patient LEFT JOIN personneconfiance p on p.idpcon = patient.idpcon LEFT JOIN admission a on patient.ipp = a.ipp WHERE a.iep = ?");
             $stmt = $pdo->prepare("SELECT p2.* FROM patient LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel LEFT JOIN admission a on patient.ipp = a.ipp WHERE a.iep = ?");
@@ -164,16 +164,16 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
         }
         $stmt2 -> bindParam(1,$nomPatient);
         $stmt2->execute();
-        $stmt = $pdo->prepare("SELECT p2.* FROM patient LEFT JOIN personnecontacte p2 on patient.idptel = p2.idptel WHERE patient.ipp = ?");
+
         $stmt -> bindParam(1,$nomPatient);
         $stmt->execute();
-        $stmt3 = $pdo->prepare("SELECT a.* FROM patient LEFT JOIN admission a on patient.ipp = a.ipp WHERE patient.ipp = ?");
+
         $stmt3 -> bindParam(1,$nomPatient);
         $stmt3->execute();
-        $stmt4 = $pdo->prepare("SELECT m.nom,m.prenom,m.adresse,m.ville,m.cp,p3.type,p3.lienmed FROM patient LEFT JOIN patientmedecin p3 on patient.ipp = p3.ipp LEFT JOIN medecin m on p3.idmedecin = m.idmedecin WHERE patient.ipp = ?");
+
         $stmt4 -> bindParam(1,$nomPatient);
         $stmt4->execute();
-        $stmt5 = $pdo->prepare("SELECT * FROM patient WHERE patient.ipp = ?");
+
         $stmt5 -> bindParam(1,$nomPatient);
         $stmt5->execute();
         $_SESSION['infosPersonneConf']=[];
@@ -199,7 +199,7 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
 
     } elseif ($nomCateg == "Observation"){
         if ($_SESSION['paramRechercheAdmi']=='IPP'){
-            $stmt = $pdo->prepare("SELECT * FROM observationmedical o WHERE ipp = ?");
+            $stmt = $pdo->prepare("SELECT * FROM observationmedical o WHERE o.ipp = ?");
             $stmt2 = $pdo->prepare("SELECT * FROM transmissionsciblees o WHERE o.ipp = ?");
         } else {
             $stmt = $pdo->prepare("SELECT * FROM observationmedical o WHERE iep = ?");
@@ -279,16 +279,29 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
             $_SESSION['infosPatient']+=$item;
         }
     }
-    header("Location: ../DPIpatient/DPIpatient".$nomCateg.".php");
+    header("Location: ../../Vue/DPIPatient/DPIpatient".$nomCateg.".php");
+}
 
+function chercherDerniereIEP(){
+    try{
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("SELECT max(iep) FROM admission");
+        $stmt2->execute();
+    } catch (Exception $e){
+        ErrorMessage($e);
+        die();
+    }
+    return $stmt2->fetchColumn(0)+1;
 }
 
 function ajouterAdmissionPatient($patient,$date){
     try{
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("INSERT INTO admission(iep,datedebut,ipp) VALUES (default,?,?)");
-        $stmt2->bindParam(1, $date);
-        $stmt2->bindParam(2, $patient);
+        $stmt2 = $dbh->prepare("INSERT INTO admission(iep,datedebut,ipp) VALUES (?,?,?)");
+        $DerniereIEP = chercherDerniereIEP();
+        $stmt2->bindParam(1, $DerniereIEP);
+        $stmt2->bindParam(2, $date);
+        $stmt2->bindParam(3, $patient);
         $stmt2->execute();
     } catch (Exception $e){
         ErrorMessage($e);
@@ -297,17 +310,21 @@ function ajouterAdmissionPatient($patient,$date){
     header(DPIReturn());
 }
 
-function terminerAdmissionPatient($patient,$iep){
+function terminerAdmissionPatient($patient,$iep): void
+{
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("UPDATE admission SET dateFin = ? where iep = ?");
+        $stmt2 = $dbh->prepare("UPDATE admission SET dateFin = ? where iep = ? and ipp = ?");
+        $date = date("Y-m-d");
         $stmt2->bindParam(1, $date);
         $stmt2->bindParam(2,$iep);
+        $stmt2->bindParam(3, $patient);
         $stmt2->execute();
     } catch (Exception $e){
         ErrorMessage($e);
         die();
     }
+    header(DPIReturn());
 }
 
 function DataBase_Add_Patient($IPP,$nom,$date)
@@ -319,7 +336,7 @@ function DataBase_Add_Patient($IPP,$nom,$date)
         $stmt2->execute();
         $res= $stmt2->fetchColumn(0);
         if($res==1){
-            header('Location: ../DPIpatient/ajouterPatient.php?erreur=2');
+            header('Location: ../../Vue/DPIPatient/ajouterPatient.php?erreur=2');
         }
         else{
             $stmt = $dbh->prepare("INSERT INTO patient values (?,?,?)");
@@ -346,7 +363,7 @@ function DataBase_Corbeille_Patient()
         $stmt2->execute();
         $res= $stmt2->fetchColumn(0);
         if($res==0){
-            header('Location: ../DPIpatient/Corbeille.php?erreur=2');
+            header('Location: ../../Vue/DPIPatient/Corbeille.php?erreur=2');
         }
         else{
             $stmt = $dbh->prepare("insert into corbeille values (?)");
@@ -541,7 +558,7 @@ function DataBase_Delete_Corbeille($ipp)
         $stmt2->execute();
         $res= $stmt2->fetchColumn(0);
         if($res==0){
-            header('Location: ../DPIpatient/RecupCorbeille.php?erreur=2');
+            header('Location: ../../Vue/DPIPatient/RecupCorbeille.php?erreur=2');
         }
         else{
             $stmt = $dbh->prepare("DELETE FROM corbeille WHERE IPPCorb=?");
@@ -566,7 +583,7 @@ function DataBase_Delete_Patient()
         $stmt2->execute();
         $res= $stmt2->fetchColumn(0);
         if($res==0){
-            header('Location: ../DPIpatient/SupprimerPatient.php?erreur=2');
+            header('Location: ../../Vue/DPIPatient/SupprimerPatient.php?erreur=2');
         }
         else{
             $stmt = $dbh->prepare("DELETE FROM patient WHERE IPP=?");
@@ -598,7 +615,7 @@ function DataBase_Attribute_Role($ID,$Role)
                 $stmt->bindParam(2, $ID);
 
                 $stmt->execute();
-                header('Location: ../DPIpatient/DPI.php');
+                header('Location: ../../Vue/DPIPatient/DPI.php');
             } catch (PDOException $e) {
                 ErrorMessage($e);
                 die();
@@ -606,7 +623,7 @@ function DataBase_Attribute_Role($ID,$Role)
         }
 
         else{
-            header('Location: ../DPIpatient/AttributionRole.php?erreur=1');
+            header('Location: ../../Vue/Accueil/AttributionRole.php?erreur=1');
         }
     }catch (PDOException $e) {
         ErrorMessage($e);
@@ -890,7 +907,7 @@ function modifier($ipp){
 
 function DPIReturn()
 {
-    return 'Location: ../DPIpatient/DPI.php';
+    return 'Location: ../../Vue/DPIPatient/DPI.php';
 }
 
 function ErrorMessage($e)
@@ -911,7 +928,7 @@ function Modif_Observation($date,$init,$cible,$donn,$act,$res){
         $stmt -> bindParam(7,$_SESSION['infosPersoPatient']['ipp']);
         $stmt -> bindParam(8,$_SESSION['infosPersoPatient']['iep']);
         $stmt -> execute();
-        header("Location: ../DPIpatient/DPIpatientObservation.php");
+        header("Location: ../../Vue/DPIPatient/DPIpatientObservation.php");
     } catch (PDOException $e){
         print "Erreur :".$e->getMessage()."<br>";
         die();
@@ -941,7 +958,7 @@ function Modif_Prescription($traitement,$type,$v){
         $stmt -> bindParam(7,$id);
         $stmt -> bindParam(8,$_SESSION['infosPersoPatient']['iep']);
         $stmt -> execute();
-        header("Location: ../DPIpatient/DPIpatientObservation.php");
+        header("Location: ../../Vue/DPIPatient/DPIpatientObservation.php");
     } catch (PDOException $e){
         print "Erreur :".$e->getMessage()."<br>";
         die();
