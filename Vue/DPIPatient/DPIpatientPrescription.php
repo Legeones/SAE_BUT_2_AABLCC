@@ -50,9 +50,9 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
         </div>
         <div style="overflow-x: scroll;overflow-y: scroll";>
             <form class="table-container" method="get" action="../../Controleur/DPIPatient/patientDPIfunction.php">
-                <table>
+                <table class="styled-table">
                     <caption>Plan d'administration</caption>
-                    <tr>
+                    <thead>
                         <td style="width: 20%">Médicaments</td>
                         <?php
                         $present = array_search(date("o")."-".date("m")."-".date("d"),$_SESSION['infosPatient']);
@@ -69,7 +69,7 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
                             }
                         }
                         ?>
-                    </tr>
+                    </thead>
                     <tr>
                         <td>
                             <table>

@@ -166,40 +166,6 @@ header{
     display: table;
 }
 
-table{
-    width: 100%;
-}
-
-.table-td-recipient{
-    height: 50px;
-    max-height: 50px;
-    overflow-y: auto;
-    white-space: normal;
-}
-
-.table-td-div-recipient{
-    height: 50px;
-    max-height: 50px;
-    overflow: auto;
-}
-
-tr {
-    border: black solid thin;
-}
-td {
-    background-color: lightgrey;
-    border: black solid thin;
-}
-
-td > input{
-    width: 100%;
-}
-
-td > textarea{
-    width: 100%;
-    resize: vertical;
-}
-
 
 .container {
     width: 98%;
@@ -301,4 +267,76 @@ td > textarea{
 .info-container .btn:hover,
 .info-button:hover {
     opacity: 1;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 25px;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border: black thin solid;
+}
+
+.styled-table table > tbody {
+    padding: 0;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+}
+
+.styled-table thead td {
+    border-right: black thin solid;
+    border-left: black thin solid;
+    border-bottom: black thin solid;
+}
+
+.styled-table tbody {
+    padding: 0;
+    text-align: left;
+}
+
+.styled-table tbody td {
+    margin: 0;
+    padding: 0;
+}
+
+.styled-table th,
+.styled-table td {
+    width: 50px;
+    height: 50px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.table-td-recipient{
+    height: 50px;
+    max-height: 50px;
+    overflow-y: auto;
+    white-space: normal;
+}
+
+.table-td-div-recipient{
+    height: 50px;
+    max-height: 50px;
+    overflow: auto;
 }

@@ -53,9 +53,9 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
         </div>
         <div class="table_container">
         <form class="table" method="post" action="AjouterDPI.php">
-            <table>
+            <table class="styled-table">
                 <caption>Plan d'administration</caption>
-                <tr>
+                <thead>
                     <td style="width: 20%">Médicaments</td>
                     <?php
                     $present = array_search(date("o")."-".date("m")."-".date("d"),$_SESSION['infosPatient']);
@@ -71,7 +71,7 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
                         }
                     }
                     ?>
-                </tr>
+                </thead>
                 <tr>
                     <td>
                         <table>
@@ -174,7 +174,7 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
                                                         if ($item['jour'] == $jour && $item['heure'] >= '12:00:00.00' && $item['heure'] < '20:00:00.00' && $item['nom'] == $value) {
                                                             $casesRemplis[] = 12;
                                                             if ($item['effectuer']) {
-                                                                echo "<td class='table-td-recipient' style='background-color: green'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
+                                                                echo "<td class='table-td-recipient' style='background-color: #009879'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
                                                             } else {
                                                                 echo "<td class='table-td-recipient' style='background-color: red'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
                                                             }
@@ -189,7 +189,7 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
                                                         if ($item['jour'] == $jour && $item['heure'] >= '08:00:00.00' && $item['heure'] < '12:00:00.00' && $item['nom'] == $value) {
                                                             $casesRemplis[] = 8;
                                                             if ($item['effectuer']) {
-                                                                echo "<td class='table-td-recipient' style='background-color: green'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
+                                                                echo "<td class='table-td-recipient' style='background-color: #009879'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
                                                             } else {
                                                                 echo "<td class='table-td-recipient' style='background-color: red'><div class='table-td-div-recipient'>" . $item['valeur'] . "</div></td>";
                                                             }
