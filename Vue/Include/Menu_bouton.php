@@ -8,6 +8,9 @@
         <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button>
         <!-- choix du rôle -->
         <?php
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         echo '<br>';
         if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {
             echo "<button onclick=location.href='AjouterDPI.php'> Ajouter DPI</button>";

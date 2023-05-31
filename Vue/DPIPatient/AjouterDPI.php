@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require ('../../Controleur/DPIPatient/Principal_PHP_Fonction_DPI_ADD_or_Modif.php')
 ?>
 <html>
@@ -11,9 +13,11 @@ require ('../../Controleur/DPIPatient/Principal_PHP_Fonction_DPI_ADD_or_Modif.ph
     <script src="../../Controleur/DPIPatient/scriptsDPIpatient.js"></script>
 </head>
 <body>
-<?php
-include('../../Vue/Include/Header.php')
-?>
+
+<header id="haut">
+    <img class="logo" src="../../Images/logoIFSI.png" alt="LogoIFSI">
+    <button type="button" title="Déconnexion" id="logout" class="logout" onclick="location.href='../Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
+</header>
 <div class="global">
     <div class="gauche">
         <div class="profile" id="space-invader">
