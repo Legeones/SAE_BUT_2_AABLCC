@@ -164,7 +164,9 @@ function ajout_scenario($dbh): void //fonction qui permet d'ajouter des scénari
 //DPI
 function lst_dpi($dbh){
     try{
-        $req= $dbh->prepare("select ipp,nom, prenom from patient order by nom,prenom");
+        $req= $dbh->prepare("select ipp, nom, prenom from patient
+        Left join corbeille on patient.ipp = corbeille.ippcorb
+        where ippcorb is null order by nom, prenom");
         $req->execute();
         $rs = $req->fetchAll();
         return $rs;
@@ -173,5 +175,25 @@ function lst_dpi($dbh){
         die();
     }
 }
+
+//function recherche_dpi($dbh, $informations, $les_dpi_add){
+//    $les_dpi = lst_dpi($dbh);
+//    foreach ($les_dpi as $value){
+//        if(!(in_array($informations, $les_dpi_add))){
+//            if($value[0] == $informations[0] && $value[1] == $informations[1]){
+//                $les_dpi_add += $informations;
+//            }else{
+//               echo "<p style='color: #cc0000'>Ce patient n'existe pas </p>";
+//               echo $informations[0] . $informations[1];
+//            }
+//        }else{
+//            echo "<p style='color: #cc0000'>Ce patient à déjà été ajouté</p>";
+//            header("refresh:10");
+//            exit();
+//        }
+//
+//    }
+//}
+
 
 ?>

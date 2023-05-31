@@ -659,31 +659,7 @@ footer{
     box-shadow: 1px 1px 1px dimgrey;
 }
 
-#selectEtu{
-    background-color: lavender;
-    box-shadow: black;
-    border-color: blueviolet;
-    border-style: inset;
-    border-width: medium;
-
-}
-
-#selectDPI{
-    background-color: lavender;
-    box-shadow: black;
-    border-color: blueviolet;
-    border-style: inset;
-    border-width: medium;
-
-}
-
-#textArea{
-    width: auto;
-    height: 50%;
-
-}
-
-#stock, #ajout_event, #date_scenario{
+.choix_recherche{
     height: auto;
     mso-default-height: 250px;
     box-shadow: black;
