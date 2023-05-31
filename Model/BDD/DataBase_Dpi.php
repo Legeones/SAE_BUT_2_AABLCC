@@ -83,7 +83,7 @@ function Patient_Parcour($p,$rm,$rma): array
     return $liste;
 }
 
-function Patient_Parcour_exam($senario_name): void
+function Patient_Parcour_exam($senario_name): array
     /*
      * Cette fonction parcour tous les patients et les ressorts en fonction des paramètres de recherche implantés.
      * $rm sert à la recherche par nom
@@ -92,6 +92,11 @@ function Patient_Parcour_exam($senario_name): void
      * hospitalisations en fonction de l'IPP
      */
 {
+
+    $liste = [];
+    if ($senario_name =='defaut'){
+        return $liste;
+    }
     $o = 1;
     if(isset($_SESSION['patient1']) && $_SESSION['patient1']!=null){
         $pat = 'patient'.$o;
@@ -119,11 +124,11 @@ function Patient_Parcour_exam($senario_name): void
             $i = $i+1;
         } else {
             $numeroPatient = "patient".$i;
-            $_SESSION[$numeroPatient] = $p;
+            $liste[$numeroPatient] = $p;
             $i = $i+1;
         }
     }
-    echo '<script>history.back();</script>';
+    return $liste;
 }
 
 function Data_Patient_Querry($nomPatient, $nomCateg){

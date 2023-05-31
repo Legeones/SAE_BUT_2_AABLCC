@@ -41,14 +41,36 @@ if(isset($_GET['recherche_barre']) && $_GET['recherche_barre']!=''){
     $_SESSION['rechercheManu']='aucun';
 }
 
-//L'appel à la fonction Patient_Parcour du fichier DataBase_DPI.php
-if (isset($_SESSION['exam']) && $_SESSION['exam'] == 1 && isset($_SESSION['name_senario'])){
-    Patient_Parcour_exam($_SESSION['name_senario']);
+if (isset($_GET['DPI'])){
+    $_SESSION['name_senario'] = $_GET['DPI'];
 }else {
-    Patient_Parcour($_SESSION['paramRecherche'], $_SESSION['rechercheManu'], $_SESSION['paramRechercheAdmi']);
+    $_SESSION['name_senario'] = 'defaut';
 }
 
-$return = Patient_Parcour($_SESSION['paramRecherche'],$_SESSION['rechercheManu'],$_SESSION['paramRechercheAdmi']);
-echo json_encode($return);
+
+if (!isset($_SESSION['exam'])) {
+    $_SESSION['exam'] = 1;
+}
+
+function session_mode($val)
+{
+    $_SESSION['exam'] = $val;
+    return $_SESSION['exam'];
+}
+
+
+
+if (isset($_GET['valeur_session'])){
+    echo json_encode(session_mode($_GET['valeur_session']));
+}
+
+//L'appel à la fonction Patient_Parcour du fichier DataBase_DPI.php
+if ($_SESSION['exam'] == 2){
+    $return_exam = Patient_Parcour_exam($_SESSION['name_senario']);
+    echo json_encode($return_exam);
+}else if ($_SESSION['exam'] == 1){
+    $return = Patient_Parcour($_SESSION['paramRecherche'], $_SESSION['rechercheManu'], $_SESSION['paramRechercheAdmi']);
+    echo json_encode($return);
+}
 
 ?>

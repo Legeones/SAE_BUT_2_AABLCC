@@ -1,68 +1,35 @@
 <?php
 require ('../../Controleur/Scenario/Mode_Examen.php');
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
 
 <header id="haut">
-    <form action="../../Controleur/Scenario/Mode_Examen.php" method="post" class="form_header">
+    <p id="test"></p>
+    <form action="../../Controleur/DPIPatient/actionPrincipale.php" method="get" class="form_header">
         <img class="logo" src="../../Images/logoIFSI.png" alt="LogoIFSI">
         <div id="group_bt_exam" class="group_bt_exam">
-            <button type="submit" value="0" id="bt1_exam" name="bt1_exam" class="bt1_exam">Mode examen</button>
+            <button type="submit" value="1" id="bt1_exam" name="bt1_exam" class="bt1_exam">Mode examen</button>
+            <button style="display: none" type="submit" value="1" id="bt1_examOn" name="bt1_examOn" class="bt1_examOn">Mode examen2</button>
             <div style="display: none" id="select" class="select">
                 <select name="DPI" id="DPI_Patient">
-                    <option value="defaut">--Choisir le Scenario--</option>
                     <?php
-                    if (!isset($_SESSION['name_senario'])) {?>
-                        <option value="defaut">--Choisir le Scenario--</option>;
-                    <?php } else{?>
-                        <option value="<?php echo $_SESSION['name_senario'] ?>"><?php echo $_SESSION['name_senario'] ?></option>
-                    <?php }
-                    $lst = liste_nom_senario();
-                    unset($lst[array_search($_SESSION['name_senario'] , $lst)]);
-                    for($i =0;$i<sizeof($lst);$i++){?>
-                        <?php if (isset($_SESSION['name_senario']) && $_SESSION['name_senario'] == $lst[$i]){
-                            $i += 1;
-                        }?>
+                    $lst = liste_nom_senario();?>
+                    <option value="defaut">--Choisir le Scenario--</option>;
+
+                    <?php for($i =0;$i<sizeof($lst);$i++){?>
                         <option value="<?php echo $lst[0][$i] ?>"><?php echo $lst[0][$i] ?></option>
                     <?php } ?>
 
                 </select>
 
             </div>
-            <button type="submit" name="bt_affiche_dpi">Valider</button>
+            <button type="submit" id="bt_affiche_dpi" name="bt_affiche_dpi">Valider</button>
         </div>
         <button type="button" title="Déconnexion" id="logout" class="logout" onclick="location.href='../Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
-
-        <?php
-            if(isset($_SESSION['exam']) && $_SESSION['exam'] == 0):
-        ?>
-            <script>
-                const div_none = document.getElementById('select')
-                const bt_exam = document.getElementById('bt1_exam')
-                const body = document.body;
-                bt_exam.value = 0;
-                div_none.style.display = "none";
-                bt_exam.style.borderColor = "#66CCCC"
-                bt_exam.style.backgroundColor = "#92ecec"
-                body.style.background = "linear-gradient(20deg,white,#a5f4f4)";
-            </script>
-        <?php endif;?>
-
-        <?php
-        if(isset($_SESSION['exam']) && $_SESSION['exam'] == 1):
-            ?>
-            <script>
-                const div_none = document.getElementById('select')
-                const bt_exam = document.getElementById('bt1_exam')
-                const body = document.body;
-                bt_exam.value = 1;
-                div_none.style.display = "block";
-                bt_exam.style.borderColor = "#f7a947"
-                bt_exam.style.backgroundColor = "#feba64"
-                body.style.background = "linear-gradient(20deg,white,#fcb55a)";
-            </script>
-        <?php endif;?>
     </form>
+    <script defer src="../../Controleur/DPIPatient/script_principal_dpi.js"></script>
+
 </header>
