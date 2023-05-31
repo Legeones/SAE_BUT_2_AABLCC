@@ -78,16 +78,16 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
 
         <div class="table_container">
             <form method="get" action="../../Controleur/DPIPatient/patientDPIfunction.php" class="table">
-                <table>
+                <table class="styled-table">
                     <caption>Transmission ciblée</caption>
-                    <tr>
+                    <thead>
                         <td>Date</td>
                         <td>Initiales</td>
                         <td>Cible</td>
                         <td>Données</td>
                         <td>Actions</td>
                         <td>Resultats</td>
-                    </tr>
+                    </thead>
                     <?php
                         foreach ($_SESSION['transmissionCib'] as $item){
                             echo "<tr>";

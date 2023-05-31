@@ -1,5 +1,16 @@
 drop table if exists PersonneConfiance,Utilisateur, PersonneContacte,Corbeille, Patient, Intervenant, Intervention, Admission, Soin,SoinPatientPredef, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient,radio,Biologie,couriel,ObservationMedical,TransmissionsCiblees,Scenario,ScenarioCorbeille,ScenarioEtudiant,ScenarioEvenement, Evenement, dpiScenario;
 
+create table Utilisateur (
+    login text primary key,
+    nom text not null,
+    prenom text not null,
+    mdp text not null,
+    email text check ( email ~ '@' ) not null unique ,
+    roles text not null
+);
+
+
+
 create table PersonneConfiance
 (
     idPcon serial not null primary key,
@@ -52,6 +63,48 @@ create table Patient(
                         Continence int check(continence>=1 and continence<=3) not null
 );
 
+create table Evenement(
+    idEvenement serial primary key ,
+    nom text not null ,
+    description text not null,
+    categorie text not null
+);
+
+create table Scenario(
+    idScenario serial primary key ,
+    nom text not null ,
+    debut date not null ,
+    fin date not null check ( debut<fin ),
+    nbEv int not null,
+    createur text references Utilisateur on delete cascade not null
+);
+
+create table ScenarioEvenement(
+    idScenario serial references Scenario on delete cascade,
+    idEvenement serial references Evenement on delete cascade,
+    primary key (idScenario,idEvenement)
+);
+
+create table ScenarioEtudiant(
+    idS serial references Scenario on delete cascade,
+        idU text references Utilisateur on delete cascade,
+        idE serial references Evenement on delete cascade,
+        date timestamp not null ,
+	idIpp numeric(13,0) references Patient on delete cascade,
+        primary key (idS,idU,idE,date,idIpp)
+);
+
+create table ScenarioCorbeille(
+                                 idSCorb serial references Scenario on delete cascade,
+                                 primary key (idSCorb)
+);
+
+create table dpiScenario(
+                            ipp numeric(13,0) references patient,
+                            idS serial references scenario,
+                            primary key (ipp, idS)
+);
+
 create table Intervenant (
                              idIntervenant serial primary key ,
                              nom text not null,
@@ -73,7 +126,9 @@ create table Intervention (
                               compteRendu text not null,
                               IPP numeric(13,0) not null references Patient ON DELETE CASCADE,
                               idIntervenant serial not null references Intervenant ON DELETE CASCADE,
-                              iep int not null references Admission ON DELETE CASCADE
+                              iep int not null references Admission ON DELETE CASCADE,
+			      idSC int references Scenario ON DELETE CASCADE,
+				idLog text references Utilisateur ON DELETE CASCADE
 );
 
 create table Soin (
@@ -83,7 +138,7 @@ create table Soin (
 );
 
 
-
+///
 CREATE TABLE SoinPatientPredef(
                                   idSPP serial primary key ,
                                   debut date not null,
@@ -91,10 +146,12 @@ CREATE TABLE SoinPatientPredef(
                                   heure time not null,
                                   IPP numeric(13,0) not null references Patient ON DELETE CASCADE ,
                                   iep int not null references Admission ON DELETE CASCADE,
-                                  idSoin int not null references Soin ON DELETE CASCADE
+                                  idSoin int not null references Soin ON DELETE CASCADE,
+				idSC int references Scenario ON DELETE CASCADE,
+				idLog text references Utilisateur ON DELETE CASCADE
 );
 
-
+///
 create table SoinPatient(
                             idSP int not null primary key ,
                             jour date not null ,
@@ -102,7 +159,7 @@ create table SoinPatient(
                             valeur text not null ,
                             effectuer boolean not null,
                             iep int not null references Admission ON DELETE CASCADE,
-                            idSPP int not null references SoinPatientPredef ON DELETE CASCADE
+                            idSPP int not null references SoinPatientPredef ON DELETE CASCADE,
 );
 
 create table Medecin (
@@ -142,10 +199,11 @@ create table PrescriptionPatient (
                                      fait boolean not null ,
                                      IPP numeric(13,0) not null references Patient ON DELETE CASCADE,
                                      idPrescription serial not null references Prescription ON DELETE CASCADE,
-                                     iep int not null references Admission ON DELETE CASCADE
+                                     iep int not null references Admission ON DELETE CASCADE,
+				idSC int references Scenario ON DELETE CASCADE,
+				idLog text references Utilisateur ON DELETE CASCADE
 );
 
----
 create table radio(
                       lien text primary key ,
                       nom text not null ,
@@ -173,7 +231,9 @@ create table ObservationMedical(
                                    dateOM date not null,
                                    rapport text not null,
                                    IPP numeric(13,0) references Patient on delete cascade not null,
-                                   iep int not null references Admission ON DELETE CASCADE
+                                   iep int not null references Admission ON DELETE CASCADE,
+				idSC int references Scenario ON DELETE CASCADE,
+				idLog text references Utilisateur ON DELETE CASCADE
 );
 
 
@@ -186,8 +246,20 @@ create table TransmissionsCiblees(
                                      actions text,
                                      resultat text,
                                      IPP numeric(13,0) references Patient on DELETE cascade not null,
-                                     iep int not null references Admission ON DELETE CASCADE
+                                     iep int not null references Admission ON DELETE CASCADE,
+				idSC int references Scenario ON DELETE CASCADE,
+				idLog text references Utilisateur ON DELETE CASCADE
 );
+
+
+insert into Utilisateur
+values ('aurelien.leveque','leveque','aurelien', 'leveque', 'Aurelien.Leveque@uphf.fr', 'etudiant'),
+       ('steven.anselot','anselot','steven', 'anselot', 'Steven.Anselot@uphf.fr', 'etudiant'),
+       ('theo.bernaville','bernaville','theo', 'bernaville', 'Theo.Bernaville@uphf.fr', 'etudiant'),
+       ('samuel.applencourt','applencourt','samuel', 'applencourt', 'Samuel.Applencourt@uphf.fr', 'etudiant'),
+       ('dorian.petit','petit','dorian', '$2y$12$Z/gsoP/SkQMBSc0WXmWQnO2GfhNgnQe0erqMLuvjjuqNPIm4.vQaS', 'Dorian.Petit@uphf.fr', 'prof'),
+       ('rtyu','rt','tt','$2y$12$oNKQlblFYAK169xZLtIsBeRb0loYOPb5xc92tj68G9/Qm8jI7f.G.','rtyu@uphf.fr','admin'),
+       ('abcd','bol','jack','$2y$12$aP7pS7yf1J9bG9aBL5mIN.0k6OeVKnDe3TyN598U/3jmVnXpAaJRK','abcd@uphf.fr','etudiant');
 
 insert into PersonneConfiance
 values (1, 'Berthe', 'Henry', '0671458653', 'Pere', false),
@@ -229,11 +301,11 @@ values (1, '2010-04-12', '2010-04-12', 8000000000001),
        (5, '2013-02-03', '2013-02-17', 8000000000002);
 
 insert into Intervention
-values (1, '2010-04-12', 'blabla1', 8000000000001, 3,1),
-       (2, '2012-08-24', 'blabla2', 8000000000004, 4,2),
-       (3, '2012-10-15', 'blabla3', 8000000000002, 5,3),
-       (4, '2012-12-25', 'blabla4', 8000000000005, 2,4),
-       (5, '2013-02-04', 'blabla5', 8000000000002, 1,5);
+values (1, '2010-04-12', 'blabla1', 8000000000001, 3,1,null,null),
+       (2, '2012-08-24', 'blabla2', 8000000000004, 4,2,null,null),
+       (3, '2012-10-15', 'blabla3', 8000000000002, 5,3,null,null),
+       (4, '2012-12-25', 'blabla4', 8000000000005, 2,4,null,null),
+       (5, '2013-02-04', 'blabla5', 8000000000002, 1,5,null,null);
 
 
 insert into Soin
@@ -243,13 +315,13 @@ values (1, 'changement pansemants', 'post operation'),
        (4, 'dose medicamenteuse', 'post operation');
 
 INSERT INTO SoinPatientPredef
-VALUES (default,'2012-10-14',null,'12:00:00.00',8000000000002,3,4),
-       (default,'2012-10-14',null,'08:00:00.00',8000000000002,3,2),
-       (default,'2012-10-14',null,'12:00:00.00',8000000000002,3,3),
-       (default,'2013-02-03',null,'12:00:00.00',8000000000002,5,1),
-       (default,'2013-02-03',null,'12:00:00.00',8000000000002,5,2),
-       (default,'2013-02-03',null,'20:00:00.00',8000000000002,5,3),
-       (default,'2013-02-03',null,'12:00:00.00',8000000000002,5,4);
+VALUES (default,'2012-10-14',null,'12:00:00.00',8000000000002,3,4,null,null),
+       (default,'2012-10-14',null,'08:00:00.00',8000000000002,3,2,null,null),
+       (default,'2012-10-14',null,'12:00:00.00',8000000000002,3,3,null,null),
+       (default,'2013-02-03',null,'12:00:00.00',8000000000002,5,1,null,null),
+       (default,'2013-02-03',null,'12:00:00.00',8000000000002,5,2,null,null),
+       (default,'2013-02-03',null,'20:00:00.00',8000000000002,5,3,null,null),
+       (default,'2013-02-03',null,'12:00:00.00',8000000000002,5,4,null,null);
 
 insert into SoinPatient
 values (1, '2012-10-14', '18:00:00.00', 'une fois',true, 3,2),
@@ -289,78 +361,26 @@ values (1, 'antidouleurs', 'listes 1&2'),
 
 
 insert into PrescriptionPatient
-values (1, '2012-10-14', '20h00','2000-1-12', 'deux doses medicamenteuses d_antidouleurs par intervalle de 6h00', true, 8000000000002, 1, 3),
-       (2, '2012-10-14', '20h00', '2010-04-12', 'une dose medicamenteuse d_antidepresseurs', true, 8000000000002, 3, 3),
-       (3, '2012-08-24', '16h00', '2010-08-24', 'une dose medicamenteuse d_antidouleurs', true, 8000000000004, 1 , 2),
-       (4, '2010-04-10', '08h00', '2010-04-13', 'deux doses medicamenteuses de canabis avec intervalle de 10h00', true, 8000000000001, 4, 1);
+values (1, '2012-10-14', '20h00','2000-1-12', 'deux doses medicamenteuses d_antidouleurs par intervalle de 6h00', true, 8000000000002, 1, 3,null,null),
+       (2, '2012-10-14', '20h00', '2010-04-12', 'une dose medicamenteuse d_antidepresseurs', true, 8000000000002, 3, 3,null,null),
+       (3, '2012-08-24', '16h00', '2010-08-24', 'une dose medicamenteuse d_antidouleurs', true, 8000000000004, 1 , 2,null,null),
+       (4, '2010-04-10', '08h00', '2010-04-13', 'deux doses medicamenteuses de canabis avec intervalle de 10h00', true, 8000000000001, 4, 1,null,null);
 
 
-create table Utilisateur (
-    login text primary key,
-    nom text not null,
-    prenom text not null,
-    mdp text not null,
-    email text check ( email ~ '@' ) not null unique ,
-    roles text not null
-);
 
-insert into Utilisateur
-values ('aurelien.leveque','leveque','aurelien', 'leveque', 'Aurelien.Leveque@uphf.fr', 'etudiant'),
-       ('steven.anselot','anselot','steven', 'anselot', 'Steven.Anselot@uphf.fr', 'etudiant'),
-       ('theo.bernaville','bernaville','theo', 'bernaville', 'Theo.Bernaville@uphf.fr', 'etudiant'),
-       ('samuel.applencourt','applencourt','samuel', 'applencourt', 'Samuel.Applencourt@uphf.fr', 'etudiant'),
-       ('dorian.petit','petit','dorian', '$2y$12$Z/gsoP/SkQMBSc0WXmWQnO2GfhNgnQe0erqMLuvjjuqNPIm4.vQaS', 'Dorian.Petit@uphf.fr', 'prof'),
-       ('rtyu','rt','tt','$2y$12$oNKQlblFYAK169xZLtIsBeRb0loYOPb5xc92tj68G9/Qm8jI7f.G.','rtyu@uphf.fr','admin'),
-       ('abcd','bol','jack','$2y$12$aP7pS7yf1J9bG9aBL5mIN.0k6OeVKnDe3TyN598U/3jmVnXpAaJRK','abcd@uphf.fr','etudiant');
 insert into TransmissionsCiblees
-values (default,'2013-02-05','IA-ep','Alimentation','mange peu','voir avec diet',null,8000000000002, 5),
-       (default,'2013-02-06','IA-ep','hygienne',null,null,'surveiller ses aller au toilet',8000000000002, 5),
-       (default,'2012-12-25','Ab (ide)','douleur','le patient se plaint de douleur',null,null,8000000000005, 5),
-       (default,'2012-10-14','Ab (ide)','douleur','le patient a mal sans pouvoir la localiser',null,null,8000000000002, 5),
-       (default,'2012-08-24','Ab (ide)','douleur','le patient se plaint de douleur','mis sous antibio','en atente de résultat',8000000000004, 2);
+values (default,'2013-02-05','IA-ep','Alimentation','mange peu','voir avec diet',null,8000000000002, 5,null,null),
+       (default,'2013-02-06','IA-ep','hygienne',null,null,'surveiller ses aller au toilet',8000000000002, 5,null,null),
+       (default,'2012-12-25','Ab (ide)','douleur','le patient se plaint de douleur',null,null,8000000000005, 5,null,null),
+       (default,'2012-10-14','Ab (ide)','douleur','le patient a mal sans pouvoir la localiser',null,null,8000000000002, 5,null,null),
+       (default,'2012-08-24','Ab (ide)','douleur','le patient se plaint de douleur','mis sous antibio','en atente de résultat',8000000000004, 2,null,null);
 
 insert into ObservationMedical
-values (default,'2013-02-05','Patient agité taux de stress élévé',8000000000002, 5),
-       (default,'2013-02-08','Patient calme taux de stress en baisse',8000000000002, 5),
-       (default,'2012-12-25','Patient pret a partir',8000000000005, 4),
-       (default,'2012-10-15','Patient pret a partir',8000000000002, 3),
-       (default,'2012-08-24','Patient guerir et remis sur pieds',8000000000004, 2);
-
-create table Evenement(
-    idEvenement serial primary key ,
-    nom text not null ,
-    description text not null,
-    categorie text not null
-);
-
-create table Scenario(
-    idScenario serial primary key ,
-    nom text not null ,
-    debut date not null ,
-    fin date not null check ( debut<fin ),
-    nbEv int not null,
-    createur text references Utilisateur on delete cascade not null
-);
-
-create table ScenarioEvenement(
-    idScenario serial references Scenario on delete cascade,
-    idEvenement serial references Evenement on delete cascade,
-    primary key (idScenario,idEvenement)
-);
-
-create table ScenarioEtudiant(
-    idS serial references Scenario on delete cascade,
-        idU text references Utilisateur on delete cascade,
-        idE serial references Evenement on delete cascade,
-        date timestamp not null ,
-	idIpp numeric(13,0) references Patient on delete cascade,
-        primary key (idS,idU,idE,date,idIpp)
-);
-
-create table ScenarioCorbeille(
-                                 idSCorb serial references Scenario on delete cascade,
-                                 primary key (idSCorb)
-);
+values (default,'2013-02-05','Patient agité taux de stress élévé',8000000000002, 5,null,null),
+       (default,'2013-02-08','Patient calme taux de stress en baisse',8000000000002, 5,null,null),
+       (default,'2012-12-25','Patient pret a partir',8000000000005, 4,null,null),
+       (default,'2012-10-15','Patient pret a partir',8000000000002, 3,null,null),
+       (default,'2012-08-24','Patient guerir et remis sur pieds',8000000000004, 2,null,null);
 
 
 
@@ -386,11 +406,6 @@ values (1,1),
        (2,1),
        (2,5);
 
-create table dpiScenario(
-                            ipp numeric(13,0) references patient,
-                            idS serial references scenario,
-                            primary key (ipp, idS)
-);
 
 insert into dpiScenario
 values (8000000000001,1),

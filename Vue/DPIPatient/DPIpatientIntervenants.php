@@ -50,13 +50,13 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
         </div>
         <div style="overflow-y: scroll; overflow-x: scroll;">
             <form action="../../Controleur/DPIPatient/patientDPIfunction.php" method="get" class="table-container">
-                <table>
-                    <tr>Intervenants</tr>
-                    <tr>
+                <table class="styled-table">
+                    <caption>Intervenants</caption>
+                    <thead>
                         <td>Date</td>
                         <td>Profession</td>
                         <td style="width: 70%; max-width: 70%;">Compte rendu</td>
-                    </tr>
+                    </thead>
                     <?php
                     foreach ($_SESSION['infosPatient'] as $item){?>
                         <tr>

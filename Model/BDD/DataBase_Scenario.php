@@ -2,6 +2,9 @@
 
 require ('DataBase_Core.php');
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 function lstderoulanteScenario(){
     try {
