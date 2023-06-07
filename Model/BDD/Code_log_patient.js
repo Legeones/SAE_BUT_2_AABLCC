@@ -23,4 +23,4 @@ let button = document.querySelector("#rechercher_s");
 button.addEventListener("click", function(event){
     event.preventDefault();
     recuperation();
-})
+});

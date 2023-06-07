@@ -61,7 +61,7 @@
                 <br><br><br>
                 <div class="choix_recherche" style="position: center" id="validation">
                     <br><br>
-                    <button id="rechercher_s" value="rechercher_s" style="position: center">Rechercher</button>
+                    <button type="submit" id="rechercher_s" value="rechercher_s" style="position: center">Rechercher</button>
                     <button type="reset" id="reset_recherche" value="reset_recherche"> Reset les informations</button>
                 </div>
             </form>
