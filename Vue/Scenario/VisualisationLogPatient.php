@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8" lang="en">
     <link rel="stylesheet" href="../Scenario/LogPatient.css" media="screen" type="text/css" />
@@ -17,7 +18,7 @@
     </div>
     <div class="droite">
         <div class="bas">
-            <form name="form" action="" method="POST">
+            <form name="form" action="" method="GET">
                 <div class="Titreform">
                     <h1><u>Visualisation des logs patients</u></h1>
                 </div>
@@ -41,16 +42,13 @@
                 ?>
 
                 <div class="choix_recherche">
-                    <div id="date_scenario">
+                    <div id="research_items">
                         <label for="nom_scenario"> Nom du scenario </label> <br> <input type="text" name="nom_scenario" id="nom_scenario"> <br><br>
                         <label for="nom_etudiant"> Nom de l'étudiant </label> <br> <input type="text" name="nom_etudiant" id="nom_etudiant"> <br>
+                        <ul id="tab_datas"></ul>
                     </div>
                     <br><br><br>
                     <?php
-
-                    //Main
-                    if(!empty($db)) {
-                    }
 
                     //gestion en cas d'exception
                     }catch (PDOException $e) {
@@ -64,10 +62,11 @@
                 <div class="choix_recherche" style="position: center" id="validation">
                     <br><br>
                     <button id="rechercher_s" value="rechercher_s" style="position: center">Rechercher</button>
-                    <button type="reset_recherche" id="reset_recherche" value="reset_recherche"> Reset les informations</button>
+                    <button type="reset" id="reset_recherche" value="reset_recherche"> Reset les informations</button>
                 </div>
             </form>
         </div>
     </div>
+    <script defer src="/Model/BDD/Code_log_patient.js"
 </body>
 </html>
