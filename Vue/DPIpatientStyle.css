@@ -59,6 +59,7 @@ p{
     top: 10%;
     left: 20.1%;
     background-color: #d6ecfd;
+    overflow-y: auto;
 }
 
 .arrow-left{
@@ -149,17 +150,20 @@ header{
     width: 100%;
     box-shadow: 2px 2px 2px dimgrey;
     font-size: 15px;
-    font-family: "Gill Sans MT";
+    font-family: "Gill Sans MT", serif;
     font-weight: bold;
     float: right;
 }
+
 .btn-line > input{
     width: 12.150%;
-    height: 8%;
+    padding: 1px;
+    min-width: 100px;
+    height: 50px;
     cursor: pointer;
     background-color: white;
-
 }
+
 .btn-line:after {
     content: "";
     clear: both;
@@ -191,6 +195,26 @@ header{
     position: absolute;
     height: auto;
     min-height: 14%;
+}
+
+/* Responsive Styles */
+@media (max-width: 1000px) {
+    .grid-container{
+        grid-template-columns: auto auto auto;
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 800px) {
+    .grid-container{
+        grid-template-columns: auto auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-container{
+        grid-template-columns: auto;
+    }
 }
 
 .grid-container > div {
