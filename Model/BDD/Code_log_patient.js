@@ -15,8 +15,9 @@ function recuperation(){
             ul.appendChild(li);
         }
     };
-    xhr.open("GET", "../../Controleur/Scenario/control_log_patient.php?nom_scenario="+scenario.value+"&nom_etudiant="+etudiant.value, true);
-    xhr.send();
+    let params = "nom_scenario="+scenario.value+"&nom_etudiant="+etudiant.value;
+    xhr.open("POST", "../../Controleur/Scenario/control_log_patient.php", true);
+    xhr.send(params);
 }
 
 let button = document.querySelector("#rechercher_s");

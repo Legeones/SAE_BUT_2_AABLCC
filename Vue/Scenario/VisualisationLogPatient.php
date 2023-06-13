@@ -18,28 +18,9 @@
     </div>
     <div class="droite">
         <div class="bas">
-            <form name="form" action="" method="GET">
                 <div class="Titreform">
                     <h1><u>Visualisation des logs patients</u></h1>
                 </div>
-
-                <?php
-
-                session_start();
-
-
-                require('../../Model/BDD/DataBase_Core.php');
-
-                function Connection(): PDO
-                {
-                    return DataBase_Creator_Unit();
-                }
-
-                // Zone de connexion à la base de données
-                try {
-                $db = Connection();
-
-                ?>
 
                 <div class="choix_recherche">
                     <div id="research_items">
@@ -48,25 +29,15 @@
                         <ul id="tab_datas"></ul>
                     </div>
                     <br><br><br>
-                    <?php
-
-                    //gestion en cas d'exception
-                    }catch (PDOException $e) {
-                        echo 'Erreur : ' . $e->getMessage();
-                    } catch (Exception $e) {
-                    }
-
-                    ?>
                 </div>
                 <br><br><br>
                 <div class="choix_recherche" style="position: center" id="validation">
                     <br><br>
-                    <button type="submit" id="rechercher_s" value="rechercher_s" style="position: center">Rechercher</button>
+                    <button type="button" id="rechercher_s" value="rechercher_s" style="position: center">Rechercher</button>
                     <button type="reset" id="reset_recherche" value="reset_recherche"> Reset les informations</button>
                 </div>
-            </form>
         </div>
     </div>
-    <script defer src="/Model/BDD/Code_log_patient.js"
+    <script defer src="../../Model/BDD/Code_log_patient.js"
 </body>
 </html>
