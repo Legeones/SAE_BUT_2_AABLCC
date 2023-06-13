@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" lang="en">
-    <link rel="stylesheet" href="../Scenario/LogPatient.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../CSS_DPI.css" media="screen" type="text/css" />
     <title>Visualisation des logs patients</title>
 </head>
 <body>
@@ -14,7 +14,9 @@
         <div class="profile" id="space-invader">
             <img width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
-        <div class="btn-group"></div>
+        <div class="btn-group">
+            <button onclick="location.href='principaleEve.php'">SCENARIOS</button>
+        </div>
     </div>
     <div class="droite">
         <div class="bas">

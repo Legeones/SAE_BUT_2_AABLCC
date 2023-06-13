@@ -203,6 +203,16 @@ input[type=number], input[type=date]{
     width: 11%;
 }
 
+#reset_recherche{
+    background-color: white;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0px;
+    border: 1px solid #729bbd;
+    cursor: pointer;
+    width: 12%;
+}
+
 .contenuRech input[type=button]{
     margin-left: 200px;
 }
@@ -265,7 +275,7 @@ footer{
     left: 20%;
 }
 
-.btn-group button {
+.btn-group button{
     background-color: white; /* Green background */
     border: 1px solid black; /* Green border */
     color: black; /* White text */
@@ -502,4 +512,16 @@ footer{
 .btn-norm:hover{
     box-shadow: black 1px 1px;
     cursor: pointer;
+}
+
+.choix_recherche {
+    height: auto;
+    mso-default-height: 250px;
+    box-shadow: cornflowerblue;
+    border-color: skyblue;
+    border-style: ridge;
+    border-width: medium;
+    padding: 2% 1% 1% 2%;
+    background-color: whitesmoke;
+    text-align: center;
 }
