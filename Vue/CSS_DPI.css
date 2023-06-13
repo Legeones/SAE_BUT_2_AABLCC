@@ -30,6 +30,7 @@ header{
 #haut .group_bt_exam{
     width: 40%;
     display: flex;
+    flex-direction: row;
     justify-items: center;
 }
 
@@ -45,6 +46,18 @@ header{
     height: 50px;
 }
 
+#haut .bt1_examOn{
+    margin: 0;
+    background-color: #feba64;
+    color: black;
+    padding: 1px 1px;
+    border-color: #feba50;
+    border-radius: 10%;
+    cursor: pointer;
+    width: 70px;
+    height: 50px;
+}
+
 #haut .select {
     margin-left: 8%;
     width: 75%;
@@ -53,6 +66,12 @@ header{
 #haut select{
     width: 100%;
     height: 50px;
+}
+
+#haut .select2{
+    margin-left: 8%;
+    width: 75%;
+    height: 100%;
 }
 
 #haut .logout{
