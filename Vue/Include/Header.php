@@ -16,21 +16,25 @@ if (session_status() === PHP_SESSION_NONE) {
             <div style="display: none" id="select" class="select">
                 <select name="DPI" id="DPI_Patient">
                     <?php
-                    $lst = liste_nom_senario();?>
+                    if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof"){
+                        $lst = liste_full_nom_senario();
+                    }else {
+                        $lst = liste_nom_senario();
+                    }?>
                     <option value="defaut">--Choisir le Scenario--</option>;
                     <?php for($i =0;$i<sizeof($lst);$i++){?>
-                        <option value="<?php echo $lst[0][$i] ?>"><?php echo $lst[0][$i] ?></option>
+                        <option value="<?php echo $lst[$i][0] ?>"><?php echo $lst[$i][0] ?></option>
                     <?php } ?>
                 </select>
             </div>
             <?php if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof"){ ?>
                 <div style="display: none" id="select2" class="select2">
-                    <select  name="DPI" id="DPI_Patient">
-                        <option value="defaut">--Choisir le Scenario--</option>;
+                    <select  name="DPI" id="DPI_Patient2">
+                        <option value="defaut">--Choisir l'étudiant--</option>;
                     </select>
                 </div>
             <?php } ?>
-            <button type="submit" id="bt_affiche_dpi" name="bt_affiche_dpi">Valider</button>
+            <button style="display: none" type="submit" id="bt_affiche_dpi" name="bt_affiche_dpi">Valider</button>
         </div>
         <button type="button" title="Déconnexion" id="logout" class="logout" onclick="location.href='../Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
     </form>

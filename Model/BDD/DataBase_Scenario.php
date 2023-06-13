@@ -250,7 +250,20 @@ function lst_deroulante_nom_Scenario()
     $DPI2 = DataBase_Creator_Unit();
     $DPI = $DPI2->prepare("select scenario.nom
                                 from scenario
-                                join scenarioetudiant on scenario.idscenario = scenarioetudiant.ids where scenarioetudiant.idu = ?");
+                                left join ScenarioCorbeille SC on scenario.idScenario = SC.idSCorb
+                                join scenarioetudiant on scenario.idscenario = scenarioetudiant.ids where scenarioetudiant.idu = ? and idSCorb is null and (scenario.debut<=current_date and scenario.fin>=current_date)");
+    $DPI->bindParam(1, $_SESSION['username']);
+    $DPI->execute();
+    return $DPI->fetchAll();
+
+}
+
+
+function lst_deroulante_full_nom_Scenario()
+{
+
+    $DPI2 = DataBase_Creator_Unit();
+    $DPI = $DPI2->prepare("SELECT s.nom from scenario s left join ScenarioCorbeille SC on s.idScenario = SC.idSCorb where createur = ? and idSCorb is null");
     $DPI->bindParam(1, $_SESSION['username']);
     $DPI->execute();
     return $DPI->fetchAll();

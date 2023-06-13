@@ -155,6 +155,9 @@ document.getElementById('bt1_exam').addEventListener("click", function (event){
         div_ON.style.display = 'block'
     }
     recherche_DPI_senario_mode_exam();
+    recherche_DPI_senario_mode_exam();
+    recherche_DPI_senario_mode_exam();
+    document.getElementById('bt_affiche_dpi').style.display = 'block'
     visible_bouton(document.getElementById('bt1_examOn'),this)
 })
 
@@ -173,17 +176,19 @@ document.getElementById('bt1_examOn').addEventListener("click", function (event)
         div_ON.style.display = 'none'
     }
     recherche_DPI_accueil();
-    recherche_DPI_senario_mode_exam();
+    recherche_DPI_accueil();
+    recherche_DPI_accueil();
+    document.getElementById('bt_affiche_dpi').style.display = 'none'
     visible_bouton(document.getElementById('bt1_exam'),this)
 })
 
 
 
 
-    window.onload = () => {
+window.onload = () => {
         session_mode_exam(1);
         recherche_DPI_accueil();
-    };
+};
 
         document.querySelector("#rechercher").addEventListener('click', (event) => {
         event.preventDefault();
@@ -248,4 +253,6 @@ document.getElementById('bt1_examOn').addEventListener("click", function (event)
         form.appendChild(div);
     }
     }
-    }
+}
+
+

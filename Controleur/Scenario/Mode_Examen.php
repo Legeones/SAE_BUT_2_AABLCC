@@ -11,5 +11,9 @@ function liste_nom_senario(){
     return lst_deroulante_nom_Scenario();
 }
 
+function liste_full_nom_senario(){
+    return lst_deroulante_full_nom_Scenario();
+}
+
 
 
