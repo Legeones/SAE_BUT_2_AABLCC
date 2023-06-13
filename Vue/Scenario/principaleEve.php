@@ -32,6 +32,7 @@
                 echo "<button onclick=location.href='RecupCorbeilleSce.php'>Recuperer Scenario</button>";
                 //Bouton permettant de récupérer des Scenarios dans la corbeille
                 echo '<br>';
+                echo "<button onclick=location.href='../../Vue/Scenario/VisualisationLogPatient.php'>Visualiser les logs patients</button>";
             }
             ?>
         </div>

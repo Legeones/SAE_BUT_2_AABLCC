@@ -1,12 +1,12 @@
 drop table if exists PersonneConfiance,Utilisateur, PersonneContacte,Corbeille, Patient, Intervenant, Intervention, Admission, Soin,SoinPatientPredef, SoinPatient, Medecin, PatientMedecin, Prescription, PrescriptionPatient,radio,Biologie,couriel,ObservationMedical,TransmissionsCiblees,Scenario,ScenarioCorbeille,ScenarioEtudiant,ScenarioEvenement, Evenement, dpiScenario;
 
 create table Utilisateur (
-    login text primary key,
-    nom text not null,
-    prenom text not null,
-    mdp text not null,
-    email text check ( email ~ '@' ) not null unique ,
-    roles text not null
+                             login text primary key,
+                             nom text not null,
+                             prenom text not null,
+                             mdp text not null,
+                             email text check ( email ~ '@' ) not null unique ,
+                             roles text not null
 );
 
 
@@ -64,39 +64,30 @@ create table Patient(
 );
 
 create table Evenement(
-    idEvenement serial primary key ,
-    nom text not null ,
-    description text not null,
-    categorie text not null
+                          idEvenement serial primary key ,
+                          nom text not null ,
+                          description text not null,
+                          categorie text not null
 );
 
 create table Scenario(
-    idScenario serial primary key ,
-    nom text not null ,
-    debut date not null ,
-    fin date not null check ( debut<fin ),
-    nbEv int not null,
-    createur text references Utilisateur on delete cascade not null
+                         idScenario serial primary key ,
+                         nom text not null ,
+                         debut date not null ,
+                         fin date not null check ( debut<fin ),
+                         nbEv int not null,
+                         createur text references Utilisateur on delete cascade not null
 );
 
 create table ScenarioEvenement(
-    idScenario serial references Scenario on delete cascade,
-    idEvenement serial references Evenement on delete cascade,
-    primary key (idScenario,idEvenement)
-);
-
-create table ScenarioEtudiant(
-    idS serial references Scenario on delete cascade,
-        idU text references Utilisateur on delete cascade,
-        idE serial references Evenement on delete cascade,
-        date timestamp not null ,
-	idIpp numeric(13,0) references Patient on delete cascade,
-        primary key (idS,idU,idE,date,idIpp)
+                                  idScenario serial references Scenario on delete cascade,
+                                  idEvenement serial references Evenement on delete cascade,
+                                  primary key (idScenario,idEvenement)
 );
 
 create table ScenarioCorbeille(
-                                 idSCorb serial references Scenario on delete cascade,
-                                 primary key (idSCorb)
+                                  idSCorb serial references Scenario on delete cascade,
+                                  primary key (idSCorb)
 );
 
 create table dpiScenario(
@@ -127,8 +118,8 @@ create table Intervention (
                               IPP numeric(13,0) not null references Patient ON DELETE CASCADE,
                               idIntervenant serial not null references Intervenant ON DELETE CASCADE,
                               iep int not null references Admission ON DELETE CASCADE,
-			      idSC int references Scenario ON DELETE CASCADE,
-				idLog text references Utilisateur ON DELETE CASCADE
+                              idSC int references Scenario ON DELETE CASCADE,
+                              idLog text references Utilisateur ON DELETE CASCADE
 );
 
 create table Soin (
@@ -138,7 +129,7 @@ create table Soin (
 );
 
 
-///
+
 CREATE TABLE SoinPatientPredef(
                                   idSPP serial primary key ,
                                   debut date not null,
@@ -147,11 +138,11 @@ CREATE TABLE SoinPatientPredef(
                                   IPP numeric(13,0) not null references Patient ON DELETE CASCADE ,
                                   iep int not null references Admission ON DELETE CASCADE,
                                   idSoin int not null references Soin ON DELETE CASCADE,
-				idSC int references Scenario ON DELETE CASCADE,
-				idLog text references Utilisateur ON DELETE CASCADE
+                                  idSC int references Scenario ON DELETE CASCADE,
+                                  idLog text references Utilisateur ON DELETE CASCADE
 );
 
-///
+
 create table SoinPatient(
                             idSP int not null primary key ,
                             jour date not null ,
@@ -159,7 +150,7 @@ create table SoinPatient(
                             valeur text not null ,
                             effectuer boolean not null,
                             iep int not null references Admission ON DELETE CASCADE,
-                            idSPP int not null references SoinPatientPredef ON DELETE CASCADE,
+                            idSPP int not null references SoinPatientPredef ON DELETE CASCADE
 );
 
 create table Medecin (
@@ -200,8 +191,8 @@ create table PrescriptionPatient (
                                      IPP numeric(13,0) not null references Patient ON DELETE CASCADE,
                                      idPrescription serial not null references Prescription ON DELETE CASCADE,
                                      iep int not null references Admission ON DELETE CASCADE,
-				idSC int references Scenario ON DELETE CASCADE,
-				idLog text references Utilisateur ON DELETE CASCADE
+                                     idSC int references Scenario ON DELETE CASCADE,
+                                     idLog text references Utilisateur ON DELETE CASCADE
 );
 
 create table radio(
@@ -232,8 +223,8 @@ create table ObservationMedical(
                                    rapport text not null,
                                    IPP numeric(13,0) references Patient on delete cascade not null,
                                    iep int not null references Admission ON DELETE CASCADE,
-				idSC int references Scenario ON DELETE CASCADE,
-				idLog text references Utilisateur ON DELETE CASCADE
+                                   idSC int references Scenario ON DELETE CASCADE,
+                                   idLog text references Utilisateur ON DELETE CASCADE
 );
 
 
@@ -247,8 +238,8 @@ create table TransmissionsCiblees(
                                      resultat text,
                                      IPP numeric(13,0) references Patient on DELETE cascade not null,
                                      iep int not null references Admission ON DELETE CASCADE,
-				idSC int references Scenario ON DELETE CASCADE,
-				idLog text references Utilisateur ON DELETE CASCADE
+                                     idSC int references Scenario ON DELETE CASCADE,
+                                     idLog text references Utilisateur ON DELETE CASCADE
 );
 
 
@@ -409,6 +400,21 @@ values (1,1),
 
 insert into dpiScenario
 values (8000000000001,1),
-	(8000000000002,1),
-	(8000000000003,2),
-	(8000000000004,2);
+       (8000000000002,1),
+       (8000000000003,2),
+       (8000000000004,2);
+
+
+create table ScenarioEtudiant(
+                                 idS serial references Scenario on delete cascade,
+                                 idU text references Utilisateur on delete cascade,
+                                 idE serial references Evenement on delete cascade,
+                                 date timestamp not null ,
+                                 idIpp numeric(13,0) references Patient on delete cascade,
+                                 primary key (idS,idU,idE,date,idIpp)
+);
+
+insert into scenarioetudiant
+values (1, 'steven.anselot', 3, '2022-04-23', 8000000000002),
+       (1, 'steven.anselot', 2, '2022-04-23', 8000000000002),
+       (1, 'aurelien.leveque', 3, '2022-04-23', 8000000000002);
