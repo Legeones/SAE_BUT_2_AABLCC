@@ -24,7 +24,6 @@
                 <div class="Titreform">
                     <h1><u>Visualisation des logs patients</u></h1>
                 </div>
-
                 <div class="choix_recherche">
                     <div id="research_items">
                         <label for="nom_scenario"> Nom du scenario </label> <br> <input type="text" name="nom_scenario" id="nom_scenario"> <br><br>

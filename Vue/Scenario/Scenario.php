@@ -94,7 +94,6 @@
                             <!-- Balise demandant à l'utilisateur d'entrer le nom d'événement qu'il souhaite -->
                             <label for="type_categorie">Catégorie des évènements</label> <br> <input type="text" id="type_categorie" name="type_categorie" placeholder="Entrez la catégorie d'évènement que vous souhaitez" style="width: 50%">
                             <!-- Balise demandant à l'utilisateur d'entrer la catégorie d'événements qu'il souhaite -->
-
                         </div>
 
                         <div id="event_aleatoire"><br><br>

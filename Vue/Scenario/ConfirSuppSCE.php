@@ -30,6 +30,7 @@ $_SESSION["SupCorscenario"]=$_POST["SupCorscenario"];
         echo "Êtes-vous sûr de vouloir supprimer ce scénario ?";
         echo "<br>"
         ?>
+
         <br>
         <div class="div-norm-scenario">
             <button class="btn-norm" onclick="location.href='../..Controleur/Scenario/SupSceSQL.php'">OUI</button>

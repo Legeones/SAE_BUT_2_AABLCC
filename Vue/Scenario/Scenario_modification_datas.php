@@ -99,7 +99,6 @@
                         <div id="event_categorie">
                             <label for="nbevent">Nombre d'évènement</label> <br> <input type="text" id="nbevent" name="nbevent" placeholder="Entrez le nombre d'event que vous voulez" style="width: 50%"><br><br>
                             <label for="type_categorie">Catégorie des évènements</label> <br> <input type="text" id="type_categorie" name="type_categorie" placeholder="Entrez la catégorie d'évènement que vous souhaitez" style="width: 50%">
-
                         </div>
                         <br><br>
                         <div id="event_aleatoire">

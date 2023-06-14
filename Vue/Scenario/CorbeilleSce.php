@@ -23,7 +23,6 @@
     </div>
     <div class="droite">
         <form action="../../Controleur/Scenario/CorbeilleSceSQl.php" method="post" enctype="multipart/form-data">
-
             <h1>Choix du scénario</h1>
             <br>
             <br>
