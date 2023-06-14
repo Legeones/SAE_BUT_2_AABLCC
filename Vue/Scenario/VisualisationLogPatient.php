@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" lang="en">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
     <link rel="stylesheet" href="../CSS_DPI.css" media="screen" type="text/css" />
     <title>Visualisation des logs patients</title>
 </head>
