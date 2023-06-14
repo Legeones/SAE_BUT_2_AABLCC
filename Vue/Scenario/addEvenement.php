@@ -34,7 +34,7 @@
             <br>
             <br>
             <select name="DPI" id="DPI_Patient">
-                <option value="sans catégorie">--Choisir la categorie ou entrer une nouvelle--</option>
+                <option value="sans catégorie">--Choisir la catégorie ou entrer une nouvelle--</option>
                 <?php
                 require('../../Model/BDD/DataBase_Scenario.php');
                 $der = lstderoulCate();

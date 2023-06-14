@@ -23,8 +23,7 @@
     </div>
     <div class="droite">
         <form action="ConfirSuppSCE.php" method="post" enctype="multipart/form-data">
-
-            <h1>choix scenario a supprimer</h1>
+            <h1>Choix du/des scénario(s) à supprimer</h1>
             <br>
             <br>
             <?php

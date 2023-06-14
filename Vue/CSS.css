@@ -20,7 +20,7 @@
 #chartecase {
     background-image: url("https://static.vecteezy.com/ti/vecteur-libre/p1/9322054-blanc-et-gris-abstrait-fond-tendance-blanc-futuriste-fond-utilisation-pour-entreprise-entreprise-institution-affiche-modele-fete-festif-seminaire-eps10-illustrationle-gratuit-vectoriel.jpg");
     background-color: white;
-    font-family: Arial;
+    font-family: Arial, cursive;
     font-size: 90%;
     text-align: center;
 }
@@ -262,7 +262,7 @@ form.eyes {
 #bouton_francais{
     text-decoration: none;
     padding: 10px;
-    font-family: verdana;
+    font-family: verdana, cursive;
     font-size: 0.6em;
     color: #FFFFFF;
     background-color: #548dd4;
@@ -275,7 +275,7 @@ form.eyes {
 #bouton_englais{
     text-decoration: none;
     padding: 10px;
-    font-family: verdana;
+    font-family: verdana, cursive;
     font-size: 0.6em;
     color: #FFFFFF;
     background-color: #548dd4;
