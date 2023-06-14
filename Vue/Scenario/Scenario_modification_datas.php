@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8" lang="en">
-    <link rel="stylesheet" href="../Simulation.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../CSS_DPI.css" media="screen" type="text/css" />
     <title> Page des scénarios</title>
 </head>
 <body>
@@ -96,15 +96,13 @@
                     ?>
 
                     <div id="ajout_event">
-                        <div id="event_categorie" style="background-color: #66CCCC">
-                            <label for="nbevent">Nombre d'évènement</label> <br> <input type="text" id="nbevent" name="nbevent" placeholder="Entrez le nombre d'event que vous voulez" style="width: 50%"><br>
+                        <div id="event_categorie">
+                            <label for="nbevent">Nombre d'évènement</label> <br> <input type="text" id="nbevent" name="nbevent" placeholder="Entrez le nombre d'event que vous voulez" style="width: 50%"><br><br>
                             <label for="type_categorie">Catégorie des évènements</label> <br> <input type="text" id="type_categorie" name="type_categorie" placeholder="Entrez la catégorie d'évènement que vous souhaitez" style="width: 50%">
 
                         </div>
-
                         <br><br>
-
-                        <div id="event_aleatoire" style="background-color: mediumpurple">
+                        <div id="event_aleatoire">
                             <label for="nbevent_alea">Nombre d'évènement</label> <br> <input type="text" id="nbevent_alea" name="nbevent_alea" placeholder="Entrez le nombre d'event que vous voulez" style="width: 50%">
                         </div>
                     </div>

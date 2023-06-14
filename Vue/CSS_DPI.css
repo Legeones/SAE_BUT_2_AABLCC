@@ -215,6 +215,13 @@ input[type=number], input[type=date]{
     min-width: 200px;
 }
 
+#ajout_event #event_categorie > input::placeholder{
+    position: relative;
+    top: 0;
+    font-size: 100%;
+}
+
+
 .contenuRech input[type=button]{
     margin-left: 200px;
 }

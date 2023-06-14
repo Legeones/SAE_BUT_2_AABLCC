@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8" lang="en">
-    <link rel="stylesheet" href="../Simulation.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../CSS_DPI.css" media="screen" type="text/css" />
     <title> Page des scénarios</title>
 </head>
 <body>
@@ -89,7 +89,7 @@
                     ?>
 
                     <div id="ajout_event">
-                        <div id="event_categorie" style="background-color: #66CCCC">
+                        <div id="event_categorie">
                             <label for="nbevent">Nombre d'évènement</label> <br> <input type="text" id="nbevent" name="nbevent" placeholder="Entrez le nombre d'event que vous voulez" style="width: 50%"><br>
                             <!-- Balise demandant à l'utilisateur d'entrer le nom d'événement qu'il souhaite -->
                             <label for="type_categorie">Catégorie des évènements</label> <br> <input type="text" id="type_categorie" name="type_categorie" placeholder="Entrez la catégorie d'évènement que vous souhaitez" style="width: 50%">
@@ -97,18 +97,14 @@
 
                         </div>
 
-                        <br><br>
-
-                        <div id="event_aleatoire" style="background-color: mediumpurple">
-                            <label for="nbevent_alea">Nombre d'évènement</label> <br> <input type="text" id="nbevent_alea" name="nbevent_alea" placeholder="Entrez le nombre d'event que vous voulez" style="width: 50%">
+                        <div id="event_aleatoire"><br><br>
+                            <label for="nbevent_alea">Nombre d'évènement aléatoire</label> <br> <input type="text" id="nbevent_alea" name="nbevent_alea" placeholder="Entrez le nombre d'event que vous voulez" style="width: 50%">
                             <!-- Demande le nombre d'evenement -->
                         </div>
-                    </div>
-                    <br><br><br>
-
+                    </div><br><br>
 
                     <div align="center" id="stock">
-                        <br><br>
+
                         <button id="ajout_s" value="Ajout_s" style="position: center">Ajouter le scenario</button>
                         <!-- Bouton permettant d'ajouter un scénario -->
                         <button type="reset" id="reset_s" value="reset_s"> Reset les informations</button>

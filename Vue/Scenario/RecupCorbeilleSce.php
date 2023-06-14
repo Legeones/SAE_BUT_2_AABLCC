@@ -24,7 +24,7 @@
     <div class="droite">
         <form action="../../Controleur/Scenario/RecupCorbeilleSCESQL.php" method="post" enctype="multipart/form-data">
 
-            <h1>choix scenario recuperer</h1>
+            <h1>Choix du/des scénario(s) à récupérer</h1>
             <br>
             <br>
             <?php
