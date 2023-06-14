@@ -48,29 +48,29 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
             <div class="login-popup">
                 <?= afficherDataPersos() ?>
             </div>
-            <div class="container-img">
-                <?php
-                $result= VisuBio($_SESSION['infosPersoPatient']['ipp']);
+        </div>
+        <div class="container-img">
+            <?php
+            $result= VisuBio($_SESSION['infosPersoPatient']['ipp']);
 
-                foreach ($result as $p){ ?>
-                        <table>
-                            <caption></caption>
-                            <tr>
-                                <td>Description : <?= $p['description'] ?></td>
-                            </tr>
-                            <tr>
-                                <td><?= $p['nom'] ?></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img alt="Image biologie" class='img' src=<?= $p['lien'] ?>>
-                                </td>
-                            </tr>
-                        </table>
-                    <br>
-                <?php }
-                ?>
-            </div>
+            foreach ($result as $p){ ?>
+                <table>
+                    <caption></caption>
+                    <tr>
+                        <td>Description : <?= $p['description'] ?></td>
+                    </tr>
+                    <tr>
+                        <td><?= $p['nom'] ?></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img alt="Image biologie" class='img' src=<?= $p['lien'] ?>>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+            <?php }
+            ?>
         </div>
     </div>
 </div>
