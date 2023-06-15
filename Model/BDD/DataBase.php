@@ -1,6 +1,6 @@
 <?php
 //Connexion à la base de données// // Veuiller Aligner par rapport au autre fichier du repertoire S.V.P. //
-require('../BDD/DataBase_Core.php');
+require ('DataBase_Core.php');
 
     function Patient_Parcour($p,$rm){
         $o = 1;
@@ -53,8 +53,10 @@ require('../BDD/DataBase_Core.php');
                 $i = $i+1;
             }
         }
-        header('Location: ../DPIpatient/principale.php');
+        header('Location: ../../Vue/DPIPatient/DPI.php');
     }
+
+
 
 /**
  * @param $nomPatient
@@ -78,7 +80,7 @@ function Data_Patient_Querry($nomPatient, $nomCateg){
         foreach ($stmt as $item){
             $_SESSION['infosPatient']+=$item;
         }
-        header("Location: ../DPIpatient/DPIpatientMacrocible.php");
+        header("Location: ../../Vue/DPIPatient/DPIpatientMacrocible.php");
 
     }
 ?>

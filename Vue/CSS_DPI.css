@@ -1,5 +1,108 @@
+/*header */
+
+header{
+    background-color: rgba(255, 255, 255, 0);
+    width: 100%;
+    height: 10%;
+    border-bottom: black solid;
+    border-width: thin;
+    box-shadow: 0px 1px 0px dimgrey;
+
+}
+#haut .form_header{
+    margin-top: -15px;
+    background-color: rgba(255, 255, 255, 0);
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: none;
+    border: none;
+
+}
+
+.logo {
+    margin-top: -7px;
+    width: 9%;
+    height: 85%;
+
+}
+#haut .group_bt_exam{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+}
+
+#haut .bt1_exam{
+    margin: 0;
+    background-color: #92ecec;
+    color: black;
+    padding: 1px 1px;
+    border-color: #66CCCC;
+    border-radius: 10%;
+    cursor: pointer;
+    width: 70px;
+    height: 50px;
+}
+
+#haut .bt1_examOn{
+    margin: 0;
+    background-color: #feba64;
+    color: black;
+    padding: 1px 1px;
+    border-color: #feba50;
+    border-radius: 10%;
+    cursor: pointer;
+    width: 70px;
+    height: 50px;
+}
+
+#haut .select {
+    margin-left: 8%;
+    width: 75%;
+    height: 100%;
+}
+#haut select{
+    width: 100%;
+    height: 50px;
+}
+
+#haut .select2{
+    margin-left: 8%;
+    width: 75%;
+    height: 100%;
+}
+
+#haut .logout{
+    margin: 0;
+    background-color: #92ecec;
+    color: white;
+    padding: 1px 1px;
+    border: none;
+    border-radius: 20%;
+    cursor: pointer;
+    width: 70px;
+    height: 50px;
+}
+
+#logout:hover{
+    box-shadow: 2px 2px black;
+
+}
+
+#img_logout{
+    width: 80%;
+    height: 80%;
+
+}
+
+
+
+
+
 body{
-    background-color: #d6ecfd;
+    background: linear-gradient(20deg,white,#a5f4f4);
 }
 
 
@@ -35,6 +138,7 @@ input[type=number], input[type=date]{
     border: 1px solid #729bbd;
     box-sizing: border-box;
 }
+
 
 .global .Groupe1 {
     margin-right: 25px;
@@ -98,6 +202,25 @@ input[type=number], input[type=date]{
     width: 11%;
 }
 
+#reset_recherche, #rechercher_s{
+    background-color: white;
+    color: black;
+    padding: 2%;
+    margin: 8px 0px;
+    border: 1px solid #729bbd;
+    cursor: pointer;
+    width: 12%;
+    text-align: center;
+    min-width: 200px;
+}
+
+#ajout_event #event_categorie > input::placeholder{
+    position: relative;
+    top: 0;
+    font-size: 100%;
+}
+
+
 .contenuRech input[type=button]{
     margin-left: 200px;
 }
@@ -125,8 +248,9 @@ input[type=number], input[type=date]{
     width: 20%;
     /*background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20210924/pngtree-health-care-abstract-light-effect-icon-decoration-image_906585.png") ;
     */
-    background-color: #729bbd;
-    height: 90%;
+    overflow: auto;
+    background-color: white;
+    height: 90% ;
     position: absolute;
     left: 0px;
     top: 10%;
@@ -137,8 +261,7 @@ input[type=number], input[type=date]{
 }
 .droite{
     float: right;
-    padding: 1%;
-
+    padding: 0.5% 1%;
     /*padding: -1% -1% -1% -1%;*/
     width: 78%;
     height: 85.6%;
@@ -146,21 +269,23 @@ input[type=number], input[type=date]{
     right: 0px;
     top: 10%;
     left: 20%;
-    background-color: #d6ecfd;
+    background-color: white;
+    overflow-y: scroll;
 }
-header{
-    width: 100%;
-    float: left;
-    height: 10%;
-    position: absolute;
-    top: 0px;
-    left: 0%;
-    background-color: #729bbd;
-    border-bottom: black solid;
-    border-width: thin;
-    z-index: 2;
-    box-shadow: 0px 1px 0px dimgrey;
+
+.droite::-webkit-scrollbar {
+    width: 6px; /* Largeur de la barre de défilement */
 }
+
+.droite::-webkit-scrollbar-thumb {
+    background-color: #888; /* Couleur de la barre de défilement */
+    border-radius: 3px; /* Bordure arrondie de la barre de défilement */
+}
+
+.droite::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Couleur de la barre de défilement au survol */
+}
+
 
 footer{
     height: 6%;
@@ -171,7 +296,7 @@ footer{
     left: 20%;
 }
 
-.btn-group button {
+.btn-group button{
     background-color: white; /* Green background */
     border: 1px solid black; /* Green border */
     color: black; /* White text */
@@ -184,7 +309,7 @@ footer{
     margin-top: 1%;
     box-shadow: 2px 2px 2px dimgrey;
     font-size: 15px;
-    font-family: "Gill Sans MT";
+    font-family: "Gill Sans MT", cursive;
     font-weight: bold;
 
 }
@@ -211,13 +336,7 @@ footer{
     border: black solid;
 }
 
-.logo {
-    width: 10%;
-    height: 90%;
-    margin-top: 0.25%;
-    margin-left: 0.25%;
 
-}
 
 .grid-container {
     display: grid;
@@ -228,10 +347,69 @@ footer{
     background-color: lightgrey;
     padding: 5px;
     box-shadow: 3px 3px 3px 3px dimgrey;
-    font-family: Arial;
+    font-family: Arial, cursive;
     font-size: 11px;
     z-index: 10;
     position: absolute;
+}
+
+@media screen {
+
+}
+
+@media (max-width: 1000px) {
+    .grid-container {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+    }
+
+    .grid-container::-webkit-scrollbar{
+        display: none;
+    }
+
+    .grid-container > div {
+        background-color: white;
+        text-align: center;
+        margin: 5px;
+        padding: 5px;
+        font-size: 10px;
+        box-shadow: 3px 2px 2px dimgrey;
+        min-width: 16.1%;
+        min-height: 14.16%;
+        border-radius: 10px;
+    }
+
+    .grid-container > input {
+        background-color: white;
+        text-align: center;
+        margin: 5px;
+        padding: 5px;
+        font-size: 10px;
+        box-shadow: 2px 2px 2px dimgrey;
+        min-width: 16.1%;
+        min-height: 14.16%;
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 800px) {
+    .grid-container {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-container {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: grid;
+        grid-template-columns: auto auto;
+    }
 }
 
 .grid-container > div {
@@ -239,10 +417,23 @@ footer{
     text-align: center;
     margin: 5px;
     padding: 5px;
-    font-size: 20px;
+    font-size: 15px;
     box-shadow: 3px 2px 2px dimgrey;
     min-width: 16.1%;
     min-height: 14.16%;
+    border-radius: 10px;
+}
+
+.grid-container > input {
+    background-color: white;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    font-size: 15px;
+    box-shadow: 2px 2px 2px dimgrey;
+    min-width: 16.1%;
+    min-height: 14.16%;
+    border-radius: 5px;
 }
 
 
@@ -267,7 +458,7 @@ footer{
 }
 
 .global .bas {
-    background-color: #d6ecfd;
+    background-color: rgba(255, 255, 255, 0);
     width: 96%;
     height: 95%;
     padding: 0% 2% 2% 2%;
@@ -333,29 +524,7 @@ footer{
     font-size: 20px;
 }
 
-#logout {
-    position: relative;
-    background-color: cornflowerblue; /* Green */
-    color: white;
-    padding: 1px 1px;
-    border: none;
-    border-radius: 20%;
-    cursor: pointer;
-    margin: 16px 0;
-    width: 70px;
-    left: 82%;
-    bottom: 20%;
-}
 
-#logout:hover{
-    box-shadow: 2px 2px black;
-
-}
-
-#img_logout{
-    width: 80%;
-    height: 80%;
-}
 
 .div-norm-scenario{
     border: black medium solid;
@@ -380,4 +549,16 @@ footer{
 .btn-norm:hover{
     box-shadow: black 1px 1px;
     cursor: pointer;
+}
+
+.choix_recherche {
+    height: auto;
+    mso-default-height: 250px;
+    box-shadow: cornflowerblue;
+    border-color: skyblue;
+    border-style: ridge;
+    border-width: medium;
+    padding: 2% 1% 1% 2%;
+    background-color: whitesmoke;
+    text-align: center;
 }

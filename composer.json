@@ -1,0 +1,11 @@
+{
+	"name" : "dpiassembly/dpiassembly",
+	"description" : "Porject S4",
+	"minimum-stability" : "stable",
+	"license" : "proprietary",
+	"require" : {
+		"ext-pdo" : "*",
+		"phpunit/phpunit" : "^7",
+		"phpunit/dbunit" : "^4.0"
+	}
+}

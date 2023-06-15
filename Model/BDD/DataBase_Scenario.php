@@ -1,6 +1,10 @@
 <?php
-require('../BDD/DataBase_Core.php');
-session_start();
+
+require ('DataBase_Core.php');
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 function lstderoulanteScenario(){
     try {
@@ -136,8 +140,8 @@ function lstderoulanteEtu($idS)
     $etu = 'etudiant';
     try {
         $DPI2 = DataBase_Creator_Unit();
-        $DPI = $DPI2->prepare("select distinct login,nom,prenom from utilisateur left join ScenarioEtudiant SE on Utilisateur.login = SE.idU
-where roles=? and (idS is null or idS!=?) order by nom,prenom;");
+        $DPI = $DPI2->prepare("select login,nom,prenom from Utilisateur where roles=? except select distinct login,nom,prenom from utilisateur left join ScenarioEtudiant SE on Utilisateur.login = SE.idU
+where  idS=? order by nom,prenom;");
         $DPI->bindParam(1, $etu);
         $DPI->bindParam(2,$idS);
         $DPI->execute();
@@ -150,20 +154,118 @@ where roles=? and (idS is null or idS!=?) order by nom,prenom;");
     }
 }
 
+function lstderoulanteEtuInscr($idS)
+{
+    try {
+        $DPI2 = DataBase_Creator_Unit();
+        $DPI = $DPI2->prepare("select DISTINCT login,nom,prenom from Utilisateur join ScenarioEtudiant SE on Utilisateur.login = SE.idU where idS=? order by nom,prenom;");
+        $DPI->bindParam(1,$idS);
+        $DPI->execute();
+        $result = $DPI->fetchAll();
+        return $result;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+
+    }
+}
+
 //fonction pour affecter a un etudiant un evenement a une date pour un scenario
-function insertEvenSceEtu($idS,$idEv,$idEtu,$date){
+function insertEvenSceEtu($idS,$idEv,$idEtu,$date,$idIPP){
     try {
         $dbh = DataBase_Creator_Unit();
-        $stmt2 = $dbh->prepare("INSERT INTO ScenarioEtudiant values (?,?,?,?)");
+        $stmt2 = $dbh->prepare("INSERT INTO ScenarioEtudiant values (?,?,?,?,?)");
         $stmt2->bindParam(1, $idS);
         $stmt2->bindParam(2, $idEtu);
         $stmt2->bindParam(3, $idEv);
         $stmt2->bindParam(4, $date);
+        $stmt2->bindParam(5, $idIPP);
         $stmt2->execute();
 
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
         die();
     }
+
+}
+
+function lstderoulCate(){
+    $DPI2 = DataBase_Creator_Unit();
+    $DPI = $DPI2->prepare("select distinct categorie from Evenement");
+    $DPI->execute();
+    return $DPI;
+}
+
+//fonction pour récupérer les dpi d'un scénario
+function recupDPIScenarion($id){
+    try {
+        $DPI2 = DataBase_Creator_Unit();
+        $DPI = $DPI2->prepare("select ipp from dpiScenario where idS=? ");
+        $DPI->bindParam(1, $id);
+        $DPI->execute();
+        $result = $DPI->fetchAll(PDO::FETCH_COLUMN, 0);
+        return $result;
+        //echo "<img class='logo' src=$res>";
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+
+    }
+}
+
+function insertEven($nom,$des,$cate){
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("INSERT INTO Evenement values (default,?,?,?)");
+        $stmt2->bindParam(1, $nom);
+        $stmt2->bindParam(2, $des);
+        $stmt2->bindParam(3, $cate);
+        $stmt2->execute();
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+
+}
+
+function desinsEtuSe($idS,$log){
+    try {
+        $dbh = DataBase_Creator_Unit();
+        $stmt2 = $dbh->prepare("delete from ScenarioEtudiant where idS=? and idU=?");
+        $stmt2->bindParam(1, $idS);
+        $stmt2->bindParam(2, $log);
+        $stmt2->execute();
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+        die();
+    }
+}
+
+
+function lst_deroulante_nom_Scenario()
+{
+
+    $DPI2 = DataBase_Creator_Unit();
+    $DPI = $DPI2->prepare("select scenario.nom
+                                from scenario
+                                left join ScenarioCorbeille SC on scenario.idScenario = SC.idSCorb
+                                join scenarioetudiant on scenario.idscenario = scenarioetudiant.ids where scenarioetudiant.idu = ? and idSCorb is null and (scenario.debut<=current_date and scenario.fin>=current_date)");
+    $DPI->bindParam(1, $_SESSION['username']);
+    $DPI->execute();
+    return $DPI->fetchAll();
+
+}
+
+
+function lst_deroulante_full_nom_Scenario()
+{
+
+    $DPI2 = DataBase_Creator_Unit();
+    $DPI = $DPI2->prepare("SELECT s.nom from scenario s left join ScenarioCorbeille SC on s.idScenario = SC.idSCorb where createur = ? and idSCorb is null");
+    $DPI->bindParam(1, $_SESSION['username']);
+    $DPI->execute();
+    return $DPI->fetchAll();
 
 }

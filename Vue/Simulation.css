@@ -335,8 +335,8 @@ footer{
 
 }
 
-#stock{
-    background-color: papayawhip;
+.choix_scenario{
+    background-color: lightsteelblue;
     height: auto;
     mso-default-height: 250px;
     box-shadow: black;

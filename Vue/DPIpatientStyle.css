@@ -13,6 +13,10 @@ form > input{
     background-color: white;
 }
 
+body{
+    background: linear-gradient(20deg,white,#a5f4f4);
+}
+
 h4{
     font-size: 15px;
 }
@@ -31,48 +35,94 @@ p{
 
 .global{
     width: 100%;
+    display: flex;
 }
+
 .gauche{
     float: left;
+    display: block;
+    transition: width 0.5s ease-out;
     width: 20%;
-    background-color: #729bbd;
-    height: 90%;
+    min-width: 200px;
+    background-color: white;
+    min-height: 90%;
+    flex: 1;
     position: absolute;
-    left: 0px;
+    left: 0;
     top: 10%;
     z-index: 1;
     border-right: black solid;
     border-width: thin;
-    box-shadow: 2px 0px 0px dimgrey;
-
+    box-shadow: 2px 0 0 dimgrey;
 }
+
 .droite{
+    display: block;
+    transition: width 0.5s ease-out, left 0.5s ease-out;
     float: right;
     width: auto;
-    height: 85.6%;
+    flex: 1;
+    min-height: 85%;
+    max-height: 90%;
     position: absolute;
     right: 0px;
     top: 10%;
+    margin-left: 1px;
     left: 20.1%;
-    background-color: #d6ecfd;
+    background-color: white;
+    overflow-y: auto;
+}
+
+.droite::-webkit-scrollbar {
+    width: 6px; /* Largeur de la barre de défilement */
+}
+
+.droite::-webkit-scrollbar-thumb {
+    background-color: #888; /* Couleur de la barre de défilement */
+    border-radius: 3px; /* Bordure arrondie de la barre de défilement */
+}
+
+.droite::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Couleur de la barre de défilement au survol */
+}
+
+.arrow-left{
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 0 6px 10px;
+    border-color: transparent transparent transparent #000000;
+    background-color: #729bbd;
+    cursor: pointer;
+    left: 5px;
+    top: 5px;
+}
+
+.arrow_right {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 10px 6px 0;
+    border-color: transparent #000000 transparent transparent;
+    background-color: #729bbd;
+    cursor: pointer;
+    left: 5px;
+    top: 5px;
 }
 
 header{
-    position: sticky;
     width: 100%;
     float: left;
     height: 10%;
     position: absolute;
     top: 0px;
     left: 0%;
-    background-color: #729bbd;
+    background-color: rgba(255,255,255,0);
     border-bottom: black solid;
     border-width: thin;
     z-index: 2;
     box-shadow: 0px 1px 0px dimgrey;
 }
-
-
 
 .btn-group button {
     background-color: white; /* Green background */
@@ -98,8 +148,8 @@ header{
     display: table;
 }
 /* Add a background color on hover */
-.btn-group button:hover {
-    background-color: cornflowerblue;
+.btn-group input:hover {
+    background-color: #a5f4f4;
     box-shadow: 1px 1px 1px dimgrey;
 }
 .profile{
@@ -119,87 +169,77 @@ header{
 }
 
 .btn-line{
-    background-color: #d6ecfd; /* Green background */
+    background-color: rgba(255,255,255,0); /* Green background */
     color: black; /* White text */
     width: 100%;
     box-shadow: 2px 2px 2px dimgrey;
     font-size: 15px;
-    font-family: "Gill Sans MT";
+    font-family: "Gill Sans MT", serif;
     font-weight: bold;
     float: right;
 }
+
 .btn-line > input{
     width: 12.150%;
-    height: 8%;
+    padding: 1px;
+    min-width: 100px;
+    height: 50px;
     cursor: pointer;
     background-color: white;
-
 }
+
 .btn-line:after {
     content: "";
     clear: both;
     display: table;
 }
 
-table{
-    width: 100%;
-}
-
-.table-td-recipient{
-    height: 50px;
-    max-height: 50px;
-    overflow-y: auto;
-    white-space: normal;
-}
-
-.table-td-div-recipient{
-    height: 50px;
-    max-height: 50px;
-    overflow: auto;
-}
-
-tr {
-    border: black solid thin;
-}
-td {
-    background-color: lightgrey;
-    border: black solid thin;
-}
-
-td > input{
-    width: 100%;
-}
-
-td > textarea{
-    width: 100%;
-    resize: vertical;
-}
-
 
 .container {
     width: 98%;
-    height: auto;
+    height: 105px;
     padding: 1% 1% 1% 1%;
     overflow-x: hidden;
     overflow-y: auto;
     text-align:justify;
-    min-height: 20%;
+    /*min-height: 20%;*/
 }
 
 .grid-container{
     display: grid;
     grid-template-columns: auto auto auto auto;
     width: 96.6%;
-    gap: 5px;
+    gap: 2px;
     background-color: lightgrey;
     padding: 5px;
     box-shadow: 3px 3px 3px 3px dimgrey;
     font-family: Arial;
+    border-radius: 10px;
     font-size: 11px;
-    z-index: 10;
+    z-index: 0;
     position: absolute;
     height: auto;
     min-height: 14%;
+}
+
+/* Responsive Styles */
+@media (max-width: 1000px) {
+    .grid-container{
+        grid-template-columns: auto auto auto;
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 800px) {
+    .grid-container{
+        grid-template-columns: auto auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-container{
+        grid-template-columns: auto;
+    }
 }
 
 .grid-container > div {
@@ -211,6 +251,7 @@ td > textarea{
     box-shadow: 3px 2px 2px dimgrey;
     height: auto;
     cursor: pointer;
+    border-radius: 6px;
 }
 
 .info-intern{
@@ -220,7 +261,25 @@ td > textarea{
     border: black solid thin;
 }
 
-.table-container{
+.table_container{
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.table_container::-webkit-scrollbar {
+    width: 6px; /* Largeur de la barre de défilement */
+}
+
+.table_container::-webkit-scrollbar-thumb {
+    background-color: #888; /* Couleur de la barre de défilement */
+    border-radius: 3px; /* Bordure arrondie de la barre de défilement */
+}
+
+.table_container::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Couleur de la barre de défilement au survol */
+}
+
+.table{
     margin-top: 1%;
     padding: 1%;
 }
@@ -234,14 +293,29 @@ td > textarea{
 
 .container-img {
     border: black solid medium;
-    margin-top: 13%;
-    width: 98%;
-    height: 60%;
+    margin-top: 30px;
+    margin-left: 1%;
+    width: 96%;
+    height: 400px;
     padding: 1% 1% 1% 1%;
     overflow-x: scroll;
     overflow-y: scroll;
     text-align:justify;
     min-height: 20%;
+    margin-bottom: 10px;
+}
+
+.container-img::-webkit-scrollbar {
+    width: 6px; /* Largeur de la barre de défilement */
+}
+
+.container-img::-webkit-scrollbar-thumb {
+    background-color: #888; /* Couleur de la barre de défilement */
+    border-radius: 3px; /* Bordure arrondie de la barre de défilement */
+}
+
+.container-img::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Couleur de la barre de défilement au survol */
 }
 
 /* Positionnez la forme Popup */
@@ -270,4 +344,76 @@ td > textarea{
 .info-container .btn:hover,
 .info-button:hover {
     opacity: 1;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 25px;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border: black thin solid;
+}
+
+.styled-table table > tbody {
+    padding: 0;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+}
+
+.styled-table thead td {
+    border-right: black thin solid;
+    border-left: black thin solid;
+    border-bottom: black thin solid;
+}
+
+.styled-table tbody {
+    padding: 0;
+    text-align: left;
+}
+
+.styled-table tbody td {
+    margin: 0;
+    padding: 0;
+}
+
+.styled-table th,
+.styled-table td {
+    width: 50px;
+    height: 50px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.table-td-recipient{
+    height: 50px;
+    max-height: 50px;
+    overflow-y: auto;
+    white-space: normal;
+}
+
+.table-td-div-recipient{
+    height: 50px;
+    max-height: 50px;
+    overflow: auto;
 }
