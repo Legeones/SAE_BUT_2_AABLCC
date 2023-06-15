@@ -3,6 +3,10 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+/**
+ * Fonction pour afficher les données personnelles du patient.
+ */
 function afficherDataPersos(){
     ?>
     <div class="info-popup" id="donn-perso">
@@ -22,6 +26,8 @@ function afficherDataPersos(){
 <?php }
 
 require_once ('../../Model/BDD/DataBase_Dpi.php');
+
+// Vérifier si la catégorie de la session est "Observation" et si le paramètre 'date' est défini dans l'URL
 if ($_SESSION['cat']=="Observation" && isset($_GET['date'])){
     try{
         $date = $_GET['date'];
@@ -30,35 +36,47 @@ if ($_SESSION['cat']=="Observation" && isset($_GET['date'])){
         $donn = $_GET['donn'] ?? "";
         $act = $_GET['actions'] ?? "";
         $res = $_GET['result'] ?? "";
+
+        // Appeler la fonction Modif_Observation avec les paramètres correspondants
         Modif_Observation($date,$init,$cible,$donn,$act,$res);
     } catch (Exception $e){
         print "Problème de remplissage de données:".$e;
     }
-} else if ($_SESSION['cat']=="Prescription" && isset($_GET['traitement'])){
+}
+// Sinon, vérifier si la catégorie de la session est "Prescription" et si le paramètre 'traitement' est défini dans l'URL
+else if ($_SESSION['cat']=="Prescription" && isset($_GET['traitement'])){
     try{
         $traitement = $_GET['traitement'];
         $type = $_GET['type'];
         $v = $_GET['value20'] ?? $_GET['value12'] ?? $_GET['value08'] ?? "";
+
+        // Appeler la fonction Modif_Prescription avec les paramètres correspondants
         Modif_Prescription($traitement,$type,$v);
     } catch (Exception $e){
         print "Problème de remplissage de données:".$e;
     }
 }
+
+// Vérifier si les paramètres 'date_admission' et 'ipp' sont définis dans l'URL et dans les informations de session
 if (isset($_GET['date_admission']) && isset($_SESSION['infosPersoPatient']['ipp'])){
     try {
         $date = $_GET['date_admission'];
         $ipp = $_SESSION['infosPersoPatient']['ipp'];
+
+        // Appeler la fonction ajouterAdmissionPatient avec les paramètres correspondants
         ajouterAdmissionPatient($ipp,$date);
     } catch (Exception $e){
         ErrorMessage($e);
     }
 }
-if (isset($_GET['patient_ipp'])&&isset($_GET['patient_iep'])) {
+
+// Vérifier si les paramètres 'patient_ipp' et 'patient_iep' sont définis dans l'URL
+if (isset($_GET['patient_ipp']) && isset($_GET['patient_iep'])) {
     try {
+        // Appeler la fonction terminerAdmissionPatient avec les paramètres correspondants
         terminerAdmissionPatient($_GET['patient_ipp'],$_GET['patient_iep']);
     } catch (Exception $e){
         ErrorMessage($e);
     }
 }
 ?>
-
