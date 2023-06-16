@@ -7,8 +7,8 @@ header{
     border-bottom: black solid;
     border-width: thin;
     box-shadow: 0px 1px 0px dimgrey;
-
 }
+
 #haut .form_header{
     margin-top: -15px;
     background-color: rgba(255, 255, 255, 0);
@@ -485,7 +485,7 @@ footer{
 /*MDF dpi*/
 
 .bas .recherche{
-    height: 15%;
+    height: 28%;
     width: 100%;
 
 }
@@ -560,5 +560,11 @@ footer{
     border-width: medium;
     padding: 2% 1% 1% 2%;
     background-color: whitesmoke;
+    text-align: center;
+}
+
+
+#b2,#bt_retour,#bt_validation,#precedent3,#boutonSuivant2{
+    min-width: 100px;
     text-align: center;
 }

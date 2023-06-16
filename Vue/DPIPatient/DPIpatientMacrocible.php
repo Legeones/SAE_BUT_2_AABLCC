@@ -22,6 +22,15 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
         <div class="profile">
             <img alt="Profile" width="100%" height="100%" src="https://static.vecteezy.com/ti/vecteur-libre/p3/2318271-icone-de-profil-utilisateur-gratuit-vectoriel.jpg">
         </div>
+        <script defer>
+            function affichePopUp(){
+                if (<?= $_SESSION['infosPersoPatient']['datefin'] ?>){
+                    alert("Le patient n'est actuellement pas admis.")
+                }else if (window.confirm("Souhaitez vous vraiment terminer l'admission ?")){
+                    window.location.replace("../../Controleur/DPIPatient/patientDPIfunction.php?patient_ipp=<?= $_SESSION['infosPersoPatient']['ipp']."&patient_iep=".$_SESSION['infosPersoPatient']['iep'] ?>");
+                }
+            }
+        </script>
         <div class="btn-group">
             <button onclick="location.href='DPI.php'">PATIENTS</button>
             <button onclick="location.href='../Scenario/principaleEve.php'">SCENARIOS</button>
@@ -30,20 +39,11 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
             if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {
                 echo "<button onclick=location.href='AjouterAdmissionPatient.php'>AJOUT ADMISSION</button onclick=location.href='../DPIpatient/AjouterAdmissionPatient.php'>";
                 echo '<br>';
-                echo "<button onclick=affichePopUp('div_pop_up_accept')>TERMINER ADMISSION</button>";
+                echo "<button onclick=affichePopUp()>TERMINER ADMISSION</button>";
             }
 
                 ?>
         </div>
-        <script>
-            function affichePopUp(id){
-                if (<?= $_SESSION['infosPersoPatient']['datefin'] ?>){
-                    alert("Le patient n'est actuellement pas admis.")
-                }else if (window.confirm("Souhaitez vous vraiment terminer l'admission ?")){
-                    window.location.replace("../../Controleur/DPIPatient/patientDPIfunction.php?patient_ipp=<?= $_SESSION['infosPersoPatient']['ipp']."&patient_iep=".$_SESSION['infosPersoPatient']['iep'] ?>");
-                }
-            }
-        </script>
     </div>
     <script>
 

@@ -52,7 +52,8 @@
                     <br><br><br>
                     <div id="date_scenario">
                         <label for="nom_scenario"> Nom du scenario </label> <br> <input type="text" name="nom_scenario" id="nom_scenario"> <br>
-                        <label for="debut"> début du scénario</label> <br> <input type="date" name="debut" id="debut"> <br>
+                        <label for="debut"> début du scénario</label> <br> <input type="date" name="debut" id="debut" min=<?php $date = new DateTime();
+                        $date->add(new DateInterval('P1D')); echo $date->format('Y-m-d');?>> <br>
                         <label for="fin">fin du scénario</label> <br> <input type="date" name="fin" id="fin">
 
                     </div>
@@ -62,8 +63,6 @@
                         //Main
                         if(!empty($db)) {
                             if (isset($_SESSION['values']) && isset($_SESSION['debut']) && isset($_SESSION['fin'])) {
-                                echo "les sessions ne sont pas vides !";
-                                echo implode($_SESSION['values']); echo $_SESSION['debut']; echo $_SESSION['fin'];
                                 ajout_scenario($db);
                             }
 
@@ -80,7 +79,7 @@
 
 
                     <div id="ajout_event">
-                        <div id="event_categorie" style="background-color: #66CCCC">
+                        <div id="event_categorie">
                             <label for="nbevent">Nombre d'évènement</label> <br> <input type="text" id="nbevent" name="nbevent" placeholder="Entrez le nombre d'event que vous voulez" style="width: 50%"><br>
                             <label for="type_categorie">Catégorie des évènements</label> <br> <input type="text" id="type_categorie" name="type_categorie" placeholder="Entrez la catégorie d'évènement que vous souhaitez" style="width: 50%">
 
@@ -88,7 +87,7 @@
 
                         <br><br>
 
-                        <div id="event_aleatoire" style="background-color: mediumpurple">
+                        <div id="event_aleatoire">
                             <label for="nbevent_alea">Nombre d'évènement</label> <br> <input type="text" id="nbevent_alea" name="nbevent_alea" placeholder="Entrez le nombre d'event que vous voulez" style="width: 50%">
                         </div>
                     </div>
@@ -97,7 +96,7 @@
 
                     <div align="center" id="stock">
                         <br><br>
-                        <button id="ajout_s" value="Ajout_s" style="position: center">Ajouter le scenario</button>
+                        <button id="ajout_s" value="Ajout_s">Ajouter le scenario</button>
                         <button type="reset" id="reset_s" value="reset_s"> Reset les informations</button>
 
 

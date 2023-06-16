@@ -133,7 +133,7 @@ require ('../../Controleur/DPIPatient/Principal_PHP_Fonction_DPI_ADD_or_Modif.ph
                     ?>
                     <div class="Validation" align="center">
                         <button type="button" id="precedent3" onclick="suivant('formConfiance','formContact'), changeCouleurBouton('boutondebut1','boutondebut2','boutondebut')">Précedent</button>
-                        <input type="submit" value="Valider">
+                        <input id="bt_validation" type="submit" value="Valider">
                     </div>
                 </div>
             </form>

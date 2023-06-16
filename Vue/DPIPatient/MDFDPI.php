@@ -24,9 +24,9 @@ require ('../../Controleur/DPIPatient/Principal_PHP_Fonction_DPI_ADD_or_Modif.ph
             <br>
             <form id="form" action="../../Controleur/DPIPatient/MDPDPI_PHP.php" method="post">
                 <div class="recherche">
+                    <input id="bt_retour" class="reset" onclick="location.href='MDF_Accueil.php'" type="button" value="Retour"/>
                     <div class="contenuRech">
                         <?php deroulementDPI(); ?>
-                        <input class="reset" onclick="location.href='MDF_Accueil.php'" type="button" value="Retour"/>
                     </div>
                 </div>
                 <div class="separation"></div>

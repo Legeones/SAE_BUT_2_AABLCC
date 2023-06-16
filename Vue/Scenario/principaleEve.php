@@ -10,7 +10,7 @@
 <body>
 <header>
     <img class="logo" src="../../Images/logoIFSI.png">
-    <button title="Déconnexion" id="logout" onclick="location.href='../Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
+
 </header>
 <div class="global">
     <div class="gauche">
