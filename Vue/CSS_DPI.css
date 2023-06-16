@@ -7,8 +7,8 @@ header{
     border-bottom: black solid;
     border-width: thin;
     box-shadow: 0px 1px 0px dimgrey;
-
 }
+
 #haut .form_header{
     margin-top: -15px;
     background-color: rgba(255, 255, 255, 0);

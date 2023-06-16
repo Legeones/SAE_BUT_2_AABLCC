@@ -69,6 +69,7 @@ p{
     top: 10%;
     margin-left: 1px;
     left: 20.1%;
+    min-width: calc(80% - 200px);
     background-color: white;
     overflow-y: auto;
 }
@@ -196,7 +197,7 @@ header{
 
 
 .container {
-    width: 98%;
+    /*width: 98%;*/
     height: 105px;
     padding: 1% 1% 1% 1%;
     overflow-x: hidden;
@@ -209,6 +210,7 @@ header{
     display: grid;
     grid-template-columns: auto auto auto auto;
     width: 96.6%;
+    /*margin-left: calc(96% - 90%);*/
     gap: 2px;
     background-color: lightgrey;
     padding: 5px;
@@ -223,22 +225,36 @@ header{
 }
 
 /* Responsive Styles */
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
+    .droite{
+    }
+
     .grid-container{
         grid-template-columns: auto auto auto;
+        max-width: calc(96% - 20%);
     }
 }
 
 /* Responsive Styles */
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
+    .droite{
+        left: 200px;
+        max-width: calc(100% - 200px);
+    }
     .grid-container{
         grid-template-columns: auto auto;
+        max-width: calc(96% - 20%);
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
+    .droite{
+        left: 200px;
+        max-width: calc(100% - 200px);
+    }
     .grid-container{
         grid-template-columns: auto;
+        max-width: calc(96% - 20%);
     }
 }
 

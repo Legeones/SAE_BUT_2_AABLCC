@@ -15,6 +15,8 @@ function alterner(id){
     }
 }
 
+
+
 function show_data_patient_div(id){
     /*
     La fonction "show_data_patient_div(id)" permet d'afficher ou masquer un élément HTML en fonction de son ID en paramètre,
