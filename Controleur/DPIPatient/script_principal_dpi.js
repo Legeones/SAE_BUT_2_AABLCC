@@ -55,7 +55,7 @@ document.addEventListener("mousemove", (event) => {
     }
 
 });
-
+// Cette fonction sert à récupérer tous les patients en fonction des filtres en paramètre
 function patientParcour(select, admi, recherche, action, callback){
     var xhr = new XMLHttpRequest();
     let selectURL = "";
@@ -84,7 +84,7 @@ function patientParcour(select, admi, recherche, action, callback){
     xhr.send();
 }
 
-
+// Cette fonction sert à récupérer tous les patients associés au scénario en paramètre
 function patientParcour_exam(name_senario, callback){
     var xhr = new XMLHttpRequest();
 
@@ -108,43 +108,48 @@ function patientParcour_exam(name_senario, callback){
     xhr.send();
 }
 
+//Cette fonction sert à créer un tableau avec les patients optenu
 function recherche_DPI_senario_mode_exam(){
     let select = document.querySelector("#DPI_Patient").value;
-    patientParcour_exam(select, function (error, response) {
+    patientParcour_exam(select, function (error, response) { // récupération des patients
         if (error){
             console.log(response);
         } else {
             console.log(response);
-            tableauPatients(response);
-        }
-    });
-}
-function recherche_DPI_accueil() {
-    patientParcour("", "", "", "", function (error, response) {
-        if (error) {
-            console.log(response);
-        } else {
-            console.log(response);
-            tableauPatients(response);
+            tableauPatients(response); //creation du tableau
         }
     });
 }
 
+//Cette fonction sert à créer un tableau avec les patients optenu
+function recherche_DPI_accueil() {
+    patientParcour("", "", "", "", function (error, response) {// récupération des patients
+        if (error) {
+            console.log(response);
+        } else {
+            console.log(response);
+            tableauPatients(response);//creation du tableau
+        }
+    });
+}
+
+// renseigner la session pour savoir si on est en mode examen ou pas
 function session_mode_exam(value){
     const xhr = new XMLHttpRequest();
     xhr.open('GET', '../../Controleur/DPIPatient/actionPrincipale.php?valeur_session=' + value, true)
     xhr.send();
 }
 
+// échanger deux boutons
 function visible_bouton(bt1,bt2){
     bt1.style.display = "block"
     bt2.style.display = "none"
 }
 
-
+// cette fonction prend le click du bouton de mode examen pour changer l'interface ainsi que le tableau des patients
 document.getElementById('bt1_exam').addEventListener("click", function (event){
     event.preventDefault();
-    session_mode_exam(2);
+    session_mode_exam(2); // la session prend la valeur du mode examen activé
     const div_none = document.getElementById('select');
     const body = document.body;
     div_none.style.display = "block";
@@ -153,17 +158,17 @@ document.getElementById('bt1_exam').addEventListener("click", function (event){
     if (div_ON !== null){
         div_ON.style.display = 'block'
     }
-    recherche_DPI_senario_mode_exam();
+    recherche_DPI_senario_mode_exam();// affiche le tableau de patients et le répète 3fois pour éviter les bugs
     recherche_DPI_senario_mode_exam();
     recherche_DPI_senario_mode_exam();
     document.getElementById('bt_affiche_dpi').style.display = 'block'
-    visible_bouton(document.getElementById('bt1_examOn'),this)
+    visible_bouton(document.getElementById('bt1_examOn'),this) // j'échange les boutons
 })
 
-
+// cette fonction prend le click du bouton de mode examen pour changer l'interface ainsi que le tableau des patients
 document.getElementById('bt1_examOn').addEventListener("click", function (event) {
     event.preventDefault();
-    session_mode_exam(1);
+    session_mode_exam(1); // la session prend la valeur du mode examen désactivé
     const div_none = document.getElementById('select');
     const body = document.body;
     div_none.style.display = "none";
@@ -174,7 +179,7 @@ document.getElementById('bt1_examOn').addEventListener("click", function (event)
     if (div_ON !== null){
         div_ON.style.display = 'none'
     }
-    recherche_DPI_accueil();
+    recherche_DPI_accueil();// affiche le tableau de patients et le répète 3fois pour éviter les bugs
     recherche_DPI_accueil();
     recherche_DPI_accueil();
     document.getElementById('bt_affiche_dpi').style.display = 'none'
@@ -187,16 +192,16 @@ var admi = "";
 var recherche = "";
 
 window.onload = () => {
-    session_mode_exam(1);
-    recherche_DPI_accueil();
+    session_mode_exam(1); // initialise le mode examen en tant que désactivé
+    recherche_DPI_accueil();//affiche tous les patents de la base de données
 };
-
+// active la recherche des patients en fonction des filtres donnés en cliquant sur le bouton Rechercher
 document.querySelector("#rechercher").addEventListener('click', (event) => {
     event.preventDefault();
     select = document.querySelector("#ordre").value;
     admi = document.querySelector("#admission").value;
     recherche = document.querySelector("#recherche_barre").value;
-    patientParcour(select, admi, recherche,"", function (error, response) {
+    patientParcour(select, admi, recherche,"", function (error, response) { // récupération des patients avec les filtres en paramètre
         if (error){
             console.log(response);
         } else {
@@ -206,6 +211,7 @@ document.querySelector("#rechercher").addEventListener('click', (event) => {
     });
 })
 
+// Permet voir les 24 prochains patients en cliquant sur le bouton next
 document.getElementById('next').addEventListener('click', (event) => {
     event.preventDefault();
     console.log("next")
@@ -218,6 +224,9 @@ document.getElementById('next').addEventListener('click', (event) => {
         }
     });
 });
+
+
+// Permet voir les 24 précédents patients en cliquant sur le bouton next
 document.getElementById('back').addEventListener('click', (event) => {
     event.preventDefault();
     patientParcour(select, admi, recherche,"back", function (error, response) {
@@ -231,11 +240,13 @@ document.getElementById('back').addEventListener('click', (event) => {
 
 });
 
+// active la recherche des patients en fonction du scénario en cliquant sur le bouton valider
 document.getElementById("bt_affiche_dpi").addEventListener('click', (event) => {
     event.preventDefault();
     recherche_DPI_senario_mode_exam();
 })
 
+// cette fonction permet de reset le tableau
 function cleanTableau(){
     let form = document.querySelector("#form");
     form.innerHTML = "";
