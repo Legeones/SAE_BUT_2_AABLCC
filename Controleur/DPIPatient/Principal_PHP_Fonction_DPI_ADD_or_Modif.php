@@ -85,7 +85,7 @@ function deroulementDPI(){?>
 
         <label for="rech" class="labIPP">Numéro IPP</label>
         <input class="reche" type="text" id="rech" name="recherche" value="<?php $id?>">
-        <input id="b1" type="submit" value="Recherche">
+        <input style="min-width: 100px ;text-align: center;" id="b1" type="submit" value="Recherche">
     </select>
 <?php }
 

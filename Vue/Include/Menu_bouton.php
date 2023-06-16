@@ -16,7 +16,7 @@
             echo "<button onclick=location.href='AjouterDPI.php'> Ajouter DPI</button>";
             // Bouton permettant d'ajouter un DPI
             echo '<br>';
-            echo "<button onclick=location.href='MDFDPI.php'>Modifier DPI</button>";
+            echo "<button onclick=location.href='MDF_Accueil.php'>Modifier DPI</button>";
             // Bouton permettant de modifier le DPI
             echo '<br>';
             echo "<button onclick=location.href='Corbeille.php'>Corbeille DPI</button>";

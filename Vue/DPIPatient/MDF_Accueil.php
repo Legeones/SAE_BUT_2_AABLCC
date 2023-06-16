@@ -13,9 +13,10 @@ require ('../../Controleur/DPIPatient/Principal_PHP_Fonction_DPI_ADD_or_Modif.ph
 
 </head>
 <body>
-<?php
-include('../../Vue/Include/Header.php')
-?>
+<header id="haut">
+    <img class="logo" src="../../Images/logoIFSI.png" alt="LogoIFSI">
+    <button type="button" title="Déconnexion" id="logout" class="logout" onclick="location.href='../Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
+</header>
 <div class="global">
     <?php
     include('../../Vue/Include/Menu_bouton.php')

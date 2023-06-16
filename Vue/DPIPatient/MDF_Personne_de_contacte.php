@@ -13,9 +13,10 @@ require ('../../Controleur/DPIPatient/Principal_PHP_Fonction_DPI_ADD_or_Modif.ph
 
 </head>
 <body>
-<?php
-include('../../Vue/Include/Header.php')
-?>
+<header id="haut">
+    <img class="logo" src="../../Images/logoIFSI.png" alt="LogoIFSI">
+    <button type="button" title="Déconnexion" id="logout" class="logout" onclick="location.href='../Accueil/Deconnexion.php'"><img id="img_logout" src="../../Images/Logout.png"></button>
+</header>
 <div class="global">
     <?php
     include('../../Vue/Include/Menu_bouton.php')
@@ -27,9 +28,9 @@ include('../../Vue/Include/Header.php')
             <br>
             <form id="formMDFDPI" action="../../Controleur/DPIPatient/MDPDPI_PHP.php" method="post">
                 <div class="recherche">
+                    <input id="bt_retour" class="reset" onclick="location.href='MDF_Accueil.php'" type="button" value="Retour"/>
                     <div class="contenuRech">
                         <?php deroulementDPI(); ?>
-                        <input class="reset" onclick="location.href='MDF_Accueil.php'";" type="button" value="Retour"/>
                     </div>
                 </div>
                 <div class="separation"></div>
