@@ -224,7 +224,6 @@ header{
     min-height: 14%;
 }
 
-/* Responsive Styles */
 @media (max-width: 1200px) {
     .droite{
     }
@@ -235,7 +234,6 @@ header{
     }
 }
 
-/* Responsive Styles */
 @media (max-width: 1000px) {
     .droite{
         left: 200px;
@@ -252,6 +250,15 @@ header{
         left: 200px;
         max-width: calc(100% - 200px);
     }
+
+    .info{
+        max-width: calc(100% - 30%);
+    }
+
+    .info>p{
+        max-width: calc(100% - 30%);
+    }
+
     .grid-container{
         grid-template-columns: auto;
         max-width: calc(96% - 20%);

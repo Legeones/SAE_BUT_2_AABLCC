@@ -24,10 +24,17 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
         </div>
         <script defer>
             function affichePopUp(){
-                if (<?= $_SESSION['infosPersoPatient']['datefin'] ?>){
+                console.log(<?= "".$_SESSION['infosPersoPatient']['datefin'] ?>)
+                if ("<?= trim($_SESSION['infosPersoPatient']['datedebut']) ?>" === ""){
                     alert("Le patient n'est actuellement pas admis.")
-                }else if (window.confirm("Souhaitez vous vraiment terminer l'admission ?")){
-                    window.location.replace("../../Controleur/DPIPatient/patientDPIfunction.php?patient_ipp=<?= $_SESSION['infosPersoPatient']['ipp']."&patient_iep=".$_SESSION['infosPersoPatient']['iep'] ?>");
+                }else {
+                    if ("<?= $_SESSION['infosPersoPatient']['datefin'] ?>" === ""){
+                        if (window.confirm("Souhaitez vous vraiment terminer l'admission ?")) {
+                            window.location.replace("../../Controleur/DPIPatient/patientDPIfunction.php?patient_ipp=<?= $_SESSION['infosPersoPatient']['ipp'] . "&patient_iep=" . $_SESSION['infosPersoPatient']['iep'] ?>");
+                        }
+                    } else {
+                        alert("Le patient n'est actuellement pas admis.")
+                    }
                 }
             }
         </script>
@@ -39,22 +46,12 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
             if ($_SESSION["Role"] == "admin" or $_SESSION["Role"] == "prof") {
                 echo "<button onclick=location.href='AjouterAdmissionPatient.php'>AJOUT ADMISSION</button onclick=location.href='../DPIpatient/AjouterAdmissionPatient.php'>";
                 echo '<br>';
-                echo "<button onclick=affichePopUp()>TERMINER ADMISSION</button>";
+                echo "<button onclick=affichePopUp();>TERMINER ADMISSION</button>";
             }
 
                 ?>
         </div>
     </div>
-    <script>
-
-        function afficherPopUp() {
-            if(window.confirm("Fin d'admission pour "+<?= $_SESSION['infosPersoPatient']['ipp'] ?>)){
-                window.location.replace("../DPIPatient/TerminerAdmissionPatient.php");
-            } else {
-                window.alert("Vous avez annuler la fin de l'admission")
-            }
-        }
-    </script>
     <div class="droite" id="global_droit">
         <form action="../../Controleur/DPIPatient/actionDPI.php" name="cat" method="get" class="btn-line">
             <!-- zone d'ajout de boutons -->
