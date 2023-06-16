@@ -2,8 +2,7 @@
 
 //Partie evenement
 
-//fonction qui permet d'avoir la liste des id des évènements
-function id_existance_aleatoire($dbh){
+function id_existance_aleatoire($dbh){ //fonction qui permet d'avoir la liste des id des évènements
     $req = $dbh->prepare("select idevenement
     from evenement except select idevenement from evenement where categorie = ?");
     $req->bindparam(1, $_POST['type_categorie']);
@@ -33,7 +32,7 @@ function id_existance_categorie($dbh): array  //fonction qui permet de récupér
 
 
 
-function recup_event_id($dbh): array //fonction qui récupère les id min et max des évènements
+function recup_event_id($dbh): array //fonction qui récupère les ids min et max des évènements
 {
     $req = $dbh->prepare("select min(idevenement), max(idevenement) from evenement");
     $req->execute();
@@ -71,18 +70,18 @@ function recup_event($dbh): array
     $k = 0;
     $les_ids = id_existance_aleatoire($dbh);
     $events_alea = array();
-    if($les_ids != []){
+    if($les_ids != []){ // vérification que la liste des ids n'est pas vite
         if(!empty($j)){
             while($k != $j){
                 $r = random_int($donnees[0][0], $donnees[0][1]);
                 if (in_array($r, $les_ids[$k])){
-                    $events_alea[] = $r;
+                    $events_alea[] = $r; //insertion des évènements aléatoires
                     $k += 1;
                 }
             }
         }
     }
-    foreach ($events_alea as $row){
+    foreach ($events_alea as $row){ //ajout des évènements aléatoires avec ceux avec catégorie
         $events_cat[]+= $row;
     }
     return  $events_cat;
@@ -120,7 +119,6 @@ function ajout_scenario($dbh): void //fonction qui permet d'ajouter des scénari
     //insertion des données dans la table scenario
     $insertion = $dbh->prepare("insert into scenario (idscenario,nom, debut, fin, nbEv, createur) 
                         VALUES (?,?,?,?,?,?)");
-
     //paramètres pour la requête SQL
     $insertion->bindparam(1, $idscenario);
     $insertion->bindparam(2, $_POST['nom_scenario']);
@@ -133,9 +131,7 @@ function ajout_scenario($dbh): void //fonction qui permet d'ajouter des scénari
     $compt = [];
     $k=0;
     while(sizeof($compt) < $nbevents){ //boucle pour l'insertion de l'association des évènements avec le scénario en question
-        //$k = random_int(0, sizeof($idevents)-1);
         $id = $idevents[$k];
-        //vérification de la donnée qui n'est pas déjà présente dans la BDD
         $insertion_event = $dbh->prepare("insert into scenarioevenement (idscenario, idevenement) VALUES (?,?)"); //insertion des données dans la BDD
         $insertion_event->bindparam(1, $idscenario); //paramètres de la requête
         $insertion_event->bindparam(2, $id);
@@ -149,7 +145,7 @@ function ajout_scenario($dbh): void //fonction qui permet d'ajouter des scénari
     }
 
     $b= 0;
-    while($b < sizeof($dpi)){
+    while($b < sizeof($dpi)){ //boucle pour l'insertion de l'association du scénario avec le DPI prédéfini
         $insert = $dbh->prepare("insert into dpiScenario (ipp, idS) values (?,?)");
         $insert->bindparam(1, $dpi[$b]);
         $insert->bindparam(2, $idscenario);
@@ -162,7 +158,7 @@ function ajout_scenario($dbh): void //fonction qui permet d'ajouter des scénari
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //DPI
-function lst_dpi($dbh){
+function lst_dpi($dbh){ //permet d'afficher une liste déroulante avec le nom et prénom des patients via leur IPP
     try{
         $req= $dbh->prepare("select ipp, nom, prenom from patient
         Left join corbeille on patient.ipp = corbeille.ippcorb
@@ -194,6 +190,5 @@ function lst_dpi($dbh){
 //
 //    }
 //}
-
 
 ?>
