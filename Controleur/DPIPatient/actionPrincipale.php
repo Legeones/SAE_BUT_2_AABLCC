@@ -12,12 +12,13 @@ if(!isset($_SESSION['incrPat'])){
     $_SESSION['incrPat'] = 0;
 }
 
-if(isset($_GET['next'])){
-    $_SESSION['incrPat']+=24;
-}
-if(isset($_GET['back'])){
-    if($_SESSION['incrPat']>0){
-        $_SESSION['incrPat']-=24;
+if(isset($_GET['action'])){
+    if ($_GET['action'] === "next"){
+        $_SESSION['incrPat']+=24;
+    } else if ($_GET['action'] === "back"){
+        if($_SESSION['incrPat']>0){
+            $_SESSION['incrPat']-=24;
+        }
     }
 }
 

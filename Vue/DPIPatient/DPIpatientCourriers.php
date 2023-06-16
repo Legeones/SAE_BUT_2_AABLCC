@@ -50,16 +50,16 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
             <div class="login-popup">
                 <?= afficherDataPersos() ?>
             </div>
-            <div class="container-img">
-                <?php
-                $result= VisuCour($_SESSION['infosPersoPatient']['ipp']);
+        </div>
+        <div class="container-img">
+            <?php
+            $result= VisuCour($_SESSION['infosPersoPatient']['ipp']);
 
-                foreach ($result as $p){
-                    echo "<img alt='Image courrier' class='img' src=$p>";
-                    echo "<br>";
-                }
-                ?>
-            </div>
+            foreach ($result as $p){
+                echo "<img alt='Image courrier' class='img' src=$p>";
+                echo "<br>";
+            }
+            ?>
         </div>
     </div>
 </div>

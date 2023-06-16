@@ -48,7 +48,7 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
         <div class="login-popup">
             <?= afficherDataPersos() ?>
         </div>
-        <div style="overflow-x: scroll;overflow-y: scroll";>
+        <div class="table_container">
             <form class="table-container" method="get" action="../../Controleur/DPIPatient/patientDPIfunction.php">
                 <table class="styled-table">
                     <caption>Plan d'administration</caption>

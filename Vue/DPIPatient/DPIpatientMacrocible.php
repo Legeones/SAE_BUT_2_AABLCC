@@ -12,7 +12,9 @@ require ('../../Controleur/DPIPatient/patientDPIfunction.php');
 
     <link rel="stylesheet" href="../DPIpatientStyle.css" media="screen" type="text/css" />
 </head>
-
+<header>
+    <img alt="LogoIFSI" class="logo" src="../../Images/logoIFSI.png">
+</header>
 <body>
 <script type="text/javascript" src="../../Controleur/DPIPatient/scriptsDPIpatient.js"></script>
 <div class="global">

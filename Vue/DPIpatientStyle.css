@@ -13,6 +13,10 @@ form > input{
     background-color: white;
 }
 
+body{
+    background: linear-gradient(20deg,white,#a5f4f4);
+}
+
 h4{
     font-size: 15px;
 }
@@ -31,35 +35,55 @@ p{
 
 .global{
     width: 100%;
+    display: flex;
 }
+
 .gauche{
     float: left;
     display: block;
     transition: width 0.5s ease-out;
     width: 20%;
-    background-color: #729bbd;
-    height: 90%;
+    min-width: 200px;
+    background-color: white;
+    min-height: 90%;
+    flex: 1;
     position: absolute;
     left: 0;
     top: 10%;
     z-index: 1;
     border-right: black solid;
     border-width: thin;
-    box-shadow: 2px 0px 0px dimgrey;
-
+    box-shadow: 2px 0 0 dimgrey;
 }
+
 .droite{
     display: block;
     transition: width 0.5s ease-out, left 0.5s ease-out;
     float: right;
     width: auto;
-    height: 85.6%;
+    flex: 1;
+    min-height: 85%;
+    max-height: 90%;
     position: absolute;
     right: 0px;
     top: 10%;
+    margin-left: 1px;
     left: 20.1%;
-    background-color: #d6ecfd;
+    background-color: white;
     overflow-y: auto;
+}
+
+.droite::-webkit-scrollbar {
+    width: 6px; /* Largeur de la barre de défilement */
+}
+
+.droite::-webkit-scrollbar-thumb {
+    background-color: #888; /* Couleur de la barre de défilement */
+    border-radius: 3px; /* Bordure arrondie de la barre de défilement */
+}
+
+.droite::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Couleur de la barre de défilement au survol */
 }
 
 .arrow-left{
@@ -93,7 +117,7 @@ header{
     position: absolute;
     top: 0px;
     left: 0%;
-    background-color: #729bbd;
+    background-color: rgba(255,255,255,0);
     border-bottom: black solid;
     border-width: thin;
     z-index: 2;
@@ -124,8 +148,8 @@ header{
     display: table;
 }
 /* Add a background color on hover */
-.btn-group button:hover {
-    background-color: cornflowerblue;
+.btn-group input:hover {
+    background-color: #a5f4f4;
     box-shadow: 1px 1px 1px dimgrey;
 }
 .profile{
@@ -145,7 +169,7 @@ header{
 }
 
 .btn-line{
-    background-color: #d6ecfd; /* Green background */
+    background-color: rgba(255,255,255,0); /* Green background */
     color: black; /* White text */
     width: 100%;
     box-shadow: 2px 2px 2px dimgrey;
@@ -173,25 +197,26 @@ header{
 
 .container {
     width: 98%;
-    height: auto;
+    height: 105px;
     padding: 1% 1% 1% 1%;
     overflow-x: hidden;
     overflow-y: auto;
     text-align:justify;
-    min-height: 20%;
+    /*min-height: 20%;*/
 }
 
 .grid-container{
     display: grid;
     grid-template-columns: auto auto auto auto;
     width: 96.6%;
-    gap: 5px;
+    gap: 2px;
     background-color: lightgrey;
     padding: 5px;
     box-shadow: 3px 3px 3px 3px dimgrey;
     font-family: Arial;
+    border-radius: 10px;
     font-size: 11px;
-    z-index: 10;
+    z-index: 0;
     position: absolute;
     height: auto;
     min-height: 14%;
@@ -241,6 +266,19 @@ header{
     overflow-y: hidden;
 }
 
+.table_container::-webkit-scrollbar {
+    width: 6px; /* Largeur de la barre de défilement */
+}
+
+.table_container::-webkit-scrollbar-thumb {
+    background-color: #888; /* Couleur de la barre de défilement */
+    border-radius: 3px; /* Bordure arrondie de la barre de défilement */
+}
+
+.table_container::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Couleur de la barre de défilement au survol */
+}
+
 .table{
     margin-top: 1%;
     padding: 1%;
@@ -255,14 +293,29 @@ header{
 
 .container-img {
     border: black solid medium;
-    margin-top: 13%;
-    width: 98%;
-    height: 60%;
+    margin-top: 30px;
+    margin-left: 1%;
+    width: 96%;
+    height: 400px;
     padding: 1% 1% 1% 1%;
     overflow-x: scroll;
     overflow-y: scroll;
     text-align:justify;
     min-height: 20%;
+    margin-bottom: 10px;
+}
+
+.container-img::-webkit-scrollbar {
+    width: 6px; /* Largeur de la barre de défilement */
+}
+
+.container-img::-webkit-scrollbar-thumb {
+    background-color: #888; /* Couleur de la barre de défilement */
+    border-radius: 3px; /* Bordure arrondie de la barre de défilement */
+}
+
+.container-img::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Couleur de la barre de défilement au survol */
 }
 
 /* Positionnez la forme Popup */

@@ -12,7 +12,6 @@
     visible en utilisant les propriétés event.x et event.y pour récupérer les coordonnées de la souris.
     Il y a des conditions pour vérifier si l'élément est sorti de la zone visible et le décaler à sa place.
 */
-
 let mousePositionElement = document.getElementById('1');
 let onApparaitElement = false;
 function apparait(id) {
@@ -47,7 +46,6 @@ if (onApparaitElement){
     if (posbas > document.body.offsetHeight){
         y = event.y-document.getElementById('haut').offsetHeight-mousePositionElement.offsetHeight-document.getElementById('formulaire_recherche').offsetHeight;
         posbas = event.y+mousePositionElement.offsetHeight+40;
-        console.log(document.body.offsetHeight+":"+(event.y+mousePositionElement.offsetHeight));
     } else {
         y = event.y-document.getElementById('haut').offsetHeight-document.getElementById('formulaire_recherche').offsetHeight;
         posbas = event.y+mousePositionElement.offsetHeight+40;
@@ -58,11 +56,12 @@ if (onApparaitElement){
 
 });
 
-function patientParcour(select, admi, recherche, callback){
+function patientParcour(select, admi, recherche, action, callback){
     var xhr = new XMLHttpRequest();
     let selectURL = "";
     let admiURL = "";
     let rechercheURL = "";
+    let pos = "&action="+action;
     if (select!=="") selectURL = "select="+select;
     if (admi!=="") admiURL = "&admi="+admi;
     if (recherche!=="") rechercheURL = "&recherche_barre="+recherche;
@@ -79,7 +78,7 @@ function patientParcour(select, admi, recherche, callback){
 }
 };
     // Ouverture de la requête GET vers la page PHP
-    xhr.open("GET", "../../Controleur/DPIPatient/actionPrincipale.php?"+selectURL+admiURL+rechercheURL, true);
+    xhr.open("GET", "../../Controleur/DPIPatient/actionPrincipale.php?"+selectURL+admiURL+rechercheURL+pos, true);
 
     // Envoi de la requête
     xhr.send();
@@ -121,7 +120,7 @@ function recherche_DPI_senario_mode_exam(){
     });
 }
 function recherche_DPI_accueil() {
-    patientParcour("", "", "", function (error, response) {
+    patientParcour("", "", "", "", function (error, response) {
         if (error) {
             console.log(response);
         } else {
@@ -183,7 +182,9 @@ document.getElementById('bt1_examOn').addEventListener("click", function (event)
 })
 
 
-
+var select = "";
+var admi = "";
+var recherche = "";
 
 window.onload = () => {
         session_mode_exam(1);
@@ -192,10 +193,10 @@ window.onload = () => {
 
         document.querySelector("#rechercher").addEventListener('click', (event) => {
         event.preventDefault();
-        let select = document.querySelector("#ordre").value;
-        let admi = document.querySelector("#admission").value;
-        let recherche = document.querySelector("#recherche_barre").value;
-        patientParcour(select, admi, recherche, function (error, response) {
+        select = document.querySelector("#ordre").value;
+        admi = document.querySelector("#admission").value;
+        recherche = document.querySelector("#recherche_barre").value;
+        patientParcour(select, admi, recherche,"", function (error, response) {
         if (error){
         console.log(response);
     } else {
@@ -204,6 +205,31 @@ window.onload = () => {
     }
     });
     })
+
+document.getElementById('next').addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log("next")
+    patientParcour(select, admi, recherche,"next", function (error, response) {
+        if (error){
+            console.log(response);
+        } else {
+            console.log(response);
+            tableauPatients(response);
+        }
+    });
+});
+document.getElementById('back').addEventListener('click', (event) => {
+    event.preventDefault();
+    patientParcour(select, admi, recherche,"back", function (error, response) {
+        if (error){
+            console.log(response);
+        } else {
+            console.log(response);
+            tableauPatients(response);
+        }
+    });
+
+});
 
     document.getElementById("bt_affiche_dpi").addEventListener('click', (event) => {
         event.preventDefault();

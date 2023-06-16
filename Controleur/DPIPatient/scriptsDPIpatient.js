@@ -5,11 +5,12 @@ function alterner(id){
     sinon elle la change en "cornflowerblue".
      */
     let doc = document.getElementById(id);
-    if(doc.style.backgroundColor=="cornflowerblue"){
+    console.log(doc.style.backgroundColor)
+    if(doc.style.backgroundColor==="rgb(165, 244, 244)"){
         doc.style.backgroundColor = "white";
-    } else if (doc.style.backgroundColor=="white"){
-        doc.style.backgroundColor = "cornflowerblue";
-    } else if (doc.style.backgroundColor=="gray"){
+    } else if (doc.style.backgroundColor==="white"){
+        doc.style.backgroundColor = "rgb(165, 244, 244)";
+    } else if (doc.style.backgroundColor==="gray"){
         doc.style.backgroundColor = "gray";
     }
 }

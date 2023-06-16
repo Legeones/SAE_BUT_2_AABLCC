@@ -33,8 +33,8 @@ include('../../Vue/Include/Header.php')
                 <option value="IEP" name="IEP">IEP</option>
             </select></label>
             <button id="rechercher" type="submit">Rechercher</button>
-            <button name="back">Back</button>
-            <button name="next">Next</button>
+            <button id="back">Back</button>
+            <button id="next">Next</button>
         </form>
         <form name="choixPatient" action="../../Controleur/DPIPatient/actionDPI.php" method="post" class="grid-container" id="form">
 
