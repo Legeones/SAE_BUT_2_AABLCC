@@ -10,7 +10,7 @@ function list_deroulante_dpi($dbh){ //affiche la liste des scénarios enregistr�
     }
 }
 
-function recuperation_id_scenario($dbh){ //recupération d'un id scenario via son nom
+function recuperation_id_scenario($dbh){ //récupération d'un id scenario via son nom
     $req = $dbh->prepare("select idscenario from scenario where nom = ?");
     $req->bindparam(1,$_POST["nom_scenario"]);
     $req->execute();
@@ -20,7 +20,7 @@ function recuperation_id_scenario($dbh){ //recupération d'un id scenario via so
 }
 
 
-function modification_to_add_dpi($dbh){ //permet d'ajouter des dpi à un scénario nommé
+function modification_to_add_dpi($dbh){ //permet d'ajouter des DPI à un scénario nommé
     $dpi_restant = $_SESSION["dpi_ipp"];
     $id_scenario = recuperation_id_scenario($dbh);
     foreach ($dpi_restant as $dpi){

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-function recuperation_id_scenario_via_creator($dbh, $no_scenario): bool|string
+function recuperation_id_scenario_via_creator($dbh, $no_scenario): bool|string //récupération d'un scénario via son nom et son créateur
 {
     $req = $dbh->prepare("select idScenario
 from Scenario left join ScenarioCorbeille SC on Scenario.idScenario = SC.idSCorb
@@ -12,7 +12,7 @@ where nom = ? and createur = ?");
     return json_encode($req->fetchAll());
 }
 
-function recuperation_events_via_user_and_scenario($dbh,$no_scenario, $no_etudiant): bool|string
+function recuperation_events_via_user_and_scenario($dbh,$no_scenario, $no_etudiant): bool|string //récupération d'un scénario via l'id du scénario et d'un utilisateur
 {
     $scenario = recuperation_id_scenario_via_creator($dbh, $no_scenario);
     $req = $dbh->prepare("select *
