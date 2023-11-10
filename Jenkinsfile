@@ -1,12 +1,10 @@
 pipeline {
-    agent {
-        docker { image 'node:16-alpine' }
-    }
-    stages {
-        stage ('Run Docker Compose') {
-            steps{
-                sh 'sudo docker-compose up -d'
+    agent any
+        stages {
+            stage('SonarQube Analysis') {
+                    steps {
+                        bat 'sonar-scanner.bat'
+                    }
             }
         }
-    }
 }
