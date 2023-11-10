@@ -1,31 +1,34 @@
-version: "2"
+version: "3"
+
 services:
-  www:
-    build: .
+  php:
+    build:
+      context: .
     ports:
       - "80:80"
     volumes:
-      - ./Controleur
-      - ./Model
-      - ./Vue
-    links:
+      - ./Controleur:/Controleur
+      - ./Model:/Model
+      - ./Vue:/Vue
+    depends_on:
       - db
     networks:
-      - default
+      - app-network
+
   db:
     image: postgres
     ports:
-      - "3306:3306"
+      - "5432:5432"
     environment:
-      POSTGRES_DATABASE: postgres
+      POSTGRES_DB: postgres
       POSTGRES_USER: theo
       POSTGRES_PASSWORD: theo
       POSTGRES_ROOT_PASSWORD: theo
     volumes:
-      - .Model/BDD/BDDSAE.sql
-      - persistent:/var/lib/postgres
+      - ./Model/BDD/BDDSAE.sql:/docker-entrypoint-initdb.d/BDDSAE.sql
     networks:
-      - default
+      - app-network
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     links:
@@ -33,8 +36,10 @@ services:
     ports:
       - "82:80"
     environment:
-      POSTGRES_USER: theo
-      POSTGRES_PASSWORD: theo
-      POSTGRES_ROOT_PASSWORD: theo
-volumes:
-  persistent:
+      PMA_HOST: db
+      PMA_PORT: 5432
+      PMA_ARBITRARY: 1
+
+networks:
+  app-network:
+    driver: bridge
