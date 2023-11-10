@@ -22,7 +22,7 @@ services:
       POSTGRES_PASSWORD: theo
       POSTGRES_ROOT_PASSWORD: theo
     volumes:
-      - .Model/BDD/BDDSAE.sql:/docker-entrypoint-initdb.d
+      - .Model/BDD/BDDSAE.sql
       - persistent:/var/lib/postgres
     networks:
       - default
