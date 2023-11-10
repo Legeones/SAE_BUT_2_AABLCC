@@ -1,0 +1,40 @@
+version: "2"
+services:
+  www:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./Controleur
+      - ./Model
+      - ./Vue
+    links:
+      - db
+    networks:
+      - default
+  db:
+    image: postgres
+    ports:
+      - "3306:3306"
+    environment:
+      POSTGRES_DATABASE: postgres
+      POSTGRES_USER: theo
+      POSTGRES_PASSWORD: theo
+      POSTGRES_ROOT_PASSWORD: theo
+    volumes:
+      - .Model/BDD/BDDSAE.sql:/docker-entrypoint-initdb.d
+      - persistent:/var/lib/postgres
+    networks:
+      - default
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db:db
+    ports:
+      - "82:80"
+    environment:
+      POSTGRES_USER: theo
+      POSTGRES_PASSWORD: theo
+      POSTGRES_ROOT_PASSWORD: theo
+volumes:
+  persistent:
